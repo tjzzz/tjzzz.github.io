@@ -1,410 +1,94 @@
-<!doctype html>
-<html class="no-js" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>
     
   book.DL - 
   
+
   </title>
- <meta name="description" content="">
- <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
-    <link rel="stylesheet" href="asset/css/foundation.min.css" />
-    <link rel="stylesheet" href="asset/css/docs.css" />
+  <meta name="author" content="">
+  <meta name="description" content="">
 
-    <script src="asset/js/vendor/modernizr.js"></script>
-    <script src="asset/js/vendor/jquery.js"></script>
-    <script src="asset/highlightjs/highlight.pack.js"></script>
-    <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
-    <script>hljs.initHighlightingOnLoad();</script>
-    
-  </head>
-  <body class="antialiased hide-extras">
-    
-    <div class="marketing off-canvas-wrap" data-offcanvas>
-      <div class="inner-wrap">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href="asset/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+  <script src="asset/js/modernizr-2.0.js"></script>
+  <script src="asset/js/jquery.min.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/solarized_light.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
 
+  <style type="text/css">
+  .cat-children-p{ padding: 6px 0px;}
+  .hljs{background: none;}
+  </style>
+  <script type="text/javascript">
+  var isAddSildbar = true;
+  </script>
+  <script src="asset/js/octopress.js" type="text/javascript"></script>
+</head>
+<script type="text/javascript">
+//链接新开窗口
+function addBlankTargetForLinks () {
+  $('a[href^="http"]').each(function(){
+      $(this).attr('target', '_blank');
+  });
+}
+$(document).ready(function(event) {
+  addBlankTargetForLinks();
+});
+</script>
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="index.html"></a></h1>
+  
+    <h2></h2>
+  
+</hgroup>
 
-<nav class="top-bar docs-bar hide-for-small" data-topbar>
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
 
-<div id="header">
-    <h1><a href="index.html"></a></h1>
-</div>
+  <li id=""><a target="self" href="index.html">Home</a></li>
+
+  <li id=""><a target="_self" href="archives.html">Archives</a></li>
+
+</ul>
 
 </nav>
-        <nav class="tab-bar show-for-small">
-  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-    <span> &nbsp; </span>
-  </a>
-</nav>
+  <div id="main">
+    <div id="content"> 
+<div class="blog-index">
 
-<aside class="left-off-canvas-menu">
-      <ul class="off-canvas-list">
-      <li><a href="index.html">Home</a></li>
-      
-        <li class="divider"></li>
-        <li><label>你不得不知的统计方法</label></li>
-
-          
-            <li><a title="list" href="15516671779096.html">list</a></li>
-          
-            <li><a title="统计阈值" href="15456330400571.html">统计阈值</a></li>
-          
-            <li><a title="目录" href="15388856641434.html">目录</a></li>
-          
-
-      
-        <li class="divider"></li>
-        <li><label>Udacity.DL</label></li>
-
-          
-            <li><a title="1 numpy准备" href="15239785617946.html">1 numpy准备</a></li>
-          
-            <li><a title="工欲善其事必先利其器——Jupyter notebook" href="15239739372259.html">工欲善其事必先利其器——Jupyter notebook</a></li>
-          
-            <li><a title="工欲善其事必先利其器——conda" href="15239687802219.html">工欲善其事必先利其器——conda</a></li>
-          
-
-      
-        <li class="divider"></li>
-        <li><label>Ng.DL</label></li>
-
-          
-            <li><a title="course 1" href="15103851900689.html">course 1</a></li>
-          
-            <li><a title="0 readme" href="15072119494173.html">0 readme</a></li>
-          
-            <li><a title="course2_week1 优化网络参数" href="15055593941505.html">course2_week1 优化网络参数</a></li>
-          
-
-      
-        <li class="divider"></li>
-        <li><label>book.DL</label></li>
-
-          
-            <li><a title="第八章 深度模型中的优化" href="15209459008411.html">第八章 深度模型中的优化</a></li>
-          
-            <li><a title="第七章 正则化" href="15120469131645.html">第七章 正则化</a></li>
-          
-            <li><a title="第六章 深度前馈网络" href="15090214789463.html">第六章 深度前馈网络</a></li>
-          
-            <li><a title="第五章 机器学习" href="15082571023160.html">第五章 机器学习</a></li>
-          
-            <li><a title="第四章 数值计算" href="15080580137304.html">第四章 数值计算</a></li>
-          
-            <li><a title="第三章 概率与信息论" href="15080561019055.html">第三章 概率与信息论</a></li>
-          
-            <li><a title="第二章 线性代数" href="15080506207071.html">第二章 线性代数</a></li>
-          
-            <li><a title="第一章 引言" href="15075611675547.html">第一章 引言</a></li>
-          
-
-      
-        <li class="divider"></li>
-        <li><label>机器学习</label></li>
-
-          
-            <li><a title="4.9 深度学习综述" href="15394437873112.html">4.9 深度学习综述</a></li>
-          
-            <li><a title="4.8 自适应的基函数——神经网络" href="15394428762655.html">4.8 自适应的基函数——神经网络</a></li>
-          
-            <li><a title="4.7 聚类2——-效果评价" href="15386411386885.html">4.7 聚类2——-效果评价</a></li>
-          
-            <li><a title="4.7 聚类1" href="15384985356322.html">4.7 聚类1</a></li>
-          
-            <li><a title="4.6 集成" href="15384985274531.html">4.6 集成</a></li>
-          
-            <li><a title="4.5 树模型" href="15384984788761.html">4.5 树模型</a></li>
-          
-            <li><a title="4.4 k近邻 —— 非参模型" href="15384984375294.html">4.4 k近邻 —— 非参模型</a></li>
-          
-            <li><a title="4.3 支持向量机" href="15384698920685.html">4.3 支持向量机</a></li>
-          
-            <li><a title="4.2 回归与分类" href="15383213879430.html">4.2 回归与分类</a></li>
-          
-            <li><a title="3.1 特征处理—— 特征选择" href="15382821285011.html">3.1 特征处理—— 特征选择</a></li>
-          
-            <li><a title="4.1 回归模型" href="15350244372147.html">4.1 回归模型</a></li>
-          
-            <li><a title="二、起步篇—— 数据预处理[python]" href="15343431925455.html">二、起步篇—— 数据预处理[python]</a></li>
-          
-            <li><a title="二、起步篇——数据预处理[方法论]" href="15334844213158.html">二、起步篇——数据预处理[方法论]</a></li>
-          
-            <li><a title="目录结构" href="15318267888584.html">目录结构</a></li>
-          
-            <li><a title="一、基础篇" href="15316431193074.html">一、基础篇</a></li>
-          
-            <li><a title="boosting" href="15275150216357.html">boosting</a></li>
-          
-            <li><a title="t-sne" href="15159940729630.html">t-sne</a></li>
-          
-            <li><a title="分类模型的解读lime" href="15138249808268.html">分类模型的解读lime</a></li>
-          
-            <li><a title="xgboost" href="15135982658967.html">xgboost</a></li>
-          
-            <li><a title="聚类方法-spark的bisecting和streaming" href="15125380306792.html">聚类方法-spark的bisecting和streaming</a></li>
-          
-            <li><a title="聚类方法Mini Batch KMeans" href="15125347657537.html">聚类方法Mini Batch KMeans</a></li>
-          
-            <li><a title="聚类Tools篇" href="15124490864962.html">聚类Tools篇</a></li>
-          
-            <li><a title="【聚类】-效果评价" href="15078603543147.html">【聚类】-效果评价</a></li>
-          
-
-      
-        <li class="divider"></li>
-        <li><label>推荐系统</label></li>
-
-          
-            <li><a title="FM 模型" href="15355316549948.html">FM 模型</a></li>
-          
-            <li><a title="章2 利用用户行为数据" href="14609901056105.html">章2 利用用户行为数据</a></li>
-          
-            <li><a title="章1 基本介绍" href="14609900746980.html">章1 基本介绍</a></li>
-          
-
-      
-        <li class="divider"></li>
-        <li><label>NLP&图像</label></li>
-
-          
-            <li><a title="图像识别模型—— 1.利用已有的进行微调" href="15388051366041.html">图像识别模型—— 1.利用已有的进行微调</a></li>
-          
-            <li><a title="Face综述" href="15343921369482.html">Face综述</a></li>
-          
-            <li><a title="face_recgnization" href="15340577552786.html">face_recgnization</a></li>
-          
-            <li><a title="短文本聚类" href="15198188673345.html">短文本聚类</a></li>
-          
-
-      
-        <li class="divider"></li>
-        <li><label>数据可视化</label></li>
-
-          
-            <li><a title="R 数据透视表" href="15479712192030.html">R 数据透视表</a></li>
-          
-            <li><a title="地图定位" href="15366609658901.html">地图定位</a></li>
-          
-            <li><a title="数据可视化(seaborn)" href="15347755588253.html">数据可视化(seaborn)</a></li>
-          
-            <li><a title="R绘图散点覆盖问题" href="15095119537608.html">R绘图散点覆盖问题</a></li>
-          
-            <li><a title="rCharts" href="15072077620306.html">rCharts</a></li>
-          
-            <li><a title="googleVis" href="15072077543747.html">googleVis</a></li>
-          
-            <li><a title="Remap" href="15072068811153.html">Remap</a></li>
-          
-
-      
-        <li class="divider"></li>
-        <li><label>0. 资源导航</label></li>
-
-          
-            <li><a title="复习计划" href="15263596186313.html">复习计划</a></li>
-          
-            <li><a title="推荐资源" href="15130525987872.html">推荐资源</a></li>
-          
-            <li><a title="" href="15073875319013.html"></a></li>
-          
-
-      
-        <li class="divider"></li>
-        <li><label>data</label></li>
-
-          
-            <li><a title="公开微观数据库 1.0" href="15266412937984.html">公开微观数据库 1.0</a></li>
-          
-
-      
-      </ul>
-    </aside>
-
-<a class="exit-off-canvas" href="#"></a>
-
-        <section id="main-content" role="main" class="scroll-container">
-
-          <div class="row">
-            <div class="large-3 medium-3 columns">
-              <div class="hide-for-small">
-                <div class="sidebar">
-                <nav>
-                  <ul id="side-nav" class="side-nav">
-
-                    
-                      <li class="side-title"><span>你不得不知的统计方法</span></li>
-                        
-                          <li><a title="list" href="15516671779096.html">list</a></li>
-                        
-                          <li><a title="统计阈值" href="15456330400571.html">统计阈值</a></li>
-                        
-                          <li><a title="目录" href="15388856641434.html">目录</a></li>
-                        
-
-                    
-                      <li class="side-title"><span>Udacity.DL</span></li>
-                        
-                          <li><a title="1 numpy准备" href="15239785617946.html">1 numpy准备</a></li>
-                        
-                          <li><a title="工欲善其事必先利其器——Jupyter notebook" href="15239739372259.html">工欲善其事必先利其器——Jupyter notebook</a></li>
-                        
-                          <li><a title="工欲善其事必先利其器——conda" href="15239687802219.html">工欲善其事必先利其器——conda</a></li>
-                        
-
-                    
-                      <li class="side-title"><span>Ng.DL</span></li>
-                        
-                          <li><a title="course 1" href="15103851900689.html">course 1</a></li>
-                        
-                          <li><a title="0 readme" href="15072119494173.html">0 readme</a></li>
-                        
-                          <li><a title="course2_week1 优化网络参数" href="15055593941505.html">course2_week1 优化网络参数</a></li>
-                        
-
-                    
-                      <li class="side-title"><span>book.DL</span></li>
-                        
-                          <li><a title="第八章 深度模型中的优化" href="15209459008411.html">第八章 深度模型中的优化</a></li>
-                        
-                          <li><a title="第七章 正则化" href="15120469131645.html">第七章 正则化</a></li>
-                        
-                          <li><a title="第六章 深度前馈网络" href="15090214789463.html">第六章 深度前馈网络</a></li>
-                        
-                          <li><a title="第五章 机器学习" href="15082571023160.html">第五章 机器学习</a></li>
-                        
-                          <li><a title="第四章 数值计算" href="15080580137304.html">第四章 数值计算</a></li>
-                        
-                          <li><a title="第三章 概率与信息论" href="15080561019055.html">第三章 概率与信息论</a></li>
-                        
-                          <li><a title="第二章 线性代数" href="15080506207071.html">第二章 线性代数</a></li>
-                        
-                          <li><a title="第一章 引言" href="15075611675547.html">第一章 引言</a></li>
-                        
-
-                    
-                      <li class="side-title"><span>机器学习</span></li>
-                        
-                          <li><a title="4.9 深度学习综述" href="15394437873112.html">4.9 深度学习综述</a></li>
-                        
-                          <li><a title="4.8 自适应的基函数——神经网络" href="15394428762655.html">4.8 自适应的基函数——神经网络</a></li>
-                        
-                          <li><a title="4.7 聚类2——-效果评价" href="15386411386885.html">4.7 聚类2——-效果评价</a></li>
-                        
-                          <li><a title="4.7 聚类1" href="15384985356322.html">4.7 聚类1</a></li>
-                        
-                          <li><a title="4.6 集成" href="15384985274531.html">4.6 集成</a></li>
-                        
-                          <li><a title="4.5 树模型" href="15384984788761.html">4.5 树模型</a></li>
-                        
-                          <li><a title="4.4 k近邻 —— 非参模型" href="15384984375294.html">4.4 k近邻 —— 非参模型</a></li>
-                        
-                          <li><a title="4.3 支持向量机" href="15384698920685.html">4.3 支持向量机</a></li>
-                        
-                          <li><a title="4.2 回归与分类" href="15383213879430.html">4.2 回归与分类</a></li>
-                        
-                          <li><a title="3.1 特征处理—— 特征选择" href="15382821285011.html">3.1 特征处理—— 特征选择</a></li>
-                        
-                          <li><a title="4.1 回归模型" href="15350244372147.html">4.1 回归模型</a></li>
-                        
-                          <li><a title="二、起步篇—— 数据预处理[python]" href="15343431925455.html">二、起步篇—— 数据预处理[python]</a></li>
-                        
-                          <li><a title="二、起步篇——数据预处理[方法论]" href="15334844213158.html">二、起步篇——数据预处理[方法论]</a></li>
-                        
-                          <li><a title="目录结构" href="15318267888584.html">目录结构</a></li>
-                        
-                          <li><a title="一、基础篇" href="15316431193074.html">一、基础篇</a></li>
-                        
-                          <li><a title="boosting" href="15275150216357.html">boosting</a></li>
-                        
-                          <li><a title="t-sne" href="15159940729630.html">t-sne</a></li>
-                        
-                          <li><a title="分类模型的解读lime" href="15138249808268.html">分类模型的解读lime</a></li>
-                        
-                          <li><a title="xgboost" href="15135982658967.html">xgboost</a></li>
-                        
-                          <li><a title="聚类方法-spark的bisecting和streaming" href="15125380306792.html">聚类方法-spark的bisecting和streaming</a></li>
-                        
-                          <li><a title="聚类方法Mini Batch KMeans" href="15125347657537.html">聚类方法Mini Batch KMeans</a></li>
-                        
-                          <li><a title="聚类Tools篇" href="15124490864962.html">聚类Tools篇</a></li>
-                        
-                          <li><a title="【聚类】-效果评价" href="15078603543147.html">【聚类】-效果评价</a></li>
-                        
-
-                    
-                      <li class="side-title"><span>推荐系统</span></li>
-                        
-                          <li><a title="FM 模型" href="15355316549948.html">FM 模型</a></li>
-                        
-                          <li><a title="章2 利用用户行为数据" href="14609901056105.html">章2 利用用户行为数据</a></li>
-                        
-                          <li><a title="章1 基本介绍" href="14609900746980.html">章1 基本介绍</a></li>
-                        
-
-                    
-                      <li class="side-title"><span>NLP&图像</span></li>
-                        
-                          <li><a title="图像识别模型—— 1.利用已有的进行微调" href="15388051366041.html">图像识别模型—— 1.利用已有的进行微调</a></li>
-                        
-                          <li><a title="Face综述" href="15343921369482.html">Face综述</a></li>
-                        
-                          <li><a title="face_recgnization" href="15340577552786.html">face_recgnization</a></li>
-                        
-                          <li><a title="短文本聚类" href="15198188673345.html">短文本聚类</a></li>
-                        
-
-                    
-                      <li class="side-title"><span>数据可视化</span></li>
-                        
-                          <li><a title="R 数据透视表" href="15479712192030.html">R 数据透视表</a></li>
-                        
-                          <li><a title="地图定位" href="15366609658901.html">地图定位</a></li>
-                        
-                          <li><a title="数据可视化(seaborn)" href="15347755588253.html">数据可视化(seaborn)</a></li>
-                        
-                          <li><a title="R绘图散点覆盖问题" href="15095119537608.html">R绘图散点覆盖问题</a></li>
-                        
-                          <li><a title="rCharts" href="15072077620306.html">rCharts</a></li>
-                        
-                          <li><a title="googleVis" href="15072077543747.html">googleVis</a></li>
-                        
-                          <li><a title="Remap" href="15072068811153.html">Remap</a></li>
-                        
-
-                    
-                      <li class="side-title"><span>0. 资源导航</span></li>
-                        
-                          <li><a title="复习计划" href="15263596186313.html">复习计划</a></li>
-                        
-                          <li><a title="推荐资源" href="15130525987872.html">推荐资源</a></li>
-                        
-                          <li><a title="" href="15073875319013.html"></a></li>
-                        
-
-                    
-                      <li class="side-title"><span>data</span></li>
-                        
-                          <li><a title="公开微观数据库 1.0" href="15266412937984.html">公开微观数据库 1.0</a></li>
-                        
-
-                    
-                  </ul>
-                </nav>
-                </div>
-              </div>
-            </div>
-            <div class="large-9 medium-9 columns">
-
- 
-
-
-	
-		<div class="markdown-body">
-		<h1>第八章 深度模型中的优化</h1>
-
-		<h2 id="toc_0">8.1 优化与学习</h2>
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15209459008411.html">第八章 深度模型中的优化</a></h1>
+			<p class="meta"><time datetime="2018-03-13T20:58:20+08:00" 
+			pubdate data-updated="true">2018/3/13</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<h2 id="toc_0">8.1 优化与学习</h2>
 
 <p>本章主要关注这一类特定的优化问题:寻找神经网络上的一组参数 θ，它能显 著地降低代价函数 J(θ)，该代价函数通常包括整个训练集上的性能评估和额外的正 则化项。</p>
 
@@ -442,54 +126,475 @@
 
 
 		</div>
-	
 
+		
+
+	</article>
  
-	
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15120469131645.html">第七章 正则化</a></h1>
+			<p class="meta"><time datetime="2017-11-30T21:01:53+08:00" 
+			pubdate data-updated="true">2017/11/30</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<p>机器学习不止要求在训练数据上有良好的表现，还希望有较好的泛化能力，即在测试数据上也能减少测试误差。这些策略被统称为<strong>正则化</strong></p>
 
+<p>常见的一些正则化方法：</p>
+
+<h2 id="toc_0">1.参数范数惩罚</h2>
+
+<p>即在原有的优化函数中，添加一个对参数的惩罚，来限制模型的学习能力<br/>
+<img src="media/15120469131645/15206725126887.jpg" alt=""/></p>
+
+<p>(1) L2参数正则化<br/>
+L2正则化/岭回归，又叫权重衰减； 可以参照岭回归<br/>
+<img src="media/15120469131645/15206732558707.jpg" alt=""/></p>
+
+<p>(X⊤X + αI)−1 这个新矩阵与原来的是一样的，不同的仅仅是在对 角加了 α。这个矩阵的对角项对应每个输入特征的方差。我们可以看到，L2正则化能 让学习算法 ‘‘感知’’ 到具有较高方差的输入 x，因此与输出目标的协方差较小(相对 增加方差)的特征的权重将会收缩。</p>
+
+<p>（2）L1正则化： 具有稀疏性，很多会衰减成0，所以有时候会用来做变量选择lasso</p>
+
+<h2 id="toc_1">2.作为约束的范数惩罚</h2>
+
+<p>从另一个角度来看这个问题，可以被看做是构造一个广义拉格朗日函数来最小化带约束的函数</p>
+
+<p><img src="media/15120469131645/15206742273357.jpg" alt=""/></p>
+
+<p><img src="media/15120469131645/15206742365336.jpg" alt=""/></p>
+
+<p>最小化约束 + 重投影的角度</p>
+
+<h2 id="toc_2">3.正则化和欠约束问题</h2>
+
+<p>正则化还有个好处可以保证X&#39;X+aI 是可逆的</p>
+
+<h2 id="toc_3">4.数据集增强</h2>
+
+<p>可以通过一些方法在不改变label的情况下自己构造一批数据集，比如图像识别时候对图像的旋转；有些时候也可以通过输入噪声的方式来进行数据集增强。</p>
+
+<h2 id="toc_4">5.噪声鲁棒性</h2>
+
+<ul>
+<li>向模型的输入或者是权重中加入噪音。</li>
+<li>向输出目标中加入噪音，即标注数据有一定的错误，不是百分百准确的时候。<strong>标签平滑</strong>方法是将0，1分类，变为e/(k-1)和1-e的k个输出的softmax函数。（e是标注的错误率）</li>
+</ul>
+
+<h2 id="toc_5">6.半监督学习</h2>
+
+<p>大概意思是说：P(x) 产生的未标记样本和P(x,y)中的标记样本都用 于估计 P(y|x)或者根据x预测y。</p>
+
+<h2 id="toc_6">7.多任务学习</h2>
+
+<p>就是通过合并几个任务中的样例（可以视为对参数施加的软约束），我感觉就是类似于group_lasso这样的，对参数加了一个别的约束，部分样本需要共享同一个参数</p>
+
+<h2 id="toc_7">8.提前终止</h2>
+
+<p><img src="media/15120469131645/15206764319925.jpg" alt=""/><br/>
+当训练的能力较强时候会发现，随着训练次数的增加，训练误差在逐步减小，但是测试误差会呈现一个U型状态。即先减小后增加。</p>
+
+<p>不是从模型的优化函数入手，相当于是一个实践的经验技巧。</p>
+
+<p>提前终止具有正则化的效果</p>
+
+<h2 id="toc_8">9.参数绑定和参数共享</h2>
+
+<h2 id="toc_9">10.稀疏表示</h2>
+
+<p>前文所述的权重衰减直接惩罚模型参数。另一种策略是惩罚神经网络中的激活 单元，稀疏化激活单元。这种策略间接地对模型参数施加了复杂惩罚。<br/>
+<img src="media/15120469131645/15207643423743.jpg" alt=""/></p>
+
+<h2 id="toc_10">11.Bagging 和其他集成方法</h2>
+
+<p>结合多个模型，进行模型平均</p>
+
+<h2 id="toc_11">12.dropout</h2>
+
+<p>@@@@</p>
+
+<h2 id="toc_12">13.对抗训练</h2>
+
+<h1 id="toc_13">14 切面距离、正切传播和流形正切分类器</h1>
+
+<p>略</p>
+
+
+		</div>
+
+		
+
+	</article>
  
-	
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15090214789463.html">第六章 深度前馈网络</a></h1>
+			<p class="meta"><time datetime="2017-10-26T20:37:58+08:00" 
+			pubdate data-updated="true">2017/10/26</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<p>前馈神经网络，也叫做<strong>多层感知机</strong>(MLP),其目标是近似某个函数\(f^*\)。前馈网络定义了一个映射函数\(y=f(x,\theta)\),然后学习参数\(\theta\)的值，从而近似函数\(f^*\)</p>
 
+<p><strong>前馈</strong></p>
+
+<p>因为在模型的输出和模型本身之间没有反馈链接。一些基本术语概念：</p>
+
+<ul>
+<li>输出层，隐藏层，</li>
+</ul>
+
+<h2 id="toc_0">6.1 例子：学习XOR</h2>
+
+<p>【例】学习异或逻辑，即当两个二进制值中恰好有一个是1时候返回1，其他都返回0.</p>
+
+<p>【解法1】可以考虑按照回归分析的思路，使用均方误差作为损失函数(实际中对于二进制数据建模时不适合用MSE)。\(f(x,w,b)=x^Tw+b\)<br/>
+可以利用矩阵求解方程得到w=0,b=0.5， 线性模型得到的结果是任意一点都为0.5<br/>
+==&gt; 主要问题，该问题其实不是一个线性问题</p>
+
+<p>【解】另一种思路：<strong>使用一个模型来学习一个不同的特征空间，在这个空间上线性模型能够表示这个问题。</strong><br/>
+<img src="media/15090214789463/15093791249803.jpg" alt=""/></p>
+
+<p>构造一个非线性函数\(h\)，一般默认的推荐是<strong>整流线性单元</strong>ReLU:<br/>
+\[g(z)=max(0, z)\]<br/>
+所以整个网络是\(f(x)=w^Tmax(0, w^Tx+c)+b\)</p>
+
+<h2 id="toc_1">6.2 基于梯度的学习</h2>
+
+<p>很多神经网络的非线性导致代价函数变得非凸，所以一般神经网络的训练一般使用迭代的方法。<br/>
+凸优化从任何一种初始参数都会收敛，而用于非凸损失函数的随机梯度下降没有这种收敛的保障，并且对参数的初始值比较敏感。</p>
+
+<h3 id="toc_2">代价函数</h3>
+
+<p>多数情况下，对于一个参数模型\(f(y|x,\theta)\)，</p>
+
+<ul>
+<li>可以简单的使用最大似然原理。即利用训练数据和模型预测之间的<strong>交叉熵</strong>作为代价函数。</li>
+<li>有时候也会出现仅预测在给定x条件下y的某些统计量。</li>
+</ul>
+
+<p><strong>最大似然学习条件分布</strong></p>
+
+<p>大多数的神经网络采用最大似然的训练方法。这意味着代价函数就是负的对数似然。它与训练数据</p>
+
+<p>\[J(\theta) = -E log p_{model}(y|x)\]</p>
+
+<p><strong>学习条件统计量</strong></p>
+
+<p>这里好像有个和高统中类似的结论。比如<br/>
+\[f^*=arg min_{f} E_{x,y~p}||y-f(x)||^2\]<br/>
+可以得到\(f^*=E_{y~p(y|x)}(y)\)</p>
+
+<h3 id="toc_3">输出单元</h3>
+
+<p>其实代价函数的选择与输出单元是有一定关系的</p>
+
+<ul>
+<li>高斯输出分布的线性单元</li>
+</ul>
+
+<p>线性输出层一般用来产生高斯分布的均值。</p>
+
+<ul>
+<li>伯努利输出分布的sigmoid单元</li>
+<li>多项分布输出的softmax单元</li>
+</ul>
+
+<p>对于想要表示具有n个离散取值的变量分布时候，一般可以用softmax函数。其是sigmoid函数在多分类问题上的推广。<br/>
+\[softmax(z_j)=\frac{exp(z_i)}{\sum_j exp(z_j)}\]</p>
+
+<h2 id="toc_4">6.3 隐藏单元</h2>
+
+<p>隐藏层单元的选择没有一个固定的指导标准，一般默认选择<strong>整流线性单元</strong></p>
+
+<p><strong>整流线性单元的一些扩展</strong></p>
+
+<p>其扩展形式主要是基于\(z_i&lt;0\)时候使用一个非零的斜率\(\alpha_i\)</p>
+
+<p>绝对值整流、渗漏整流线性单元，参数化整流线性单元。</p>
+
+<p><strong>maxout单元</strong><br/>
+maxout将单元将z划分成k个组，每个组上的取值为其最大值。</p>
+
+<p><strong>sigmoid，tanh</strong></p>
+
+<h2 id="toc_5">6.4网络结构设计</h2>
+
+<p>网络结构设计主要是设计网络的<strong>深度</strong>和每一层的<strong>宽度</strong></p>
+
+<p><strong>1. 万能近似性质</strong></p>
+
+<p>万能近似定力：一个前馈神经网络,如果具有线性输出层和至少一个具有任何一种“挤压”性质的寄货函数的隐藏层。只要给予网络足够数量的隐藏单元，它可以以任意精度来近似任何一个有限维空间到另一个有限维空间的Borel可测函数。</p>
+
+<p>万能定理从理论上说明无论我们想要学习什么函数，都有一个大的MLP可以进行这个。但是我们并不能保证算法能够学习到这个函数</p>
+
+
+		</div>
+
+		
+
+	</article>
  
-	
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15082571023160.html">第五章 机器学习</a></h1>
+			<p class="meta"><time datetime="2017-10-18T00:18:22+08:00" 
+			pubdate data-updated="true">2017/10/18</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<p>这部分主要是补充了机器学习的一席基础知识点，这里先略过。后期再进行相应的补充。具体包括</p>
 
+<ul>
+<li><p>容量/过拟合/欠拟合</p></li>
+<li><p>估计/偏差/方差</p></li>
+<li><p>最大似然估计</p></li>
+<li><p>贝叶斯统计</p></li>
+<li><p>监督学习算法</p></li>
+<li><p>无监督学习算法</p>
+
+<ul>
+<li>PCA</li>
+<li>聚类</li>
+</ul></li>
+<li><p>梯度下降</p></li>
+</ul>
+
+
+		</div>
+
+		
+
+	</article>
  
-	
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15080580137304.html">第四章 数值计算</a></h1>
+			<p class="meta"><time datetime="2017-10-15T17:00:13+08:00" 
+			pubdate data-updated="true">2017/10/15</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<h2 id="toc_0">1.数值精度</h2>
 
+<p>这部分对于了解具体的算法并没影响，但是在进行底层库开发时候经常会遇到，可能会出现<strong>上溢</strong>或者<strong>下溢</strong></p>
+
+<p>（1）病态条件</p>
+
+<p>条件数：表示函数相对于输入的微小变化而变化的快慢程度。<br/>
+比如矩阵求逆运算的条件数=最大和最小特征值的模的比</p>
+
+<h2 id="toc_1">2.优化算法</h2>
+
+<ul>
+<li>梯度下降</li>
+<li>牛顿法</li>
+</ul>
+
+<p>一般把需要最优化的函数称为<strong>目标函数</strong></p>
+
+<p><strong>梯度下降</strong></p>
+
+<p>对于一个多维输入函数f，梯度\(\triangledown_x f(x)\),其在u方向上的<strong>方向导数</strong>，相当于f在u方向上的斜率<br/>
+\(f(x+\alpha u)\)关于\(\alpha\)的导数(在\(\alpha =0\)时取得)</p>
+
+<p>\[\frac{\partial}{\partial \alpha}f(x+\alpha u)=u^T\triangledown_x f(x)\]</p>
+
+<p>为了是f最小，希望找到f下降最快的方向，因此有<br/>
+\[min u^T\triangledown_x f(x)\]<br/>
+u取为单位向量，很明显是在u和f夹角180时候，也就是两个完全相反的时候，下降最快。<br/>
+梯度下降： \(x&#39;=x-\epsilon \triangledown_x f(x)\)</p>
+
+<p><strong>牛顿法</strong></p>
+
+<p>Hessian矩阵，二阶导数<br/>
+<img src="media/15080580137304/15082408605128.jpg" alt=""/></p>
+
+<h2 id="toc_2">3.有限制的约束</h2>
+
+<p>对于有限制的优化，有时候可以将约束条件转化到原始的优化函数中，这里主要介绍一下通用的方法：<strong>KKT方法</strong>(拉格朗日方法的推广，可以非等式约束)</p>
+
+<pre><code>@@@
+http://blog.csdn.net/mr_kktian/article/details/53750424
+</code></pre>
+
+<h2 id="toc_3">参考资料</h2>
+
+<p>梯度下降法 扩展阅读： <a href="https://www.jiqizhixin.com/articles/2016-11-21-4">https://www.jiqizhixin.com/articles/2016-11-21-4</a><br/>
+<a href="http://www.cnblogs.com/maybe2030/p/4751804.html">http://www.cnblogs.com/maybe2030/p/4751804.html</a></p>
+
+
+		</div>
+
+		
+
+	</article>
   
-  
-</div></div>
-
-
-<div class="page-bottom">
-  <div class="row">
-  <hr />
-  <div class="small-9 columns">
-  <p class="copyright">Copyright &copy; 2015
-Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
-Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
-  </div>
-  <div class="small-3 columns">
-  <p class="copyright text-right"><a href="#header">TOP</a></p>
-  </div>
-   
-  </div>
+	<div class="pagination">
+	 <a class="prev" href="book.DL_1.html">&larr; Older</a> 
+<a href="archives.html">Blog Archives</a>
+	 
+	    
+	</div>
 </div>
+ <aside class="sidebar"> 
 
-        </section>
-      </div>
-    </div>
-    
-    
-    <script src="asset/js/foundation.min.js"></script>
-    <script src="asset/js/foundation/foundation.offcanvas.js"></script>
-    <script>
-      $(document).foundation();
+	<section>
+	  <h1>Categories</h1>
+	  <ul id="recent_posts">
+	  
+	      <li class="post">
+	        <a href="%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>你不得不知的统计方法&nbsp;(3)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%9F%B3%E7%BA%B3%E7%B1%B3%E5%AD%A6%E4%BD%8D.html"><strong>Udacity.DL&nbsp;(3)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="DL.html"><strong>Ng.DL&nbsp;(3)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="book.DL.html"><strong>book.DL&nbsp;(8)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>机器学习&nbsp;(23)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>推荐系统&nbsp;(3)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="NLP&%E5%9B%BE%E5%83%8F.html"><strong>NLP&图像&nbsp;(4)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html"><strong>数据可视化&nbsp;(7)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="0.%20%E8%B5%84%E6%BA%90%E5%AF%BC%E8%88%AA.html"><strong>0. 资源导航&nbsp;(3)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="data.html"><strong>data&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	   
+	  </ul>
+	</section>
+	<section>
+	  <h1>Recent Posts</h1>
+	  <ul id="recent_posts">
+	  
+	      
+		      <li class="post">
+		        <a href="15516671779096.html">list</a>
+		      </li>
+	     
+	  
+	      
+		      <li class="post">
+		        <a href="15479712192030.html">R 数据透视表</a>
+		      </li>
+	     
+	  
+	      
+		      <li class="post">
+		        <a href="15456330400571.html">统计阈值</a>
+		      </li>
+	     
+	  
+	      
+		      <li class="post">
+		        <a href="15394437873112.html">4.9 深度学习综述</a>
+		      </li>
+	     
+	  
+	      
+		      <li class="post">
+		        <a href="15394428762655.html">4.8 自适应的基函数——神经网络</a>
+		      </li>
+	     
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	   
+	  </ul>
+	</section>
+	
+</aside> </div></div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 -  -
+  <span class="credit">Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a> &nbsp;&nbsp; Theme by <a href="http://octopress.org">Octopress</a></span>
+</p>
 
-     
-    </script>
+</footer>
+
+  
     
+
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
 
-  </body>
+</body>
 </html>

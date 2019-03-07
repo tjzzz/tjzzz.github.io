@@ -1,406 +1,91 @@
-<!doctype html>
-<html class="no-js" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>
     
   第二章 线性代数 - 
   
+
   </title>
- <meta name="description" content="">
- <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
-    <link rel="stylesheet" href="asset/css/foundation.min.css" />
-    <link rel="stylesheet" href="asset/css/docs.css" />
+  <meta name="author" content="">
+  <meta name="description" content="">
 
-    <script src="asset/js/vendor/modernizr.js"></script>
-    <script src="asset/js/vendor/jquery.js"></script>
-    <script src="asset/highlightjs/highlight.pack.js"></script>
-    <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
-    <script>hljs.initHighlightingOnLoad();</script>
-    
-  </head>
-  <body class="antialiased hide-extras">
-    
-    <div class="marketing off-canvas-wrap" data-offcanvas>
-      <div class="inner-wrap">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href="asset/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+  <script src="asset/js/modernizr-2.0.js"></script>
+  <script src="asset/js/jquery.min.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/solarized_light.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
 
+  <style type="text/css">
+  .cat-children-p{ padding: 6px 0px;}
+  .hljs{background: none;}
+  </style>
+  <script type="text/javascript">
+  var isAddSildbar = true;
+  </script>
+  <script src="asset/js/octopress.js" type="text/javascript"></script>
+</head>
+<script type="text/javascript">
+//链接新开窗口
+function addBlankTargetForLinks () {
+  $('a[href^="http"]').each(function(){
+      $(this).attr('target', '_blank');
+  });
+}
+$(document).ready(function(event) {
+  addBlankTargetForLinks();
+});
+</script>
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="index.html"></a></h1>
+  
+    <h2></h2>
+  
+</hgroup>
 
-<nav class="top-bar docs-bar hide-for-small" data-topbar>
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
 
-<div id="header">
-    <h1><a href="index.html"></a></h1>
-</div>
+  <li id=""><a target="self" href="index.html">Home</a></li>
+
+  <li id=""><a target="_self" href="archives.html">Archives</a></li>
+
+</ul>
 
 </nav>
-        <nav class="tab-bar show-for-small">
-  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-    <span> &nbsp; </span>
-  </a>
-</nav>
-
-<aside class="left-off-canvas-menu">
-      <ul class="off-canvas-list">
-      <li><a href="index.html">Home</a></li>
-      
-        <li class="divider"></li>
-        <li><label>你不得不知的统计方法</label></li>
-
-          
-            <li><a title="list" href="15516671779096.html">list</a></li>
-          
-            <li><a title="统计阈值" href="15456330400571.html">统计阈值</a></li>
-          
-            <li><a title="目录" href="15388856641434.html">目录</a></li>
-          
-
-      
-        <li class="divider"></li>
-        <li><label>Udacity.DL</label></li>
-
-          
-            <li><a title="1 numpy准备" href="15239785617946.html">1 numpy准备</a></li>
-          
-            <li><a title="工欲善其事必先利其器——Jupyter notebook" href="15239739372259.html">工欲善其事必先利其器——Jupyter notebook</a></li>
-          
-            <li><a title="工欲善其事必先利其器——conda" href="15239687802219.html">工欲善其事必先利其器——conda</a></li>
-          
-
-      
-        <li class="divider"></li>
-        <li><label>Ng.DL</label></li>
-
-          
-            <li><a title="course 1" href="15103851900689.html">course 1</a></li>
-          
-            <li><a title="0 readme" href="15072119494173.html">0 readme</a></li>
-          
-            <li><a title="course2_week1 优化网络参数" href="15055593941505.html">course2_week1 优化网络参数</a></li>
-          
-
-      
-        <li class="divider"></li>
-        <li><label>book.DL</label></li>
-
-          
-            <li><a title="第八章 深度模型中的优化" href="15209459008411.html">第八章 深度模型中的优化</a></li>
-          
-            <li><a title="第七章 正则化" href="15120469131645.html">第七章 正则化</a></li>
-          
-            <li><a title="第六章 深度前馈网络" href="15090214789463.html">第六章 深度前馈网络</a></li>
-          
-            <li><a title="第五章 机器学习" href="15082571023160.html">第五章 机器学习</a></li>
-          
-            <li><a title="第四章 数值计算" href="15080580137304.html">第四章 数值计算</a></li>
-          
-            <li><a title="第三章 概率与信息论" href="15080561019055.html">第三章 概率与信息论</a></li>
-          
-            <li><a title="第二章 线性代数" href="15080506207071.html">第二章 线性代数</a></li>
-          
-            <li><a title="第一章 引言" href="15075611675547.html">第一章 引言</a></li>
-          
-
-      
-        <li class="divider"></li>
-        <li><label>机器学习</label></li>
-
-          
-            <li><a title="4.9 深度学习综述" href="15394437873112.html">4.9 深度学习综述</a></li>
-          
-            <li><a title="4.8 自适应的基函数——神经网络" href="15394428762655.html">4.8 自适应的基函数——神经网络</a></li>
-          
-            <li><a title="4.7 聚类2——-效果评价" href="15386411386885.html">4.7 聚类2——-效果评价</a></li>
-          
-            <li><a title="4.7 聚类1" href="15384985356322.html">4.7 聚类1</a></li>
-          
-            <li><a title="4.6 集成" href="15384985274531.html">4.6 集成</a></li>
-          
-            <li><a title="4.5 树模型" href="15384984788761.html">4.5 树模型</a></li>
-          
-            <li><a title="4.4 k近邻 —— 非参模型" href="15384984375294.html">4.4 k近邻 —— 非参模型</a></li>
-          
-            <li><a title="4.3 支持向量机" href="15384698920685.html">4.3 支持向量机</a></li>
-          
-            <li><a title="4.2 回归与分类" href="15383213879430.html">4.2 回归与分类</a></li>
-          
-            <li><a title="3.1 特征处理—— 特征选择" href="15382821285011.html">3.1 特征处理—— 特征选择</a></li>
-          
-            <li><a title="4.1 回归模型" href="15350244372147.html">4.1 回归模型</a></li>
-          
-            <li><a title="二、起步篇—— 数据预处理[python]" href="15343431925455.html">二、起步篇—— 数据预处理[python]</a></li>
-          
-            <li><a title="二、起步篇——数据预处理[方法论]" href="15334844213158.html">二、起步篇——数据预处理[方法论]</a></li>
-          
-            <li><a title="目录结构" href="15318267888584.html">目录结构</a></li>
-          
-            <li><a title="一、基础篇" href="15316431193074.html">一、基础篇</a></li>
-          
-            <li><a title="boosting" href="15275150216357.html">boosting</a></li>
-          
-            <li><a title="t-sne" href="15159940729630.html">t-sne</a></li>
-          
-            <li><a title="分类模型的解读lime" href="15138249808268.html">分类模型的解读lime</a></li>
-          
-            <li><a title="xgboost" href="15135982658967.html">xgboost</a></li>
-          
-            <li><a title="聚类方法-spark的bisecting和streaming" href="15125380306792.html">聚类方法-spark的bisecting和streaming</a></li>
-          
-            <li><a title="聚类方法Mini Batch KMeans" href="15125347657537.html">聚类方法Mini Batch KMeans</a></li>
-          
-            <li><a title="聚类Tools篇" href="15124490864962.html">聚类Tools篇</a></li>
-          
-            <li><a title="【聚类】-效果评价" href="15078603543147.html">【聚类】-效果评价</a></li>
-          
-
-      
-        <li class="divider"></li>
-        <li><label>推荐系统</label></li>
-
-          
-            <li><a title="FM 模型" href="15355316549948.html">FM 模型</a></li>
-          
-            <li><a title="章2 利用用户行为数据" href="14609901056105.html">章2 利用用户行为数据</a></li>
-          
-            <li><a title="章1 基本介绍" href="14609900746980.html">章1 基本介绍</a></li>
-          
-
-      
-        <li class="divider"></li>
-        <li><label>NLP&图像</label></li>
-
-          
-            <li><a title="图像识别模型—— 1.利用已有的进行微调" href="15388051366041.html">图像识别模型—— 1.利用已有的进行微调</a></li>
-          
-            <li><a title="Face综述" href="15343921369482.html">Face综述</a></li>
-          
-            <li><a title="face_recgnization" href="15340577552786.html">face_recgnization</a></li>
-          
-            <li><a title="短文本聚类" href="15198188673345.html">短文本聚类</a></li>
-          
-
-      
-        <li class="divider"></li>
-        <li><label>数据可视化</label></li>
-
-          
-            <li><a title="R 数据透视表" href="15479712192030.html">R 数据透视表</a></li>
-          
-            <li><a title="地图定位" href="15366609658901.html">地图定位</a></li>
-          
-            <li><a title="数据可视化(seaborn)" href="15347755588253.html">数据可视化(seaborn)</a></li>
-          
-            <li><a title="R绘图散点覆盖问题" href="15095119537608.html">R绘图散点覆盖问题</a></li>
-          
-            <li><a title="rCharts" href="15072077620306.html">rCharts</a></li>
-          
-            <li><a title="googleVis" href="15072077543747.html">googleVis</a></li>
-          
-            <li><a title="Remap" href="15072068811153.html">Remap</a></li>
-          
-
-      
-        <li class="divider"></li>
-        <li><label>0. 资源导航</label></li>
-
-          
-            <li><a title="复习计划" href="15263596186313.html">复习计划</a></li>
-          
-            <li><a title="推荐资源" href="15130525987872.html">推荐资源</a></li>
-          
-            <li><a title="" href="15073875319013.html"></a></li>
-          
-
-      
-        <li class="divider"></li>
-        <li><label>data</label></li>
-
-          
-            <li><a title="公开微观数据库 1.0" href="15266412937984.html">公开微观数据库 1.0</a></li>
-          
-
-      
-      </ul>
-    </aside>
-
-<a class="exit-off-canvas" href="#"></a>
-
-        <section id="main-content" role="main" class="scroll-container">
-
-          <div class="row">
-            <div class="large-3 medium-3 columns">
-              <div class="hide-for-small">
-                <div class="sidebar">
-                <nav>
-                  <ul id="side-nav" class="side-nav">
-
-                    
-                      <li class="side-title"><span>你不得不知的统计方法</span></li>
-                        
-                          <li><a title="list" href="15516671779096.html">list</a></li>
-                        
-                          <li><a title="统计阈值" href="15456330400571.html">统计阈值</a></li>
-                        
-                          <li><a title="目录" href="15388856641434.html">目录</a></li>
-                        
-
-                    
-                      <li class="side-title"><span>Udacity.DL</span></li>
-                        
-                          <li><a title="1 numpy准备" href="15239785617946.html">1 numpy准备</a></li>
-                        
-                          <li><a title="工欲善其事必先利其器——Jupyter notebook" href="15239739372259.html">工欲善其事必先利其器——Jupyter notebook</a></li>
-                        
-                          <li><a title="工欲善其事必先利其器——conda" href="15239687802219.html">工欲善其事必先利其器——conda</a></li>
-                        
-
-                    
-                      <li class="side-title"><span>Ng.DL</span></li>
-                        
-                          <li><a title="course 1" href="15103851900689.html">course 1</a></li>
-                        
-                          <li><a title="0 readme" href="15072119494173.html">0 readme</a></li>
-                        
-                          <li><a title="course2_week1 优化网络参数" href="15055593941505.html">course2_week1 优化网络参数</a></li>
-                        
-
-                    
-                      <li class="side-title"><span>book.DL</span></li>
-                        
-                          <li><a title="第八章 深度模型中的优化" href="15209459008411.html">第八章 深度模型中的优化</a></li>
-                        
-                          <li><a title="第七章 正则化" href="15120469131645.html">第七章 正则化</a></li>
-                        
-                          <li><a title="第六章 深度前馈网络" href="15090214789463.html">第六章 深度前馈网络</a></li>
-                        
-                          <li><a title="第五章 机器学习" href="15082571023160.html">第五章 机器学习</a></li>
-                        
-                          <li><a title="第四章 数值计算" href="15080580137304.html">第四章 数值计算</a></li>
-                        
-                          <li><a title="第三章 概率与信息论" href="15080561019055.html">第三章 概率与信息论</a></li>
-                        
-                          <li><a title="第二章 线性代数" href="15080506207071.html">第二章 线性代数</a></li>
-                        
-                          <li><a title="第一章 引言" href="15075611675547.html">第一章 引言</a></li>
-                        
-
-                    
-                      <li class="side-title"><span>机器学习</span></li>
-                        
-                          <li><a title="4.9 深度学习综述" href="15394437873112.html">4.9 深度学习综述</a></li>
-                        
-                          <li><a title="4.8 自适应的基函数——神经网络" href="15394428762655.html">4.8 自适应的基函数——神经网络</a></li>
-                        
-                          <li><a title="4.7 聚类2——-效果评价" href="15386411386885.html">4.7 聚类2——-效果评价</a></li>
-                        
-                          <li><a title="4.7 聚类1" href="15384985356322.html">4.7 聚类1</a></li>
-                        
-                          <li><a title="4.6 集成" href="15384985274531.html">4.6 集成</a></li>
-                        
-                          <li><a title="4.5 树模型" href="15384984788761.html">4.5 树模型</a></li>
-                        
-                          <li><a title="4.4 k近邻 —— 非参模型" href="15384984375294.html">4.4 k近邻 —— 非参模型</a></li>
-                        
-                          <li><a title="4.3 支持向量机" href="15384698920685.html">4.3 支持向量机</a></li>
-                        
-                          <li><a title="4.2 回归与分类" href="15383213879430.html">4.2 回归与分类</a></li>
-                        
-                          <li><a title="3.1 特征处理—— 特征选择" href="15382821285011.html">3.1 特征处理—— 特征选择</a></li>
-                        
-                          <li><a title="4.1 回归模型" href="15350244372147.html">4.1 回归模型</a></li>
-                        
-                          <li><a title="二、起步篇—— 数据预处理[python]" href="15343431925455.html">二、起步篇—— 数据预处理[python]</a></li>
-                        
-                          <li><a title="二、起步篇——数据预处理[方法论]" href="15334844213158.html">二、起步篇——数据预处理[方法论]</a></li>
-                        
-                          <li><a title="目录结构" href="15318267888584.html">目录结构</a></li>
-                        
-                          <li><a title="一、基础篇" href="15316431193074.html">一、基础篇</a></li>
-                        
-                          <li><a title="boosting" href="15275150216357.html">boosting</a></li>
-                        
-                          <li><a title="t-sne" href="15159940729630.html">t-sne</a></li>
-                        
-                          <li><a title="分类模型的解读lime" href="15138249808268.html">分类模型的解读lime</a></li>
-                        
-                          <li><a title="xgboost" href="15135982658967.html">xgboost</a></li>
-                        
-                          <li><a title="聚类方法-spark的bisecting和streaming" href="15125380306792.html">聚类方法-spark的bisecting和streaming</a></li>
-                        
-                          <li><a title="聚类方法Mini Batch KMeans" href="15125347657537.html">聚类方法Mini Batch KMeans</a></li>
-                        
-                          <li><a title="聚类Tools篇" href="15124490864962.html">聚类Tools篇</a></li>
-                        
-                          <li><a title="【聚类】-效果评价" href="15078603543147.html">【聚类】-效果评价</a></li>
-                        
-
-                    
-                      <li class="side-title"><span>推荐系统</span></li>
-                        
-                          <li><a title="FM 模型" href="15355316549948.html">FM 模型</a></li>
-                        
-                          <li><a title="章2 利用用户行为数据" href="14609901056105.html">章2 利用用户行为数据</a></li>
-                        
-                          <li><a title="章1 基本介绍" href="14609900746980.html">章1 基本介绍</a></li>
-                        
-
-                    
-                      <li class="side-title"><span>NLP&图像</span></li>
-                        
-                          <li><a title="图像识别模型—— 1.利用已有的进行微调" href="15388051366041.html">图像识别模型—— 1.利用已有的进行微调</a></li>
-                        
-                          <li><a title="Face综述" href="15343921369482.html">Face综述</a></li>
-                        
-                          <li><a title="face_recgnization" href="15340577552786.html">face_recgnization</a></li>
-                        
-                          <li><a title="短文本聚类" href="15198188673345.html">短文本聚类</a></li>
-                        
-
-                    
-                      <li class="side-title"><span>数据可视化</span></li>
-                        
-                          <li><a title="R 数据透视表" href="15479712192030.html">R 数据透视表</a></li>
-                        
-                          <li><a title="地图定位" href="15366609658901.html">地图定位</a></li>
-                        
-                          <li><a title="数据可视化(seaborn)" href="15347755588253.html">数据可视化(seaborn)</a></li>
-                        
-                          <li><a title="R绘图散点覆盖问题" href="15095119537608.html">R绘图散点覆盖问题</a></li>
-                        
-                          <li><a title="rCharts" href="15072077620306.html">rCharts</a></li>
-                        
-                          <li><a title="googleVis" href="15072077543747.html">googleVis</a></li>
-                        
-                          <li><a title="Remap" href="15072068811153.html">Remap</a></li>
-                        
-
-                    
-                      <li class="side-title"><span>0. 资源导航</span></li>
-                        
-                          <li><a title="复习计划" href="15263596186313.html">复习计划</a></li>
-                        
-                          <li><a title="推荐资源" href="15130525987872.html">推荐资源</a></li>
-                        
-                          <li><a title="" href="15073875319013.html"></a></li>
-                        
-
-                    
-                      <li class="side-title"><span>data</span></li>
-                        
-                          <li><a title="公开微观数据库 1.0" href="15266412937984.html">公开微观数据库 1.0</a></li>
-                        
-
-                    
-                  </ul>
-                </nav>
-                </div>
-              </div>
-            </div>
-            <div class="large-9 medium-9 columns">
-
- <div class="markdown-body">
-<h1>第二章 线性代数</h1>
-
-<p>第二章主要是介绍了线性代数的一些基础知识</p>
+  <div id="main">
+    <div id="content"> 
+<div>
+	<article class="hentry" role="article">
+	<header>
+			  	<h1 class="entry-title">第二章 线性代数</h1>
+				<p class="meta"><time datetime="2017-10-15T14:57:00+08:00" pubdate data-updated="true">2017/10/15</time></p>
+			 </header>
+		  	<div class="entry-content">
+			  	<p>第二章主要是介绍了线性代数的一些基础知识</p>
 
 <p>这里补充几点吧</p>
 
@@ -453,77 +138,203 @@ A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)�
 
 <p><a href="http://www.cnblogs.com/LeftNotEasy/archive/2011/01/19/svd-and-applications.html">http://www.cnblogs.com/LeftNotEasy/archive/2011/01/19/svd-and-applications.html</a></p>
 
+			</div>
 
-</div>
-
-<br /><br />
-<hr />
-
-<div class="row clearfix">
-  <div class="large-6 columns">
-	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="15080561019055.html"  title="Previous Post: 第三章 概率与信息论">&laquo; 第三章 概率与信息论</a>
+	  
+		<footer>
+		 <p class="meta">
+
+			<strong>Categories:</strong>&nbsp; 
+			<span class="categories">
+			
+			    <a class='category' href='book.DL.html'>book.DL</a>&nbsp;
+			 
+			</span>
+		    </p>
+		    <p class="meta">
+		      
+		 </p>
 	    
-	</div>
-  </div>
-  <div class="large-6 columns">
-	<div class="text-right" style="padding:15px 0px;">
-		
-	        <a href="15078603543147.html" 
+		<div class="sharing">
+		  
+          
+
+          
+
+		</div>
+
+	    <p class="meta">
+	    
+	        <a class="basic-alignment left" href="15080561019055.html" 
+	        title="Previous Post: 第三章 概率与信息论">&laquo; 第三章 概率与信息论</a>
+	    
+	    
+	        <a class="basic-alignment right" href="15078603543147.html" 
 	        title="Next Post: 【聚类】-效果评价">【聚类】-效果评价 &raquo;</a>
 	    
-	</div>
-  </div>
+	    </p>
+	  </footer>
+	</article>
 </div>
+ <aside class="sidebar"> 
 
-<div class="row">
-<div style="padding:0px 0.93em;" class="share-comments">
+	<section>
+	  <h1>Categories</h1>
+	  <ul id="recent_posts">
+	  
+	      <li class="post">
+	        <a href="%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>你不得不知的统计方法&nbsp;(3)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%9F%B3%E7%BA%B3%E7%B1%B3%E5%AD%A6%E4%BD%8D.html"><strong>Udacity.DL&nbsp;(3)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="DL.html"><strong>Ng.DL&nbsp;(3)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="book.DL.html"><strong>book.DL&nbsp;(8)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>机器学习&nbsp;(23)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>推荐系统&nbsp;(3)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="NLP&%E5%9B%BE%E5%83%8F.html"><strong>NLP&图像&nbsp;(4)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html"><strong>数据可视化&nbsp;(7)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="0.%20%E8%B5%84%E6%BA%90%E5%AF%BC%E8%88%AA.html"><strong>0. 资源导航&nbsp;(3)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="data.html"><strong>data&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	   
+	  </ul>
+	</section>
+	<section>
+	  <h1>Recent Posts</h1>
+	  <ul id="recent_posts">
+	  
+	      
+		      <li class="post">
+		        <a href="15516671779096.html">list</a>
+		      </li>
+	     
+	  
+	      
+		      <li class="post">
+		        <a href="15479712192030.html">R 数据透视表</a>
+		      </li>
+	     
+	  
+	      
+		      <li class="post">
+		        <a href="15456330400571.html">统计阈值</a>
+		      </li>
+	     
+	  
+	      
+		      <li class="post">
+		        <a href="15394437873112.html">4.9 深度学习综述</a>
+		      </li>
+	     
+	  
+	      
+		      <li class="post">
+		        <a href="15394428762655.html">4.8 自适应的基函数——神经网络</a>
+		      </li>
+	     
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	   
+	  </ul>
+	</section>
+	
+</aside> </div></div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 -  -
+  <span class="credit">Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a> &nbsp;&nbsp; Theme by <a href="http://octopress.org">Octopress</a></span>
+</p>
 
-</div>
-</div>
-<script type="text/javascript">
-	$(function(){
-		var currentURL = '15080506207071.html';
-		$('#side-nav a').each(function(){
-			if($(this).attr('href') == currentURL){
-				$(this).parent().addClass('active');
-			}
-		});
-	});
-</script>  
-</div></div>
+</footer>
 
-
-<div class="page-bottom">
-  <div class="row">
-  <hr />
-  <div class="small-9 columns">
-  <p class="copyright">Copyright &copy; 2015
-Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
-Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
-  </div>
-  <div class="small-3 columns">
-  <p class="copyright text-right"><a href="#header">TOP</a></p>
-  </div>
-   
-  </div>
-</div>
-
-        </section>
-      </div>
-    </div>
+  
     
-    
-    <script src="asset/js/foundation.min.js"></script>
-    <script src="asset/js/foundation/foundation.offcanvas.js"></script>
-    <script>
-      $(document).foundation();
 
-     
-    </script>
-    
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
 
-  </body>
+</body>
 </html>
