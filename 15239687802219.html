@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-  
-  
+    
+  工欲善其事必先利其器——conda - 
   
   </title>
  <meta name="description" content="">
@@ -397,33 +397,118 @@
             </div>
             <div class="large-9 medium-9 columns">
 
- 
+ <div class="markdown-body">
+<h1>工欲善其事必先利其器——conda</h1>
+
+<ul>
+<li>包管理</li>
+</ul>
+
+<p>Anaconda 安装，conda包管理器与pip类似，不同之处是可用的包以数据科学包为主，而 pip 适合一般用途。它也可以安装非 Python 的包。它是支持任何软件的包管理器。</p>
+
+<ul>
+<li>虚拟环境管理器</li>
+</ul>
+
+<p>它类似于另外两个很流行的环境管理器，即 virtualenv 和 pyenv</p>
+
+<p>脚本和程序使用的默认 Python 是 Anaconda 附带的 Python。</p>
+
+<h2 id="toc_0">包管理-常用命令</h2>
+
+<pre><code>conda list  #查看安装的内容
+conda upgrade --all   #初次下载安装好后，建议更新所有包
+</code></pre>
+
+<p>安装包</p>
+
+<pre><code>conda install package
+conda install numpy=1.10   #指定包的版本
+
+conda remove package
+conda upgrade --all
+</code></pre>
+
+<pre><code>模糊查询相关包
+conda search search_term
+</code></pre>
+
+<h2 id="toc_1">环境管理</h2>
+
+<p>默认的环境名字叫base(我的电脑上是)</p>
+
+<p>通过<code>conda env list</code>可以列出你创建的所有环境</p>
+
+<pre><code>#创建环境
+conda create -n env_name list of packages
+eg. conda create -n my_env numpy
+
+conda create -n py3 python=3
+conda create -n py2 python=2
+
+#进入环境
+source activate my_env
+#离开环境
+source deactivate
+
+# 删除环境
+conda env remove -n env_name
+</code></pre>
+
+<h2 id="toc_2">其他</h2>
+
+<p>共享环境：将自己的工作环境保存下来给别人共享</p>
+
+<pre><code>#进入到你的环境中
+source activate base
+conda env export &gt; environment.yaml
+
+# 通过环境文件创建环境
+conda env create -f environment.yaml
+</code></pre>
+
+<p>练习<br/>
+conda create -n myenv python=2</p>
 
 
-	
-		<div class="markdown-body">
-		<h1>list</h1>
+</div>
 
-		<p><a href="http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/">http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/</a></p>
+<br /><br />
+<hr />
 
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="15239739372259.html"  title="Previous Post: 工欲善其事必先利其器——Jupyter notebook">&laquo; 工欲善其事必先利其器——Jupyter notebook</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="15209459008411.html" 
+	        title="Next Post: 第八章 深度模型中的优化">第八章 深度模型中的优化 &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
 
-		</div>
-	
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
 
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
-  
-  
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '15239687802219.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
 </div></div>
 
 

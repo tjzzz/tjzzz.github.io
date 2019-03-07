@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-  
-  
+    
+  R绘图散点覆盖问题 - 
   
   </title>
  <meta name="description" content="">
@@ -397,33 +397,73 @@
             </div>
             <div class="large-9 medium-9 columns">
 
- 
+ <div class="markdown-body">
+<h1>R绘图散点覆盖问题</h1>
+
+<pre><code>ggplot(diamonds, aes(x=carat, y=price))+ geom_point(alpha=.1)
+ggplot(diamonds, aes(x=carat, y=price))+ geom_point(alpha=.01)
+ggplot(diamonds, aes(x=carat, y=price))+ stat_bin2d()
+</code></pre>
+
+<p>当其中的一个或者两个变量为离散型数据时，也会导致覆盖的问题。我们可以使用jitter方法和box的方法。</p>
+
+<pre><code>ggplot(ChickWeight, aes(x=Time, y=weight))+geom_point()
+ggplot(ChickWeight, aes(x=Time, y=weight))+geom_point(position=&quot;jitter&quot;)
+#position=&quot;jitter&quot;等价于geom_jitter，即下面的方法
+ggplot(ChickWeight, aes(x=Time, y=weight))+geom_point(position=position_jitter(width=.5, height=0))
+ggplot(ChickWeight, aes(x=Time, y=weight))+ geom_boxplot(aes(group=Time))
+</code></pre>
+
+<p><img src="media/15095119537608/15095129558652.jpg" alt=""/></p>
+
+<h1 id="toc_0">绘图中文问题</h1>
+
+<pre><code>
+par(family=&#39;STKaiti&#39;)
+symbols(x,y,circles = r,inches=0.3, bg=&quot;lightblue&quot;,fg=&quot;white&quot;, xlab=&#39;有点比&#39;,xlim=c(0.55, 0.8), ylim = c(0.3, 0.5),ylab=&#39;长点率&#39;)
+
+text(x,y,group,cex=0.8,font=2)
+</code></pre>
 
 
-	
-		<div class="markdown-body">
-		<h1>list</h1>
+</div>
 
-		<p><a href="http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/">http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/</a></p>
+<br /><br />
+<hr />
 
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="15103851900689.html"  title="Previous Post: course 1">&laquo; course 1</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="15090214789463.html" 
+	        title="Next Post: 第六章 深度前馈网络">第六章 深度前馈网络 &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
 
-		</div>
-	
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
 
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
-  
-  
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '15095119537608.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
 </div></div>
 
 

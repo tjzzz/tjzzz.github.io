@@ -402,9 +402,76 @@
 
 	
 		<div class="markdown-body">
-		<h1>list</h1>
+		<h1>二、起步篇—— 数据预处理[python]</h1>
 
-		<p><a href="http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/">http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/</a></p>
+		<blockquote>
+<p>一方面可以多查些官方说明<br/>
+多去看些kaggle，tianchi等的比赛案例，他们数据预处理做的很全面到位<br/>
+实践一些工作中的项目，将代码规范化</p>
+</blockquote>
+
+<h2 id="toc_0">1.缺失表示</h2>
+
+<p>python中缺失是nan，如果本身数据中缺失是用其他方式表示的，可以先转换一下<br/>
+<code>df.replace(&#39;-&#39;,np.nan)</code></p>
+
+<pre><code class="language-python">
+import numpy as np
+import pandas as pd
+from io import StringIO
+import sys
+
+df = pd.read_table(&#39;zz&#39;)
+df = df.replace(&#39;-&#39;,np.nan).head()
+df.head()
+</code></pre>
+
+<h2 id="toc_1">2.缺失的简单处理办法</h2>
+
+<h3 id="toc_2">暴力删除</h3>
+
+<p><code>isnull()</code>   判断是否缺失</p>
+
+<p><code>dropna( axis = 0 /1 )</code> 参数axis表示轴选择，axis=0 代表行，axis=1 代表列</p>
+
+<p><code>dropna(subset=[&#39;&#39;])</code>   删除指定列中有空值的一行数据</p>
+
+<h3 id="toc_3">默认值填充</h3>
+
+<p><code>df.fillna(value)</code><br/>
+或者对不同列填不同的值</p>
+
+<h3 id="toc_4">统计/算法填充</h3>
+
+<pre><code class="language-python">from sklearn.preprocessing import Imputer
+# strategy 有mean,median, most_frequent 方式
+# axis 默认是0，列向， axis=1行向
+dff = df.loc[:, [&#39;comment_time&#39;]]
+imr = Imputer(missing_values = &#39;NaN&#39;, strategy = &#39;mean&#39;, axis = 0 )
+imr = imr.fit(dff.values)
+imputed_data = imr.transform(dff.values)
+</code></pre>
+
+<pre><code class="language-python">## 3.分类数据处理
+from sklearn.preprocessing import LabelEncoder
+class_le = LabelEncoder()
+y = class_le.fit_transform(df[&#39;nid&#39;].values)
+
+</code></pre>
+
+<pre><code class="language-python">## 数据标准化
+from sklearn.preprocessing import MinMaxScaler
+mms = MinMaxScaler()
+X_train_norm = mms.fit_transform(imputed_data)
+X_test_norm = mms.transform(imputed_data)
+</code></pre>
+
+<h2 id="toc_5">参考资料</h2>
+
+<p><a href="https://blog.csdn.net/Amy_mm/article/details/79799629">https://blog.csdn.net/Amy_mm/article/details/79799629</a><br/>
+<a href="https://www.cnblogs.com/charlotte77/p/5622325.html">https://www.cnblogs.com/charlotte77/p/5622325.html</a></p>
+
+<p><a href="https://www.kaggle.com/pmarcelino/comprehensive-data-exploration-with-python">https://www.kaggle.com/pmarcelino/comprehensive-data-exploration-with-python</a></p>
 
 
 		</div>

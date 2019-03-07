@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-  
-  
+    
+  二、起步篇——数据预处理[方法论] - 
   
   </title>
  <meta name="description" content="">
@@ -397,33 +397,115 @@
             </div>
             <div class="large-9 medium-9 columns">
 
- 
+ <div class="markdown-body">
+<h1>二、起步篇——数据预处理[方法论]</h1>
+
+<p><img src="media/15334844213158/15335717779664.jpg" alt=""/></p>
+
+<h2 id="toc_0">1.数据偏度</h2>
+
+<p>数据的处理，从数据特征本身的统计维度看，有尺度、偏度、</p>
+
+<p>1.数据尺度</p>
+
+<ul>
+<li>标准化 =&gt; 均值0，方差1</li>
+<li>归一化 =&gt; [0,1]</li>
+</ul>
+
+<p>2.数据偏度<br/>
+可以通过偏度来度量，数据中如果存在较大的偏度，可能是因为有异常点的存在。</p>
+
+<p>有偏数据处理，一般可以取log，或者开根号让他能近似正态</p>
+
+<h2 id="toc_1">2.异常点</h2>
+
+<p>首先什么是异常点<br/>
+异常点<br/>
+（1） 首先确认是不是错误导致，比如计算错误。取值错误<br/>
+（2）确认异常点的生成机制</p>
+
+<p>（1）异常点检测</p>
+
+<p>@@@<br/>
+sklearn中常用的包</p>
+
+<p>（2）异常点处理</p>
+
+<ul>
+<li>如果是少量可以直接删除</li>
+<li>当数据量较少，删除后造成可用信息较少时候，可以使用“空间标识”的数值处理方法</li>
+</ul>
+
+<h2 id="toc_2">3.缺失值</h2>
+
+<p>缺失机制：随机缺失，还是非随机缺失</p>
+
+<p>补充原则：</p>
+
+<ul>
+<li>如果缺失占比太大，删除</li>
+</ul>
+
+<p>补充方法：</p>
+
+<ul>
+<li>统计方法：均值</li>
+<li>机器学习方法：回归、K近邻</li>
+</ul>
+
+<h2 id="toc_3">4.特征冗余</h2>
+
+<p>一般是说特征自相关性太高，即“共线性”。另外是指一些没有区分度的变量，比如一是特征取值的总数与样本数目的比例在 10% 以下，二是出现频率最高的特征取值的出现频率应该在出现频率次高的特征的20倍以上。</p>
+
+<p>检测办法：<br/>
+解决办法：PCA</p>
+
+<h2 id="toc_4">参考文章</h2>
+
+<p>离群点</p>
+
+<p><a href="https://blog.chih.me/Outlier-mining-review.html">https://blog.chih.me/Outlier-mining-review.html</a></p>
 
 
-	
-		<div class="markdown-body">
-		<h1>list</h1>
+</div>
 
-		<p><a href="http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/">http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/</a></p>
+<br /><br />
+<hr />
 
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="15340577552786.html"  title="Previous Post: face_recgnization">&laquo; face_recgnization</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="15318267888584.html" 
+	        title="Next Post: 目录结构">目录结构 &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
 
-		</div>
-	
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
 
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
-  
-  
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '15334844213158.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
 </div></div>
 
 

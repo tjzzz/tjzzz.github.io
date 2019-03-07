@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-  
-  
+    
+  t-sne - 
   
   </title>
  <meta name="description" content="">
@@ -397,33 +397,84 @@
             </div>
             <div class="large-9 medium-9 columns">
 
+ <div class="markdown-body">
+<h1>t-sne</h1>
+
+<pre><code>from sklearn.manifold import TSNE
+from sklearn.datasets import load_iris
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
  
-
-
-	
-		<div class="markdown-body">
-		<h1>list</h1>
-
-		<p><a href="http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/">http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/</a></p>
-
-
-		</div>
-	
-
  
-	
-
  
-	
+data=pd.read_csv(&#39;test.data&#39;, sep=&#39;,&#39;,header=None)
+dd= data[range(200)]
 
- 
-	
+X_tsne = TSNE().fit_transform(dd)
+X_pca = PCA().fit_transform(dd)
 
- 
-	
+out = DataFrame(np.hstack((X_tsne, X_pca)))
 
-  
-  
+out2=data[200])
+
+out.to_csv(&#39;save_data.csv&#39;)
+
+
+plt.figure(figsize=(10, 5))
+plt.subplot(121)
+plt.scatter(X_tsne[:, 0], X_tsne[:, 1],c=data[200])
+plt.subplot(122)
+#plt.scatter(X_pca[:, 0], X_pca[:, 1], c=iris.target)
+plt.scatter(X_pca[:, 0], X_pca[:, 1], c=data[200])
+</code></pre>
+
+<p>R<br/>
+```</p>
+
+<pre><code>
+</code></pre>
+
+
+</div>
+
+<br /><br />
+<hr />
+
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="15198188673345.html"  title="Previous Post: 短文本聚类">&laquo; 短文本聚类</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="15138249808268.html" 
+	        title="Next Post: 分类模型的解读lime">分类模型的解读lime &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
+
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
+
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '15159940729630.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
 </div></div>
 
 

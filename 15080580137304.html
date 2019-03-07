@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-  
-  
+    
+  第四章 数值计算 - 
   
   </title>
  <meta name="description" content="">
@@ -397,33 +397,96 @@
             </div>
             <div class="large-9 medium-9 columns">
 
- 
+ <div class="markdown-body">
+<h1>第四章 数值计算</h1>
+
+<h2 id="toc_0">1.数值精度</h2>
+
+<p>这部分对于了解具体的算法并没影响，但是在进行底层库开发时候经常会遇到，可能会出现<strong>上溢</strong>或者<strong>下溢</strong></p>
+
+<p>（1）病态条件</p>
+
+<p>条件数：表示函数相对于输入的微小变化而变化的快慢程度。<br/>
+比如矩阵求逆运算的条件数=最大和最小特征值的模的比</p>
+
+<h2 id="toc_1">2.优化算法</h2>
+
+<ul>
+<li>梯度下降</li>
+<li>牛顿法</li>
+</ul>
+
+<p>一般把需要最优化的函数称为<strong>目标函数</strong></p>
+
+<p><strong>梯度下降</strong></p>
+
+<p>对于一个多维输入函数f，梯度\(\triangledown_x f(x)\),其在u方向上的<strong>方向导数</strong>，相当于f在u方向上的斜率<br/>
+\(f(x+\alpha u)\)关于\(\alpha\)的导数(在\(\alpha =0\)时取得)</p>
+
+<p>\[\frac{\partial}{\partial \alpha}f(x+\alpha u)=u^T\triangledown_x f(x)\]</p>
+
+<p>为了是f最小，希望找到f下降最快的方向，因此有<br/>
+\[min u^T\triangledown_x f(x)\]<br/>
+u取为单位向量，很明显是在u和f夹角180时候，也就是两个完全相反的时候，下降最快。<br/>
+梯度下降： \(x&#39;=x-\epsilon \triangledown_x f(x)\)</p>
+
+<p><strong>牛顿法</strong></p>
+
+<p>Hessian矩阵，二阶导数<br/>
+<img src="media/15080580137304/15082408605128.jpg" alt=""/></p>
+
+<h2 id="toc_2">3.有限制的约束</h2>
+
+<p>对于有限制的优化，有时候可以将约束条件转化到原始的优化函数中，这里主要介绍一下通用的方法：<strong>KKT方法</strong>(拉格朗日方法的推广，可以非等式约束)</p>
+
+<pre><code>@@@
+http://blog.csdn.net/mr_kktian/article/details/53750424
+</code></pre>
+
+<h2 id="toc_3">参考资料</h2>
+
+<p>梯度下降法 扩展阅读： <a href="https://www.jiqizhixin.com/articles/2016-11-21-4">https://www.jiqizhixin.com/articles/2016-11-21-4</a><br/>
+<a href="http://www.cnblogs.com/maybe2030/p/4751804.html">http://www.cnblogs.com/maybe2030/p/4751804.html</a></p>
 
 
-	
-		<div class="markdown-body">
-		<h1>list</h1>
+</div>
 
-		<p><a href="http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/">http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/</a></p>
+<br /><br />
+<hr />
 
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="15082571023160.html"  title="Previous Post: 第五章 机器学习">&laquo; 第五章 机器学习</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="15080561019055.html" 
+	        title="Next Post: 第三章 概率与信息论">第三章 概率与信息论 &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
 
-		</div>
-	
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
 
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
-  
-  
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '15080580137304.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
 </div></div>
 
 

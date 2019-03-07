@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-  
-  
+    
+  短文本聚类 - 
   
   </title>
  <meta name="description" content="">
@@ -397,33 +397,84 @@
             </div>
             <div class="large-9 medium-9 columns">
 
- 
+ <div class="markdown-body">
+<h1>短文本聚类</h1>
+
+<p><a href="http://blog.csdn.net/u014535908/article/details/78250577">http://blog.csdn.net/u014535908/article/details/78250577</a><br/>
+<a href="http://blog.csdn.net/suibianti/article/details/60754999">http://blog.csdn.net/suibianti/article/details/60754999</a></p>
+
+<h2 id="toc_0">研究综述</h2>
+
+<p>短文本聚类常见方式</p>
+
+<ul>
+<li>基于提取词的方法</li>
+<li>对短文本借助语义词典、维基百科、搜索引擎等资源，进行文本扩充</li>
+<li>主题模型</li>
+</ul>
+
+<p>常用模型</p>
+
+<ul>
+<li>VSM向量空间模型
+即基于term，然后用tf-idf对term进行加权处理</li>
+<li>LSI 隐性语义索引
+基于svd分解降维，选取前k个</li>
+<li>PLSI 概率隐性语义索引</li>
+<li>LDA
+问题：稀疏性
+MB-LDA 基于LDA主题模型+人与人之间的关系度量</li>
+<li>BTM
+biterm  topic model通过对共线词来进行建模</li>
+</ul>
+
+<p><img src="media/15198188673345/15198345922639.jpg" alt=""/></p>
+
+<p>BTM-github<br/>
+<a href="https://github.com/xiaohuiyan/BTM">https://github.com/xiaohuiyan/BTM</a><br/>
+<a href="https://github.com/xiaohuiyan/OnlineBTM">https://github.com/xiaohuiyan/OnlineBTM</a></p>
+
+<p>参考资料</p>
 
 
-	
-		<div class="markdown-body">
-		<h1>list</h1>
+</div>
 
-		<p><a href="http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/">http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/</a></p>
+<br /><br />
+<hr />
 
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="15209459008411.html"  title="Previous Post: 第八章 深度模型中的优化">&laquo; 第八章 深度模型中的优化</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="15159940729630.html" 
+	        title="Next Post: t-sne">t-sne &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
 
-		</div>
-	
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
 
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
-  
-  
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '15198188673345.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
 </div></div>
 
 

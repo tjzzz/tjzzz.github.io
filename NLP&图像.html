@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-  
-  
+    
+  NLP&图像 - 
   
   </title>
  <meta name="description" content="">
@@ -402,15 +402,101 @@
 
 	
 		<div class="markdown-body">
-		<h1>list</h1>
+		<h1>图像识别模型—— 1.利用已有的进行微调</h1>
 
-		<p><a href="http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/">http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/</a></p>
+		<p>这里以VGG16网络为例，</p>
+
+<h2 id="toc_0">1.准备数据</h2>
+
+<pre><code> python data_convert.py -t pic --train-shards 2 --validation-shards 2 --num-threads 2 --dataset-name guangdong
+</code></pre>
+
+<p>执行完后会在pic下生成tf格式的训练+测试数据，以及label.txt<br/>
+<img src="media/15388051366041/15388065002449.jpg" alt=""/></p>
+
+<h2 id="toc_1">2.使用tensorflow的slim微调模型</h2>
+
+<p>简单介绍下google的这个图像分类工具包tensorflow-slim</p>
+
+<pre><code>├── README.md
+├── datasets                    # 定义训练时候使用的数据。如果是自己的数据，必须在此文件夹下定义
+├── deployment
+├── download_and_convert_data.py
+├── export_inference_graph.py
+├── export_inference_graph_test.py
+├── nets                        # 定义了一些常用的网络，比如vgg16，vgg19，resnet等
+├── preprocessing               # 在读入图像前，对图像做的一些预处理
+├── scripts
+│   ├── finetune_inception_v1_on_flowers.sh
+│   ├── finetune_inception_v3_on_flowers.sh
+│   ├── finetune_resnet_v1_50_on_flowers.sh
+│   ├── train_cifarnet_on_cifar10.sh
+│   └── train_lenet_on_mnist.sh
+├── setup.py
+├── slim_walkthrough.ipynb
+├── eval_image_classifier.py      # 验证模型入口
+└── train_image_classifier.py     # 训练模型入口
+</code></pre>
+
+<p>(1) 定义新的dataset文件</p>
+
+<p>仿照<code>datasets/flowers.py</code> 写一个自己的数据文件<code>guangdong.py</code> 并且在<code>dataset_factory.py</code>中进行注册</p>
+
+<p>(2)准备训练文件夹</p>
+
+<p>(3)train model</p>
+
+<pre><code>python train_image_classifier.py \
+  --train_dir=guangdong/train_dir \
+  --dataset_name=guangdong \
+  --dataset_split_name=train \
+  --dataset_dir=guangdong/data \
+  --model_name=inception_v3 \
+  --checkpoint_path=guangdong/pretrained/inception_v3.ckpt \
+  --checkpoint_exclude_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
+  --trainable_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
+  --max_number_of_steps=100000 \
+  --batch_size=32 \
+  --learning_rate=0.001 \
+  --learning_rate_decay_type=fixed \
+  --save_interval_secs=300 \
+  --save_summaries_secs=2 \
+  --log_every_n_steps=10 \
+  --optimizer=rmsprop \
+  --weight_decay=0.00004
+
+</code></pre>
+
+<p>如果执行后报错<code>Cannot assign a device for operation &#39;InceptionV3/AuxLogits/Conv2d_2b_1x1/weights/RMSProp1&#39;: Could not satisfy explicit device specification &#39;/device:GPU:0&#39; because no supported kernel for GPU devices is available</code> 之类的话</p>
+
+<p>可以参看这个的解决办法<a href="https://blog.csdn.net/xd_wjc/article/details/80550862">https://blog.csdn.net/xd_wjc/article/details/80550862</a></p>
+
+<p>tensorboard 查看任务运行情况</p>
+
+<pre><code>tensorboard --logdir guangdong/train_dir
+</code></pre>
+
+<p>训练完毕之后进行模型评估</p>
+
+<pre><code>python eval_image_classifier.py \
+  --checkpoint_path=guangdong/train_dir \
+  --eval_dir=guangdong/eval_dir \
+  --dataset_name=guangdong \
+  --dataset_split_name=validation \
+  --dataset_dir=guangdong/data \
+  --model_name=inception_v3
+</code></pre>
+
+<h3 id="toc_2">案例</h3>
+
+<p><a href="https://github.com/ns2250225/python3_tf_slim_image_classify">https://github.com/ns2250225/python3_tf_slim_image_classify</a></p>
+
+<h2 id="toc_3">阿里云服务</h2>
+
+<p><a href="https://help.aliyun.com/document_detail/49571.html#OSS">https://help.aliyun.com/document_detail/49571.html#OSS</a></p>
 
 
 		</div>
-	
-
- 
 	
 
  

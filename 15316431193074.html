@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-  
-  
+    
+  一、基础篇 - 
   
   </title>
  <meta name="description" content="">
@@ -397,33 +397,124 @@
             </div>
             <div class="large-9 medium-9 columns">
 
- 
+ <div class="markdown-body">
+<h1>一、基础篇</h1>
+
+<h1 id="toc_0">1.计算学习理论——是否可学习</h1>
+
+<p>一直在说机器学习，主要是在说怎么去学。在怎么学之前，首先需要了解下能不能学，学习的机制是什么</p>
+
+<h2 id="toc_1">PAC（概率近似正确）</h2>
+
+<p><a href="https://blog.csdn.net/wangjianguobj/article/details/57413819">https://blog.csdn.net/wangjianguobj/article/details/57413819</a></p>
+
+<h2 id="toc_2">VC维度</h2>
+
+<p>这个介绍的挺详细<br/>
+<a href="http://www.flickering.cn/machine_learning/2015/04/vc%E7%BB%B4%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89/?from=singlemessage">http://www.flickering.cn/machine_learning/2015/04/vc%E7%BB%B4%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89/?from=singlemessage</a></p>
+
+<h2 id="toc_3">参考</h2>
+
+<p>台大-机器学习基石</p>
+
+<h1 id="toc_4">6.模型设计准则</h1>
+
+<ol>
+<li>模型拟合</li>
+</ol>
+
+<p>(1) 无免费午餐定理 NFL</p>
+
+<p>就是任何一个算法，针对所有问题，在平均意义上效果是一样的。</p>
+
+<p>=&gt; 所以要具体问题具体分析，针对不同问题，选择适合该问题的方法</p>
+
+<p>(2)奥卡姆剃刀原则</p>
+
+<p>即在预测效果差不多的情况下，模型越简单余越好</p>
+
+<p>误差 = bias + varaince + noise</p>
+
+<ul>
+<li>过拟合</li>
+<li>欠拟合</li>
+</ul>
+
+<h1 id="toc_5">7.模型验证</h1>
+
+<p>1.估计泛化误差</p>
+
+<p>训练集，验证集</p>
+
+<p>2.对数据的重采样</p>
+
+<ul>
+<li>留出法</li>
+<li>k折交叉验证</li>
+<li>自助法(有放回)</li>
+</ul>
+
+<h1 id="toc_6">8.模型的评估指标</h1>
+
+<h1 id="toc_7">9.实验设计</h1>
+
+<p>设计实验是要要成的任务是对整个机器学习过程的优化。实验中因子的设计可能会包含很多，比如：算法的类别、算法的参数、数据集等。</p>
+
+<p>当因子较多的时候，如何确定单一因子的影响就需要一些技巧<br/>
+<strong>控制变量法</strong></p>
+
+<p>它暗含着一个较强的假设，就是不同因子之间相互独立，互不影响。然而这个并不总是成立的。</p>
+
+<p><strong>因子设计</strong><br/>
+他关注的是不同因子之间系统化的变化对学习效果的影响，他的一个特例就是<strong>全因子实验</strong>，也叫<strong>完全交叉设计</strong>。</p>
+
+<p>在具体操作的时候，当分析的因子的离散取值较多时候，可以通过粗调+微调的方法。</p>
+
+<p>在对因子进行精调时候，可以使用<strong>响应面方法</strong>（zzz:根据百科资料解释,就是做了一个二次函数的拟合）</p>
+
+<h2 id="toc_8">正交抽样设计</h2>
+
+<p>@@@补充下：</p>
 
 
-	
-		<div class="markdown-body">
-		<h1>list</h1>
+</div>
 
-		<p><a href="http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/">http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/</a></p>
+<br /><br />
+<hr />
 
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="15318267888584.html"  title="Previous Post: 目录结构">&laquo; 目录结构</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="15275150216357.html" 
+	        title="Next Post: boosting">boosting &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
 
-		</div>
-	
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
 
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
-  
-  
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '15316431193074.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
 </div></div>
 
 

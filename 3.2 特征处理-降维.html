@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-  
-  
+    
+  3.2 特征处理——降维 - 
   
   </title>
  <meta name="description" content="">
@@ -397,33 +397,145 @@
             </div>
             <div class="large-9 medium-9 columns">
 
- 
+ <div class="markdown-body">
+<h1>3.2 特征处理——降维</h1>
+
+<p>关于降维的讨论主要是来源于“维度灾难”, 这个是数学家理查德-贝尔曼提出的。</p>
+
+<blockquote>
+<p>当所有参数是已知的时候，维度的增加可以让分类问题的错误率渐近为0.<br/>
+当未知参数只能根据有限样本来估计时，维度的增加使错误率先降低后增加，最终收敛到0.5</p>
+</blockquote>
+
+<p>维数灾难的本质原因在于<code>数据样本的有限性</code>。而在数据有限的条件下，去解决维度问题，自然的方法就是去降维。降维的方法有很多</p>
+
+<h2 id="toc_0">1. 常用的线性降维方法：</h2>
+
+<ul>
+<li>PCA 主成分分析</li>
+<li>IDA</li>
+<li>LDA</li>
+</ul>
+
+<h2 id="toc_1">2.非线性的方法——流形</h2>
+
+<p><strong>流形</strong><br/>
+是指嵌入在高维空间中的低维子空间，它的维度是低维数据变化的自由度。（比如地球仪的球面，虽然它是在一个三维空间中，但其实是一个二维的地图卷曲而成，\(x^2+y^2+z^2=1\)，维度是2）</p>
+
+<p><strong>流形学习</strong><br/>
+就是通过挖掘数据的内在结构实现向故由维度的转化，找到对应的低维嵌入流形。其大部分是非线性的、非参的。所以相比线性方法有更强的表达能力，但是同时对噪声更加敏感。</p>
+
+<p><strong>流形学习方法</strong></p>
+
+<p>流形学习，首先需要确定低维流形的结构，然后是高维到低维的映射关系。实际中因为都未知，所以需要做一些假设。</p>
+
+<blockquote>
+<ul>
+<li>多维缩放MDS (multi dimensional scaling)</li>
+</ul>
+</blockquote>
+
+<p>原则:让高维空间上样本之间的距离在低维空间中尽量保持一致以距离重建的误差最小为优化目标。</p>
+
+<p>具体来说：</p>
+
+<p>(1) 对于原始的数据\(X_{np}\),首先可以计算出任何两个样本之间的距离，从而构造出一个距离矩阵\(D\)，MDS算法的目的就是根据距离矩阵，寻找向量\(Z_1,Z_2...Z_k\),使得\(||Z_i-Z_j||≈\sigma_{ij}\)</p>
+
+<p>假设\(Z\)是经过中心化处理过的，即\(\sum z_i = 0\) , 则有</p>
+
+<p>\[XX^T = D≈ZZ^T\]</p>
+
+<p>看到这个形式，应该就能明白怎么取解了。对D做特征分解\(D=VAV^T\)， V是对应的特征向量，我们选择前k个特征值比较大的作为最终的降维维度即可。</p>
+
+<p><code>问题：高维空间的距离与低维空间距离保持一致这个假设是否合理？</code></p>
+
+<p>以地球仪的球面为例，三维空间中两个点的距离和平面中两个点的距离显然是不一样的。三维空间中如果用欧式距离去度量那么北京与纽约的距离是连接两点的直线，而在平面上他是一条曲线。</p>
+
+<pre><code># MDS
+mds = manifold.MDS(n_components, max_iter=100, n_init=1)
+Y = mds.fit_transform(X)
+</code></pre>
+
+<p>下面再说一些以几何性质作为同构基础的降维方法</p>
+
+<blockquote>
+<ul>
+<li>等度量映射Isomap</li>
+</ul>
+</blockquote>
+
+<p>等度量映射，以数据所在的低维流形与欧式空间子集的等距性为基础。描述距离的是<strong>测地距离</strong>，即流形上两点的真实距离。测地距离的近似计算方法：近邻点之间的欧式距离近似为近邻点之间的测地距离。</p>
+
+<p>通过对每一个近邻点建立连接，就可以让所有数据点共同构成一张带权重的近邻连接图。这样在这张图上任意两个点的测地距离就相当于是两点之间的最短路径。可以用图论中的Dijkstra算法求解。</p>
+
+<p>当计算出距离后，剩下的处理方法和MDS一致。所以总的来说包括三步：<br/>
+(1) 最近邻搜索<br/>
+(2) 最短路径搜索<br/>
+(3) 部分特征值分解</p>
+
+<pre><code>model = manifold.Isomap(n_neighbors, n_components)
+Y = model.fit_transform(X)
+</code></pre>
+
+<blockquote>
+<ul>
+<li>局部线性嵌入LLE(local linear embedding)</li>
+</ul>
+</blockquote>
+
+<p>想法：待求解的低维流形在局部上是线性的，每个点可以表示成近邻点的线性组合。而局部线性嵌入就是在求解流形的过程中保持每个领域中的线性系数不变的基础上重构原数据点。</p>
+
+<p>详细的推导过程<a href="https://blog.csdn.net/yukgwy60648/article/details/54578141">https://blog.csdn.net/yukgwy60648/article/details/54578141</a></p>
+
+<pre><code># 其中method可选 [&#39;standard&#39;, &#39;ltsa&#39;, &#39;hessian&#39;, &#39;modified&#39;]
+model = manifold.LocallyLinearEmbedding(n_neighbors, n_components, eigen_solver=&#39;auto&#39;, method=method)
+Y = model.fit_transform(X)
+</code></pre>
+
+<p>从概率角度</p>
+
+<blockquote>
+<ul>
+<li>随机近邻嵌入 SNE</li>
+</ul>
+</blockquote>
+
+<p>随机近邻嵌入的特点：保持数据降维前后的概率分布不变,他将高维空间中的距离首先映射到了一个服从正态分布的条件概率上。这个概率描述了不同数据点之间的相似性。</p>
+
+<p>\[p_{j|i}=\frac{exp(-||x_j-x_i||^2/2\sigma^2_i)}{\sum_{k\ne i}exp(-||x_k-x_i||^2/2\sigma^2_i)}\]</p>
+
+<p>映射到低维空间后，按照同样方式计算条件概率，希望连个概率分布尽量一致。这里是KL散度最小化<br/>
+\[KL(P||Q) = -\sum P_i ln(\frac{P_i}{Q_i})=-\sum P_i(ln(P_i)- ln(Q_i))\]</p>
+
+<p><code>问题</code>：<br/>
+KL距离是不对称的，会导致相聚较远的点出现较大的散度差。为了是KL距离最小化，数据就会被压缩到极小的范围，产生拥挤问题。</p>
+
+<p><code>改进</code><br/>
+* 将KL散度改为对称形式 \(p_{ij}=p_{ji}=(p_{i|j}+p_{j|i})/2\)<br/>
+* 令低维空间中的条件概率服从t分布，t分布有长尾效应，从而使高维中分布较远的点降维后也能区分开</p>
+
+<pre><code>tsne = manifold.TSNE(n_components=n_components, init=&#39;pca&#39;, random_state=0)
+Y = tsne.fit_transform(X)
+</code></pre>
+
+<p><img src="media/15382821564829/15383222417494.jpg" alt=""/></p>
+
+<h2 id="toc_2">小结</h2>
+
+<ul>
+<li><p>本章主要知识结构<br/>
+<img src="https://upload-images.jianshu.io/upload_images/127231-bf906252693ca552.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"/></p></li>
+<li><p>sklearn中关于流形学习内容都在<code>sklearn.manifold</code>模块。<br/>
+官网示例 <a href="http://sklearn.apachecn.org/cn/0.19.0/auto_examples/manifold/plot_compare_methods.html#sphx-glr-auto-examples-manifold-plot-compare-methods-py">http://sklearn.apachecn.org/cn/0.19.0/auto_examples/manifold/plot_compare_methods.html#sphx-glr-auto-examples-manifold-plot-compare-methods-py</a></p></li>
+<li><p>参考文档<br/>
+<a href="https://blog.csdn.net/yukgwy60648/article/details/54578141">https://blog.csdn.net/yukgwy60648/article/details/54578141</a><br/>
+sklearn—文档 <a href="http://scikit-learn.org/stable/modules/manifold.html">http://scikit-learn.org/stable/modules/manifold.html</a><br/>
+<a href="http://sklearn.apachecn.org/cn/0.19.0/modules/manifold.html">http://sklearn.apachecn.org/cn/0.19.0/modules/manifold.html</a></p></li>
+</ul>
 
 
-	
-		<div class="markdown-body">
-		<h1>list</h1>
-
-		<p><a href="http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/">http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/</a></p>
-
-
-		</div>
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
-  
-  
+</div>
+<br /><br /> 
 </div></div>
 
 

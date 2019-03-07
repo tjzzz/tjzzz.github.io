@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-  
-  
+    
+  推荐系统 - 
   
   </title>
  <meta name="description" content="">
@@ -402,18 +402,46 @@
 
 	
 		<div class="markdown-body">
-		<h1>list</h1>
+		<h1>FM 模型</h1>
 
-		<p><a href="http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/">http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/</a></p>
+		<blockquote>
+<p>背景</p>
+</blockquote>
+
+<p>一般的线性模型 \(y=w_0 + \sum w_i x_i\)， 当考虑了特征之间的相关性即交互效应(这里以二阶为例)后模型形式是：<br/>
+\[y=w_0 + \sum w_i x_i + \sum_1^{n-1}\sum_{i+1}^n w_{ij}x_ix_j\]</p>
+
+<p>这里n表示特征的个数</p>
+
+<blockquote>
+<p>模型如何求解呢？</p>
+</blockquote>
+
+<p>如果把\(x_ix_j\)看做一个新的变量，相当于整体上还是一个线性回归模型，似乎可以用正常的线性回归的办法进行求解。<br/>
+但是这里未知的要求解的参数有n(+1)/2个，很多时候特征中会有一些分类型的变量，当通过哑变量的方式引入模型中的时候，特征数目k会非常大，从而导致要求解的参数个数较大，并且数据特别稀疏。另一方面，分类特征就到时候，\(x_ix_j\)是非零的比例较小，从而导致\(w\)无法计算出来。</p>
+
+<blockquote>
+<p>引入其他辅助信息</p>
+</blockquote>
+
+<p>我们可以引入一个辅助向量 对于\(w_{ij}\)形成的对称矩阵W，可以进行分解\(W=V^TV\)</p>
+
+<p>将模型改成如下形式<br/>
+\[y=w_0 + \sum w_i x_i + \sum_1^{n-1}\sum_{i+1}^n &lt;v_i, v_j&gt;x_ix_j\]</p>
+
+<ul>
+<li>从形式上来看，我们知道\(w_ij\)的矩阵是对称的，其形式上和协差阵\(&lt;v_i, v_j&gt;\)很类似</li>
+</ul>
+
+<p>\(v_i\)相当于是第i维隐向量，假设其维度是k&lt;&lt;n, 这样模型的参数就由原来的n(n+1)/2 变为了</p>
+
+<h2 id="toc_0">参考资料</h2>
+
+<p>简书-石晓文 <a href="https://www.jianshu.com/p/152ae633fb00">https://www.jianshu.com/p/152ae633fb00</a><br/>
+美团技术博客 <a href="https://tech.meituan.com/deep_understanding_of_ffm_principles_and_practices.html">https://tech.meituan.com/deep_understanding_of_ffm_principles_and_practices.html</a></p>
 
 
 		</div>
-	
-
- 
-	
-
- 
 	
 
  

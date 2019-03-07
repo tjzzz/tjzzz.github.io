@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-  
-  
+    
+  第八章 深度模型中的优化 - 
   
   </title>
  <meta name="description" content="">
@@ -397,33 +397,84 @@
             </div>
             <div class="large-9 medium-9 columns">
 
- 
+ <div class="markdown-body">
+<h1>第八章 深度模型中的优化</h1>
+
+<h2 id="toc_0">8.1 优化与学习</h2>
+
+<p>本章主要关注这一类特定的优化问题:寻找神经网络上的一组参数 θ，它能显 著地降低代价函数 J(θ)，该代价函数通常包括整个训练集上的性能评估和额外的正 则化项。</p>
+
+<p>通常来说极其学习的算法目标大概可以写成，降低期望泛化误差。即<strong>风险</strong><br/>
+<img src="media/15209459008411/15209462294325.jpg" alt=""/></p>
+
+<p>其中p_data是真实的分布，实际中我们只能最小化<strong>经验风险</strong><br/>
+<img src="media/15209459008411/15209463229280.jpg" alt=""/></p>
+
+<h2 id="toc_1">8.2神经网络优化中的挑战</h2>
+
+<ul>
+<li>病态： hessain矩阵病态</li>
+<li>局部最小值：对于非凸函数可能存在多个局部最小值。</li>
+<li>。。。</li>
+</ul>
+
+<h2 id="toc_2">8.3基本算法</h2>
+
+<p>梯度下降机器变种一般是机器学习中应用较多的优化算法。</p>
+
+<h3 id="toc_3">(1)随机梯度下降SGD</h3>
+
+<p><img src="media/15209459008411/15221677256921.jpg" alt=""/></p>
+
+<h3 id="toc_4">（2）动量</h3>
+
+<p>动量是比SGD速度更快的一种方法，SGD相当于只是考虑梯度的方向，而动量是在此基础上加上速度。</p>
+
+<p><img src="media/15209459008411/15221680917826.jpg" alt=""/></p>
+
+<h2 id="toc_5">8.4 参数初始化</h2>
+
+<h2 id="toc_6">参考资料</h2>
 
 
-	
-		<div class="markdown-body">
-		<h1>list</h1>
+</div>
 
-		<p><a href="http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/">http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/</a></p>
+<br /><br />
+<hr />
 
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="15239687802219.html"  title="Previous Post: 工欲善其事必先利其器——conda">&laquo; 工欲善其事必先利其器——conda</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="15198188673345.html" 
+	        title="Next Post: 短文本聚类">短文本聚类 &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
 
-		</div>
-	
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
 
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
-  
-  
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '15209459008411.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
 </div></div>
 
 

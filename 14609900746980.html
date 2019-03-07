@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-  
-  
+    
+  章1 基本介绍 - 
   
   </title>
  <meta name="description" content="">
@@ -397,33 +397,96 @@
             </div>
             <div class="large-9 medium-9 columns">
 
- 
+ <div class="markdown-body">
+<h1>章1 基本介绍</h1>
+
+<p>标签（空格分隔）： 推荐系统</p>
+
+<hr/>
+
+<h1 id="toc_0">推荐系统评测</h1>
+
+<h2 id="toc_1">1.推荐系统实验方法</h2>
+
+<p>在进行推荐之前，先从数据获得方法入手。数据的获得方法主要有 </p>
+
+<ul>
+<li><p>离线实验<br/>
+这个应该是最常见的那种，即数据使用的是离线的数据，提取数据-&gt;训练集和测试集——&gt; 建立模型 ——&gt; 测试集上进行实验——&gt;效果评价</p></li>
+<li><p>用户调查<br/>
+可以获得一些推荐效果的主观指标</p></li>
+<li><p>在线实验<br/>
+即切分流量，进行AB test</p></li>
+</ul>
+
+<h2 id="toc_2">2.指标评测</h2>
+
+<p>不同的实验方法可能会对应着不同的衡量指标，简单的介绍如下：</p>
+
+<ul>
+<li>用户满意度
+这个指标相对来说是一个主观的指标，可以通过用户调查，或者是对用户客观行为进行分析（比如：点击率、停留时间等）</li>
+<li>预测准确率
+
+<ul>
+<li>评分预测
+评分预测类主要是让用户对商品进行打分，比如1-5级的打分。其主要的计算指标是均方根误差RMSE或者平均绝对误差MAE</li>
+<li>TopN推荐
+topN推荐，即给用户推荐一个其可能感兴趣的item列表，也是我们主要要讨论的。其主要的评价指标即PR（precision recall）</li>
+</ul></li>
+<li>覆盖率
+覆盖率主要是刻画了推荐系统对<strong>长尾物品</strong>的发掘能力。我们希望推荐系统不止推荐出一些热门的，这样只能覆盖很少的一部分items。
+
+<ul>
+<li>最简单的计算方法：推荐系统推荐出来的物品占所有物品的比重。但是没有考虑到分布情况</li>
+<li>统计推荐列表中不同物品的出现次数的分布
+信息熵 \(H=-\sum p_i\log p_i\)
+基尼系数 \(G=\frac{1}{n-1}\sum (2j-n-1)p(i_j)\) </li>
+</ul></li>
+<li>多样性
+即希望推荐给用户的东西类型是多样的，比如对于电影，用户可能喜欢看爱情类、科幻类，那么推荐系统在进行推荐的时候，只推荐爱情类的效果显然不如既有爱情类又有科幻类的效果好。</li>
+<li>新颖性</li>
+<li>惊喜度</li>
+<li>信任度</li>
+<li>。。。</li>
+</ul>
 
 
-	
-		<div class="markdown-body">
-		<h1>list</h1>
+</div>
 
-		<p><a href="http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/">http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/</a></p>
+<br /><br />
+<hr />
 
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="14609901056105.html"  title="Previous Post: 章2 利用用户行为数据">&laquo; 章2 利用用户行为数据</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	</div>
+  </div>
+</div>
 
-		</div>
-	
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
 
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
-  
-  
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '14609900746980.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
 </div></div>
 
 

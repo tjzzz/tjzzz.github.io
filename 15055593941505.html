@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-  
-  
+    
+  course2_week1 优化网络参数 - 
   
   </title>
  <meta name="description" content="">
@@ -397,33 +397,105 @@
             </div>
             <div class="large-9 medium-9 columns">
 
- 
+ <div class="markdown-body">
+<h1>course2_week1 优化网络参数</h1>
+
+<h2 id="toc_0">1.基本概念</h2>
+
+<p>很多优化参数：<br/>
+网络层数，隐层数，学习率，激活函数。。。</p>
+
+<ul>
+<li><p>训练集/验证集/测试集</p></li>
+<li><p>偏差， 训练集误差</p></li>
+<li><p>方差</p></li>
+</ul>
+
+<p>若有高bias： 尝试新的网络，更大网络</p>
+
+<p>高方差： 获取更多数据，或者正则化，更合适的网络机构</p>
+
+<p>bias和varaince的平衡<br/>
+一般来说更大的网络能减小偏差，更多的数据能减小方差。</p>
+
+<h2 id="toc_1">2.正则化-L2</h2>
+
+<p>以逻辑回归为例</p>
+
+<p>\(J(w,b)=\frac{1}{m}\sum L(\hat y_i, y_i)+\frac{\lambda}{2m}|w|^2_2\)L2惩罚，避免过拟合，导致高方差</p>
+
+<p>类似的神经网络在优化函数上加上</p>
+
+<p>\(J(w^{[1]},b^{[1]},...w^{[l]},b^{[l]})=\frac{1}{m}\sum L(\hat y_i, y_i)+\frac{\lambda}{2m}\sum||w^{[l]}||^2_2\)</p>
+
+<p>其中\(|w^{[l]}|^2\)F范数</p>
+
+<ul>
+<li>Ng.当\(\lambda\)较大时候,w会较小，sigmoid接近线性，降低方差。
+<img src="media/15055593941505/15103891828021.jpg" alt=""/></li>
+</ul>
+
+<h3 id="toc_2">正则化-dropout(随机失活)</h3>
+
+<p>每次对网络中的节点设置一个随机消失的概率p，即每个节点可能在也可能不在网络中，不在的时候即相当于该节点的数值置为0.</p>
+
+<p>dropout与l2类似都会shrink权重。</p>
+
+<h3 id="toc_3">early stoping</h3>
+
+<h2 id="toc_4">3.优化</h2>
+
+<h3 id="toc_5">归一化</h3>
+
+<p>归一化输入=&gt; 均值0，方差1<br/>
+* 零均值化<br/>
+* 归一化方差</p>
+
+<p><img src="media/15055593941505/15103915636569.jpg" alt=""/></p>
+
+<h3 id="toc_6">梯度消失与梯度爆炸</h3>
+
+<p>当梯度增长很大或者很微弱时，会导致优化出问题或者很慢。</p>
 
 
-	
-		<div class="markdown-body">
-		<h1>list</h1>
+</div>
 
-		<p><a href="http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/">http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/</a></p>
+<br /><br />
+<hr />
 
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="15072068811153.html"  title="Previous Post: Remap">&laquo; Remap</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="14609901056105.html" 
+	        title="Next Post: 章2 利用用户行为数据">章2 利用用户行为数据 &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
 
-		</div>
-	
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
 
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
-  
-  
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '15055593941505.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
 </div></div>
 
 

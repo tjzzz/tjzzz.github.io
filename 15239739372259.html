@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-  
-  
+    
+  工欲善其事必先利其器——Jupyter notebook - 
   
   </title>
  <meta name="description" content="">
@@ -397,33 +397,107 @@
             </div>
             <div class="large-9 medium-9 columns">
 
- 
+ <div class="markdown-body">
+<h1>工欲善其事必先利其器——Jupyter notebook</h1>
+
+<p>类似于r的markdown</p>
+
+<p>GitHub 上也直接支持 Jupyter notebook 的渲染。借助此出色的功能，你可以轻松地共享工作。<a href="http://nbviewer.jupyter.org/">http://nbviewer.jupyter.org/</a> 也会提供 GitHub 代码库中的 notebook ，以及存储在其他地方的 notebook。</p>
+
+<p>名称 Jupyter 由 Julia、Python 和 R 组合而成，早期的两个非 Python 内核分别是 R 语言和 Julia 语言</p>
+
+<h2 id="toc_0">1.安装</h2>
+
+<ul>
+<li>如果安装anaconda 会自带</li>
+<li>通过conda环境安装 <code>conda install jupyter notebook</code>，或者<code>pip install jupyter notebook</code></li>
+</ul>
+
+<pre><code># 启动
+jupyter notebook
+</code></pre>
+
+<p>快捷键</p>
+
+<p><img src="media/15017829276727/15018110676261.jpg" alt=""/></p>
+
+<p>m 切换至markdown<br/>
+y 切换至单元格</p>
+
+<h2 id="toc_1">magic 关键字</h2>
+
+<p>Magic 关键字是可以在单元格中运行的特殊命令，能让你控制notebook 本身或执行系统调用（例如更改目录）</p>
+
+<p>Magic 命令的前面带有一个或两个百分号（% 或 %%），分别对应行 Magic 命令和单元格 Magic 命令。行 Magic 命令仅应用于编写 Magic 命令时所在的行，而单元格 Magic 命令应用于整个单元格。</p>
+
+<p>对于 Python 内核，可以使用 Magic 命令 %pdb 开启交互式调试器。出错时，你能检查当前命名空间中的变量。</p>
+
+<h2 id="toc_2">转换 notebook</h2>
+
+<p>Notebook 只是扩展名为 .ipynb 的大型 JSON 文件。</p>
+
+<p>转换格式的命令 <code>nbconvert</code></p>
+
+<pre><code>jupyter nbconvert --to html notebook.ipynb   #转成html
+</code></pre>
+
+<p>目前支持的转换格式(<a href="https://nbconvert.readthedocs.io/en/latest/usage.html">https://nbconvert.readthedocs.io/en/latest/usage.html</a>)<br/>
+HTML,<br/>
+LaTeX,<br/>
+PDF,<br/>
+Reveal.js HTML slideshow,<br/>
+Markdown,<br/>
+reStructuredText,<br/>
+executable script,<br/>
+notebook.</p>
+
+<p><strong>创建幻灯片</strong></p>
+
+<p>在 notebook 中创建幻灯片的过程像平常一样，但需要指定作为幻灯片的单元格和单元格的幻灯片类型。在菜单栏中，点击“View”（视图）&gt;“Cell Toolbar”（单元格工具栏）&gt;“Slideshow”（幻灯片），以便在每个单元格上弹出幻灯片单元格菜单。</p>
+
+<pre><code>#转换并在浏览器中展示
+jupyter nbconvert notebook.ipynb --to slides --post serve
+</code></pre>
 
 
-	
-		<div class="markdown-body">
-		<h1>list</h1>
+</div>
 
-		<p><a href="http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/">http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/</a></p>
+<br /><br />
+<hr />
 
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="15239785617946.html"  title="Previous Post: 1 numpy准备">&laquo; 1 numpy准备</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="15239687802219.html" 
+	        title="Next Post: 工欲善其事必先利其器——conda">工欲善其事必先利其器——conda &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
 
-		</div>
-	
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
 
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
-  
-  
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '15239739372259.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
 </div></div>
 
 

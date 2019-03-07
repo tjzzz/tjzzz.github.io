@@ -402,9 +402,65 @@
 
 	
 		<div class="markdown-body">
-		<h1>list</h1>
+		<h1>地图定位</h1>
 
-		<p><a href="http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/">http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/</a></p>
+		<p><a href="http://lbsyun.baidu.com/index.php?title=webapi/guide/webservice-geocoding-abroad">http://lbsyun.baidu.com/index.php?title=webapi/guide/webservice-geocoding-abroad</a></p>
+
+<p><a href="https://my.oschina.net/u/3093769/blog/1142709">https://my.oschina.net/u/3093769/blog/1142709</a></p>
+
+<pre><code># 方法一: baidumap
+library(baidumap)
+library(rjson)
+options(baidumap.key = &#39;V1YUGNIpKhENUtgmmBT6EbREkgENinyS&#39;)
+
+loc =  getCoordinate(&#39;同济大学&#39;, formatted = T)     # 根据名称查经纬度
+
+loc_json = getLocation(loc, output=&#39;json&#39;)         # 根据经纬度查对应地址信息
+out = fromJSON(loc_json)
+
+out$result$addressComponent$city
+
+## 方法二
+library(REmap)
+tmp = get_city_coord(&quot;同济大学&quot;) 
+
+
+library(RCurl)
+
+lon&lt;-tmp[1]
+lat&lt;-tmp[2]
+out&lt;-getURL(paste(&quot;https://geoindex.amap.com/geoIndex/area?callback=siptea_200823435167697&amp;adGrade=4&amp;region=&quot;,lon,&quot;%2C&quot;,lat,sep=&quot;&quot;))
+
+out 
+</code></pre>
+
+<p>google<br/>
+<a href="https://developers.google.com/places/web-service/search">https://developers.google.com/places/web-service/search</a></p>
+
+<p>AIzaSyB7YeDfBRxoc8LecatkxCv2pZlXLX2hab4</p>
+
+<p><a href="https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&amp;inputtype=textquery&amp;fields=photos,formatted_address,name,rating,opening_hours,geometry&amp;key=AIzaSyB7YeDfBRxoc8LecatkxCv2pZlXLX2hab4">https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&amp;inputtype=textquery&amp;fields=photos,formatted_address,name,rating,opening_hours,geometry&amp;key=AIzaSyB7YeDfBRxoc8LecatkxCv2pZlXLX2hab4</a></p>
+
+<p>高德</p>
+
+<p>d333738ea086fa17955ccbbc0eb12d4b</p>
+
+<ol>
+<li>数据处理</li>
+</ol>
+
+<p>数据本身的公司or学校名称是英文的，如果是可以使用google的地图接口的话，可以直接用google的地图接口。这里是先将其转为中文，然后调用百度的地图接口</p>
+
+<p>首先在百度翻译开放平台上申请app_key<br/>
+<a href="http://api.fanyi.baidu.com/api/trans/product/desktop?req=detail">http://api.fanyi.baidu.com/api/trans/product/desktop?req=detail</a></p>
+
+<p>在其文档与支持中心有具体的API接口的定义方式：传入参数和输出结果的格式</p>
+
+<p><a href="http://api.fanyi.baidu.com/api/trans/product/apidoc">http://api.fanyi.baidu.com/api/trans/product/apidoc</a></p>
+
+<p>并且为了方便使用，有不同版本的demo示例。</p>
+
+<p>2.地理位置</p>
 
 
 		</div>

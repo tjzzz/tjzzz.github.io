@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-  
-  
+    
+  第三章 概率与信息论 - 
   
   </title>
  <meta name="description" content="">
@@ -397,33 +397,97 @@
             </div>
             <div class="large-9 medium-9 columns">
 
- 
+ <div class="markdown-body">
+<h1>第三章 概率与信息论</h1>
+
+<p>本章主要是介绍了一些概率论的基础以及常见的分布</p>
+
+<h2 id="toc_0">1.常用函数的有用性质</h2>
+
+<ul>
+<li>sigmoid 函数</li>
+</ul>
+
+<p>\[\delta(x) = \frac{1}{1+exp(-x)}\]</p>
+
+<ul>
+<li>softplus函数
+\[log(1+exp(x))\]
+<img src="media/15080561019055/15080571562017.jpg" alt=""/></li>
+</ul>
+
+<p>是\(y=max(0,x)\)的平滑版本</p>
+
+<h2 id="toc_1">2.信息论</h2>
+
+<p>信息论是应用数学的一个分支，主要研究的是对一个信号包含信息的多少进行量化。<br/>
+<img src="media/15080561019055/15080594230903.jpg" alt=""/></p>
+
+<p>自信息：定义一个时间X=x的自信息<br/>
+\[I(x) = -log P(x)\]</p>
+
+<p>熵：<br/>
+\[-\sum P(x_i) logP(x_i)\]</p>
+
+<h3 id="toc_2">KL散度/相对熵</h3>
+
+<p>\[KL(P||Q) = -\sum P_i ln(\frac{P_i}{Q_i})=-\sum P_i(ln(P_i)- ln(Q_i))\]</p>
+
+<p>注意：</p>
+
+<ul>
+<li>KL距离其实并不是严格的距离，不满足对称性以及三角不等式。</li>
+</ul>
+
+<p>JS距离：<br/>
+\[JS(P1||P2) = \frac{1}{2}KL(P1||(P1+P2)/2)+ \frac{1}{2}KL(P2||(P1+P2)/2)\]</p>
+
+<h3 id="toc_3">交叉熵</h3>
+
+<p>相对熵的第一部分<br/>
+\[KL(P||Q) = -\sum P_i ln(Q_i)\]</p>
+
+<h2 id="toc_4">3.结构化概率模型——图模型(graphical model)</h2>
 
 
-	
-		<div class="markdown-body">
-		<h1>list</h1>
+</div>
 
-		<p><a href="http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/">http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/</a></p>
+<br /><br />
+<hr />
 
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="15080580137304.html"  title="Previous Post: 第四章 数值计算">&laquo; 第四章 数值计算</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="15080506207071.html" 
+	        title="Next Post: 第二章 线性代数">第二章 线性代数 &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
 
-		</div>
-	
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
 
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
-  
-  
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '15080561019055.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
 </div></div>
 
 
