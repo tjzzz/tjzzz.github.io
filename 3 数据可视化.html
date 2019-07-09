@@ -1,0 +1,480 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>
+    
+  3 数据可视化 - 学习笔记
+  
+
+  </title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href="asset/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="atom.xml" rel="alternate" title="学习笔记" type="application/atom+xml">
+  <script src="asset/js/modernizr-2.0.js"></script>
+  <script src="asset/js/jquery.min.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/solarized_light.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <style type="text/css">
+  .cat-children-p{ padding: 6px 0px;}
+  .hljs{background: none;}
+  </style>
+  <script type="text/javascript">
+  var isAddSildbar = true;
+  </script>
+  <script src="asset/js/octopress.js" type="text/javascript"></script>
+</head>
+<script type="text/javascript">
+//链接新开窗口
+function addBlankTargetForLinks () {
+  $('a[href^="http"]').each(function(){
+      $(this).attr('target', '_blank');
+  });
+}
+$(document).ready(function(event) {
+  addBlankTargetForLinks();
+});
+</script>
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="index.html">学习笔记</a></h1>
+  
+    <h2></h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+
+  <li id=""><a target="self" href="index.html">Home</a></li>
+
+  <li id=""><a target="_self" href="archives.html">Archives</a></li>
+
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content"> 
+<div class="blog-index">
+
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15553188574376.html">python-- shiny</a></h1>
+			<p class="meta"><time datetime="2019-04-15T17:00:57+08:00" 
+			pubdate data-updated="true">2019/4/15</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<p><a href="https://pbpython.com/wine_visualization.html">https://pbpython.com/wine_visualization.html</a></p>
+
+<p><a href="https://github.com/bokeh">https://github.com/bokeh</a></p>
+
+<p><a href="https://www.youtube.com/watch?v=4L568emKOvs">https://www.youtube.com/watch?v=4L568emKOvs</a></p>
+
+<p><a href="https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503">https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503</a></p>
+
+<p>dash<br/>
+bokeh<br/>
+pyxley</p>
+
+<p>使用指南</p>
+
+<p><code>pip install bokeh --user<br/>
+Collecting bokeh<br/>
+</code></p>
+
+
+		</div>
+
+		
+
+	</article>
+ 
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15479712192030.html">R 数据透视表</a></h1>
+			<p class="meta"><time datetime="2019-01-20T16:00:19+08:00" 
+			pubdate data-updated="true">2019/1/20</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<p><a href="https://zhuanlan.zhihu.com/p/33770068">https://zhuanlan.zhihu.com/p/33770068</a></p>
+
+
+		</div>
+
+		
+
+	</article>
+ 
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15366609658901.html">地图定位</a></h1>
+			<p class="meta"><time datetime="2018-09-11T18:16:05+08:00" 
+			pubdate data-updated="true">2018/9/11</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<p><a href="http://lbsyun.baidu.com/index.php?title=webapi/guide/webservice-geocoding-abroad">http://lbsyun.baidu.com/index.php?title=webapi/guide/webservice-geocoding-abroad</a></p>
+
+<p><a href="https://my.oschina.net/u/3093769/blog/1142709">https://my.oschina.net/u/3093769/blog/1142709</a></p>
+
+<pre><code># 方法一: baidumap
+library(baidumap)
+library(rjson)
+options(baidumap.key = &#39;V1YUGNIpKhENUtgmmBT6EbREkgENinyS&#39;)
+
+loc =  getCoordinate(&#39;同济大学&#39;, formatted = T)     # 根据名称查经纬度
+
+loc_json = getLocation(loc, output=&#39;json&#39;)         # 根据经纬度查对应地址信息
+out = fromJSON(loc_json)
+
+out$result$addressComponent$city
+
+## 方法二
+library(REmap)
+tmp = get_city_coord(&quot;同济大学&quot;) 
+
+
+library(RCurl)
+
+lon&lt;-tmp[1]
+lat&lt;-tmp[2]
+out&lt;-getURL(paste(&quot;https://geoindex.amap.com/geoIndex/area?callback=siptea_200823435167697&amp;adGrade=4&amp;region=&quot;,lon,&quot;%2C&quot;,lat,sep=&quot;&quot;))
+
+out 
+</code></pre>
+
+<p>google<br/>
+<a href="https://developers.google.com/places/web-service/search">https://developers.google.com/places/web-service/search</a></p>
+
+<p>AIzaSyB7YeDfBRxoc8LecatkxCv2pZlXLX2hab4</p>
+
+<p><a href="https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&amp;inputtype=textquery&amp;fields=photos,formatted_address,name,rating,opening_hours,geometry&amp;key=AIzaSyB7YeDfBRxoc8LecatkxCv2pZlXLX2hab4">https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&amp;inputtype=textquery&amp;fields=photos,formatted_address,name,rating,opening_hours,geometry&amp;key=AIzaSyB7YeDfBRxoc8LecatkxCv2pZlXLX2hab4</a></p>
+
+<p>高德</p>
+
+<p>d333738ea086fa17955ccbbc0eb12d4b</p>
+
+<ol>
+<li>数据处理</li>
+</ol>
+
+<p>数据本身的公司or学校名称是英文的，如果是可以使用google的地图接口的话，可以直接用google的地图接口。这里是先将其转为中文，然后调用百度的地图接口</p>
+
+<p>首先在百度翻译开放平台上申请app_key<br/>
+<a href="http://api.fanyi.baidu.com/api/trans/product/desktop?req=detail">http://api.fanyi.baidu.com/api/trans/product/desktop?req=detail</a></p>
+
+<p>在其文档与支持中心有具体的API接口的定义方式：传入参数和输出结果的格式</p>
+
+<p><a href="http://api.fanyi.baidu.com/api/trans/product/apidoc">http://api.fanyi.baidu.com/api/trans/product/apidoc</a></p>
+
+<p>并且为了方便使用，有不同版本的demo示例。</p>
+
+<p>2.地理位置</p>
+
+
+		</div>
+
+		
+
+	</article>
+ 
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15347755588253.html">数据可视化(seaborn)</a></h1>
+			<p class="meta"><time datetime="2018-08-20T22:32:38+08:00" 
+			pubdate data-updated="true">2018/8/20</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<blockquote>
+<p>系统的梳理在进行数据分析的时候，如何进行数据可视化。具体操作的时候以python的seaborn包为主。</p>
+</blockquote>
+
+<p>在进行数据分析的时候，经常需要进行数据可视化。俗话说一图胜千言，如何将从数据中发现的结论以一种通读易懂的方式展现出来，是很考验数据分析人员的能力的。</p>
+
+<blockquote>
+<p>数据 关系</p>
+</blockquote>
+
+<p>数据可视化，首先是要有数据，即我们的研究对象，而可视化的功能就是将数据中蕴含的关系或规律以图形的形式展示出来。 因此在进行数据可视化之前，一定要搞清楚的两件事：</p>
+
+<ul>
+<li>数据类型</li>
+<li>数据</li>
+</ul>
+
+<p>python中常用的绘图pacakge是<code>matplotlib</code></p>
+
+<p>本篇文章介绍的seaborn就是一个基于<code>matplotlib</code>的外包，其操作命令比较简单。有点类似R中的<code>ggplot</code>.</p>
+
+<h2 id="toc_0">参考资料</h2>
+
+<p><a href="https://blog.csdn.net/suzyu12345/article/details/69029106">https://blog.csdn.net/suzyu12345/article/details/69029106</a></p>
+
+<h2 id="toc_1">2.echarts接口</h2>
+
+<p>pyecharts</p>
+
+<p><a href="http://pyecharts.org/#/zh-cn/charts?id=treemap%EF%BC%88%E7%9F%A9%E5%BD%A2%E6%A0%91%E5%9B%BE%EF%BC%89">http://pyecharts.org/#/zh-cn/charts?id=treemap%EF%BC%88%E7%9F%A9%E5%BD%A2%E6%A0%91%E5%9B%BE%EF%BC%89</a></p>
+
+<h2 id="toc_2">工具平台</h2>
+
+<p><a href="https://antv.alipay.com/zh-cn/vis/chart/color-map.html">https://antv.alipay.com/zh-cn/vis/chart/color-map.html</a></p>
+
+
+		</div>
+
+		
+
+	</article>
+ 
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15095119537608.html">R绘图散点覆盖问题</a></h1>
+			<p class="meta"><time datetime="2017-11-01T12:52:33+08:00" 
+			pubdate data-updated="true">2017/11/1</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<pre><code>ggplot(diamonds, aes(x=carat, y=price))+ geom_point(alpha=.1)
+ggplot(diamonds, aes(x=carat, y=price))+ geom_point(alpha=.01)
+ggplot(diamonds, aes(x=carat, y=price))+ stat_bin2d()
+</code></pre>
+
+<p>当其中的一个或者两个变量为离散型数据时，也会导致覆盖的问题。我们可以使用jitter方法和box的方法。</p>
+
+<pre><code>ggplot(ChickWeight, aes(x=Time, y=weight))+geom_point()
+ggplot(ChickWeight, aes(x=Time, y=weight))+geom_point(position=&quot;jitter&quot;)
+#position=&quot;jitter&quot;等价于geom_jitter，即下面的方法
+ggplot(ChickWeight, aes(x=Time, y=weight))+geom_point(position=position_jitter(width=.5, height=0))
+ggplot(ChickWeight, aes(x=Time, y=weight))+ geom_boxplot(aes(group=Time))
+</code></pre>
+
+<p><img src="media/15095119537608/15095129558652.jpg" alt=""/></p>
+
+<h1 id="toc_0">绘图中文问题</h1>
+
+<pre><code>
+par(family=&#39;STKaiti&#39;)
+symbols(x,y,circles = r,inches=0.3, bg=&quot;lightblue&quot;,fg=&quot;white&quot;, xlab=&#39;有点比&#39;,xlim=c(0.55, 0.8), ylim = c(0.3, 0.5),ylab=&#39;长点率&#39;)
+
+text(x,y,group,cex=0.8,font=2)
+</code></pre>
+
+
+		</div>
+
+		
+
+	</article>
+  
+	<div class="pagination">
+	 <a class="prev" href="3 数据可视化_1.html">&larr; Older</a> 
+<a href="archives.html">Blog Archives</a>
+	 
+	    
+	</div>
+</div>
+ <aside class="sidebar"> 
+
+	<section>
+	  <h1>Categories</h1>
+	  <ul id="recent_posts">
+	  
+	      <li class="post">
+	        <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单&nbsp;(4)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="1%20Tools.html"><strong>1 Tools&nbsp;(33)</strong></a>
+	         <p class="cat-children-p"> 
+	        
+	        	<a href="%E9%85%B7%E7%82%AB%E7%A5%9E%E5%99%A8.html">酷炫神器&nbsp;(12)</a>&nbsp;&nbsp;
+	        
+	        	<a href="PaddlePaddle.html">PaddlePaddle&nbsp;(3)</a>&nbsp;&nbsp;
+	        
+	        	<a href="spark.html">spark&nbsp;(12)</a>&nbsp;&nbsp;
+	        
+	        	<a href="tensorflow.html">tensorflow&nbsp;(2)</a>&nbsp;&nbsp;
+	        
+	        	<a href="SQL.html">SQL&nbsp;(1)</a>&nbsp;&nbsp;
+	        
+	         </p> 
+	      </li>
+	  
+	      <li class="post">
+	        <a href="2%20Get%20Data.html"><strong>2 Get Data&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html"><strong>3 数据可视化&nbsp;(8)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(5)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习&nbsp;(23)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统&nbsp;(3)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="6%20NLP&%E5%9B%BE%E5%83%8F.html"><strong>6 NLP&图像&nbsp;(4)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(11)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="8%20Ai%E5%BA%94%E7%94%A8.html"><strong>8 Ai应用&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="%E8%AE%B8%E5%BC%8F%E4%BC%9F-%E6%9E%B6%E6%9E%84%E8%AF%BE.html"><strong>许式伟-架构课&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	   
+	  </ul>
+	</section>
+	<section>
+	  <h1>Recent Posts</h1>
+	  <ul id="recent_posts">
+	  
+	      
+		      <li class="post">
+		        <a href="15623124260572.html">1 抽样方法</a>
+		      </li>
+	     
+	  
+	      
+		      <li class="post">
+		        <a href="15598839206919.html">SC-FEGAN</a>
+		      </li>
+	     
+	  
+	      
+		      <li class="post">
+		        <a href="15596648844646.html">【Tensorflow】week2 Introduction to Computer Vision</a>
+		      </li>
+	     
+	  
+	      
+		      <li class="post">
+		        <a href="15596470753558.html">TensorFlow</a>
+		      </li>
+	     
+	  
+	      
+		      <li class="post">
+		        <a href="15594599843014.html">估计的置信度</a>
+		      </li>
+	     
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	   
+	  </ul>
+	</section>
+	
+</aside> </div></div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 -  -
+  <span class="credit">Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a> &nbsp;&nbsp; Theme by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+
+  
+    
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+</body>
+</html>

@@ -1,0 +1,587 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>
+    
+  1 Tools - 学习笔记
+  
+
+  </title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href="asset/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="atom.xml" rel="alternate" title="学习笔记" type="application/atom+xml">
+  <script src="asset/js/modernizr-2.0.js"></script>
+  <script src="asset/js/jquery.min.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/solarized_light.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <style type="text/css">
+  .cat-children-p{ padding: 6px 0px;}
+  .hljs{background: none;}
+  </style>
+  <script type="text/javascript">
+  var isAddSildbar = true;
+  </script>
+  <script src="asset/js/octopress.js" type="text/javascript"></script>
+</head>
+<script type="text/javascript">
+//链接新开窗口
+function addBlankTargetForLinks () {
+  $('a[href^="http"]').each(function(){
+      $(this).attr('target', '_blank');
+  });
+}
+$(document).ready(function(event) {
+  addBlankTargetForLinks();
+});
+</script>
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="index.html">学习笔记</a></h1>
+  
+    <h2></h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+
+  <li id=""><a target="self" href="index.html">Home</a></li>
+
+  <li id=""><a target="_self" href="archives.html">Archives</a></li>
+
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content"> 
+<div class="blog-index">
+
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15124622385174.html">建立连接 sparkSession</a></h1>
+			<p class="meta"><time datetime="2017-12-05T16:23:58+08:00" 
+			pubdate data-updated="true">2017/12/5</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<p>spark的入口方式。</p>
+
+<p>spark建立连接的方式一般有如下两种</p>
+
+<pre><code>from pyspark.sql import SparkSession
+
+spark = SparkSession.builder.appName(&quot;CountVectorizerExample&quot;).getOrCreate()
+sc = spark.sparkContext
+
+</code></pre>
+
+<pre><code>from pyspark import SparkContext
+sc = SparkContext(appName=&quot;Word2VecExample&quot;)
+</code></pre>
+
+<p>在Spark的早期版本，sparkContext是进入Spark的切入点。我们都知道RDD是Spark中重要的API，然而它的创建和操作得使用sparkContext提供的API；对于RDD之外的其他东西，我们需要使用其他的Context。比如对于流处理来说，我们得使用StreamingContext；对于SQL得使用sqlContext；而对于hive得使用HiveContext。然而DataSet和Dataframe提供的API逐渐称为新的标准API，我们需要一个切入点来构建它们，所以在 Spark 2.0中我们引入了一个新的切入点(entry point)：SparkSession</p>
+
+<p>SparkSession实质上是SQLContext和HiveContext的组合（未来可能还会加上StreamingContext），所以在SQLContext和HiveContext上可用的API在SparkSession上同样是可以使用的。SparkSession内部封装了sparkContext，所以计算实际上是由sparkContext完成的<br/>
+　　<br/>
+　　</p>
+
+<h1 id="toc_0">2.矩阵相关</h1>
+
+<p><a href="http://rdc.hundsun.com/portal/article/691.html">http://rdc.hundsun.com/portal/article/691.html</a></p>
+
+<h2 id="toc_1">缓存</h2>
+
+<p>能够把数据缓存在集群的内存里。这通过调用RDD的cache函数来实现：<code>rddFromTextFile.cache()</code></p>
+
+<h2 id="toc_2">sc.textFile()</h2>
+
+<h2 id="toc_3">sparksession</h2>
+
+<p>将文本数据读入data.frame<br/>
+examples/src/main/python/ml/dataframe_example.py:    newDF = spark.read.parquet(tempdir)</p>
+
+<p>dataframe</p>
+
+<pre><code>df.printSchema()    #打印出列的名称和类型
+df.show()   # 查看数据
+* show(num，是否截断)
+df..select(&quot;studentName&quot;, &quot;email&quot;)
+</code></pre>
+
+<p>当一个字典不能被提前定义 (例如,记录的结构是在一个字符串中, 抑或一个文本中解析, 被不同的用户所属), 一个 DataFrame 可以通过以下3步来创建.</p>
+
+<p>RDD从原始的RDD穿件一个RDD的toples或者一个列表;<br/>
+Step 1 被创建后, 创建 Schema 表示一个 StructType 匹配 RDD 中的结构.<br/>
+通过 SparkSession 提供的 createDataFrame 方法应用 Schema 到 RDD .</p>
+
+<pre><code>#For example:
+
+# Import data types
+from pyspark.sql.types import *
+
+sc = spark.sparkContext
+
+# Load a text file and convert each line to a Row.
+lines = sc.textFile(&quot;examples/src/main/resources/people.txt&quot;)
+parts = lines.map(lambda l: l.split(&quot;,&quot;))
+# Each line is converted to a tuple.
+people = parts.map(lambda p: (p[0], p[1].strip()))
+
+# The schema is encoded in a string.
+schemaString = &quot;name age&quot;
+
+fields = [StructField(field_name, StringType(), True) for field_name in schemaString.split()]
+schema = StructType(fields)
+
+# Apply the schema to the RDD.
+schemaPeople = spark.createDataFrame(people, schema)
+
+# Creates a temporary view using the DataFrame
+schemaPeople.createOrReplaceTempView(&quot;people&quot;)
+
+# SQL can be run over DataFrames that have been registered as a table.
+results = spark.sql(&quot;SELECT name FROM people&quot;)
+
+results.show()
+# +-------+
+# |   name|
+# +-------+
+# |Michael|
+# |   Andy|
+# | Justin|
+# +-------+
+</code></pre>
+
+<p>Find full example code at &quot;examples/src/main/python/sql/basic.py&quot; in the Spark repo.</p>
+
+
+		</div>
+
+		
+
+	</article>
+ 
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15123123633940.html">study list</a></h1>
+			<p class="meta"><time datetime="2017-12-03T22:46:03+08:00" 
+			pubdate data-updated="true">2017/12/3</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<p><a href="https://tracholar.github.io/wiki/#tools">https://tracholar.github.io/wiki/#tools</a></p>
+
+<p>pyspark RDD<br/>
+  <a href="http://www.jianshu.com/p/4cd22eda363f">http://www.jianshu.com/p/4cd22eda363f</a></p>
+
+
+		</div>
+
+		
+
+	</article>
+ 
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15123081634760.html">3 mL-特征提取</a></h1>
+			<p class="meta"><time datetime="2017-12-03T21:36:03+08:00" 
+			pubdate data-updated="true">2017/12/3</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<p><a href="http://blog.csdn.net/cheng9981/article/details/63280665">http://blog.csdn.net/cheng9981/article/details/63280665</a></p>
+
+
+		</div>
+
+		
+
+	</article>
+ 
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15121083917876.html">2. ml/mllib相关的包</a></h1>
+			<p class="meta"><time datetime="2017-12-01T14:06:31+08:00" 
+			pubdate data-updated="true">2017/12/1</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<p>首先spark有两个关于机器学习的库ml和mllib.</p>
+
+<ul>
+<li><p>mllib<br/>
+mllib是面向RDD的.目前官网上处于维护模式。</p>
+
+<blockquote>
+<p>The MLlib RDD-based API is now in maintenance mode。The primary Machine Learning API for Spark is now the DataFrame-based API in the spark.ml package.</p>
+</blockquote></li>
+<li><p>ml<br/>
+ml的API是面向dataset的(dataframe是dataset的一个特例)。dataset的底端是RDD， dataset对RDD进行了优化，是更进一步的抽象。</p>
+
+<ul>
+<li>DataFrames 的许多好处包括 Spark Datasources，SQL/DataFrame 查询，Tungsten 和 Catalyst 优化以及跨语言的统一 API 。</li>
+<li>用于 MLlib 的基于 DataFrame 的 API 为 ML algorithms （ML 算法）和跨多种语言提供了统一的 API 。</li>
+<li>DataFrames 便于实际的 ML Pipelines （ML 管道），特别是 feature transformations （特征转换）。有关详细信息，请参阅 Pipelines 指南 。</li>
+</ul></li>
+</ul>
+
+<p>关于两者的相似对比可以参看官方文档<br/>
+<a href="http://spark.apache.org/docs/latest/ml-guide.html">http://spark.apache.org/docs/latest/ml-guide.html</a><br/>
+<a href="http://spark.apachecn.org/docs/cn/2.2.0/ml-guide.html(%E4%B8%AD%E6%96%87)">http://spark.apachecn.org/docs/cn/2.2.0/ml-guide.html(中文)</a></p>
+
+<p>参考资料：<a href="https://www.ibm.com/developerworks/cn/opensource/os-cn-spark-practice5/index.html">https://www.ibm.com/developerworks/cn/opensource/os-cn-spark-practice5/index.html</a></p>
+
+<h2 id="toc_0">【ml】Pipeline</h2>
+
+<p>一个 Pipeline 在结构上会包含一个或多个 PipelineStage，每一个 PipelineStage 都会完成一个任务，如数据集处理转化，模型训练，参数设置或数据预测等，这样的 PipelineStage 在 ML 里按照处理问题类型的不同都有相应的定义和实现。首先需要了解几个主要的概念</p>
+
+<ul>
+<li>dataframe</li>
+<li><p>transformer</p>
+
+<ul>
+<li><code>transform()</code>方法</li>
+<li><strong>转换器</strong>，是一个 PipelineStage，实现上也是继承自 PipelineStage 类，主要是用来把 一个 DataFrame 转换成另一个 DataFrame，比如一个模型就是一个 Transformer，因为它可以把 一个不包含预测标签的测试数据集 DataFrame 打上标签转化成另一个包含预测标签的 DataFrame，显然这样的结果集可以被用来做分析结果的可视化。</li>
+</ul></li>
+<li><p>Estimator</p>
+
+<ul>
+<li>.fit()</li>
+<li>Estimator 中文可以被翻译成评估器或适配器，在 Pipeline 里通常是被用来操作 DataFrame 数据并生产一个 Transformer，如一个随机森林算法就是一个 Estimator，因为它可以通过训练特征数据而得到一个随机森林模型。实现上 Estimator 也是继承自 PipelineStage 类</li>
+</ul></li>
+<li><p>Parameter</p>
+
+<ul>
+<li>Parameter 被用来设置 Transformer 或者 Estimator 的参数。</li>
+</ul></li>
+</ul>
+
+<p>pipeline 就像是一个工作流</p>
+
+<p><img src="media/15121083917876/15121120927254.jpg" alt=""/></p>
+
+<h2 id="toc_1">【mllib】- DataTypes</h2>
+
+<p>mllib支持读取libsvm格式的数据：</p>
+
+<pre><code>label index1:value1 index2:value2 ..
+</code></pre>
+
+
+		</div>
+
+		
+
+	</article>
+ 
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15116910127598.html">query文本聚类</a></h1>
+			<p class="meta"><time datetime="2017-11-26T18:10:12+08:00" 
+			pubdate data-updated="true">2017/11/26</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 是不是cache问题tf-idf
+</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 添加下降维的步骤
+</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 稀疏矩阵
+</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 数据切分更小li&#39;du
+</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Mini Batch KMeans <a href="http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/">http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/</a>
+</li>
+</ul>
+
+<p>实验全量的<br/>
+<a href="http://yq01-tianqi-spark-yarn00.yq01.baidu.com:8388/proxy/application_1511855101950_42074/">http://yq01-tianqi-spark-yarn00.yq01.baidu.com:8388/proxy/application_1511855101950_42074/</a></p>
+
+<hr/>
+
+<p>刚哥的代码：<a href="https://github.com/honestOrg/gxdgroup/blob/master/src/main/scala/cn/com/gxdgroup/dataplatform/avm/utils/AVMUtils.scala">https://github.com/honestOrg/gxdgroup/blob/master/src/main/scala/cn/com/gxdgroup/dataplatform/avm/utils/AVMUtils.scala</a></p>
+
+<h2 id="toc_0">全量</h2>
+
+<p>前期构造词频矩阵：</p>
+
+<h2 id="toc_1">1.生成原始的词频矩阵</h2>
+
+<ul>
+<li><a href="http://spark.apache.org/docs/latest/ml-features.html#countvectorizer">http://spark.apache.org/docs/latest/ml-features.html#countvectorizer</a></li>
+<li><code>examples/src/main/python/sql/basic.py</code></li>
+</ul>
+
+<p>输入数据：每行是切分好的term</p>
+
+<pre><code>spark = SparkSession.builder.appName(&quot;CountVectorizerExample&quot;).getOrCreate()
+sc = spark.sparkContext
+# $example on$
+# Input data: Each row is a bag of words with a ID.
+
+lines = sc.textFile(&quot;/user/ubs/kce/zhenzhen/spark/test_data/corpus_title2&quot;)
+parts = lines.map(lambda l: l.split(&#39;#&#39;))   # convert all the term to a list
+termRDD = parts.map(lambda p: Row(tid=p[0], words=p[1].split(&#39; &#39;)))
+
+df = spark.createDataFrame(termRDD)
+# fit a CountVectorizerModel from the corpus.
+cv = CountVectorizer(inputCol=&quot;words&quot;, outputCol=&quot;features&quot;)
+#, vocabSize=3, minDF=2.0)
+
+model = cv.fit(df)
+
+result = model.transform(df)
+</code></pre>
+
+<h2 id="toc_2">2.tf-idf</h2>
+
+<ul>
+<li><a href="http://spark.apache.org/docs/latest/mllib-feature-extraction.html#tf-idf">http://spark.apache.org/docs/latest/mllib-feature-extraction.html#tf-idf</a></li>
+<li><a href="http://spark.apache.org/docs/latest/ml-features.html#feature-extractors">http://spark.apache.org/docs/latest/ml-features.html#feature-extractors</a>
+ml中的函数比mllib中的多
+examples/src/main/python/mllib/tf_idf_example.py</li>
+</ul>
+
+<pre><code>~/zhenzhen/spark_study/spark/examples/src/main/python/mllib $  pyspark zzz_tf_idf_example.py
+</code></pre>
+
+<h2 id="toc_3">3.降维</h2>
+
+<h2 id="toc_4">4.直接聚类</h2>
+
+<pre><code> # pyspark这个默认是启动的集群任务，之前测试的本地数据会出错，脚本中需把输入目录改成集群路径
+  ~/zhenzhen/spark_study $  pyspark kmeans.py  &gt; log.test
+</code></pre>
+
+<h2 id="toc_5">六神合体</h2>
+
+<ul>
+<li>词频矩阵+tfidf</li>
+</ul>
+
+<p><a href="http://www.zengyilun.com/spark-similarity/">http://www.zengyilun.com/spark-similarity/</a></p>
+
+<p>上述所有步骤(tfidf，降维,聚类)合并在一起</p>
+
+<pre><code> # pyspark这个默认是启动的集群任务，之前测试的本地数据会出错，脚本中需把输入目录改成集群路径
+  ~/zhenzhen/spark_study $  pyspark tfidf_kmeans.py  &gt; log.test
+  这个测试ok，但是中心点都是0，应该是数据问题
+</code></pre>
+
+
+		</div>
+
+		
+
+	</article>
+  
+	<div class="pagination">
+	 <a class="prev" href="1 Tools_5.html">&larr; Older</a> 
+<a href="archives.html">Blog Archives</a>
+	 <a class="next" href="1 Tools_3.html">Newer &rarr;</a>  
+	    
+	</div>
+</div>
+ <aside class="sidebar"> 
+
+	<section>
+	  <h1>Categories</h1>
+	  <ul id="recent_posts">
+	  
+	      <li class="post">
+	        <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单&nbsp;(4)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="1%20Tools.html"><strong>1 Tools&nbsp;(33)</strong></a>
+	         <p class="cat-children-p"> 
+	        
+	        	<a href="%E9%85%B7%E7%82%AB%E7%A5%9E%E5%99%A8.html">酷炫神器&nbsp;(12)</a>&nbsp;&nbsp;
+	        
+	        	<a href="PaddlePaddle.html">PaddlePaddle&nbsp;(3)</a>&nbsp;&nbsp;
+	        
+	        	<a href="spark.html">spark&nbsp;(12)</a>&nbsp;&nbsp;
+	        
+	        	<a href="tensorflow.html">tensorflow&nbsp;(2)</a>&nbsp;&nbsp;
+	        
+	        	<a href="SQL.html">SQL&nbsp;(1)</a>&nbsp;&nbsp;
+	        
+	         </p> 
+	      </li>
+	  
+	      <li class="post">
+	        <a href="2%20Get%20Data.html"><strong>2 Get Data&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html"><strong>3 数据可视化&nbsp;(8)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(5)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习&nbsp;(23)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统&nbsp;(3)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="6%20NLP&%E5%9B%BE%E5%83%8F.html"><strong>6 NLP&图像&nbsp;(4)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(11)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="8%20Ai%E5%BA%94%E7%94%A8.html"><strong>8 Ai应用&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="%E8%AE%B8%E5%BC%8F%E4%BC%9F-%E6%9E%B6%E6%9E%84%E8%AF%BE.html"><strong>许式伟-架构课&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	   
+	  </ul>
+	</section>
+	<section>
+	  <h1>Recent Posts</h1>
+	  <ul id="recent_posts">
+	  
+	      
+		      <li class="post">
+		        <a href="15623124260572.html">1 抽样方法</a>
+		      </li>
+	     
+	  
+	      
+		      <li class="post">
+		        <a href="15598839206919.html">SC-FEGAN</a>
+		      </li>
+	     
+	  
+	      
+		      <li class="post">
+		        <a href="15596648844646.html">【Tensorflow】week2 Introduction to Computer Vision</a>
+		      </li>
+	     
+	  
+	      
+		      <li class="post">
+		        <a href="15596470753558.html">TensorFlow</a>
+		      </li>
+	     
+	  
+	      
+		      <li class="post">
+		        <a href="15594599843014.html">估计的置信度</a>
+		      </li>
+	     
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	   
+	  </ul>
+	</section>
+	
+</aside> </div></div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 -  -
+  <span class="credit">Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a> &nbsp;&nbsp; Theme by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+
+  
+    
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+</body>
+</html>
