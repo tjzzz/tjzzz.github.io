@@ -1,473 +1,1227 @@
-
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
     
-  学习笔记
+  zhenzhen学习笔记
   
-
   </title>
-  <meta name="author" content="">
-  <meta name="description" content="">
-
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <link href="asset/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="atom.xml" rel="alternate" title="学习笔记" type="application/atom+xml">
-  <script src="asset/js/modernizr-2.0.js"></script>
-  <script src="asset/js/jquery.min.js"></script>
+  
+  <link href="atom.xml" rel="alternate" title="zhenzhen学习笔记" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
   <script src="asset/highlightjs/highlight.pack.js"></script>
-  <link href="asset/highlightjs/styles/solarized_light.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script>hljs.initHighlightingOnLoad();</script>
-
-  <style type="text/css">
-  .cat-children-p{ padding: 6px 0px;}
-  .hljs{background: none;}
-  </style>
-  <script type="text/javascript">
-  var isAddSildbar = true;
-  </script>
-  <script src="asset/js/octopress.js" type="text/javascript"></script>
-</head>
 <script type="text/javascript">
-//链接新开窗口
-function addBlankTargetForLinks () {
-  $('a[href^="http"]').each(function(){
-      $(this).attr('target', '_blank');
-  });
-}
-$(document).ready(function(event) {
-  addBlankTargetForLinks();
-});
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
 </script>
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="index.html">学习笔记</a></h1>
-  
-    <h2></h2>
-  
-</hgroup>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
 
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li id=""><a target="_self" href="about_me.html">aboutme</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
 </form>
-  
-<ul class="main-navigation">
-
-  <li id=""><a target="self" href="index.html">Home</a></li>
-
-  <li id=""><a target="_self" href="archives.html">Archives</a></li>
-
-</ul>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
 
 </nav>
-  <div id="main">
-    <div id="content"> 
-<div class="blog-index">
 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15383189964272.html">https://nteract.io</a></h1>
-			<p class="meta"><time datetime="2018-09-30T22:49:56+08:00" 
-			pubdate data-updated="true">2018/9/30</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p>直接双击打开.ipynb的文件</p>
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; zhenzhen学习笔记</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li><a target="_self" href="about_me.html">aboutme</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="1%20tools.html">1 tools</a></li>
+        
+            <li><a href="2%20get%20data.html">2 get data</a></li>
+        
+            <li><a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html">3 数据可视化</a></li>
+        
+            <li><a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html">4 统计方法</a></li>
+        
+            <li><a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html">5 机器学习</a></li>
+        
+            <li><a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html">6 推荐系统</a></li>
+        
+            <li><a href="6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html">6 文本&视频</a></li>
+        
+            <li><a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">7 深度学习</a></li>
+        
+            <li><a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">10 比赛学习</a></li>
+        
+            <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
 
 
-		</div>
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
 
+ <script type="text/javascript">
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
+</script>
+<div class="row">
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15637025347227.html">
+                
+                  <h1>公开微观数据库 1.0</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>由宇宙第一男神 dmzhao1整理</p>
 
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15382821285011.html">3.1 特征处理—— 特征选择</a></h1>
-			<p class="meta"><time datetime="2018-09-30T12:35:28+08:00" 
-			pubdate data-updated="true">2018/9/30</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<h2 id="toc_0">参考</h2>
+<p>美国综合社会调查数据 GSS<br/>
+执行机构丨芝加哥大学<br/>
+数据网址丨 <a href="http://gss.norc.org/">http://gss.norc.org/</a><br/>
+开放数据年份丨 1972-2016<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人<br/>
+覆盖区域丨美国全境<br/>
+核心问题丨美国社会变迁（文化、健康、家庭、劳动力、就业、消费、教育、心理、个性等）<br/>
+应用主题丨人口健康分析、劳动就业分析、消费储蓄分析、空间规划分析<br/>
+美国养老与健康调查数据<br/>
+执行机构丨美国社会保障局<br/>
+数据网址丨 <a href="http://hrsonline.isr.umich.edu/">http://hrsonline.isr.umich.edu/</a><br/>
+开放数据年份丨 2006、2010、2014、2017<br/>
+数据类型丨面板数据<br/>
+分析单位丨个人<br/>
+覆盖区域丨美国境内约 2 万居民的跟踪调查<br/>
+核心问题丨关注影响美国老年人养老与健康水平的因素<br/>
+应用主题丨人口健康分析<br/>
+欧洲社会调查数据 ESS<br/>
+执行机构丨欧洲社会调查委员会<br/>
+数据网址丨 <a href="http://www.europeansocialsurvey.org/">http://www.europeansocialsurvey.org/</a><br/>
+开放数据年份丨 2002、2004、2006、2008、2010、2012、2014<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人<br/>
+覆盖区域丨欧盟 25 国<br/>
+核心问题丨欧洲各国社会融合度、移民问题、就业水平和经济危机、社会财富不平等<br/>
+应用主题丨人口健康分析、劳动就业分析、消费储蓄分析<br/>
+印度老龄纵贯调查数据 LASI<br/>
+执行机构丨美国哈佛大学公共卫生学院、印度孟买国立人口研究所<br/>
+数据网址丨 <a href="http://iipsindia.org/research_lasi.htm">http://iipsindia.org/research_lasi.htm</a><br/>
+开放数据年份丨 2010<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人<br/>
+覆盖区域丨基于印度 2001 年人口普查花名册选择四个地区的代表样本，采用分层、多阶段、<br/>
+区域概率抽样，在每个城市随机抽取两个地区，从各地区随机抽取八个基本调查单位，以基<br/>
+本调查单位进行人口的城／乡比例配对。从基本调查单位中系统随机抽取 25 个家庭户调查</p>
 
-<p><a href="https://blog.csdn.net/kebu12345678/article/details/78437118">https://blog.csdn.net/kebu12345678/article/details/78437118</a></p>
+<p>1 <a href="mailto:dmzhao16@fudan.edu.cn">dmzhao16@fudan.edu.cn</a><br/>
+核心问题丨印度老龄人口的基本生活条件、健康水平、经济福祉等<br/>
+应用主题丨人口健康分析、消费储蓄分析<br/>
+明尼苏达人口中心<br/>
+链接：<a href="https://www.ipums.org/">https://www.ipums.org/</a><br/>
+旗下很多项目有待进一步挖掘<br/>
+中国综合社会调查数据 CGSS<br/>
+执行机构丨中国人民大学中国调查与数据中心<br/>
+数据网址丨 <a href="http://www.cnsda.org/index.php?r=site/datarecommendation">http://www.cnsda.org/index.php?r=site/datarecommendation</a><br/>
+开放数据年份丨 2003、2005、2006、2008、2010、2011、2012、2013<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人、家庭<br/>
+覆盖区域丨中国 28 个省市<br/>
+核心问题丨中国社会变迁（文化、健康、家庭、劳动力、就业、消费、教育、心理、个性等）<br/>
+应用主题丨人口健康分析、劳动就业分析、消费储蓄分析、空间规划分析<br/>
+日本综合社会调查数据 JGSS<br/>
+执行机构丨日本大阪商业大学<br/>
+数据网址丨 <a href="http://jgss.daishodai.ac.jp/surveys/sur_top.htm">http://jgss.daishodai.ac.jp/surveys/sur_top.htm</a><br/>
+开放数据年份丨 2000、2001、2002、2003、2005、2006、2008、2009、2010、2012、2013、<br/>
+2015、2016、2017<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人、家庭<br/>
+覆盖区域丨日本本州、北海道、九州、四国人口 20 万以上的市郡县<br/>
+核心问题丨日本社会变迁（文化、健康、家庭、劳动力、就业、消费、教育、心理、个性等）<br/>
+应用主题丨人口健康分析、劳动就业分析、消费储蓄分析、空间规划分析<br/>
+韩国综合社会调查数据 KGSS<br/>
+执行机构丨韩国成均馆大学<br/>
+数据网址丨 <a href="http://src.skku.edu/eng/menu03_research/research.html">http://src.skku.edu/eng/menu03_research/research.html</a><br/>
+开放数据年份丨 2003、2004、2005<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人、家庭<br/>
+覆盖区域丨韩国境内主要大都市<br/>
+核心问题丨韩国社会变迁（文化、健康、家庭、劳动力、就业、消费、教育、心理、个性等）<br/>
+应用主题丨人口健康分析、劳动就业分析、消费储蓄分析、空间规划分析<br/>
+东亚联合社会调查数据 EASS<br/>
+执行机构丨 CGSS、JGSS、KGSS、TSCS 项目组<br/>
+数据网址丨 <a href="http://www.eassda.org/modules/doc/index.php?doc=intro">http://www.eassda.org/modules/doc/index.php?doc=intro</a><br/>
+开放数据年份丨 2006、2008、2010、2012<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人、家庭<br/>
+覆盖区域丨东亚国家和地区（中国、中国台湾、日本、韩国）<br/>
+核心问题丨东亚国家和地区社会变迁（2006 年调查主题为家庭问题、2008 年调查主题为文<br/>
+化问题、2010 年调查主题为健康问题、2012 年调查主题为社会资本问题）<br/>
+应用主题丨人口健康分析、劳动就业分析、消费储蓄分析、空间规划分析<br/>
+中国教育追踪调查数据 CEPS<br/>
+执行机构丨中国人民大学中国调查与数据中心<br/>
+数据网址丨 <a href="http://ceps.ruc.edu.cn/">http://ceps.ruc.edu.cn/</a><br/>
+开放数据年份丨 2013、2014、2015<br/>
+数据类型丨面板数据<br/>
+分析单位丨个人（学生、家长、教师、校领导）<br/>
+覆盖区域丨中国 28 个县级单位（县、区、市）112 所学校、438 个班级<br/>
+核心问题丨揭示家庭、学校、社区以及宏观社会结构对于个人教育产出的影响<br/>
+应用主题丨人口分析、劳动就业分析、质量管理<br/>
+中国宗教调查数据 CRS<br/>
+执行机构丨中国人民大学中国调查与数据中心<br/>
+数据网址丨 <a href="http://crs.ruc.edu.cn/">http://crs.ruc.edu.cn/</a><br/>
+开放数据年份丨 2013、2014、2015<br/>
+数据类型丨面板数据<br/>
+分析单位丨个人、宗教团体<br/>
+覆盖区域丨中国 243 个县级单位<br/>
+核心问题丨我国宗教现状与发展趋势<br/>
+应用主题丨人口分析、空间规划分析<br/>
+中国老年社会追踪调查数据 CLASS<br/>
+执行机构丨中国人民大学中国调查与数据中心<br/>
+数据网址丨 <a href="http://class.ruc.edu.cn/">http://class.ruc.edu.cn/</a><br/>
+开放数据年份丨 2011、2012（测试调查），2014（正式调查，每两年一次追踪）<br/>
+数据类型丨面板数据<br/>
+分析单位丨个人<br/>
+覆盖区域丨中国 7 个省份<br/>
+核心问题丨掌握老年人在衰老过程中面临的各种问题和挑战<br/>
+应用主题丨人口健康分析、质量管理<br/>
+中国家庭追踪调查数据 CFPS<br/>
+执行机构丨北京大学中国社会科学调查中心<br/>
+数据网址丨 <a href="http://www.isss.edu.cn/cfps/">http://www.isss.edu.cn/cfps/</a><br/>
+开放数据年份丨 2008、2009（测试调查），2010、2011、2012、2014（正式调查）<br/>
+数据类型丨面板数据<br/>
+分析单位丨个人、家庭<br/>
+覆盖区域丨中国 25 个省市<br/>
+核心问题丨中国社会、经济、人口、教育和健康的变迁<br/>
+应用主题丨人口健康分析、劳动就业分析、消费储蓄分析、空间规划分析、质量管理<br/>
+中国健康与养老追踪调查<br/>
+数据 CHARLS<br/>
+执行机构丨北京大学中国社会科学调查中心<br/>
+数据网址丨 <a href="http://charls.pku.edu.cn/zh-CN">http://charls.pku.edu.cn/zh-CN</a><br/>
+开放数据年份丨 2008、2012（两省），2011、2013、2014（全国）<br/>
+数据类型丨面板数据<br/>
+分析单位丨个人、家庭<br/>
+覆盖区域丨浙江、甘肃两省（2008、2012），中国 28 个省市(2011、2013、2014)<br/>
+核心问题丨我国人口老龄化问题<br/>
+应用主题丨人口健康分析、消费储蓄分析<br/>
+中国劳动力动态调查数据 CLDS<br/>
+执行机构丨中山大学社会科学调查中心<br/>
+数据网址丨 <a href="http://css.sysu.edu.cn/Data">http://css.sysu.edu.cn/Data</a><br/>
+开放数据年份丨 2011、2012、2014<br/>
+数据类型丨面板数据<br/>
+分析单位丨个人、家庭<br/>
+覆盖区域丨中国 29 个省市（港澳台、西藏、海南除外）<br/>
+核心问题丨系统地监测社区社会结构和家庭、劳动力个体的变化与相互影响<br/>
+应用主题丨人口健康分析、劳动就业分析、消费储蓄分析、空间规划分析<br/>
+珠三角城市农民工调查数据<br/>
+执行机构丨中山大学社会科学调查中心<br/>
+数据网址丨 <a href="http://css.sysu.edu.cn/Data/List?type=%E5%9F%8E%E5%B8%82%E5%86%9C%E6%B0%91%E5%B7%A5%E8%B0%83%E6%9F%A5%E6%95%B0%E6%8D%AE%E5%BA%93">http://css.sysu.edu.cn/Data/List?type=城市农民工调查数据库</a><br/>
+开放数据年份丨 2006、2008、2009<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人<br/>
+覆盖区域丨珠三角<br/>
+核心问题丨农民工生存状况与劳动就业<br/>
+应用主题丨人口健康分析、劳动就业分析<br/>
+中国广东家庭追踪调查数据<br/>
+执行机构丨中山大学社会科学调查中心<br/>
+数据网址丨 <a href="http://css.sysu.edu.cn/Data/List?type=%E5%AE%B6%E5%BA%AD%E8%BF%BD%E8%B8%AA%E8%B0%83%E6%9F%A5%E6%95%B0%E6%8D%AE%E5%BA%93">http://css.sysu.edu.cn/Data/List?type=家庭追踪调查数据库</a><br/>
+开放数据年份丨 2008、2009、2010<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人<br/>
+覆盖区域丨广东省<br/>
+核心问题丨广东省经济变动、家庭生活变化及民众个体发展状况<br/>
+应用主题丨人口健康分析、劳动就业分析<br/>
+中国大城市社会网与求职调查数据<br/>
+执行机构丨中山大学社会科学调查中心<br/>
+数据网址丨 <a href="http://css.sysu.edu.cn/Data/List?type=%E7%A4%BE%E4%BC%9A%E7%BD%91%E4%B8%8E%E6%B1%82%E8%81%8C%E8%B0%83%E6%9F%A5%E6%95%B0%E6%8D%AE%E5%BA%93">http://css.sysu.edu.cn/Data/List?type=社会网与求职调查数据库</a><br/>
+开放数据年份丨 2009<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人<br/>
+覆盖区域丨中国八大城市（广州、上海、西安、天津、兰州、厦门、济南、长春）<br/>
+核心问题丨中国主要城市人际社会关系网络与求职就业状况<br/>
+应用主题丨人口健康分析、劳动就业分析<br/>
+中国台湾社会变迁调查数据 TSCS<br/>
+执行机构丨中国台湾行政院科技部人文司<br/>
+数据网址丨 <a href="http://www.ios.sinica.edu.tw/sc/">http://www.ios.sinica.edu.tw/sc/</a><br/>
+开放数据年份丨 1984-1985；1990-1994；1995-1999；2000-2004；2005-2009；2010-2014<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人、家庭<br/>
+覆盖区域丨中国台湾省<br/>
+核心问题丨家庭、教育、社会阶层与社会流动、政治文化、文化价值、宗教传播等<br/>
+应用主题丨人口健康分析、劳动就业分析、消费储蓄分析、质量管理<br/>
+中国台湾国民健康访问调查数据 NHIS<br/>
+执行机构丨中国台湾中央研究院<br/>
+数据网址丨 <a href="http://nhis.nhri.org.tw/">http://nhis.nhri.org.tw/</a><br/>
+开放数据年份丨 2001、2005、2009、2013<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人<br/>
+覆盖区域丨中国台湾省<br/>
+核心问题丨台湾一般民众的健康状况及医疗使用情形<br/>
+应用主题丨人口健康分析<br/>
+世界价值观调查数据中国台湾卷 WVS<br/>
+执行机构丨台湾中央研究院人文社会科学研究中心<br/>
+数据网址丨 <a href="https://srda.sinica.edu.tw/group/scigview/1/11">https://srda.sinica.edu.tw/group/scigview/1/11</a><br/>
+开放数据年份丨 1995、2005<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人<br/>
+覆盖区域丨中国台湾省<br/>
+核心问题丨社会价值观、社会规范、社会距离、工作问题、劳工组织、就业问题等<br/>
+应用主题丨人口健康分析、劳动就业分析、消费储蓄分析、质量管理<br/>
+中国家庭金融调查数据 CHFS<br/>
+执行机构丨西南财经大学<br/>
+数据网址丨 <a href="http://chfs.swufe.edu.cn/">http://chfs.swufe.edu.cn/</a><br/>
+开放数据年份丨 2011、2013<br/>
+数据类型丨截面数据<br/>
+分析单位丨家庭<br/>
+覆盖区域丨 25 个省市（2011），29 个省市（2013）<br/>
+核心问题丨家庭金融状况、收入支出、社会保障、商业保险等<br/>
+应用主题丨人口健康分析、劳动就业分析、消费储蓄分析、金融与投资分析<br/>
+中国小微企业调查数据 CMES<br/>
+执行机构丨西南财经大学<br/>
+数据网址丨 <a href="http://chfs.swufe.edu.cn/">http://chfs.swufe.edu.cn/</a><br/>
+开放数据年份丨 2015<br/>
+数据类型丨截面数据<br/>
+分析单位丨企业<br/>
+覆盖区域丨 29 个省市<br/>
+核心问题丨小微企业和个体工商户经营<br/>
+应用主题丨劳动就业分析、公司研究、金融与投资分析<br/>
+中国社会状况综合调查数据 CSS<br/>
+执行机构丨中国社会科学院社会学研究所<br/>
+数据网址丨 <a href="http://css.cssn.cn/zgshzkzhdc/">http://css.cssn.cn/zgshzkzhdc/</a><br/>
+开放数据年份丨 2005、2007、2009、2011、2013<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人、家庭<br/>
+覆盖区域丨 31 个省市<br/>
+核心问题丨全国公众的劳动就业、家庭及社会生活、社会态度<br/>
+应用主题丨人口健康分析、劳动就业分析、消费储蓄分析<br/>
+中国家庭收入调查数据 CHIP<br/>
+执行机构丨北京师范大学中国收入分配研究院<br/>
+数据网址丨 <a href="http://www.ciidbnu.org/chip/index.asp">http://www.ciidbnu.org/chip/index.asp</a><br/>
+开放数据年份丨 1988、1995、2002、2007、2013<br/>
+数据类型丨截面数据<br/>
+分析单位丨家庭<br/>
+覆盖区域丨 19 个省市（1988、1995），22 个省市（2002、2007、2013）<br/>
+核心问题丨中国家庭收入水平<br/>
+应用主题丨劳动就业分析、消费储蓄分析<br/>
+中国电信灯塔大数据背景调查数据<br/>
+执行机构丨中国电信股份有限公司北京研究院<br/>
+数据网址丨 <a href="http://www.ctbigdata.cn/BackgroundInvestigation/">http://www.ctbigdata.cn/BackgroundInvestigation/</a><br/>
+开放数据年份丨无<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人<br/>
+覆盖区域丨中国 31 个省市<br/>
+核心问题丨个人信用背景调查、画像分析<br/>
+应用主题丨信用风险管理、营销管理<br/>
+中国私营企业调查数据 CPES<br/>
+执行机构丨中国社会科学院私营企业主群体研究中心<br/>
+数据网址丨 <a href="mailto:rcpe_cass@126.com">rcpe_cass@126.com</a><br/>
+开放数据年份丨 1993、1995、1997、2000、2002、2004、2006、2008、2010、2012、2014<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人、企业<br/>
+覆盖区域丨中国 31 个省市 200 万私营企业和企业主<br/>
+核心问题丨针对私营企业和私营企业主的综合状况和群体特征进行调查<br/>
+应用主题丨公司研究、行业分析、金融与投资分析<br/>
+世界银行企业调查数据中国篇<br/>
+执行机构丨世界银行<br/>
+数据网址丨 <a href="http://www.enterprisesurveys.org/data">http://www.enterprisesurveys.org/data</a><br/>
+开放数据年份丨 2002、2003、2005、2012<br/>
+数据类型丨截面数据<br/>
+分析单位丨企业<br/>
+覆盖区域丨中国主要城市非农企业抽样<br/>
+核心问题丨关注商业经营环境变化和企业效率<br/>
+应用主题丨劳动就业分析、公司研究、行业分析、金融与投资分析、质量管理<br/>
+农村固定观察点调查<br/>
+执行机构丨农业部农村经济研究中心<br/>
+数据网址丨<br/>
+<a href="http://www.moa.gov.cn/sydw/ncjjzx/gcdgzdt/gzdtg/201302/t20130225_3225848.htm">http://www.moa.gov.cn/sydw/ncjjzx/gcdgzdt/gzdtg/201302/t20130225_3225848.htm</a><br/>
+开放数据年份丨不开放（需向农业部申请）<br/>
+数据类型丨面板数据<br/>
+分析单位丨农户、村庄<br/>
+覆盖区域丨中国 31 个省市 360 个村<br/>
+核心问题丨通过观察点对农村经济进行长期的连续调查，了解不同村庄和农户的动态要求<br/>
+应用主题丨宏观经济分析、劳动就业分析、行业分析、质量管理<br/>
+中国健康与营养调查 CHNS<br/>
+执行机构丨北卡罗来纳大学人口研究中心<br/>
+数据网址丨 <a href="http://www.cpc.unc.edu/projects/china">http://www.cpc.unc.edu/projects/china</a><br/>
+开放数据年份丨 1989、1991、1993、1997、2000、2004、2006<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人、家庭<br/>
+覆盖区域丨辽宁、黑龙江、江苏、山东、河南、湖北、湖南、广西和贵州 9 个省<br/>
+核心问题丨人口健康和营养状况<br/>
+应用主题丨人口健康分析、质量管理<br/>
+世界价值观调查数据中国卷 WVS<br/>
+执行机构丨世界价值观调查学会、中国统计信息咨询服务中心、盖洛普中国民意调查公司、<br/>
+北京大学中国国情研究中心<br/>
+数据网址丨 <a href="http://www.cpc.unc.edu/projects/china">http://www.cpc.unc.edu/projects/china</a><br/>
+开放数据年份丨 1990、1995、2001、2007、2012<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人<br/>
+覆盖区域丨 24 个省市<br/>
+核心问题丨社会价值观、社会规范、社会距离、工作问题、劳工组织、就业问题等<br/>
+应用主题丨人口健康分析、劳动就业分析、消费储蓄分析、质量管理<br/>
+中国老年健康影响因素跟踪调查<br/>
+数据 CLHLS<br/>
+执行机构丨北京大学中国经济研究中心<br/>
+数据网址丨 <a href="http://web5.pku.edu.cn/ageing/html/datadownload.html">http://web5.pku.edu.cn/ageing/html/datadownload.html</a><br/>
+开放数据年份丨 1998、2000、2002、2005、2008-2009、2011-2012<br/>
+数据类型丨面板数据<br/>
+分析单位丨个人<br/>
+覆盖区域丨 23 个省市<br/>
+核心问题丨影响人类健康长寿的社会、行为、环境与生物学因素，为科学研究、老龄工作与<br/>
+卫生健康政策信息依据填补空白<br/>
+应用主题丨人口健康分析、质量管理<br/>
+中国城镇住户调查数据 UHS<br/>
+执行机构丨国家统计局<br/>
+数据网址丨暂无<br/>
+开放数据年份丨不开放（需向国家统计局申请）<br/>
+数据类型丨面板数据<br/>
+分析单位丨个人、家庭<br/>
+覆盖区域丨 6 个省市（北京、广东、浙江、辽宁、陕西、四川）<br/>
+核心问题丨现有最全的全国范围微观数据，主要研究教育回报率、收入不平等、家庭消费、<br/>
+家庭金融等问题<br/>
+应用主题丨劳动就业分析、消费储蓄分析、金融与投资分析、质量管理<br/>
+中国城乡流动调查数据<br/>
+执行机构丨澳大利亚国立大学、北京师范大学<br/>
+数据网址丨 <a href="https://www.iza.org/en/research/idsc/services">https://www.iza.org/en/research/idsc/services</a><br/>
+开放数据年份丨 2008、2009<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人、家庭<br/>
+覆盖区域丨本项目主要在人口流出或流入的大省进行调查。其中，农村住户调查是在以下 9<br/>
+个省市进行：安徽，重庆，广东，河北，河南，湖北，江苏，四川，浙江；城市流动人口调<br/>
+查是在以下 15 个城市进行：蚌埠，成都，重庆，东莞，广州，合肥，杭州，洛阳，南京，<br/>
+宁波，上海，深圳，武汉，无锡，郑州。城镇住户调查是在 19 个城市进行，包括城市流动<br/>
+人口调查以外的四个城市：安阳市，建德市，乐山，绵阳。<br/>
+核心问题丨人口流动问题<br/>
+应用主题丨人口健康分析、劳动就业分析<br/>
+大学生群体状况调查数据<br/>
+执行机构丨中国人民大学社会学系<br/>
+数据网址丨<br/>
+<a href="http://www.sachina.edu.cn/modules/datacenter/viewdata.php?channelid=5&amp;projid=13&amp;dataid=">http://www.sachina.edu.cn/modules/datacenter/viewdata.php?channelid=5&amp;projid=13&amp;dataid=</a><br/>
+119<br/>
+开放数据年份丨 2001<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人<br/>
+覆盖区域丨 2001 年抽样调查了北京高校在校大学生的消费支出、专业选择、择业目标等整<br/>
+体状况<br/>
+核心问题丨主要研究大学生在校行为与未来发展的关系<br/>
+应用主题丨消费储蓄分析、劳动就业分析<br/>
+中国工业企业数据库<br/>
+数据名称：中国工业企业数据库（China Industry Business Performance Data）<br/>
+执行机构：国家统计局<br/>
+开放数据年份：1998-2013<br/>
+调查方式：下级企业单位按时报送<br/>
+采用计算机辅助调查：是<br/>
+数据类型：面板数据<br/>
+抽样方式：根据国家统计局拟订的工业企业报表制度抽样<br/>
+覆盖省份：中国大陆地区销售额 500 万元/RMB 以上的大中型制造企业<br/>
+分析单位：企业<br/>
+核心问题：全国最为详细、所用最为广泛的微观数据库，主要研究工业企业的相关问题。<br/>
+具体内容：数据内容中的工业统计指标包括工业增加值、工业总产值、工业销售产值等主要<br/>
+技术经济指标以及主要财务成本指标和从业人员、工资总额等。<br/>
+代表文章：杨汝岱. 中国制造业企业全要素生产率研究[J]. 经济研究, 2015 年 02 期.<br/>
+网站链接：<a href="http://www.allmyinfo.com/data/zggyqysjk.asp">http://www.allmyinfo.com/data/zggyqysjk.asp</a><br/>
+海关数据库<br/>
+数据名称：海关数据<br/>
+执行机构：中国海关<br/>
+开放数据年份：1994-2014 年<br/>
+调查方式：企业申报<br/>
+采用计算机辅助调查：是<br/>
+数据类型：面板数据<br/>
+抽样方式：企业主动上报汇总<br/>
+覆盖省份：全国各种类型进出口企业汇报<br/>
+分析单位：企业<br/>
+核心问题：主要是海关履行进出口贸易统计职能中产生的各项进出口统计数据，专注企业进<br/>
+出口情况。<br/>
+具体内容：数据具体到各企业、各海关口岸的商品具体进出口情况。<br/>
+网站链接：<a href="http://new.ccerdata.cn/Home/Special">http://new.ccerdata.cn/Home/Special</a><br/>
+中国专利数据库<br/>
+数据名称：中国专利数据库<br/>
+执行机构：国家知识产权局和中国专利信息中心<br/>
+开放数据年份：1985-2015 年<br/>
+调查方式：企业申报<br/>
+采用计算机辅助调查：是<br/>
+数据类型：面板数据<br/>
+抽样方式：企业主动上报汇总<br/>
+覆盖省份：全国各种类型企业专利申请<br/>
+分析单位：企业<br/>
+核心问题：准确地反映中国最新的专利发明<br/>
+具体内容：该系统收录了中国自 1985 年实施专利制度以来的全部中国专利数据，具有较高<br/>
+的权威性，网上数据每周更新一次，是国内最好的专利数据库检索系统之一。<br/>
+代表文章：庄涛，吴洪，基于专利数据的我国官产学研三螺旋测度研究——兼论政府在产学<br/>
+研合作中的作用[J].管理世界，2013 年 08 期<br/>
+网站链接：<br/>
+<a href="http://new.ccerdata.cn/Home/Special#h3">http://new.ccerdata.cn/Home/Special#h3</a><br/>
+<a href="http://202.107.204.54:8080/cnipr/main.do?method=gotoMain">http://202.107.204.54:8080/cnipr/main.do?method=gotoMain</a><br/>
+中国健康退休跟踪调查 CHARLS<br/>
+负责人：北京大学中国经济研究中心赵耀辉教授<br/>
+链接：<a href="http://charls.ccer.edu.cn/charls/data.asp">http://charls.ccer.edu.cn/charls/data.asp</a><br/>
+使用该数据要求填写保密协议，获得北京大学相关授权<br/>
+质量（据说）非常好，选取的样本是年龄大于等于 45 岁，基本在劳动经济学中能用到的变<br/>
+量都包含到了，而且是面板数据<br/>
+中国农村住户调查数据 RHS<br/>
+执行机构：国家统计局农调总队<br/>
+因为涉及到的问题比较敏感，这一套数据比较难拿<br/>
+其他：<br/>
+某宝……<br/>
+论文<br/>
+人大经济论坛<br/>
+Wind<br/>
+……<br/>
+最后，宇宙第一男神 dmzhao 已经机智的发现，其实发在 top 5 和 field top 上面 idea 特别神<br/>
+奇的文章，数据大多来自大牛们动用各种手段（雇佣廉价劳动力、私人关系）四处搜刮而<br/>
+来……</p>
 
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='2%20get%20data.html'>2 get data</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
-		</div>
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037730522.html">
+                
+                  <h1>关于长点击阈值划分方法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>用户停留时长一直是衡量用户在落地页满意度的一个重要度量指标。在具体业务设计的时候，可以去看时长分布的中位数、平均时长等统计级指标，亦有类似于衡量时长好坏的长点击率，长点击占比等指标。</p>
 
-		
+<p>首先来说下长点击，简单来说长点击即停留时长比较长的一个点击时间。</p>
 
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15378048283915.html">markdown</a></h1>
-			<p class="meta"><time datetime="2018-09-25T00:00:28+08:00" 
-			pubdate data-updated="true">2018/9/25</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<h2 id="toc_0">图片</h2>
+<h3 id="toc_0">1. 长点击，满意点击，人工打分</h3>
 
-<p>现在很多makdown编辑器是可以支持拖拽本地图片或者截屏就可以直接在markdown中生成图片的，非常方便，比如我现在在用的MWeb编辑器。</p>
+<p>我们说停留时间“比较长”，其实是一个相对概念，不同的资源类型可能划分的标准会不同。但是他们的出发点是一样的: 我们认为在特定资源类型下落地页时长越长，用户越倾向于满意。所以长点击本质上是用来刻画满意点击的。</p>
 
-<p>但是如果同一篇内容需要在不同的平台上进行发布，那图片处理起来就比较麻烦。因为需要重新上传到不同平台。<br/>
-最方便的处理方式就是利用图床， 这里以七牛云存储为例。<br/>
-<img src="media/15378048283915/15383141468224.jpg" alt=""/></p>
+<p><strong>(1) 无监督的划分</strong><br/>
+即我们不知道groundtruth，这个时候可以根据本身时长的分布，按照经验值比如60%，70%作为其长点击的分界点。这种划分方式 xxxx</p>
 
-<p>step1： 首先在七牛官网上申请注册账号，并且添加<strong>对象存储</strong></p>
+<p><strong>(2) 有监督的</strong><br/>
+通过人工评估（比如qu相关性，qu的页面质量等维度），可以对qu结果进行人工打分，一般是0-4档。0，1代表不太好，2代表一般，3-4代表比较好。可以根据业务需求比如3-4认为是满意点击，2认为是一般点击，0-1认为是不满意点击。<br/>
+以此人工标注来决定如何选择长点击划分阈值。</p>
 
+<h3 id="toc_1">2. 如何划分长点击</h3>
 
-		</div>
+<p>长点击阈值划分的目标，即寻找如下决策函数的参数x</p>
 
-		
+<p>\[<br/>
+F(t) = \left\{<br/>
+             \begin{array}{lr}<br/>
+            1，长点击 t \ge x &amp;  \\<br/>
+            0，非长点击 t&lt; x\\  <br/>
+             \end{array}<br/>
+\right.<br/>
+\]</p>
 
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15366609658901.html">地图定位</a></h1>
-			<p class="meta"><time datetime="2018-09-11T18:16:05+08:00" 
-			pubdate data-updated="true">2018/9/11</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p><a href="http://lbsyun.baidu.com/index.php?title=webapi/guide/webservice-geocoding-abroad">http://lbsyun.baidu.com/index.php?title=webapi/guide/webservice-geocoding-abroad</a></p>
+<p>从统计分布的角度看，即使是时长比较长的结果，人工打分也可能很低，时长很短的结果人工打分也可能是满意的。所以不管寻找到的最优参数\(x\)是多少，它都有可能会误分。而我们的目的是让这种因为误分而犯错的可能性尽可能的小。<br/>
+<img src="media/15542962343188/15543644977641.jpg" alt=""/></p>
 
-<p><a href="https://my.oschina.net/u/3093769/blog/1142709">https://my.oschina.net/u/3093769/blog/1142709</a></p>
+<p>从以上的分布图来说更直观一些，我们的误判损失即是图中阴影部分，很容易证明，移动阈值划分x时候，损失最小的是当两个分布曲线相交的点的时候。这指导我们可以按照如下的方法进行长点击划分：</p>
 
-<pre><code># 方法一: baidumap
-library(baidumap)
-library(rjson)
-options(baidumap.key = &#39;V1YUGNIpKhENUtgmmBT6EbREkgENinyS&#39;)
+<p>执行步骤<br/>
+<strong>Step0： 摸底时长分布</strong></p>
 
-loc =  getCoordinate(&#39;同济大学&#39;, formatted = T)     # 根据名称查经纬度
+<p>首先需要了解清楚数据本身的时长分布，根据时长的分布情况，大概划分不同的区间段。比如0-5，5-10，10-15，15-20，20-25，25-30，30-35，35-40， 40-50，50-60，60-100，&gt;100这样进行划分。<br/>
+同于频次分布较高的部分可以划分的细致一些，频次分布较低的部分可以划分的宽度较宽一些。</p>
 
-loc_json = getLocation(loc, output=&#39;json&#39;)         # 根据经纬度查对应地址信息
-out = fromJSON(loc_json)
+<p><strong>Step1： 抽样送评qu数据</strong></p>
 
-out$result$addressComponent$city
-
-## 方法二
-library(REmap)
-tmp = get_city_coord(&quot;同济大学&quot;) 
-
-
-library(RCurl)
-
-lon&lt;-tmp[1]
-lat&lt;-tmp[2]
-out&lt;-getURL(paste(&quot;https://geoindex.amap.com/geoIndex/area?callback=siptea_200823435167697&amp;adGrade=4&amp;region=&quot;,lon,&quot;%2C&quot;,lat,sep=&quot;&quot;))
-
-out 
-</code></pre>
-
-<p>google<br/>
-<a href="https://developers.google.com/places/web-service/search">https://developers.google.com/places/web-service/search</a></p>
-
-<p>AIzaSyB7YeDfBRxoc8LecatkxCv2pZlXLX2hab4</p>
-
-<p><a href="https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&amp;inputtype=textquery&amp;fields=photos,formatted_address,name,rating,opening_hours,geometry&amp;key=AIzaSyB7YeDfBRxoc8LecatkxCv2pZlXLX2hab4">https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&amp;inputtype=textquery&amp;fields=photos,formatted_address,name,rating,opening_hours,geometry&amp;key=AIzaSyB7YeDfBRxoc8LecatkxCv2pZlXLX2hab4</a></p>
-
-<p>高德</p>
-
-<p>d333738ea086fa17955ccbbc0eb12d4b</p>
-
-<ol>
-<li>数据处理</li>
-</ol>
-
-<p>数据本身的公司or学校名称是英文的，如果是可以使用google的地图接口的话，可以直接用google的地图接口。这里是先将其转为中文，然后调用百度的地图接口</p>
-
-<p>首先在百度翻译开放平台上申请app_key<br/>
-<a href="http://api.fanyi.baidu.com/api/trans/product/desktop?req=detail">http://api.fanyi.baidu.com/api/trans/product/desktop?req=detail</a></p>
-
-<p>在其文档与支持中心有具体的API接口的定义方式：传入参数和输出结果的格式</p>
-
-<p><a href="http://api.fanyi.baidu.com/api/trans/product/apidoc">http://api.fanyi.baidu.com/api/trans/product/apidoc</a></p>
-
-<p>并且为了方便使用，有不同版本的demo示例。</p>
-
-<p>2.地理位置</p>
-
-
-		</div>
-
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15355316549948.html">FM 模型</a></h1>
-			<p class="meta"><time datetime="2018-08-29T16:34:14+08:00" 
-			pubdate data-updated="true">2018/8/29</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<blockquote>
-<p>背景</p>
-</blockquote>
-
-<p>一般的线性模型 \(y=w_0 + \sum w_i x_i\)， 当考虑了特征之间的相关性即交互效应(这里以二阶为例)后模型形式是：<br/>
-\[y=w_0 + \sum w_i x_i + \sum_1^{n-1}\sum_{i+1}^n w_{ij}x_ix_j\]</p>
-
-<p>这里n表示特征的个数</p>
-
-<blockquote>
-<p>模型如何求解呢？</p>
-</blockquote>
-
-<p>如果把\(x_ix_j\)看做一个新的变量，相当于整体上还是一个线性回归模型，似乎可以用正常的线性回归的办法进行求解。<br/>
-但是这里未知的要求解的参数有n(+1)/2个，很多时候特征中会有一些分类型的变量，当通过哑变量的方式引入模型中的时候，特征数目k会非常大，从而导致要求解的参数个数较大，并且数据特别稀疏。另一方面，分类特征就到时候，\(x_ix_j\)是非零的比例较小，从而导致\(w\)无法计算出来。</p>
-
-<blockquote>
-<p>引入其他辅助信息</p>
-</blockquote>
-
-<p>我们可以引入一个辅助向量 对于\(w_{ij}\)形成的对称矩阵W，可以进行分解\(W=V^TV\)</p>
-
-<p>将模型改成如下形式<br/>
-\[y=w_0 + \sum w_i x_i + \sum_1^{n-1}\sum_{i+1}^n &lt;v_i, v_j&gt;x_ix_j\]</p>
+<p>确定送评样本，因为人工评估是需要成本的，我们不可能得到整体的good或者bad的分布曲线，我们所有的只是抽取的送评样本的标注数据。这就要求我们送评的数据对于总体一定要有好的代表性：</p>
 
 <ul>
-<li>从形式上来看，我们知道\(w_ij\)的矩阵是对称的，其形式上和协差阵\(&lt;v_i, v_j&gt;\)很类似</li>
+<li>抽样分布应该和总体分布尽量一致</li>
+<li>抽样量不能太小，否则样本估计总体的误差会比较大</li>
 </ul>
 
-<p>\(v_i\)相当于是第i维隐向量，假设其维度是k&lt;&lt;n, 这样模型的参数就由原来的n(n+1)/2 变为了</p>
+<blockquote>
+<p>如何确定最优送评样本量？（这个回来再写）<br/>
+统计学的研究方法是要找到我们所关注变量的统计分布，我们最终是希望通过抽取得到的good和not_good的时长分布与整体差不多。</p>
+</blockquote>
 
-<h2 id="toc_0">参考资料</h2>
+<p>数据抽取：</p>
 
-<p>简书-石晓文 <a href="https://www.jianshu.com/p/152ae633fb00">https://www.jianshu.com/p/152ae633fb00</a><br/>
-美团技术博客 <a href="https://tech.meituan.com/deep_understanding_of_ffm_principles_and_practices.html">https://tech.meituan.com/deep_understanding_of_ffm_principles_and_practices.html</a></p>
+<ul>
+<li>考虑到数据抽取是基于qu粒度，一个qu其实会有多次用户点击行为，也就会有多个时长，可能波动较大。所以一般是取count(qu)&gt;5的，并且时长取的是其中位数</li>
+<li><p>预送评，一般先进行少量的预送评，比如送评1000个样本。返回会用来检验数据质量和划分的精细度</p>
+
+<ul>
+<li>check自己送评的数据中是否有一些异常数据。比如sf的url路径不完成</li>
+<li>check人工打分的质量程度</li>
+<li>初步看下good和not_good的分布情况，大概确定长点的分布区间，从而看下送评的样本的时间段间隔精度是否需要调整</li>
+</ul></li>
+<li><p>正式送评</p></li>
+</ul>
+
+<p><strong>Step2： 返回分析</strong></p>
+
+<p>根据good和not_good的频数分布，找到曲线的交点，即满足good(x) = not_good(x)的点，即可认为是长点击的分界点。短点击的划分类似，可以认为0-1的是短点击，或者更严格的0分的是短点击。 绘制bad和not_bad的频数分布，找到曲线交点。即满足bood(x) = not_bood(x)的点</p>
+
+<ul>
+<li>实际操作：实际数据的分布图可能不如示意图那么明显，甚至有多个交点的情况。这时候可以计算图中b+c的面积，绘制(x,g(x))的曲线图，找到g(x)=0.5的点即可。 如果有多个可能是因为样本量不足够，或者本身指标数据不可信(前提假定是要研究的指标与人工打分是存在单调关系的)</li>
+</ul>
+
+<h3 id="toc_2">3 应用-关于sigmoid函数的理解</h3>
+
+<ul>
+<li><p>AB实验<br/>
+对于AB实验来说，有了长短点击时间阈值之后，可以直接计算长点击和短点击，更新指标评估即可。</p></li>
+<li><p>interleaving实验<br/>
+对于interleaving来说，实际中是将dt经过一个映射(一般是sigmoid函数)将其转化为一个0-1的打分。</p></li>
+</ul>
+
+<p>这里我们从另外一个角度来看这件事。LR或者说sigmoid函数能将一个负无穷到正无穷的数映射到0-1的一个概率值。是否是长点其实也是一个概率，当然这里时长t是取的(0, 正无穷)</p>
+
+<p>假设<br/>
+\[g(x) = \frac{good(x)}{good(x) + not\_good(x)}\]<br/>
+其中 \(good(x)= \#good(t=x)\), \(not\_good(x)=\#not\_good(t= x)\)。 <br/>
+所以\(g(x)\)其实表示的是在\(t=x\)时候是长点击的概率。为了书写方便，</p>
+
+<p>\[g(x) = \frac{1}{1+ not\_good(x)/good(x)}= \frac{1}{1+ e^{ln\frac{p}{1-p}}}\]</p>
+
+<p>这里\(p(x)\)是表示当时间等于x时是长点击的概率。</p>
+
+<p>从这个角度说，之前的sigmoid映射函数中\(\frac{1}{1+ e^{-a(x-b)}}\) 系数项即是log odds ratio。</p>
+
+<p>因此只需对送评数据中\(ln\frac{p}{1-p}\)的分布数据去拟合一条曲线 \(\hat f(t)\)即可，最终的sigmoid映射函数就是</p>
+
+<p>\[g(t) = \frac{1}{1+ e^{\hat f(t)}}\]</p>
+
+<p>并且其中\(\hat f(t)=0\)的点恰巧就是长点击的分界点。</p>
+
+<p>注意：实际送评的时候因为样本量的限制，不可能每一个分界点(在这里是每个停留时间dt)都会去送评，</p>
+
+<h3 id="toc_3">4.其他:从模型准召的角度</h3>
+
+<p>其实从分类评估角度来看，</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>not_good</th>
+<th>Good</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>F=0</td>
+<td>a</td>
+<td>b</td>
+</tr>
+<tr>
+<td>F=1</td>
+<td>c</td>
+<td>d</td>
+</tr>
+</tbody>
+</table>
+
+<p>上面说的损失即阴影部分的面积=b+c, 所以其实从分类模型评估的角度，就是不一致率最小的时候的最优解,即<br/>
+\[min b+c\]</p>
+
+<ul>
+<li>准确&amp;召回</li>
+</ul>
+
+<p>分类模型中其实用的更多的是准确和召回指标，\(accurate=\frac{d}{c+d}\),\(recall = \frac{d}{b+d}\)<br/>
+\[Max F\_score = 1-\frac{b+c}{b+c+2d}\]</p>
+
+<p>这个标准下，和之前还是略微有些不同的</p>
+
+<h3 id="toc_4">5.如何泛化</h3>
+
+<p>泛化问题主要是指：</p>
+
+<ul>
+<li>业务层面</li>
+</ul>
+
+<p>搜索，视频，以后其他的大小业务都可能面临这种问题。对于新的业务类型，人工送评应该是避免不了了。</p>
+
+<ul>
+<li>时间层面变更</li>
+</ul>
+
+<p>随着线上效果变更，当前调研的结果可能已经不再试用后续的结果。需要不断进行更新，比如视频铺量后，整体的时长分布和之前的可能变化很大。或者是需要拆解不同的维度类别</p>
+
+<p>方案1：再次人工送评一遍，<br/>
+方案2：进行时长分布映射<br/>
+这种方案有个问题，相当于是按照top百分比进行划分的，认为top百分比所代表的满意度保持一致。可能整体时长都变长了，映射完后阈值也变长了，相对的满意度并没变。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637025346262.html">
+                
+                  <h1>卡方检验</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>以2分类的列联表为例:</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>通过</th>
+<th>失败</th>
+<th>总计</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>实验A</td>
+<td>a</td>
+<td>b</td>
+<td>m</td>
+</tr>
+<tr>
+<td>实验B</td>
+<td>c</td>
+<td>d</td>
+<td>n</td>
+</tr>
+<tr>
+<td>总计</td>
+<td>r</td>
+<td>s</td>
+<td>N</td>
+</tr>
+</tbody>
+</table>
+
+<p>H0：实验A和实验B对于是否通过没有差异， H1： 实验A和实验B有显著差异</p>
+
+<p>在零假设成立的条件下，即A和B没有差异，那么对通过和失败的概率估计是r/N 和s/N。所以实验A的理论的通过人数和失败人数分别是\(rm/N\),\(sm/N\)。 同理，实验B的理论的通过人数和失败人数分别是\(rn/N\),\(sn/N\)。</p>
+
+<p>理论与现实的差异</p>
+
+<p>一般地</p>
+
+<blockquote>
+<p>卡方检验是皮尔逊1900年提出来的，这里简单回顾下其基本原理。</p>
+</blockquote>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037708871.html">
+                
+                  <h1>图像识别模型—— 1.利用已有的进行微调</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>这里以VGG16网络为例，</p>
+
+<h2 id="toc_0">1.准备数据</h2>
+
+<pre><code> python data_convert.py -t pic --train-shards 2 --validation-shards 2 --num-threads 2 --dataset-name guangdong
+</code></pre>
+
+<p>执行完后会在pic下生成tf格式的训练+测试数据，以及label.txt<br/>
+<img src="media/15388051366041/15388065002449.jpg" alt=""/></p>
+
+<h2 id="toc_1">2.使用tensorflow的slim微调模型</h2>
+
+<p>简单介绍下google的这个图像分类工具包tensorflow-slim</p>
+
+<pre><code>├── README.md
+├── datasets                    # 定义训练时候使用的数据。如果是自己的数据，必须在此文件夹下定义
+├── deployment
+├── download_and_convert_data.py
+├── export_inference_graph.py
+├── export_inference_graph_test.py
+├── nets                        # 定义了一些常用的网络，比如vgg16，vgg19，resnet等
+├── preprocessing               # 在读入图像前，对图像做的一些预处理
+├── scripts
+│   ├── finetune_inception_v1_on_flowers.sh
+│   ├── finetune_inception_v3_on_flowers.sh
+│   ├── finetune_resnet_v1_50_on_flowers.sh
+│   ├── train_cifarnet_on_cifar10.sh
+│   └── train_lenet_on_mnist.sh
+├── setup.py
+├── slim_walkthrough.ipynb
+├── eval_image_classifier.py      # 验证模型入口
+└── train_image_classifier.py     # 训练模型入口
+</code></pre>
+
+<p>(1) 定义新的dataset文件</p>
+
+<p>仿照<code>datasets/flowers.py</code> 写一个自己的数据文件<code>guangdong.py</code> 并且在<code>dataset_factory.py</code>中进行注册</p>
+
+<p>(2)准备训练文件夹</p>
+
+<p>(3)train model</p>
+
+<pre><code>python train_image_classifier.py \
+  --train_dir=guangdong/train_dir \
+  --dataset_name=guangdong \
+  --dataset_split_name=train \
+  --dataset_dir=guangdong/data \
+  --model_name=inception_v3 \
+  --checkpoint_path=guangdong/pretrained/inception_v3.ckpt \
+  --checkpoint_exclude_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
+  --trainable_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
+  --max_number_of_steps=100000 \
+  --batch_size=32 \
+  --learning_rate=0.001 \
+  --learning_rate_decay_type=fixed \
+  --save_interval_secs=300 \
+  --save_summaries_secs=2 \
+  --log_every_n_steps=10 \
+  --optimizer=rmsprop \
+  --weight_decay=0.00004
+
+</code></pre>
+
+<p>如果执行后报错<code>Cannot assign a device for operation &#39;InceptionV3/AuxLogits/Conv2d_2b_1x1/weights/RMSProp1&#39;: Could not satisfy explicit device specification &#39;/device:GPU:0&#39; because no supported kernel for GPU devices is available</code> 之类的话</p>
+
+<p>可以参看这个的解决办法<a href="https://blog.csdn.net/xd_wjc/article/details/80550862">https://blog.csdn.net/xd_wjc/article/details/80550862</a></p>
+
+<p>tensorboard 查看任务运行情况</p>
+
+<pre><code>tensorboard --logdir guangdong/train_dir
+</code></pre>
+
+<p>训练完毕之后进行模型评估</p>
+
+<pre><code>python eval_image_classifier.py \
+  --checkpoint_path=guangdong/train_dir \
+  --eval_dir=guangdong/eval_dir \
+  --dataset_name=guangdong \
+  --dataset_split_name=validation \
+  --dataset_dir=guangdong/data \
+  --model_name=inception_v3
+</code></pre>
+
+<h3 id="toc_2">案例</h3>
+
+<p><a href="https://github.com/ns2250225/python3_tf_slim_image_classify">https://github.com/ns2250225/python3_tf_slim_image_classify</a></p>
+
+<h2 id="toc_3">阿里云服务</h2>
+
+<p><a href="https://help.aliyun.com/document_detail/49571.html#OSS">https://help.aliyun.com/document_detail/49571.html#OSS</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html'>6 文本&视频</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037683461.html">
+                
+                  <h1>工欲善其事必先利其器——Jupyter notebook</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>类似于r的markdown</p>
+
+<p>GitHub 上也直接支持 Jupyter notebook 的渲染。借助此出色的功能，你可以轻松地共享工作。<a href="http://nbviewer.jupyter.org/">http://nbviewer.jupyter.org/</a> 也会提供 GitHub 代码库中的 notebook ，以及存储在其他地方的 notebook。</p>
+
+<p>名称 Jupyter 由 Julia、Python 和 R 组合而成，早期的两个非 Python 内核分别是 R 语言和 Julia 语言</p>
+
+<h2 id="toc_0">1.安装</h2>
+
+<ul>
+<li>如果安装anaconda 会自带</li>
+<li>通过conda环境安装 <code>conda install jupyter notebook</code>，或者<code>pip install jupyter notebook</code></li>
+</ul>
+
+<pre><code># 启动
+jupyter notebook
+</code></pre>
+
+<p>快捷键</p>
+
+<p><img src="media/15017829276727/15018110676261.jpg" alt=""/></p>
+
+<p>m 切换至markdown<br/>
+y 切换至单元格</p>
+
+<h2 id="toc_1">magic 关键字</h2>
+
+<p>Magic 关键字是可以在单元格中运行的特殊命令，能让你控制notebook 本身或执行系统调用（例如更改目录）</p>
+
+<p>Magic 命令的前面带有一个或两个百分号（% 或 %%），分别对应行 Magic 命令和单元格 Magic 命令。行 Magic 命令仅应用于编写 Magic 命令时所在的行，而单元格 Magic 命令应用于整个单元格。</p>
+
+<p>对于 Python 内核，可以使用 Magic 命令 %pdb 开启交互式调试器。出错时，你能检查当前命名空间中的变量。</p>
+
+<h2 id="toc_2">转换 notebook</h2>
+
+<p>Notebook 只是扩展名为 .ipynb 的大型 JSON 文件。</p>
+
+<p>转换格式的命令 <code>nbconvert</code></p>
+
+<pre><code>jupyter nbconvert --to html notebook.ipynb   #转成html
+jupyter nbconvert --to markdown xxx.ipynb 
+</code></pre>
+
+<p>目前支持的转换格式(<a href="https://nbconvert.readthedocs.io/en/latest/usage.html">https://nbconvert.readthedocs.io/en/latest/usage.html</a>)<br/>
+HTML,<br/>
+LaTeX,<br/>
+PDF,<br/>
+Reveal.js HTML slideshow,<br/>
+Markdown,<br/>
+reStructuredText,<br/>
+executable script,<br/>
+notebook.</p>
+
+<p><strong>创建幻灯片</strong></p>
+
+<p>在 notebook 中创建幻灯片的过程像平常一样，但需要指定作为幻灯片的单元格和单元格的幻灯片类型。在菜单栏中，点击“View”（视图）&gt;“Cell Toolbar”（单元格工具栏）&gt;“Slideshow”（幻灯片），以便在每个单元格上弹出幻灯片单元格菜单。</p>
+
+<pre><code>#转换并在浏览器中展示
+jupyter nbconvert notebook.ipynb --to slides --post serve
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20tools.html'>1 tools</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
 
 
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   <a href="all_7.html">&laquo; Prev Page</a>  
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			 <a href="all_9.html">&raquo; Next Page</a> 
+			</p>
+			  </div>
+			</div>
 		</div>
+	</div><!-- large 8 -->
 
-		
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>zhenzhen学习笔记</h1>
+                <div class="site-des"></div>
+                <div class="social">
 
-	</article>
-  
-	<div class="pagination">
-	 <a class="prev" href="all_9.html">&larr; Older</a> 
-<a href="archives.html">Blog Archives</a>
-	 <a class="next" href="all_7.html">Newer &rarr;</a>  
-	    
-	</div>
+
+
+
+
+
+
+
+
+<a target="_blank" class="github" target="_blank" href="tjzzz.github.io" title="GitHub">GitHub</a>
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="1%20tools.html"><strong>1 tools</strong></a>
+        
+            <a href="2%20get%20data.html"><strong>2 get data</strong></a>
+        
+            <a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html"><strong>3 数据可视化</strong></a>
+        
+            <a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 统计方法</strong></a>
+        
+            <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习</strong></a>
+        
+            <a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统</strong></a>
+        
+            <a href="6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html"><strong>6 文本&视频</strong></a>
+        
+            <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习</strong></a>
+        
+            <a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>10 比赛学习</strong></a>
+        
+            <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15637036455584.html">1 估计的置信度</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637025344954.html">1 安装-mac</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637025346225.html">2 不同设计之间有统计学差异吗</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637036605080.html">3 样本量的确定</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637037691936.html">3.1 特征处理—— 特征选择</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
 </div>
- <aside class="sidebar"> 
 
-	<section>
-	  <h1>Categories</h1>
-	  <ul id="recent_posts">
-	  
-	      <li class="post">
-	        <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单&nbsp;(4)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="1%20Tools.html"><strong>1 Tools&nbsp;(33)</strong></a>
-	         <p class="cat-children-p"> 
-	        
-	        	<a href="%E9%85%B7%E7%82%AB%E7%A5%9E%E5%99%A8.html">酷炫神器&nbsp;(12)</a>&nbsp;&nbsp;
-	        
-	        	<a href="PaddlePaddle.html">PaddlePaddle&nbsp;(3)</a>&nbsp;&nbsp;
-	        
-	        	<a href="spark.html">spark&nbsp;(12)</a>&nbsp;&nbsp;
-	        
-	        	<a href="tensorflow.html">tensorflow&nbsp;(2)</a>&nbsp;&nbsp;
-	        
-	        	<a href="SQL.html">SQL&nbsp;(1)</a>&nbsp;&nbsp;
-	        
-	         </p> 
-	      </li>
-	  
-	      <li class="post">
-	        <a href="2%20Get%20Data.html"><strong>2 Get Data&nbsp;(1)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html"><strong>3 数据可视化&nbsp;(8)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(9)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习&nbsp;(23)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统&nbsp;(3)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="6%20%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86.html"><strong>6 图像处理&nbsp;(4)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="6%20%E6%90%9C%E7%B4%A2.html"><strong>6 搜索&nbsp;(1)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="6%20nlp.html"><strong>6 nlp&nbsp;(1)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(12)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="8%20Ai%E5%BA%94%E7%94%A8.html"><strong>8 Ai应用&nbsp;(1)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="10%20leetcode.html"><strong>10 leetcode&nbsp;(5)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="%E8%AE%B8%E5%BC%8F%E4%BC%9F-%E6%9E%B6%E6%9E%84%E8%AF%BE.html"><strong>许式伟-架构课&nbsp;(1)</strong></a>
-	        
-	        
-	        
-	      </li>
-	   
-	  </ul>
-	</section>
-	<section>
-	  <h1>Recent Posts</h1>
-	  <ul id="recent_posts">
-	  
-	      
-		      <li class="post">
-		        <a href="15636927966003.html">随机数</a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="15633781017095.html"></a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="15633691538884.html">3. 样本量的确定？</a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="15633655285542.html">卡方检验</a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="15632757602829.html">3. 假设检验的power</a>
-		      </li>
-	     
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	   
-	  </ul>
-	</section>
-	
-</aside> </div></div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2014 -  -
-  <span class="credit">Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a> &nbsp;&nbsp; Theme by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
+        </section>
+      </div>
+    </div>
 
   
     
 
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
 
+    
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
 
-</body>
+
+  </body>
 </html>

@@ -1,0 +1,474 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  2 不同设计之间有统计学差异吗 - zhenzhen学习笔记
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="zhenzhen学习笔记" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li id=""><a target="_self" href="about_me.html">aboutme</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; zhenzhen学习笔记</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li><a target="_self" href="about_me.html">aboutme</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="1%20tools.html">1 tools</a></li>
+        
+            <li><a href="2%20get%20data.html">2 get data</a></li>
+        
+            <li><a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html">3 数据可视化</a></li>
+        
+            <li><a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html">4 统计方法</a></li>
+        
+            <li><a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html">5 机器学习</a></li>
+        
+            <li><a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html">6 推荐系统</a></li>
+        
+            <li><a href="6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html">6 文本&视频</a></li>
+        
+            <li><a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">7 深度学习</a></li>
+        
+            <li><a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">10 比赛学习</a></li>
+        
+            <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>2 不同设计之间有统计学差异吗</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2019/7/21</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <p>本章主要介绍对均值、比例的假设检验，来判断两组不同设计之间是否有显著差别。</p>
+
+<span id="more"></span><!-- more -->
+
+<h2 id="toc_0">1. 均值的比较 t检验</h2>
+
+<p>均值的比较一般可以用t检验，根据设计方式的不同可分为如下两类</p>
+
+<p>（1）配对样本t检验</p>
+
+<p>配对样本，即相同的用户参与了不同的测试。采用相同的用户分别参加两种不同的测试好处就是排除了用户的个体干扰，面临的问题就是需要对用户先接触哪个后接触哪个做好平衡，不能让两个之间有影响。比如测试两种药品，先服用A药后，已经对用户产生了影响，再去服用B药物的话就无法准确的看出效果了。</p>
+
+<p>美食评判中，美食专家们都是品尝完一道菜之后需要漱嘴然后才开始品尝下一道菜，就是这个原因。</p>
+
+<p>其中D表示两个不同测试之间的差别。</p>
+
+<p>\[t=\frac{\hat D}{S_D/\sqrt n}\]</p>
+
+<p>(2) 双总体t检验</p>
+
+<p>即不同的用户参与了不同的测试，一个A组，一个B组。通过两组效果的差异进行比较。</p>
+
+<p>假设两个总体分别为X, Y</p>
+
+<p>假设条件：</p>
+
+<ul>
+<li>两组样本不相关</li>
+<li>两组样本近似服从正态分布</li>
+</ul>
+
+<p>在以上的前提假设下，Z=X-Y 也应该近似服从正态分布。且有<br/>
+\[E(X) = E(X)- E(Y)\]<br/>
+\[Var(Z) = Var(X-Y)= Var(X) + Var(Y)\]</p>
+
+<p>均值的估计可以用样本的均值差\(\bar x - \bar y\)， 而方差的估计就需要分情况讨论了。</p>
+
+<ul>
+<li>\(\sigma_1,\sigma_2\)已知，</li>
+</ul>
+
+<p>\[Z=\frac{\bar x-\bar y -(\mu_1 - \mu_2)}{\sqrt{\sigma_1^2/n_1+\sigma_2^2/n_2}}~ N(0,1)\]</p>
+
+<ul>
+<li><p>\(\sigma_1,\sigma_2\) 未知</p>
+
+<ul>
+<li>已知 \(\sigma_1=\sigma_2\)</li>
+</ul>
+
+<p>这个时候需要根据样本1和样本2的方差去联合估计总体的方差</p>
+
+<p>\[Z=\frac{\bar x-\bar y -(\mu_1 - \mu_2)}{S_w\sqrt{1/n_1+1/n_2}}\sim N(0,1)\]<br/>
+其中联合估计方差\(s_w=\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n1+n_2 -2}\)</p>
+
+<ul>
+<li><p>已知 \(\sigma_1\ne\sigma_2\)</p>
+
+<p>\[Z=\frac{\bar x-\bar y -(\mu_1 - \mu_2)}{\sqrt{s_1^2/n_1+s_2^2/n_2}}~ t_{df&#39;}\]</p>
+
+<p>其中t分布的自由度是\(df&#39;=\frac{(s_1^2/n_1+s_2^2/n_2)^2}{\frac{(s_1^2/n1)^2/n_1}{n_1} + \frac{(s_2^2/n2)^2/n_2}{n_2}}\)</p></li>
+</ul></li>
+</ul>
+
+<p>差异的效应(effect size)<br/>
+除了差异是否显著以外，在实际中我们还需要注意差异的效应，即这个差异究竟有多大</p>
+
+<h2 id="toc_1">2.比例的比较</h2>
+
+<p><strong>双比例检验</strong></p>
+
+<p>双总体的比例检验，比例其实可以看做是均值的一种特殊情况，所以双总体的比例的比较也可以转化为均值的比较。</p>
+
+<p>\[Z=\frac{\bar p_1-\bar p_2 }{\sqrt{PQ(\frac{1}{n_1}+\frac{1}{n_2})}}\sim N(0,1)\]</p>
+
+<p><strong>卡方检验</strong><br/>
+对于分类型变量，另一个常用的检验方法就是卡方检验。卡方检验首先是一种非参数检验方法，其并不依赖于原始数据的分布假定，卡方检验主要应用于分类变量的关联性分析（关于卡方检验的后续再详细介绍)。</p>
+
+<p>对于2x2的列联表来说</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>通过</th>
+<th>失败</th>
+<th>总计</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>实验A</td>
+<td>a</td>
+<td>b</td>
+<td>m</td>
+</tr>
+<tr>
+<td>实验B</td>
+<td>c</td>
+<td>d</td>
+<td>n</td>
+</tr>
+<tr>
+<td>总计</td>
+<td>r</td>
+<td>s</td>
+<td>N</td>
+</tr>
+</tbody>
+</table>
+
+<p>\[\chi^2 = \frac{(ad-bc)^2N}{mnrs}\]</p>
+
+<p><strong>fisher精确检验</strong></p>
+
+<p>上述说的卡方检验和双比例的检验其实都是一种近似，fisher精确检验依据超几何分布，根据排列组合的概率来进行计算。</p>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15637025344954.html" 
+          title="Previous Post: 1 安装-mac">&laquo; 1 安装-mac</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15637036605080.html" 
+          title="Next Post: 3 样本量的确定">3 样本量的确定 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>zhenzhen学习笔记</h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="github" target="_blank" href="tjzzz.github.io" title="GitHub">GitHub</a>
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="1%20tools.html"><strong>1 tools</strong></a>
+        
+            <a href="2%20get%20data.html"><strong>2 get data</strong></a>
+        
+            <a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html"><strong>3 数据可视化</strong></a>
+        
+            <a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 统计方法</strong></a>
+        
+            <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习</strong></a>
+        
+            <a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统</strong></a>
+        
+            <a href="6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html"><strong>6 文本&视频</strong></a>
+        
+            <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习</strong></a>
+        
+            <a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>10 比赛学习</strong></a>
+        
+            <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15637036455584.html">1 估计的置信度</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637025344954.html">1 安装-mac</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637025346225.html">2 不同设计之间有统计学差异吗</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637036605080.html">3 样本量的确定</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637037691936.html">3.1 特征处理—— 特征选择</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+
+  </body>
+</html>

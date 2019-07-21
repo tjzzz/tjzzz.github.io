@@ -1,230 +1,386 @@
-
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
     
-  学习笔记
+  zhenzhen学习笔记
   
-
   </title>
-  <meta name="author" content="">
-  <meta name="description" content="">
-
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <link href="asset/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="atom.xml" rel="alternate" title="学习笔记" type="application/atom+xml">
-  <script src="asset/js/modernizr-2.0.js"></script>
-  <script src="asset/js/jquery.min.js"></script>
+  
+  <link href="atom.xml" rel="alternate" title="zhenzhen学习笔记" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
   <script src="asset/highlightjs/highlight.pack.js"></script>
-  <link href="asset/highlightjs/styles/solarized_light.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script>hljs.initHighlightingOnLoad();</script>
-
-  <style type="text/css">
-  .cat-children-p{ padding: 6px 0px;}
-  .hljs{background: none;}
-  </style>
-  <script type="text/javascript">
-  var isAddSildbar = true;
-  </script>
-  <script src="asset/js/octopress.js" type="text/javascript"></script>
-</head>
 <script type="text/javascript">
-//链接新开窗口
-function addBlankTargetForLinks () {
-  $('a[href^="http"]').each(function(){
-      $(this).attr('target', '_blank');
-  });
-}
-$(document).ready(function(event) {
-  addBlankTargetForLinks();
-});
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
 </script>
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="index.html">学习笔记</a></h1>
-  
-    <h2></h2>
-  
-</hgroup>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
 
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li id=""><a target="_self" href="about_me.html">aboutme</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
 </form>
-  
-<ul class="main-navigation">
-
-  <li id=""><a target="self" href="index.html">Home</a></li>
-
-  <li id=""><a target="_self" href="archives.html">Archives</a></li>
-
-</ul>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
 
 </nav>
-  <div id="main">
-    <div id="content"> 
-<div class="blog-index">
 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15350244372147.html">4.1 回归模型</a></h1>
-			<p class="meta"><time datetime="2018-08-23T19:40:37+08:00" 
-			pubdate data-updated="true">2018/8/23</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p>进入统计机器学习大门，最基础的从回归分析说起。</p>
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; zhenzhen学习笔记</span>
+  </a>
+</nav>
 
-<h2 id="toc_0">1.回归分析</h2>
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li><a target="_self" href="about_me.html">aboutme</a></li>
+        
 
-<p>机器学习从最简单的回归分析说起，这次从最小二乘的几何意义角度去看回归分析。</p>
+    <li><label>Categories</label></li>
 
-<p>\[Y = X’B\]<br/>
-我们知道最终估计的满足 \((y-X\hat\beta)^TX=0\)。即最优估计是在空间上的正交投影</p>
+        
+            <li><a href="1%20tools.html">1 tools</a></li>
+        
+            <li><a href="2%20get%20data.html">2 get data</a></li>
+        
+            <li><a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html">3 数据可视化</a></li>
+        
+            <li><a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html">4 统计方法</a></li>
+        
+            <li><a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html">5 机器学习</a></li>
+        
+            <li><a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html">6 推荐系统</a></li>
+        
+            <li><a href="6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html">6 文本&视频</a></li>
+        
+            <li><a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">7 深度学习</a></li>
+        
+            <li><a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">10 比赛学习</a></li>
+        
+            <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
+         
 
-<p><img src="media/15350244372147/15350246581231.jpg" alt=""/><br/>
-统计中的一些基本概念：</p>
+      </ul>
+    </aside>
 
-<ul>
-<li>t 检验</li>
-<li>F 检验</li>
-<li>p value</li>
-<li>多重共线性</li>
-<li></li>
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
+</script>
+<div class="row">
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="15637025346412.html">
+                
+                  <h1>工欲善其事必先利其器——conda</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ul>
+<li>包管理</li>
 </ul>
 
-<h2 id="toc_1">2.正则化处理</h2>
-
-<p>训练数据是有限的时候，总可以通过增加参数的方法提高模型复杂度，降低训练误差，但是其泛化能力不好。正则化即通过调整参数的取值，来平衡<strong>偏差</strong>和<strong>方差</strong>的关系。</p>
-
-<p>线性回归中，最直接的方法就行在loss function中添加正则化项。一般形式如下：</p>
-
-<p>\[E(w) = \sum [f(x_i, w) - y_i]^2 + \lambda g(||w||_p)\]</p>
+<p>Anaconda 安装，conda包管理器与pip类似，不同之处是可用的包以数据科学包为主，而 pip 适合一般用途。它也可以安装非 Python 的包。它是支持任何软件的包管理器。</p>
 
 <ul>
-<li>当取一范数时，即为lasso；</li>
-<li>二范数：岭回归</li>
-<li>一范数和二范数组合：弹性网络。  \(a||w||^2_2 + (1-a)||w||_1\)</li>
+<li>虚拟环境管理器</li>
 </ul>
 
-<p>一范数和二范数的几何意义区别如下(这里就不解释了)：</p>
+<p>它类似于另外两个很流行的环境管理器，即 virtualenv 和 pyenv</p>
 
-<ul>
-<li>lasso会将特征衰减到0</li>
-<li>岭回归大量特征系数都比较小</li>
-<li>弹性网络结合了两种方法的优点</li>
-</ul>
+<p>脚本和程序使用的默认 Python 是 Anaconda 附带的 Python。</p>
 
-<p><img src="media/15350244372147/15350256600383.jpg" alt=""/></p>
+<h2 id="toc_0">包管理-常用命令</h2>
 
-<blockquote>
-<p>从概率不同学派的角度来看上面的问题。<br/>
-正则化的方式，是从频率学派角度来看；而贝叶斯学派视角来看，正则化其实就是引入了关于参数的先验信息。</p>
-</blockquote>
-
-<p>贝叶斯学派是假定参数服从某种分布，然后根据其分布利用积分的方法将其消除掉。这一过程叫<strong>边际化</strong>。边际化的过程其实恰好是正则化/泛化的过程。</p>
-
-<p>可以证明，岭回归是w满足正态分布，lasso是当w满足拉普拉斯分布时候通过最大后验概率得到的估计结果。</p>
-
-<blockquote>
-<p>code</p>
-</blockquote>
-
-<pre><code>import numpy as np # 快速操作结构数组的工具
-import matplotlib.pyplot as plt  # 可视化绘制
-from sklearn.linear_model import Lasso,LassoCV,LassoLarsCV   # Lasso回归,LassoCV交叉验证实现alpha的选取，LassoLarsCV基于最小角回归交叉验证实现alpha的选取
-
-# ========Lasso回归========
-model = Lasso(alpha=0.01)  # 调节alpha可以实现对拟合的程度
-# model = LassoCV()  # LassoCV自动调节alpha可以实现选择最佳的alpha。
-# model = LassoLarsCV()  # LassoLarsCV自动调节alpha可以实现选择最佳的alpha
-model.fit(X, y)   # 线性回归建模
-print(&#39;系数矩阵:\n&#39;,model.coef_)
-print(&#39;线性回归模型:\n&#39;,model)
-# print(&#39;最佳的alpha：&#39;,model.alpha_)  # 只有在使用LassoCV、LassoLarsCV时才有效
-# 使用模型预测
-predicted = model.predict(X)
-
+<pre><code>conda list  #查看安装的内容
+conda upgrade --all   #初次下载安装好后，建议更新所有包
 </code></pre>
 
-<h2 id="toc_2">3.广义线性模型</h2>
+<p>安装包</p>
 
-<p>广义线性模型可以看做一般线性模型的推广，既然说他是推广，说明有一些问题是传统的线性模型没法解决的。</p>
+<pre><code>conda install package
+conda install numpy=1.10   #指定包的版本
 
-<p>广义线性模型中y的密度函数形式是基于指数分布族的\[p(y;\theta)=b(y)exp[\theta&#39;T(y)+a(\theta)]\]<br/>
-其中\(T(y)\)是一个充分统计量，通常可以等于\(y\)。 常见的正态分布、指数分布、二项分布、泊松分布都属于指数分布族，都可以转为这种形式。</p>
+conda remove package
+conda upgrade --all
+</code></pre>
 
-<p>介绍一个常用的广义线性模型：</p>
+<pre><code>模糊查询相关包
+conda search search_term
+</code></pre>
 
-<p>xxx</p>
+<h2 id="toc_1">环境管理</h2>
 
-<h2 id="toc_3">4.基函数扩展：属性的非线性化</h2>
+<p>默认的环境名字叫base(我的电脑上是)</p>
 
-<p>线性模型的表达能力有限，前面广义线性模型的思路是将因变量y做了一个非线性映射。而从另一个角度，可以将解释变量变为非线性的，即<br/>
-\[y=\beta_0+\beta_1x_1 + ...+\beta_nx_n\]<br/>
-可以扩展为<strong>基函数扩展模型</strong><br/>
-\[y=\beta_0+\beta_1f(x_1) + ...+\beta_nf(x_n)\]</p>
+<p>通过<code>conda env list</code>可以列出你创建的所有环境</p>
 
-<p>比如常见的多项式回归\[y=\beta_0+\beta_1 x + ...+\beta_n x^n\]</p>
+<pre><code>#创建环境
+conda create -n env_name list of packages
+eg. conda create -n my_env numpy
 
-<p>多项式回归会存在一些问题：</p>
+conda create -n py3 python=3
+conda create -n py2 python=2
+
+#进入环境
+source activate my_env
+#离开环境
+source deactivate
+
+# 删除环境
+conda env remove -n env_name
+</code></pre>
+
+<h2 id="toc_2">其他</h2>
+
+<p>共享环境：将自己的工作环境保存下来给别人共享</p>
+
+<pre><code>#进入到你的环境中
+source activate base
+conda env export &gt; environment.yaml
+
+# 通过环境文件创建环境
+conda env create -f environment.yaml
+</code></pre>
+
+<p>练习<br/>
+conda create -n myenv python=2</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20tools.html'>1 tools</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037694950.html">
+                
+                  <h1>推荐资源</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>现在网络上有大量深度学习在线课程，Edgy Lab 为大家找到了 10 大免费课程，帮助大家自学，助力职业生涯。他们研究了顶尖大学和技术公司开设的深度学习 MOOC 课程，包括针对初级、中级和高级学习者的课程，覆盖深度学习的大部分概念（从最基础的到最前沿）。不过这些课程都需要一些先决条件：了解数学基础知识、知道如何使用 GitHub 库，以及掌握编程语言，如 Python。以下是课程列表。</p>
+
+<ol>
+<li>深度学习（Deep Learning by Google）</li>
+</ol>
+
+<p>谷歌在在线课程平台 Udacity 上发布了深度学习专门课程。该课程持续 12 周，适合中级开发者，讲授深度学习的多方面知识，如如何构建和优化深度神经网络。该课程由谷歌首席科学家、谷歌大脑团队技术负责人 Vincent Vanhoucke 开发。</p>
 
 <ul>
-<li>\(x\)和\(x^k\)之间是相关的，不太好解释清楚每个变量的贡献程度</li>
-<li>会出现过拟合的情况</li>
+<li><p>课程地址：<a href="https://www.udacity.com/course/deep-learning%E2%80%94ud730%E3%80%82">https://www.udacity.com/course/deep-learning—ud730。</a></p></li>
 </ul>
 
-<p><strong>多元自适应回归样条MARS</strong></p>
+<ol>
+<li>神经网络和深度学习（Neural Networks and Deep Learning）</li>
+</ol>
+
+<p>这门课程由斯坦福大学和 deeplearning.ai 开设，授课人为斯坦福大学教授、Coursera 创始人吴恩达，课程通过 Class Central 和 Coursera 平台发布。<br/>
+* Class Central：<a href="https://www.class-central.com/mooc/9058/coursera-neural-networks-and-deep-learning?utm_source=quartz&amp;utm_medium=web&amp;utm_campaign=new_courses_october">https://www.class-central.com/mooc/9058/coursera-neural-networks-and-deep-learning?utm_source=quartz&amp;utm_medium=web&amp;utm_campaign=new_courses_october</a><br/>
+* Coursera：<a href="https://www.coursera.org/learn/neural-networks-deep-learning">https://www.coursera.org/learn/neural-networks-deep-learning</a></p>
+
+<p>这门课程主要讲授深度学习的基础知识。课程结束时，你将掌握如何构建、训练和管理深度神经网络，以及如何在自己的项目中使用深度神经网络。</p>
+
+<ol>
+<li>算法：设计和分析（Algorithms: Design and Analysis）</li>
+</ol>
+
+<p>算法是深度学习和计算机科学的核心，这门斯坦福大学开设的课程将带你了解算法。</p>
+
+<p>这门课程适合有点编程经验的学习者，课程第一部分讲述「Big-oh」符号、数据排序和搜索、分治法（divide and conquer method）、随机算法、数据结构和图基元。</p>
+
+<p>学习完第一部分之后，可以注册学习第二部分，更深入地学习算法。</p>
 
 <ul>
-<li>多项式整体是线性，局部非非线性</li>
-<li>MARS: 整体是非线性，局部是线性(分段函数)</li>
+<li>Part 1：<a href="https://www.class-central.com/mooc/8984/stanford-openedx-algorithms-design-and-analysis?utm_source=quartz&amp;utm_medium=web&amp;utm_campaign=new_courses_october">https://www.class-central.com/mooc/8984/stanford-openedx-algorithms-design-and-analysis?utm_source=quartz&amp;utm_medium=web&amp;utm_campaign=new_courses_october</a></li>
+<li><p>Part 2：<a href="https://www.class-central.com/mooc/9250/stanford-openedx-algorithms-design-and-analysis-part-2?utm_source=quartz&amp;utm_medium=web&amp;utm_campaign=new_courses_october">https://www.class-central.com/mooc/9250/stanford-openedx-algorithms-design-and-analysis-part-2?utm_source=quartz&amp;utm_medium=web&amp;utm_campaign=new_courses_october</a></p></li>
 </ul>
 
-<p>样条函数，需要满足一些最基本的一些条件</p>
+<ol>
+<li>机器学习（Machine Learning）</li>
+</ol>
+
+<p>这门课程持续 14 周，每周 8-10 小时，由佐治亚理工学院开设。</p>
+
+<p>这门课讲授监督和无监督机器学习、随机搜索算法、贝叶斯学习方法、强化学习和其他机器学习概念。</p>
 
 <ul>
-<li>在knot节点处满足函数的连续性</li>
-<li>一阶导数连续，二阶导数连续，则称为三次样条</li>
+<li><p>课程地址：<a href="https://www.class-central.com/mooc/8995/edx-machine-learning?utm_source=quartz&amp;utm_medium=web&amp;utm_campaign=new_courses_october">https://www.class-central.com/mooc/8995/edx-machine-learning?utm_source=quartz&amp;utm_medium=web&amp;utm_campaign=new_courses_october</a></p></li>
 </ul>
 
-<p>平滑样条</p>
+<ol>
+<li>改善深度神经网络（Improving Deep Neural Networks）</li>
+</ol>
 
-<p>\[E=\sum_{i=1}^n [y_i-g(x_i)]^2 +\lambda\int g&#39;&#39;(t)^2 \]</p>
+<p>这是斯坦福大学和 deeplearning.ai 开设的另一门 MOOC 课程，为期 3 周。这门课程讲授深度神经网络的超参数调整、正则化和性能优化。</p>
 
-<p>code: <code>patsy</code></p>
+<p>课程免费，证书需付费。</p>
 
+<ul>
+<li><p>课程地址：<a href="https://www.class-central.com/mooc/9054/coursera-improving-deep-neural-networks-hyperparameter-tuning-regularization-and-optimization?utm_source=quartz&amp;utm_medium=web&amp;utm_campaign=new_courses_october">https://www.class-central.com/mooc/9054/coursera-improving-deep-neural-networks-hyperparameter-tuning-regularization-and-optimization?utm_source=quartz&amp;utm_medium=web&amp;utm_campaign=new_courses_october</a></p></li>
+</ul>
 
-		</div>
+<ol>
+<li>深度学习讲座（Deep Learning Lecture）</li>
+</ol>
 
-		
+<p>Nando de Freitas 是英属哥伦比亚大学的机器学习教授。Freitas 在 YouTube 上发布了一系列深度学习讲课视频，地址：<a href="https://www.youtube.com/playlist?list=PLE6Wd9FR%E2%80%94EfW8dtjAuPoTuPcqmOV53Fu%E3%80%82%E7%8E%B0%E6%9C%89%E4%B8%8D%E5%90%8C%E9%95%BF%E5%BA%A6%E7%9A%84">https://www.youtube.com/playlist?list=PLE6Wd9FR—EfW8dtjAuPoTuPcqmOV53Fu。现有不同长度的</a> 16 个视频。</p>
 
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15347755588253.html">数据可视化(seaborn)</a></h1>
-			<p class="meta"><time datetime="2018-08-20T22:32:38+08:00" 
-			pubdate data-updated="true">2018/8/20</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<blockquote>
+<ul>
+<li><p>他还发布了一系列适合本科生的机器学习讲课视频，共 33 个。地址：<a href="https://www.youtube.com/playlist?list=PLE6Wd9FR%E2%80%94Ecf_5nCbnSQMHqORpiChfJf%E3%80%82">https://www.youtube.com/playlist?list=PLE6Wd9FR—Ecf_5nCbnSQMHqORpiChfJf。</a></p></li>
+</ul>
+
+<ol>
+<li>机器学习神经网络（Neural Networks for Machine Learning）</li>
+</ol>
+
+<p>这门课程由多伦多大学开设，适合具备 Python 基础知识的中级学习者。</p>
+
+<p>通过 16 周的学习，你可以了解深度神经网络及其应用，如语音识别、目标识别、图像分割等。</p>
+
+<p>本课程可免费学习，证书需付费。</p>
+
+<ul>
+<li><p>课程地址：<a href="https://www.class-central.com/mooc/398/coursera-neural-networks-for-machine-learning">https://www.class-central.com/mooc/398/coursera-neural-networks-for-machine-learning</a></p></li>
+</ul>
+
+<ol>
+<li>TensorFlow 上的深度学习创新应用（Creative Applications of Deep Learning with TensorFlow）</li>
+</ol>
+
+<p>这门课程在 Kadenze Academy 平台发布，讲授构建不同算法所需基础知识，算法包括：深度卷积神经网络、变分自编码器、生成对抗网络和循环神经网络。</p>
+
+<p>了解如何构建深度学习网络之后，你可以进一步学习该课程，了解创新应用。</p>
+
+<ul>
+<li><p>课程地址：<a href="https://www.class-central.com/mooc/6679/kadenze-creative-applications-of-deep-learning-with-tensorflow">https://www.class-central.com/mooc/6679/kadenze-creative-applications-of-deep-learning-with-tensorflow</a></p></li>
+</ul>
+
+<ol>
+<li>深度学习简介（Introduction to Deep Learning）</li>
+</ol>
+
+<p>这门课程由 MIT 发布，为期一周。该课程介绍深度学习技术及其部分行业应用，讲授内容包括翻译算法、图像识别、目标识别、博弈等。</p>
+
+<ul>
+<li><p>课程地址：<a href="https://www.class-central.com/mooc/8083/6-s191-introduction-to-deep-learning">https://www.class-central.com/mooc/8083/6-s191-introduction-to-deep-learning</a></p></li>
+</ul>
+
+<ol>
+<li>自动驾驶汽车中的深度学习（Deep Learning for Self-Driving Cars）</li>
+</ol>
+
+<p>这门课程也由 MIT 开设，专注于自动驾驶。这门课程适合初学者，不过对高级学习者也有用处，介绍了自动驾驶汽车和半自动驾驶汽车中的深度学习系统。</p>
+
+<p>这门课有 5 个视频讲座，每个视频讲解一个自动驾驶汽车中的深度学习方法。</p>
+
+<ul>
+<li>课程地址：<a href="https://www.class-central.com/mooc/8132/6-s094-deep-learning-for-self-driving-cars">https://www.class-central.com/mooc/8132/6-s094-deep-learning-for-self-driving-cars</a> </li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html'>数据科学-清单</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037713554.html">
+                
+                  <h1>数据可视化(seaborn)</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
 <p>系统的梳理在进行数据分析的时候，如何进行数据可视化。具体操作的时候以python的seaborn包为主。</p>
 </blockquote>
 
@@ -259,459 +415,338 @@ predicted = model.predict(X)
 
 <p><a href="https://antv.alipay.com/zh-cn/vis/chart/color-map.html">https://antv.alipay.com/zh-cn/vis/chart/color-map.html</a></p>
 
-
-		</div>
-
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15343921369482.html">Face综述</a></h1>
-			<p class="meta"><time datetime="2018-08-16T12:02:16+08:00" 
-			pubdate data-updated="true">2018/8/16</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p><a href="https://blog.csdn.net/chenriwei2/article/details/50631212">https://blog.csdn.net/chenriwei2/article/details/50631212</a></p>
-
-<p>这个有数据，已经训练好的模型<br/>
-<a href="https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/">https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/</a></p>
-
-<p>综述@@@@ 需要精读！！！<br/>
-<a href="https://blog.csdn.net/Mr_EvanChen/article/details/75501730">https://blog.csdn.net/Mr_EvanChen/article/details/75501730</a><br/>
-<a href="https://zhuanlan.zhihu.com/p/24816781">https://zhuanlan.zhihu.com/p/24816781</a></p>
-
-<p>知乎 狗头山人七 专栏<br/>
-<a href="https://zhuanlan.zhihu.com/p/25025596">https://zhuanlan.zhihu.com/p/25025596</a></p>
-
-
-		</div>
-
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15343431925455.html">二、起步篇—— 数据预处理[python]</a></h1>
-			<p class="meta"><time datetime="2018-08-15T22:26:32+08:00" 
-			pubdate data-updated="true">2018/8/15</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<blockquote>
-<p>一方面可以多查些官方说明<br/>
-多去看些kaggle，tianchi等的比赛案例，他们数据预处理做的很全面到位<br/>
-实践一些工作中的项目，将代码规范化</p>
-</blockquote>
-
-<h2 id="toc_0">1.缺失表示</h2>
-
-<p>python中缺失是nan，如果本身数据中缺失是用其他方式表示的，可以先转换一下<br/>
-<code>df.replace(&#39;-&#39;,np.nan)</code></p>
-
-<pre><code class="language-python">
-import numpy as np
-import pandas as pd
-from io import StringIO
-import sys
-
-df = pd.read_table(&#39;zz&#39;)
-df = df.replace(&#39;-&#39;,np.nan).head()
-df.head()
-</code></pre>
-
-<h2 id="toc_1">2.缺失的简单处理办法</h2>
-
-<h3 id="toc_2">暴力删除</h3>
-
-<p><code>isnull()</code>   判断是否缺失</p>
-
-<p><code>dropna( axis = 0 /1 )</code> 参数axis表示轴选择，axis=0 代表行，axis=1 代表列</p>
-
-<p><code>dropna(subset=[&#39;&#39;])</code>   删除指定列中有空值的一行数据</p>
-
-<h3 id="toc_3">默认值填充</h3>
-
-<p><code>df.fillna(value)</code><br/>
-或者对不同列填不同的值</p>
-
-<h3 id="toc_4">统计/算法填充</h3>
-
-<pre><code class="language-python">from sklearn.preprocessing import Imputer
-# strategy 有mean,median, most_frequent 方式
-# axis 默认是0，列向， axis=1行向
-dff = df.loc[:, [&#39;comment_time&#39;]]
-imr = Imputer(missing_values = &#39;NaN&#39;, strategy = &#39;mean&#39;, axis = 0 )
-imr = imr.fit(dff.values)
-imputed_data = imr.transform(dff.values)
-</code></pre>
-
-<pre><code class="language-python">## 3.分类数据处理
-from sklearn.preprocessing import LabelEncoder
-class_le = LabelEncoder()
-y = class_le.fit_transform(df[&#39;nid&#39;].values)
-
-</code></pre>
-
-<pre><code class="language-python">## 数据标准化
-from sklearn.preprocessing import MinMaxScaler
-mms = MinMaxScaler()
-X_train_norm = mms.fit_transform(imputed_data)
-X_test_norm = mms.transform(imputed_data)
-</code></pre>
-
-<h2 id="toc_5">参考资料</h2>
-
-<p><a href="https://blog.csdn.net/Amy_mm/article/details/79799629">https://blog.csdn.net/Amy_mm/article/details/79799629</a><br/>
-<a href="https://www.cnblogs.com/charlotte77/p/5622325.html">https://www.cnblogs.com/charlotte77/p/5622325.html</a></p>
-
-<p><a href="https://www.kaggle.com/pmarcelino/comprehensive-data-exploration-with-python">https://www.kaggle.com/pmarcelino/comprehensive-data-exploration-with-python</a></p>
-
-
-		</div>
-
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15343314088861.html">jupyterLab</a></h1>
-			<p class="meta"><time datetime="2018-08-15T19:10:08+08:00" 
-			pubdate data-updated="true">2018/8/15</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p>现在Rstudio已经成为R社区使用最广泛的集成编辑器，其在配合Rstudio公司开发的软件包使用上有天然的优势，如knitr、bookdown、blogdown、sparklyr、tidyverse等，让我们在数据导入、清洗、可视化、分析过程中少踩了不少坑。</p>
-
-<p>然而，有时候我们也会发现，利用Rmarkdown进行探索性数据分析时，尤其是初学者，总是不断花费时间在文档编译上，而压缩了真正数据探索的时间。很多时候，我很羡慕python用户，因为他们拥有Ipython、jupyter notebook等工具，让我们一边分析数据，一边插入markdown文本，并且还能实时看到结果，这些特性R用户也可以实现吗？当然，这就是我今天推荐的jupyterlab 编辑器。</p>
-
-<p>安装jupyterLab</p>
-
-<p>首先我们要明白，jupyterLab是一个python包，所以要使用jupyterLab首先要配置python环境。对于普通用户，包括linux、win和Mac用户，建议直接下载anaconda发行版进行安装，这样免去了既要安装python又要安装其他包的麻烦，是最简洁的方法。</p>
-
-<p>对于平时很少使用python的人来说，可能无法忍受anaconda全家桶式的安装模式，想更轻便的安装使用，那也很容易。</p>
-
-<ol>
-<li>安装</li>
-</ol>
-
-<p>Mac 和 Linux用户系统自带了python，可以直接使用pip install jupyterlab安装jupyterLab包。</p>
-
-<p>win用户先在python官网下载安装python，然后使用pip install jupyterlab安装jupyterLab包。</p>
-
-<ol>
-<li>运行</li>
-</ol>
-
-<p>在终端输入jupyter lab即可以在默认浏览器中打开编辑器界面，若不能，请检查下python路径配置是否正确。</p>
-
-<p>“咦，怎么只能选择python，R去哪了”，各位看官莫急，这是因为R端缺少必要的包，还不能和jupyter进行通信，等把这些包安装好进行配置后就可以了。</p>
-
-<ol>
-<li>配置R</li>
-</ol>
-
-<p>要把先前打开的jupyterLab程序全部关闭后再进行以下操作</p>
-
-<h1 id="toc_0">安装必要的依赖包</h1>
-
-<pre><code>install.packages(c(&#39;repr&#39;, &#39;IRdisplay&#39;,&#39;evaluate&#39;, &#39;crayon&#39;,&#39;pbdZMQ&#39;,&#39;devtools&#39;,&#39;uuid&#39;, &#39;digest&#39;))
-</code></pre>
-
-<h1 id="toc_1">IRkernel包没有放在CRAN上，需要通过GitHub安装</h1>
-
-<pre><code>
-devtools::install_github(&#39;IRkernel/IRkernel&#39;)
-
-IRkernel::installspec() #确保jupyterLab能找到R解释器安装位置
-</code></pre>
-
-<ol>
-<li>再次在终端运行<code>jupyter lab</code>，选择R图标打开，你就可以在jupyterLab进行数据分析啦</li>
-</ol>
-
-<p>jupyterLab的主要特性绘图函数自动插入图片ggplot2绘图完美支持</p>
-
-<h2 id="toc_2">常见问题</h2>
-
-<ol>
-<li><code>jupyter lab</code> 启动提示</li>
-</ol>
-
-<p><img src="media/15343314088861/15403477589938.jpg" alt=""/></p>
-
-<p>应该是编码问题，暂时的解决方案<a href="https://github.com/jupyter/notebook/issues/2789#issuecomment-338380336">https://github.com/jupyter/notebook/issues/2789#issuecomment-338380336</a></p>
-
-<p><code>LANG=zn jupyter lab</code></p>
-
-<p><img src="media/15343314088861/15403476857109.jpg" alt=""/></p>
-
-<p>这个问题后来查了下说是python2的bug，安装python3就不会出现这个问题。<br/>
-但是很多代码都是python2写的，用pip3安装jupyter之后，想切换写内核。</p>
-
-<pre><code>jupyter kernelspec list
-</code></pre>
-
-<p><a href="https://www.cnblogs.com/Jeffiy/p/4861528.html">https://www.cnblogs.com/Jeffiy/p/4861528.html</a></p>
-
-<pre><code>本例的Jupyter安装在Python3下，以增加Python2内核为例。
-首先确认在Python3下已安装了内核：
-ipython kernel install --user
-#or
-python3 -m ipykernel install --user
-然后确保Python2下安装了ipykernel
-sudo pip2 install -U ipykernel
-然后运行如下命令：
-python2 -m ipykernel install --user
-
-</code></pre>
-
-<h2 id="toc_3">测试机上安装jupyter</h2>
-
-<p><a href="https://cloud.tencent.com/developer/article/1147487">https://cloud.tencent.com/developer/article/1147487</a></p>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html'>3 数据可视化</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037730631.html">
+                
+                  <h1>比赛学习</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">天池</h2>
 
 <ul>
-<li>安装jupyter</li>
-<li>生成密码 python -c &quot;import IPython;print IPython.lib.passwd()&quot;</li>
-<li>修改配置文件 </li>
+<li>o2o优惠券</li>
 </ul>
 
-<p>18机器上配置<br/>
-/home/work/.jupyter/jupyter_notebook_config.py</p>
+<p><a href="https://tianchi.aliyun.com/getStart/information.htm?raceId=231593">https://tianchi.aliyun.com/getStart/information.htm?raceId=231593</a></p>
 
-<p>如果启动报错</p>
+<p><a href="https://github.com/wepe/O2O-Coupon-Usage-Forecast/tree/master/code">https://github.com/wepe/O2O-Coupon-Usage-Forecast/tree/master/code</a></p>
 
-<pre><code>socket.gaierror: [Errno -2] Name or service not known
-</code></pre>
+<ul>
+<li>fashion_tag</li>
+</ul>
 
-<p>可以加上自己的ip</p>
+<p><a href="https://github.com/DavexPro/fashion-tag">https://github.com/DavexPro/fashion-tag</a></p>
 
-<pre><code> jupyter notebook --ip=xxxx
- jupyter lab --ip=10.100.114.120
-</code></pre>
+<p><a href="https://github.com/tworuler/tensorcv">https://github.com/tworuler/tensorcv</a></p>
 
-<h2 id="toc_4">colab</h2>
+<h2 id="toc_1">kaggle</h2>
 
-<p>google 基于jupyter开发的存在在google driver上的网页版</p>
+<p>kaggle-ctr预估<br/>
+<a href="https://www.kaggle.com/c/avazu-ctr-prediction/discussion/12608">https://www.kaggle.com/c/avazu-ctr-prediction/discussion/12608</a><br/>
+<a href="https://github.com/guestwalk/kaggle-avazu">https://github.com/guestwalk/kaggle-avazu</a></p>
 
-<p><a href="https://colab.research.google.com/">https://colab.research.google.com/</a></p>
+<p>FM学习<a href="https://www.jianshu.com/p/152ae633fb00">https://www.jianshu.com/p/152ae633fb00</a></p>
 
-<p>本身功能上差不太多，主要是有search和share功能，查看别人分享的代码</p>
+<h2 id="toc_2">kesci</h2>
+
+<p><a href="https://www.kesci.com/home/competition">https://www.kesci.com/home/competition</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html'>10 比赛学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637025347820.html">
+                
+                  <h1>目录</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>Github:</p>
+
+<ul>
+<li>统计学 cheet-sheet整理</li>
+</ul>
+
+<hr/>
+
+<ol>
+<li><p>基础工具</p>
+
+<ul>
+<li>markdown，git，R/python，MR,SQL</li>
+<li>linux</li>
+</ul></li>
+<li><p>获取数据</p></li>
+<li><p>数据清洗+ 探索性分析</p>
+
+<ul>
+<li>数据可视化</li>
+</ul></li>
+<li><p>统计推断</p></li>
+<li><p>机器学习</p></li>
+<li><p>深度学习</p></li>
+<li><p>数据产品开发</p></li>
+<li><p>平台架构</p></li>
+</ol>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html'>数据科学-清单</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
 
 
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   <a href="all_8.html">&laquo; Prev Page</a>  
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			 <a href="all_10.html">&raquo; Next Page</a> 
+			</p>
+			  </div>
+			</div>
 		</div>
+	</div><!-- large 8 -->
 
-		
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>zhenzhen学习笔记</h1>
+                <div class="site-des"></div>
+                <div class="social">
 
-	</article>
-  
-	<div class="pagination">
-	 <a class="prev" href="all_10.html">&larr; Older</a> 
-<a href="archives.html">Blog Archives</a>
-	 <a class="next" href="all_8.html">Newer &rarr;</a>  
-	    
-	</div>
+
+
+
+
+
+
+
+
+<a target="_blank" class="github" target="_blank" href="tjzzz.github.io" title="GitHub">GitHub</a>
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="1%20tools.html"><strong>1 tools</strong></a>
+        
+            <a href="2%20get%20data.html"><strong>2 get data</strong></a>
+        
+            <a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html"><strong>3 数据可视化</strong></a>
+        
+            <a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 统计方法</strong></a>
+        
+            <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习</strong></a>
+        
+            <a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统</strong></a>
+        
+            <a href="6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html"><strong>6 文本&视频</strong></a>
+        
+            <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习</strong></a>
+        
+            <a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>10 比赛学习</strong></a>
+        
+            <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15637036455584.html">1 估计的置信度</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637025344954.html">1 安装-mac</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637025346225.html">2 不同设计之间有统计学差异吗</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637036605080.html">3 样本量的确定</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637037691936.html">3.1 特征处理—— 特征选择</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
 </div>
- <aside class="sidebar"> 
 
-	<section>
-	  <h1>Categories</h1>
-	  <ul id="recent_posts">
-	  
-	      <li class="post">
-	        <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单&nbsp;(4)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="1%20Tools.html"><strong>1 Tools&nbsp;(33)</strong></a>
-	         <p class="cat-children-p"> 
-	        
-	        	<a href="%E9%85%B7%E7%82%AB%E7%A5%9E%E5%99%A8.html">酷炫神器&nbsp;(12)</a>&nbsp;&nbsp;
-	        
-	        	<a href="PaddlePaddle.html">PaddlePaddle&nbsp;(3)</a>&nbsp;&nbsp;
-	        
-	        	<a href="spark.html">spark&nbsp;(12)</a>&nbsp;&nbsp;
-	        
-	        	<a href="tensorflow.html">tensorflow&nbsp;(2)</a>&nbsp;&nbsp;
-	        
-	        	<a href="SQL.html">SQL&nbsp;(1)</a>&nbsp;&nbsp;
-	        
-	         </p> 
-	      </li>
-	  
-	      <li class="post">
-	        <a href="2%20Get%20Data.html"><strong>2 Get Data&nbsp;(1)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html"><strong>3 数据可视化&nbsp;(8)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(9)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习&nbsp;(23)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统&nbsp;(3)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="6%20%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86.html"><strong>6 图像处理&nbsp;(4)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="6%20%E6%90%9C%E7%B4%A2.html"><strong>6 搜索&nbsp;(1)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="6%20nlp.html"><strong>6 nlp&nbsp;(1)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(12)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="8%20Ai%E5%BA%94%E7%94%A8.html"><strong>8 Ai应用&nbsp;(1)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="10%20leetcode.html"><strong>10 leetcode&nbsp;(5)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="%E8%AE%B8%E5%BC%8F%E4%BC%9F-%E6%9E%B6%E6%9E%84%E8%AF%BE.html"><strong>许式伟-架构课&nbsp;(1)</strong></a>
-	        
-	        
-	        
-	      </li>
-	   
-	  </ul>
-	</section>
-	<section>
-	  <h1>Recent Posts</h1>
-	  <ul id="recent_posts">
-	  
-	      
-		      <li class="post">
-		        <a href="15636927966003.html">随机数</a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="15633781017095.html"></a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="15633691538884.html">3. 样本量的确定？</a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="15633655285542.html">卡方检验</a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="15632757602829.html">3. 假设检验的power</a>
-		      </li>
-	     
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	   
-	  </ul>
-	</section>
-	
-</aside> </div></div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2014 -  -
-  <span class="credit">Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a> &nbsp;&nbsp; Theme by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
+        </section>
+      </div>
+    </div>
 
   
     
 
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
 
+    
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
 
-</body>
+
+  </body>
 </html>

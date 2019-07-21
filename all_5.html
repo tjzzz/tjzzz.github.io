@@ -1,622 +1,746 @@
-
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
     
-  学习笔记
+  zhenzhen学习笔记
   
-
   </title>
-  <meta name="author" content="">
-  <meta name="description" content="">
-
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <link href="asset/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="atom.xml" rel="alternate" title="学习笔记" type="application/atom+xml">
-  <script src="asset/js/modernizr-2.0.js"></script>
-  <script src="asset/js/jquery.min.js"></script>
+  
+  <link href="atom.xml" rel="alternate" title="zhenzhen学习笔记" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
   <script src="asset/highlightjs/highlight.pack.js"></script>
-  <link href="asset/highlightjs/styles/solarized_light.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script>hljs.initHighlightingOnLoad();</script>
-
-  <style type="text/css">
-  .cat-children-p{ padding: 6px 0px;}
-  .hljs{background: none;}
-  </style>
-  <script type="text/javascript">
-  var isAddSildbar = true;
-  </script>
-  <script src="asset/js/octopress.js" type="text/javascript"></script>
-</head>
 <script type="text/javascript">
-//链接新开窗口
-function addBlankTargetForLinks () {
-  $('a[href^="http"]').each(function(){
-      $(this).attr('target', '_blank');
-  });
-}
-$(document).ready(function(event) {
-  addBlankTargetForLinks();
-});
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
 </script>
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="index.html">学习笔记</a></h1>
-  
-    <h2></h2>
-  
-</hgroup>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
 
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li id=""><a target="_self" href="about_me.html">aboutme</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
 </form>
-  
-<ul class="main-navigation">
-
-  <li id=""><a target="self" href="index.html">Home</a></li>
-
-  <li id=""><a target="_self" href="archives.html">Archives</a></li>
-
-</ul>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
 
 </nav>
-  <div id="main">
-    <div id="content"> 
-<div class="blog-index">
 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15417735380783.html">任务迁移</a></h1>
-			<p class="meta"><time datetime="2018-11-09T22:25:38+08:00" 
-			pubdate data-updated="true">2018/11/9</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p><a href="http://wiki.baidu.com/pages/viewpage.action?pageId=496903743">http://wiki.baidu.com/pages/viewpage.action?pageId=496903743</a></p>
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; zhenzhen学习笔记</span>
+  </a>
+</nav>
 
-<p><a href="http://wiki.baidu.com/display/SPRK/Tutorial+for+Spark-baidu">http://wiki.baidu.com/display/SPRK/Tutorial+for+Spark-baidu</a></p>
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li><a target="_self" href="about_me.html">aboutme</a></li>
+        
 
-<h2 id="toc_0">庆城</h2>
+    <li><label>Categories</label></li>
 
-<p>17年的spark资源已经到位，kce组2台机器，1095核，216549M内存，存储51.2T，队列为spark-ubs-kce, 客户端拉取地址：<br/>
-wget <a href="ftp://cp01-ubskce25.epc.baidu.com/home/work/spark-client-tianqi-2.1.tar.gz">ftp://cp01-ubskce25.epc.baidu.com/home/work/spark-client-tianqi-2.1.tar.gz</a><br/><br/>
-百度spark wiki地址：<a href="http://wiki.baidu.com/display/SPRK/Baidu+Spark">http://wiki.baidu.com/display/SPRK/Baidu+Spark</a><br/>
-提交任务命令示例：./spark-client-tianqi-2.1/bin/spark-submit --master yarn --deploy-mode client --queue spark-ubs-kce ./test.py<br/>
-任务进度查看页面：<a href="http://yq01-tianqi-normandy.dmop.baidu.com:8033/queue.html?queue=spark-ubs-kce&amp;physical=tianqi-yarn_phy">http://yq01-tianqi-normandy.dmop.baidu.com:8033/queue.html?queue=spark-ubs-kce&amp;physical=tianqi-yarn_phy</a><br/>
-欢迎各位试用，谢谢！</p>
+        
+            <li><a href="1%20tools.html">1 tools</a></li>
+        
+            <li><a href="2%20get%20data.html">2 get data</a></li>
+        
+            <li><a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html">3 数据可视化</a></li>
+        
+            <li><a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html">4 统计方法</a></li>
+        
+            <li><a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html">5 机器学习</a></li>
+        
+            <li><a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html">6 推荐系统</a></li>
+        
+            <li><a href="6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html">6 文本&视频</a></li>
+        
+            <li><a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">7 深度学习</a></li>
+        
+            <li><a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">10 比赛学习</a></li>
+        
+            <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
+         
 
-<h2 id="toc_1">1.pyspark 读取udw表</h2>
+      </ul>
+    </aside>
 
-<pre><code class="language-{python}">spark = SparkSession.builder.appName(&quot;video_test_&quot; + day).getOrCreate()
-video_session_sql = &quot;select event_time, event_cookie, event_urlparams, event_query,  event_others, wisepsdisplay_qid, wisepsdisplay_pn,  wisepsdisplay_tn, &quot; + \
-        &quot; wisepsdisplay_displayresult, wisepsdisplay_sampletags, clk_detail, media_time, event_browser, event_os, &quot; + \
-        &quot; event_os_version, event_pd, event_cuid, anti_spam, event_day &quot; + \
-        &quot; from ud_ml_sf_merge_data where event_day= &quot; + day + &quot; limit 100&quot;
+<a class="exit-off-canvas" href="#"></a>
 
-video_session = spark.sql(video_session_sql)
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
+</script>
+<div class="row">
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="15637037678160.html">
+                
+                  <h1>git</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>git log<br/>
+git reset --hard xxxxx</p>
+
+<p>查看本地与云端的diff</p>
+
+<p>git rm —cache  删除已经提交的内容</p>
+
+<p>（1）生成公钥<br/>
+ssh-keygen -t rsa -f ~/.ssh/id_rsa.zhenzhen<br/>
+cat ~/.ssh/id_rsa.zhenzhen.pub 保存到icode上<br/>
+chmod 644 ~/.ssh/config<br/>
+vim ~/.ssh/config<br/>
+添加下自己的配置<br/>
+Host icode.baidu.com<br/>
+User yangyang22<br/>
+IdentityFile ~/.ssh/id_rsa.yangyang22<br/>
+（2）clone<br/>
+git clone  xxxxx代码库<br/>
+git config --local user.email <a href="mailto:zhengzhenzhen@baidu.com">zhengzhenzhen@baidu.com</a><br/>
+git config --local user.name zhengzhenzhen</p>
+
+<p>git push origin master:refs/for/master<br/>
+（3）上传文件<br/>
+git add xxx<br/>
+git commit -m &#39;注释&#39;<br/>
+git push origin HEAD:refs/for/master</p>
+
+<p>我不知道”undo”是什么意思。您可以删除core.excludesfile设置，如下所示：<br/>
+git config --global --unset core.excludesfile<br/>
+当然你也可以简单地编辑配置文件：<br/>
+git config --global --edit<br/>
+…然后手动删除设置。</p>
+
+<p>git config --global --edit</p>
+
+<h1 id="toc_0">!/usr/bin/env python</h1>
+
+<h1 id="toc_1">-<em>- coding: utf-8 -</em>-</h1>
+
+<h1 id="toc_2">Copyright (c) 2017 Baidu.com, Inc. All Rights Reserved</h1>
+
+<p>&quot;&quot;&quot;<br/>
+File: dau.py<br/>
+Author: work(<a href="mailto:work@baidu.com">work@baidu.com</a>)<br/>
+Date: 2017/07/13 11:07:20<br/>
+Description: 计算官方号维度的dau<br/>
+             用户访问了已经关注过的官方号主页，IM页，设置页和文章落地页<br/>
+             其中主页访问从wiseps_click里拿<br/>
+             IM页和设置页从ubc日志里拿<br/>
+             文章落地页从搜索点击日志以及wiseps_click日志里拿<br/>
+&quot;&quot;&quot;</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20tools.html'>1 tools</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037680349.html">
+                
+                  <h1>jupyterLab</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>现在Rstudio已经成为R社区使用最广泛的集成编辑器，其在配合Rstudio公司开发的软件包使用上有天然的优势，如knitr、bookdown、blogdown、sparklyr、tidyverse等，让我们在数据导入、清洗、可视化、分析过程中少踩了不少坑。</p>
+
+<p>然而，有时候我们也会发现，利用Rmarkdown进行探索性数据分析时，尤其是初学者，总是不断花费时间在文档编译上，而压缩了真正数据探索的时间。很多时候，我很羡慕python用户，因为他们拥有Ipython、jupyter notebook等工具，让我们一边分析数据，一边插入markdown文本，并且还能实时看到结果，这些特性R用户也可以实现吗？当然，这就是我今天推荐的jupyterlab 编辑器。</p>
+
+<p>安装jupyterLab</p>
+
+<p>首先我们要明白，jupyterLab是一个python包，所以要使用jupyterLab首先要配置python环境。对于普通用户，包括linux、win和Mac用户，建议直接下载anaconda发行版进行安装，这样免去了既要安装python又要安装其他包的麻烦，是最简洁的方法。</p>
+
+<p>对于平时很少使用python的人来说，可能无法忍受anaconda全家桶式的安装模式，想更轻便的安装使用，那也很容易。</p>
+
+<ol>
+<li>安装</li>
+</ol>
+
+<p>Mac 和 Linux用户系统自带了python，可以直接使用pip install jupyterlab安装jupyterLab包。</p>
+
+<p>win用户先在python官网下载安装python，然后使用pip install jupyterlab安装jupyterLab包。</p>
+
+<ol>
+<li>运行</li>
+</ol>
+
+<p>在终端输入jupyter lab即可以在默认浏览器中打开编辑器界面，若不能，请检查下python路径配置是否正确。</p>
+
+<p>“咦，怎么只能选择python，R去哪了”，各位看官莫急，这是因为R端缺少必要的包，还不能和jupyter进行通信，等把这些包安装好进行配置后就可以了。</p>
+
+<ol>
+<li>配置R</li>
+</ol>
+
+<p>要把先前打开的jupyterLab程序全部关闭后再进行以下操作</p>
+
+<h1 id="toc_0">安装必要的依赖包</h1>
+
+<pre><code>install.packages(c(&#39;repr&#39;, &#39;IRdisplay&#39;,&#39;evaluate&#39;, &#39;crayon&#39;,&#39;pbdZMQ&#39;,&#39;devtools&#39;,&#39;uuid&#39;, &#39;digest&#39;))
 </code></pre>
 
-<p>video_session是一个dataframe，可以直接取出里面的相关字段做特征提取</p>
+<h1 id="toc_1">IRkernel包没有放在CRAN上，需要通过GitHub安装</h1>
 
-<h2 id="toc_2">2.特征提取</h2>
+<pre><code>
+devtools::install_github(&#39;IRkernel/IRkernel&#39;)
 
-<p>通过map函数对每条记录进行特征提取</p>
-
-<pre><code>def parser_record(row):
-    # do something
-    
-    # 返回key，value形式
-    return (key, value)
-    
-    
-video_session.rdd.map(parser_record)
+IRkernel::installspec() #确保jupyterLab能找到R解释器安装位置
 </code></pre>
 
-<h2 id="toc_3">合并汇总</h2>
+<ol>
+<li>再次在终端运行<code>jupyter lab</code>，选择R图标打开，你就可以在jupyterLab进行数据分析啦</li>
+</ol>
 
-<p>假设map输出格式是 (key, [1,2,3]), 下面对相同的key的list中的指标值进行累加</p>
+<p>jupyterLab的主要特性绘图函数自动插入图片ggplot2绘图完美支持</p>
 
-<pre><code>video_session.rdd.map(simple_test).reduceByKey(lambda x,y : x + y)   # 单个值的累加
-video_session.rdd.map(simple_test).reduceByKey(lambda x,y : [x[i] + y[i] for i in range(len(x))])
+<h2 id="toc_2">常见问题</h2>
+
+<ol>
+<li><code>jupyter lab</code> 启动提示</li>
+</ol>
+
+<p><img src="media/15343314088861/15403477589938.jpg" alt=""/></p>
+
+<p>应该是编码问题，暂时的解决方案<a href="https://github.com/jupyter/notebook/issues/2789#issuecomment-338380336">https://github.com/jupyter/notebook/issues/2789#issuecomment-338380336</a></p>
+
+<p><code>LANG=zn jupyter lab</code></p>
+
+<p><img src="media/15343314088861/15403476857109.jpg" alt=""/></p>
+
+<p>这个问题后来查了下说是python2的bug，安装python3就不会出现这个问题。<br/>
+但是很多代码都是python2写的，用pip3安装jupyter之后，想切换写内核。</p>
+
+<pre><code>jupyter kernelspec list
 </code></pre>
 
+<p><a href="https://www.cnblogs.com/Jeffiy/p/4861528.html">https://www.cnblogs.com/Jeffiy/p/4861528.html</a></p>
 
-		</div>
+<pre><code>本例的Jupyter安装在Python3下，以增加Python2内核为例。
+首先确认在Python3下已安装了内核：
+ipython kernel install --user
+#or
+python3 -m ipykernel install --user
+然后确保Python2下安装了ipykernel
+sudo pip2 install -U ipykernel
+然后运行如下命令：
+python2 -m ipykernel install --user
 
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15415917511283.html">安装类</a></h1>
-			<p class="meta"><time datetime="2018-11-07T19:55:51+08:00" 
-			pubdate data-updated="true">2018/11/7</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<h2 id="toc_0">测试机安装php</h2>
-
-<p>切换到root用户</p>
-
-<pre><code>yum install php
 </code></pre>
 
-<p>直接执行label的抓取报错，摸索了下还需要安装<code>yum install php-soap -y</code></p>
+<h2 id="toc_3">测试机上安装jupyter</h2>
 
-<p><code>php -m</code> 能查看安装了哪些模块</p>
+<p><a href="https://cloud.tencent.com/developer/article/1147487">https://cloud.tencent.com/developer/article/1147487</a></p>
 
+<ul>
+<li>安装jupyter</li>
+<li>生成密码 python -c &quot;import IPython;print IPython.lib.passwd()&quot;</li>
+<li>修改配置文件 </li>
+</ul>
 
-		</div>
+<p>18机器上配置<br/>
+/home/work/.jupyter/jupyter_notebook_config.py</p>
 
-		
+<p>如果启动报错</p>
 
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15394437873112.html">4.9 深度学习综述</a></h1>
-			<p class="meta"><time datetime="2018-10-13T23:16:27+08:00" 
-			pubdate data-updated="true">2018/10/13</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p>这里只是简单介绍，后续会在深度学习章节中进行详细说明</p>
+<pre><code>socket.gaierror: [Errno -2] Name or service not known
+</code></pre>
 
-<p><strong>通用逼近定理</strong></p>
+<p>可以加上自己的ip</p>
 
-<p><img src="media/15394437873112/15394453932519.jpg" alt=""/></p>
+<pre><code> jupyter notebook --ip=xxxx
+ jupyter lab --ip=10.100.114.120
+</code></pre>
 
-<h2 id="toc_0">参考资料</h2>
+<h2 id="toc_4">colab</h2>
 
-<p><a href="https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2650739143&amp;idx=1&amp;sn=f51551128021e7747205f87971f4762e&amp;chksm=871ad5b9b06d5caf0a5b4601863adc213eb42573bbdc2773e54ff1c585b3954a8644df024015&amp;mpshare=1&amp;scene=1&amp;srcid=0313P1tfCgE3zTBXJuNIHaBl%23rd">https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2650739143&amp;idx=1&amp;sn=f51551128021e7747205f87971f4762e&amp;chksm=871ad5b9b06d5caf0a5b4601863adc213eb42573bbdc2773e54ff1c585b3954a8644df024015&amp;mpshare=1&amp;scene=1&amp;srcid=0313P1tfCgE3zTBXJuNIHaBl%23rd</a></p>
+<p>google 基于jupyter开发的存在在google driver上的网页版</p>
 
-<p><a href="https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2650739820&amp;idx=1&amp;sn=260173be8cecc3a10d7b455922c10e0c&amp;chksm=871ad012b06d5904e65e96d0cfa236d0b6c7ce5683dd8d29514e4cbe420dc5b1ccd2786eea2c&amp;mpshare=1&amp;scene=1&amp;srcid=0324xGIxttOochJWNMPaDibb%23rd">https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2650739820&amp;idx=1&amp;sn=260173be8cecc3a10d7b455922c10e0c&amp;chksm=871ad012b06d5904e65e96d0cfa236d0b6c7ce5683dd8d29514e4cbe420dc5b1ccd2786eea2c&amp;mpshare=1&amp;scene=1&amp;srcid=0324xGIxttOochJWNMPaDibb%23rd</a></p>
+<p><a href="https://colab.research.google.com/">https://colab.research.google.com/</a></p>
 
+<p>本身功能上差不太多，主要是有search和share功能，查看别人分享的代码</p>
 
-		</div>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20tools.html'>1 tools</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
-		
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037679256.html">
+                
+                  <h1>markdown</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">图片</h2>
 
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15394428762655.html">4.8 自适应的基函数——神经网络</a></h1>
-			<p class="meta"><time datetime="2018-10-13T23:01:16+08:00" 
-			pubdate data-updated="true">2018/10/13</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p>人工神经网络的鼻祖是<strong>感知器</strong></p>
+<p>现在很多makdown编辑器是可以支持拖拽本地图片或者截屏就可以直接在markdown中生成图片的，非常方便，比如我现在在用的MWeb编辑器。</p>
 
-<p><img src="media/15394428762655/15394429750357.jpg" alt=""/></p>
+<p>但是如果同一篇内容需要在不同的平台上进行发布，那图片处理起来就比较麻烦。因为需要重新上传到不同平台。<br/>
+最方便的处理方式就是利用图床， 这里以七牛云存储为例。<br/>
+<img src="media/15378048283915/15383141468224.jpg" alt=""/></p>
 
-<p>感知器的激活函数是符号函数。<br/>
-\[w_1x_1 + w_2x_2+...+w_nx_n\]</p>
+<p>step1： 首先在七牛官网上申请注册账号，并且添加<strong>对象存储</strong></p>
 
-<p><strong>学习策略</strong><br/>
-感知机形式上也是对原始特征x在权重\(W\)条件下进行映射，然后根据输出值进行判断，相当于是一种判别式的分类模型。但是和之前的判别分析略有不同，之前的判别分析其实是依赖于数据X的一些统计量进行最优参数的求解。而感知机是一个不断试错，不断优化自己学习最优参数的过程。</p>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20tools.html'>1 tools</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
-<blockquote>
-<p>感觉这也是统计学习和机器学习的一个很显著的区别，基于统计的学习是利用一些关于数据分布的假定，然后基于统计的方法寻找到最优的问题参数。而机器学习是有个目标，里面一段参数，然后让机器去不断迭代优化，在这个不断的“学习”过程中寻找到”最优的参数“</p>
-</blockquote>
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637025345613.html">
+                
+                  <h1>query文本聚类</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 是不是cache问题tf-idf
+</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 添加下降维的步骤
+</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 稀疏矩阵
+</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 数据切分更小li&#39;du
+</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Mini Batch KMeans <a href="http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/">http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/</a>
+</li>
+</ul>
 
-<p>目标：</p>
-
-
-		</div>
-
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15394167484934.html">sublime</a></h1>
-			<p class="meta"><time datetime="2018-10-13T15:45:48+08:00" 
-			pubdate data-updated="true">2018/10/13</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p>sublime除了具有基本的文本编辑功能之外，还可以安装很多package来扩展其强大的功能。这里罗列出一些工作中经常能用到的</p>
-
-<p><strong>安装install package</strong></p>
-
-<p>点击菜单中的 “View”–“Show Console”，调出console面板，然后到<a href="https://packagecontrol.io/installation#st3%E5%AE%98%E7%BD%91%E4%B8%8A%E7%9A%84%EF%BC%8C%E5%A4%8D%E5%88%B6%E5%87%BA%E4%BB%A3%E7%A0%81%E9%BB%8F%E8%B4%B4%E6%89%A7%E8%A1%8C">https://packagecontrol.io/installation#st3官网上的，复制出代码黏贴执行</a></p>
-
-<h2 id="toc_0">diff对比</h2>
-
-<h1 id="toc_1">Package Control Messages</h1>
-
-<h2 id="toc_2">Sublimerge 3</h2>
-
-<p>Sublimerge 3 (beta) has just been installed. Thanks for trying it out!</p>
-
-<p>It is highly recommended to restart Sublime Text before first use.</p>
+<p>实验全量的<br/>
+<a href="http://yq01-tianqi-spark-yarn00.yq01.baidu.com:8388/proxy/application_1511855101950_42074/">http://yq01-tianqi-spark-yarn00.yq01.baidu.com:8388/proxy/application_1511855101950_42074/</a></p>
 
 <hr/>
 
-<p>!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br/>
-  !!                                                                                                       !!<br/>
-  !!                NOTE: THIS IS A BETA VERSION. PLEASE REPORT ANY BUGS YOU MAY ENCOUNTER.                !!<br/>
-  !!                                                                                                       !!<br/>
-  !!                                                                                                       !!<br/>
-  !!     <a href="http://www.sublimerge.com/support.html">http://www.sublimerge.com/support.html</a>                                <a href="mailto:support@sublimerge.com">support@sublimerge.com</a>      !!<br/>
-  !!                                                                                                       !!<br/>
-  !!     Issue Tracker: <a href="https://bitbucket.org/borysforytarz/sublimerge-3/issues?status=new&amp;status=open">https://bitbucket.org/borysforytarz/sublimerge-3/issues?status=new&amp;status=open</a>     !!<br/>
-  !!                                                                                                       !!<br/>
-  !!                                                                                                       !!<br/>
-  !!                                                                                                       !!<br/>
-  !!     Please visit <a href="http://www.sublimerge.com/sm3/docs/">http://www.sublimerge.com/sm3/docs/</a> for more information.                            !!<br/>
-  !!                                                                                                       !!<br/>
-  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>
+<p>刚哥的代码：<a href="https://github.com/honestOrg/gxdgroup/blob/master/src/main/scala/cn/com/gxdgroup/dataplatform/avm/utils/AVMUtils.scala">https://github.com/honestOrg/gxdgroup/blob/master/src/main/scala/cn/com/gxdgroup/dataplatform/avm/utils/AVMUtils.scala</a></p>
 
-<p>The first steps after installation<br/>
-  ==================================</p>
+<h2 id="toc_0">全量</h2>
 
-<ol>
-<li><p>By default Sublimerge&#39;s colors theme conforms to default Sublime Text theme. If you are using some<br/>
- custom theme and find the colors poorly visible, you may need to change them.</p></li>
-<li><p>If you&#39;re on Windows and want to use VCS-related commands, you may need to configure the executable<br/>
- path for your VCS. Linux and OS X users with non-standard VCS installation may need to configure this too.</p>
+<p>前期构造词频矩阵：</p>
 
-<p>Please visit <a href="http://www.sublimerge.com/sm3/docs/configuration.html">http://www.sublimerge.com/sm3/docs/configuration.html</a> for more information about configuration.</p>
-
-<h1 id="toc_3">Simplified usage instructions</h1>
-
-<p>In file view:</p>
-
-<p>[ctrl]+[alt]+[d]                      - display Quick Panel with commands available for current view</p>
-
-<p>In diff view:</p>
-
-<p>Windows/Linux:</p>
-
-<p>[ctrl]+[down]                         - select next change<br/>
-  [ctrl]+[up]                           - select previous change</p>
+<h2 id="toc_1">1.生成原始的词频矩阵</h2>
 
 <ul>
-<li>[ctrl]+[left]                         - copy selected change (or active line) to left from right</li>
-<li><p>[ctrl]+[right]                        - copy selected change (or active line) to right from left<br/>
-[ctrl]+[shift]+[left]                 - copy all changes to left from right<br/>
-[ctrl]+[shift]+[right]                - copy all changes to right from left</p>
-
-<p>OSX:</p>
-
-<p>[alt]+[down]                          - select next change<br/>
-[alt]+[up]                            - select previous change</p></li>
-<li><p>[alt]+[left]                          - copy selected change (or active line) to left from right</p></li>
-<li><p>[alt]+[right]                         - copy selected change (or active line) to right from left<br/>
-[alt]+[shift]+[left]                  - copy all changes to left from right<br/>
-[alt]+[shift]+[right]                 - copy all changes to right from left</p>
-
-<p>Common:</p>
-
-<p>[f3]                                  - swap panels<br/>
-[f4]                                  - show changes navigator<br/>
-[f5]                                  - recompare buffers</p></li>
-<li><ul>
-<li>if change is selected the command will copy its whole contents, otherwise will copy only the focused line</li>
-</ul></li>
+<li><a href="http://spark.apache.org/docs/latest/ml-features.html#countvectorizer">http://spark.apache.org/docs/latest/ml-features.html#countvectorizer</a></li>
+<li><code>examples/src/main/python/sql/basic.py</code></li>
 </ul>
 
-<p>In directories diff view:</p>
+<p>输入数据：每行是切分好的term</p>
 
-<p>[down]                              - select next file/directory<br/>
-  [up]                                - select previous file/directory<br/>
-  [left]                              - copy file/directory from right to left<br/>
-  [right]                             - copy file/directory from left to right<br/>
-  [enter]                             - enter sub directory / compare text files<br/>
-  [backspace]                         - enter parent directory</p>
+<pre><code>spark = SparkSession.builder.appName(&quot;CountVectorizerExample&quot;).getOrCreate()
+sc = spark.sparkContext
+# $example on$
+# Input data: Each row is a bag of words with a ID.
 
-<p>Windows/Linux:</p>
+lines = sc.textFile(&quot;/user/ubs/kce/zhenzhen/spark/test_data/corpus_title2&quot;)
+parts = lines.map(lambda l: l.split(&#39;#&#39;))   # convert all the term to a list
+termRDD = parts.map(lambda p: Row(tid=p[0], words=p[1].split(&#39; &#39;)))
 
-<p>[ctrl]+[down]                       - select next different file/directory<br/>
-  [ctrl]+[up]                         - select previous different file/directory</p>
+df = spark.createDataFrame(termRDD)
+# fit a CountVectorizerModel from the corpus.
+cv = CountVectorizer(inputCol=&quot;words&quot;, outputCol=&quot;features&quot;)
+#, vocabSize=3, minDF=2.0)
 
-<p>OS X:</p>
+model = cv.fit(df)
 
-<p>[alt]+[down]                        - select next different file/directory<br/>
-  [alt]+[up]                          - select previous different file/directory</p>
+result = model.transform(df)
+</code></pre>
 
-<p>For convenience Sublimerge also supports standard OS X keyboard shortcuts for directories navigation:</p>
+<h2 id="toc_2">2.tf-idf</h2>
 
-<p>[cmd]+[down]                        - enter sub directory / compare text files<br/>
-  [cmd]+[up]                          - enter parent directory</p>
+<ul>
+<li><a href="http://spark.apache.org/docs/latest/mllib-feature-extraction.html#tf-idf">http://spark.apache.org/docs/latest/mllib-feature-extraction.html#tf-idf</a></li>
+<li><a href="http://spark.apache.org/docs/latest/ml-features.html#feature-extractors">http://spark.apache.org/docs/latest/ml-features.html#feature-extractors</a>
+ml中的函数比mllib中的多
+examples/src/main/python/mllib/tf_idf_example.py</li>
+</ul>
 
-<h1 id="toc_4">End-User License Agreement (EULA)</h1></li>
-<li><p>LICENSES<br/>
-  SUBLIMERGE is licensed as follows:<br/>
-  a) Evaluation time.<br/>
-      You can evaluate SUBLIMERGE freely for 90 days. Later you will need to purchase<br/>
-      a license for continued use.<br/>
-  b) Installation and Usage.<br/>
-      Licenses are per user and valid for use on all supported operating systems.<br/>
-      License keys may be used on multiple computers and operating systems, provided<br/>
-      the license key holder is the primary user. Businesses must purchase at least<br/>
-      as many licenses as the number of people using SUBLIMERGE.<br/>
-  c) Backup Copies.<br/>
-      You may make copies of the license key and/or SUBLIMERGE for backup and archival<br/>
-      purposes.<br/>
-  d) Evaluation time.<br/>
-      You can evaluate SUBLIMERGE freely for 90 days. Later you will need to purchase<br/>
-      a license for continued use.</p></li>
-<li><p>ILLEGAL USAGE<br/>
-  Any illegal usage of SUBLIMERGE, including reverse engineering, using unauthorized license <br/>
-  keys, creating keygens and cracks is prohibited and will be subject for prosecution.</p></li>
-<li><p>DESCRIPTION OF OTHER RIGHTS AND LIMITATIONS<br/>
-  a) Maintenance of Copyright Notices.<br/>
-      You must not remove or alter any copyright notices on any copy of SUBLIMERGE.</p>
+<pre><code>~/zhenzhen/spark_study/spark/examples/src/main/python/mllib $  pyspark zzz_tf_idf_example.py
+</code></pre>
 
-<p>b) Distribution.<br/>
-      You may not distribute or sell license keys or SUBLIMERGE to third parties.<br/>
-      Licenses will be revoked if distributed or sold to third parties.</p>
+<h2 id="toc_3">3.降维</h2>
 
-<p>c) Rental.<br/>
-      You may not rent, lease, or lend the license key or SUBLIMERGE.</p></li>
-<li><p>COPYRIGHT<br/>
-  All title, including but not limited to copyrights, in and to SUBLIMERGE and any copies<br/>
-  thereof are owned by BORYS FORYTARZ (AUTHOR).</p></li>
-<li><p>REFUND POLICY<br/>
-  Refunds are not available. Because of this, before purchasing a license, you can evaluate<br/>
-  SUBLIMERGE without any functionality limitations for 90 days. Later you will need to<br/>
-  purchase a license.</p></li>
-<li><p>NO WARRANTIES<br/>
-  AUTHOR expressly disclaims any warranty for SUBLIMERGE, which is provided<br/>
-  &#39;as is&#39; without any express or implied warranty of any kind, including but not limited<br/>
-  to any warranties of merchantability, non-infringement, or fitness of a particular<br/>
-  purpose.</p></li>
-<li><p>LIMITATION OF LIABILITY<br/>
-  In no event shall AUTHOR be liable for any damages due to use of SUBLIMERGE,<br/>
-  to the maximum extent permitted by law. This includes without limitation, lost profits,<br/>
-  business interruption, or lost information. In no event will AUTHOR be liable<br/>
-  for loss of data or for indirect, special, incidental, consequential (including lost<br/>
-  profit), or other damages. AUTHOR shall have no liability with respect to the<br/>
-  content of SUBLIMERGE or any part thereof, including but not limited to errors or<br/>
-  omissions contained therein, libel, trademark rights, business interruption, loss of<br/>
-  privacy or the disclosure of confidential information.</p>
+<h2 id="toc_4">4.直接聚类</h2>
 
-<h1 id="toc_5">More information</h1>
+<pre><code> # pyspark这个默认是启动的集群任务，之前测试的本地数据会出错，脚本中需把输入目录改成集群路径
+  ~/zhenzhen/spark_study $  pyspark kmeans.py  &gt; log.test
+</code></pre>
 
-<p>For more information, troubleshooting, customizing settings and more, please visit <a href="http://www.sublimerge.com">www.sublimerge.com</a></p>
+<h2 id="toc_5">六神合体</h2>
 
-<h1 id="toc_6">By the way...</h1>
+<ul>
+<li>词频矩阵+tfidf</li>
+</ul>
 
-<p>Take a break from your work and play my BF&#39;s Draughts on your iOS device!<br/>
-Available on the App Store! :)</p>
+<p><a href="http://www.zengyilun.com/spark-similarity/">http://www.zengyilun.com/spark-similarity/</a></p>
 
-<p><a href="http://www.bfdraughts.com/as/">http://www.bfdraughts.com/as/</a></p></li>
-</ol>
+<p>上述所有步骤(tfidf，降维,聚类)合并在一起</p>
 
-<h2 id="toc_7">参考资料</h2>
+<pre><code> # pyspark这个默认是启动的集群任务，之前测试的本地数据会出错，脚本中需把输入目录改成集群路径
+  ~/zhenzhen/spark_study $  pyspark tfidf_kmeans.py  &gt; log.test
+  这个测试ok，但是中心点都是0，应该是数据问题
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037678380.html">
+                
+                  <h1>rCharts</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><a href="http://rdatascience.io/rCharts/">http://rdatascience.io/rCharts/</a></p>
+
+<p>作者的github主页<br/>
+<a href="http://ramnathv.github.io/rCharts">http://ramnathv.github.io/rCharts</a></p>
+
+<pre><code class="language-{r}">#Install 
+require(devtools)## 标题 ##
+install_github(&#39;rCharts&#39;, &#39;ramnathv&#39;)
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html'>3 数据可视化</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
 
 
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   <a href="all_4.html">&laquo; Prev Page</a>  
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			 <a href="all_6.html">&raquo; Next Page</a> 
+			</p>
+			  </div>
+			</div>
 		</div>
+	</div><!-- large 8 -->
 
-		
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>zhenzhen学习笔记</h1>
+                <div class="site-des"></div>
+                <div class="social">
 
-	</article>
-  
-	<div class="pagination">
-	 <a class="prev" href="all_6.html">&larr; Older</a> 
-<a href="archives.html">Blog Archives</a>
-	 <a class="next" href="all_4.html">Newer &rarr;</a>  
-	    
-	</div>
+
+
+
+
+
+
+
+
+<a target="_blank" class="github" target="_blank" href="tjzzz.github.io" title="GitHub">GitHub</a>
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="1%20tools.html"><strong>1 tools</strong></a>
+        
+            <a href="2%20get%20data.html"><strong>2 get data</strong></a>
+        
+            <a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html"><strong>3 数据可视化</strong></a>
+        
+            <a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 统计方法</strong></a>
+        
+            <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习</strong></a>
+        
+            <a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统</strong></a>
+        
+            <a href="6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html"><strong>6 文本&视频</strong></a>
+        
+            <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习</strong></a>
+        
+            <a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>10 比赛学习</strong></a>
+        
+            <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15637036455584.html">1 估计的置信度</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637025344954.html">1 安装-mac</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637025346225.html">2 不同设计之间有统计学差异吗</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637036605080.html">3 样本量的确定</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637037691936.html">3.1 特征处理—— 特征选择</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
 </div>
- <aside class="sidebar"> 
 
-	<section>
-	  <h1>Categories</h1>
-	  <ul id="recent_posts">
-	  
-	      <li class="post">
-	        <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单&nbsp;(4)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="1%20Tools.html"><strong>1 Tools&nbsp;(33)</strong></a>
-	         <p class="cat-children-p"> 
-	        
-	        	<a href="%E9%85%B7%E7%82%AB%E7%A5%9E%E5%99%A8.html">酷炫神器&nbsp;(12)</a>&nbsp;&nbsp;
-	        
-	        	<a href="PaddlePaddle.html">PaddlePaddle&nbsp;(3)</a>&nbsp;&nbsp;
-	        
-	        	<a href="spark.html">spark&nbsp;(12)</a>&nbsp;&nbsp;
-	        
-	        	<a href="tensorflow.html">tensorflow&nbsp;(2)</a>&nbsp;&nbsp;
-	        
-	        	<a href="SQL.html">SQL&nbsp;(1)</a>&nbsp;&nbsp;
-	        
-	         </p> 
-	      </li>
-	  
-	      <li class="post">
-	        <a href="2%20Get%20Data.html"><strong>2 Get Data&nbsp;(1)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html"><strong>3 数据可视化&nbsp;(8)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(9)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习&nbsp;(23)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统&nbsp;(3)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="6%20%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86.html"><strong>6 图像处理&nbsp;(4)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="6%20%E6%90%9C%E7%B4%A2.html"><strong>6 搜索&nbsp;(1)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="6%20nlp.html"><strong>6 nlp&nbsp;(1)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(12)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="8%20Ai%E5%BA%94%E7%94%A8.html"><strong>8 Ai应用&nbsp;(1)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="10%20leetcode.html"><strong>10 leetcode&nbsp;(5)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="%E8%AE%B8%E5%BC%8F%E4%BC%9F-%E6%9E%B6%E6%9E%84%E8%AF%BE.html"><strong>许式伟-架构课&nbsp;(1)</strong></a>
-	        
-	        
-	        
-	      </li>
-	   
-	  </ul>
-	</section>
-	<section>
-	  <h1>Recent Posts</h1>
-	  <ul id="recent_posts">
-	  
-	      
-		      <li class="post">
-		        <a href="15636927966003.html">随机数</a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="15633781017095.html"></a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="15633691538884.html">3. 样本量的确定？</a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="15633655285542.html">卡方检验</a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="15632757602829.html">3. 假设检验的power</a>
-		      </li>
-	     
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	   
-	  </ul>
-	</section>
-	
-</aside> </div></div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2014 -  -
-  <span class="credit">Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a> &nbsp;&nbsp; Theme by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
+        </section>
+      </div>
+    </div>
 
   
     
 
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
 
+    
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
 
-</body>
+
+  </body>
 </html>

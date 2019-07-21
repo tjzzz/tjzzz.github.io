@@ -1,700 +1,766 @@
-
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
     
-  学习笔记
+  zhenzhen学习笔记
   
-
   </title>
-  <meta name="author" content="">
-  <meta name="description" content="">
-
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <link href="asset/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="atom.xml" rel="alternate" title="学习笔记" type="application/atom+xml">
-  <script src="asset/js/modernizr-2.0.js"></script>
-  <script src="asset/js/jquery.min.js"></script>
+  
+  <link href="atom.xml" rel="alternate" title="zhenzhen学习笔记" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
   <script src="asset/highlightjs/highlight.pack.js"></script>
-  <link href="asset/highlightjs/styles/solarized_light.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script>hljs.initHighlightingOnLoad();</script>
-
-  <style type="text/css">
-  .cat-children-p{ padding: 6px 0px;}
-  .hljs{background: none;}
-  </style>
-  <script type="text/javascript">
-  var isAddSildbar = true;
-  </script>
-  <script src="asset/js/octopress.js" type="text/javascript"></script>
-</head>
 <script type="text/javascript">
-//链接新开窗口
-function addBlankTargetForLinks () {
-  $('a[href^="http"]').each(function(){
-      $(this).attr('target', '_blank');
-  });
-}
-$(document).ready(function(event) {
-  addBlankTargetForLinks();
-});
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
 </script>
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="index.html">学习笔记</a></h1>
-  
-    <h2></h2>
-  
-</hgroup>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
 
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li id=""><a target="_self" href="about_me.html">aboutme</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
 </form>
-  
-<ul class="main-navigation">
-
-  <li id=""><a target="self" href="index.html">Home</a></li>
-
-  <li id=""><a target="_self" href="archives.html">Archives</a></li>
-
-</ul>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
 
 </nav>
-  <div id="main">
-    <div id="content"> 
-<div class="blog-index">
 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15394116175346.html">git</a></h1>
-			<p class="meta"><time datetime="2018-10-13T14:20:17+08:00" 
-			pubdate data-updated="true">2018/10/13</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p>git log<br/>
-git reset --hard xxxxx</p>
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; zhenzhen学习笔记</span>
+  </a>
+</nav>
 
-<p>查看本地与云端的diff</p>
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li><a target="_self" href="about_me.html">aboutme</a></li>
+        
 
-<p>git rm —cache  删除已经提交的内容</p>
+    <li><label>Categories</label></li>
 
-<p>（1）生成公钥<br/>
-ssh-keygen -t rsa -f ~/.ssh/id_rsa.zhenzhen<br/>
-cat ~/.ssh/id_rsa.zhenzhen.pub 保存到icode上<br/>
-chmod 644 ~/.ssh/config<br/>
-vim ~/.ssh/config<br/>
-添加下自己的配置<br/>
-Host icode.baidu.com<br/>
-User yangyang22<br/>
-IdentityFile ~/.ssh/id_rsa.yangyang22<br/>
-（2）clone<br/>
-git clone  xxxxx代码库<br/>
-git config --local user.email <a href="mailto:zhengzhenzhen@baidu.com">zhengzhenzhen@baidu.com</a><br/>
-git config --local user.name zhengzhenzhen</p>
+        
+            <li><a href="1%20tools.html">1 tools</a></li>
+        
+            <li><a href="2%20get%20data.html">2 get data</a></li>
+        
+            <li><a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html">3 数据可视化</a></li>
+        
+            <li><a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html">4 统计方法</a></li>
+        
+            <li><a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html">5 机器学习</a></li>
+        
+            <li><a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html">6 推荐系统</a></li>
+        
+            <li><a href="6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html">6 文本&视频</a></li>
+        
+            <li><a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">7 深度学习</a></li>
+        
+            <li><a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">10 比赛学习</a></li>
+        
+            <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
+         
 
-<p>git push origin master:refs/for/master<br/>
-（3）上传文件<br/>
-git add xxx<br/>
-git commit -m &#39;注释&#39;<br/>
-git push origin HEAD:refs/for/master</p>
+      </ul>
+    </aside>
 
-<p>我不知道”undo”是什么意思。您可以删除core.excludesfile设置，如下所示：<br/>
-git config --global --unset core.excludesfile<br/>
-当然你也可以简单地编辑配置文件：<br/>
-git config --global --edit<br/>
-…然后手动删除设置。</p>
-
-<p>git config --global --edit</p>
-
-<h1 id="toc_0">!/usr/bin/env python</h1>
-
-<h1 id="toc_1">-<em>- coding: utf-8 -</em>-</h1>
-
-<h1 id="toc_2">Copyright (c) 2017 Baidu.com, Inc. All Rights Reserved</h1>
-
-<p>&quot;&quot;&quot;<br/>
-File: dau.py<br/>
-Author: work(<a href="mailto:work@baidu.com">work@baidu.com</a>)<br/>
-Date: 2017/07/13 11:07:20<br/>
-Description: 计算官方号维度的dau<br/>
-             用户访问了已经关注过的官方号主页，IM页，设置页和文章落地页<br/>
-             其中主页访问从wiseps_click里拿<br/>
-             IM页和设置页从ubc日志里拿<br/>
-             文章落地页从搜索点击日志以及wiseps_click日志里拿<br/>
-&quot;&quot;&quot;</p>
+<a class="exit-off-canvas" href="#"></a>
 
 
-		</div>
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
 
+ <script type="text/javascript">
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
+</script>
+<div class="row">
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
 		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15394114121107.html">基础工具包安装pip</a></h1>
-			<p class="meta"><time datetime="2018-10-13T14:16:52+08:00" 
-			pubdate data-updated="true">2018/10/13</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p>在安装package之前，首先要安装的就是包管理器。</p>
-
-<h2 id="toc_0">1.pip</h2>
-
-<p>安装pip <code>sudo easy_install pip</code></p>
-
-<p>通过pip安装python包  <code>pip install xxx</code></p>
-
-<p><strong>常见问题</strong></p>
-
-<pre><code># 当前版本
-pip --version
-# 版本升级(有些包安装需要依赖高级版本)
-pip install --upgrade pip
-
-## 升级某些包
-pip install --upgrade SomePackage
-
-# 安装包时候报错`time out`
-pip --default-timeout=100 install xxx
-
-## 指定安装目录
-pip -t 目标目录 xxx
-</code></pre>
-
-<p>更新pip给出一个最简单的办法就是通过pip uninstall pip卸载pip，再用easy_install pip安装pip,这样安装的就是最新版本的pip了。</p>
-
-<blockquote>
-<p>权限</p>
-</blockquote>
-
-<p>在mac上安装包的时候，因为系统限制不让写到内容到系统目录里去。解决方法</p>
-
-<ul>
-<li>重新安装一个自己版本的python，比如可以用ancoda安装</li>
-<li>pip安装的时候加入参数<code>pip install xxx --user</code>，安装到当前用户目录下。</li>
-</ul>
-
-<p>安装完成后还需要将该目录加到环境变量里才能使用</p>
-
-<pre><code>export export PATH=/Users/$your_name/Library/Python/2.7/bin/:$PATH
-</code></pre>
-
-<blockquote>
-<p>更新某个包时候报错</p>
-</blockquote>
-
-<p><code>Cannot uninstall &#39;six&#39;. It is a distutils installed project and thus we cannot accurately determine which files belong to it which would lead to only a partial uninstall.</code></p>
-
-<p>解决办法：</p>
-
-<p><code>pip install six --upgrade --ignore-installed six</code></p>
-
-<p>当机器上有多个版本python，安装到指定的python版本中</p>
-
-<pre><code>pip install -t /home/work/zhenzhen/python2.7/lib/python2.7/site-packages BeautifulSoup4
-</code></pre>
-
-<h2 id="toc_1">2.brew</h2>
-
-<p>/usr/bin/ruby -e &quot;$(curl -fsSL <a href="https://raw.githubusercontent.com/Homebrew/install/master/install)%E2%80%9D">https://raw.githubusercontent.com/Homebrew/install/master/install)”</a></p>
-
-
-		</div>
-
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15388051366041.html">图像识别模型—— 1.利用已有的进行微调</a></h1>
-			<p class="meta"><time datetime="2018-10-06T13:52:16+08:00" 
-			pubdate data-updated="true">2018/10/6</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p>这里以VGG16网络为例，</p>
-
-<h2 id="toc_0">1.准备数据</h2>
-
-<pre><code> python data_convert.py -t pic --train-shards 2 --validation-shards 2 --num-threads 2 --dataset-name guangdong
-</code></pre>
-
-<p>执行完后会在pic下生成tf格式的训练+测试数据，以及label.txt<br/>
-<img src="media/15388051366041/15388065002449.jpg" alt=""/></p>
-
-<h2 id="toc_1">2.使用tensorflow的slim微调模型</h2>
-
-<p>简单介绍下google的这个图像分类工具包tensorflow-slim</p>
-
-<pre><code>├── README.md
-├── datasets                    # 定义训练时候使用的数据。如果是自己的数据，必须在此文件夹下定义
-├── deployment
-├── download_and_convert_data.py
-├── export_inference_graph.py
-├── export_inference_graph_test.py
-├── nets                        # 定义了一些常用的网络，比如vgg16，vgg19，resnet等
-├── preprocessing               # 在读入图像前，对图像做的一些预处理
-├── scripts
-│   ├── finetune_inception_v1_on_flowers.sh
-│   ├── finetune_inception_v3_on_flowers.sh
-│   ├── finetune_resnet_v1_50_on_flowers.sh
-│   ├── train_cifarnet_on_cifar10.sh
-│   └── train_lenet_on_mnist.sh
-├── setup.py
-├── slim_walkthrough.ipynb
-├── eval_image_classifier.py      # 验证模型入口
-└── train_image_classifier.py     # 训练模型入口
-</code></pre>
-
-<p>(1) 定义新的dataset文件</p>
-
-<p>仿照<code>datasets/flowers.py</code> 写一个自己的数据文件<code>guangdong.py</code> 并且在<code>dataset_factory.py</code>中进行注册</p>
-
-<p>(2)准备训练文件夹</p>
-
-<p>(3)train model</p>
-
-<pre><code>python train_image_classifier.py \
-  --train_dir=guangdong/train_dir \
-  --dataset_name=guangdong \
-  --dataset_split_name=train \
-  --dataset_dir=guangdong/data \
-  --model_name=inception_v3 \
-  --checkpoint_path=guangdong/pretrained/inception_v3.ckpt \
-  --checkpoint_exclude_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
-  --trainable_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
-  --max_number_of_steps=100000 \
-  --batch_size=32 \
-  --learning_rate=0.001 \
-  --learning_rate_decay_type=fixed \
-  --save_interval_secs=300 \
-  --save_summaries_secs=2 \
-  --log_every_n_steps=10 \
-  --optimizer=rmsprop \
-  --weight_decay=0.00004
-
-</code></pre>
-
-<p>如果执行后报错<code>Cannot assign a device for operation &#39;InceptionV3/AuxLogits/Conv2d_2b_1x1/weights/RMSProp1&#39;: Could not satisfy explicit device specification &#39;/device:GPU:0&#39; because no supported kernel for GPU devices is available</code> 之类的话</p>
-
-<p>可以参看这个的解决办法<a href="https://blog.csdn.net/xd_wjc/article/details/80550862">https://blog.csdn.net/xd_wjc/article/details/80550862</a></p>
-
-<p>tensorboard 查看任务运行情况</p>
-
-<pre><code>tensorboard --logdir guangdong/train_dir
-</code></pre>
-
-<p>训练完毕之后进行模型评估</p>
-
-<pre><code>python eval_image_classifier.py \
-  --checkpoint_path=guangdong/train_dir \
-  --eval_dir=guangdong/eval_dir \
-  --dataset_name=guangdong \
-  --dataset_split_name=validation \
-  --dataset_dir=guangdong/data \
-  --model_name=inception_v3
-</code></pre>
-
-<h3 id="toc_2">案例</h3>
-
-<p><a href="https://github.com/ns2250225/python3_tf_slim_image_classify">https://github.com/ns2250225/python3_tf_slim_image_classify</a></p>
-
-<h2 id="toc_3">阿里云服务</h2>
-
-<p><a href="https://help.aliyun.com/document_detail/49571.html#OSS">https://help.aliyun.com/document_detail/49571.html#OSS</a></p>
-
-
-		</div>
-
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15386411386885.html">4.7 聚类2——-效果评价</a></h1>
-			<p class="meta"><time datetime="2018-10-04T16:18:58+08:00" 
-			pubdate data-updated="true">2018/10/4</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p>一般分为两类：</p>
-
-<ul>
-<li>外部标准：即基于人工的判断，需要有个标注集合</li>
-<li>内部标准：基于类内和类间聚类的目标函数的判断</li>
-</ul>
-
-<h2 id="toc_0">内部标准clustering-performance-evaluation</h2>
-
-<ul>
-<li>CH 准则</li>
-<li>轮廓系数</li>
-</ul>
-
-<h2 id="toc_1">外部标准——人工判定</h2>
-
-<p>假设：<br/>
-机器判断的类别集合是：\(C=\{C_1,C_2,...C_m\}\)<br/>
-人工判断的类别集合是：\(P=\{P_1,P_2,...P_s\}\)</p>
-
-<h3 id="toc_2">1.1混淆矩阵</h3>
-
-<p>基于数据样本点的角度：<br/>
-对于任意两个数据pair，\((x_i,x_j)\)按照其在C和P中是否属于同一个簇，可以构造出混淆矩阵</p>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>P_1</th>
-<th>p_0</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>C_1</td>
-<td>a</td>
-<td>b</td>
-</tr>
-<tr>
-<td>C_0</td>
-<td>c</td>
-<td>d</td>
-</tr>
-</tbody>
-</table>
-
-<p><img src="media/15078603543147/15078631739679.jpg" alt=""/></p>
-
-<h3 id="toc_3">1.2簇的准确率/召回率</h3>
-
-<p>基于簇pair的，考虑对任意一个人工与机器的.\(P_j,C_i\)。对于每一个人工标注的\(P_j\),在机器标注中应该都会对应一个&quot;最相关的&quot;。可以遍历C中所有的cluster，分别计算准确率，召回率，F_score。<br/>
-<img src="media/15078603543147/15078720767171.jpg" alt=""/></p>
-
-<p>然后对于所有簇的F值做加权平均<br/>
-\[ClassF=\sum w_j F(p_j), w_i=n_j/n\]</p>
-
-<p>classF指标，相当于是以人工标注的簇为基准，将聚类的簇尽量逼近这个标注的结果。</p>
-
-<h2 id="toc_4">1.3</h2>
-
-<p>1.2中的方法相当于要求的比较严格，即以人工标注的集合簇为准。</p>
-
-<p>实际中其实只要保证我们聚的每一个类\(C_i\)是有意义的就可以，即以C为主</p>
-
-<p>类似的定义 \(F(C_i)=\max_{1\lt j \lt s}F(P_j, C_i)\)<br/>
-\[F=\sum w_i F(C_i), w_i=|C_i|/n\]</p>
-
-<ul>
-<li>问题： 这个指标可能变化不是非常明显</li>
-</ul>
-
-<h2 id="toc_5">1.4基于数据对象的准召F</h2>
-
-<p><img src="media/15078603543147/15078731022919.jpg" alt=""/></p>
-
-<h2 id="toc_6">思考</h2>
+			<div class="article">
+                <a class="clearlink" href="15637037680741.html">
+                
+                  <h1>sublime</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>sublime除了具有基本的文本编辑功能之外，还可以安装很多package来扩展其强大的功能。这里罗列出一些工作中经常能用到的</p>
+
+<p><strong>安装install package</strong></p>
+
+<p>点击菜单中的 “View”–“Show Console”，调出console面板，然后到<a href="https://packagecontrol.io/installation#st3%E5%AE%98%E7%BD%91%E4%B8%8A%E7%9A%84%EF%BC%8C%E5%A4%8D%E5%88%B6%E5%87%BA%E4%BB%A3%E7%A0%81%E9%BB%8F%E8%B4%B4%E6%89%A7%E8%A1%8C">https://packagecontrol.io/installation#st3官网上的，复制出代码黏贴执行</a></p>
+
+<h2 id="toc_0">diff对比</h2>
+
+<h1 id="toc_1">Package Control Messages</h1>
+
+<h2 id="toc_2">Sublimerge 3</h2>
+
+<p>Sublimerge 3 (beta) has just been installed. Thanks for trying it out!</p>
+
+<p>It is highly recommended to restart Sublime Text before first use.</p>
+
+<hr/>
+
+<p>!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br/>
+  !!                                                                                                       !!<br/>
+  !!                NOTE: THIS IS A BETA VERSION. PLEASE REPORT ANY BUGS YOU MAY ENCOUNTER.                !!<br/>
+  !!                                                                                                       !!<br/>
+  !!                                                                                                       !!<br/>
+  !!     <a href="http://www.sublimerge.com/support.html">http://www.sublimerge.com/support.html</a>                                <a href="mailto:support@sublimerge.com">support@sublimerge.com</a>      !!<br/>
+  !!                                                                                                       !!<br/>
+  !!     Issue Tracker: <a href="https://bitbucket.org/borysforytarz/sublimerge-3/issues?status=new&amp;status=open">https://bitbucket.org/borysforytarz/sublimerge-3/issues?status=new&amp;status=open</a>     !!<br/>
+  !!                                                                                                       !!<br/>
+  !!                                                                                                       !!<br/>
+  !!                                                                                                       !!<br/>
+  !!     Please visit <a href="http://www.sublimerge.com/sm3/docs/">http://www.sublimerge.com/sm3/docs/</a> for more information.                            !!<br/>
+  !!                                                                                                       !!<br/>
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>
+
+<p>The first steps after installation<br/>
+  ==================================</p>
 
 <ol>
-<li>基于人工标注的方法中，认为人工标注的是准确的或者说结果是唯一的。实际上一堆sample可以有不同的分类方法，而且每种方法可能都是对的。
-<code>
-e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大学
-</code>
-如何进行标注，或者标注结果是非固定时候怎么衡量聚类效果的好坏？？</li>
+<li><p>By default Sublimerge&#39;s colors theme conforms to default Sublime Text theme. If you are using some<br/>
+ custom theme and find the colors poorly visible, you may need to change them.</p></li>
+<li><p>If you&#39;re on Windows and want to use VCS-related commands, you may need to configure the executable<br/>
+ path for your VCS. Linux and OS X users with non-standard VCS installation may need to configure this too.</p>
+
+<p>Please visit <a href="http://www.sublimerge.com/sm3/docs/configuration.html">http://www.sublimerge.com/sm3/docs/configuration.html</a> for more information about configuration.</p>
+
+<h1 id="toc_3">Simplified usage instructions</h1>
+
+<p>In file view:</p>
+
+<p>[ctrl]+[alt]+[d]                      - display Quick Panel with commands available for current view</p>
+
+<p>In diff view:</p>
+
+<p>Windows/Linux:</p>
+
+<p>[ctrl]+[down]                         - select next change<br/>
+  [ctrl]+[up]                           - select previous change</p>
+
+<ul>
+<li>[ctrl]+[left]                         - copy selected change (or active line) to left from right</li>
+<li><p>[ctrl]+[right]                        - copy selected change (or active line) to right from left<br/>
+[ctrl]+[shift]+[left]                 - copy all changes to left from right<br/>
+[ctrl]+[shift]+[right]                - copy all changes to right from left</p>
+
+<p>OSX:</p>
+
+<p>[alt]+[down]                          - select next change<br/>
+[alt]+[up]                            - select previous change</p></li>
+<li><p>[alt]+[left]                          - copy selected change (or active line) to left from right</p></li>
+<li><p>[alt]+[right]                         - copy selected change (or active line) to right from left<br/>
+[alt]+[shift]+[left]                  - copy all changes to left from right<br/>
+[alt]+[shift]+[right]                 - copy all changes to right from left</p>
+
+<p>Common:</p>
+
+<p>[f3]                                  - swap panels<br/>
+[f4]                                  - show changes navigator<br/>
+[f5]                                  - recompare buffers</p></li>
+<li><ul>
+<li>if change is selected the command will copy its whole contents, otherwise will copy only the focused line</li>
+</ul></li>
+</ul>
+
+<p>In directories diff view:</p>
+
+<p>[down]                              - select next file/directory<br/>
+  [up]                                - select previous file/directory<br/>
+  [left]                              - copy file/directory from right to left<br/>
+  [right]                             - copy file/directory from left to right<br/>
+  [enter]                             - enter sub directory / compare text files<br/>
+  [backspace]                         - enter parent directory</p>
+
+<p>Windows/Linux:</p>
+
+<p>[ctrl]+[down]                       - select next different file/directory<br/>
+  [ctrl]+[up]                         - select previous different file/directory</p>
+
+<p>OS X:</p>
+
+<p>[alt]+[down]                        - select next different file/directory<br/>
+  [alt]+[up]                          - select previous different file/directory</p>
+
+<p>For convenience Sublimerge also supports standard OS X keyboard shortcuts for directories navigation:</p>
+
+<p>[cmd]+[down]                        - enter sub directory / compare text files<br/>
+  [cmd]+[up]                          - enter parent directory</p>
+
+<h1 id="toc_4">End-User License Agreement (EULA)</h1></li>
+<li><p>LICENSES<br/>
+  SUBLIMERGE is licensed as follows:<br/>
+  a) Evaluation time.<br/>
+      You can evaluate SUBLIMERGE freely for 90 days. Later you will need to purchase<br/>
+      a license for continued use.<br/>
+  b) Installation and Usage.<br/>
+      Licenses are per user and valid for use on all supported operating systems.<br/>
+      License keys may be used on multiple computers and operating systems, provided<br/>
+      the license key holder is the primary user. Businesses must purchase at least<br/>
+      as many licenses as the number of people using SUBLIMERGE.<br/>
+  c) Backup Copies.<br/>
+      You may make copies of the license key and/or SUBLIMERGE for backup and archival<br/>
+      purposes.<br/>
+  d) Evaluation time.<br/>
+      You can evaluate SUBLIMERGE freely for 90 days. Later you will need to purchase<br/>
+      a license for continued use.</p></li>
+<li><p>ILLEGAL USAGE<br/>
+  Any illegal usage of SUBLIMERGE, including reverse engineering, using unauthorized license <br/>
+  keys, creating keygens and cracks is prohibited and will be subject for prosecution.</p></li>
+<li><p>DESCRIPTION OF OTHER RIGHTS AND LIMITATIONS<br/>
+  a) Maintenance of Copyright Notices.<br/>
+      You must not remove or alter any copyright notices on any copy of SUBLIMERGE.</p>
+
+<p>b) Distribution.<br/>
+      You may not distribute or sell license keys or SUBLIMERGE to third parties.<br/>
+      Licenses will be revoked if distributed or sold to third parties.</p>
+
+<p>c) Rental.<br/>
+      You may not rent, lease, or lend the license key or SUBLIMERGE.</p></li>
+<li><p>COPYRIGHT<br/>
+  All title, including but not limited to copyrights, in and to SUBLIMERGE and any copies<br/>
+  thereof are owned by BORYS FORYTARZ (AUTHOR).</p></li>
+<li><p>REFUND POLICY<br/>
+  Refunds are not available. Because of this, before purchasing a license, you can evaluate<br/>
+  SUBLIMERGE without any functionality limitations for 90 days. Later you will need to<br/>
+  purchase a license.</p></li>
+<li><p>NO WARRANTIES<br/>
+  AUTHOR expressly disclaims any warranty for SUBLIMERGE, which is provided<br/>
+  &#39;as is&#39; without any express or implied warranty of any kind, including but not limited<br/>
+  to any warranties of merchantability, non-infringement, or fitness of a particular<br/>
+  purpose.</p></li>
+<li><p>LIMITATION OF LIABILITY<br/>
+  In no event shall AUTHOR be liable for any damages due to use of SUBLIMERGE,<br/>
+  to the maximum extent permitted by law. This includes without limitation, lost profits,<br/>
+  business interruption, or lost information. In no event will AUTHOR be liable<br/>
+  for loss of data or for indirect, special, incidental, consequential (including lost<br/>
+  profit), or other damages. AUTHOR shall have no liability with respect to the<br/>
+  content of SUBLIMERGE or any part thereof, including but not limited to errors or<br/>
+  omissions contained therein, libel, trademark rights, business interruption, loss of<br/>
+  privacy or the disclosure of confidential information.</p>
+
+<h1 id="toc_5">More information</h1>
+
+<p>For more information, troubleshooting, customizing settings and more, please visit <a href="http://www.sublimerge.com">www.sublimerge.com</a></p>
+
+<h1 id="toc_6">By the way...</h1>
+
+<p>Take a break from your work and play my BF&#39;s Draughts on your iOS device!<br/>
+Available on the App Store! :)</p>
+
+<p><a href="http://www.bfdraughts.com/as/">http://www.bfdraughts.com/as/</a></p></li>
 </ol>
 
 <h2 id="toc_7">参考资料</h2>
 
-<p><a href="http://blog.csdn.net/itplus/article/details/10322361">http://blog.csdn.net/itplus/article/details/10322361</a></p>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20tools.html'>1 tools</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
-
-		</div>
-
-		
-
-	</article>
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037679781.html">
+                
+                  <h1>t-sne</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code>from sklearn.manifold import TSNE
+from sklearn.datasets import load_iris
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
  
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15384985356322.html">4.7 聚类1</a></h1>
-			<p class="meta"><time datetime="2018-10-03T00:42:15+08:00" 
-			pubdate data-updated="true">2018/10/3</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p>聚类分析（cluster analysis）是属于无监督学习，他的目的是去探索数据隐含的规律。其基本思想是基于相似度/距离远近来将样本进行聚类。</p>
+ 
+ 
+data=pd.read_csv(&#39;test.data&#39;, sep=&#39;,&#39;,header=None)
+dd= data[range(200)]
 
-<h2 id="toc_0">1.距离的度量方法</h2>
+X_tsne = TSNE().fit_transform(dd)
+X_pca = PCA().fit_transform(dd)
 
-<p>常见的聚类方法：</p>
+out = DataFrame(np.hstack((X_tsne, X_pca)))
 
-<table>
-<thead>
-<tr>
-<th>方法类别</th>
-<th>聚类方法</th>
-<th>优缺点</th>
-</tr>
-</thead>
+out2=data[200])
 
-<tbody>
-<tr>
-<td>基于距离</td>
-<td>Kmeans</td>
-<td></td>
-</tr>
-<tr>
-<td>基于密度</td>
-<td>Dbscan</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+out.to_csv(&#39;save_data.csv&#39;)
+
+
+plt.figure(figsize=(10, 5))
+plt.subplot(121)
+plt.scatter(X_tsne[:, 0], X_tsne[:, 1],c=data[200])
+plt.subplot(122)
+#plt.scatter(X_pca[:, 0], X_pca[:, 1], c=iris.target)
+plt.scatter(X_pca[:, 0], X_pca[:, 1], c=data[200])
+</code></pre>
+
+<p>R<br/>
+```</p>
+
+<pre><code>
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637025344879.html">
+                
+                  <h1>xgboost</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><a href="http://xgboost.readthedocs.io/en/latest/python/python_intro.html">http://xgboost.readthedocs.io/en/latest/python/python_intro.html</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637025344767.html">
+                
+                  <h1>【NG-DL】course2_week1 优化网络参数</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">1.基本概念</h2>
+
+<p>很多优化参数：<br/>
+网络层数，隐层数，学习率，激活函数。。。</p>
 
 <ul>
-<li>kmeans</li>
+<li><p>训练集/验证集/测试集</p></li>
+<li><p>偏差， 训练集误差</p></li>
+<li><p>方差</p></li>
 </ul>
 
-<p>选择初始种子</p>
+<p>若有高bias： 尝试新的网络，更大网络</p>
 
-<p>从概率角度看，k均值算法是高斯混合模型的一种特例</p>
+<p>高方差： 获取更多数据，或者正则化，更合适的网络机构</p>
+
+<p>bias和varaince的平衡<br/>
+一般来说更大的网络能减小偏差，更多的数据能减小方差。</p>
+
+<h2 id="toc_1">2.正则化-L2</h2>
+
+<p>以逻辑回归为例</p>
+
+<p>\(J(w,b)=\frac{1}{m}\sum L(\hat y_i, y_i)+\frac{\lambda}{2m}|w|^2_2\)L2惩罚，避免过拟合，导致高方差</p>
+
+<p>类似的神经网络在优化函数上加上</p>
+
+<p>\(J(w^{[1]},b^{[1]},...w^{[l]},b^{[l]})=\frac{1}{m}\sum L(\hat y_i, y_i)+\frac{\lambda}{2m}\sum||w^{[l]}||^2_2\)</p>
+
+<p>其中\(|w^{[l]}|^2\)F范数</p>
 
 <ul>
-<li>基于密度的聚类 DBSCAN</li>
+<li>Ng.当\(\lambda\)较大时候,w会较小，sigmoid接近线性，降低方差。
+<img src="media/15055593941505/15103891828021.jpg" alt=""/></li>
 </ul>
 
+<h3 id="toc_2">正则化-dropout(随机失活)</h3>
 
+<p>每次对网络中的节点设置一个随机消失的概率p，即每个节点可能在也可能不在网络中，不在的时候即相当于该节点的数值置为0.</p>
+
+<p>dropout与l2类似都会shrink权重。</p>
+
+<h3 id="toc_3">early stoping</h3>
+
+<h2 id="toc_4">3.优化</h2>
+
+<h3 id="toc_5">归一化</h3>
+
+<p>归一化输入=&gt; 均值0，方差1<br/>
+* 零均值化<br/>
+* 归一化方差</p>
+
+<p><img src="media/15055593941505/15103915636569.jpg" alt=""/></p>
+
+<h3 id="toc_6">梯度消失与梯度爆炸</h3>
+
+<p>当梯度增长很大或者很微弱时，会导致优化出问题或者很慢。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637025345757.html">
+                
+                  <h1>【Tensorflow】week2 Introduction to Computer Vision</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>前面说的hello word的例子，输入输出比较简单，这里考虑稍微复杂一点的情况—— 输入数据是图像</p>
+
+<p>人类看到下面的图像之后，能很清楚的分辨出哪个是裤子，哪个是鞋子，那么计算机要怎么分辨呢？</p>
+
+<p><img src="media/15596648844646/15600952203749.jpg" alt=""/></p>
+
+<h2 id="toc_0">1 fashion-mnist数据集介绍</h2>
+
+<p>图像数据集 <br/>
+<a href="https://github.com/zalandoresearch/fashion-mnist">https://github.com/zalandoresearch/fashion-mnist</a></p>
+
+<p>这个数据集是MNIST dataset——手写识别数字的的数据集的一个替换集合。数据格式上和手写识别数字的数据一样。</p>
+
+<pre><code>import tensorflow as tf
+import numpy as np
+from tensorflow import keras
+
+model = tf.keras.Sequential([
+keras.layers.Dense(units=1, input_shape=[1])])
+
+
+
+model.compile(optimizer=&#39;sgd&#39;, loss=&#39;mean_squared_error&#39;)
+xs = np.array([1,2,3,4,5,6,7], dtype=float)
+ys = np.array([100, 150, 200,250, 300,350, 400], dtype=float)
+model.fit(xs, ys, epochs=500)
+print(model.predict([7.0]))
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
+
+
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   <a href="all_5.html">&laquo; Prev Page</a>  
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			 <a href="all_7.html">&raquo; Next Page</a> 
+			</p>
+			  </div>
+			</div>
 		</div>
+	</div><!-- large 8 -->
 
-		
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>zhenzhen学习笔记</h1>
+                <div class="site-des"></div>
+                <div class="social">
 
-	</article>
-  
-	<div class="pagination">
-	 <a class="prev" href="all_7.html">&larr; Older</a> 
-<a href="archives.html">Blog Archives</a>
-	 <a class="next" href="all_5.html">Newer &rarr;</a>  
-	    
-	</div>
+
+
+
+
+
+
+
+
+<a target="_blank" class="github" target="_blank" href="tjzzz.github.io" title="GitHub">GitHub</a>
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="1%20tools.html"><strong>1 tools</strong></a>
+        
+            <a href="2%20get%20data.html"><strong>2 get data</strong></a>
+        
+            <a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html"><strong>3 数据可视化</strong></a>
+        
+            <a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 统计方法</strong></a>
+        
+            <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习</strong></a>
+        
+            <a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统</strong></a>
+        
+            <a href="6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html"><strong>6 文本&视频</strong></a>
+        
+            <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习</strong></a>
+        
+            <a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>10 比赛学习</strong></a>
+        
+            <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15637036455584.html">1 估计的置信度</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637025344954.html">1 安装-mac</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637025346225.html">2 不同设计之间有统计学差异吗</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637036605080.html">3 样本量的确定</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637037691936.html">3.1 特征处理—— 特征选择</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
 </div>
- <aside class="sidebar"> 
 
-	<section>
-	  <h1>Categories</h1>
-	  <ul id="recent_posts">
-	  
-	      <li class="post">
-	        <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单&nbsp;(4)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="1%20Tools.html"><strong>1 Tools&nbsp;(33)</strong></a>
-	         <p class="cat-children-p"> 
-	        
-	        	<a href="%E9%85%B7%E7%82%AB%E7%A5%9E%E5%99%A8.html">酷炫神器&nbsp;(12)</a>&nbsp;&nbsp;
-	        
-	        	<a href="PaddlePaddle.html">PaddlePaddle&nbsp;(3)</a>&nbsp;&nbsp;
-	        
-	        	<a href="spark.html">spark&nbsp;(12)</a>&nbsp;&nbsp;
-	        
-	        	<a href="tensorflow.html">tensorflow&nbsp;(2)</a>&nbsp;&nbsp;
-	        
-	        	<a href="SQL.html">SQL&nbsp;(1)</a>&nbsp;&nbsp;
-	        
-	         </p> 
-	      </li>
-	  
-	      <li class="post">
-	        <a href="2%20Get%20Data.html"><strong>2 Get Data&nbsp;(1)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html"><strong>3 数据可视化&nbsp;(8)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(9)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习&nbsp;(23)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统&nbsp;(3)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="6%20%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86.html"><strong>6 图像处理&nbsp;(4)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="6%20%E6%90%9C%E7%B4%A2.html"><strong>6 搜索&nbsp;(1)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="6%20nlp.html"><strong>6 nlp&nbsp;(1)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(12)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="8%20Ai%E5%BA%94%E7%94%A8.html"><strong>8 Ai应用&nbsp;(1)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="10%20leetcode.html"><strong>10 leetcode&nbsp;(5)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="%E8%AE%B8%E5%BC%8F%E4%BC%9F-%E6%9E%B6%E6%9E%84%E8%AF%BE.html"><strong>许式伟-架构课&nbsp;(1)</strong></a>
-	        
-	        
-	        
-	      </li>
-	   
-	  </ul>
-	</section>
-	<section>
-	  <h1>Recent Posts</h1>
-	  <ul id="recent_posts">
-	  
-	      
-		      <li class="post">
-		        <a href="15636927966003.html">随机数</a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="15633781017095.html"></a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="15633691538884.html">3. 样本量的确定？</a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="15633655285542.html">卡方检验</a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="15632757602829.html">3. 假设检验的power</a>
-		      </li>
-	     
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	   
-	  </ul>
-	</section>
-	
-</aside> </div></div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2014 -  -
-  <span class="credit">Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a> &nbsp;&nbsp; Theme by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
+        </section>
+      </div>
+    </div>
 
   
     
 
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
 
+    
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
 
-</body>
+
+  </body>
 </html>

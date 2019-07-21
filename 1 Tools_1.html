@@ -1,688 +1,507 @@
-
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
     
-  1 Tools - 学习笔记
+  1 tools - zhenzhen学习笔记
   
-
   </title>
-  <meta name="author" content="">
-  <meta name="description" content="">
-
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <link href="asset/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="atom.xml" rel="alternate" title="学习笔记" type="application/atom+xml">
-  <script src="asset/js/modernizr-2.0.js"></script>
-  <script src="asset/js/jquery.min.js"></script>
+  
+  <link href="atom.xml" rel="alternate" title="zhenzhen学习笔记" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
   <script src="asset/highlightjs/highlight.pack.js"></script>
-  <link href="asset/highlightjs/styles/solarized_light.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script>hljs.initHighlightingOnLoad();</script>
-
-  <style type="text/css">
-  .cat-children-p{ padding: 6px 0px;}
-  .hljs{background: none;}
-  </style>
-  <script type="text/javascript">
-  var isAddSildbar = true;
-  </script>
-  <script src="asset/js/octopress.js" type="text/javascript"></script>
-</head>
 <script type="text/javascript">
-//链接新开窗口
-function addBlankTargetForLinks () {
-  $('a[href^="http"]').each(function(){
-      $(this).attr('target', '_blank');
-  });
-}
-$(document).ready(function(event) {
-  addBlankTargetForLinks();
-});
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
 </script>
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="index.html">学习笔记</a></h1>
-  
-    <h2></h2>
-  
-</hgroup>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
 
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li id=""><a target="_self" href="about_me.html">aboutme</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
 </form>
-  
-<ul class="main-navigation">
-
-  <li id=""><a target="self" href="index.html">Home</a></li>
-
-  <li id=""><a target="_self" href="archives.html">Archives</a></li>
-
-</ul>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
 
 </nav>
-  <div id="main">
-    <div id="content"> 
-<div class="blog-index">
 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15442821903932.html">1 安装-mac</a></h1>
-			<p class="meta"><time datetime="2018-12-08T23:16:30+08:00" 
-			pubdate data-updated="true">2018/12/8</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p><strong>安装准备</strong></p>
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; zhenzhen学习笔记</span>
+  </a>
+</nav>
 
-<p>(1) 安装jdk8</p>
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li><a target="_self" href="about_me.html">aboutme</a></li>
+        
 
-<p>官网下载， 这个好像比较慢<a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a></p>
+    <li><label>Categories</label></li>
 
-<p>我把下载好的放到了百度网盘上: <a href="https://pan.baidu.com/s/1fpiSse78YObfalSerql4Zw">https://pan.baidu.com/s/1fpiSse78YObfalSerql4Zw</a> 提取码: t6q3</p>
+        
+            <li><a href="1%20tools.html">1 tools</a></li>
+        
+            <li><a href="2%20get%20data.html">2 get data</a></li>
+        
+            <li><a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html">3 数据可视化</a></li>
+        
+            <li><a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html">4 统计方法</a></li>
+        
+            <li><a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html">5 机器学习</a></li>
+        
+            <li><a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html">6 推荐系统</a></li>
+        
+            <li><a href="6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html">6 文本&视频</a></li>
+        
+            <li><a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">7 深度学习</a></li>
+        
+            <li><a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">10 比赛学习</a></li>
+        
+            <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
+         
 
-<pre><code>vim ~/.bash_profile
-## 添加如下环境变量信息
-export JAVA_HOME=&quot;/Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home/&quot;
-export PATH=&quot;$JAVA_HOME/bin:$PATH&quot;
-</code></pre>
+      </ul>
+    </aside>
 
-<p>(2) 官网下载 <a href="http://mirror.bit.edu.cn/apache/spark/spark-2.4.0/spark-2.4.0-bin-hadoop2.7.tgz">http://mirror.bit.edu.cn/apache/spark/spark-2.4.0/spark-2.4.0-bin-hadoop2.7.tgz</a><br/>
-或者 <code>brew install apache-spark</code></p>
-
-<p>然后将文件解压到想要放到的目录，我这里是/Users/zhengzhenzhen/ 为例方便版本管理以及后续使用，可以创建一个软链</p>
-
-<pre><code>ln -s /Users/zhengzhenzhen/spark-2.4.0-bin-hadoop2.7 /Users/zhengzhenzhen/spark
-</code></pre>
-
-<p>（3） </p>
-
-<pre><code>pip install pyspark
-</code></pre>
-
-<p><strong>使用jupyter nootbook</strong></p>
-
-<p>在jupyter notebook中使用pyspark，需要配置环境变量</p>
-
-<pre><code># 基于python的版本
-export PYSPARK_DRIVER_PYTHON=jupyter
-export PYSPARK_DRIVER_PYTHON_OPTS=&#39;notebook&#39;
-</code></pre>
-
-<h2 id="toc_0">参考资料</h2>
-
-<p><a href="https://www.jianshu.com/p/f284b77289ca">https://www.jianshu.com/p/f284b77289ca</a></p>
-
-<p><a href="https://www.jianshu.com/p/cc83d047383d">https://www.jianshu.com/p/cc83d047383d</a></p>
+<a class="exit-off-canvas" href="#"></a>
 
 
-		</div>
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
 
+ <script type="text/javascript">
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
+</script>
+<div class="row">
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15637037683461.html">
+                
+                  <h1>工欲善其事必先利其器——Jupyter notebook</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>类似于r的markdown</p>
 
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15417735380783.html">任务迁移</a></h1>
-			<p class="meta"><time datetime="2018-11-09T22:25:38+08:00" 
-			pubdate data-updated="true">2018/11/9</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p><a href="http://wiki.baidu.com/pages/viewpage.action?pageId=496903743">http://wiki.baidu.com/pages/viewpage.action?pageId=496903743</a></p>
+<p>GitHub 上也直接支持 Jupyter notebook 的渲染。借助此出色的功能，你可以轻松地共享工作。<a href="http://nbviewer.jupyter.org/">http://nbviewer.jupyter.org/</a> 也会提供 GitHub 代码库中的 notebook ，以及存储在其他地方的 notebook。</p>
 
-<p><a href="http://wiki.baidu.com/display/SPRK/Tutorial+for+Spark-baidu">http://wiki.baidu.com/display/SPRK/Tutorial+for+Spark-baidu</a></p>
+<p>名称 Jupyter 由 Julia、Python 和 R 组合而成，早期的两个非 Python 内核分别是 R 语言和 Julia 语言</p>
 
-<h2 id="toc_0">庆城</h2>
-
-<p>17年的spark资源已经到位，kce组2台机器，1095核，216549M内存，存储51.2T，队列为spark-ubs-kce, 客户端拉取地址：<br/>
-wget <a href="ftp://cp01-ubskce25.epc.baidu.com/home/work/spark-client-tianqi-2.1.tar.gz">ftp://cp01-ubskce25.epc.baidu.com/home/work/spark-client-tianqi-2.1.tar.gz</a><br/><br/>
-百度spark wiki地址：<a href="http://wiki.baidu.com/display/SPRK/Baidu+Spark">http://wiki.baidu.com/display/SPRK/Baidu+Spark</a><br/>
-提交任务命令示例：./spark-client-tianqi-2.1/bin/spark-submit --master yarn --deploy-mode client --queue spark-ubs-kce ./test.py<br/>
-任务进度查看页面：<a href="http://yq01-tianqi-normandy.dmop.baidu.com:8033/queue.html?queue=spark-ubs-kce&amp;physical=tianqi-yarn_phy">http://yq01-tianqi-normandy.dmop.baidu.com:8033/queue.html?queue=spark-ubs-kce&amp;physical=tianqi-yarn_phy</a><br/>
-欢迎各位试用，谢谢！</p>
-
-<h2 id="toc_1">1.pyspark 读取udw表</h2>
-
-<pre><code class="language-{python}">spark = SparkSession.builder.appName(&quot;video_test_&quot; + day).getOrCreate()
-video_session_sql = &quot;select event_time, event_cookie, event_urlparams, event_query,  event_others, wisepsdisplay_qid, wisepsdisplay_pn,  wisepsdisplay_tn, &quot; + \
-        &quot; wisepsdisplay_displayresult, wisepsdisplay_sampletags, clk_detail, media_time, event_browser, event_os, &quot; + \
-        &quot; event_os_version, event_pd, event_cuid, anti_spam, event_day &quot; + \
-        &quot; from ud_ml_sf_merge_data where event_day= &quot; + day + &quot; limit 100&quot;
-
-video_session = spark.sql(video_session_sql)
-</code></pre>
-
-<p>video_session是一个dataframe，可以直接取出里面的相关字段做特征提取</p>
-
-<h2 id="toc_2">2.特征提取</h2>
-
-<p>通过map函数对每条记录进行特征提取</p>
-
-<pre><code>def parser_record(row):
-    # do something
-    
-    # 返回key，value形式
-    return (key, value)
-    
-    
-video_session.rdd.map(parser_record)
-</code></pre>
-
-<h2 id="toc_3">合并汇总</h2>
-
-<p>假设map输出格式是 (key, [1,2,3]), 下面对相同的key的list中的指标值进行累加</p>
-
-<pre><code>video_session.rdd.map(simple_test).reduceByKey(lambda x,y : x + y)   # 单个值的累加
-video_session.rdd.map(simple_test).reduceByKey(lambda x,y : [x[i] + y[i] for i in range(len(x))])
-</code></pre>
-
-
-		</div>
-
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15415917511283.html">安装类</a></h1>
-			<p class="meta"><time datetime="2018-11-07T19:55:51+08:00" 
-			pubdate data-updated="true">2018/11/7</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<h2 id="toc_0">测试机安装php</h2>
-
-<p>切换到root用户</p>
-
-<pre><code>yum install php
-</code></pre>
-
-<p>直接执行label的抓取报错，摸索了下还需要安装<code>yum install php-soap -y</code></p>
-
-<p><code>php -m</code> 能查看安装了哪些模块</p>
-
-
-		</div>
-
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15394167484934.html">sublime</a></h1>
-			<p class="meta"><time datetime="2018-10-13T15:45:48+08:00" 
-			pubdate data-updated="true">2018/10/13</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p>sublime除了具有基本的文本编辑功能之外，还可以安装很多package来扩展其强大的功能。这里罗列出一些工作中经常能用到的</p>
-
-<p><strong>安装install package</strong></p>
-
-<p>点击菜单中的 “View”–“Show Console”，调出console面板，然后到<a href="https://packagecontrol.io/installation#st3%E5%AE%98%E7%BD%91%E4%B8%8A%E7%9A%84%EF%BC%8C%E5%A4%8D%E5%88%B6%E5%87%BA%E4%BB%A3%E7%A0%81%E9%BB%8F%E8%B4%B4%E6%89%A7%E8%A1%8C">https://packagecontrol.io/installation#st3官网上的，复制出代码黏贴执行</a></p>
-
-<h2 id="toc_0">diff对比</h2>
-
-<h1 id="toc_1">Package Control Messages</h1>
-
-<h2 id="toc_2">Sublimerge 3</h2>
-
-<p>Sublimerge 3 (beta) has just been installed. Thanks for trying it out!</p>
-
-<p>It is highly recommended to restart Sublime Text before first use.</p>
-
-<hr/>
-
-<p>!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br/>
-  !!                                                                                                       !!<br/>
-  !!                NOTE: THIS IS A BETA VERSION. PLEASE REPORT ANY BUGS YOU MAY ENCOUNTER.                !!<br/>
-  !!                                                                                                       !!<br/>
-  !!                                                                                                       !!<br/>
-  !!     <a href="http://www.sublimerge.com/support.html">http://www.sublimerge.com/support.html</a>                                <a href="mailto:support@sublimerge.com">support@sublimerge.com</a>      !!<br/>
-  !!                                                                                                       !!<br/>
-  !!     Issue Tracker: <a href="https://bitbucket.org/borysforytarz/sublimerge-3/issues?status=new&amp;status=open">https://bitbucket.org/borysforytarz/sublimerge-3/issues?status=new&amp;status=open</a>     !!<br/>
-  !!                                                                                                       !!<br/>
-  !!                                                                                                       !!<br/>
-  !!                                                                                                       !!<br/>
-  !!     Please visit <a href="http://www.sublimerge.com/sm3/docs/">http://www.sublimerge.com/sm3/docs/</a> for more information.                            !!<br/>
-  !!                                                                                                       !!<br/>
-  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>
-
-<p>The first steps after installation<br/>
-  ==================================</p>
-
-<ol>
-<li><p>By default Sublimerge&#39;s colors theme conforms to default Sublime Text theme. If you are using some<br/>
- custom theme and find the colors poorly visible, you may need to change them.</p></li>
-<li><p>If you&#39;re on Windows and want to use VCS-related commands, you may need to configure the executable<br/>
- path for your VCS. Linux and OS X users with non-standard VCS installation may need to configure this too.</p>
-
-<p>Please visit <a href="http://www.sublimerge.com/sm3/docs/configuration.html">http://www.sublimerge.com/sm3/docs/configuration.html</a> for more information about configuration.</p>
-
-<h1 id="toc_3">Simplified usage instructions</h1>
-
-<p>In file view:</p>
-
-<p>[ctrl]+[alt]+[d]                      - display Quick Panel with commands available for current view</p>
-
-<p>In diff view:</p>
-
-<p>Windows/Linux:</p>
-
-<p>[ctrl]+[down]                         - select next change<br/>
-  [ctrl]+[up]                           - select previous change</p>
+<h2 id="toc_0">1.安装</h2>
 
 <ul>
-<li>[ctrl]+[left]                         - copy selected change (or active line) to left from right</li>
-<li><p>[ctrl]+[right]                        - copy selected change (or active line) to right from left<br/>
-[ctrl]+[shift]+[left]                 - copy all changes to left from right<br/>
-[ctrl]+[shift]+[right]                - copy all changes to right from left</p>
-
-<p>OSX:</p>
-
-<p>[alt]+[down]                          - select next change<br/>
-[alt]+[up]                            - select previous change</p></li>
-<li><p>[alt]+[left]                          - copy selected change (or active line) to left from right</p></li>
-<li><p>[alt]+[right]                         - copy selected change (or active line) to right from left<br/>
-[alt]+[shift]+[left]                  - copy all changes to left from right<br/>
-[alt]+[shift]+[right]                 - copy all changes to right from left</p>
-
-<p>Common:</p>
-
-<p>[f3]                                  - swap panels<br/>
-[f4]                                  - show changes navigator<br/>
-[f5]                                  - recompare buffers</p></li>
-<li><ul>
-<li>if change is selected the command will copy its whole contents, otherwise will copy only the focused line</li>
-</ul></li>
+<li>如果安装anaconda 会自带</li>
+<li>通过conda环境安装 <code>conda install jupyter notebook</code>，或者<code>pip install jupyter notebook</code></li>
 </ul>
 
-<p>In directories diff view:</p>
+<pre><code># 启动
+jupyter notebook
+</code></pre>
 
-<p>[down]                              - select next file/directory<br/>
-  [up]                                - select previous file/directory<br/>
-  [left]                              - copy file/directory from right to left<br/>
-  [right]                             - copy file/directory from left to right<br/>
-  [enter]                             - enter sub directory / compare text files<br/>
-  [backspace]                         - enter parent directory</p>
+<p>快捷键</p>
 
-<p>Windows/Linux:</p>
+<p><img src="media/15017829276727/15018110676261.jpg" alt=""/></p>
 
-<p>[ctrl]+[down]                       - select next different file/directory<br/>
-  [ctrl]+[up]                         - select previous different file/directory</p>
+<p>m 切换至markdown<br/>
+y 切换至单元格</p>
 
-<p>OS X:</p>
+<h2 id="toc_1">magic 关键字</h2>
 
-<p>[alt]+[down]                        - select next different file/directory<br/>
-  [alt]+[up]                          - select previous different file/directory</p>
+<p>Magic 关键字是可以在单元格中运行的特殊命令，能让你控制notebook 本身或执行系统调用（例如更改目录）</p>
 
-<p>For convenience Sublimerge also supports standard OS X keyboard shortcuts for directories navigation:</p>
+<p>Magic 命令的前面带有一个或两个百分号（% 或 %%），分别对应行 Magic 命令和单元格 Magic 命令。行 Magic 命令仅应用于编写 Magic 命令时所在的行，而单元格 Magic 命令应用于整个单元格。</p>
 
-<p>[cmd]+[down]                        - enter sub directory / compare text files<br/>
-  [cmd]+[up]                          - enter parent directory</p>
+<p>对于 Python 内核，可以使用 Magic 命令 %pdb 开启交互式调试器。出错时，你能检查当前命名空间中的变量。</p>
 
-<h1 id="toc_4">End-User License Agreement (EULA)</h1></li>
-<li><p>LICENSES<br/>
-  SUBLIMERGE is licensed as follows:<br/>
-  a) Evaluation time.<br/>
-      You can evaluate SUBLIMERGE freely for 90 days. Later you will need to purchase<br/>
-      a license for continued use.<br/>
-  b) Installation and Usage.<br/>
-      Licenses are per user and valid for use on all supported operating systems.<br/>
-      License keys may be used on multiple computers and operating systems, provided<br/>
-      the license key holder is the primary user. Businesses must purchase at least<br/>
-      as many licenses as the number of people using SUBLIMERGE.<br/>
-  c) Backup Copies.<br/>
-      You may make copies of the license key and/or SUBLIMERGE for backup and archival<br/>
-      purposes.<br/>
-  d) Evaluation time.<br/>
-      You can evaluate SUBLIMERGE freely for 90 days. Later you will need to purchase<br/>
-      a license for continued use.</p></li>
-<li><p>ILLEGAL USAGE<br/>
-  Any illegal usage of SUBLIMERGE, including reverse engineering, using unauthorized license <br/>
-  keys, creating keygens and cracks is prohibited and will be subject for prosecution.</p></li>
-<li><p>DESCRIPTION OF OTHER RIGHTS AND LIMITATIONS<br/>
-  a) Maintenance of Copyright Notices.<br/>
-      You must not remove or alter any copyright notices on any copy of SUBLIMERGE.</p>
+<h2 id="toc_2">转换 notebook</h2>
 
-<p>b) Distribution.<br/>
-      You may not distribute or sell license keys or SUBLIMERGE to third parties.<br/>
-      Licenses will be revoked if distributed or sold to third parties.</p>
+<p>Notebook 只是扩展名为 .ipynb 的大型 JSON 文件。</p>
 
-<p>c) Rental.<br/>
-      You may not rent, lease, or lend the license key or SUBLIMERGE.</p></li>
-<li><p>COPYRIGHT<br/>
-  All title, including but not limited to copyrights, in and to SUBLIMERGE and any copies<br/>
-  thereof are owned by BORYS FORYTARZ (AUTHOR).</p></li>
-<li><p>REFUND POLICY<br/>
-  Refunds are not available. Because of this, before purchasing a license, you can evaluate<br/>
-  SUBLIMERGE without any functionality limitations for 90 days. Later you will need to<br/>
-  purchase a license.</p></li>
-<li><p>NO WARRANTIES<br/>
-  AUTHOR expressly disclaims any warranty for SUBLIMERGE, which is provided<br/>
-  &#39;as is&#39; without any express or implied warranty of any kind, including but not limited<br/>
-  to any warranties of merchantability, non-infringement, or fitness of a particular<br/>
-  purpose.</p></li>
-<li><p>LIMITATION OF LIABILITY<br/>
-  In no event shall AUTHOR be liable for any damages due to use of SUBLIMERGE,<br/>
-  to the maximum extent permitted by law. This includes without limitation, lost profits,<br/>
-  business interruption, or lost information. In no event will AUTHOR be liable<br/>
-  for loss of data or for indirect, special, incidental, consequential (including lost<br/>
-  profit), or other damages. AUTHOR shall have no liability with respect to the<br/>
-  content of SUBLIMERGE or any part thereof, including but not limited to errors or<br/>
-  omissions contained therein, libel, trademark rights, business interruption, loss of<br/>
-  privacy or the disclosure of confidential information.</p>
+<p>转换格式的命令 <code>nbconvert</code></p>
 
-<h1 id="toc_5">More information</h1>
+<pre><code>jupyter nbconvert --to html notebook.ipynb   #转成html
+jupyter nbconvert --to markdown xxx.ipynb 
+</code></pre>
 
-<p>For more information, troubleshooting, customizing settings and more, please visit <a href="http://www.sublimerge.com">www.sublimerge.com</a></p>
+<p>目前支持的转换格式(<a href="https://nbconvert.readthedocs.io/en/latest/usage.html">https://nbconvert.readthedocs.io/en/latest/usage.html</a>)<br/>
+HTML,<br/>
+LaTeX,<br/>
+PDF,<br/>
+Reveal.js HTML slideshow,<br/>
+Markdown,<br/>
+reStructuredText,<br/>
+executable script,<br/>
+notebook.</p>
 
-<h1 id="toc_6">By the way...</h1>
+<p><strong>创建幻灯片</strong></p>
 
-<p>Take a break from your work and play my BF&#39;s Draughts on your iOS device!<br/>
-Available on the App Store! :)</p>
+<p>在 notebook 中创建幻灯片的过程像平常一样，但需要指定作为幻灯片的单元格和单元格的幻灯片类型。在菜单栏中，点击“View”（视图）&gt;“Cell Toolbar”（单元格工具栏）&gt;“Slideshow”（幻灯片），以便在每个单元格上弹出幻灯片单元格菜单。</p>
 
-<p><a href="http://www.bfdraughts.com/as/">http://www.bfdraughts.com/as/</a></p></li>
-</ol>
+<pre><code>#转换并在浏览器中展示
+jupyter nbconvert notebook.ipynb --to slides --post serve
+</code></pre>
 
-<h2 id="toc_7">参考资料</h2>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20tools.html'>1 tools</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637025346412.html">
+                
+                  <h1>工欲善其事必先利其器——conda</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ul>
+<li>包管理</li>
+</ul>
+
+<p>Anaconda 安装，conda包管理器与pip类似，不同之处是可用的包以数据科学包为主，而 pip 适合一般用途。它也可以安装非 Python 的包。它是支持任何软件的包管理器。</p>
+
+<ul>
+<li>虚拟环境管理器</li>
+</ul>
+
+<p>它类似于另外两个很流行的环境管理器，即 virtualenv 和 pyenv</p>
+
+<p>脚本和程序使用的默认 Python 是 Anaconda 附带的 Python。</p>
+
+<h2 id="toc_0">包管理-常用命令</h2>
+
+<pre><code>conda list  #查看安装的内容
+conda upgrade --all   #初次下载安装好后，建议更新所有包
+</code></pre>
+
+<p>安装包</p>
+
+<pre><code>conda install package
+conda install numpy=1.10   #指定包的版本
+
+conda remove package
+conda upgrade --all
+</code></pre>
+
+<pre><code>模糊查询相关包
+conda search search_term
+</code></pre>
+
+<h2 id="toc_1">环境管理</h2>
+
+<p>默认的环境名字叫base(我的电脑上是)</p>
+
+<p>通过<code>conda env list</code>可以列出你创建的所有环境</p>
+
+<pre><code>#创建环境
+conda create -n env_name list of packages
+eg. conda create -n my_env numpy
+
+conda create -n py3 python=3
+conda create -n py2 python=2
+
+#进入环境
+source activate my_env
+#离开环境
+source deactivate
+
+# 删除环境
+conda env remove -n env_name
+</code></pre>
+
+<h2 id="toc_2">其他</h2>
+
+<p>共享环境：将自己的工作环境保存下来给别人共享</p>
+
+<pre><code>#进入到你的环境中
+source activate base
+conda env export &gt; environment.yaml
+
+# 通过环境文件创建环境
+conda env create -f environment.yaml
+</code></pre>
+
+<p>练习<br/>
+conda create -n myenv python=2</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20tools.html'>1 tools</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
 
 
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   <a href="1 tools.html">&laquo; Prev Page</a>  
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			
+			</p>
+			  </div>
+			</div>
 		</div>
+	</div><!-- large 8 -->
 
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15394116175346.html">git</a></h1>
-			<p class="meta"><time datetime="2018-10-13T14:20:17+08:00" 
-			pubdate data-updated="true">2018/10/13</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p>git log<br/>
-git reset --hard xxxxx</p>
-
-<p>查看本地与云端的diff</p>
-
-<p>git rm —cache  删除已经提交的内容</p>
-
-<p>（1）生成公钥<br/>
-ssh-keygen -t rsa -f ~/.ssh/id_rsa.zhenzhen<br/>
-cat ~/.ssh/id_rsa.zhenzhen.pub 保存到icode上<br/>
-chmod 644 ~/.ssh/config<br/>
-vim ~/.ssh/config<br/>
-添加下自己的配置<br/>
-Host icode.baidu.com<br/>
-User yangyang22<br/>
-IdentityFile ~/.ssh/id_rsa.yangyang22<br/>
-（2）clone<br/>
-git clone  xxxxx代码库<br/>
-git config --local user.email <a href="mailto:zhengzhenzhen@baidu.com">zhengzhenzhen@baidu.com</a><br/>
-git config --local user.name zhengzhenzhen</p>
-
-<p>git push origin master:refs/for/master<br/>
-（3）上传文件<br/>
-git add xxx<br/>
-git commit -m &#39;注释&#39;<br/>
-git push origin HEAD:refs/for/master</p>
-
-<p>我不知道”undo”是什么意思。您可以删除core.excludesfile设置，如下所示：<br/>
-git config --global --unset core.excludesfile<br/>
-当然你也可以简单地编辑配置文件：<br/>
-git config --global --edit<br/>
-…然后手动删除设置。</p>
-
-<p>git config --global --edit</p>
-
-<h1 id="toc_0">!/usr/bin/env python</h1>
-
-<h1 id="toc_1">-<em>- coding: utf-8 -</em>-</h1>
-
-<h1 id="toc_2">Copyright (c) 2017 Baidu.com, Inc. All Rights Reserved</h1>
-
-<p>&quot;&quot;&quot;<br/>
-File: dau.py<br/>
-Author: work(<a href="mailto:work@baidu.com">work@baidu.com</a>)<br/>
-Date: 2017/07/13 11:07:20<br/>
-Description: 计算官方号维度的dau<br/>
-             用户访问了已经关注过的官方号主页，IM页，设置页和文章落地页<br/>
-             其中主页访问从wiseps_click里拿<br/>
-             IM页和设置页从ubc日志里拿<br/>
-             文章落地页从搜索点击日志以及wiseps_click日志里拿<br/>
-&quot;&quot;&quot;</p>
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>zhenzhen学习笔记</h1>
+                <div class="site-des"></div>
+                <div class="social">
 
 
-		</div>
 
-		
 
-	</article>
-  
-	<div class="pagination">
-	 <a class="prev" href="1 Tools_2.html">&larr; Older</a> 
-<a href="archives.html">Blog Archives</a>
-	 <a class="next" href="1 Tools.html">Newer &rarr;</a>  
-	    
-	</div>
+
+
+
+
+
+<a target="_blank" class="github" target="_blank" href="tjzzz.github.io" title="GitHub">GitHub</a>
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="1%20tools.html"><strong>1 tools</strong></a>
+        
+            <a href="2%20get%20data.html"><strong>2 get data</strong></a>
+        
+            <a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html"><strong>3 数据可视化</strong></a>
+        
+            <a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 统计方法</strong></a>
+        
+            <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习</strong></a>
+        
+            <a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统</strong></a>
+        
+            <a href="6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html"><strong>6 文本&视频</strong></a>
+        
+            <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习</strong></a>
+        
+            <a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>10 比赛学习</strong></a>
+        
+            <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15637036455584.html">1 估计的置信度</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637025344954.html">1 安装-mac</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637025346225.html">2 不同设计之间有统计学差异吗</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637036605080.html">3 样本量的确定</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637037691936.html">3.1 特征处理—— 特征选择</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
 </div>
- <aside class="sidebar"> 
 
-	<section>
-	  <h1>Categories</h1>
-	  <ul id="recent_posts">
-	  
-	      <li class="post">
-	        <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单&nbsp;(4)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="1%20Tools.html"><strong>1 Tools&nbsp;(33)</strong></a>
-	         <p class="cat-children-p"> 
-	        
-	        	<a href="%E9%85%B7%E7%82%AB%E7%A5%9E%E5%99%A8.html">酷炫神器&nbsp;(12)</a>&nbsp;&nbsp;
-	        
-	        	<a href="PaddlePaddle.html">PaddlePaddle&nbsp;(3)</a>&nbsp;&nbsp;
-	        
-	        	<a href="spark.html">spark&nbsp;(12)</a>&nbsp;&nbsp;
-	        
-	        	<a href="tensorflow.html">tensorflow&nbsp;(2)</a>&nbsp;&nbsp;
-	        
-	        	<a href="SQL.html">SQL&nbsp;(1)</a>&nbsp;&nbsp;
-	        
-	         </p> 
-	      </li>
-	  
-	      <li class="post">
-	        <a href="2%20Get%20Data.html"><strong>2 Get Data&nbsp;(1)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html"><strong>3 数据可视化&nbsp;(8)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(9)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习&nbsp;(23)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统&nbsp;(3)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="6%20%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86.html"><strong>6 图像处理&nbsp;(4)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="6%20%E6%90%9C%E7%B4%A2.html"><strong>6 搜索&nbsp;(1)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="6%20nlp.html"><strong>6 nlp&nbsp;(1)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(12)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="8%20Ai%E5%BA%94%E7%94%A8.html"><strong>8 Ai应用&nbsp;(1)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="10%20leetcode.html"><strong>10 leetcode&nbsp;(5)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="%E8%AE%B8%E5%BC%8F%E4%BC%9F-%E6%9E%B6%E6%9E%84%E8%AF%BE.html"><strong>许式伟-架构课&nbsp;(1)</strong></a>
-	        
-	        
-	        
-	      </li>
-	   
-	  </ul>
-	</section>
-	<section>
-	  <h1>Recent Posts</h1>
-	  <ul id="recent_posts">
-	  
-	      
-		      <li class="post">
-		        <a href="15636927966003.html">随机数</a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="15633781017095.html"></a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="15633691538884.html">3. 样本量的确定？</a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="15633655285542.html">卡方检验</a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="15632757602829.html">3. 假设检验的power</a>
-		      </li>
-	     
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	   
-	  </ul>
-	</section>
-	
-</aside> </div></div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2014 -  -
-  <span class="credit">Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a> &nbsp;&nbsp; Theme by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
+        </section>
+      </div>
+    </div>
 
   
     
 
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
 
+    
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
 
-</body>
+
+  </body>
 </html>

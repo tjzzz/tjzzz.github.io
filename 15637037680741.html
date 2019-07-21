@@ -1,0 +1,528 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  sublime - zhenzhen学习笔记
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="zhenzhen学习笔记" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li id=""><a target="_self" href="about_me.html">aboutme</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; zhenzhen学习笔记</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li><a target="_self" href="about_me.html">aboutme</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="1%20tools.html">1 tools</a></li>
+        
+            <li><a href="2%20get%20data.html">2 get data</a></li>
+        
+            <li><a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html">3 数据可视化</a></li>
+        
+            <li><a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html">4 统计方法</a></li>
+        
+            <li><a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html">5 机器学习</a></li>
+        
+            <li><a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html">6 推荐系统</a></li>
+        
+            <li><a href="6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html">6 文本&视频</a></li>
+        
+            <li><a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">7 深度学习</a></li>
+        
+            <li><a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">10 比赛学习</a></li>
+        
+            <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>sublime</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2019/7/21</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='1%20tools.html'>1 tools</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <p>sublime除了具有基本的文本编辑功能之外，还可以安装很多package来扩展其强大的功能。这里罗列出一些工作中经常能用到的</p>
+
+<p><strong>安装install package</strong></p>
+
+<p>点击菜单中的 “View”–“Show Console”，调出console面板，然后到<a href="https://packagecontrol.io/installation#st3%E5%AE%98%E7%BD%91%E4%B8%8A%E7%9A%84%EF%BC%8C%E5%A4%8D%E5%88%B6%E5%87%BA%E4%BB%A3%E7%A0%81%E9%BB%8F%E8%B4%B4%E6%89%A7%E8%A1%8C">https://packagecontrol.io/installation#st3官网上的，复制出代码黏贴执行</a></p>
+
+<h2 id="toc_0">diff对比</h2>
+
+<h1 id="toc_1">Package Control Messages</h1>
+
+<h2 id="toc_2">Sublimerge 3</h2>
+
+<p>Sublimerge 3 (beta) has just been installed. Thanks for trying it out!</p>
+
+<p>It is highly recommended to restart Sublime Text before first use.</p>
+
+<hr/>
+
+<p>!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br/>
+  !!                                                                                                       !!<br/>
+  !!                NOTE: THIS IS A BETA VERSION. PLEASE REPORT ANY BUGS YOU MAY ENCOUNTER.                !!<br/>
+  !!                                                                                                       !!<br/>
+  !!                                                                                                       !!<br/>
+  !!     <a href="http://www.sublimerge.com/support.html">http://www.sublimerge.com/support.html</a>                                <a href="mailto:support@sublimerge.com">support@sublimerge.com</a>      !!<br/>
+  !!                                                                                                       !!<br/>
+  !!     Issue Tracker: <a href="https://bitbucket.org/borysforytarz/sublimerge-3/issues?status=new&amp;status=open">https://bitbucket.org/borysforytarz/sublimerge-3/issues?status=new&amp;status=open</a>     !!<br/>
+  !!                                                                                                       !!<br/>
+  !!                                                                                                       !!<br/>
+  !!                                                                                                       !!<br/>
+  !!     Please visit <a href="http://www.sublimerge.com/sm3/docs/">http://www.sublimerge.com/sm3/docs/</a> for more information.                            !!<br/>
+  !!                                                                                                       !!<br/>
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>
+
+<p>The first steps after installation<br/>
+  ==================================</p>
+
+<ol>
+<li><p>By default Sublimerge&#39;s colors theme conforms to default Sublime Text theme. If you are using some<br/>
+ custom theme and find the colors poorly visible, you may need to change them.</p></li>
+<li><p>If you&#39;re on Windows and want to use VCS-related commands, you may need to configure the executable<br/>
+ path for your VCS. Linux and OS X users with non-standard VCS installation may need to configure this too.</p>
+
+<p>Please visit <a href="http://www.sublimerge.com/sm3/docs/configuration.html">http://www.sublimerge.com/sm3/docs/configuration.html</a> for more information about configuration.</p>
+
+<h1 id="toc_3">Simplified usage instructions</h1>
+
+<p>In file view:</p>
+
+<p>[ctrl]+[alt]+[d]                      - display Quick Panel with commands available for current view</p>
+
+<p>In diff view:</p>
+
+<p>Windows/Linux:</p>
+
+<p>[ctrl]+[down]                         - select next change<br/>
+  [ctrl]+[up]                           - select previous change</p>
+
+<ul>
+<li>[ctrl]+[left]                         - copy selected change (or active line) to left from right</li>
+<li><p>[ctrl]+[right]                        - copy selected change (or active line) to right from left<br/>
+[ctrl]+[shift]+[left]                 - copy all changes to left from right<br/>
+[ctrl]+[shift]+[right]                - copy all changes to right from left</p>
+
+<p>OSX:</p>
+
+<p>[alt]+[down]                          - select next change<br/>
+[alt]+[up]                            - select previous change</p></li>
+<li><p>[alt]+[left]                          - copy selected change (or active line) to left from right</p></li>
+<li><p>[alt]+[right]                         - copy selected change (or active line) to right from left<br/>
+[alt]+[shift]+[left]                  - copy all changes to left from right<br/>
+[alt]+[shift]+[right]                 - copy all changes to right from left</p>
+
+<p>Common:</p>
+
+<p>[f3]                                  - swap panels<br/>
+[f4]                                  - show changes navigator<br/>
+[f5]                                  - recompare buffers</p></li>
+<li><ul>
+<li>if change is selected the command will copy its whole contents, otherwise will copy only the focused line</li>
+</ul></li>
+</ul>
+
+<p>In directories diff view:</p>
+
+<p>[down]                              - select next file/directory<br/>
+  [up]                                - select previous file/directory<br/>
+  [left]                              - copy file/directory from right to left<br/>
+  [right]                             - copy file/directory from left to right<br/>
+  [enter]                             - enter sub directory / compare text files<br/>
+  [backspace]                         - enter parent directory</p>
+
+<p>Windows/Linux:</p>
+
+<p>[ctrl]+[down]                       - select next different file/directory<br/>
+  [ctrl]+[up]                         - select previous different file/directory</p>
+
+<p>OS X:</p>
+
+<p>[alt]+[down]                        - select next different file/directory<br/>
+  [alt]+[up]                          - select previous different file/directory</p>
+
+<p>For convenience Sublimerge also supports standard OS X keyboard shortcuts for directories navigation:</p>
+
+<p>[cmd]+[down]                        - enter sub directory / compare text files<br/>
+  [cmd]+[up]                          - enter parent directory</p>
+
+<h1 id="toc_4">End-User License Agreement (EULA)</h1></li>
+<li><p>LICENSES<br/>
+  SUBLIMERGE is licensed as follows:<br/>
+  a) Evaluation time.<br/>
+      You can evaluate SUBLIMERGE freely for 90 days. Later you will need to purchase<br/>
+      a license for continued use.<br/>
+  b) Installation and Usage.<br/>
+      Licenses are per user and valid for use on all supported operating systems.<br/>
+      License keys may be used on multiple computers and operating systems, provided<br/>
+      the license key holder is the primary user. Businesses must purchase at least<br/>
+      as many licenses as the number of people using SUBLIMERGE.<br/>
+  c) Backup Copies.<br/>
+      You may make copies of the license key and/or SUBLIMERGE for backup and archival<br/>
+      purposes.<br/>
+  d) Evaluation time.<br/>
+      You can evaluate SUBLIMERGE freely for 90 days. Later you will need to purchase<br/>
+      a license for continued use.</p></li>
+<li><p>ILLEGAL USAGE<br/>
+  Any illegal usage of SUBLIMERGE, including reverse engineering, using unauthorized license <br/>
+  keys, creating keygens and cracks is prohibited and will be subject for prosecution.</p></li>
+<li><p>DESCRIPTION OF OTHER RIGHTS AND LIMITATIONS<br/>
+  a) Maintenance of Copyright Notices.<br/>
+      You must not remove or alter any copyright notices on any copy of SUBLIMERGE.</p>
+
+<p>b) Distribution.<br/>
+      You may not distribute or sell license keys or SUBLIMERGE to third parties.<br/>
+      Licenses will be revoked if distributed or sold to third parties.</p>
+
+<p>c) Rental.<br/>
+      You may not rent, lease, or lend the license key or SUBLIMERGE.</p></li>
+<li><p>COPYRIGHT<br/>
+  All title, including but not limited to copyrights, in and to SUBLIMERGE and any copies<br/>
+  thereof are owned by BORYS FORYTARZ (AUTHOR).</p></li>
+<li><p>REFUND POLICY<br/>
+  Refunds are not available. Because of this, before purchasing a license, you can evaluate<br/>
+  SUBLIMERGE without any functionality limitations for 90 days. Later you will need to<br/>
+  purchase a license.</p></li>
+<li><p>NO WARRANTIES<br/>
+  AUTHOR expressly disclaims any warranty for SUBLIMERGE, which is provided<br/>
+  &#39;as is&#39; without any express or implied warranty of any kind, including but not limited<br/>
+  to any warranties of merchantability, non-infringement, or fitness of a particular<br/>
+  purpose.</p></li>
+<li><p>LIMITATION OF LIABILITY<br/>
+  In no event shall AUTHOR be liable for any damages due to use of SUBLIMERGE,<br/>
+  to the maximum extent permitted by law. This includes without limitation, lost profits,<br/>
+  business interruption, or lost information. In no event will AUTHOR be liable<br/>
+  for loss of data or for indirect, special, incidental, consequential (including lost<br/>
+  profit), or other damages. AUTHOR shall have no liability with respect to the<br/>
+  content of SUBLIMERGE or any part thereof, including but not limited to errors or<br/>
+  omissions contained therein, libel, trademark rights, business interruption, loss of<br/>
+  privacy or the disclosure of confidential information.</p>
+
+<h1 id="toc_5">More information</h1>
+
+<p>For more information, troubleshooting, customizing settings and more, please visit <a href="http://www.sublimerge.com">www.sublimerge.com</a></p>
+
+<h1 id="toc_6">By the way...</h1>
+
+<p>Take a break from your work and play my BF&#39;s Draughts on your iOS device!<br/>
+Available on the App Store! :)</p>
+
+<p><a href="http://www.bfdraughts.com/as/">http://www.bfdraughts.com/as/</a></p></li>
+</ol>
+
+<h2 id="toc_7">参考资料</h2>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15637037678380.html" 
+          title="Previous Post: rCharts">&laquo; rCharts</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15637037679781.html" 
+          title="Next Post: t-sne">t-sne &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>zhenzhen学习笔记</h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="github" target="_blank" href="tjzzz.github.io" title="GitHub">GitHub</a>
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="1%20tools.html"><strong>1 tools</strong></a>
+        
+            <a href="2%20get%20data.html"><strong>2 get data</strong></a>
+        
+            <a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html"><strong>3 数据可视化</strong></a>
+        
+            <a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 统计方法</strong></a>
+        
+            <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习</strong></a>
+        
+            <a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统</strong></a>
+        
+            <a href="6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html"><strong>6 文本&视频</strong></a>
+        
+            <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习</strong></a>
+        
+            <a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>10 比赛学习</strong></a>
+        
+            <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15637036455584.html">1 估计的置信度</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637025344954.html">1 安装-mac</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637025346225.html">2 不同设计之间有统计学差异吗</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637036605080.html">3 样本量的确定</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637037691936.html">3.1 特征处理—— 特征选择</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+
+  </body>
+</html>

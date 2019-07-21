@@ -1,816 +1,835 @@
-
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
     
-  学习笔记
+  zhenzhen学习笔记
   
-
   </title>
-  <meta name="author" content="">
-  <meta name="description" content="">
-
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <link href="asset/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="atom.xml" rel="alternate" title="学习笔记" type="application/atom+xml">
-  <script src="asset/js/modernizr-2.0.js"></script>
-  <script src="asset/js/jquery.min.js"></script>
+  
+  <link href="atom.xml" rel="alternate" title="zhenzhen学习笔记" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
   <script src="asset/highlightjs/highlight.pack.js"></script>
-  <link href="asset/highlightjs/styles/solarized_light.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script>hljs.initHighlightingOnLoad();</script>
-
-  <style type="text/css">
-  .cat-children-p{ padding: 6px 0px;}
-  .hljs{background: none;}
-  </style>
-  <script type="text/javascript">
-  var isAddSildbar = true;
-  </script>
-  <script src="asset/js/octopress.js" type="text/javascript"></script>
-</head>
 <script type="text/javascript">
-//链接新开窗口
-function addBlankTargetForLinks () {
-  $('a[href^="http"]').each(function(){
-      $(this).attr('target', '_blank');
-  });
-}
-$(document).ready(function(event) {
-  addBlankTargetForLinks();
-});
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
 </script>
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="index.html">学习笔记</a></h1>
-  
-    <h2></h2>
-  
-</hgroup>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
 
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li id=""><a target="_self" href="about_me.html">aboutme</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
 </form>
-  
-<ul class="main-navigation">
-
-  <li id=""><a target="self" href="index.html">Home</a></li>
-
-  <li id=""><a target="_self" href="archives.html">Archives</a></li>
-
-</ul>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
 
 </nav>
-  <div id="main">
-    <div id="content"> 
-<div class="blog-index">
 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15384985274531.html">4.6 集成</a></h1>
-			<p class="meta"><time datetime="2018-10-03T00:42:07+08:00" 
-			pubdate data-updated="true">2018/10/3</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p><a href="http://www.52caml.com/head_first_ml/ml-chapter6-boosting-family/">http://www.52caml.com/head_first_ml/ml-chapter6-boosting-family/</a></p>
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; zhenzhen学习笔记</span>
+  </a>
+</nav>
 
-<p><img src="media/15275150216357/15275150424366.jpg" alt=""/></p>
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li><a target="_self" href="about_me.html">aboutme</a></li>
+        
 
-<p><a href="http://www.cnblogs.com/gasongjian/p/7648633.html">http://www.cnblogs.com/gasongjian/p/7648633.html</a></p>
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="1%20tools.html">1 tools</a></li>
+        
+            <li><a href="2%20get%20data.html">2 get data</a></li>
+        
+            <li><a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html">3 数据可视化</a></li>
+        
+            <li><a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html">4 统计方法</a></li>
+        
+            <li><a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html">5 机器学习</a></li>
+        
+            <li><a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html">6 推荐系统</a></li>
+        
+            <li><a href="6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html">6 文本&视频</a></li>
+        
+            <li><a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">7 深度学习</a></li>
+        
+            <li><a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">10 比赛学习</a></li>
+        
+            <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
 
 
-		</div>
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
 
+ <script type="text/javascript">
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
+</script>
+<div class="row">
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
 		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15384984788761.html">4.5 树模型</a></h1>
-			<p class="meta"><time datetime="2018-10-03T00:41:18+08:00" 
-			pubdate data-updated="true">2018/10/3</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	
-
-		</div>
-
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15384984375294.html">4.4 k近邻 —— 非参模型</a></h1>
-			<p class="meta"><time datetime="2018-10-03T00:40:37+08:00" 
-			pubdate data-updated="true">2018/10/3</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p>基于实例的学习，其学习的不是明确的泛化模型，而是样本之间的关系。</p>
-
-<p>k近邻方法：先找到与未知样本最接近的k个实例，再根据少数服从多数的准则，给未知样本打上标签。</p>
+			<div class="article">
+                <a class="clearlink" href="15637037699016.html">
+                
+                  <h1>【聚类】-效果评价</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>一般分为两类：</p>
 
 <ul>
-<li>超参数k</li>
-<li>距离度量</li>
-<li>高维灾难</li>
+<li>外部标准：即基于人工的判断，需要有个标注集合</li>
+<li>内部标准：基于类内和类间聚类的目标函数的判断</li>
 </ul>
 
-<p>k近邻方法和传统的参数方法不同，参数模型在求得参数后，任务就完成了。新来了一个样本后直接拿训练好的参数进行预测即可；而k近邻不同，它需要将数据存储下来，每来了一个新样本后，要计算离他最近的k个实例。</p>
+<h2 id="toc_0">内部标准clustering-performance-evaluation</h2>
 
-<p>sklearn中<code>sklearn.neighbors</code>模块</p>
+<h2 id="toc_1">外部标准——人工判定</h2>
 
-<p>应用</p>
+<p>假设：<br/>
+机器判断的类别集合是：\(C=\{C_1,C_2,...C_m\}\)<br/>
+人工判断的类别集合是：\(P=\{P_1,P_2,...P_s\}\)</p>
+
+<h3 id="toc_2">1.1混淆矩阵</h3>
+
+<p>基于数据样本点的角度：<br/>
+对于任意两个数据pair，\((x_i,x_j)\)按照其在C和P中是否属于同一个簇，可以构造出混淆矩阵</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>P_1</th>
+<th>p_0</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>C_1</td>
+<td>a</td>
+<td>b</td>
+</tr>
+<tr>
+<td>C_0</td>
+<td>c</td>
+<td>d</td>
+</tr>
+</tbody>
+</table>
+
+<p><img src="media/15078603543147/15078631739679.jpg" alt=""/></p>
+
+<h3 id="toc_3">1.2簇的准确率/召回率</h3>
+
+<p>基于簇pair的，考虑对任意一个人工与机器的.\(P_j,C_i\)。对于每一个人工标注的\(P_j\),在机器标注中应该都会对应一个&quot;最相关的&quot;。可以遍历C中所有的cluster，分别计算准确率，召回率，F_score。<br/>
+<img src="media/15078603543147/15078720767171.jpg" alt=""/></p>
+
+<p>然后对于所有簇的F值做加权平均<br/>
+\[ClassF=\sum w_j F(p_j), w_i=n_j/n\]</p>
+
+<p>classF指标，相当于是以人工标注的簇为基准，将聚类的簇尽量逼近这个标注的结果。</p>
+
+<h2 id="toc_4">1.3</h2>
+
+<p>1.2中的方法相当于要求的比较严格，即以人工标注的集合簇为准。</p>
+
+<p>实际中其实只要保证我们聚的每一个类\(C_i\)是有意义的就可以，即以C为主</p>
+
+<p>类似的定义 \(F(C_i)=\max_{1\lt j \lt s}F(P_j, C_i)\)<br/>
+\[F=\sum w_i F(C_i), w_i=|C_i|/n\]</p>
 
 <ul>
-<li>无监督的<code>NearestNeighbors</code></li>
+<li>问题： 这个指标可能变化不是非常明显</li>
 </ul>
 
-<p>具体计算的时候可以选择不同的计算方法，&#39;algorithm&#39; =[&#39;auto&#39;, &#39;ball_tree&#39;, </p>
+<h2 id="toc_5">1.4基于数据对象的准召F</h2>
+
+<p><img src="media/15078603543147/15078731022919.jpg" alt=""/></p>
+
+<h2 id="toc_6">思考</h2>
+
+<ol>
+<li>基于人工标注的方法中，认为人工标注的是准确的或者说结果是唯一的。实际上一堆sample可以有不同的分类方法，而且每种方法可能都是对的。
+<code>
+e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大学
+</code>
+如何进行标注，或者标注结果是非固定时候怎么衡量聚类效果的好坏？？</li>
+</ol>
+
+<h2 id="toc_7">参考资料</h2>
+
+<p><a href="http://blog.csdn.net/itplus/article/details/10322361">http://blog.csdn.net/itplus/article/details/10322361</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037677178.html">
+                
+                  <h1>一、基础篇</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h1 id="toc_0">1.计算学习理论——是否可学习</h1>
+
+<p>一直在说机器学习，主要是在说怎么去学。在怎么学之前，首先需要了解下能不能学，学习的机制是什么</p>
+
+<h2 id="toc_1">PAC（概率近似正确）</h2>
+
+<p><a href="https://blog.csdn.net/wangjianguobj/article/details/57413819">https://blog.csdn.net/wangjianguobj/article/details/57413819</a></p>
+
+<h2 id="toc_2">VC维度</h2>
+
+<p>这个介绍的挺详细<br/>
+<a href="http://www.flickering.cn/machine_learning/2015/04/vc%E7%BB%B4%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89/?from=singlemessage">http://www.flickering.cn/machine_learning/2015/04/vc%E7%BB%B4%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89/?from=singlemessage</a></p>
+
+<h2 id="toc_3">参考</h2>
+
+<p>台大-机器学习基石</p>
+
+<h1 id="toc_4">6.模型设计准则</h1>
+
+<ol>
+<li>模型拟合</li>
+</ol>
+
+<p>(1) 无免费午餐定理 NFL</p>
+
+<p>就是任何一个算法，针对所有问题，在平均意义上效果是一样的。</p>
+
+<p>=&gt; 所以要具体问题具体分析，针对不同问题，选择适合该问题的方法</p>
+
+<p>(2)奥卡姆剃刀原则</p>
+
+<p>即在预测效果差不多的情况下，模型越简单余越好</p>
+
+<p>误差 = bias + varaince + noise</p>
 
 <ul>
-<li>有监督的</li>
+<li>过拟合</li>
+<li>欠拟合</li>
 </ul>
 
-<p>KNeighborsClassifier: 可以指定参数k<br/>
-RadiusNeighborsClassifier: 可以指定查询的固定半径r</p>
+<h1 id="toc_5">7.模型验证</h1>
 
-<pre><code class="language-python">## 官网的示例demo
+<p>1.估计泛化误差</p>
+
+<p>训练集，验证集</p>
+
+<p>2.对数据的重采样</p>
+
+<ul>
+<li>留出法</li>
+<li>k折交叉验证</li>
+<li>自助法(有放回)</li>
+</ul>
+
+<h1 id="toc_6">8.模型的评估指标</h1>
+
+<h1 id="toc_7">9.实验设计</h1>
+
+<p>设计实验是要要成的任务是对整个机器学习过程的优化。实验中因子的设计可能会包含很多，比如：算法的类别、算法的参数、数据集等。</p>
+
+<p>当因子较多的时候，如何确定单一因子的影响就需要一些技巧<br/>
+<strong>控制变量法</strong></p>
+
+<p>它暗含着一个较强的假设，就是不同因子之间相互独立，互不影响。然而这个并不总是成立的。</p>
+
+<p><strong>因子设计</strong><br/>
+他关注的是不同因子之间系统化的变化对学习效果的影响，他的一个特例就是<strong>全因子实验</strong>，也叫<strong>完全交叉设计</strong>。</p>
+
+<p>在具体操作的时候，当分析的因子的离散取值较多时候，可以通过粗调+微调的方法。</p>
+
+<p>在对因子进行精调时候，可以使用<strong>响应面方法</strong>（zzz:根据百科资料解释,就是做了一个二次函数的拟合）</p>
+
+<h2 id="toc_8">正交抽样设计</h2>
+
+<p>@@@补充下：</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637025346988.html">
+                
+                  <h1>二、起步篇—— 数据预处理[python]</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>一方面可以多查些官方说明<br/>
+多去看些kaggle，tianchi等的比赛案例，他们数据预处理做的很全面到位<br/>
+实践一些工作中的项目，将代码规范化</p>
+</blockquote>
+
+<h2 id="toc_0">1.缺失表示</h2>
+
+<p>python中缺失是nan，如果本身数据中缺失是用其他方式表示的，可以先转换一下<br/>
+<code>df.replace(&#39;-&#39;,np.nan)</code></p>
+
+<pre><code class="language-python">
 import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib.colors import ListedColormap
-from sklearn import neighbors, datasets
+import pandas as pd
+from io import StringIO
+import sys
 
-n_neighbors = 15
-
-# import some data to play with
-iris = datasets.load_iris()
-
-# we only take the first two features. We could avoid this ugly
-# slicing by using a two-dim dataset
-X = iris.data[:, :2]
-y = iris.target
-
-h = .02  # step size in the mesh
-
-# Create color maps
-cmap_light = ListedColormap([&#39;#FFAAAA&#39;, &#39;#AAFFAA&#39;, &#39;#AAAAFF&#39;])
-cmap_bold = ListedColormap([&#39;#FF0000&#39;, &#39;#00FF00&#39;, &#39;#0000FF&#39;])
-
-for weights in [&#39;uniform&#39;, &#39;distance&#39;]:
-    # we create an instance of Neighbours Classifier and fit the data.
-    clf = neighbors.KNeighborsClassifier(n_neighbors, weights=weights)
-    clf.fit(X, y)
-
-    # Plot the decision boundary. For that, we will assign a color to each
-    # point in the mesh [x_min, x_max]x[y_min, y_max].
-    x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
-    y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
-    xx, yy = np.meshgrid(np.arange(x_min, x_max, h),
-                         np.arange(y_min, y_max, h))
-    Z = clf.predict(np.c_[xx.ravel(), yy.ravel()])
-
-    # Put the result into a color plot
-    Z = Z.reshape(xx.shape)
-    plt.figure()
-    plt.pcolormesh(xx, yy, Z, cmap=cmap_light)
-
-    # Plot also the training points
-    plt.scatter(X[:, 0], X[:, 1], c=y, cmap=cmap_bold,
-                edgecolor=&#39;k&#39;, s=20)
-    plt.xlim(xx.min(), xx.max())
-    plt.ylim(yy.min(), yy.max())
-    plt.title(&quot;3-Class classification (k = %i, weights = &#39;%s&#39;)&quot;
-              % (n_neighbors, weights))
-
-plt.show()
+df = pd.read_table(&#39;zz&#39;)
+df = df.replace(&#39;-&#39;,np.nan).head()
+df.head()
 </code></pre>
 
-<p>最近邻回归<br/>
-KNeighborsRegressor<br/>
-RadiusNeighborsRegressor</p>
+<h2 id="toc_1">2.缺失的简单处理办法</h2>
+
+<h3 id="toc_2">暴力删除</h3>
+
+<p><code>isnull()</code>   判断是否缺失</p>
+
+<p><code>dropna( axis = 0 /1 )</code> 参数axis表示轴选择，axis=0 代表行，axis=1 代表列</p>
+
+<p><code>dropna(subset=[&#39;&#39;])</code>   删除指定列中有空值的一行数据</p>
+
+<h3 id="toc_3">默认值填充</h3>
+
+<p><code>df.fillna(value)</code><br/>
+或者对不同列填不同的值</p>
+
+<h3 id="toc_4">统计/算法填充</h3>
+
+<pre><code class="language-python">from sklearn.preprocessing import Imputer
+# strategy 有mean,median, most_frequent 方式
+# axis 默认是0，列向， axis=1行向
+dff = df.loc[:, [&#39;comment_time&#39;]]
+imr = Imputer(missing_values = &#39;NaN&#39;, strategy = &#39;mean&#39;, axis = 0 )
+imr = imr.fit(dff.values)
+imputed_data = imr.transform(dff.values)
+</code></pre>
+
+<pre><code class="language-python">## 3.分类数据处理
+from sklearn.preprocessing import LabelEncoder
+class_le = LabelEncoder()
+y = class_le.fit_transform(df[&#39;nid&#39;].values)
+
+</code></pre>
+
+<pre><code class="language-python">## 数据标准化
+from sklearn.preprocessing import MinMaxScaler
+mms = MinMaxScaler()
+X_train_norm = mms.fit_transform(imputed_data)
+X_test_norm = mms.transform(imputed_data)
+</code></pre>
+
+<h2 id="toc_5">参考资料</h2>
+
+<p><a href="https://blog.csdn.net/Amy_mm/article/details/79799629">https://blog.csdn.net/Amy_mm/article/details/79799629</a><br/>
+<a href="https://www.cnblogs.com/charlotte77/p/5622325.html">https://www.cnblogs.com/charlotte77/p/5622325.html</a></p>
+
+<p><a href="https://www.kaggle.com/pmarcelino/comprehensive-data-exploration-with-python">https://www.kaggle.com/pmarcelino/comprehensive-data-exploration-with-python</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15636947700356.html">
+                
+                  <h1>二、起步篇——数据预处理[方法论]</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><img src="../media/15334844213158/15335717779664.jpg" alt=""/></p>
+
+<h2 id="toc_0">1.数据偏度</h2>
+
+<p>数据的处理，从数据特征本身的统计维度看，有尺度、偏度、</p>
+
+<p>1.数据尺度</p>
+
+<ul>
+<li>标准化 =&gt; 均值0，方差1</li>
+<li>归一化 =&gt; [0,1]</li>
+</ul>
+
+<p>2.数据偏度<br/>
+可以通过偏度来度量，数据中如果存在较大的偏度，可能是因为有异常点的存在。</p>
+
+<p>有偏数据处理，一般可以取log，或者开根号让他能近似正态</p>
+
+<h2 id="toc_1">2.异常点</h2>
+
+<p>首先什么是异常点<br/>
+异常点<br/>
+（1） 首先确认是不是错误导致，比如计算错误。取值错误<br/>
+（2）确认异常点的生成机制</p>
+
+<p>（1）异常点检测</p>
+
+<p>@@@<br/>
+sklearn中常用的包</p>
+
+<p>（2）异常点处理</p>
+
+<ul>
+<li>如果是少量可以直接删除</li>
+<li>当数据量较少，删除后造成可用信息较少时候，可以使用“空间标识”的数值处理方法</li>
+</ul>
+
+<h2 id="toc_2">3.缺失值</h2>
+
+<p>缺失机制：随机缺失，还是非随机缺失</p>
+
+<p>补充原则：</p>
+
+<ul>
+<li>如果缺失占比太大，删除</li>
+</ul>
+
+<p>补充方法：</p>
+
+<ul>
+<li>统计方法：均值</li>
+<li>机器学习方法：回归、K近邻</li>
+</ul>
+
+<h2 id="toc_3">4.特征冗余</h2>
+
+<p>一般是说特征自相关性太高，即“共线性”。另外是指一些没有区分度的变量，比如一是特征取值的总数与样本数目的比例在 10% 以下，二是出现频率最高的特征取值的出现频率应该在出现频率次高的特征的20倍以上。</p>
+
+<p>检测办法：<br/>
+解决办法：PCA</p>
+
+<h2 id="toc_4">参考文章</h2>
+
+<p>离群点</p>
+
+<p><a href="https://blog.chih.me/Outlier-mining-review.html">https://blog.chih.me/Outlier-mining-review.html</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637025346040.html">
+                
+                  <h1>二、起步篇——数据预处理[方法论]</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><img src="../media/15334844213158/15335717779664.jpg" alt=""/></p>
+
+<h2 id="toc_0">1.数据偏度</h2>
+
+<p>数据的处理，从数据特征本身的统计维度看，有尺度、偏度、</p>
+
+<p>1.数据尺度</p>
+
+<ul>
+<li>标准化 =&gt; 均值0，方差1</li>
+<li>归一化 =&gt; [0,1]</li>
+</ul>
+
+<p>2.数据偏度<br/>
+可以通过偏度来度量，数据中如果存在较大的偏度，可能是因为有异常点的存在。</p>
+
+<p>有偏数据处理，一般可以取log，或者开根号让他能近似正态</p>
+
+<h2 id="toc_1">2.异常点</h2>
+
+<p>首先什么是异常点<br/>
+异常点<br/>
+（1） 首先确认是不是错误导致，比如计算错误。取值错误<br/>
+（2）确认异常点的生成机制</p>
+
+<p>（1）异常点检测</p>
+
+<p>@@@<br/>
+sklearn中常用的包</p>
+
+<p>（2）异常点处理</p>
+
+<ul>
+<li>如果是少量可以直接删除</li>
+<li>当数据量较少，删除后造成可用信息较少时候，可以使用“空间标识”的数值处理方法</li>
+</ul>
+
+<h2 id="toc_2">3.缺失值</h2>
+
+<p>缺失机制：随机缺失，还是非随机缺失</p>
+
+<p>补充原则：</p>
+
+<ul>
+<li>如果缺失占比太大，删除</li>
+</ul>
+
+<p>补充方法：</p>
+
+<ul>
+<li>统计方法：均值</li>
+<li>机器学习方法：回归、K近邻</li>
+</ul>
+
+<h2 id="toc_3">4.特征冗余</h2>
+
+<p>一般是说特征自相关性太高，即“共线性”。另外是指一些没有区分度的变量，比如一是特征取值的总数与样本数目的比例在 10% 以下，二是出现频率最高的特征取值的出现频率应该在出现频率次高的特征的20倍以上。</p>
+
+<p>检测办法：<br/>
+解决办法：PCA</p>
+
+<h2 id="toc_4">参考文章</h2>
+
+<p>离群点</p>
+
+<p><a href="https://blog.chih.me/Outlier-mining-review.html">https://blog.chih.me/Outlier-mining-review.html</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
 
 
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   <a href="all_6.html">&laquo; Prev Page</a>  
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			 <a href="all_8.html">&raquo; Next Page</a> 
+			</p>
+			  </div>
+			</div>
 		</div>
-
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15384698920685.html">4.3 支持向量机</a></h1>
-			<p class="meta"><time datetime="2018-10-02T16:44:52+08:00" 
-			pubdate data-updated="true">2018/10/2</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p>支持向量机属于上一节中说的硬输出的方法，是从几何角度出发考虑的。</p>
-
-<p>在介绍SVM之前，先解释一下几个基本概念。<br/>
-<img src="media/15384698920685/15386228139164.jpg" alt="" style="width:400px;"/></p>
-
-<blockquote>
-<p>函数间隔与几何间隔</p>
-</blockquote>
-
-<p>一般的，一个点距离分离超平面的远近可以标识分类预测的确信程度。当超平面\(wx+b=0\)确定后，\(|wx+b|\)的大小能够相对的表示远近，而\(wx+b\)的符号与\(y\)类别是否一致则可以表示是否分类正确。 <br/>
-\[d_i = y_i(wx_i+b)\]  定义函数间隔\(d = \min d_i\)</p>
-
-<p>但是很明显的会发现这个间隔与\(w\)的量纲是有关系的，\(kw+kb\)与之前超平面是一样的，但是间隔却差了k倍。因此需要<strong>几何间隔</strong></p>
-
-<p>\[d_i = y_i(\frac{w}{||w||}x_i+\frac{b}{||w||}), d = \min d_i\]  </p>
-
-<blockquote>
-<p>间隔最大化</p>
-</blockquote>
-
-<p>有了前面关于间隔的定义，或者是关于分类距离的定义，就有了目标。SVM的目标就是: 求解能够将数据集正确划分并且几何间隔最大的分离超平面。</p>
-
-<p>注：对于线性可分的数据，超平面有无数个(等价于感知机)，但是间隔最大的只有一个。间隔最大其实是两个要求:</p>
-
-<ul>
-<li>能尽可能的将正负例区分开</li>
-<li>对于难分的点(距离平面较近的点)也有很好的置信把握，即泛化能力会好一些</li>
-</ul>
-
-<blockquote>
-<p>SVM对应的三种问题类型</p>
-</blockquote>
-
-<p>根据分类问题，可分为以下三种</p>
-
-<ul>
-<li>线性可分与硬间隔最大化</li>
-<li>线性支持向量机与软间隔最大化</li>
-<li>非线性支持向量机与核函数</li>
-</ul>
-
-<p>这些会在下面中进行详细介绍</p>
-
-<blockquote>
-<p>支持向量</p>
-</blockquote>
-
-<p>这个需要看完下面关于三部分的介绍之后，再来了解这个概念。</p>
-
-<ul>
-<li>在线性可分的情况下，样本中与超平面距离最近的样本点称为<strong>支持向量</strong>. 支持向量是满足\(y_i(wx_i+b)-1=0\)的点。</li>
-<li>分隔边界最终只是由支持向量的点决定的，其他距离比较远的点并没有影响。</li>
-</ul>
-
-<h2 id="toc_0">1.线性可分与硬间隔最大化</h2>
-
-<p>先讨论一种最简单的情况，当数据集本身可以线性可分时候(实际数据中可能并没有这么好的性质)，我们只要找到对应的超平面即可。从前面的集合图形上我们的目标：希望每个点到超平面的间隔的最小值达到最大，即\(max min d_i\)</p>
-
-<p>数学模型：\[max_{w,b} d(几何间隔)\]<br/>
-\[s.t \quad d_i = y_i(wx_i+b)&gt;= d, i=1,..n\]</p>
-
-<p>因为几何间隔\(d=d&#39;/||w||\)，所以原问题等价于<br/>
-\[max_{w,b} \frac{d&#39;}{||w||}\]<br/>
-\[s.t \quad d_i = y_i(wx_i+b)&gt;= d&#39;, i=1,..n\]</p>
-
-<p>注意到</p>
-
-<ul>
-<li>函数间隔的取值\(d&#39;\)并不影响最优解\(w,b\)的求解。(如果w,b是最优解，则\(kw,kb\)也是，函数距离就是\(d&#39;\)和\(kd&#39;\))。所以这里可以取\(d&#39;=1\)。</li>
-<li>\(1/||w||\)与\(\frac{1}{2}||w||^2\)是等价的</li>
-</ul>
-
-<p>因此最终优化的问题等价于如下的凸二次规划问题：<br/>
-\[min_{w,b} \frac{1}{2}||w||^2\]<br/>
-\[s.t \quad d_i = y_i(wx_i+b) -1 &gt;=0, i=1,..n\]</p>
-
-<p>解法：关于这个优化问题的解法，在后面会详细给出。可以证明这个解是存在且唯一的。</p>
-
-<p><strong>几何角度</strong></p>
-
-<ul>
-<li>过两个类的边界的点的平行线(\(wx-b=1, wx-b=-1\))，有点类似于楚河汉界</li>
-<li>将两条平行线进行旋转，保证同类划分不变。两者距离就会改变</li>
-<li>落在两个平行线上的异类点就是<strong>支持向量</strong></li>
-</ul>
-
-<p><img src="media/15384698920685/15387096705813.jpg" alt="线性可分示意图"/></p>
-
-<h2 id="toc_1">2.线性支持向量机与软间隔最大化</h2>
-
-<p>上一节说的是对线性可分数据的，如果数据本身不可分该怎么办呢，此时线性分割必然存在误分类的点？对于线性不可分我们不可能要求其严格满足上面说的不等式约束。这时我们只能退而求其次：</p>
-
-<p>思路：使得之前的几何间隔尽量大，同时使误分类的个数尽可能少</p>
-
-<p>数学表示：对于每个样本，类似运筹学中的方法我们可以引入一个松弛变量\(\xi_i\ge 0\),满足\(y_i(wx_i+b)\ge 1-\xi_i\) 之前是要求一定要大于等于1，现在因为并不完全可分，所以不一定要大于等于1。</p>
-
-<p><strong>数学模型：</strong></p>
-
-<p>\[min_{w,b} \frac{1}{2}||w||^2 + C\sum_1^n \xi_i\]<br/>
-\[s.t \quad y_i(wx_i+b)&gt;=1-\xi_i, i=1,..n\]<br/>
-\[\xi_i &gt;= 0\]</p>
-
-<p>这时候其实可以发现线性可分的相当于是这里的一种特殊情况，即\(\xi_i=0\)</p>
-
-<p><strong>求解：</strong><br/>
-该优化问题的拉格朗日函数是<br/>
-\[L(w,b,\xi,\alpha,u)=\frac{1}{2}||w||^2+C\sum\xi_i-\sum\alpha_i(y_i(wx_i+b)-1+\xi_i)-\sum u_i\xi_i\]<br/>
-因此原问题等价于 \[\max_{\alpha,u}\min_{w,b,\xi}L\]</p>
-
-<p>（1）首先求L对\(w,b,\xi\)的极小<br/>
-<img src="media/15384698920685/15387191773648.jpg" alt=""/></p>
-
-<p>可得\[\min_{w,b\xi}L=-\frac{1}{2}\sum_{i=1}^n\sum_{j=1}^n \alpha_i\alpha_jy_iy_j(x_i*x_j)+\sum_{i=1}^n\alpha_i\]</p>
-
-<p>(2) 再对\(\min L\)求最大，即有<br/>
-\[\max_{\alpha}-\frac{1}{2}\sum_{i=1}^n\sum_{j=1}^n \alpha_i\alpha_jy_iy_j(x_i*x_j)+\sum_{i=1}^n\alpha_i\]<br/>
-\[s.t.\quad \sum\alpha_iy_i=0\]<br/>
-\[C-\alpha_i-u_i&gt;=0;\alpha_i&gt;=0;u_i&gt;=0\]</p>
-
-<p>最后一个条件其实等价于\(0\le\alpha_i\le C\)</p>
-
-<p>对于线性可分问题其max函数是一样的，只是约束条件是\(0\le\alpha_i\)</p>
-
-<p>【定理】若\(\alpha^*=(\alpha_1^*,...\alpha_n)\)是上述优化问题的一个解，若存在一个分量\(0&lt;\alpha_j^*&lt;C\)，则原始问题的解可按如下形式求得 <br/>
-\[w^* = \sum\alpha_i^*y_ix_i\]<br/>
-\[b^*=y_j-\sum_{i=1}^n y_i\alpha_i^*(x_i*x_j)\]</p>
-
-<p>从中可以发现b的解并不唯一。</p>
-
-<p>最终的分离超平面是\[\sum\alpha_i^*y_i(x_i*x_j)+b^*=0\]<br/>
-分类的决策函数是\[f(x)=sign(\alpha_i^*y_i(x_i*x_j)+b^*)\]</p>
-
-<p><strong>几何解释</strong></p>
-
-<ul>
-<li>如果在分解边界上，则\(\xi_i=0\),距离是1</li>
-<li>如果是在两个分界边界中间，\(0&lt;\xi_i&lt;1\)</li>
-<li>越过分界边界，到了另外一边，\(\xi_i &gt;1\) 这个时候\(y_i(wx_i+b)\ge 1-\xi_i\)是小于0的，属于误分类，在优化的时候会考虑</li>
-</ul>
-
-<p><img src="media/15384698920685/15387133378663.jpg" alt=""/></p>
-
-<p><strong>合页损失函数</strong>：与原优化问题等价的一种损失函数形式<br/>
-\[\min_{w,b} \sum[1-y_i(wx_i+b)]_{+}+\lambda||w||^2\]</p>
-
-<h2 id="toc_2">3.非线性支持向量机与核函数</h2>
-
-<p>当数据的分布呈现的是一种非线性的时候，用之前的线性分割的方法肯定就会出现问题。比如数据是在一个椭圆内外分布，这个时候就需要先对原始数据做一个映射，\(x_1^2,x_2^2\)然后变成线性可分的。而这里主要用到了核技巧。</p>
-
-<p>【核函数】如果存在一个映射\(\phi(x):X-&gt; H\),使得对于所有\(x,z\in X\),函数\(K(x,z)\)满足<br/>
-\[K(x,z)=\phi(x)*\phi(z)\]<br/>
-则\(K(x,z)\)为核函数，\(\phi(x)\)为映射函数。</p>
-
-<p>核函数的想法是：在学习中值定义核函数，而不显示的定义映射函数，通常映射函数不太好找且不唯一。<br/>
-在支持向量机中的应用：<br/>
-如前所述，在支持向量机的对偶问题中，只涉及样本之间的内积运算。\[W(\alpha)=\max_{\alpha}-\frac{1}{2}\sum_{i=1}^n\sum_{j=1}^n \alpha_i\alpha_jy_iy_j(x_i*x_j)+\sum_{i=1}^n\alpha_i\]<br/>
-因此可以用核函数代替<br/>
-\[W(\alpha)=\max_{\alpha}-\frac{1}{2}\sum_{i=1}^n\sum_{j=1}^n \alpha_i\alpha_jy_iy_jK(x_i,x_j)+\sum_{i=1}^n\alpha_i\]</p>
-
-<p><strong>常用的核函数</strong></p>
-
-<ul>
-<li>多项式核函数 \(K(x,z)=(x*z+1)^p\)</li>
-<li>高斯核函数 \(K(x,z)=exp(\frac{-||x-z||^z}{2\sigma^2})\)</li>
-<li>字符串核函数</li>
-</ul>
-
-<h2 id="toc_3">优化算法SMO</h2>
-
-<p>前面介绍了SVM中的三类问题，最终都是通过一个凸二次规划进行求解。当样本量较大的时候，SMO是一种相对求解较快的方法。简言之，是采用了启发式算法，每次只更新两个\(\alpha_i,\alpha_j\)</p>
-
-<p><a href="https://www.cnblogs.com/nolonely/p/6541527.html">https://www.cnblogs.com/nolonely/p/6541527.html</a></p>
-
-<p>Sequential Minimal Optimization A Fast Algorithm for Training Support Vector Machines</p>
-
-<h2 id="toc_4">代码</h2>
-
-<p><code>sklearn.svc</code>模块 <a href="http://scikit-learn.org/stable/modules/svm.html#svm">http://scikit-learn.org/stable/modules/svm.html#svm</a></p>
-
-<p>主要包含</p>
-
-<ul>
-<li>SVC 标准的</li>
-</ul>
-
-<pre><code>from sklearn import svm
-X = [[0, 0], [1, 1]]
-y = [0, 1]
-clf = svm.SVC()
-clf.fit(X, y)  
-</code></pre>
-
-<p>以iris数据为例</p>
-
-<pre><code class="language-python">### iris数据
-from sklearn import datasets, svm
-import matplotlib.pyplot as plt
-import numpy as np
-
-
-iris = datasets.load_iris()
-X = iris.data[:, :2]
-y = iris.target
-
-
-# model
-C = 1.0
-model = svm.SVC(kernel=&#39;linear&#39;, C=C)
-model.fit(X, y)
-
-
-
-## 绘制可视化图
-x1 = X[:,0]
-x2 = X[:,1]
-h=0.1
-x_min, x_max = x1.min()-1, x1.max()+1
-y_min, y_max = x2.min()-1, x2.max()+1
-xx,yy = np.meshgrid(np.arange(x_min, x_max, h),
-                    np.arange(y_min, y_max, h))  #生成对应的坐标矩阵
-
-Z = model.predict(np.c_[xx.ravel(), yy.ravel()])    # 在新的坐标点上预测分类
-Z = Z.reshape(xx.shape)
-plt.contourf(xx, yy, Z, cmap=plt.cm.coolwarm, alpha=0.8)
-
-
-plt.scatter(x1, x2, c=y, cmap=plt.cm.coolwarm, s=20, edgecolors=&#39;k&#39;)
-
-plt.xlabel(&#39;Sepal length&#39;)
-plt.ylabel(&#39;Sepal width&#39;)
-</code></pre>
-
-<p><img src="media/15384698920685/15387991752806.jpg" alt=""/></p>
-
-<ul>
-<li>NuSVC 与SVC的优化目标函数略微不同</li>
-<li>LinearSVC： 只针对linear kernel</li>
-</ul>
-
-<p>在进行多分类的时候SVC中参数<code>decision_function_shape</code>可以选择是<code>ovo</code>还是<code>ovr</code><br/>
-LinearSVC是通过参数<code>multi_class</code>进行选择，</p>
-
-<h2 id="toc_5">小结</h2>
-
-<p><img src="media/15384698920685/15388009994951.jpg" alt=""/></p>
-
-
-		</div>
-
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15383213879430.html">4.2 回归与分类</a></h1>
-			<p class="meta"><time datetime="2018-09-30T23:29:47+08:00" 
-			pubdate data-updated="true">2018/9/30</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<blockquote>
-<p>统计模型一开始是从回归分析开始的，但是实际问题中更加普遍的是分类问题。那么很自然的一个问题是，如果利用回归分析的方法的话，如何去做分类问题呢？换句话说回归和分类之间的联系在哪里呢？</p>
-</blockquote>
-
-<p>一个很自然的想法是，根据回归分析y的结果，按照一定规则将其映射到不同的区间段，从而形成一个分类模型。即连续变量 =&gt; 分类变量</p>
-
-<h3 id="toc_0">1. 硬输出——判别分析</h3>
-
-<p>直接根据阈值划分分类结果， 而这个映射函数即为<strong>判别函数</strong>。比较典型的就是判别分析了。常用的判别分析的方法：</p>
-
-<blockquote>
-<p>距离判别法</p>
-</blockquote>
-
-<p>即按照样本距离各个总体距离的远近来判断所属的归类。比如基于欧式距离或马氏距离，欧式距离没有考虑到本身特征量纲的差异，所以用的不多。这里以马氏距离，两个类别为例。</p>
-
-<p>例子：已知一个样本X可能来自两个总体\(G_1\)和\(G_2\)其中的一个，其中 \(G_1: \mu_1,V_1, G_2:\mu_2, V_2\), 现在给定X，判断其属于哪一类。<br/>
-注意：对总体分布没有要求</p>
-
-<p>解析：判别函数\(W(X)=D^2(X,G_2)-D^2(X,G_1)=(X-\mu_2)V_2^{-1}(X-\mu_2)-(X-\mu_1)V_1^{-1}(X-\mu_1)\).</p>
-
-<p>在实际中因为总体均值和方差是位置的，需要用样本进行估计。当\(V_1=V_2=V\)时候，二次判别式可以变成线性的，有\(W(X) = (X-\bar\mu)V^{-1}(\mu_1-\mu_2)\)， 其中\(\bar\mu = (\mu_1+\mu_2)/2\)</p>
-
-<p>误判概率：判别分析肯定也有出错的时候，下面来讨论下误判概率问题。</p>
-
-<p><img src="media/15383213879430/15384587841040.jpg" alt=""/></p>
-
-<p>从上图中可以比较清楚的看到，出错的概率即为图中阴影部分的面积。</p>
-
-<p>假设X属于1，下面计算其被判断成2的概率即P(2|1)=P(W(X)&lt;0). </p>
-
-<p>令\(\lambda=(\mu_1-\mu_2)&#39;V^{-1}(\mu_1-\mu_2)\). 因为\(W(X) = (X-\bar\mu)V^{-1}(\mu_1-\mu_2)\)， 所以可以计算出<br/>
-\(E(W(X))=(\mu_1-\bar\mu)V^{-1}(\mu_1-\mu_2)=\lambda/2\)<br/>
-\(D(X)=(\mu_1-\mu_2)&#39;V^{-1}(\mu_1-\mu_2)=\lambda\)<br/>
-在X服从正态分布的假定下，有\(W(X)~N(\lambda/2, \lambda)\)，从而可以计算出\(P(2|1)\)与\(P(1|2)\)</p>
-
-<blockquote>
-<p>贝叶斯判别法</p>
-</blockquote>
-
-<p>前面说的距离判别法因为形式简单，计算简便应用比较广。但是没有考虑到各个总体出现的可能性/概率大小，以及误判之后造成的不同损失大小。而贝叶斯判别法就是考虑这两点的一种判别方法。</p>
-
-<p>这里只对其建模过程做个简述。<br/>
-建模：假设m个类别，每个的先验概率和密度函数是 \(q_i, f_i(x)\), 而将原本属于类别i的判给类别j时候造成的损失，记为\(C(j|i)=\)， 而误判的概率可以写成\(p(j|i,R)=\int_{R_j}f_i(x)dx\)。 因此划分规则R最终带来的损失是<br/>
-\[g(R)=\sum^m_1 q_i r(i,R)=\sum_1^m q_i\sum_{j=1}^m C(j|i)p(j|i,R)\]</p>
-
-<blockquote>
-<p>Fisher判别法</p>
-</blockquote>
-
-<p>fisher 判别法出发点和前面两个略有不同，是从投影/降维角度(将多元转为一元)来进行的。以两类为例：假定训练数据分为两个类别C1和C2,每个类别的均值分别是\(u_1\)和\(u_2\),如前所述经过\(y=W^TX+b\)投影后，最终的目标是希望类内的距离尽量小，类间的距离尽量大</p>
-
-<p>类内距离：\(s_k=\sum_{x_i\in C_k}(w^Tx_i-w^Tu_k)^2   k=1,2\)<br/>
-类间聚类：\((w^Tu_1 - w^Tu_2)^2\)</p>
-
-<p>因此最终是最大化这个目标函数\(J(W)=\frac{(w^Tu_1 - w^Tu_2)^2}{s_1^2+s_2^2}\)，为了保证\(W\)的唯一性，不妨设\(W&#39;S_WW=1\)</p>
-
-<p>\[MAX J(W)=\frac{W^TS_BW}{W^TS_WW}\]<br/>
-\[st. W&#39;S_WW=1 \]</p>
-
-<p>这里简单推导一下求解过程，令<br/>
-\[L(W;\lambda)=W&#39;S_BW-\lambda(W&#39;S_WW -1) \]<br/>
-\[\frac{\partial J}{\partial w}=2S_BW-2\lambda S_ww=0\]<br/>
-\[\frac{\partial J}{\partial \lambda}=W&#39;S_WW - 1=0\]<br/>
-=&gt; \(W&#39;S_BW=\lambda\)，所以只需最大化\(\lambda\)<br/>
-\(S_BW=\lambda S_ww\)  ==&gt; \(S_W^{-1}S_BW=\lambda W\)<br/>
-因此取\(S_W^{-1}S_B\)的最大特征值即为\(\lambda\)，对应的特征向量即为\(W\)</p>
-
-<p>当然除了判别分析之外，还有SVM等方法，这个后续会具体介绍</p>
-
-<h3 id="toc_1">2.软输出</h3>
-
-<p>利用似然度区分回归结果，根据回归值和似然性的关系输出样本属于某个类别的<strong>概率</strong>。即通过一个激活函数，架起了回归和分类问题的通道。<br/>
-\[y(x) = g^{-1}(w^Tx+b)\]</p>
-
-<p>逻辑回归就是一个典型的例子。传统的回归模型的假定已经不成立，因为预测变量y是服从二项分布，逻辑回归估计的是样本属于某个类别的后验概率。即</p>
-
-<p>\[p(c_1|x)=\frac{p(x|c_1)p(c_1)}{p(x|c_1)p(c_1) + p(x|c_2)p(c_2)}\]</p>
-
-<p>从这个角度看，对上式稍加变形就有</p>
-
-<p>\[p(c_1|x)=\frac{1}{1+exp(-z)}=\pi(z)\]<br/>
-其中\(z=ln \frac{p(x|c_1)p(c_1)}{p(x|c_2)p(c_2)}=w^Tx + b\)</p>
-
-<p>参数估计用MLE方法：最终分类结果只有两个，所以是服从二项分布<br/>
-\[p(w,b|x) = \prod \pi(x_i)^{y_i}[1-\pi(x_i)]^{1-y_i}\]</p>
-
-<p>对数似然函数<br/>
-\[J(w)=\sum_1^n y_i ln(\pi(z_i)) + (1-y_i)ln(1-\pi(z_i))\]</p>
-
-<p>最大化这个目标函数，可以用梯度下降的方法。注意到sigmoid函数有一个比较好的性质\(\pi&#39;(z)=\pi(z)(1-\pi(z))\)</p>
-
-<p>推导：</p>
-
-<p>\[\frac{\partial J(W)}{\partial w_j}=\sum (y_i\frac{1}{pi(z_i)}-(1-y_i)\frac{1}{1-\pi(z_i)})\pi(z_i)(1-\pi(z_i))x_j\]<br/>
-\[=\sum [y_i(1-\pi(z_i)) - (1-y_i)\pi(z_i)]x_j\]</p>
-
-<p>\[=\sum(y_i -\pi(z_i))x_j\]</p>
-
-<p>因此在利用梯度下降方法更新权重时候，只需要按照\(w_j:=w_j +\eta\sum(y_i -\pi(z_i))x_j\)即可</p>
-
-<p>梯度下降的python版本实现 <a href="https://github.com/tjzzz/data_science/blob/master/statistical%20learning/logistic_regression.py">github</a></p>
-
-<p><strong>sklearn实现</strong>： 逻辑回归是在<code>sklearn.linear_model</code></p>
-
-<pre><code>from sklearn.linear_model import LogisticRegression
-model = LogisticRegression(multi_class=&#39;multinomial&#39;, solver=&#39;sag&#39;)
-model.fit(X_train,y_train)
-y_pred = model.predict(X_test)
-</code></pre>
-
-<blockquote>
-<p>OR值(odds ratio), 本来是在医学实验中的词，值实验组中暴露人数与非暴露人数的比值，与对照组中暴露人数与非暴露人数的比值的比值，所以也叫<strong>比值比</strong><br/>
-逻辑回归的更新公式与一般的线性回归的极为相似。\(\sum(y_i-x_iw)x_j\)</p>
-</blockquote>
-
-
-		</div>
-
-		
-
-	</article>
-  
-	<div class="pagination">
-	 <a class="prev" href="all_8.html">&larr; Older</a> 
-<a href="archives.html">Blog Archives</a>
-	 <a class="next" href="all_6.html">Newer &rarr;</a>  
-	    
-	</div>
+	</div><!-- large 8 -->
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>zhenzhen学习笔记</h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="github" target="_blank" href="tjzzz.github.io" title="GitHub">GitHub</a>
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="1%20tools.html"><strong>1 tools</strong></a>
+        
+            <a href="2%20get%20data.html"><strong>2 get data</strong></a>
+        
+            <a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html"><strong>3 数据可视化</strong></a>
+        
+            <a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 统计方法</strong></a>
+        
+            <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习</strong></a>
+        
+            <a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统</strong></a>
+        
+            <a href="6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html"><strong>6 文本&视频</strong></a>
+        
+            <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习</strong></a>
+        
+            <a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>10 比赛学习</strong></a>
+        
+            <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15637036455584.html">1 估计的置信度</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637025344954.html">1 安装-mac</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637025346225.html">2 不同设计之间有统计学差异吗</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637036605080.html">3 样本量的确定</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637037691936.html">3.1 特征处理—— 特征选择</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
 </div>
- <aside class="sidebar"> 
 
-	<section>
-	  <h1>Categories</h1>
-	  <ul id="recent_posts">
-	  
-	      <li class="post">
-	        <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单&nbsp;(4)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="1%20Tools.html"><strong>1 Tools&nbsp;(33)</strong></a>
-	         <p class="cat-children-p"> 
-	        
-	        	<a href="%E9%85%B7%E7%82%AB%E7%A5%9E%E5%99%A8.html">酷炫神器&nbsp;(12)</a>&nbsp;&nbsp;
-	        
-	        	<a href="PaddlePaddle.html">PaddlePaddle&nbsp;(3)</a>&nbsp;&nbsp;
-	        
-	        	<a href="spark.html">spark&nbsp;(12)</a>&nbsp;&nbsp;
-	        
-	        	<a href="tensorflow.html">tensorflow&nbsp;(2)</a>&nbsp;&nbsp;
-	        
-	        	<a href="SQL.html">SQL&nbsp;(1)</a>&nbsp;&nbsp;
-	        
-	         </p> 
-	      </li>
-	  
-	      <li class="post">
-	        <a href="2%20Get%20Data.html"><strong>2 Get Data&nbsp;(1)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html"><strong>3 数据可视化&nbsp;(8)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(9)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习&nbsp;(23)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统&nbsp;(3)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="6%20%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86.html"><strong>6 图像处理&nbsp;(4)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="6%20%E6%90%9C%E7%B4%A2.html"><strong>6 搜索&nbsp;(1)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="6%20nlp.html"><strong>6 nlp&nbsp;(1)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(12)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="8%20Ai%E5%BA%94%E7%94%A8.html"><strong>8 Ai应用&nbsp;(1)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="10%20leetcode.html"><strong>10 leetcode&nbsp;(5)</strong></a>
-	        
-	        
-	        
-	      </li>
-	  
-	      <li class="post">
-	        <a href="%E8%AE%B8%E5%BC%8F%E4%BC%9F-%E6%9E%B6%E6%9E%84%E8%AF%BE.html"><strong>许式伟-架构课&nbsp;(1)</strong></a>
-	        
-	        
-	        
-	      </li>
-	   
-	  </ul>
-	</section>
-	<section>
-	  <h1>Recent Posts</h1>
-	  <ul id="recent_posts">
-	  
-	      
-		      <li class="post">
-		        <a href="15636927966003.html">随机数</a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="15633781017095.html"></a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="15633691538884.html">3. 样本量的确定？</a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="15633655285542.html">卡方检验</a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="15632757602829.html">3. 假设检验的power</a>
-		      </li>
-	     
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	  
-	      
-	   
-	  </ul>
-	</section>
-	
-</aside> </div></div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2014 -  -
-  <span class="credit">Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a> &nbsp;&nbsp; Theme by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
+        </section>
+      </div>
+    </div>
 
   
     
 
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
 
+    
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
 
-</body>
+
+  </body>
 </html>
