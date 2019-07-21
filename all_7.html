@@ -82,22 +82,13 @@ $(document).ready(function(event) {
 
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15378048283915.html">markdown</a></h1>
-			<p class="meta"><time datetime="2018-09-25T00:00:28+08:00" 
-			pubdate data-updated="true">2018/9/25</time></p>
+		  	<h1 class="entry-title"><a href="15384984788761.html">4.5 树模型</a></h1>
+			<p class="meta"><time datetime="2018-10-03T00:41:18+08:00" 
+			pubdate data-updated="true">2018/10/3</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<h2 id="toc_0">图片</h2>
-
-<p>现在很多makdown编辑器是可以支持拖拽本地图片或者截屏就可以直接在markdown中生成图片的，非常方便，比如我现在在用的MWeb编辑器。</p>
-
-<p>但是如果同一篇内容需要在不同的平台上进行发布，那图片处理起来就比较麻烦。因为需要重新上传到不同平台。<br/>
-最方便的处理方式就是利用图床， 这里以七牛云存储为例。<br/>
-<img src="media/15378048283915/15383141468224.jpg" alt=""/></p>
-
-<p>step1： 首先在七牛官网上申请注册账号，并且添加<strong>对象存储</strong></p>
-
+		  	
 
 		</div>
 
@@ -107,69 +98,95 @@ $(document).ready(function(event) {
  
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15366609658901.html">地图定位</a></h1>
-			<p class="meta"><time datetime="2018-09-11T18:16:05+08:00" 
-			pubdate data-updated="true">2018/9/11</time></p>
+		  	<h1 class="entry-title"><a href="15384984375294.html">4.4 k近邻 —— 非参模型</a></h1>
+			<p class="meta"><time datetime="2018-10-03T00:40:37+08:00" 
+			pubdate data-updated="true">2018/10/3</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<p><a href="http://lbsyun.baidu.com/index.php?title=webapi/guide/webservice-geocoding-abroad">http://lbsyun.baidu.com/index.php?title=webapi/guide/webservice-geocoding-abroad</a></p>
+		  	<p>基于实例的学习，其学习的不是明确的泛化模型，而是样本之间的关系。</p>
 
-<p><a href="https://my.oschina.net/u/3093769/blog/1142709">https://my.oschina.net/u/3093769/blog/1142709</a></p>
+<p>k近邻方法：先找到与未知样本最接近的k个实例，再根据少数服从多数的准则，给未知样本打上标签。</p>
 
-<pre><code># 方法一: baidumap
-library(baidumap)
-library(rjson)
-options(baidumap.key = &#39;V1YUGNIpKhENUtgmmBT6EbREkgENinyS&#39;)
+<ul>
+<li>超参数k</li>
+<li>距离度量</li>
+<li>高维灾难</li>
+</ul>
 
-loc =  getCoordinate(&#39;同济大学&#39;, formatted = T)     # 根据名称查经纬度
+<p>k近邻方法和传统的参数方法不同，参数模型在求得参数后，任务就完成了。新来了一个样本后直接拿训练好的参数进行预测即可；而k近邻不同，它需要将数据存储下来，每来了一个新样本后，要计算离他最近的k个实例。</p>
 
-loc_json = getLocation(loc, output=&#39;json&#39;)         # 根据经纬度查对应地址信息
-out = fromJSON(loc_json)
+<p>sklearn中<code>sklearn.neighbors</code>模块</p>
 
-out$result$addressComponent$city
+<p>应用</p>
 
-## 方法二
-library(REmap)
-tmp = get_city_coord(&quot;同济大学&quot;) 
+<ul>
+<li>无监督的<code>NearestNeighbors</code></li>
+</ul>
 
+<p>具体计算的时候可以选择不同的计算方法，&#39;algorithm&#39; =[&#39;auto&#39;, &#39;ball_tree&#39;, </p>
 
-library(RCurl)
+<ul>
+<li>有监督的</li>
+</ul>
 
-lon&lt;-tmp[1]
-lat&lt;-tmp[2]
-out&lt;-getURL(paste(&quot;https://geoindex.amap.com/geoIndex/area?callback=siptea_200823435167697&amp;adGrade=4&amp;region=&quot;,lon,&quot;%2C&quot;,lat,sep=&quot;&quot;))
+<p>KNeighborsClassifier: 可以指定参数k<br/>
+RadiusNeighborsClassifier: 可以指定查询的固定半径r</p>
 
-out 
+<pre><code class="language-python">## 官网的示例demo
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.colors import ListedColormap
+from sklearn import neighbors, datasets
+
+n_neighbors = 15
+
+# import some data to play with
+iris = datasets.load_iris()
+
+# we only take the first two features. We could avoid this ugly
+# slicing by using a two-dim dataset
+X = iris.data[:, :2]
+y = iris.target
+
+h = .02  # step size in the mesh
+
+# Create color maps
+cmap_light = ListedColormap([&#39;#FFAAAA&#39;, &#39;#AAFFAA&#39;, &#39;#AAAAFF&#39;])
+cmap_bold = ListedColormap([&#39;#FF0000&#39;, &#39;#00FF00&#39;, &#39;#0000FF&#39;])
+
+for weights in [&#39;uniform&#39;, &#39;distance&#39;]:
+    # we create an instance of Neighbours Classifier and fit the data.
+    clf = neighbors.KNeighborsClassifier(n_neighbors, weights=weights)
+    clf.fit(X, y)
+
+    # Plot the decision boundary. For that, we will assign a color to each
+    # point in the mesh [x_min, x_max]x[y_min, y_max].
+    x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
+    y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
+    xx, yy = np.meshgrid(np.arange(x_min, x_max, h),
+                         np.arange(y_min, y_max, h))
+    Z = clf.predict(np.c_[xx.ravel(), yy.ravel()])
+
+    # Put the result into a color plot
+    Z = Z.reshape(xx.shape)
+    plt.figure()
+    plt.pcolormesh(xx, yy, Z, cmap=cmap_light)
+
+    # Plot also the training points
+    plt.scatter(X[:, 0], X[:, 1], c=y, cmap=cmap_bold,
+                edgecolor=&#39;k&#39;, s=20)
+    plt.xlim(xx.min(), xx.max())
+    plt.ylim(yy.min(), yy.max())
+    plt.title(&quot;3-Class classification (k = %i, weights = &#39;%s&#39;)&quot;
+              % (n_neighbors, weights))
+
+plt.show()
 </code></pre>
 
-<p>google<br/>
-<a href="https://developers.google.com/places/web-service/search">https://developers.google.com/places/web-service/search</a></p>
-
-<p>AIzaSyB7YeDfBRxoc8LecatkxCv2pZlXLX2hab4</p>
-
-<p><a href="https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&amp;inputtype=textquery&amp;fields=photos,formatted_address,name,rating,opening_hours,geometry&amp;key=AIzaSyB7YeDfBRxoc8LecatkxCv2pZlXLX2hab4">https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&amp;inputtype=textquery&amp;fields=photos,formatted_address,name,rating,opening_hours,geometry&amp;key=AIzaSyB7YeDfBRxoc8LecatkxCv2pZlXLX2hab4</a></p>
-
-<p>高德</p>
-
-<p>d333738ea086fa17955ccbbc0eb12d4b</p>
-
-<ol>
-<li>数据处理</li>
-</ol>
-
-<p>数据本身的公司or学校名称是英文的，如果是可以使用google的地图接口的话，可以直接用google的地图接口。这里是先将其转为中文，然后调用百度的地图接口</p>
-
-<p>首先在百度翻译开放平台上申请app_key<br/>
-<a href="http://api.fanyi.baidu.com/api/trans/product/desktop?req=detail">http://api.fanyi.baidu.com/api/trans/product/desktop?req=detail</a></p>
-
-<p>在其文档与支持中心有具体的API接口的定义方式：传入参数和输出结果的格式</p>
-
-<p><a href="http://api.fanyi.baidu.com/api/trans/product/apidoc">http://api.fanyi.baidu.com/api/trans/product/apidoc</a></p>
-
-<p>并且为了方便使用，有不同版本的demo示例。</p>
-
-<p>2.地理位置</p>
+<p>最近邻回归<br/>
+KNeighborsRegressor<br/>
+RadiusNeighborsRegressor</p>
 
 
 		</div>
@@ -180,183 +197,388 @@ out
  
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15355316549948.html">FM 模型</a></h1>
-			<p class="meta"><time datetime="2018-08-29T16:34:14+08:00" 
-			pubdate data-updated="true">2018/8/29</time></p>
+		  	<h1 class="entry-title"><a href="15384698920685.html">4.3 支持向量机</a></h1>
+			<p class="meta"><time datetime="2018-10-02T16:44:52+08:00" 
+			pubdate data-updated="true">2018/10/2</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<p>支持向量机属于上一节中说的硬输出的方法，是从几何角度出发考虑的。</p>
+
+<p>在介绍SVM之前，先解释一下几个基本概念。<br/>
+<img src="media/15384698920685/15386228139164.jpg" alt="" style="width:400px;"/></p>
+
+<blockquote>
+<p>函数间隔与几何间隔</p>
+</blockquote>
+
+<p>一般的，一个点距离分离超平面的远近可以标识分类预测的确信程度。当超平面\(wx+b=0\)确定后，\(|wx+b|\)的大小能够相对的表示远近，而\(wx+b\)的符号与\(y\)类别是否一致则可以表示是否分类正确。 <br/>
+\[d_i = y_i(wx_i+b)\]  定义函数间隔\(d = \min d_i\)</p>
+
+<p>但是很明显的会发现这个间隔与\(w\)的量纲是有关系的，\(kw+kb\)与之前超平面是一样的，但是间隔却差了k倍。因此需要<strong>几何间隔</strong></p>
+
+<p>\[d_i = y_i(\frac{w}{||w||}x_i+\frac{b}{||w||}), d = \min d_i\]  </p>
+
+<blockquote>
+<p>间隔最大化</p>
+</blockquote>
+
+<p>有了前面关于间隔的定义，或者是关于分类距离的定义，就有了目标。SVM的目标就是: 求解能够将数据集正确划分并且几何间隔最大的分离超平面。</p>
+
+<p>注：对于线性可分的数据，超平面有无数个(等价于感知机)，但是间隔最大的只有一个。间隔最大其实是两个要求:</p>
+
+<ul>
+<li>能尽可能的将正负例区分开</li>
+<li>对于难分的点(距离平面较近的点)也有很好的置信把握，即泛化能力会好一些</li>
+</ul>
+
+<blockquote>
+<p>SVM对应的三种问题类型</p>
+</blockquote>
+
+<p>根据分类问题，可分为以下三种</p>
+
+<ul>
+<li>线性可分与硬间隔最大化</li>
+<li>线性支持向量机与软间隔最大化</li>
+<li>非线性支持向量机与核函数</li>
+</ul>
+
+<p>这些会在下面中进行详细介绍</p>
+
+<blockquote>
+<p>支持向量</p>
+</blockquote>
+
+<p>这个需要看完下面关于三部分的介绍之后，再来了解这个概念。</p>
+
+<ul>
+<li>在线性可分的情况下，样本中与超平面距离最近的样本点称为<strong>支持向量</strong>. 支持向量是满足\(y_i(wx_i+b)-1=0\)的点。</li>
+<li>分隔边界最终只是由支持向量的点决定的，其他距离比较远的点并没有影响。</li>
+</ul>
+
+<h2 id="toc_0">1.线性可分与硬间隔最大化</h2>
+
+<p>先讨论一种最简单的情况，当数据集本身可以线性可分时候(实际数据中可能并没有这么好的性质)，我们只要找到对应的超平面即可。从前面的集合图形上我们的目标：希望每个点到超平面的间隔的最小值达到最大，即\(max min d_i\)</p>
+
+<p>数学模型：\[max_{w,b} d(几何间隔)\]<br/>
+\[s.t \quad d_i = y_i(wx_i+b)&gt;= d, i=1,..n\]</p>
+
+<p>因为几何间隔\(d=d&#39;/||w||\)，所以原问题等价于<br/>
+\[max_{w,b} \frac{d&#39;}{||w||}\]<br/>
+\[s.t \quad d_i = y_i(wx_i+b)&gt;= d&#39;, i=1,..n\]</p>
+
+<p>注意到</p>
+
+<ul>
+<li>函数间隔的取值\(d&#39;\)并不影响最优解\(w,b\)的求解。(如果w,b是最优解，则\(kw,kb\)也是，函数距离就是\(d&#39;\)和\(kd&#39;\))。所以这里可以取\(d&#39;=1\)。</li>
+<li>\(1/||w||\)与\(\frac{1}{2}||w||^2\)是等价的</li>
+</ul>
+
+<p>因此最终优化的问题等价于如下的凸二次规划问题：<br/>
+\[min_{w,b} \frac{1}{2}||w||^2\]<br/>
+\[s.t \quad d_i = y_i(wx_i+b) -1 &gt;=0, i=1,..n\]</p>
+
+<p>解法：关于这个优化问题的解法，在后面会详细给出。可以证明这个解是存在且唯一的。</p>
+
+<p><strong>几何角度</strong></p>
+
+<ul>
+<li>过两个类的边界的点的平行线(\(wx-b=1, wx-b=-1\))，有点类似于楚河汉界</li>
+<li>将两条平行线进行旋转，保证同类划分不变。两者距离就会改变</li>
+<li>落在两个平行线上的异类点就是<strong>支持向量</strong></li>
+</ul>
+
+<p><img src="media/15384698920685/15387096705813.jpg" alt="线性可分示意图"/></p>
+
+<h2 id="toc_1">2.线性支持向量机与软间隔最大化</h2>
+
+<p>上一节说的是对线性可分数据的，如果数据本身不可分该怎么办呢，此时线性分割必然存在误分类的点？对于线性不可分我们不可能要求其严格满足上面说的不等式约束。这时我们只能退而求其次：</p>
+
+<p>思路：使得之前的几何间隔尽量大，同时使误分类的个数尽可能少</p>
+
+<p>数学表示：对于每个样本，类似运筹学中的方法我们可以引入一个松弛变量\(\xi_i\ge 0\),满足\(y_i(wx_i+b)\ge 1-\xi_i\) 之前是要求一定要大于等于1，现在因为并不完全可分，所以不一定要大于等于1。</p>
+
+<p><strong>数学模型：</strong></p>
+
+<p>\[min_{w,b} \frac{1}{2}||w||^2 + C\sum_1^n \xi_i\]<br/>
+\[s.t \quad y_i(wx_i+b)&gt;=1-\xi_i, i=1,..n\]<br/>
+\[\xi_i &gt;= 0\]</p>
+
+<p>这时候其实可以发现线性可分的相当于是这里的一种特殊情况，即\(\xi_i=0\)</p>
+
+<p><strong>求解：</strong><br/>
+该优化问题的拉格朗日函数是<br/>
+\[L(w,b,\xi,\alpha,u)=\frac{1}{2}||w||^2+C\sum\xi_i-\sum\alpha_i(y_i(wx_i+b)-1+\xi_i)-\sum u_i\xi_i\]<br/>
+因此原问题等价于 \[\max_{\alpha,u}\min_{w,b,\xi}L\]</p>
+
+<p>（1）首先求L对\(w,b,\xi\)的极小<br/>
+<img src="media/15384698920685/15387191773648.jpg" alt=""/></p>
+
+<p>可得\[\min_{w,b\xi}L=-\frac{1}{2}\sum_{i=1}^n\sum_{j=1}^n \alpha_i\alpha_jy_iy_j(x_i*x_j)+\sum_{i=1}^n\alpha_i\]</p>
+
+<p>(2) 再对\(\min L\)求最大，即有<br/>
+\[\max_{\alpha}-\frac{1}{2}\sum_{i=1}^n\sum_{j=1}^n \alpha_i\alpha_jy_iy_j(x_i*x_j)+\sum_{i=1}^n\alpha_i\]<br/>
+\[s.t.\quad \sum\alpha_iy_i=0\]<br/>
+\[C-\alpha_i-u_i&gt;=0;\alpha_i&gt;=0;u_i&gt;=0\]</p>
+
+<p>最后一个条件其实等价于\(0\le\alpha_i\le C\)</p>
+
+<p>对于线性可分问题其max函数是一样的，只是约束条件是\(0\le\alpha_i\)</p>
+
+<p>【定理】若\(\alpha^*=(\alpha_1^*,...\alpha_n)\)是上述优化问题的一个解，若存在一个分量\(0&lt;\alpha_j^*&lt;C\)，则原始问题的解可按如下形式求得 <br/>
+\[w^* = \sum\alpha_i^*y_ix_i\]<br/>
+\[b^*=y_j-\sum_{i=1}^n y_i\alpha_i^*(x_i*x_j)\]</p>
+
+<p>从中可以发现b的解并不唯一。</p>
+
+<p>最终的分离超平面是\[\sum\alpha_i^*y_i(x_i*x_j)+b^*=0\]<br/>
+分类的决策函数是\[f(x)=sign(\alpha_i^*y_i(x_i*x_j)+b^*)\]</p>
+
+<p><strong>几何解释</strong></p>
+
+<ul>
+<li>如果在分解边界上，则\(\xi_i=0\),距离是1</li>
+<li>如果是在两个分界边界中间，\(0&lt;\xi_i&lt;1\)</li>
+<li>越过分界边界，到了另外一边，\(\xi_i &gt;1\) 这个时候\(y_i(wx_i+b)\ge 1-\xi_i\)是小于0的，属于误分类，在优化的时候会考虑</li>
+</ul>
+
+<p><img src="media/15384698920685/15387133378663.jpg" alt=""/></p>
+
+<p><strong>合页损失函数</strong>：与原优化问题等价的一种损失函数形式<br/>
+\[\min_{w,b} \sum[1-y_i(wx_i+b)]_{+}+\lambda||w||^2\]</p>
+
+<h2 id="toc_2">3.非线性支持向量机与核函数</h2>
+
+<p>当数据的分布呈现的是一种非线性的时候，用之前的线性分割的方法肯定就会出现问题。比如数据是在一个椭圆内外分布，这个时候就需要先对原始数据做一个映射，\(x_1^2,x_2^2\)然后变成线性可分的。而这里主要用到了核技巧。</p>
+
+<p>【核函数】如果存在一个映射\(\phi(x):X-&gt; H\),使得对于所有\(x,z\in X\),函数\(K(x,z)\)满足<br/>
+\[K(x,z)=\phi(x)*\phi(z)\]<br/>
+则\(K(x,z)\)为核函数，\(\phi(x)\)为映射函数。</p>
+
+<p>核函数的想法是：在学习中值定义核函数，而不显示的定义映射函数，通常映射函数不太好找且不唯一。<br/>
+在支持向量机中的应用：<br/>
+如前所述，在支持向量机的对偶问题中，只涉及样本之间的内积运算。\[W(\alpha)=\max_{\alpha}-\frac{1}{2}\sum_{i=1}^n\sum_{j=1}^n \alpha_i\alpha_jy_iy_j(x_i*x_j)+\sum_{i=1}^n\alpha_i\]<br/>
+因此可以用核函数代替<br/>
+\[W(\alpha)=\max_{\alpha}-\frac{1}{2}\sum_{i=1}^n\sum_{j=1}^n \alpha_i\alpha_jy_iy_jK(x_i,x_j)+\sum_{i=1}^n\alpha_i\]</p>
+
+<p><strong>常用的核函数</strong></p>
+
+<ul>
+<li>多项式核函数 \(K(x,z)=(x*z+1)^p\)</li>
+<li>高斯核函数 \(K(x,z)=exp(\frac{-||x-z||^z}{2\sigma^2})\)</li>
+<li>字符串核函数</li>
+</ul>
+
+<h2 id="toc_3">优化算法SMO</h2>
+
+<p>前面介绍了SVM中的三类问题，最终都是通过一个凸二次规划进行求解。当样本量较大的时候，SMO是一种相对求解较快的方法。简言之，是采用了启发式算法，每次只更新两个\(\alpha_i,\alpha_j\)</p>
+
+<p><a href="https://www.cnblogs.com/nolonely/p/6541527.html">https://www.cnblogs.com/nolonely/p/6541527.html</a></p>
+
+<p>Sequential Minimal Optimization A Fast Algorithm for Training Support Vector Machines</p>
+
+<h2 id="toc_4">代码</h2>
+
+<p><code>sklearn.svc</code>模块 <a href="http://scikit-learn.org/stable/modules/svm.html#svm">http://scikit-learn.org/stable/modules/svm.html#svm</a></p>
+
+<p>主要包含</p>
+
+<ul>
+<li>SVC 标准的</li>
+</ul>
+
+<pre><code>from sklearn import svm
+X = [[0, 0], [1, 1]]
+y = [0, 1]
+clf = svm.SVC()
+clf.fit(X, y)  
+</code></pre>
+
+<p>以iris数据为例</p>
+
+<pre><code class="language-python">### iris数据
+from sklearn import datasets, svm
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+iris = datasets.load_iris()
+X = iris.data[:, :2]
+y = iris.target
+
+
+# model
+C = 1.0
+model = svm.SVC(kernel=&#39;linear&#39;, C=C)
+model.fit(X, y)
+
+
+
+## 绘制可视化图
+x1 = X[:,0]
+x2 = X[:,1]
+h=0.1
+x_min, x_max = x1.min()-1, x1.max()+1
+y_min, y_max = x2.min()-1, x2.max()+1
+xx,yy = np.meshgrid(np.arange(x_min, x_max, h),
+                    np.arange(y_min, y_max, h))  #生成对应的坐标矩阵
+
+Z = model.predict(np.c_[xx.ravel(), yy.ravel()])    # 在新的坐标点上预测分类
+Z = Z.reshape(xx.shape)
+plt.contourf(xx, yy, Z, cmap=plt.cm.coolwarm, alpha=0.8)
+
+
+plt.scatter(x1, x2, c=y, cmap=plt.cm.coolwarm, s=20, edgecolors=&#39;k&#39;)
+
+plt.xlabel(&#39;Sepal length&#39;)
+plt.ylabel(&#39;Sepal width&#39;)
+</code></pre>
+
+<p><img src="media/15384698920685/15387991752806.jpg" alt=""/></p>
+
+<ul>
+<li>NuSVC 与SVC的优化目标函数略微不同</li>
+<li>LinearSVC： 只针对linear kernel</li>
+</ul>
+
+<p>在进行多分类的时候SVC中参数<code>decision_function_shape</code>可以选择是<code>ovo</code>还是<code>ovr</code><br/>
+LinearSVC是通过参数<code>multi_class</code>进行选择，</p>
+
+<h2 id="toc_5">小结</h2>
+
+<p><img src="media/15384698920685/15388009994951.jpg" alt=""/></p>
+
+
+		</div>
+
+		
+
+	</article>
+ 
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15383213879430.html">4.2 回归与分类</a></h1>
+			<p class="meta"><time datetime="2018-09-30T23:29:47+08:00" 
+			pubdate data-updated="true">2018/9/30</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
 		  	<blockquote>
-<p>背景</p>
+<p>统计模型一开始是从回归分析开始的，但是实际问题中更加普遍的是分类问题。那么很自然的一个问题是，如果利用回归分析的方法的话，如何去做分类问题呢？换句话说回归和分类之间的联系在哪里呢？</p>
 </blockquote>
 
-<p>一般的线性模型 \(y=w_0 + \sum w_i x_i\)， 当考虑了特征之间的相关性即交互效应(这里以二阶为例)后模型形式是：<br/>
-\[y=w_0 + \sum w_i x_i + \sum_1^{n-1}\sum_{i+1}^n w_{ij}x_ix_j\]</p>
+<p>一个很自然的想法是，根据回归分析y的结果，按照一定规则将其映射到不同的区间段，从而形成一个分类模型。即连续变量 =&gt; 分类变量</p>
 
-<p>这里n表示特征的个数</p>
+<h3 id="toc_0">1. 硬输出——判别分析</h3>
+
+<p>直接根据阈值划分分类结果， 而这个映射函数即为<strong>判别函数</strong>。比较典型的就是判别分析了。常用的判别分析的方法：</p>
 
 <blockquote>
-<p>模型如何求解呢？</p>
+<p>距离判别法</p>
 </blockquote>
 
-<p>如果把\(x_ix_j\)看做一个新的变量，相当于整体上还是一个线性回归模型，似乎可以用正常的线性回归的办法进行求解。<br/>
-但是这里未知的要求解的参数有n(+1)/2个，很多时候特征中会有一些分类型的变量，当通过哑变量的方式引入模型中的时候，特征数目k会非常大，从而导致要求解的参数个数较大，并且数据特别稀疏。另一方面，分类特征就到时候，\(x_ix_j\)是非零的比例较小，从而导致\(w\)无法计算出来。</p>
+<p>即按照样本距离各个总体距离的远近来判断所属的归类。比如基于欧式距离或马氏距离，欧式距离没有考虑到本身特征量纲的差异，所以用的不多。这里以马氏距离，两个类别为例。</p>
+
+<p>例子：已知一个样本X可能来自两个总体\(G_1\)和\(G_2\)其中的一个，其中 \(G_1: \mu_1,V_1, G_2:\mu_2, V_2\), 现在给定X，判断其属于哪一类。<br/>
+注意：对总体分布没有要求</p>
+
+<p>解析：判别函数\(W(X)=D^2(X,G_2)-D^2(X,G_1)=(X-\mu_2)V_2^{-1}(X-\mu_2)-(X-\mu_1)V_1^{-1}(X-\mu_1)\).</p>
+
+<p>在实际中因为总体均值和方差是位置的，需要用样本进行估计。当\(V_1=V_2=V\)时候，二次判别式可以变成线性的，有\(W(X) = (X-\bar\mu)V^{-1}(\mu_1-\mu_2)\)， 其中\(\bar\mu = (\mu_1+\mu_2)/2\)</p>
+
+<p>误判概率：判别分析肯定也有出错的时候，下面来讨论下误判概率问题。</p>
+
+<p><img src="media/15383213879430/15384587841040.jpg" alt=""/></p>
+
+<p>从上图中可以比较清楚的看到，出错的概率即为图中阴影部分的面积。</p>
+
+<p>假设X属于1，下面计算其被判断成2的概率即P(2|1)=P(W(X)&lt;0). </p>
+
+<p>令\(\lambda=(\mu_1-\mu_2)&#39;V^{-1}(\mu_1-\mu_2)\). 因为\(W(X) = (X-\bar\mu)V^{-1}(\mu_1-\mu_2)\)， 所以可以计算出<br/>
+\(E(W(X))=(\mu_1-\bar\mu)V^{-1}(\mu_1-\mu_2)=\lambda/2\)<br/>
+\(D(X)=(\mu_1-\mu_2)&#39;V^{-1}(\mu_1-\mu_2)=\lambda\)<br/>
+在X服从正态分布的假定下，有\(W(X)~N(\lambda/2, \lambda)\)，从而可以计算出\(P(2|1)\)与\(P(1|2)\)</p>
 
 <blockquote>
-<p>引入其他辅助信息</p>
+<p>贝叶斯判别法</p>
 </blockquote>
 
-<p>我们可以引入一个辅助向量 对于\(w_{ij}\)形成的对称矩阵W，可以进行分解\(W=V^TV\)</p>
+<p>前面说的距离判别法因为形式简单，计算简便应用比较广。但是没有考虑到各个总体出现的可能性/概率大小，以及误判之后造成的不同损失大小。而贝叶斯判别法就是考虑这两点的一种判别方法。</p>
 
-<p>将模型改成如下形式<br/>
-\[y=w_0 + \sum w_i x_i + \sum_1^{n-1}\sum_{i+1}^n &lt;v_i, v_j&gt;x_ix_j\]</p>
-
-<ul>
-<li>从形式上来看，我们知道\(w_ij\)的矩阵是对称的，其形式上和协差阵\(&lt;v_i, v_j&gt;\)很类似</li>
-</ul>
-
-<p>\(v_i\)相当于是第i维隐向量，假设其维度是k&lt;&lt;n, 这样模型的参数就由原来的n(n+1)/2 变为了</p>
-
-<h2 id="toc_0">参考资料</h2>
-
-<p>简书-石晓文 <a href="https://www.jianshu.com/p/152ae633fb00">https://www.jianshu.com/p/152ae633fb00</a><br/>
-美团技术博客 <a href="https://tech.meituan.com/deep_understanding_of_ffm_principles_and_practices.html">https://tech.meituan.com/deep_understanding_of_ffm_principles_and_practices.html</a></p>
-
-
-		</div>
-
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15350244372147.html">4.1 回归模型</a></h1>
-			<p class="meta"><time datetime="2018-08-23T19:40:37+08:00" 
-			pubdate data-updated="true">2018/8/23</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p>进入统计机器学习大门，最基础的从回归分析说起。</p>
-
-<h2 id="toc_0">1.回归分析</h2>
-
-<p>机器学习从最简单的回归分析说起，这次从最小二乘的几何意义角度去看回归分析。</p>
-
-<p>\[Y = X’B\]<br/>
-我们知道最终估计的满足 \((y-X\hat\beta)^TX=0\)。即最优估计是在空间上的正交投影</p>
-
-<p><img src="media/15350244372147/15350246581231.jpg" alt=""/><br/>
-统计中的一些基本概念：</p>
-
-<ul>
-<li>t 检验</li>
-<li>F 检验</li>
-<li>p value</li>
-<li>多重共线性</li>
-<li></li>
-</ul>
-
-<h2 id="toc_1">2.正则化处理</h2>
-
-<p>训练数据是有限的时候，总可以通过增加参数的方法提高模型复杂度，降低训练误差，但是其泛化能力不好。正则化即通过调整参数的取值，来平衡<strong>偏差</strong>和<strong>方差</strong>的关系。</p>
-
-<p>线性回归中，最直接的方法就行在loss function中添加正则化项。一般形式如下：</p>
-
-<p>\[E(w) = \sum [f(x_i, w) - y_i]^2 + \lambda g(||w||_p)\]</p>
-
-<ul>
-<li>当取一范数时，即为lasso；</li>
-<li>二范数：岭回归</li>
-<li>一范数和二范数组合：弹性网络。  \(a||w||^2_2 + (1-a)||w||_1\)</li>
-</ul>
-
-<p>一范数和二范数的几何意义区别如下(这里就不解释了)：</p>
-
-<ul>
-<li>lasso会将特征衰减到0</li>
-<li>岭回归大量特征系数都比较小</li>
-<li>弹性网络结合了两种方法的优点</li>
-</ul>
-
-<p><img src="media/15350244372147/15350256600383.jpg" alt=""/></p>
+<p>这里只对其建模过程做个简述。<br/>
+建模：假设m个类别，每个的先验概率和密度函数是 \(q_i, f_i(x)\), 而将原本属于类别i的判给类别j时候造成的损失，记为\(C(j|i)=\)， 而误判的概率可以写成\(p(j|i,R)=\int_{R_j}f_i(x)dx\)。 因此划分规则R最终带来的损失是<br/>
+\[g(R)=\sum^m_1 q_i r(i,R)=\sum_1^m q_i\sum_{j=1}^m C(j|i)p(j|i,R)\]</p>
 
 <blockquote>
-<p>从概率不同学派的角度来看上面的问题。<br/>
-正则化的方式，是从频率学派角度来看；而贝叶斯学派视角来看，正则化其实就是引入了关于参数的先验信息。</p>
+<p>Fisher判别法</p>
 </blockquote>
 
-<p>贝叶斯学派是假定参数服从某种分布，然后根据其分布利用积分的方法将其消除掉。这一过程叫<strong>边际化</strong>。边际化的过程其实恰好是正则化/泛化的过程。</p>
+<p>fisher 判别法出发点和前面两个略有不同，是从投影/降维角度(将多元转为一元)来进行的。以两类为例：假定训练数据分为两个类别C1和C2,每个类别的均值分别是\(u_1\)和\(u_2\),如前所述经过\(y=W^TX+b\)投影后，最终的目标是希望类内的距离尽量小，类间的距离尽量大</p>
 
-<p>可以证明，岭回归是w满足正态分布，lasso是当w满足拉普拉斯分布时候通过最大后验概率得到的估计结果。</p>
+<p>类内距离：\(s_k=\sum_{x_i\in C_k}(w^Tx_i-w^Tu_k)^2   k=1,2\)<br/>
+类间聚类：\((w^Tu_1 - w^Tu_2)^2\)</p>
 
-<blockquote>
-<p>code</p>
-</blockquote>
+<p>因此最终是最大化这个目标函数\(J(W)=\frac{(w^Tu_1 - w^Tu_2)^2}{s_1^2+s_2^2}\)，为了保证\(W\)的唯一性，不妨设\(W&#39;S_WW=1\)</p>
 
-<pre><code>import numpy as np # 快速操作结构数组的工具
-import matplotlib.pyplot as plt  # 可视化绘制
-from sklearn.linear_model import Lasso,LassoCV,LassoLarsCV   # Lasso回归,LassoCV交叉验证实现alpha的选取，LassoLarsCV基于最小角回归交叉验证实现alpha的选取
+<p>\[MAX J(W)=\frac{W^TS_BW}{W^TS_WW}\]<br/>
+\[st. W&#39;S_WW=1 \]</p>
 
-# ========Lasso回归========
-model = Lasso(alpha=0.01)  # 调节alpha可以实现对拟合的程度
-# model = LassoCV()  # LassoCV自动调节alpha可以实现选择最佳的alpha。
-# model = LassoLarsCV()  # LassoLarsCV自动调节alpha可以实现选择最佳的alpha
-model.fit(X, y)   # 线性回归建模
-print(&#39;系数矩阵:\n&#39;,model.coef_)
-print(&#39;线性回归模型:\n&#39;,model)
-# print(&#39;最佳的alpha：&#39;,model.alpha_)  # 只有在使用LassoCV、LassoLarsCV时才有效
-# 使用模型预测
-predicted = model.predict(X)
+<p>这里简单推导一下求解过程，令<br/>
+\[L(W;\lambda)=W&#39;S_BW-\lambda(W&#39;S_WW -1) \]<br/>
+\[\frac{\partial J}{\partial w}=2S_BW-2\lambda S_ww=0\]<br/>
+\[\frac{\partial J}{\partial \lambda}=W&#39;S_WW - 1=0\]<br/>
+=&gt; \(W&#39;S_BW=\lambda\)，所以只需最大化\(\lambda\)<br/>
+\(S_BW=\lambda S_ww\)  ==&gt; \(S_W^{-1}S_BW=\lambda W\)<br/>
+因此取\(S_W^{-1}S_B\)的最大特征值即为\(\lambda\)，对应的特征向量即为\(W\)</p>
 
+<p>当然除了判别分析之外，还有SVM等方法，这个后续会具体介绍</p>
+
+<h3 id="toc_1">2.软输出</h3>
+
+<p>利用似然度区分回归结果，根据回归值和似然性的关系输出样本属于某个类别的<strong>概率</strong>。即通过一个激活函数，架起了回归和分类问题的通道。<br/>
+\[y(x) = g^{-1}(w^Tx+b)\]</p>
+
+<p>逻辑回归就是一个典型的例子。传统的回归模型的假定已经不成立，因为预测变量y是服从二项分布，逻辑回归估计的是样本属于某个类别的后验概率。即</p>
+
+<p>\[p(c_1|x)=\frac{p(x|c_1)p(c_1)}{p(x|c_1)p(c_1) + p(x|c_2)p(c_2)}\]</p>
+
+<p>从这个角度看，对上式稍加变形就有</p>
+
+<p>\[p(c_1|x)=\frac{1}{1+exp(-z)}=\pi(z)\]<br/>
+其中\(z=ln \frac{p(x|c_1)p(c_1)}{p(x|c_2)p(c_2)}=w^Tx + b\)</p>
+
+<p>参数估计用MLE方法：最终分类结果只有两个，所以是服从二项分布<br/>
+\[p(w,b|x) = \prod \pi(x_i)^{y_i}[1-\pi(x_i)]^{1-y_i}\]</p>
+
+<p>对数似然函数<br/>
+\[J(w)=\sum_1^n y_i ln(\pi(z_i)) + (1-y_i)ln(1-\pi(z_i))\]</p>
+
+<p>最大化这个目标函数，可以用梯度下降的方法。注意到sigmoid函数有一个比较好的性质\(\pi&#39;(z)=\pi(z)(1-\pi(z))\)</p>
+
+<p>推导：</p>
+
+<p>\[\frac{\partial J(W)}{\partial w_j}=\sum (y_i\frac{1}{pi(z_i)}-(1-y_i)\frac{1}{1-\pi(z_i)})\pi(z_i)(1-\pi(z_i))x_j\]<br/>
+\[=\sum [y_i(1-\pi(z_i)) - (1-y_i)\pi(z_i)]x_j\]</p>
+
+<p>\[=\sum(y_i -\pi(z_i))x_j\]</p>
+
+<p>因此在利用梯度下降方法更新权重时候，只需要按照\(w_j:=w_j +\eta\sum(y_i -\pi(z_i))x_j\)即可</p>
+
+<p>梯度下降的python版本实现 <a href="https://github.com/tjzzz/data_science/blob/master/statistical%20learning/logistic_regression.py">github</a></p>
+
+<p><strong>sklearn实现</strong>： 逻辑回归是在<code>sklearn.linear_model</code></p>
+
+<pre><code>from sklearn.linear_model import LogisticRegression
+model = LogisticRegression(multi_class=&#39;multinomial&#39;, solver=&#39;sag&#39;)
+model.fit(X_train,y_train)
+y_pred = model.predict(X_test)
 </code></pre>
 
-<h2 id="toc_2">3.广义线性模型</h2>
-
-<p>广义线性模型可以看做一般线性模型的推广，既然说他是推广，说明有一些问题是传统的线性模型没法解决的。</p>
-
-<p>广义线性模型中y的密度函数形式是基于指数分布族的\[p(y;\theta)=b(y)exp[\theta&#39;T(y)+a(\theta)]\]<br/>
-其中\(T(y)\)是一个充分统计量，通常可以等于\(y\)。 常见的正态分布、指数分布、二项分布、泊松分布都属于指数分布族，都可以转为这种形式。</p>
-
-<p>介绍一个常用的广义线性模型：</p>
-
-<p>xxx</p>
-
-<h2 id="toc_3">4.基函数扩展：属性的非线性化</h2>
-
-<p>线性模型的表达能力有限，前面广义线性模型的思路是将因变量y做了一个非线性映射。而从另一个角度，可以将解释变量变为非线性的，即<br/>
-\[y=\beta_0+\beta_1x_1 + ...+\beta_nx_n\]<br/>
-可以扩展为<strong>基函数扩展模型</strong><br/>
-\[y=\beta_0+\beta_1f(x_1) + ...+\beta_nf(x_n)\]</p>
-
-<p>比如常见的多项式回归\[y=\beta_0+\beta_1 x + ...+\beta_n x^n\]</p>
-
-<p>多项式回归会存在一些问题：</p>
-
-<ul>
-<li>\(x\)和\(x^k\)之间是相关的，不太好解释清楚每个变量的贡献程度</li>
-<li>会出现过拟合的情况</li>
-</ul>
-
-<p><strong>多元自适应回归样条MARS</strong></p>
-
-<ul>
-<li>多项式整体是线性，局部非非线性</li>
-<li>MARS: 整体是非线性，局部是线性(分段函数)</li>
-</ul>
-
-<p>样条函数，需要满足一些最基本的一些条件</p>
-
-<ul>
-<li>在knot节点处满足函数的连续性</li>
-<li>一阶导数连续，二阶导数连续，则称为三次样条</li>
-</ul>
-
-<p>平滑样条</p>
-
-<p>\[E=\sum_{i=1}^n [y_i-g(x_i)]^2 +\lambda\int g&#39;&#39;(t)^2 \]</p>
-
-<p>code: <code>patsy</code></p>
+<blockquote>
+<p>OR值(odds ratio), 本来是在医学实验中的词，值实验组中暴露人数与非暴露人数的比值，与对照组中暴露人数与非暴露人数的比值的比值，所以也叫<strong>比值比</strong><br/>
+逻辑回归的更新公式与一般的线性回归的极为相似。\(\sum(y_i-x_iw)x_j\)</p>
+</blockquote>
 
 
 		</div>
@@ -367,46 +589,13 @@ predicted = model.predict(X)
  
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15347755588253.html">数据可视化(seaborn)</a></h1>
-			<p class="meta"><time datetime="2018-08-20T22:32:38+08:00" 
-			pubdate data-updated="true">2018/8/20</time></p>
+		  	<h1 class="entry-title"><a href="15383189964272.html">https://nteract.io</a></h1>
+			<p class="meta"><time datetime="2018-09-30T22:49:56+08:00" 
+			pubdate data-updated="true">2018/9/30</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<blockquote>
-<p>系统的梳理在进行数据分析的时候，如何进行数据可视化。具体操作的时候以python的seaborn包为主。</p>
-</blockquote>
-
-<p>在进行数据分析的时候，经常需要进行数据可视化。俗话说一图胜千言，如何将从数据中发现的结论以一种通读易懂的方式展现出来，是很考验数据分析人员的能力的。</p>
-
-<blockquote>
-<p>数据 关系</p>
-</blockquote>
-
-<p>数据可视化，首先是要有数据，即我们的研究对象，而可视化的功能就是将数据中蕴含的关系或规律以图形的形式展示出来。 因此在进行数据可视化之前，一定要搞清楚的两件事：</p>
-
-<ul>
-<li>数据类型</li>
-<li>数据</li>
-</ul>
-
-<p>python中常用的绘图pacakge是<code>matplotlib</code></p>
-
-<p>本篇文章介绍的seaborn就是一个基于<code>matplotlib</code>的外包，其操作命令比较简单。有点类似R中的<code>ggplot</code>.</p>
-
-<h2 id="toc_0">参考资料</h2>
-
-<p><a href="https://blog.csdn.net/suzyu12345/article/details/69029106">https://blog.csdn.net/suzyu12345/article/details/69029106</a></p>
-
-<h2 id="toc_1">2.echarts接口</h2>
-
-<p>pyecharts</p>
-
-<p><a href="http://pyecharts.org/#/zh-cn/charts?id=treemap%EF%BC%88%E7%9F%A9%E5%BD%A2%E6%A0%91%E5%9B%BE%EF%BC%89">http://pyecharts.org/#/zh-cn/charts?id=treemap%EF%BC%88%E7%9F%A9%E5%BD%A2%E6%A0%91%E5%9B%BE%EF%BC%89</a></p>
-
-<h2 id="toc_2">工具平台</h2>
-
-<p><a href="https://antv.alipay.com/zh-cn/vis/chart/color-map.html">https://antv.alipay.com/zh-cn/vis/chart/color-map.html</a></p>
+		  	<p>直接双击打开.ipynb的文件</p>
 
 
 		</div>
@@ -467,7 +656,7 @@ predicted = model.predict(X)
 	      </li>
 	  
 	      <li class="post">
-	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(5)</strong></a>
+	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(9)</strong></a>
 	        
 	        
 	        
@@ -488,14 +677,28 @@ predicted = model.predict(X)
 	      </li>
 	  
 	      <li class="post">
-	        <a href="6%20NLP&%E5%9B%BE%E5%83%8F.html"><strong>6 NLP&图像&nbsp;(4)</strong></a>
+	        <a href="6%20%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86.html"><strong>6 图像处理&nbsp;(4)</strong></a>
 	        
 	        
 	        
 	      </li>
 	  
 	      <li class="post">
-	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(11)</strong></a>
+	        <a href="6%20%E6%90%9C%E7%B4%A2.html"><strong>6 搜索&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="6%20nlp.html"><strong>6 nlp&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(12)</strong></a>
 	        
 	        
 	        
@@ -523,31 +726,31 @@ predicted = model.predict(X)
 	  
 	      
 		      <li class="post">
-		        <a href="15623124260572.html">1 抽样方法</a>
+		        <a href="15633781017095.html"></a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15598839206919.html">SC-FEGAN</a>
+		        <a href="15633691538884.html">3. 样本量的确定？</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15596648844646.html">【Tensorflow】week2 Introduction to Computer Vision</a>
+		        <a href="15633655285542.html">卡方检验</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15596470753558.html">TensorFlow</a>
+		        <a href="15632757602829.html">3. 假设检验的power</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15594599843014.html">估计的置信度</a>
+		        <a href="15630063899159.html">python自然语言处理学习笔记——1</a>
 		      </li>
 	     
 	  

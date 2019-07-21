@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <title>
     
-  估计的置信度 - 学习笔记
+  1 参数估计 - 学习笔记
   
 
   </title>
@@ -81,7 +81,7 @@ $(document).ready(function(event) {
 <div>
 	<article class="hentry" role="article">
 	<header>
-			  	<h1 class="entry-title">估计的置信度</h1>
+			  	<h1 class="entry-title">1 参数估计</h1>
 				<p class="meta"><time datetime="2019-06-02T15:19:44+08:00" pubdate data-updated="true">2019/6/2</time></p>
 			 </header>
 		  	<div class="entry-content">
@@ -147,9 +147,39 @@ $(document).ready(function(event) {
 
 <h3 id="toc_1">2.等级量表和连续性数据的置信区间</h3>
 
+<p>我们做置信区间或者参数估计，最终目的是希望通过样本的数据去获得总体的信息。常见的就是对总体集中趋势的估计，而这种”集中趋势“根据数据本身的分布情况，可能会采取均值、中位数、众数做为其估计</p>
+
+<p>（1）基于均值的</p>
+
+<p>基于均值的估计，一般是在假设其分布比较对称的时候，均值是很好的对”集中趋势“的度量。根据样本量的大小，均值的置信区间可以用t分布或者z分布。</p>
+
+<p>（2）基于中位数的</p>
+
+<p>很多时候，数据本身的分布是不对称的，比如用户的网页结果的停留时长、用户点击的位置分布等。这个时候均值就不是一个很好的对总体集中趋势的估计了。实际中用的较多的是中位数。</p>
+
+<p>但是中位数本身也存在一些问题。</p>
+
 <ul>
-<li>t分布置信区间</li>
+<li>变异性。中位数可以抵挡异常值对整体分布的影响，但是当从一个连续分布中抽样样本时候，中位数要比均值的变异性更大。均值可能相对比较稳定的，但是中位数可能跳动会很大。</li>
+<li>偏倚性。平均值的一个好的性质就是估计的无偏性，</li>
 </ul>
+
+<p>(3) 基于几何均值的</p>
+
+<p>可以参考<a href="http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=4E0303CA43F91C5E4E68160A9DFB6152?doi=10.1.1.365.603&amp;rep=rep1&amp;type=pdf">Sauro and Lewis</a>2010年的一篇论文。</p>
+
+<p>这里简单说下论文的主要结论吧：</p>
+
+<ul>
+<li>样本中位数是总体中位数的有偏估计</li>
+<li><p>作者主要比较了，均值，中位数，几何均值，调和平均值，截断均值(去掉最高和最低的topN)。 通过蒙特卡洛模拟的方法，对于n&gt;25时候，样本中位数是个比较好的估计，对于n&lt;25的时候，几何均值是一个比较好的估计</p></li>
+<li><p>中位数的置信区间</p></li>
+</ul>
+
+<p>特定类型的数据(比如任务时长，用户在搜索结果的停留时间)，要找到中位数的置信区间，中位数即p=0.5的那个分界点。其实相当于要找到p的置信区间。<br/>
+\[\hat p \pm z_{1-\alpha/2} \sqrt\frac{\hat p(1-\hat p)}{n} \]</p>
+
+<p>得到置信区间[p1, p2]之后，去找到数据中位于[p1,p2]分界点的数据点即为中位数的置信区间了。</p>
 
 <h2 id="toc_2">参考资料</h2>
 
@@ -241,7 +271,7 @@ $(document).ready(function(event) {
 	      </li>
 	  
 	      <li class="post">
-	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(5)</strong></a>
+	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(9)</strong></a>
 	        
 	        
 	        
@@ -262,14 +292,28 @@ $(document).ready(function(event) {
 	      </li>
 	  
 	      <li class="post">
-	        <a href="6%20NLP&%E5%9B%BE%E5%83%8F.html"><strong>6 NLP&图像&nbsp;(4)</strong></a>
+	        <a href="6%20%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86.html"><strong>6 图像处理&nbsp;(4)</strong></a>
 	        
 	        
 	        
 	      </li>
 	  
 	      <li class="post">
-	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(11)</strong></a>
+	        <a href="6%20%E6%90%9C%E7%B4%A2.html"><strong>6 搜索&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="6%20nlp.html"><strong>6 nlp&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(12)</strong></a>
 	        
 	        
 	        
@@ -297,31 +341,31 @@ $(document).ready(function(event) {
 	  
 	      
 		      <li class="post">
-		        <a href="15623124260572.html">1 抽样方法</a>
+		        <a href="15633781017095.html"></a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15598839206919.html">SC-FEGAN</a>
+		        <a href="15633691538884.html">3. 样本量的确定？</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15596648844646.html">【Tensorflow】week2 Introduction to Computer Vision</a>
+		        <a href="15633655285542.html">卡方检验</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15596470753558.html">TensorFlow</a>
+		        <a href="15632757602829.html">3. 假设检验的power</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15594599843014.html">估计的置信度</a>
+		        <a href="15630063899159.html">python自然语言处理学习笔记——1</a>
 		      </li>
 	     
 	  

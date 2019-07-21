@@ -82,102 +82,22 @@ $(document).ready(function(event) {
 
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15388051366041.html">图像识别模型—— 1.利用已有的进行微调</a></h1>
-			<p class="meta"><time datetime="2018-10-06T13:52:16+08:00" 
-			pubdate data-updated="true">2018/10/6</time></p>
+		  	<h1 class="entry-title"><a href="15415917511283.html">安装类</a></h1>
+			<p class="meta"><time datetime="2018-11-07T19:55:51+08:00" 
+			pubdate data-updated="true">2018/11/7</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<p>这里以VGG16网络为例，</p>
+		  	<h2 id="toc_0">测试机安装php</h2>
 
-<h2 id="toc_0">1.准备数据</h2>
+<p>切换到root用户</p>
 
-<pre><code> python data_convert.py -t pic --train-shards 2 --validation-shards 2 --num-threads 2 --dataset-name guangdong
+<pre><code>yum install php
 </code></pre>
 
-<p>执行完后会在pic下生成tf格式的训练+测试数据，以及label.txt<br/>
-<img src="media/15388051366041/15388065002449.jpg" alt=""/></p>
+<p>直接执行label的抓取报错，摸索了下还需要安装<code>yum install php-soap -y</code></p>
 
-<h2 id="toc_1">2.使用tensorflow的slim微调模型</h2>
-
-<p>简单介绍下google的这个图像分类工具包tensorflow-slim</p>
-
-<pre><code>├── README.md
-├── datasets                    # 定义训练时候使用的数据。如果是自己的数据，必须在此文件夹下定义
-├── deployment
-├── download_and_convert_data.py
-├── export_inference_graph.py
-├── export_inference_graph_test.py
-├── nets                        # 定义了一些常用的网络，比如vgg16，vgg19，resnet等
-├── preprocessing               # 在读入图像前，对图像做的一些预处理
-├── scripts
-│   ├── finetune_inception_v1_on_flowers.sh
-│   ├── finetune_inception_v3_on_flowers.sh
-│   ├── finetune_resnet_v1_50_on_flowers.sh
-│   ├── train_cifarnet_on_cifar10.sh
-│   └── train_lenet_on_mnist.sh
-├── setup.py
-├── slim_walkthrough.ipynb
-├── eval_image_classifier.py      # 验证模型入口
-└── train_image_classifier.py     # 训练模型入口
-</code></pre>
-
-<p>(1) 定义新的dataset文件</p>
-
-<p>仿照<code>datasets/flowers.py</code> 写一个自己的数据文件<code>guangdong.py</code> 并且在<code>dataset_factory.py</code>中进行注册</p>
-
-<p>(2)准备训练文件夹</p>
-
-<p>(3)train model</p>
-
-<pre><code>python train_image_classifier.py \
-  --train_dir=guangdong/train_dir \
-  --dataset_name=guangdong \
-  --dataset_split_name=train \
-  --dataset_dir=guangdong/data \
-  --model_name=inception_v3 \
-  --checkpoint_path=guangdong/pretrained/inception_v3.ckpt \
-  --checkpoint_exclude_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
-  --trainable_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
-  --max_number_of_steps=100000 \
-  --batch_size=32 \
-  --learning_rate=0.001 \
-  --learning_rate_decay_type=fixed \
-  --save_interval_secs=300 \
-  --save_summaries_secs=2 \
-  --log_every_n_steps=10 \
-  --optimizer=rmsprop \
-  --weight_decay=0.00004
-
-</code></pre>
-
-<p>如果执行后报错<code>Cannot assign a device for operation &#39;InceptionV3/AuxLogits/Conv2d_2b_1x1/weights/RMSProp1&#39;: Could not satisfy explicit device specification &#39;/device:GPU:0&#39; because no supported kernel for GPU devices is available</code> 之类的话</p>
-
-<p>可以参看这个的解决办法<a href="https://blog.csdn.net/xd_wjc/article/details/80550862">https://blog.csdn.net/xd_wjc/article/details/80550862</a></p>
-
-<p>tensorboard 查看任务运行情况</p>
-
-<pre><code>tensorboard --logdir guangdong/train_dir
-</code></pre>
-
-<p>训练完毕之后进行模型评估</p>
-
-<pre><code>python eval_image_classifier.py \
-  --checkpoint_path=guangdong/train_dir \
-  --eval_dir=guangdong/eval_dir \
-  --dataset_name=guangdong \
-  --dataset_split_name=validation \
-  --dataset_dir=guangdong/data \
-  --model_name=inception_v3
-</code></pre>
-
-<h3 id="toc_2">案例</h3>
-
-<p><a href="https://github.com/ns2250225/python3_tf_slim_image_classify">https://github.com/ns2250225/python3_tf_slim_image_classify</a></p>
-
-<h2 id="toc_3">阿里云服务</h2>
-
-<p><a href="https://help.aliyun.com/document_detail/49571.html#OSS">https://help.aliyun.com/document_detail/49571.html#OSS</a></p>
+<p><code>php -m</code> 能查看安装了哪些模块</p>
 
 
 		</div>
@@ -188,103 +108,242 @@ $(document).ready(function(event) {
  
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15386411386885.html">4.7 聚类2——-效果评价</a></h1>
-			<p class="meta"><time datetime="2018-10-04T16:18:58+08:00" 
-			pubdate data-updated="true">2018/10/4</time></p>
+		  	<h1 class="entry-title"><a href="15394437873112.html">4.9 深度学习综述</a></h1>
+			<p class="meta"><time datetime="2018-10-13T23:16:27+08:00" 
+			pubdate data-updated="true">2018/10/13</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<p>一般分为两类：</p>
+		  	<p>这里只是简单介绍，后续会在深度学习章节中进行详细说明</p>
 
-<ul>
-<li>外部标准：即基于人工的判断，需要有个标注集合</li>
-<li>内部标准：基于类内和类间聚类的目标函数的判断</li>
-</ul>
+<p><strong>通用逼近定理</strong></p>
 
-<h2 id="toc_0">内部标准clustering-performance-evaluation</h2>
+<p><img src="media/15394437873112/15394453932519.jpg" alt=""/></p>
 
-<ul>
-<li>CH 准则</li>
-<li>轮廓系数</li>
-</ul>
+<h2 id="toc_0">参考资料</h2>
 
-<h2 id="toc_1">外部标准——人工判定</h2>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2650739143&amp;idx=1&amp;sn=f51551128021e7747205f87971f4762e&amp;chksm=871ad5b9b06d5caf0a5b4601863adc213eb42573bbdc2773e54ff1c585b3954a8644df024015&amp;mpshare=1&amp;scene=1&amp;srcid=0313P1tfCgE3zTBXJuNIHaBl%23rd">https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2650739143&amp;idx=1&amp;sn=f51551128021e7747205f87971f4762e&amp;chksm=871ad5b9b06d5caf0a5b4601863adc213eb42573bbdc2773e54ff1c585b3954a8644df024015&amp;mpshare=1&amp;scene=1&amp;srcid=0313P1tfCgE3zTBXJuNIHaBl%23rd</a></p>
 
-<p>假设：<br/>
-机器判断的类别集合是：\(C=\{C_1,C_2,...C_m\}\)<br/>
-人工判断的类别集合是：\(P=\{P_1,P_2,...P_s\}\)</p>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2650739820&amp;idx=1&amp;sn=260173be8cecc3a10d7b455922c10e0c&amp;chksm=871ad012b06d5904e65e96d0cfa236d0b6c7ce5683dd8d29514e4cbe420dc5b1ccd2786eea2c&amp;mpshare=1&amp;scene=1&amp;srcid=0324xGIxttOochJWNMPaDibb%23rd">https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2650739820&amp;idx=1&amp;sn=260173be8cecc3a10d7b455922c10e0c&amp;chksm=871ad012b06d5904e65e96d0cfa236d0b6c7ce5683dd8d29514e4cbe420dc5b1ccd2786eea2c&amp;mpshare=1&amp;scene=1&amp;srcid=0324xGIxttOochJWNMPaDibb%23rd</a></p>
 
-<h3 id="toc_2">1.1混淆矩阵</h3>
 
-<p>基于数据样本点的角度：<br/>
-对于任意两个数据pair，\((x_i,x_j)\)按照其在C和P中是否属于同一个簇，可以构造出混淆矩阵</p>
+		</div>
 
-<table>
-<thead>
-<tr>
-<th></th>
-<th>P_1</th>
-<th>p_0</th>
-</tr>
-</thead>
+		
 
-<tbody>
-<tr>
-<td>C_1</td>
-<td>a</td>
-<td>b</td>
-</tr>
-<tr>
-<td>C_0</td>
-<td>c</td>
-<td>d</td>
-</tr>
-</tbody>
-</table>
+	</article>
+ 
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15394428762655.html">4.8 自适应的基函数——神经网络</a></h1>
+			<p class="meta"><time datetime="2018-10-13T23:01:16+08:00" 
+			pubdate data-updated="true">2018/10/13</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<p>人工神经网络的鼻祖是<strong>感知器</strong></p>
 
-<p><img src="media/15078603543147/15078631739679.jpg" alt=""/></p>
+<p><img src="media/15394428762655/15394429750357.jpg" alt=""/></p>
 
-<h3 id="toc_3">1.2簇的准确率/召回率</h3>
+<p>感知器的激活函数是符号函数。<br/>
+\[w_1x_1 + w_2x_2+...+w_nx_n\]</p>
 
-<p>基于簇pair的，考虑对任意一个人工与机器的.\(P_j,C_i\)。对于每一个人工标注的\(P_j\),在机器标注中应该都会对应一个&quot;最相关的&quot;。可以遍历C中所有的cluster，分别计算准确率，召回率，F_score。<br/>
-<img src="media/15078603543147/15078720767171.jpg" alt=""/></p>
+<p><strong>学习策略</strong><br/>
+感知机形式上也是对原始特征x在权重\(W\)条件下进行映射，然后根据输出值进行判断，相当于是一种判别式的分类模型。但是和之前的判别分析略有不同，之前的判别分析其实是依赖于数据X的一些统计量进行最优参数的求解。而感知机是一个不断试错，不断优化自己学习最优参数的过程。</p>
 
-<p>然后对于所有簇的F值做加权平均<br/>
-\[ClassF=\sum w_j F(p_j), w_i=n_j/n\]</p>
+<blockquote>
+<p>感觉这也是统计学习和机器学习的一个很显著的区别，基于统计的学习是利用一些关于数据分布的假定，然后基于统计的方法寻找到最优的问题参数。而机器学习是有个目标，里面一段参数，然后让机器去不断迭代优化，在这个不断的“学习”过程中寻找到”最优的参数“</p>
+</blockquote>
 
-<p>classF指标，相当于是以人工标注的簇为基准，将聚类的簇尽量逼近这个标注的结果。</p>
+<p>目标：</p>
 
-<h2 id="toc_4">1.3</h2>
 
-<p>1.2中的方法相当于要求的比较严格，即以人工标注的集合簇为准。</p>
+		</div>
 
-<p>实际中其实只要保证我们聚的每一个类\(C_i\)是有意义的就可以，即以C为主</p>
+		
 
-<p>类似的定义 \(F(C_i)=\max_{1\lt j \lt s}F(P_j, C_i)\)<br/>
-\[F=\sum w_i F(C_i), w_i=|C_i|/n\]</p>
+	</article>
+ 
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15394167484934.html">sublime</a></h1>
+			<p class="meta"><time datetime="2018-10-13T15:45:48+08:00" 
+			pubdate data-updated="true">2018/10/13</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<p>sublime除了具有基本的文本编辑功能之外，还可以安装很多package来扩展其强大的功能。这里罗列出一些工作中经常能用到的</p>
 
-<ul>
-<li>问题： 这个指标可能变化不是非常明显</li>
-</ul>
+<p><strong>安装install package</strong></p>
 
-<h2 id="toc_5">1.4基于数据对象的准召F</h2>
+<p>点击菜单中的 “View”–“Show Console”，调出console面板，然后到<a href="https://packagecontrol.io/installation#st3%E5%AE%98%E7%BD%91%E4%B8%8A%E7%9A%84%EF%BC%8C%E5%A4%8D%E5%88%B6%E5%87%BA%E4%BB%A3%E7%A0%81%E9%BB%8F%E8%B4%B4%E6%89%A7%E8%A1%8C">https://packagecontrol.io/installation#st3官网上的，复制出代码黏贴执行</a></p>
 
-<p><img src="media/15078603543147/15078731022919.jpg" alt=""/></p>
+<h2 id="toc_0">diff对比</h2>
 
-<h2 id="toc_6">思考</h2>
+<h1 id="toc_1">Package Control Messages</h1>
+
+<h2 id="toc_2">Sublimerge 3</h2>
+
+<p>Sublimerge 3 (beta) has just been installed. Thanks for trying it out!</p>
+
+<p>It is highly recommended to restart Sublime Text before first use.</p>
+
+<hr/>
+
+<p>!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br/>
+  !!                                                                                                       !!<br/>
+  !!                NOTE: THIS IS A BETA VERSION. PLEASE REPORT ANY BUGS YOU MAY ENCOUNTER.                !!<br/>
+  !!                                                                                                       !!<br/>
+  !!                                                                                                       !!<br/>
+  !!     <a href="http://www.sublimerge.com/support.html">http://www.sublimerge.com/support.html</a>                                <a href="mailto:support@sublimerge.com">support@sublimerge.com</a>      !!<br/>
+  !!                                                                                                       !!<br/>
+  !!     Issue Tracker: <a href="https://bitbucket.org/borysforytarz/sublimerge-3/issues?status=new&amp;status=open">https://bitbucket.org/borysforytarz/sublimerge-3/issues?status=new&amp;status=open</a>     !!<br/>
+  !!                                                                                                       !!<br/>
+  !!                                                                                                       !!<br/>
+  !!                                                                                                       !!<br/>
+  !!     Please visit <a href="http://www.sublimerge.com/sm3/docs/">http://www.sublimerge.com/sm3/docs/</a> for more information.                            !!<br/>
+  !!                                                                                                       !!<br/>
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>
+
+<p>The first steps after installation<br/>
+  ==================================</p>
 
 <ol>
-<li>基于人工标注的方法中，认为人工标注的是准确的或者说结果是唯一的。实际上一堆sample可以有不同的分类方法，而且每种方法可能都是对的。
-<code>
-e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大学
-</code>
-如何进行标注，或者标注结果是非固定时候怎么衡量聚类效果的好坏？？</li>
+<li><p>By default Sublimerge&#39;s colors theme conforms to default Sublime Text theme. If you are using some<br/>
+ custom theme and find the colors poorly visible, you may need to change them.</p></li>
+<li><p>If you&#39;re on Windows and want to use VCS-related commands, you may need to configure the executable<br/>
+ path for your VCS. Linux and OS X users with non-standard VCS installation may need to configure this too.</p>
+
+<p>Please visit <a href="http://www.sublimerge.com/sm3/docs/configuration.html">http://www.sublimerge.com/sm3/docs/configuration.html</a> for more information about configuration.</p>
+
+<h1 id="toc_3">Simplified usage instructions</h1>
+
+<p>In file view:</p>
+
+<p>[ctrl]+[alt]+[d]                      - display Quick Panel with commands available for current view</p>
+
+<p>In diff view:</p>
+
+<p>Windows/Linux:</p>
+
+<p>[ctrl]+[down]                         - select next change<br/>
+  [ctrl]+[up]                           - select previous change</p>
+
+<ul>
+<li>[ctrl]+[left]                         - copy selected change (or active line) to left from right</li>
+<li><p>[ctrl]+[right]                        - copy selected change (or active line) to right from left<br/>
+[ctrl]+[shift]+[left]                 - copy all changes to left from right<br/>
+[ctrl]+[shift]+[right]                - copy all changes to right from left</p>
+
+<p>OSX:</p>
+
+<p>[alt]+[down]                          - select next change<br/>
+[alt]+[up]                            - select previous change</p></li>
+<li><p>[alt]+[left]                          - copy selected change (or active line) to left from right</p></li>
+<li><p>[alt]+[right]                         - copy selected change (or active line) to right from left<br/>
+[alt]+[shift]+[left]                  - copy all changes to left from right<br/>
+[alt]+[shift]+[right]                 - copy all changes to right from left</p>
+
+<p>Common:</p>
+
+<p>[f3]                                  - swap panels<br/>
+[f4]                                  - show changes navigator<br/>
+[f5]                                  - recompare buffers</p></li>
+<li><ul>
+<li>if change is selected the command will copy its whole contents, otherwise will copy only the focused line</li>
+</ul></li>
+</ul>
+
+<p>In directories diff view:</p>
+
+<p>[down]                              - select next file/directory<br/>
+  [up]                                - select previous file/directory<br/>
+  [left]                              - copy file/directory from right to left<br/>
+  [right]                             - copy file/directory from left to right<br/>
+  [enter]                             - enter sub directory / compare text files<br/>
+  [backspace]                         - enter parent directory</p>
+
+<p>Windows/Linux:</p>
+
+<p>[ctrl]+[down]                       - select next different file/directory<br/>
+  [ctrl]+[up]                         - select previous different file/directory</p>
+
+<p>OS X:</p>
+
+<p>[alt]+[down]                        - select next different file/directory<br/>
+  [alt]+[up]                          - select previous different file/directory</p>
+
+<p>For convenience Sublimerge also supports standard OS X keyboard shortcuts for directories navigation:</p>
+
+<p>[cmd]+[down]                        - enter sub directory / compare text files<br/>
+  [cmd]+[up]                          - enter parent directory</p>
+
+<h1 id="toc_4">End-User License Agreement (EULA)</h1></li>
+<li><p>LICENSES<br/>
+  SUBLIMERGE is licensed as follows:<br/>
+  a) Evaluation time.<br/>
+      You can evaluate SUBLIMERGE freely for 90 days. Later you will need to purchase<br/>
+      a license for continued use.<br/>
+  b) Installation and Usage.<br/>
+      Licenses are per user and valid for use on all supported operating systems.<br/>
+      License keys may be used on multiple computers and operating systems, provided<br/>
+      the license key holder is the primary user. Businesses must purchase at least<br/>
+      as many licenses as the number of people using SUBLIMERGE.<br/>
+  c) Backup Copies.<br/>
+      You may make copies of the license key and/or SUBLIMERGE for backup and archival<br/>
+      purposes.<br/>
+  d) Evaluation time.<br/>
+      You can evaluate SUBLIMERGE freely for 90 days. Later you will need to purchase<br/>
+      a license for continued use.</p></li>
+<li><p>ILLEGAL USAGE<br/>
+  Any illegal usage of SUBLIMERGE, including reverse engineering, using unauthorized license <br/>
+  keys, creating keygens and cracks is prohibited and will be subject for prosecution.</p></li>
+<li><p>DESCRIPTION OF OTHER RIGHTS AND LIMITATIONS<br/>
+  a) Maintenance of Copyright Notices.<br/>
+      You must not remove or alter any copyright notices on any copy of SUBLIMERGE.</p>
+
+<p>b) Distribution.<br/>
+      You may not distribute or sell license keys or SUBLIMERGE to third parties.<br/>
+      Licenses will be revoked if distributed or sold to third parties.</p>
+
+<p>c) Rental.<br/>
+      You may not rent, lease, or lend the license key or SUBLIMERGE.</p></li>
+<li><p>COPYRIGHT<br/>
+  All title, including but not limited to copyrights, in and to SUBLIMERGE and any copies<br/>
+  thereof are owned by BORYS FORYTARZ (AUTHOR).</p></li>
+<li><p>REFUND POLICY<br/>
+  Refunds are not available. Because of this, before purchasing a license, you can evaluate<br/>
+  SUBLIMERGE without any functionality limitations for 90 days. Later you will need to<br/>
+  purchase a license.</p></li>
+<li><p>NO WARRANTIES<br/>
+  AUTHOR expressly disclaims any warranty for SUBLIMERGE, which is provided<br/>
+  &#39;as is&#39; without any express or implied warranty of any kind, including but not limited<br/>
+  to any warranties of merchantability, non-infringement, or fitness of a particular<br/>
+  purpose.</p></li>
+<li><p>LIMITATION OF LIABILITY<br/>
+  In no event shall AUTHOR be liable for any damages due to use of SUBLIMERGE,<br/>
+  to the maximum extent permitted by law. This includes without limitation, lost profits,<br/>
+  business interruption, or lost information. In no event will AUTHOR be liable<br/>
+  for loss of data or for indirect, special, incidental, consequential (including lost<br/>
+  profit), or other damages. AUTHOR shall have no liability with respect to the<br/>
+  content of SUBLIMERGE or any part thereof, including but not limited to errors or<br/>
+  omissions contained therein, libel, trademark rights, business interruption, loss of<br/>
+  privacy or the disclosure of confidential information.</p>
+
+<h1 id="toc_5">More information</h1>
+
+<p>For more information, troubleshooting, customizing settings and more, please visit <a href="http://www.sublimerge.com">www.sublimerge.com</a></p>
+
+<h1 id="toc_6">By the way...</h1>
+
+<p>Take a break from your work and play my BF&#39;s Draughts on your iOS device!<br/>
+Available on the App Store! :)</p>
+
+<p><a href="http://www.bfdraughts.com/as/">http://www.bfdraughts.com/as/</a></p></li>
 </ol>
 
 <h2 id="toc_7">参考资料</h2>
 
-<p><a href="http://blog.csdn.net/itplus/article/details/10322361">http://blog.csdn.net/itplus/article/details/10322361</a></p>
-
 
 		</div>
 
@@ -294,90 +353,64 @@ e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大
  
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15384985356322.html">4.7 聚类1</a></h1>
-			<p class="meta"><time datetime="2018-10-03T00:42:15+08:00" 
-			pubdate data-updated="true">2018/10/3</time></p>
+		  	<h1 class="entry-title"><a href="15394116175346.html">git</a></h1>
+			<p class="meta"><time datetime="2018-10-13T14:20:17+08:00" 
+			pubdate data-updated="true">2018/10/13</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<p>聚类分析（cluster analysis）是属于无监督学习，他的目的是去探索数据隐含的规律。其基本思想是基于相似度/距离远近来将样本进行聚类。</p>
+		  	<p>git log<br/>
+git reset --hard xxxxx</p>
 
-<h2 id="toc_0">1.距离的度量方法</h2>
+<p>查看本地与云端的diff</p>
 
-<p>常见的聚类方法：</p>
+<p>git rm —cache  删除已经提交的内容</p>
 
-<table>
-<thead>
-<tr>
-<th>方法类别</th>
-<th>聚类方法</th>
-<th>优缺点</th>
-</tr>
-</thead>
+<p>（1）生成公钥<br/>
+ssh-keygen -t rsa -f ~/.ssh/id_rsa.zhenzhen<br/>
+cat ~/.ssh/id_rsa.zhenzhen.pub 保存到icode上<br/>
+chmod 644 ~/.ssh/config<br/>
+vim ~/.ssh/config<br/>
+添加下自己的配置<br/>
+Host icode.baidu.com<br/>
+User yangyang22<br/>
+IdentityFile ~/.ssh/id_rsa.yangyang22<br/>
+（2）clone<br/>
+git clone  xxxxx代码库<br/>
+git config --local user.email <a href="mailto:zhengzhenzhen@baidu.com">zhengzhenzhen@baidu.com</a><br/>
+git config --local user.name zhengzhenzhen</p>
 
-<tbody>
-<tr>
-<td>基于距离</td>
-<td>Kmeans</td>
-<td></td>
-</tr>
-<tr>
-<td>基于密度</td>
-<td>Dbscan</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<p>git push origin master:refs/for/master<br/>
+（3）上传文件<br/>
+git add xxx<br/>
+git commit -m &#39;注释&#39;<br/>
+git push origin HEAD:refs/for/master</p>
 
-<ul>
-<li>kmeans</li>
-</ul>
+<p>我不知道”undo”是什么意思。您可以删除core.excludesfile设置，如下所示：<br/>
+git config --global --unset core.excludesfile<br/>
+当然你也可以简单地编辑配置文件：<br/>
+git config --global --edit<br/>
+…然后手动删除设置。</p>
 
-<p>选择初始种子</p>
+<p>git config --global --edit</p>
 
-<p>从概率角度看，k均值算法是高斯混合模型的一种特例</p>
+<h1 id="toc_0">!/usr/bin/env python</h1>
 
-<ul>
-<li>基于密度的聚类 DBSCAN</li>
-</ul>
+<h1 id="toc_1">-<em>- coding: utf-8 -</em>-</h1>
 
+<h1 id="toc_2">Copyright (c) 2017 Baidu.com, Inc. All Rights Reserved</h1>
 
-		</div>
+<p>&quot;&quot;&quot;<br/>
+File: dau.py<br/>
+Author: work(<a href="mailto:work@baidu.com">work@baidu.com</a>)<br/>
+Date: 2017/07/13 11:07:20<br/>
+Description: 计算官方号维度的dau<br/>
+             用户访问了已经关注过的官方号主页，IM页，设置页和文章落地页<br/>
+             其中主页访问从wiseps_click里拿<br/>
+             IM页和设置页从ubc日志里拿<br/>
+             文章落地页从搜索点击日志以及wiseps_click日志里拿<br/>
+&quot;&quot;&quot;</p>
 
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15384985274531.html">4.6 集成</a></h1>
-			<p class="meta"><time datetime="2018-10-03T00:42:07+08:00" 
-			pubdate data-updated="true">2018/10/3</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p><a href="http://www.52caml.com/head_first_ml/ml-chapter6-boosting-family/">http://www.52caml.com/head_first_ml/ml-chapter6-boosting-family/</a></p>
-
-<p><img src="media/15275150216357/15275150424366.jpg" alt=""/></p>
-
-<p><a href="http://www.cnblogs.com/gasongjian/p/7648633.html">http://www.cnblogs.com/gasongjian/p/7648633.html</a></p>
-
-
-		</div>
-
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15384984788761.html">4.5 树模型</a></h1>
-			<p class="meta"><time datetime="2018-10-03T00:41:18+08:00" 
-			pubdate data-updated="true">2018/10/3</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	
 
 		</div>
 
@@ -437,7 +470,7 @@ e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大
 	      </li>
 	  
 	      <li class="post">
-	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(5)</strong></a>
+	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(9)</strong></a>
 	        
 	        
 	        
@@ -458,14 +491,28 @@ e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大
 	      </li>
 	  
 	      <li class="post">
-	        <a href="6%20NLP&%E5%9B%BE%E5%83%8F.html"><strong>6 NLP&图像&nbsp;(4)</strong></a>
+	        <a href="6%20%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86.html"><strong>6 图像处理&nbsp;(4)</strong></a>
 	        
 	        
 	        
 	      </li>
 	  
 	      <li class="post">
-	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(11)</strong></a>
+	        <a href="6%20%E6%90%9C%E7%B4%A2.html"><strong>6 搜索&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="6%20nlp.html"><strong>6 nlp&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(12)</strong></a>
 	        
 	        
 	        
@@ -493,31 +540,31 @@ e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大
 	  
 	      
 		      <li class="post">
-		        <a href="15623124260572.html">1 抽样方法</a>
+		        <a href="15633781017095.html"></a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15598839206919.html">SC-FEGAN</a>
+		        <a href="15633691538884.html">3. 样本量的确定？</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15596648844646.html">【Tensorflow】week2 Introduction to Computer Vision</a>
+		        <a href="15633655285542.html">卡方检验</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15596470753558.html">TensorFlow</a>
+		        <a href="15632757602829.html">3. 假设检验的power</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15594599843014.html">估计的置信度</a>
+		        <a href="15630063899159.html">python自然语言处理学习笔记——1</a>
 		      </li>
 	     
 	  

@@ -82,40 +82,138 @@ $(document).ready(function(event) {
 
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15263596186313.html">复习计划</a></h1>
-			<p class="meta"><time datetime="2018-05-15T12:46:58+08:00" 
-			pubdate data-updated="true">2018/5/15</time></p>
+		  	<h1 class="entry-title"><a href="15334844213158.html">二、起步篇——数据预处理[方法论]</a></h1>
+			<p class="meta"><time datetime="2018-08-05T23:53:41+08:00" 
+			pubdate data-updated="true">2018/8/5</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<h2 id="toc_0">理论&amp;实践</h2>
+		  	<p><img src="media/15334844213158/15335717779664.jpg" alt=""/></p>
+
+<h2 id="toc_0">1.数据偏度</h2>
+
+<p>数据的处理，从数据特征本身的统计维度看，有尺度、偏度、</p>
+
+<p>1.数据尺度</p>
 
 <ul>
-<li>机器学习：李航 统计学习</li>
-<li>深度学习
+<li>标准化 =&gt; 均值0，方差1</li>
+<li>归一化 =&gt; [0,1]</li>
+</ul>
+
+<p>2.数据偏度<br/>
+可以通过偏度来度量，数据中如果存在较大的偏度，可能是因为有异常点的存在。</p>
+
+<p>有偏数据处理，一般可以取log，或者开根号让他能近似正态</p>
+
+<h2 id="toc_1">2.异常点</h2>
+
+<p>首先什么是异常点<br/>
+异常点<br/>
+（1） 首先确认是不是错误导致，比如计算错误。取值错误<br/>
+（2）确认异常点的生成机制</p>
+
+<p>（1）异常点检测</p>
+
+<p>@@@<br/>
+sklearn中常用的包</p>
+
+<p>（2）异常点处理</p>
 
 <ul>
-<li>coursera课程</li>
-<li>book.DL</li>
-<li>udacity 课程</li>
+<li>如果是少量可以直接删除</li>
+<li>当数据量较少，删除后造成可用信息较少时候，可以使用“空间标识”的数值处理方法</li>
+</ul>
+
+<h2 id="toc_2">3.缺失值</h2>
+
+<p>缺失机制：随机缺失，还是非随机缺失</p>
+
+<p>补充原则：</p>
+
+<ul>
+<li>如果缺失占比太大，删除</li>
+</ul>
+
+<p>补充方法：</p>
+
+<ul>
+<li>统计方法：均值</li>
+<li>机器学习方法：回归、K近邻</li>
+</ul>
+
+<h2 id="toc_3">4.特征冗余</h2>
+
+<p>一般是说特征自相关性太高，即“共线性”。另外是指一些没有区分度的变量，比如一是特征取值的总数与样本数目的比例在 10% 以下，二是出现频率最高的特征取值的出现频率应该在出现频率次高的特征的20倍以上。</p>
+
+<p>检测办法：<br/>
+解决办法：PCA</p>
+
+<h2 id="toc_4">参考文章</h2>
+
+<p>离群点</p>
+
+<p><a href="https://blog.chih.me/Outlier-mining-review.html">https://blog.chih.me/Outlier-mining-review.html</a></p>
+
+
+		</div>
+
+		
+
+	</article>
+ 
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15318267888584.html">目录结构</a></h1>
+			<p class="meta"><time datetime="2018-07-17T19:26:28+08:00" 
+			pubdate data-updated="true">2018/7/17</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<ol>
+<li><p>统计学习理论</p></li>
+</ol>
+
+<ul>
+<li>可学习</li>
+<li>模型设计</li>
+<li><p>基础知识偏——统计</p></li>
+</ul>
+
+<ol>
+<li><p>数据&amp;特征</p></li>
+</ol>
+
+<ul>
+<li>数据清洗</li>
+<li>特征提取</li>
+<li>降维</li>
+</ul>
+
+<p>3 模型部分</p>
+
+<ul>
+<li>无监督</li>
+<li>有监督
+
+<ul>
+<li>回归</li>
+<li>分类</li>
 </ul></li>
-<li>知识体系：参考资料梳理</li>
 </ul>
 
-<h2 id="toc_1">平台&amp;工具</h2>
+<h3 id="toc_0">补充</h3>
 
-<ul>
-<li>TF</li>
-<li>paddle&amp;paddle使用</li>
-<li>spark</li>
-</ul>
+<p>LR 在多分类情况下 -李航</p>
 
-<h2 id="toc_2">项目</h2>
+<p>关于凸优化的</p>
 
-<ul>
-<li>总结百度相关项目</li>
-<li>kaggle比赛实践</li>
-</ul>
+<p>SVM 优化SMO算法 + sklearn的区别</p>
+
+<h2 id="toc_1">可参照资料</h2>
+
+<p>coursera<br/>
+<a href="https://www.coursera.org/learn/competitive-data-science/home/welcome">https://www.coursera.org/learn/competitive-data-science/home/welcome</a></p>
 
 
 		</div>
@@ -126,71 +224,87 @@ $(document).ready(function(event) {
  
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15239739372259.html">工欲善其事必先利其器——Jupyter notebook</a></h1>
-			<p class="meta"><time datetime="2018-04-17T22:05:37+08:00" 
-			pubdate data-updated="true">2018/4/17</time></p>
+		  	<h1 class="entry-title"><a href="15316431193074.html">一、基础篇</a></h1>
+			<p class="meta"><time datetime="2018-07-15T16:25:19+08:00" 
+			pubdate data-updated="true">2018/7/15</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<p>类似于r的markdown</p>
+		  	<h1 id="toc_0">1.计算学习理论——是否可学习</h1>
 
-<p>GitHub 上也直接支持 Jupyter notebook 的渲染。借助此出色的功能，你可以轻松地共享工作。<a href="http://nbviewer.jupyter.org/">http://nbviewer.jupyter.org/</a> 也会提供 GitHub 代码库中的 notebook ，以及存储在其他地方的 notebook。</p>
+<p>一直在说机器学习，主要是在说怎么去学。在怎么学之前，首先需要了解下能不能学，学习的机制是什么</p>
 
-<p>名称 Jupyter 由 Julia、Python 和 R 组合而成，早期的两个非 Python 内核分别是 R 语言和 Julia 语言</p>
+<h2 id="toc_1">PAC（概率近似正确）</h2>
 
-<h2 id="toc_0">1.安装</h2>
+<p><a href="https://blog.csdn.net/wangjianguobj/article/details/57413819">https://blog.csdn.net/wangjianguobj/article/details/57413819</a></p>
+
+<h2 id="toc_2">VC维度</h2>
+
+<p>这个介绍的挺详细<br/>
+<a href="http://www.flickering.cn/machine_learning/2015/04/vc%E7%BB%B4%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89/?from=singlemessage">http://www.flickering.cn/machine_learning/2015/04/vc%E7%BB%B4%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89/?from=singlemessage</a></p>
+
+<h2 id="toc_3">参考</h2>
+
+<p>台大-机器学习基石</p>
+
+<h1 id="toc_4">6.模型设计准则</h1>
+
+<ol>
+<li>模型拟合</li>
+</ol>
+
+<p>(1) 无免费午餐定理 NFL</p>
+
+<p>就是任何一个算法，针对所有问题，在平均意义上效果是一样的。</p>
+
+<p>=&gt; 所以要具体问题具体分析，针对不同问题，选择适合该问题的方法</p>
+
+<p>(2)奥卡姆剃刀原则</p>
+
+<p>即在预测效果差不多的情况下，模型越简单余越好</p>
+
+<p>误差 = bias + varaince + noise</p>
 
 <ul>
-<li>如果安装anaconda 会自带</li>
-<li>通过conda环境安装 <code>conda install jupyter notebook</code>，或者<code>pip install jupyter notebook</code></li>
+<li>过拟合</li>
+<li>欠拟合</li>
 </ul>
 
-<pre><code># 启动
-jupyter notebook
-</code></pre>
+<h1 id="toc_5">7.模型验证</h1>
 
-<p>快捷键</p>
+<p>1.估计泛化误差</p>
 
-<p><img src="media/15017829276727/15018110676261.jpg" alt=""/></p>
+<p>训练集，验证集</p>
 
-<p>m 切换至markdown<br/>
-y 切换至单元格</p>
+<p>2.对数据的重采样</p>
 
-<h2 id="toc_1">magic 关键字</h2>
+<ul>
+<li>留出法</li>
+<li>k折交叉验证</li>
+<li>自助法(有放回)</li>
+</ul>
 
-<p>Magic 关键字是可以在单元格中运行的特殊命令，能让你控制notebook 本身或执行系统调用（例如更改目录）</p>
+<h1 id="toc_6">8.模型的评估指标</h1>
 
-<p>Magic 命令的前面带有一个或两个百分号（% 或 %%），分别对应行 Magic 命令和单元格 Magic 命令。行 Magic 命令仅应用于编写 Magic 命令时所在的行，而单元格 Magic 命令应用于整个单元格。</p>
+<h1 id="toc_7">9.实验设计</h1>
 
-<p>对于 Python 内核，可以使用 Magic 命令 %pdb 开启交互式调试器。出错时，你能检查当前命名空间中的变量。</p>
+<p>设计实验是要要成的任务是对整个机器学习过程的优化。实验中因子的设计可能会包含很多，比如：算法的类别、算法的参数、数据集等。</p>
 
-<h2 id="toc_2">转换 notebook</h2>
+<p>当因子较多的时候，如何确定单一因子的影响就需要一些技巧<br/>
+<strong>控制变量法</strong></p>
 
-<p>Notebook 只是扩展名为 .ipynb 的大型 JSON 文件。</p>
+<p>它暗含着一个较强的假设，就是不同因子之间相互独立，互不影响。然而这个并不总是成立的。</p>
 
-<p>转换格式的命令 <code>nbconvert</code></p>
+<p><strong>因子设计</strong><br/>
+他关注的是不同因子之间系统化的变化对学习效果的影响，他的一个特例就是<strong>全因子实验</strong>，也叫<strong>完全交叉设计</strong>。</p>
 
-<pre><code>jupyter nbconvert --to html notebook.ipynb   #转成html
-jupyter nbconvert --to markdown xxx.ipynb 
-</code></pre>
+<p>在具体操作的时候，当分析的因子的离散取值较多时候，可以通过粗调+微调的方法。</p>
 
-<p>目前支持的转换格式(<a href="https://nbconvert.readthedocs.io/en/latest/usage.html">https://nbconvert.readthedocs.io/en/latest/usage.html</a>)<br/>
-HTML,<br/>
-LaTeX,<br/>
-PDF,<br/>
-Reveal.js HTML slideshow,<br/>
-Markdown,<br/>
-reStructuredText,<br/>
-executable script,<br/>
-notebook.</p>
+<p>在对因子进行精调时候，可以使用<strong>响应面方法</strong>（zzz:根据百科资料解释,就是做了一个二次函数的拟合）</p>
 
-<p><strong>创建幻灯片</strong></p>
+<h2 id="toc_8">正交抽样设计</h2>
 
-<p>在 notebook 中创建幻灯片的过程像平常一样，但需要指定作为幻灯片的单元格和单元格的幻灯片类型。在菜单栏中，点击“View”（视图）&gt;“Cell Toolbar”（单元格工具栏）&gt;“Slideshow”（幻灯片），以便在每个单元格上弹出幻灯片单元格菜单。</p>
-
-<pre><code>#转换并在浏览器中展示
-jupyter nbconvert notebook.ipynb --to slides --post serve
-</code></pre>
+<p>@@@补充下：</p>
 
 
 		</div>
@@ -201,81 +315,26 @@ jupyter nbconvert notebook.ipynb --to slides --post serve
  
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15239687802219.html">工欲善其事必先利其器——conda</a></h1>
-			<p class="meta"><time datetime="2018-04-17T20:39:40+08:00" 
-			pubdate data-updated="true">2018/4/17</time></p>
+		  	<h1 class="entry-title"><a href="15295168951213.html">[2018-06-25]学习1</a></h1>
+			<p class="meta"><time datetime="2018-06-21T01:48:15+08:00" 
+			pubdate data-updated="true">2018/6/21</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<ul>
-<li>包管理</li>
-</ul>
+		  	<p>参考资源list<br/>
+2018年06月25日</p>
 
-<p>Anaconda 安装，conda包管理器与pip类似，不同之处是可用的包以数据科学包为主，而 pip 适合一般用途。它也可以安装非 Python 的包。它是支持任何软件的包管理器。</p>
+<p><a href="https://www.tensorflow.org/get_started/get_started_for_beginners">https://www.tensorflow.org/get_started/get_started_for_beginners</a></p>
 
-<ul>
-<li>虚拟环境管理器</li>
-</ul>
+<p><a href="http://playground.tensorflow.org">http://playground.tensorflow.org</a></p>
 
-<p>它类似于另外两个很流行的环境管理器，即 virtualenv 和 pyenv</p>
+<p><a href="https://github.com/aymericdamien/TensorFlow-Examples">https://github.com/aymericdamien/TensorFlow-Examples</a></p>
 
-<p>脚本和程序使用的默认 Python 是 Anaconda 附带的 Python。</p>
+<p>中文社区<br/>
+<a href="http://www.tensorfly.cn/">http://www.tensorfly.cn/</a><br/>
+<a href="https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/1-2-install/">https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/1-2-install/</a></p>
 
-<h2 id="toc_0">包管理-常用命令</h2>
-
-<pre><code>conda list  #查看安装的内容
-conda upgrade --all   #初次下载安装好后，建议更新所有包
-</code></pre>
-
-<p>安装包</p>
-
-<pre><code>conda install package
-conda install numpy=1.10   #指定包的版本
-
-conda remove package
-conda upgrade --all
-</code></pre>
-
-<pre><code>模糊查询相关包
-conda search search_term
-</code></pre>
-
-<h2 id="toc_1">环境管理</h2>
-
-<p>默认的环境名字叫base(我的电脑上是)</p>
-
-<p>通过<code>conda env list</code>可以列出你创建的所有环境</p>
-
-<pre><code>#创建环境
-conda create -n env_name list of packages
-eg. conda create -n my_env numpy
-
-conda create -n py3 python=3
-conda create -n py2 python=2
-
-#进入环境
-source activate my_env
-#离开环境
-source deactivate
-
-# 删除环境
-conda env remove -n env_name
-</code></pre>
-
-<h2 id="toc_2">其他</h2>
-
-<p>共享环境：将自己的工作环境保存下来给别人共享</p>
-
-<pre><code>#进入到你的环境中
-source activate base
-conda env export &gt; environment.yaml
-
-# 通过环境文件创建环境
-conda env create -f environment.yaml
-</code></pre>
-
-<p>练习<br/>
-conda create -n myenv python=2</p>
+<h2 id="toc_0">1.为什么</h2>
 
 
 		</div>
@@ -286,71 +345,13 @@ conda create -n myenv python=2</p>
  
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15221643051633.html">网上平台</a></h1>
-			<p class="meta"><time datetime="2018-03-27T23:25:05+08:00" 
-			pubdate data-updated="true">2018/3/27</time></p>
+		  	<h1 class="entry-title"><a href="15275150216357.html">boosting</a></h1>
+			<p class="meta"><time datetime="2018-05-28T21:43:41+08:00" 
+			pubdate data-updated="true">2018/5/28</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<p><a href="https://algorithmia.com/algorithms">https://algorithmia.com/algorithms</a></p>
-
-<ul>
-<li>SupR</li>
-</ul>
-
-<p><a href="http://www.stat.purdue.edu/%7Echuanhai/SupR/index.html">http://www.stat.purdue.edu/~chuanhai/SupR/index.html</a></p>
-
-
-		</div>
-
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15209459008411.html">第八章 深度模型中的优化</a></h1>
-			<p class="meta"><time datetime="2018-03-13T20:58:20+08:00" 
-			pubdate data-updated="true">2018/3/13</time></p>
-		 </header>
-	  	<div class="entry-content">
 		  	
-		  	<h2 id="toc_0">8.1 优化与学习</h2>
-
-<p>本章主要关注这一类特定的优化问题:寻找神经网络上的一组参数 θ，它能显 著地降低代价函数 J(θ)，该代价函数通常包括整个训练集上的性能评估和额外的正 则化项。</p>
-
-<p>通常来说极其学习的算法目标大概可以写成，降低期望泛化误差。即<strong>风险</strong><br/>
-<img src="media/15209459008411/15209462294325.jpg" alt=""/></p>
-
-<p>其中p_data是真实的分布，实际中我们只能最小化<strong>经验风险</strong><br/>
-<img src="media/15209459008411/15209463229280.jpg" alt=""/></p>
-
-<h2 id="toc_1">8.2神经网络优化中的挑战</h2>
-
-<ul>
-<li>病态： hessain矩阵病态</li>
-<li>局部最小值：对于非凸函数可能存在多个局部最小值。</li>
-<li>。。。</li>
-</ul>
-
-<h2 id="toc_2">8.3基本算法</h2>
-
-<p>梯度下降机器变种一般是机器学习中应用较多的优化算法。</p>
-
-<h3 id="toc_3">(1)随机梯度下降SGD</h3>
-
-<p><img src="media/15209459008411/15221677256921.jpg" alt=""/></p>
-
-<h3 id="toc_4">（2）动量</h3>
-
-<p>动量是比SGD速度更快的一种方法，SGD相当于只是考虑梯度的方向，而动量是在此基础上加上速度。</p>
-
-<p><img src="media/15209459008411/15221680917826.jpg" alt=""/></p>
-
-<h2 id="toc_5">8.4 参数初始化</h2>
-
-<h2 id="toc_6">参考资料</h2>
-
 
 		</div>
 
@@ -410,7 +411,7 @@ conda create -n myenv python=2</p>
 	      </li>
 	  
 	      <li class="post">
-	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(5)</strong></a>
+	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(9)</strong></a>
 	        
 	        
 	        
@@ -431,14 +432,28 @@ conda create -n myenv python=2</p>
 	      </li>
 	  
 	      <li class="post">
-	        <a href="6%20NLP&%E5%9B%BE%E5%83%8F.html"><strong>6 NLP&图像&nbsp;(4)</strong></a>
+	        <a href="6%20%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86.html"><strong>6 图像处理&nbsp;(4)</strong></a>
 	        
 	        
 	        
 	      </li>
 	  
 	      <li class="post">
-	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(11)</strong></a>
+	        <a href="6%20%E6%90%9C%E7%B4%A2.html"><strong>6 搜索&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="6%20nlp.html"><strong>6 nlp&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(12)</strong></a>
 	        
 	        
 	        
@@ -466,31 +481,31 @@ conda create -n myenv python=2</p>
 	  
 	      
 		      <li class="post">
-		        <a href="15623124260572.html">1 抽样方法</a>
+		        <a href="15633781017095.html"></a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15598839206919.html">SC-FEGAN</a>
+		        <a href="15633691538884.html">3. 样本量的确定？</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15596648844646.html">【Tensorflow】week2 Introduction to Computer Vision</a>
+		        <a href="15633655285542.html">卡方检验</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15596470753558.html">TensorFlow</a>
+		        <a href="15632757602829.html">3. 假设检验的power</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15594599843014.html">估计的置信度</a>
+		        <a href="15630063899159.html">python自然语言处理学习笔记——1</a>
 		      </li>
 	     
 	  

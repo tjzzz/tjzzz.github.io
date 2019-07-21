@@ -82,63 +82,223 @@ $(document).ready(function(event) {
 
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15073875319013.html">平台相关</a></h1>
-			<p class="meta"><time datetime="2017-10-07T22:45:31+08:00" 
-			pubdate data-updated="true">2017/10/7</time></p>
+		  	<h1 class="entry-title"><a href="15082571023160.html">第五章 机器学习</a></h1>
+			<p class="meta"><time datetime="2017-10-18T00:18:22+08:00" 
+			pubdate data-updated="true">2017/10/18</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<ul>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 百度深度学习工程师认证考试19.1
-参考资料
+		  	<p>这部分主要是补充了机器学习的一席基础知识点，这里先略过。后期再进行相应的补充。具体包括</p>
+
+<ul>
+<li><p>容量/过拟合/欠拟合</p></li>
+<li><p>估计/偏差/方差</p></li>
+<li><p>最大似然估计</p></li>
+<li><p>贝叶斯统计</p></li>
+<li><p>监督学习算法</p></li>
+<li><p>无监督学习算法</p>
+
+<ul>
+<li>PCA</li>
+<li>聚类</li>
+</ul></li>
+<li><p>梯度下降</p></li>
+</ul>
+
+
+		</div>
+
+		
+
+	</article>
+ 
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15080580137304.html">第四章 数值计算</a></h1>
+			<p class="meta"><time datetime="2017-10-15T17:00:13+08:00" 
+			pubdate data-updated="true">2017/10/15</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<h2 id="toc_0">1.数值精度</h2>
+
+<p>这部分对于了解具体的算法并没影响，但是在进行底层库开发时候经常会遇到，可能会出现<strong>上溢</strong>或者<strong>下溢</strong></p>
+
+<p>（1）病态条件</p>
+
+<p>条件数：表示函数相对于输入的微小变化而变化的快慢程度。<br/>
+比如矩阵求逆运算的条件数=最大和最小特征值的模的比</p>
+
+<h2 id="toc_1">2.优化算法</h2>
+
+<ul>
+<li>梯度下降</li>
+<li>牛顿法</li>
+</ul>
+
+<p>一般把需要最优化的函数称为<strong>目标函数</strong></p>
+
+<p><strong>梯度下降</strong></p>
+
+<p>对于一个多维输入函数f，梯度\(\triangledown_x f(x)\),其在u方向上的<strong>方向导数</strong>，相当于f在u方向上的斜率<br/>
+\(f(x+\alpha u)\)关于\(\alpha\)的导数(在\(\alpha =0\)时取得)</p>
+
+<p>\[\frac{\partial}{\partial \alpha}f(x+\alpha u)=u^T\triangledown_x f(x)\]</p>
+
+<p>为了是f最小，希望找到f下降最快的方向，因此有<br/>
+\[min u^T\triangledown_x f(x)\]<br/>
+u取为单位向量，很明显是在u和f夹角180时候，也就是两个完全相反的时候，下降最快。<br/>
+梯度下降： \(x&#39;=x-\epsilon \triangledown_x f(x)\)</p>
+
+<p><strong>牛顿法</strong></p>
+
+<p>Hessian矩阵，二阶导数<br/>
+<img src="media/15080580137304/15082408605128.jpg" alt=""/></p>
+
+<h2 id="toc_2">3.有限制的约束</h2>
+
+<p>对于有限制的优化，有时候可以将约束条件转化到原始的优化函数中，这里主要介绍一下通用的方法：<strong>KKT方法</strong>(拉格朗日方法的推广，可以非等式约束)</p>
+
+<pre><code>@@@
+http://blog.csdn.net/mr_kktian/article/details/53750424
+</code></pre>
+
+<h2 id="toc_3">参考资料</h2>
+
+<p>梯度下降法 扩展阅读： <a href="https://www.jiqizhixin.com/articles/2016-11-21-4">https://www.jiqizhixin.com/articles/2016-11-21-4</a><br/>
+<a href="http://www.cnblogs.com/maybe2030/p/4751804.html">http://www.cnblogs.com/maybe2030/p/4751804.html</a></p>
+
+
+		</div>
+
+		
+
+	</article>
+ 
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15080561019055.html">第三章 概率与信息论</a></h1>
+			<p class="meta"><time datetime="2017-10-15T16:28:21+08:00" 
+			pubdate data-updated="true">2017/10/15</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<p>本章主要是介绍了一些概率论的基础以及常见的分布</p>
+
+<h2 id="toc_0">1.常用函数的有用性质</h2>
+
+<ul>
+<li>sigmoid 函数</li>
+</ul>
+
+<p>\[\delta(x) = \frac{1}{1+exp(-x)}\]</p>
+
+<ul>
+<li>softplus函数
+\[log(1+exp(x))\]
+<img src="media/15080561019055/15080571562017.jpg" alt=""/></li>
+</ul>
+
+<p>是\(y=max(0,x)\)的平滑版本</p>
+
+<h2 id="toc_1">2.信息论</h2>
+
+<p>信息论是应用数学的一个分支，主要研究的是对一个信号包含信息的多少进行量化。<br/>
+<img src="media/15080561019055/15080594230903.jpg" alt=""/></p>
+
+<p>自信息：定义一个时间X=x的自信息<br/>
+\[I(x) = -log P(x)\]</p>
+
+<p>熵：<br/>
+\[-\sum P(x_i) logP(x_i)\]</p>
+
+<h3 id="toc_2">KL散度/相对熵</h3>
+
+<p>\[KL(P||Q) = -\sum P_i ln(\frac{P_i}{Q_i})=-\sum P_i(ln(P_i)- ln(Q_i))\]</p>
+
+<p>注意：</p>
+
+<ul>
+<li>KL距离其实并不是严格的距离，不满足对称性以及三角不等式。</li>
+</ul>
+
+<p>JS距离：<br/>
+\[JS(P1||P2) = \frac{1}{2}KL(P1||(P1+P2)/2)+ \frac{1}{2}KL(P2||(P1+P2)/2)\]</p>
+
+<h3 id="toc_3">交叉熵</h3>
+
+<p>相对熵的第一部分<br/>
+\[KL(P||Q) = -\sum P_i ln(Q_i)\]</p>
+
+<h2 id="toc_4">3.结构化概率模型——图模型(graphical model)</h2>
+
+
+		</div>
+
+		
+
+	</article>
+ 
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15080506207071.html">第二章 线性代数</a></h1>
+			<p class="meta"><time datetime="2017-10-15T14:57:00+08:00" 
+			pubdate data-updated="true">2017/10/15</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<p>第二章主要是介绍了线性代数的一些基础知识</p>
+
+<p>这里补充几点吧</p>
+
+<h2 id="toc_0">特征分解</h2>
+
+<p>每个矩阵可以视为多个列向量组成的一个向量空间/或者是一个线性变化(一个矩阵乘以一个向量后相当于是对向量做了一个线性变换)。而矩阵的分解，相当于去提取这个向量空间最重要的特征。</p>
+
+<p>(1)首先是特征值和特征向量<br/>
+若<strong>方阵</strong>A满足 \(Av=\lambda v\),则\(v\)称为矩阵A的特征向量，\(\lambda\)称为对应的特征值。</p>
+
+<p><strong>特征分解</strong><br/>
+\[A=V \Lambda V^{-1}\]<br/>
+V是其特征向量构成的矩阵，\(\Lambda\)是特征值构成的对角矩阵</p>
+
+<p>性质：</p>
+
+<p>(1) 实对称矩阵A都可以分解为\(A=Q\Lambda Q^{-1}\)，Q为正交矩阵</p>
+
+<p>(2)用来计算矩阵的逆。若\(A=Q \Lambda Q^{-1}\)，则\(A^{-1}=Q \Lambda^{-1}Q^{-1}\)</p>
+
+<h2 id="toc_1">奇异值分解</h2>
+
+<p>特征分解对于提取矩阵的特征根是很好的方法，但是他只能针对<strong>方阵</strong>操作。当A不是方阵时候，就需要用到SVD<br/>
+\[A_{n*m}=U_{n*n}\Sigma_{n*m} V^{T}_{m*m}\]</p>
+
+<p>其中，U称为左奇异向量，V称为右奇异向量</p>
+
+<p>\(AA^T=UDV^TVDU^T=UD^2U^T\)<br/>
+\(A^TA=VDU^T UDV^T=VD^2V^T\)<br/>
+即：<br/>
+A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)的特征向量，A的奇异值是\(AA^T\)也是\(A^TA\)的特征之爱的平方根。</p>
+
+<blockquote>
+<p>对比：<br/>
+特征分解是有限制的，比如矩阵必须是方阵</p>
+</blockquote>
+
+<h3 id="toc_2">SVD与PCA的关系</h3>
+
+<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 查一下之前多元的变换原理
 </li>
 </ul>
 
-<p>-教材推荐：PaddlePaddle深度学习实战</p>
+<p>PCA的全部工作简单点说，就是对原始的空间中顺序地找一组相互正交的坐标轴，第一个轴是使得方差最大的，第二个轴是在与第一个轴正交的平面中使得方差最大的，第三个轴是在与第1、2个轴正交的平面中方差最大的，这样假设在N维空间中，我们可以找到N个这样的坐标轴，我们取前r个去近似这个空间，这样就从一个N维的空间压缩到r维的空间了，但是我们选择的r个坐标轴能够使得空间的压缩使得数据的损失最小。</p>
 
-<p>-课程推荐：<a href="https://ai.baidu.com/paddlepaddle/openCourses">https://ai.baidu.com/paddlepaddle/openCourses</a> </p>
+<h3 id="toc_3">SVD与潜在语义检索LSI</h3>
 
-<p>-实训平台：<a href="http://aistudio.baidu.com/">http://aistudio.baidu.com/</a> </p>
+<h2 id="toc_4">参考资料</h2>
 
-<p><a href="http://ai.baidu.com/easydl/">http://ai.baidu.com/easydl/</a></p>
-
-<p><a href="http://bit.baidu.com/news/act/id/56.html">http://bit.baidu.com/news/act/id/56.html</a></p>
-
-<h1 id="toc_0">Deep Learning</h1>
-
-<p><strong>整理的list</strong></p>
-
-<p>要读的书：</p>
-
-<ul>
-<li>Deep Learning <a href="http://www.deeplearningbook.org/">http://www.deeplearningbook.org/</a> by Yoshua Bengio, Ian Goodfellow and Aaron Courville</li>
-</ul>
-
-<p>在线课程</p>
-
-<ul>
-<li>coursera：Andrew Ng的Deep Learning</li>
-<li><p>udacity上的deep learning纳米学位</p></li>
-<li><p>Machine Learning by Andrew Ng in Coursera</p></li>
-<li><p>Neural Networks for Machine Learning by Geoffrey Hinton in Coursera</p></li>
-</ul>
-
-<h1 id="toc_1">list</h1>
-
-<h2 id="toc_2">不错的个人博客资源</h2>
-
-<p><a href="http://www.cnblogs.com/maybe2030/">http://www.cnblogs.com/maybe2030/</a></p>
-
-<h2 id="toc_3">reading list</h2>
-
-<p><a href="http://jmozah.github.io/links/">http://jmozah.github.io/links/</a></p>
-
-<h1 id="toc_4">别人家的项目</h1>
-
-<p><a href="https://github.com/wepe/O2O-Coupon-Usage-Forecast/tree/master/code">https://github.com/wepe/O2O-Coupon-Usage-Forecast/tree/master/code</a></p>
-
-<p>udacity的github<br/>
-<a href="https://github.com/udacity/deep-learning.git">https://github.com/udacity/deep-learning.git</a></p>
+<p><a href="http://www.cnblogs.com/LeftNotEasy/archive/2011/01/19/svd-and-applications.html">http://www.cnblogs.com/LeftNotEasy/archive/2011/01/19/svd-and-applications.html</a></p>
 
 
 		</div>
@@ -149,230 +309,75 @@ $(document).ready(function(event) {
  
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15072077620306.html">rCharts</a></h1>
-			<p class="meta"><time datetime="2017-10-05T20:49:22+08:00" 
-			pubdate data-updated="true">2017/10/5</time></p>
+		  	<h1 class="entry-title"><a href="15078740756158.html">paddlepaddle安装</a></h1>
+			<p class="meta"><time datetime="2017-10-13T13:54:35+08:00" 
+			pubdate data-updated="true">2017/10/13</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<p><a href="http://rdatascience.io/rCharts/">http://rdatascience.io/rCharts/</a></p>
+		  	<p><a href="http://learn.baidu.com/pages/index.html#/video/?courseId=13655&amp;elementId=ec41cf99-5d69-4f17-807b-3b9668d64f75&amp;userId=5879362&amp;groupId=477326&amp;_k=imsxjl">http://learn.baidu.com/pages/index.html#/video/?courseId=13655&amp;elementId=ec41cf99-5d69-4f17-807b-3b9668d64f75&amp;userId=5879362&amp;groupId=477326&amp;_k=imsxjl</a><br/>
+mac安装</p>
 
-<p>作者的github主页<br/>
-<a href="http://ramnathv.github.io/rCharts">http://ramnathv.github.io/rCharts</a></p>
+<p>方法一：pip install paddlepaddle</p>
 
-<pre><code class="language-{r}">#Install 
-require(devtools)## 标题 ##
-install_github(&#39;rCharts&#39;, &#39;ramnathv&#39;)
+<p>方法二： docker安装</p>
+
+<h3 id="toc_0">1.安装docker for mac</h3>
+
+<p>下载链接<br/>
+<a href="https://download.docker.com/mac/stable/Docker.dmg">https://download.docker.com/mac/stable/Docker.dmg</a></p>
+
+<pre><code>docker --version
+docker-compose --version
+docker-machine --version
 </code></pre>
 
+<h3 id="toc_1">2.安装paddlepaddle的镜像版本</h3>
 
-		</div>
+<p><a href="https://livc.io/173">https://livc.io/173</a></p>
 
-		
+<p>(1)根据自己的机器选择合适的版本<br/>
+<a href="http://doc.paddlepaddle.org/release_doc/0.9.0/doc_cn/build_and_install/install/docker_install.html">http://doc.paddlepaddle.org/release_doc/0.9.0/doc_cn/build_and_install/install/docker_install.html</a></p>
 
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15072077543747.html">googleVis</a></h1>
-			<p class="meta"><time datetime="2017-10-05T20:49:14+08:00" 
-			pubdate data-updated="true">2017/10/5</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	
+<p>我这个地方选择的是cpu-noavx-latest</p>
 
-		</div>
+<p>(2)下载镜像<br/>
+<img src="media/15078740756158/15078763330578.jpg" alt=""/></p>
 
-		
+<p>docker pull paddledev/paddle:cpu-noavx-latest</p>
 
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15072068811153.html">Remap</a></h1>
-			<p class="meta"><time datetime="2017-10-05T20:34:41+08:00" 
-			pubdate data-updated="true">2017/10/5</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p>随着互联网时代的数据形式的多样化，空间数据的分析也越来越受到重视。基于用户、出租车的轨迹的交通优化，调度问题也越来越多的出现在一些大数据竞赛中，通过这种众包的形式，这类社会化问题逐渐得到一定程度的解决。</p>
+<p>(3)运行</p>
 
-<p>REmap是一个基于Echarts(<a href="http://echarts.baidu.com/echarts2/doc/doc.html)%E7%9A%84R">http://echarts.baidu.com/echarts2/doc/doc.html)的R</a> pacakge，主要是提供一个渐变的可交互的地图可视化展现.<br/>
-<a href="https://github.com/lchiffon/REmap">https://github.com/lchiffon/REmap</a></p>
-
-<p>其处理逻辑：</p>
-
-<ul>
-<li>使用R处理传入的数据</li>
-<li>写出Javascript脚本(Echarts)</li>
-<li>保存在临时的html文件中</li>
-<li>调用浏览器展示</li>
-</ul>
-
-<h2 id="toc_0">获取经纬度</h2>
-
-<pre><code class="language-{r,eval=F}">#library(devtools)
-#install_github(&#39;lchiffon/REmap&#39;)
-
-library(REmap)
-get_city_coord(&quot;Shanghai&quot;)   # 获取城市的经纬度  使用了baiduMapApi
-get_geo_position (c(&quot;北京&quot;,&quot;Shanghai&quot;,&quot;广州&quot;) )   #获取城市向量的经纬度
+<pre><code>docker run -it paddledev/paddle:cpu-noavx-latest
+root@a60119636542:/# paddle version
+PaddlePaddle 0.9.0a0, compiled with
+    with_avx: OFF
+    with_gpu: OFF
+    with_double: OFF
+    with_python: ON
+    with_rdma: OFF
+    with_glog: ON
+    with_gflags: ON
+    with_metric_learning: 
+    with_timer: OFF
+    with_predict_sdk: 
+root@a60119636542:/# 
 </code></pre>
 
-<h2 id="toc_1">迁移地图</h2>
+<p>退出： ctrl+d</p>
 
-<p>通过remap函数绘制地图，生成一个html文件，保存在电脑里，并通过浏览器打开</p>
+<h3 id="toc_2">3.试玩环境</h3>
 
-<pre><code>library(REmap)
-origin = rep(&quot;北京&quot;,10)
-destination = c(&#39;上海&#39;,&#39;广州&#39;,&#39;大连&#39;,&#39;南宁&#39;,&#39;南昌&#39;,
-                &#39;拉萨&#39;,&#39;长春&#39;,&#39;包头&#39;,&#39;重庆&#39;,&#39;常州&#39;)
-dat = data.frame(origin,destination)
-out = remap(dat,title = &quot;REmap实例数据&quot;,subtitle = &quot;theme:Dark&quot;)
-plot(out)
+<p>华东在机器上装了一个环境。</p>
+
+<pre><code>http://wiki.baidu.com/pages/viewpage.action?pageId=329462880
+
+/home/work/duhuadong/python27-gcc482/bin/python train.py
+
+/home/work/duhuadong/models-develop/text_classification
+
+work@yq01-ps-feed201705-m120007.yq01.baidu.com
 </code></pre>
-
-<p>同时可以通过<code>get_theme</code>函数来进行颜色样式的调整</p>
-
-<pre><code>get_theme(theme = &quot;Dark&quot;, lineColor = &quot;Random&quot;,
-  backgroundColor = &quot;#1b1b1b&quot;, titleColor = &quot;#fff&quot;,
-  borderColor = &quot;rgba(100,149,237,1)&quot;, regionColor = &quot;#1b1b1b&quot;)
-</code></pre>
-
-<pre><code>remap(dat,title = &quot;REmap实例数据&quot;,subtitle = &quot;theme:Bright&quot;,
-            theme = get_theme(&quot;Bright&quot;,lineColor = &quot;orange&quot;))
-</code></pre>
-
-<h2 id="toc_2">分级图</h2>
-
-<p>数据两列data.frame(x=地区名字,y=value)<br/>
-<code>rempC(data, maptype=c(&#39;china&#39;, &#39;world&#39;,&#39;省名字&#39;), color=, theme=)</code></p>
-
-<pre><code>library(REmap)
-remapC(chinaIphone, maptype=&#39;china&#39;,color = &#39;orange&#39;)
-remapC(chinaIphone, color = c(&#39;orange&#39;,&#39;red&#39;))
-</code></pre>
-
-<p><code>mapNames()</code>可以得到某个地图下的子图信息。</p>
-
-<pre><code>data = data.frame(country = mapNames(&#39;西藏&#39;), value = 50*sample(7)+200)
-head(data)
-remapC(data,maptype = &#39;西藏&#39;,color = &#39;skyblue&#39;)
-</code></pre>
-
-<h2 id="toc_3">remapB</h2>
-
-<p>remapB是用于创建一个以百度地图为底图的recharts效果,可以添加一些点或者线的动态效果</p>
-
-<pre><code>remapB(center=, zoom=5, markLineData， markPointData)
-center： 地图的中心，可以通过get_city_coord获取
-zoom: 5代表国家级的地图,15代表市级的地图
-markLineData 出发地，目的地
-</code></pre>
-
-<h3 id="toc_4">标线</h3>
-
-<p>markLine相关的参数</p>
-
-<ul>
-<li>markLineData 标线使用的数据,第一列为出发地,第二列为目的地</li>
-<li>markLineTheme 控制标线颜色,形状等,由markLineControl来控制</li>
-<li>geoData 标中各个点的经纬度坐标,如果没有,会使用BaiduAPI自动查找,用以储存markLine和markPoint的地理位置信息.具体的格式与get_city_coord返回相同:</li>
-</ul>
-
-<p>subway数据</p>
-
-<pre><code>remapB(center=get_city_coord(&#39;shanghai&#39;), zoom=10, markLineData = subway[[2]], geoData = subway[[1]])
-
-</code></pre>
-
-<h3 id="toc_5">标点</h3>
-
-<h2 id="toc_6">remapH()</h2>
-
-<p>热力图</p>
-
-<pre><code>heatmap = sampleData()
-remapH(heatmap,minAlpha = 0.1,title = &quot;Heat Map from REmap&quot;)
-# minAlpha 将小于minAlpha的值都设置为minAlpha以防止太小的值也能看到
-
-</code></pre>
-
-<p>【参考资料】<br/>
-郎大为的博客  <a href="http://langdawei.com/REmap/">http://langdawei.com/REmap/</a></p>
-
-
-		</div>
-
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15055593941505.html">【NG-DL】course2_week1 优化网络参数</a></h1>
-			<p class="meta"><time datetime="2017-09-16T18:56:34+08:00" 
-			pubdate data-updated="true">2017/9/16</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<h2 id="toc_0">1.基本概念</h2>
-
-<p>很多优化参数：<br/>
-网络层数，隐层数，学习率，激活函数。。。</p>
-
-<ul>
-<li><p>训练集/验证集/测试集</p></li>
-<li><p>偏差， 训练集误差</p></li>
-<li><p>方差</p></li>
-</ul>
-
-<p>若有高bias： 尝试新的网络，更大网络</p>
-
-<p>高方差： 获取更多数据，或者正则化，更合适的网络机构</p>
-
-<p>bias和varaince的平衡<br/>
-一般来说更大的网络能减小偏差，更多的数据能减小方差。</p>
-
-<h2 id="toc_1">2.正则化-L2</h2>
-
-<p>以逻辑回归为例</p>
-
-<p>\(J(w,b)=\frac{1}{m}\sum L(\hat y_i, y_i)+\frac{\lambda}{2m}|w|^2_2\)L2惩罚，避免过拟合，导致高方差</p>
-
-<p>类似的神经网络在优化函数上加上</p>
-
-<p>\(J(w^{[1]},b^{[1]},...w^{[l]},b^{[l]})=\frac{1}{m}\sum L(\hat y_i, y_i)+\frac{\lambda}{2m}\sum||w^{[l]}||^2_2\)</p>
-
-<p>其中\(|w^{[l]}|^2\)F范数</p>
-
-<ul>
-<li>Ng.当\(\lambda\)较大时候,w会较小，sigmoid接近线性，降低方差。
-<img src="media/15055593941505/15103891828021.jpg" alt=""/></li>
-</ul>
-
-<h3 id="toc_2">正则化-dropout(随机失活)</h3>
-
-<p>每次对网络中的节点设置一个随机消失的概率p，即每个节点可能在也可能不在网络中，不在的时候即相当于该节点的数值置为0.</p>
-
-<p>dropout与l2类似都会shrink权重。</p>
-
-<h3 id="toc_3">early stoping</h3>
-
-<h2 id="toc_4">3.优化</h2>
-
-<h3 id="toc_5">归一化</h3>
-
-<p>归一化输入=&gt; 均值0，方差1<br/>
-* 零均值化<br/>
-* 归一化方差</p>
-
-<p><img src="media/15055593941505/15103915636569.jpg" alt=""/></p>
-
-<h3 id="toc_6">梯度消失与梯度爆炸</h3>
-
-<p>当梯度增长很大或者很微弱时，会导致优化出问题或者很慢。</p>
 
 
 		</div>
@@ -433,7 +438,7 @@ remapH(heatmap,minAlpha = 0.1,title = &quot;Heat Map from REmap&quot;)
 	      </li>
 	  
 	      <li class="post">
-	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(5)</strong></a>
+	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(9)</strong></a>
 	        
 	        
 	        
@@ -454,14 +459,28 @@ remapH(heatmap,minAlpha = 0.1,title = &quot;Heat Map from REmap&quot;)
 	      </li>
 	  
 	      <li class="post">
-	        <a href="6%20NLP&%E5%9B%BE%E5%83%8F.html"><strong>6 NLP&图像&nbsp;(4)</strong></a>
+	        <a href="6%20%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86.html"><strong>6 图像处理&nbsp;(4)</strong></a>
 	        
 	        
 	        
 	      </li>
 	  
 	      <li class="post">
-	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(11)</strong></a>
+	        <a href="6%20%E6%90%9C%E7%B4%A2.html"><strong>6 搜索&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="6%20nlp.html"><strong>6 nlp&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(12)</strong></a>
 	        
 	        
 	        
@@ -489,31 +508,31 @@ remapH(heatmap,minAlpha = 0.1,title = &quot;Heat Map from REmap&quot;)
 	  
 	      
 		      <li class="post">
-		        <a href="15623124260572.html">1 抽样方法</a>
+		        <a href="15633781017095.html"></a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15598839206919.html">SC-FEGAN</a>
+		        <a href="15633691538884.html">3. 样本量的确定？</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15596648844646.html">【Tensorflow】week2 Introduction to Computer Vision</a>
+		        <a href="15633655285542.html">卡方检验</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15596470753558.html">TensorFlow</a>
+		        <a href="15632757602829.html">3. 假设检验的power</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15594599843014.html">估计的置信度</a>
+		        <a href="15630063899159.html">python自然语言处理学习笔记——1</a>
 		      </li>
 	     
 	  

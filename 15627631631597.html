@@ -1,0 +1,434 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>
+    
+  2 不同设计之间有统计学差异吗 - 学习笔记
+  
+
+  </title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href="asset/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="atom.xml" rel="alternate" title="学习笔记" type="application/atom+xml">
+  <script src="asset/js/modernizr-2.0.js"></script>
+  <script src="asset/js/jquery.min.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/solarized_light.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <style type="text/css">
+  .cat-children-p{ padding: 6px 0px;}
+  .hljs{background: none;}
+  </style>
+  <script type="text/javascript">
+  var isAddSildbar = true;
+  </script>
+  <script src="asset/js/octopress.js" type="text/javascript"></script>
+</head>
+<script type="text/javascript">
+//链接新开窗口
+function addBlankTargetForLinks () {
+  $('a[href^="http"]').each(function(){
+      $(this).attr('target', '_blank');
+  });
+}
+$(document).ready(function(event) {
+  addBlankTargetForLinks();
+});
+</script>
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="index.html">学习笔记</a></h1>
+  
+    <h2></h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+
+  <li id=""><a target="self" href="index.html">Home</a></li>
+
+  <li id=""><a target="_self" href="archives.html">Archives</a></li>
+
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content"> 
+<div>
+	<article class="hentry" role="article">
+	<header>
+			  	<h1 class="entry-title">2 不同设计之间有统计学差异吗</h1>
+				<p class="meta"><time datetime="2019-07-10T20:52:43+08:00" pubdate data-updated="true">2019/7/10</time></p>
+			 </header>
+		  	<div class="entry-content">
+			  	<p>本章主要介绍对均值、比例的假设检验，来判断两组不同设计之间是否有显著差别。</p>
+
+<h2 id="toc_0">1. 均值的比较 t检验</h2>
+
+<p>均值的比较一般可以用t检验，根据设计方式的不同可分为如下两类</p>
+
+<p>（1）配对样本t检验</p>
+
+<p>配对样本，即相同的用户参与了不同的测试。采用相同的用户分别参加两种不同的测试好处就是排除了用户的个体干扰，面临的问题就是需要对用户先接触哪个后接触哪个做好平衡，不能让两个之间有影响。比如测试两种药品，先服用A药后，已经对用户产生了影响，再去服用B药物的话就无法准确的看出效果了。</p>
+
+<p>美食评判中，美食专家们都是品尝完一道菜之后需要漱嘴然后才开始品尝下一道菜，就是这个原因。</p>
+
+<p>其中D表示两个不同测试之间的差别。</p>
+
+<p>\[t=\frac{\hat D}{S_D/\sqrt n}\]</p>
+
+<p>(2) 双总体t检验</p>
+
+<p>即不同的用户参与了不同的测试，一个A组，一个B组。通过两组效果的差异进行比较。</p>
+
+<p>假设两个总体分别为X, Y</p>
+
+<p>假设条件：</p>
+
+<ul>
+<li>两组样本不相关</li>
+<li>两组样本近似服从正态分布</li>
+</ul>
+
+<p>在以上的前提假设下，Z=X-Y 也应该近似服从正态分布。且有<br/>
+\[E(X) = E(X)- E(Y)\]<br/>
+\[Var(Z) = Var(X-Y)= Var(X) + Var(Y)\]</p>
+
+<p>均值的估计可以用样本的均值差\(\bar x - \bar y\)， 而方差的估计就需要分情况讨论了。</p>
+
+<ul>
+<li>\(\sigma_1,\sigma_2\)已知，</li>
+</ul>
+
+<p>\[Z=\frac{\bar x-\bar y -(\mu_1 - \mu_2)}{\sqrt{\sigma_1^2/n_1+\sigma_2^2/n_2}}~ N(0,1)\]</p>
+
+<ul>
+<li><p>\(\sigma_1,\sigma_2\) 未知</p>
+
+<ul>
+<li>已知 \(\sigma_1=\sigma_2\)</li>
+</ul>
+
+<p>这个时候需要根据样本1和样本2的方差去联合估计总体的方差</p>
+
+<p>\[Z=\frac{\bar x-\bar y -(\mu_1 - \mu_2)}{S_w\sqrt{1/n_1+1/n_2}}\sim N(0,1)\]<br/>
+其中联合估计方差\(s_w=\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n1+n_2 -2}\)</p>
+
+<ul>
+<li><p>已知 \(\sigma_1\ne\sigma_2\)</p>
+
+<p>\[Z=\frac{\bar x-\bar y -(\mu_1 - \mu_2)}{\sqrt{s_1^2/n_1+s_2^2/n_2}}~ t_{df&#39;}\]</p>
+
+<p>其中t分布的自由度是\(df&#39;=\frac{(s_1^2/n_1+s_2^2/n_2)^2}{\frac{(s_1^2/n1)^2/n_1}{n_1} + \frac{(s_2^2/n2)^2/n_2}{n_2}}\)</p></li>
+</ul></li>
+</ul>
+
+<p>差异的效应(effect size)<br/>
+除了差异是否显著以外，在实际中我们还需要注意差异的效应，即这个差异究竟有多大</p>
+
+<h2 id="toc_1">2.比例的比较</h2>
+
+<p><strong>双比例检验</strong></p>
+
+<p>双总体的比例检验，比例其实可以看做是均值的一种特殊情况，所以双总体的比例的比较也可以转化为均值的比较。</p>
+
+<p>\[Z=\frac{\bar p_1-\bar p_2 }{\sqrt{PQ(\frac{1}{n_1}+\frac{1}{n_2})}}\sim N(0,1)\]</p>
+
+<p><strong>卡方检验</strong><br/>
+对于分类型变量，另一个常用的检验方法就是卡方检验。卡方检验首先是一种非参数检验方法，其并不依赖于原始数据的分布假定，卡方检验主要应用于分类变量的关联性分析（关于卡方检验的后续再详细介绍)。</p>
+
+<p>对于2x2的列联表来说</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>通过</th>
+<th>失败</th>
+<th>总计</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>实验A</td>
+<td>a</td>
+<td>b</td>
+<td>m</td>
+</tr>
+<tr>
+<td>实验B</td>
+<td>c</td>
+<td>d</td>
+<td>n</td>
+</tr>
+<tr>
+<td>总计</td>
+<td>r</td>
+<td>s</td>
+<td>N</td>
+</tr>
+</tbody>
+</table>
+
+<p>\[\chi^2 = \frac{(ad-bc)^2N}{mnrs}\]</p>
+
+<p><strong>fisher精确检验</strong></p>
+
+<p>上述说的卡方检验和双比例的检验其实都是一种近似，fisher精确检验依据超几何分布，根据排列组合的概率来进行计算。</p>
+
+			</div>
+
+		
+	  
+		<footer>
+		 <p class="meta">
+
+			<strong>Categories:</strong>&nbsp; 
+			<span class="categories">
+			
+			    <a class='category' href='4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 你不得不知的统计方法</a>&nbsp;
+			 
+			</span>
+		    </p>
+		    <p class="meta">
+		      
+		 </p>
+	    
+		<div class="sharing">
+		  
+          
+
+          
+
+		</div>
+
+	    <p class="meta">
+	    
+	        <a class="basic-alignment left" href="15630063899159.html" 
+	        title="Previous Post: python自然语言处理学习笔记——1">&laquo; python自然语言处理学习笔记——1</a>
+	    
+	    
+	        <a class="basic-alignment right" href="15623124260572.html" 
+	        title="Next Post: 1 抽样方法">1 抽样方法 &raquo;</a>
+	    
+	    </p>
+	  </footer>
+	</article>
+</div>
+ <aside class="sidebar"> 
+
+	<section>
+	  <h1>Categories</h1>
+	  <ul id="recent_posts">
+	  
+	      <li class="post">
+	        <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单&nbsp;(4)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="1%20Tools.html"><strong>1 Tools&nbsp;(33)</strong></a>
+	         <p class="cat-children-p"> 
+	        
+	        	<a href="%E9%85%B7%E7%82%AB%E7%A5%9E%E5%99%A8.html">酷炫神器&nbsp;(12)</a>&nbsp;&nbsp;
+	        
+	        	<a href="PaddlePaddle.html">PaddlePaddle&nbsp;(3)</a>&nbsp;&nbsp;
+	        
+	        	<a href="spark.html">spark&nbsp;(12)</a>&nbsp;&nbsp;
+	        
+	        	<a href="tensorflow.html">tensorflow&nbsp;(2)</a>&nbsp;&nbsp;
+	        
+	        	<a href="SQL.html">SQL&nbsp;(1)</a>&nbsp;&nbsp;
+	        
+	         </p> 
+	      </li>
+	  
+	      <li class="post">
+	        <a href="2%20Get%20Data.html"><strong>2 Get Data&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html"><strong>3 数据可视化&nbsp;(8)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(9)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习&nbsp;(23)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统&nbsp;(3)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="6%20%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86.html"><strong>6 图像处理&nbsp;(4)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="6%20%E6%90%9C%E7%B4%A2.html"><strong>6 搜索&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="6%20nlp.html"><strong>6 nlp&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(12)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="8%20Ai%E5%BA%94%E7%94%A8.html"><strong>8 Ai应用&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="%E8%AE%B8%E5%BC%8F%E4%BC%9F-%E6%9E%B6%E6%9E%84%E8%AF%BE.html"><strong>许式伟-架构课&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	   
+	  </ul>
+	</section>
+	<section>
+	  <h1>Recent Posts</h1>
+	  <ul id="recent_posts">
+	  
+	      
+		      <li class="post">
+		        <a href="15633781017095.html"></a>
+		      </li>
+	     
+	  
+	      
+		      <li class="post">
+		        <a href="15633691538884.html">3. 样本量的确定？</a>
+		      </li>
+	     
+	  
+	      
+		      <li class="post">
+		        <a href="15633655285542.html">卡方检验</a>
+		      </li>
+	     
+	  
+	      
+		      <li class="post">
+		        <a href="15632757602829.html">3. 假设检验的power</a>
+		      </li>
+	     
+	  
+	      
+		      <li class="post">
+		        <a href="15630063899159.html">python自然语言处理学习笔记——1</a>
+		      </li>
+	     
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	   
+	  </ul>
+	</section>
+	
+</aside> </div></div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 -  -
+  <span class="credit">Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a> &nbsp;&nbsp; Theme by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+
+  
+    
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+</body>
+</html>

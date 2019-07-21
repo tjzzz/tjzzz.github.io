@@ -82,44 +82,175 @@ $(document).ready(function(event) {
 
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15456330400571.html">统计阈值</a></h1>
-			<p class="meta"><time datetime="2018-12-24T14:30:40+08:00" 
-			pubdate data-updated="true">2018/12/24</time></p>
+		  	<h1 class="entry-title"><a href="15542962343188.html">关于长点击阈值划分方法</a></h1>
+			<p class="meta"><time datetime="2019-04-03T20:57:14+08:00" 
+			pubdate data-updated="true">2019/4/3</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<h2 id="toc_0">1.dab类指标</h2>
+		  	<p>用户停留时长一直是衡量用户在落地页满意度的一个重要度量指标。在具体业务设计的时候，可以去看时长分布的中位数、平均时长等统计级指标，亦有类似于衡量时长好坏的长点击率，长点击占比等指标。</p>
 
-<p>newpo, po, rank, rr, f1 最终计算方式都是 \[dab_{xx} = 0.5\frac{\sum awin -\sum bwin}{\sum awin + \sum bwin + \sum tie}\]</p>
+<p>首先来说下长点击，简单来说长点击即停留时长比较长的一个点击时间。</p>
 
-<p>其中awin，bwin，tie可以按照不同的逻辑或方法进行计算。</p>
+<h3 id="toc_0">1. 长点击，满意点击，人工打分</h3>
 
-<p>\[p_1 = \frac{\sum awin}{\sum awin + \sum bwin + \sum tie}\]</p>
+<p>我们说停留时间“比较长”，其实是一个相对概念，不同的资源类型可能划分的标准会不同。但是他们的出发点是一样的: 我们认为在特定资源类型下落地页时长越长，用户越倾向于满意。所以长点击本质上是用来刻画满意点击的。</p>
 
-<p>\[p_2 = \frac{\sum bwin}{\sum awin + \sum bwin + \sum tie}\]</p>
+<p><strong>(1) 无监督的划分</strong><br/>
+即我们不知道groundtruth，这个时候可以根据本身时长的分布，按照经验值比如60%，70%作为其长点击的分界点。这种划分方式 xxxx</p>
 
-<p>基于有点有diff的流量：<br/>
-每次pv下，awin，bwin，tie必然出现且只出现其一。因此p1可以看做策略好的概率， p2可以看做基线好的概率。 概率本身是服从两点分布的，每次pv取0或1，样本量较大的时候(一般interleaving实验的样本量足够大了)，可以近似成正态分布，即有</p>
+<p><strong>(2) 有监督的</strong><br/>
+通过人工评估（比如qu相关性，qu的页面质量等维度），可以对qu结果进行人工打分，一般是0-4档。0，1代表不太好，2代表一般，3-4代表比较好。可以根据业务需求比如3-4认为是满意点击，2认为是一般点击，0-1认为是不满意点击。<br/>
+以此人工标注来决定如何选择长点击划分阈值。</p>
 
-<p>\[p_1 - N(P_1,P_1(1-P_1)/n1 )\]<br/>
-\[p_2 - N(P_2,P_2(1-P_2)/n1 )\]</p>
+<h3 id="toc_1">2. 如何划分长点击</h3>
 
-<p>所以两者的差也是近似正态分布，有(注意P1与P2并不是相互独立的)</p>
+<p>长点击阈值划分的目标，即寻找如下决策函数的参数x</p>
 
-<p>\[p_1 - p_2 ~ N(P_1 - P_2, \frac{(P_1+P_2-(P_1-P_2)^2)}{n})\]</p>
+<p>\[<br/>
+F(t) = \left\{<br/>
+             \begin{array}{lr}<br/>
+            1，长点击 t \ge x &amp;  \\<br/>
+            0，非长点击 t&lt; x\\  <br/>
+             \end{array}<br/>
+\right.<br/>
+\]</p>
 
-<p>所以dab的置信区间就是</p>
+<p>从统计分布的角度看，即使是时长比较长的结果，人工打分也可能很低，时长很短的结果人工打分也可能是满意的。所以不管寻找到的最优参数\(x\)是多少，它都有可能会误分。而我们的目的是让这种因为误分而犯错的可能性尽可能的小。<br/>
+<img src="media/15542962343188/15543644977641.jpg" alt=""/></p>
 
-<p>\[[\frac{p_1 -p_2}{2}- z_{\alpha}\sqrt \frac{p_1+p_2-(p_1-p_2)^2}{4n}, \frac{p_1 -p_2}{2}+ z_{\alpha}\sqrt \frac{p_1+p_2-(p_1-p_2)^2}{4n}]\]</p>
+<p>从以上的分布图来说更直观一些，我们的误判损失即是图中阴影部分，很容易证明，移动阈值划分x时候，损失最小的是当两个分布曲线相交的点的时候。这指导我们可以按照如下的方法进行长点击划分：</p>
 
-<h3 id="toc_1">根据空转确定阈值</h3>
+<p>执行步骤<br/>
+<strong>Step0： 摸底时长分布</strong></p>
 
-<p>空转时候理论上两边是没diff的，但是因为随机波动，产出的指标数据肯定不可能完全等于0，大概率上也是服从一个正态分布。根据小概率原理，在5%和95%的置信点上可以认为是异常值，就策略和基线不是持平而是有显著diff。<br/>
-对应的阈值就是</p>
+<p>首先需要了解清楚数据本身的时长分布，根据时长的分布情况，大概划分不同的区间段。比如0-5，5-10，10-15，15-20，20-25，25-30，30-35，35-40， 40-50，50-60，60-100，&gt;100这样进行划分。<br/>
+同于频次分布较高的部分可以划分的细致一些，频次分布较低的部分可以划分的宽度较宽一些。</p>
 
-<p>\[z_{\alpha}\sqrt \frac{p_1+p_2-(p_1-p_2)^2}{4n}= z_{\alpha}\sqrt \frac{p}{2n}\]</p>
+<p><strong>Step1： 抽样送评qu数据</strong></p>
 
-<p>所以这个阈值是与本身的p值的大小有关，与样本量也有关。</p>
+<p>确定送评样本，因为人工评估是需要成本的，我们不可能得到整体的good或者bad的分布曲线，我们所有的只是抽取的送评样本的标注数据。这就要求我们送评的数据对于总体一定要有好的代表性：</p>
+
+<ul>
+<li>抽样分布应该和总体分布尽量一致</li>
+<li>抽样量不能太小，否则样本估计总体的误差会比较大</li>
+</ul>
+
+<blockquote>
+<p>如何确定最优送评样本量？（这个回来再写）<br/>
+统计学的研究方法是要找到我们所关注变量的统计分布，我们最终是希望通过抽取得到的good和not_good的时长分布与整体差不多。</p>
+</blockquote>
+
+<p>数据抽取：</p>
+
+<ul>
+<li>考虑到数据抽取是基于qu粒度，一个qu其实会有多次用户点击行为，也就会有多个时长，可能波动较大。所以一般是取count(qu)&gt;5的，并且时长取的是其中位数</li>
+<li><p>预送评，一般先进行少量的预送评，比如送评1000个样本。返回会用来检验数据质量和划分的精细度</p>
+
+<ul>
+<li>check自己送评的数据中是否有一些异常数据。比如sf的url路径不完成</li>
+<li>check人工打分的质量程度</li>
+<li>初步看下good和not_good的分布情况，大概确定长点的分布区间，从而看下送评的样本的时间段间隔精度是否需要调整</li>
+</ul></li>
+<li><p>正式送评</p></li>
+</ul>
+
+<p><strong>Step2： 返回分析</strong></p>
+
+<p>根据good和not_good的频数分布，找到曲线的交点，即满足good(x) = not_good(x)的点，即可认为是长点击的分界点。短点击的划分类似，可以认为0-1的是短点击，或者更严格的0分的是短点击。 绘制bad和not_bad的频数分布，找到曲线交点。即满足bood(x) = not_bood(x)的点</p>
+
+<ul>
+<li>实际操作：实际数据的分布图可能不如示意图那么明显，甚至有多个交点的情况。这时候可以计算图中b+c的面积，绘制(x,g(x))的曲线图，找到g(x)=0.5的点即可。 如果有多个可能是因为样本量不足够，或者本身指标数据不可信(前提假定是要研究的指标与人工打分是存在单调关系的)</li>
+</ul>
+
+<h3 id="toc_2">3 应用-关于sigmoid函数的理解</h3>
+
+<ul>
+<li><p>AB实验<br/>
+对于AB实验来说，有了长短点击时间阈值之后，可以直接计算长点击和短点击，更新指标评估即可。</p></li>
+<li><p>interleaving实验<br/>
+对于interleaving来说，实际中是将dt经过一个映射(一般是sigmoid函数)将其转化为一个0-1的打分。</p></li>
+</ul>
+
+<p>这里我们从另外一个角度来看这件事。LR或者说sigmoid函数能将一个负无穷到正无穷的数映射到0-1的一个概率值。是否是长点其实也是一个概率，当然这里时长t是取的(0, 正无穷)</p>
+
+<p>假设<br/>
+\[g(x) = \frac{good(x)}{good(x) + not\_good(x)}\]<br/>
+其中 \(good(x)= \#good(t=x)\), \(not\_good(x)=\#not\_good(t= x)\)。 <br/>
+所以\(g(x)\)其实表示的是在\(t=x\)时候是长点击的概率。为了书写方便，</p>
+
+<p>\[g(x) = \frac{1}{1+ not\_good(x)/good(x)}= \frac{1}{1+ e^{ln\frac{p}{1-p}}}\]</p>
+
+<p>这里\(p(x)\)是表示当时间等于x时是长点击的概率。</p>
+
+<p>从这个角度说，之前的sigmoid映射函数中\(\frac{1}{1+ e^{-a(x-b)}}\) 系数项即是log odds ratio。</p>
+
+<p>因此只需对送评数据中\(ln\frac{p}{1-p}\)的分布数据去拟合一条曲线 \(\hat f(t)\)即可，最终的sigmoid映射函数就是</p>
+
+<p>\[g(t) = \frac{1}{1+ e^{\hat f(t)}}\]</p>
+
+<p>并且其中\(\hat f(t)=0\)的点恰巧就是长点击的分界点。</p>
+
+<p>注意：实际送评的时候因为样本量的限制，不可能每一个分界点(在这里是每个停留时间dt)都会去送评，</p>
+
+<h3 id="toc_3">4.其他:从模型准召的角度</h3>
+
+<p>其实从分类评估角度来看，</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>not_good</th>
+<th>Good</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>F=0</td>
+<td>a</td>
+<td>b</td>
+</tr>
+<tr>
+<td>F=1</td>
+<td>c</td>
+<td>d</td>
+</tr>
+</tbody>
+</table>
+
+<p>上面说的损失即阴影部分的面积=b+c, 所以其实从分类模型评估的角度，就是不一致率最小的时候的最优解,即<br/>
+\[min b+c\]</p>
+
+<ul>
+<li>准确&amp;召回</li>
+</ul>
+
+<p>分类模型中其实用的更多的是准确和召回指标，\(accurate=\frac{d}{c+d}\),\(recall = \frac{d}{b+d}\)<br/>
+\[Max F\_score = 1-\frac{b+c}{b+c+2d}\]</p>
+
+<p>这个标准下，和之前还是略微有些不同的</p>
+
+<h3 id="toc_4">5.如何泛化</h3>
+
+<p>泛化问题主要是指：</p>
+
+<ul>
+<li>业务层面</li>
+</ul>
+
+<p>搜索，视频，以后其他的大小业务都可能面临这种问题。对于新的业务类型，人工送评应该是避免不了了。</p>
+
+<ul>
+<li>时间层面变更</li>
+</ul>
+
+<p>随着线上效果变更，当前调研的结果可能已经不再试用后续的结果。需要不断进行更新，比如视频铺量后，整体的时长分布和之前的可能变化很大。或者是需要拆解不同的维度类别</p>
+
+<p>方案1：再次人工送评一遍，<br/>
+方案2：进行时长分布映射<br/>
+这种方案有个问题，相当于是按照top百分比进行划分的，认为top百分比所代表的满意度保持一致。可能整体时长都变长了，映射完后阈值也变长了，相对的满意度并没变。</p>
 
 
 		</div>
@@ -130,23 +261,27 @@ $(document).ready(function(event) {
  
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15448546459497.html">VIM</a></h1>
-			<p class="meta"><time datetime="2018-12-15T14:17:25+08:00" 
-			pubdate data-updated="true">2018/12/15</time></p>
+		  	<h1 class="entry-title"><a href="15516671779096.html">list</a></h1>
+			<p class="meta"><time datetime="2019-03-04T10:39:37+08:00" 
+			pubdate data-updated="true">2019/3/4</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<p>调整终端配色<br/>
-<a href="https://github.com/mitsuhide1992/vim-colors-solarized">https://github.com/mitsuhide1992/vim-colors-solarized</a></p>
+		  	<ol>
+<li><p>抽样方法</p>
 
-<p>xx macvim<br/>
-<a href="https://www.jianshu.com/p/923aec861af3">https://www.jianshu.com/p/923aec861af3</a></p>
+<ul>
+<li>抽样理论，方法</li>
+<li>正交抽样</li>
+<li>hash算法</li>
+</ul></li>
+<li><p>ab test</p></li>
+<li><p>interleaving</p></li>
+</ol>
 
-<p>终端配置<br/>
-<a href="https://ohmyz.sh/">https://ohmyz.sh/</a></p>
+<h2 id="toc_0">参考</h2>
 
-<p>mac vim 配置<br/>
-<a href="https://github.com/barretlee/autoconfig-mac-vimrc">https://github.com/barretlee/autoconfig-mac-vimrc</a></p>
+<p><a href="http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/">http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/</a></p>
 
 
 		</div>
@@ -157,53 +292,22 @@ $(document).ready(function(event) {
  
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15442821903932.html">1 安装-mac</a></h1>
-			<p class="meta"><time datetime="2018-12-08T23:16:30+08:00" 
-			pubdate data-updated="true">2018/12/8</time></p>
+		  	<h1 class="entry-title"><a href="15513668402051.html">pyspark提交任务相关配置</a></h1>
+			<p class="meta"><time datetime="2019-02-28T23:14:00+08:00" 
+			pubdate data-updated="true">2019/2/28</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<p><strong>安装准备</strong></p>
+		  	<p>上传包<br/>
+<a href="https://www.jianshu.com/p/92be93cfbb97">https://www.jianshu.com/p/92be93cfbb97</a></p>
 
-<p>(1) 安装jdk8</p>
+<p><a href="https://blog.csdn.net/weixin_42649077/article/details/84976960">https://blog.csdn.net/weixin_42649077/article/details/84976960</a></p>
 
-<p>官网下载， 这个好像比较慢<a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a></p>
+<p><a href="http://www.it1352.com/220302.html">http://www.it1352.com/220302.html</a></p>
 
-<p>我把下载好的放到了百度网盘上: <a href="https://pan.baidu.com/s/1fpiSse78YObfalSerql4Zw">https://pan.baidu.com/s/1fpiSse78YObfalSerql4Zw</a> 提取码: t6q3</p>
+<p><a href="http://ju.outofmemory.cn/entry/171843">http://ju.outofmemory.cn/entry/171843</a></p>
 
-<pre><code>vim ~/.bash_profile
-## 添加如下环境变量信息
-export JAVA_HOME=&quot;/Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home/&quot;
-export PATH=&quot;$JAVA_HOME/bin:$PATH&quot;
-</code></pre>
-
-<p>(2) 官网下载 <a href="http://mirror.bit.edu.cn/apache/spark/spark-2.4.0/spark-2.4.0-bin-hadoop2.7.tgz">http://mirror.bit.edu.cn/apache/spark/spark-2.4.0/spark-2.4.0-bin-hadoop2.7.tgz</a><br/>
-或者 <code>brew install apache-spark</code></p>
-
-<p>然后将文件解压到想要放到的目录，我这里是/Users/zhengzhenzhen/ 为例方便版本管理以及后续使用，可以创建一个软链</p>
-
-<pre><code>ln -s /Users/zhengzhenzhen/spark-2.4.0-bin-hadoop2.7 /Users/zhengzhenzhen/spark
-</code></pre>
-
-<p>（3） </p>
-
-<pre><code>pip install pyspark
-</code></pre>
-
-<p><strong>使用jupyter nootbook</strong></p>
-
-<p>在jupyter notebook中使用pyspark，需要配置环境变量</p>
-
-<pre><code># 基于python的版本
-export PYSPARK_DRIVER_PYTHON=jupyter
-export PYSPARK_DRIVER_PYTHON_OPTS=&#39;notebook&#39;
-</code></pre>
-
-<h2 id="toc_0">参考资料</h2>
-
-<p><a href="https://www.jianshu.com/p/f284b77289ca">https://www.jianshu.com/p/f284b77289ca</a></p>
-
-<p><a href="https://www.jianshu.com/p/cc83d047383d">https://www.jianshu.com/p/cc83d047383d</a></p>
+<h2 id="toc_0">模块上传的可以参照exsense的plugin， 目录在src/experiment</h2>
 
 
 		</div>
@@ -214,59 +318,15 @@ export PYSPARK_DRIVER_PYTHON_OPTS=&#39;notebook&#39;
  
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15417735380783.html">任务迁移</a></h1>
-			<p class="meta"><time datetime="2018-11-09T22:25:38+08:00" 
-			pubdate data-updated="true">2018/11/9</time></p>
+		  	<h1 class="entry-title"><a href="15498173274798.html">gephi</a></h1>
+			<p class="meta"><time datetime="2019-02-11T00:48:47+08:00" 
+			pubdate data-updated="true">2019/2/11</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<p><a href="http://wiki.baidu.com/pages/viewpage.action?pageId=496903743">http://wiki.baidu.com/pages/viewpage.action?pageId=496903743</a></p>
+		  	<p><a href="https://github.com/gephi/gephi">https://github.com/gephi/gephi</a></p>
 
-<p><a href="http://wiki.baidu.com/display/SPRK/Tutorial+for+Spark-baidu">http://wiki.baidu.com/display/SPRK/Tutorial+for+Spark-baidu</a></p>
-
-<h2 id="toc_0">庆城</h2>
-
-<p>17年的spark资源已经到位，kce组2台机器，1095核，216549M内存，存储51.2T，队列为spark-ubs-kce, 客户端拉取地址：<br/>
-wget <a href="ftp://cp01-ubskce25.epc.baidu.com/home/work/spark-client-tianqi-2.1.tar.gz">ftp://cp01-ubskce25.epc.baidu.com/home/work/spark-client-tianqi-2.1.tar.gz</a><br/><br/>
-百度spark wiki地址：<a href="http://wiki.baidu.com/display/SPRK/Baidu+Spark">http://wiki.baidu.com/display/SPRK/Baidu+Spark</a><br/>
-提交任务命令示例：./spark-client-tianqi-2.1/bin/spark-submit --master yarn --deploy-mode client --queue spark-ubs-kce ./test.py<br/>
-任务进度查看页面：<a href="http://yq01-tianqi-normandy.dmop.baidu.com:8033/queue.html?queue=spark-ubs-kce&amp;physical=tianqi-yarn_phy">http://yq01-tianqi-normandy.dmop.baidu.com:8033/queue.html?queue=spark-ubs-kce&amp;physical=tianqi-yarn_phy</a><br/>
-欢迎各位试用，谢谢！</p>
-
-<h2 id="toc_1">1.pyspark 读取udw表</h2>
-
-<pre><code class="language-{python}">spark = SparkSession.builder.appName(&quot;video_test_&quot; + day).getOrCreate()
-video_session_sql = &quot;select event_time, event_cookie, event_urlparams, event_query,  event_others, wisepsdisplay_qid, wisepsdisplay_pn,  wisepsdisplay_tn, &quot; + \
-        &quot; wisepsdisplay_displayresult, wisepsdisplay_sampletags, clk_detail, media_time, event_browser, event_os, &quot; + \
-        &quot; event_os_version, event_pd, event_cuid, anti_spam, event_day &quot; + \
-        &quot; from ud_ml_sf_merge_data where event_day= &quot; + day + &quot; limit 100&quot;
-
-video_session = spark.sql(video_session_sql)
-</code></pre>
-
-<p>video_session是一个dataframe，可以直接取出里面的相关字段做特征提取</p>
-
-<h2 id="toc_2">2.特征提取</h2>
-
-<p>通过map函数对每条记录进行特征提取</p>
-
-<pre><code>def parser_record(row):
-    # do something
-    
-    # 返回key，value形式
-    return (key, value)
-    
-    
-video_session.rdd.map(parser_record)
-</code></pre>
-
-<h2 id="toc_3">合并汇总</h2>
-
-<p>假设map输出格式是 (key, [1,2,3]), 下面对相同的key的list中的指标值进行累加</p>
-
-<pre><code>video_session.rdd.map(simple_test).reduceByKey(lambda x,y : x + y)   # 单个值的累加
-video_session.rdd.map(simple_test).reduceByKey(lambda x,y : [x[i] + y[i] for i in range(len(x))])
-</code></pre>
+<p><a href="https://gephi.org/users/">https://gephi.org/users/</a></p>
 
 
 		</div>
@@ -277,22 +337,13 @@ video_session.rdd.map(simple_test).reduceByKey(lambda x,y : [x[i] + y[i] for i i
  
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15415917511283.html">安装类</a></h1>
-			<p class="meta"><time datetime="2018-11-07T19:55:51+08:00" 
-			pubdate data-updated="true">2018/11/7</time></p>
+		  	<h1 class="entry-title"><a href="15479712192030.html">R 数据透视表</a></h1>
+			<p class="meta"><time datetime="2019-01-20T16:00:19+08:00" 
+			pubdate data-updated="true">2019/1/20</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<h2 id="toc_0">测试机安装php</h2>
-
-<p>切换到root用户</p>
-
-<pre><code>yum install php
-</code></pre>
-
-<p>直接执行label的抓取报错，摸索了下还需要安装<code>yum install php-soap -y</code></p>
-
-<p><code>php -m</code> 能查看安装了哪些模块</p>
+		  	<p><a href="https://zhuanlan.zhihu.com/p/33770068">https://zhuanlan.zhihu.com/p/33770068</a></p>
 
 
 		</div>
@@ -353,7 +404,7 @@ video_session.rdd.map(simple_test).reduceByKey(lambda x,y : [x[i] + y[i] for i i
 	      </li>
 	  
 	      <li class="post">
-	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(5)</strong></a>
+	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(9)</strong></a>
 	        
 	        
 	        
@@ -374,14 +425,28 @@ video_session.rdd.map(simple_test).reduceByKey(lambda x,y : [x[i] + y[i] for i i
 	      </li>
 	  
 	      <li class="post">
-	        <a href="6%20NLP&%E5%9B%BE%E5%83%8F.html"><strong>6 NLP&图像&nbsp;(4)</strong></a>
+	        <a href="6%20%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86.html"><strong>6 图像处理&nbsp;(4)</strong></a>
 	        
 	        
 	        
 	      </li>
 	  
 	      <li class="post">
-	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(11)</strong></a>
+	        <a href="6%20%E6%90%9C%E7%B4%A2.html"><strong>6 搜索&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="6%20nlp.html"><strong>6 nlp&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(12)</strong></a>
 	        
 	        
 	        
@@ -409,31 +474,31 @@ video_session.rdd.map(simple_test).reduceByKey(lambda x,y : [x[i] + y[i] for i i
 	  
 	      
 		      <li class="post">
-		        <a href="15623124260572.html">1 抽样方法</a>
+		        <a href="15633781017095.html"></a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15598839206919.html">SC-FEGAN</a>
+		        <a href="15633691538884.html">3. 样本量的确定？</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15596648844646.html">【Tensorflow】week2 Introduction to Computer Vision</a>
+		        <a href="15633655285542.html">卡方检验</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15596470753558.html">TensorFlow</a>
+		        <a href="15632757602829.html">3. 假设检验的power</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15594599843014.html">估计的置信度</a>
+		        <a href="15630063899159.html">python自然语言处理学习笔记——1</a>
 		      </li>
 	     
 	  

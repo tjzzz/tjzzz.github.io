@@ -82,6 +82,231 @@ $(document).ready(function(event) {
 
 	<article>
 		 <header>
+		  	<h1 class="entry-title"><a href="15633691538884.html">3. 样本量的确定？</a></h1>
+			<p class="meta"><time datetime="2019-07-17T21:12:33+08:00" 
+			pubdate data-updated="true">2019/7/17</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<p>前面说过，估计的置信区间是</p>
+
+
+		</div>
+
+		
+
+	</article>
+ 
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15633655285542.html">卡方检验</a></h1>
+			<p class="meta"><time datetime="2019-07-17T20:12:08+08:00" 
+			pubdate data-updated="true">2019/7/17</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<p>以2分类的列联表为例:</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>通过</th>
+<th>失败</th>
+<th>总计</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>实验A</td>
+<td>a</td>
+<td>b</td>
+<td>m</td>
+</tr>
+<tr>
+<td>实验B</td>
+<td>c</td>
+<td>d</td>
+<td>n</td>
+</tr>
+<tr>
+<td>总计</td>
+<td>r</td>
+<td>s</td>
+<td>N</td>
+</tr>
+</tbody>
+</table>
+
+<p>H0：实验A和实验B对于是否通过没有差异， H1： 实验A和实验B有显著差异</p>
+
+<p>在零假设成立的条件下，即A和B没有差异，那么对通过和失败的概率估计是r/N 和s/N。所以实验A的理论的通过人数和失败人数分别是\(rm/N\),\(sm/N\)。 同理，实验B的理论的通过人数和失败人数分别是\(rn/N\),\(sn/N\)。</p>
+
+<p>理论与现实的差异</p>
+
+<p>一般地</p>
+
+<blockquote>
+<p>卡方检验是皮尔逊1900年提出来的，这里简单回顾下其基本原理。</p>
+</blockquote>
+
+
+		</div>
+
+		
+
+	</article>
+ 
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15632757602829.html">3. 假设检验的power</a></h1>
+			<p class="meta"><time datetime="2019-07-16T19:16:00+08:00" 
+			pubdate data-updated="true">2019/7/16</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	
+
+		</div>
+
+		
+
+	</article>
+ 
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15627631631597.html">2 不同设计之间有统计学差异吗</a></h1>
+			<p class="meta"><time datetime="2019-07-10T20:52:43+08:00" 
+			pubdate data-updated="true">2019/7/10</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<p>本章主要介绍对均值、比例的假设检验，来判断两组不同设计之间是否有显著差别。</p>
+
+<h2 id="toc_0">1. 均值的比较 t检验</h2>
+
+<p>均值的比较一般可以用t检验，根据设计方式的不同可分为如下两类</p>
+
+<p>（1）配对样本t检验</p>
+
+<p>配对样本，即相同的用户参与了不同的测试。采用相同的用户分别参加两种不同的测试好处就是排除了用户的个体干扰，面临的问题就是需要对用户先接触哪个后接触哪个做好平衡，不能让两个之间有影响。比如测试两种药品，先服用A药后，已经对用户产生了影响，再去服用B药物的话就无法准确的看出效果了。</p>
+
+<p>美食评判中，美食专家们都是品尝完一道菜之后需要漱嘴然后才开始品尝下一道菜，就是这个原因。</p>
+
+<p>其中D表示两个不同测试之间的差别。</p>
+
+<p>\[t=\frac{\hat D}{S_D/\sqrt n}\]</p>
+
+<p>(2) 双总体t检验</p>
+
+<p>即不同的用户参与了不同的测试，一个A组，一个B组。通过两组效果的差异进行比较。</p>
+
+<p>假设两个总体分别为X, Y</p>
+
+<p>假设条件：</p>
+
+<ul>
+<li>两组样本不相关</li>
+<li>两组样本近似服从正态分布</li>
+</ul>
+
+<p>在以上的前提假设下，Z=X-Y 也应该近似服从正态分布。且有<br/>
+\[E(X) = E(X)- E(Y)\]<br/>
+\[Var(Z) = Var(X-Y)= Var(X) + Var(Y)\]</p>
+
+<p>均值的估计可以用样本的均值差\(\bar x - \bar y\)， 而方差的估计就需要分情况讨论了。</p>
+
+<ul>
+<li>\(\sigma_1,\sigma_2\)已知，</li>
+</ul>
+
+<p>\[Z=\frac{\bar x-\bar y -(\mu_1 - \mu_2)}{\sqrt{\sigma_1^2/n_1+\sigma_2^2/n_2}}~ N(0,1)\]</p>
+
+<ul>
+<li><p>\(\sigma_1,\sigma_2\) 未知</p>
+
+<ul>
+<li>已知 \(\sigma_1=\sigma_2\)</li>
+</ul>
+
+<p>这个时候需要根据样本1和样本2的方差去联合估计总体的方差</p>
+
+<p>\[Z=\frac{\bar x-\bar y -(\mu_1 - \mu_2)}{S_w\sqrt{1/n_1+1/n_2}}\sim N(0,1)\]<br/>
+其中联合估计方差\(s_w=\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n1+n_2 -2}\)</p>
+
+<ul>
+<li><p>已知 \(\sigma_1\ne\sigma_2\)</p>
+
+<p>\[Z=\frac{\bar x-\bar y -(\mu_1 - \mu_2)}{\sqrt{s_1^2/n_1+s_2^2/n_2}}~ t_{df&#39;}\]</p>
+
+<p>其中t分布的自由度是\(df&#39;=\frac{(s_1^2/n_1+s_2^2/n_2)^2}{\frac{(s_1^2/n1)^2/n_1}{n_1} + \frac{(s_2^2/n2)^2/n_2}{n_2}}\)</p></li>
+</ul></li>
+</ul>
+
+<p>差异的效应(effect size)<br/>
+除了差异是否显著以外，在实际中我们还需要注意差异的效应，即这个差异究竟有多大</p>
+
+<h2 id="toc_1">2.比例的比较</h2>
+
+<p><strong>双比例检验</strong></p>
+
+<p>双总体的比例检验，比例其实可以看做是均值的一种特殊情况，所以双总体的比例的比较也可以转化为均值的比较。</p>
+
+<p>\[Z=\frac{\bar p_1-\bar p_2 }{\sqrt{PQ(\frac{1}{n_1}+\frac{1}{n_2})}}\sim N(0,1)\]</p>
+
+<p><strong>卡方检验</strong><br/>
+对于分类型变量，另一个常用的检验方法就是卡方检验。卡方检验首先是一种非参数检验方法，其并不依赖于原始数据的分布假定，卡方检验主要应用于分类变量的关联性分析（关于卡方检验的后续再详细介绍)。</p>
+
+<p>对于2x2的列联表来说</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>通过</th>
+<th>失败</th>
+<th>总计</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>实验A</td>
+<td>a</td>
+<td>b</td>
+<td>m</td>
+</tr>
+<tr>
+<td>实验B</td>
+<td>c</td>
+<td>d</td>
+<td>n</td>
+</tr>
+<tr>
+<td>总计</td>
+<td>r</td>
+<td>s</td>
+<td>N</td>
+</tr>
+</tbody>
+</table>
+
+<p>\[\chi^2 = \frac{(ad-bc)^2N}{mnrs}\]</p>
+
+<p><strong>fisher精确检验</strong></p>
+
+<p>上述说的卡方检验和双比例的检验其实都是一种近似，fisher精确检验依据超几何分布，根据排列组合的概率来进行计算。</p>
+
+
+		</div>
+
+		
+
+	</article>
+ 
+	<article>
+		 <header>
 		  	<h1 class="entry-title"><a href="15623124260572.html">1 抽样方法</a></h1>
 			<p class="meta"><time datetime="2019-07-05T15:40:26+08:00" 
 			pubdate data-updated="true">2019/7/5</time></p>
@@ -96,354 +321,9 @@ $(document).ready(function(event) {
 		
 
 	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15594599843014.html">估计的置信度</a></h1>
-			<p class="meta"><time datetime="2019-06-02T15:19:44+08:00" 
-			pubdate data-updated="true">2019/6/2</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p>在大多数的研究中，我们无法获取研究对象的总体数据，或者能获取但是成本非常大。实际情况中，我们往往是通过抽样的方法，在总体中进行随机抽样。根据获取的这部分样本数据去推动总体的一些属性。比如通过抽样人群的平均身高去估计所有人群的平均身高，通过抽样人群中的男女比例，去估计我国当前的男女比例状况。<br/>
-抽样样本量是直接影响到最终的估计准确度，所以这一章节，先来介绍下如何判断一种估计方法准确与否。</p>
-
-<p><strong>统计估计</strong></p>
-
-<p>统计中估计的方法有两类：点估计，区间估计。 比如问男性平均身高是多少，167cm就是一个点估计，160-170就是区间估计。</p>
-
-<p><strong>置信区间</strong></p>
-
-<p>根据前面介绍的常用的三种估计类型，其置信区间的计算方式也有所不同。</p>
-
-<h3 id="toc_0">1. 比例的置信区间</h3>
-
-<p>例：假设抛掷一枚不均匀的硬币，其正面朝上的真实概率P位置，每次实验结果只有X=1表示正面，X=0表示反面两种结果。现在实验了n次，其中正面向上个数是k次，想估计下这个硬币正面朝上的概率是多少。</p>
-
-<p>如果用点估计，自然的会用频率\(\hat p=\frac{k}{n}\)去估计真实的频率。而区间估计的主要步骤如下：</p>
-
-<p>\[E(\hat p)=p, V(\hat p)=p(1-p)/n\]<br/>
-所以有\[\hat p - N(p, p(1-p)/n)\]<br/>
-\[\frac{\hat p -p}{\sqrt\frac{p(1-p)}{n}} - N(0,1)\]</p>
-
-<p><strong>经典的Wald区间</strong></p>
-
-<p>Wald估计是用样本比例替代整体比例，比例估计的置信区间是 \(\hat p \pm z_{1-\alpha/2} \sqrt\frac{\hat p(1-\hat p)}{n} \)</p>
-
-<p>以上的置信区间是有个前提的：样本量比较大的时候，np&gt;5且n(1-p)&gt;5，二项分布才会近似是正态分布。</p>
-
-<p>在样本量比较小，或者是真实的p值接近0或者1的时候，估计的就不是很准确了。</p>
-
-<p><strong>小样本的比例估计</strong></p>
-
-<p>在实际的问题中，这种情况也是经常存在的。以搜索为例，一个具体的搜索策略上线前，通常都会对实验组和对照组进行一些人工评估。因为人力成本问题，一般是评估100或200qu。可能里面的good或者bad的case占比非常少，那么在估计good或badcase的比例的时候置信度就不是很高。</p>
-
-<p>下面介绍几种常用的修正的区间估计</p>
-
-<p>(0) 精确区间<br/>
-所谓精确区间，其实就是不对齐分布进行近似，而是直接使用原始的真实分布。我们知道正面朝上的个数k其真实分布是二项分布。这个一开始是Clopper和Pearson在1934年研究出来的，所以也叫做C-P 置信区间</p>
-
-<p>\[P(x=s) =C_n^s p^s(1-p)^{n-s}\]<br/>
-<img src="media/15594599843014/15625037226219.jpg" alt=""/></p>
-
-<p>最终可以反解出来这个置信下限和置信上限，这里就不在列出具体公式了。</p>
-
-<p>(1)Wilson区间/Wald矫正区间</p>
-
-<p>注意Wilson和wald两种方法上的区别，wald在设置置信区间的时候是简化了问题，用样本比例近似了真实的比例。wilson认为\(\frac{\hat p -p}{\sqrt\frac{p(1-p)}{n}} - N(0,1)\)</p>
-
-<p>简单的推理过程如下<br/>
-<img src="media/15594599843014/15625732527493.jpg" alt=""/></p>
-
-<p>最终推导出来的置信区间是<br/>
-<img src="media/15594599843014/15625732226377.jpg" alt=""/></p>
-
-<p>（2）wald矫正区间</p>
-
-<p>上述的置信区间有一个简单的计算方式-加2法，即在数据中增加2个成功案例和2个失败案例,然后再用传统的wald区间估计方法</p>
-
-<p>这是因为<br/>
-<img src="media/15594599843014/15625750107528.jpg" alt=""/></p>
-
-<h3 id="toc_1">2.等级量表和连续性数据的置信区间</h3>
-
-<ul>
-<li>t分布置信区间</li>
-</ul>
-
-<h2 id="toc_2">参考资料</h2>
-
-<p>维基百科 <a href="https://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval#Wilson_score_interval">https://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval#Wilson_score_interval</a></p>
-
-<p><a href="https://indico.ihep.ac.cn/event/6182/contribution/4/material/slides/0.pdf">https://indico.ihep.ac.cn/event/6182/contribution/4/material/slides/0.pdf</a></p>
-
-
-		</div>
-
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15542962343188.html">关于长点击阈值划分方法</a></h1>
-			<p class="meta"><time datetime="2019-04-03T20:57:14+08:00" 
-			pubdate data-updated="true">2019/4/3</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p>用户停留时长一直是衡量用户在落地页满意度的一个重要度量指标。在具体业务设计的时候，可以去看时长分布的中位数、平均时长等统计级指标，亦有类似于衡量时长好坏的长点击率，长点击占比等指标。</p>
-
-<p>首先来说下长点击，简单来说长点击即停留时长比较长的一个点击时间。</p>
-
-<h3 id="toc_0">1. 长点击，满意点击，人工打分</h3>
-
-<p>我们说停留时间“比较长”，其实是一个相对概念，不同的资源类型可能划分的标准会不同。但是他们的出发点是一样的: 我们认为在特定资源类型下落地页时长越长，用户越倾向于满意。所以长点击本质上是用来刻画满意点击的。</p>
-
-<p><strong>(1) 无监督的划分</strong><br/>
-即我们不知道groundtruth，这个时候可以根据本身时长的分布，按照经验值比如60%，70%作为其长点击的分界点。这种划分方式 xxxx</p>
-
-<p><strong>(2) 有监督的</strong><br/>
-通过人工评估（比如qu相关性，qu的页面质量等维度），可以对qu结果进行人工打分，一般是0-4档。0，1代表不太好，2代表一般，3-4代表比较好。可以根据业务需求比如3-4认为是满意点击，2认为是一般点击，0-1认为是不满意点击。<br/>
-以此人工标注来决定如何选择长点击划分阈值。</p>
-
-<h3 id="toc_1">2. 如何划分长点击</h3>
-
-<p>长点击阈值划分的目标，即寻找如下决策函数的参数x</p>
-
-<p>\[<br/>
-F(t) = \left\{<br/>
-             \begin{array}{lr}<br/>
-            1，长点击 t \ge x &amp;  \\<br/>
-            0，非长点击 t&lt; x\\  <br/>
-             \end{array}<br/>
-\right.<br/>
-\]</p>
-
-<p>从统计分布的角度看，即使是时长比较长的结果，人工打分也可能很低，时长很短的结果人工打分也可能是满意的。所以不管寻找到的最优参数\(x\)是多少，它都有可能会误分。而我们的目的是让这种因为误分而犯错的可能性尽可能的小。<br/>
-<img src="media/15542962343188/15543644977641.jpg" alt=""/></p>
-
-<p>从以上的分布图来说更直观一些，我们的误判损失即是图中阴影部分，很容易证明，移动阈值划分x时候，损失最小的是当两个分布曲线相交的点的时候。这指导我们可以按照如下的方法进行长点击划分：</p>
-
-<p>执行步骤<br/>
-<strong>Step0： 摸底时长分布</strong></p>
-
-<p>首先需要了解清楚数据本身的时长分布，根据时长的分布情况，大概划分不同的区间段。比如0-5，5-10，10-15，15-20，20-25，25-30，30-35，35-40， 40-50，50-60，60-100，&gt;100这样进行划分。<br/>
-同于频次分布较高的部分可以划分的细致一些，频次分布较低的部分可以划分的宽度较宽一些。</p>
-
-<p><strong>Step1： 抽样送评qu数据</strong></p>
-
-<p>确定送评样本，因为人工评估是需要成本的，我们不可能得到整体的good或者bad的分布曲线，我们所有的只是抽取的送评样本的标注数据。这就要求我们送评的数据对于总体一定要有好的代表性：</p>
-
-<ul>
-<li>抽样分布应该和总体分布尽量一致</li>
-<li>抽样量不能太小，否则样本估计总体的误差会比较大</li>
-</ul>
-
-<blockquote>
-<p>如何确定最优送评样本量？（这个回来再写）<br/>
-统计学的研究方法是要找到我们所关注变量的统计分布，我们最终是希望通过抽取得到的good和not_good的时长分布与整体差不多。</p>
-</blockquote>
-
-<p>数据抽取：</p>
-
-<ul>
-<li>考虑到数据抽取是基于qu粒度，一个qu其实会有多次用户点击行为，也就会有多个时长，可能波动较大。所以一般是取count(qu)&gt;5的，并且时长取的是其中位数</li>
-<li><p>预送评，一般先进行少量的预送评，比如送评1000个样本。返回会用来检验数据质量和划分的精细度</p>
-
-<ul>
-<li>check自己送评的数据中是否有一些异常数据。比如sf的url路径不完成</li>
-<li>check人工打分的质量程度</li>
-<li>初步看下good和not_good的分布情况，大概确定长点的分布区间，从而看下送评的样本的时间段间隔精度是否需要调整</li>
-</ul></li>
-<li><p>正式送评</p></li>
-</ul>
-
-<p><strong>Step2： 返回分析</strong></p>
-
-<p>根据good和not_good的频数分布，找到曲线的交点，即满足good(x) = not_good(x)的点，即可认为是长点击的分界点。短点击的划分类似，可以认为0-1的是短点击，或者更严格的0分的是短点击。 绘制bad和not_bad的频数分布，找到曲线交点。即满足bood(x) = not_bood(x)的点</p>
-
-<ul>
-<li>实际操作：实际数据的分布图可能不如示意图那么明显，甚至有多个交点的情况。这时候可以计算图中b+c的面积，绘制(x,g(x))的曲线图，找到g(x)=0.5的点即可。 如果有多个可能是因为样本量不足够，或者本身指标数据不可信(前提假定是要研究的指标与人工打分是存在单调关系的)</li>
-</ul>
-
-<h3 id="toc_2">3 应用-关于sigmoid函数的理解</h3>
-
-<ul>
-<li><p>AB实验<br/>
-对于AB实验来说，有了长短点击时间阈值之后，可以直接计算长点击和短点击，更新指标评估即可。</p></li>
-<li><p>interleaving实验<br/>
-对于interleaving来说，实际中是将dt经过一个映射(一般是sigmoid函数)将其转化为一个0-1的打分。</p></li>
-</ul>
-
-<p>这里我们从另外一个角度来看这件事。LR或者说sigmoid函数能将一个负无穷到正无穷的数映射到0-1的一个概率值。是否是长点其实也是一个概率，当然这里时长t是取的(0, 正无穷)</p>
-
-<p>假设<br/>
-\[g(x) = \frac{good(x)}{good(x) + not\_good(x)}\]<br/>
-其中 \(good(x)= \#good(t=x)\), \(not\_good(x)=\#not\_good(t= x)\)。 <br/>
-所以\(g(x)\)其实表示的是在\(t=x\)时候是长点击的概率。为了书写方便，</p>
-
-<p>\[g(x) = \frac{1}{1+ not\_good(x)/good(x)}= \frac{1}{1+ e^{ln\frac{p}{1-p}}}\]</p>
-
-<p>这里\(p(x)\)是表示当时间等于x时是长点击的概率。</p>
-
-<p>从这个角度说，之前的sigmoid映射函数中\(\frac{1}{1+ e^{-a(x-b)}}\) 系数项即是log odds ratio。</p>
-
-<p>因此只需对送评数据中\(ln\frac{p}{1-p}\)的分布数据去拟合一条曲线 \(\hat f(t)\)即可，最终的sigmoid映射函数就是</p>
-
-<p>\[g(t) = \frac{1}{1+ e^{\hat f(t)}}\]</p>
-
-<p>并且其中\(\hat f(t)=0\)的点恰巧就是长点击的分界点。</p>
-
-<p>注意：实际送评的时候因为样本量的限制，不可能每一个分界点(在这里是每个停留时间dt)都会去送评，</p>
-
-<h3 id="toc_3">4.其他:从模型准召的角度</h3>
-
-<p>其实从分类评估角度来看，</p>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>not_good</th>
-<th>Good</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>F=0</td>
-<td>a</td>
-<td>b</td>
-</tr>
-<tr>
-<td>F=1</td>
-<td>c</td>
-<td>d</td>
-</tr>
-</tbody>
-</table>
-
-<p>上面说的损失即阴影部分的面积=b+c, 所以其实从分类模型评估的角度，就是不一致率最小的时候的最优解,即<br/>
-\[min b+c\]</p>
-
-<ul>
-<li>准确&amp;召回</li>
-</ul>
-
-<p>分类模型中其实用的更多的是准确和召回指标，\(accurate=\frac{d}{c+d}\),\(recall = \frac{d}{b+d}\)<br/>
-\[Max F\_score = 1-\frac{b+c}{b+c+2d}\]</p>
-
-<p>这个标准下，和之前还是略微有些不同的</p>
-
-<h3 id="toc_4">5.如何泛化</h3>
-
-<p>泛化问题主要是指：</p>
-
-<ul>
-<li>业务层面</li>
-</ul>
-
-<p>搜索，视频，以后其他的大小业务都可能面临这种问题。对于新的业务类型，人工送评应该是避免不了了。</p>
-
-<ul>
-<li>时间层面变更</li>
-</ul>
-
-<p>随着线上效果变更，当前调研的结果可能已经不再试用后续的结果。需要不断进行更新，比如视频铺量后，整体的时长分布和之前的可能变化很大。或者是需要拆解不同的维度类别</p>
-
-<p>方案1：再次人工送评一遍，<br/>
-方案2：进行时长分布映射<br/>
-这种方案有个问题，相当于是按照top百分比进行划分的，认为top百分比所代表的满意度保持一致。可能整体时长都变长了，映射完后阈值也变长了，相对的满意度并没变。</p>
-
-
-		</div>
-
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15516671779096.html">list</a></h1>
-			<p class="meta"><time datetime="2019-03-04T10:39:37+08:00" 
-			pubdate data-updated="true">2019/3/4</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<ol>
-<li><p>抽样方法</p>
-
-<ul>
-<li>抽样理论，方法</li>
-<li>正交抽样</li>
-<li>hash算法</li>
-</ul></li>
-<li><p>ab test</p></li>
-<li><p>interleaving</p></li>
-</ol>
-
-<h2 id="toc_0">参考</h2>
-
-<p><a href="http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/">http://www.fieldtriptoolbox.org/tutorial/cluster_permutation_timelock/</a></p>
-
-
-		</div>
-
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15456330400571.html">统计阈值</a></h1>
-			<p class="meta"><time datetime="2018-12-24T14:30:40+08:00" 
-			pubdate data-updated="true">2018/12/24</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<h2 id="toc_0">1.dab类指标</h2>
-
-<p>newpo, po, rank, rr, f1 最终计算方式都是 \[dab_{xx} = 0.5\frac{\sum awin -\sum bwin}{\sum awin + \sum bwin + \sum tie}\]</p>
-
-<p>其中awin，bwin，tie可以按照不同的逻辑或方法进行计算。</p>
-
-<p>\[p_1 = \frac{\sum awin}{\sum awin + \sum bwin + \sum tie}\]</p>
-
-<p>\[p_2 = \frac{\sum bwin}{\sum awin + \sum bwin + \sum tie}\]</p>
-
-<p>基于有点有diff的流量：<br/>
-每次pv下，awin，bwin，tie必然出现且只出现其一。因此p1可以看做策略好的概率， p2可以看做基线好的概率。 概率本身是服从两点分布的，每次pv取0或1，样本量较大的时候(一般interleaving实验的样本量足够大了)，可以近似成正态分布，即有</p>
-
-<p>\[p_1 - N(P_1,P_1(1-P_1)/n1 )\]<br/>
-\[p_2 - N(P_2,P_2(1-P_2)/n1 )\]</p>
-
-<p>所以两者的差也是近似正态分布，有(注意P1与P2并不是相互独立的)</p>
-
-<p>\[p_1 - p_2 ~ N(P_1 - P_2, \frac{(P_1+P_2-(P_1-P_2)^2)}{n})\]</p>
-
-<p>所以dab的置信区间就是</p>
-
-<p>\[[\frac{p_1 -p_2}{2}- z_{\alpha}\sqrt \frac{p_1+p_2-(p_1-p_2)^2}{4n}, \frac{p_1 -p_2}{2}+ z_{\alpha}\sqrt \frac{p_1+p_2-(p_1-p_2)^2}{4n}]\]</p>
-
-<h3 id="toc_1">根据空转确定阈值</h3>
-
-<p>空转时候理论上两边是没diff的，但是因为随机波动，产出的指标数据肯定不可能完全等于0，大概率上也是服从一个正态分布。根据小概率原理，在5%和95%的置信点上可以认为是异常值，就策略和基线不是持平而是有显著diff。<br/>
-对应的阈值就是</p>
-
-<p>\[z_{\alpha}\sqrt \frac{p_1+p_2-(p_1-p_2)^2}{4n}= z_{\alpha}\sqrt \frac{p}{2n}\]</p>
-
-<p>所以这个阈值是与本身的p值的大小有关，与样本量也有关。</p>
-
-
-		</div>
-
-		
-
-	</article>
   
 	<div class="pagination">
-	
+	 <a class="prev" href="4 你不得不知的统计方法_1.html">&larr; Older</a> 
 <a href="archives.html">Blog Archives</a>
 	 
 	    
@@ -494,7 +374,7 @@ F(t) = \left\{<br/>
 	      </li>
 	  
 	      <li class="post">
-	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(5)</strong></a>
+	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(9)</strong></a>
 	        
 	        
 	        
@@ -515,14 +395,28 @@ F(t) = \left\{<br/>
 	      </li>
 	  
 	      <li class="post">
-	        <a href="6%20NLP&%E5%9B%BE%E5%83%8F.html"><strong>6 NLP&图像&nbsp;(4)</strong></a>
+	        <a href="6%20%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86.html"><strong>6 图像处理&nbsp;(4)</strong></a>
 	        
 	        
 	        
 	      </li>
 	  
 	      <li class="post">
-	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(11)</strong></a>
+	        <a href="6%20%E6%90%9C%E7%B4%A2.html"><strong>6 搜索&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="6%20nlp.html"><strong>6 nlp&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(12)</strong></a>
 	        
 	        
 	        
@@ -550,31 +444,31 @@ F(t) = \left\{<br/>
 	  
 	      
 		      <li class="post">
-		        <a href="15623124260572.html">1 抽样方法</a>
+		        <a href="15633781017095.html"></a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15598839206919.html">SC-FEGAN</a>
+		        <a href="15633691538884.html">3. 样本量的确定？</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15596648844646.html">【Tensorflow】week2 Introduction to Computer Vision</a>
+		        <a href="15633655285542.html">卡方检验</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15596470753558.html">TensorFlow</a>
+		        <a href="15632757602829.html">3. 假设检验的power</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15594599843014.html">估计的置信度</a>
+		        <a href="15630063899159.html">python自然语言处理学习笔记——1</a>
 		      </li>
 	     
 	  

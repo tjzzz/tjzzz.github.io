@@ -82,27 +82,97 @@ $(document).ready(function(event) {
 
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="14782516826392.html">Rspark</a></h1>
-			<p class="meta"><time datetime="2016-11-04T17:28:02+08:00" 
-			pubdate data-updated="true">2016/11/4</time></p>
+		  	<h1 class="entry-title"><a href="15078603543147.html">【聚类】-效果评价</a></h1>
+			<p class="meta"><time datetime="2017-10-13T10:05:54+08:00" 
+			pubdate data-updated="true">2017/10/13</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<p>官网：<br/>
-<a href="http://spark.rstudio.com/">http://spark.rstudio.com/</a><br/>
-内网wiki<br/>
-<a href="http://gollum.baidu.com/sparkR-starter">http://gollum.baidu.com/sparkR-starter</a></p>
+		  	<p>一般分为两类：</p>
 
-<p>安装步骤：</p>
+<ul>
+<li>外部标准：即基于人工的判断，需要有个标注集合</li>
+<li>内部标准：基于类内和类间聚类的目标函数的判断</li>
+</ul>
 
-<pre><code>install.packages(&quot;sparklyr&quot;)
-library(sparklyr)
-spark_install(version = &quot;1.6.2&quot;)
-</code></pre>
+<h2 id="toc_0">内部标准clustering-performance-evaluation</h2>
 
-<h1 id="toc_0">dplyr</h1>
+<h2 id="toc_1">外部标准——人工判定</h2>
 
-<p><a href="https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html">https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html</a></p>
+<p>假设：<br/>
+机器判断的类别集合是：\(C=\{C_1,C_2,...C_m\}\)<br/>
+人工判断的类别集合是：\(P=\{P_1,P_2,...P_s\}\)</p>
+
+<h3 id="toc_2">1.1混淆矩阵</h3>
+
+<p>基于数据样本点的角度：<br/>
+对于任意两个数据pair，\((x_i,x_j)\)按照其在C和P中是否属于同一个簇，可以构造出混淆矩阵</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>P_1</th>
+<th>p_0</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>C_1</td>
+<td>a</td>
+<td>b</td>
+</tr>
+<tr>
+<td>C_0</td>
+<td>c</td>
+<td>d</td>
+</tr>
+</tbody>
+</table>
+
+<p><img src="media/15078603543147/15078631739679.jpg" alt=""/></p>
+
+<h3 id="toc_3">1.2簇的准确率/召回率</h3>
+
+<p>基于簇pair的，考虑对任意一个人工与机器的.\(P_j,C_i\)。对于每一个人工标注的\(P_j\),在机器标注中应该都会对应一个&quot;最相关的&quot;。可以遍历C中所有的cluster，分别计算准确率，召回率，F_score。<br/>
+<img src="media/15078603543147/15078720767171.jpg" alt=""/></p>
+
+<p>然后对于所有簇的F值做加权平均<br/>
+\[ClassF=\sum w_j F(p_j), w_i=n_j/n\]</p>
+
+<p>classF指标，相当于是以人工标注的簇为基准，将聚类的簇尽量逼近这个标注的结果。</p>
+
+<h2 id="toc_4">1.3</h2>
+
+<p>1.2中的方法相当于要求的比较严格，即以人工标注的集合簇为准。</p>
+
+<p>实际中其实只要保证我们聚的每一个类\(C_i\)是有意义的就可以，即以C为主</p>
+
+<p>类似的定义 \(F(C_i)=\max_{1\lt j \lt s}F(P_j, C_i)\)<br/>
+\[F=\sum w_i F(C_i), w_i=|C_i|/n\]</p>
+
+<ul>
+<li>问题： 这个指标可能变化不是非常明显</li>
+</ul>
+
+<h2 id="toc_5">1.4基于数据对象的准召F</h2>
+
+<p><img src="media/15078603543147/15078731022919.jpg" alt=""/></p>
+
+<h2 id="toc_6">思考</h2>
+
+<ol>
+<li>基于人工标注的方法中，认为人工标注的是准确的或者说结果是唯一的。实际上一堆sample可以有不同的分类方法，而且每种方法可能都是对的。
+<code>
+e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大学
+</code>
+如何进行标注，或者标注结果是非固定时候怎么衡量聚类效果的好坏？？</li>
+</ol>
+
+<h2 id="toc_7">参考资料</h2>
+
+<p><a href="http://blog.csdn.net/itplus/article/details/10322361">http://blog.csdn.net/itplus/article/details/10322361</a></p>
 
 
 		</div>
@@ -113,56 +183,21 @@ spark_install(version = &quot;1.6.2&quot;)
  
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="14733881665810.html">R-studio</a></h1>
-			<p class="meta"><time datetime="2016-09-09T10:29:26+08:00" 
-			pubdate data-updated="true">2016/9/9</time></p>
+		  	<h1 class="entry-title"><a href="15075611675547.html">第一章 引言</a></h1>
+			<p class="meta"><time datetime="2017-10-09T22:59:27+08:00" 
+			pubdate data-updated="true">2017/10/9</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<p><a href="http://cp01-ubskce18.epc.baidu.com:8787/">http://cp01-ubskce18.epc.baidu.com:8787/</a><br/>
-<a href="http://cq01-ubskce21.epc.baidu.com:8787">http://cq01-ubskce21.epc.baidu.com:8787</a></p>
+		  	<p>别人的读后总结，可参考「Deep Learning」读书系列分享（一） | 分享总结</p>
 
-<pre><code>
-1. CentOS 6.3系统
-2. Unless you do not want to view graphs on-screen (or use a Mac) you need ‘X11’ installed, including its headers and client libraries. For recent Fedora distributions it means (at least) RPMs ‘libX11’, ‘libX11-devel’, ‘libXt’ and ‘libXt-devel’. On Debian we recommend the meta-package ‘xorg-dev’. If you really do not want these you will need to explicitly configure R without X11, using --with-x=no.
-3. 在我厂6.3系统上应该只需要：yum install libXt-devel.x86_64 -y
-4. 使用jumbo local-install r.jumbo本地安装R（这里使用3.3.1版，使用新版tarball需要更新md5sum）
-* 官网下载rstudio rpm包
-sudo yum install --nogpgcheck rstudio-server-rhel-0.99.903-x86_64.rpm（替换为最新版）
-sudo yum install libcrypto.so.6 -y
-sudo yum install libgfortran.so.1 -y
-sudo yum install libssl.so.6 -y
-sudo yum install openssl098e-0.9.8e -y
-sudo yum install gcc41-libgfortran-4.1.2 -y
-sudo yum install pango-1.28.1 -y
-sudo yum install libssl.so.10 -y
-sudo yum install libcrypto.so.10 -y
-sudo yum install xorg-x11-fonts-75dpi.noarch -y
-sudo yum install xorg-x11-fonts-100dpi.noarch -y
-sudo yum install xorg-x11-server-Xvfb.x86_64 -y
-cp到/etc/init/: xvfb.conf
-sudo initctl start xvfb
-sudo DISPLAY=0 rstudio-server start
-</code></pre>
+<p><a href="https://www.leiphone.com/news/201708/LEBNjZzvm0Q3Ipp0.html">https://www.leiphone.com/news/201708/LEBNjZzvm0Q3Ipp0.html</a></p>
 
-<p>绘图相关<br/>
-<a href="https://plot.ly/r/shiny-gallery/">https://plot.ly/r/shiny-gallery/</a><br/>
-<a href="http://shiny.rstudio.com/gallery/">http://shiny.rstudio.com/gallery/</a></p>
+<h3 id="toc_0">需要明确的几个概念范围</h3>
 
-<p>addins<br/>
-<a href="http://rstudio.github.io/rstudioaddins/">http://rstudio.github.io/rstudioaddins/</a></p>
+<p><img src="media/15075611675547/15075613801366.jpg" alt=""/></p>
 
-<p>搭建一个简单的httpserver<br/>
-python -m SimpleHTTPServer 8999</p>
-
-<hr/>
-
-<p>安装<code>rattle</code>包时候提示：</p>
-
-<pre><code>ERROR: configuration failed for package ‘RGtk2’
-</code></pre>
-
-<p>添加用户</p>
+<p><img src="media/15075611675547/15075614908544.jpg" alt=""/></p>
 
 
 		</div>
@@ -173,49 +208,63 @@ python -m SimpleHTTPServer 8999</p>
  
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="14609901056105.html">章2 利用用户行为数据</a></h1>
-			<p class="meta"><time datetime="2016-04-18T22:35:05+08:00" 
-			pubdate data-updated="true">2016/4/18</time></p>
+		  	<h1 class="entry-title"><a href="15073875319013.html">平台相关</a></h1>
+			<p class="meta"><time datetime="2017-10-07T22:45:31+08:00" 
+			pubdate data-updated="true">2017/10/7</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<h1 id="toc_0">1.用户行为数据</h1>
-
-<p>用户行为数据在网页上的主要存在形式就是日志，可能包含的字段有</p>
-
-<ul>
-<li>uid</li>
-<li>itemid</li>
-<li>行为类型（点击、浏览、购买）</li>
-<li>context（产生行为的时间、地点等）</li>
-<li>行为权重（比如看视频行为的时长、打分行为的分数）</li>
-<li>行为内容（比如评论行为的评论内容）
-另外，这些数据大致上可以分为显性反馈行为和隐性反馈行为。显性行为就是可以明确用户是喜好的，比如购买。而多数的数据都是隐性的，比如浏览了某个网页、听了某个歌，这些行为无法判断出用户的喜好。</li>
+		  	<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 百度深度学习工程师认证考试19.1
+参考资料
+</li>
 </ul>
 
-<p>物品流行度的幂率分布</p>
+<p>-教材推荐：PaddlePaddle深度学习实战</p>
 
-<h1 id="toc_1">算法</h1>
+<p>-课程推荐：<a href="https://ai.baidu.com/paddlepaddle/openCourses">https://ai.baidu.com/paddlepaddle/openCourses</a> </p>
 
-<p>一般把仅仅基于用户行为数据设计的推荐算法叫做协同过滤算法。主要包括：</p>
+<p>-实训平台：<a href="http://aistudio.baidu.com/">http://aistudio.baidu.com/</a> </p>
+
+<p><a href="http://ai.baidu.com/easydl/">http://ai.baidu.com/easydl/</a></p>
+
+<p><a href="http://bit.baidu.com/news/act/id/56.html">http://bit.baidu.com/news/act/id/56.html</a></p>
+
+<h1 id="toc_0">Deep Learning</h1>
+
+<p><strong>整理的list</strong></p>
+
+<p>要读的书：</p>
 
 <ul>
-<li>基于邻域的方法
-
-<ul>
-<li>基于用户的</li>
-<li>基于物品的</li>
-</ul></li>
-<li>隐语义模型LFM</li>
-<li>基于图的随机游走算法</li>
+<li>Deep Learning <a href="http://www.deeplearningbook.org/">http://www.deeplearningbook.org/</a> by Yoshua Bengio, Ian Goodfellow and Aaron Courville</li>
 </ul>
 
-<h2 id="toc_2">1.userCF</h2>
+<p>在线课程</p>
 
-<p>基本想法：对于一个用户A的推荐，可以先找到与这个人相似的那些人，然后看那些人中喜欢的，而用户A没有听过的物品推荐给A。<br/>
-step1: 找到相似用户，即需要定义相似度。</p>
+<ul>
+<li>coursera：Andrew Ng的Deep Learning</li>
+<li><p>udacity上的deep learning纳米学位</p></li>
+<li><p>Machine Learning by Andrew Ng in Coursera</p></li>
+<li><p>Neural Networks for Machine Learning by Geoffrey Hinton in Coursera</p></li>
+</ul>
 
-<h2 id="toc_3">标题</h2>
+<h1 id="toc_1">list</h1>
+
+<h2 id="toc_2">不错的个人博客资源</h2>
+
+<p><a href="http://www.cnblogs.com/maybe2030/">http://www.cnblogs.com/maybe2030/</a></p>
+
+<h2 id="toc_3">reading list</h2>
+
+<p><a href="http://jmozah.github.io/links/">http://jmozah.github.io/links/</a></p>
+
+<h1 id="toc_4">别人家的项目</h1>
+
+<p><a href="https://github.com/wepe/O2O-Coupon-Usage-Forecast/tree/master/code">https://github.com/wepe/O2O-Coupon-Usage-Forecast/tree/master/code</a></p>
+
+<p>udacity的github<br/>
+<a href="https://github.com/udacity/deep-learning.git">https://github.com/udacity/deep-learning.git</a></p>
 
 
 		</div>
@@ -226,63 +275,38 @@ step1: 找到相似用户，即需要定义相似度。</p>
  
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="14609900746980.html">章1 基本介绍</a></h1>
-			<p class="meta"><time datetime="2016-04-18T22:34:34+08:00" 
-			pubdate data-updated="true">2016/4/18</time></p>
+		  	<h1 class="entry-title"><a href="15072077620306.html">rCharts</a></h1>
+			<p class="meta"><time datetime="2017-10-05T20:49:22+08:00" 
+			pubdate data-updated="true">2017/10/5</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<p>标签（空格分隔）： 推荐系统</p>
+		  	<p><a href="http://rdatascience.io/rCharts/">http://rdatascience.io/rCharts/</a></p>
 
-<hr/>
+<p>作者的github主页<br/>
+<a href="http://ramnathv.github.io/rCharts">http://ramnathv.github.io/rCharts</a></p>
 
-<h1 id="toc_0">推荐系统评测</h1>
+<pre><code class="language-{r}">#Install 
+require(devtools)## 标题 ##
+install_github(&#39;rCharts&#39;, &#39;ramnathv&#39;)
+</code></pre>
 
-<h2 id="toc_1">1.推荐系统实验方法</h2>
 
-<p>在进行推荐之前，先从数据获得方法入手。数据的获得方法主要有 </p>
+		</div>
 
-<ul>
-<li><p>离线实验<br/>
-这个应该是最常见的那种，即数据使用的是离线的数据，提取数据-&gt;训练集和测试集——&gt; 建立模型 ——&gt; 测试集上进行实验——&gt;效果评价</p></li>
-<li><p>用户调查<br/>
-可以获得一些推荐效果的主观指标</p></li>
-<li><p>在线实验<br/>
-即切分流量，进行AB test</p></li>
-</ul>
+		
 
-<h2 id="toc_2">2.指标评测</h2>
-
-<p>不同的实验方法可能会对应着不同的衡量指标，简单的介绍如下：</p>
-
-<ul>
-<li>用户满意度
-这个指标相对来说是一个主观的指标，可以通过用户调查，或者是对用户客观行为进行分析（比如：点击率、停留时间等）</li>
-<li>预测准确率
-
-<ul>
-<li>评分预测
-评分预测类主要是让用户对商品进行打分，比如1-5级的打分。其主要的计算指标是均方根误差RMSE或者平均绝对误差MAE</li>
-<li>TopN推荐
-topN推荐，即给用户推荐一个其可能感兴趣的item列表，也是我们主要要讨论的。其主要的评价指标即PR（precision recall）</li>
-</ul></li>
-<li>覆盖率
-覆盖率主要是刻画了推荐系统对<strong>长尾物品</strong>的发掘能力。我们希望推荐系统不止推荐出一些热门的，这样只能覆盖很少的一部分items。
-
-<ul>
-<li>最简单的计算方法：推荐系统推荐出来的物品占所有物品的比重。但是没有考虑到分布情况</li>
-<li>统计推荐列表中不同物品的出现次数的分布
-信息熵 \(H=-\sum p_i\log p_i\)
-基尼系数 \(G=\frac{1}{n-1}\sum (2j-n-1)p(i_j)\) </li>
-</ul></li>
-<li>多样性
-即希望推荐给用户的东西类型是多样的，比如对于电影，用户可能喜欢看爱情类、科幻类，那么推荐系统在进行推荐的时候，只推荐爱情类的效果显然不如既有爱情类又有科幻类的效果好。</li>
-<li>新颖性</li>
-<li>惊喜度</li>
-<li>信任度</li>
-<li>。。。</li>
-</ul>
-
+	</article>
+ 
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15072077543747.html">googleVis</a></h1>
+			<p class="meta"><time datetime="2017-10-05T20:49:14+08:00" 
+			pubdate data-updated="true">2017/10/5</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	
 
 		</div>
 
@@ -291,7 +315,7 @@ topN推荐，即给用户推荐一个其可能感兴趣的item列表，也是我
 	</article>
   
 	<div class="pagination">
-	
+	 <a class="prev" href="all_19.html">&larr; Older</a> 
 <a href="archives.html">Blog Archives</a>
 	 <a class="next" href="all_17.html">Newer &rarr;</a>  
 	    
@@ -342,7 +366,7 @@ topN推荐，即给用户推荐一个其可能感兴趣的item列表，也是我
 	      </li>
 	  
 	      <li class="post">
-	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(5)</strong></a>
+	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(9)</strong></a>
 	        
 	        
 	        
@@ -363,14 +387,28 @@ topN推荐，即给用户推荐一个其可能感兴趣的item列表，也是我
 	      </li>
 	  
 	      <li class="post">
-	        <a href="6%20NLP&%E5%9B%BE%E5%83%8F.html"><strong>6 NLP&图像&nbsp;(4)</strong></a>
+	        <a href="6%20%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86.html"><strong>6 图像处理&nbsp;(4)</strong></a>
 	        
 	        
 	        
 	      </li>
 	  
 	      <li class="post">
-	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(11)</strong></a>
+	        <a href="6%20%E6%90%9C%E7%B4%A2.html"><strong>6 搜索&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="6%20nlp.html"><strong>6 nlp&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(12)</strong></a>
 	        
 	        
 	        
@@ -398,31 +436,31 @@ topN推荐，即给用户推荐一个其可能感兴趣的item列表，也是我
 	  
 	      
 		      <li class="post">
-		        <a href="15623124260572.html">1 抽样方法</a>
+		        <a href="15633781017095.html"></a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15598839206919.html">SC-FEGAN</a>
+		        <a href="15633691538884.html">3. 样本量的确定？</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15596648844646.html">【Tensorflow】week2 Introduction to Computer Vision</a>
+		        <a href="15633655285542.html">卡方检验</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15596470753558.html">TensorFlow</a>
+		        <a href="15632757602829.html">3. 假设检验的power</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15594599843014.html">估计的置信度</a>
+		        <a href="15630063899159.html">python自然语言处理学习笔记——1</a>
 		      </li>
 	     
 	  

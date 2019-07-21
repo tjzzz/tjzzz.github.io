@@ -82,13 +82,29 @@ $(document).ready(function(event) {
 
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15623124260572.html">1 抽样方法</a></h1>
-			<p class="meta"><time datetime="2019-07-05T15:40:26+08:00" 
-			pubdate data-updated="true">2019/7/5</time></p>
+		  	<h1 class="entry-title"><a href="15633781017095.html"></a></h1>
+			<p class="meta"><time datetime="2019-07-17T23:41:41+08:00" 
+			pubdate data-updated="true">2019/7/17</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<p><a href=""></a></p>
+		  	
+
+		</div>
+
+		
+
+	</article>
+ 
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15633691538884.html">3. 样本量的确定？</a></h1>
+			<p class="meta"><time datetime="2019-07-17T21:12:33+08:00" 
+			pubdate data-updated="true">2019/7/17</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<p>前面说过，估计的置信区间是</p>
 
 
 		</div>
@@ -99,13 +115,57 @@ $(document).ready(function(event) {
  
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15598839206919.html">SC-FEGAN</a></h1>
-			<p class="meta"><time datetime="2019-06-07T13:05:20+08:00" 
-			pubdate data-updated="true">2019/6/7</time></p>
+		  	<h1 class="entry-title"><a href="15633655285542.html">卡方检验</a></h1>
+			<p class="meta"><time datetime="2019-07-17T20:12:08+08:00" 
+			pubdate data-updated="true">2019/7/17</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<p><a href="https://github.com/run-youngjoo/SC-FEGAN">https://github.com/run-youngjoo/SC-FEGAN</a></p>
+		  	<p>以2分类的列联表为例:</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>通过</th>
+<th>失败</th>
+<th>总计</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>实验A</td>
+<td>a</td>
+<td>b</td>
+<td>m</td>
+</tr>
+<tr>
+<td>实验B</td>
+<td>c</td>
+<td>d</td>
+<td>n</td>
+</tr>
+<tr>
+<td>总计</td>
+<td>r</td>
+<td>s</td>
+<td>N</td>
+</tr>
+</tbody>
+</table>
+
+<p>H0：实验A和实验B对于是否通过没有差异， H1： 实验A和实验B有显著差异</p>
+
+<p>在零假设成立的条件下，即A和B没有差异，那么对通过和失败的概率估计是r/N 和s/N。所以实验A的理论的通过人数和失败人数分别是\(rm/N\),\(sm/N\)。 同理，实验B的理论的通过人数和失败人数分别是\(rn/N\),\(sn/N\)。</p>
+
+<p>理论与现实的差异</p>
+
+<p>一般地</p>
+
+<blockquote>
+<p>卡方检验是皮尔逊1900年提出来的，这里简单回顾下其基本原理。</p>
+</blockquote>
 
 
 		</div>
@@ -116,41 +176,13 @@ $(document).ready(function(event) {
  
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15596648844646.html">【Tensorflow】week2 Introduction to Computer Vision</a></h1>
-			<p class="meta"><time datetime="2019-06-05T00:14:44+08:00" 
-			pubdate data-updated="true">2019/6/5</time></p>
+		  	<h1 class="entry-title"><a href="15632757602829.html">3. 假设检验的power</a></h1>
+			<p class="meta"><time datetime="2019-07-16T19:16:00+08:00" 
+			pubdate data-updated="true">2019/7/16</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<p>前面说的hello word的例子，输入输出比较简单，这里考虑稍微复杂一点的情况—— 输入数据是图像</p>
-
-<p>人类看到下面的图像之后，能很清楚的分辨出哪个是裤子，哪个是鞋子，那么计算机要怎么分辨呢？</p>
-
-<p><img src="media/15596648844646/15600952203749.jpg" alt=""/></p>
-
-<h2 id="toc_0">1 fashion-mnist数据集介绍</h2>
-
-<p>图像数据集 <br/>
-<a href="https://github.com/zalandoresearch/fashion-mnist">https://github.com/zalandoresearch/fashion-mnist</a></p>
-
-<p>这个数据集是MNIST dataset——手写识别数字的的数据集的一个替换集合。数据格式上和手写识别数字的数据一样。</p>
-
-<pre><code>import tensorflow as tf
-import numpy as np
-from tensorflow import keras
-
-model = tf.keras.Sequential([
-keras.layers.Dense(units=1, input_shape=[1])])
-
-
-
-model.compile(optimizer=&#39;sgd&#39;, loss=&#39;mean_squared_error&#39;)
-xs = np.array([1,2,3,4,5,6,7], dtype=float)
-ys = np.array([100, 150, 200,250, 300,350, 400], dtype=float)
-model.fit(xs, ys, epochs=500)
-print(model.predict([7.0]))
-</code></pre>
-
+		  	
 
 		</div>
 
@@ -160,171 +192,23 @@ print(model.predict([7.0]))
  
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15596470753558.html">TensorFlow</a></h1>
-			<p class="meta"><time datetime="2019-06-04T19:17:55+08:00" 
-			pubdate data-updated="true">2019/6/4</time></p>
+		  	<h1 class="entry-title"><a href="15630063899159.html">python自然语言处理学习笔记——1</a></h1>
+			<p class="meta"><time datetime="2019-07-13T16:26:29+08:00" 
+			pubdate data-updated="true">2019/7/13</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<p>入门教程</p>
+		  	<h2 id="toc_0">1 nltk 入门</h2>
 
-<p><a href="https://github.com/machinelearningmindset/TensorFlow-Course">https://github.com/machinelearningmindset/TensorFlow-Course</a></p>
+<p>nltk是python专门做自然语言处理的包，首先通过<code>pip install nltk</code>安装，然后需要下载所依赖的一些数据</p>
 
-<h2 id="toc_0">1.week1</h2>
-
-<p>传统编程与深度学习编程的区别</p>
-
-<p><img src="media/15596470753558/15596480786004.jpg" alt=""/></p>
-
-<p>安装tensorflow<br/>
-<a href="https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/1-2-install/">https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/1-2-install/</a></p>
-
-<pre><code># 安装CPU/GPU版本。需pip至少8.1版本
-pip install tensorflow
-pip install tensorflow-gpu
+<pre><code>import nltk
+nltk.download()
 </code></pre>
 
-<p>中间有报警<br/>
-<img src="media/15295097623789/15295102306245.jpg" alt=""/></p>
+<p><img src="media/15630063899159/15630065713729.jpg" alt=""/></p>
 
-<p>最后, 如果你需要升级 Tensorflow 的版本, 推荐的方式是：根据你的 python 版本, 在 terminal 中删除原有的版本,然后再装一遍</p>
-
-<pre><code># 如果你是 Python 2, 请复制下面
-pip uninstall tensorflow
-# 如果你是 Python 3, 请复制下面
-pip3 uninstall tensorflow
-</code></pre>
-
-<p>安装成功后</p>
-
-<pre><code>&gt; import tensorflow as tf
-</code></pre>
-
-<p>报错：<img src="media/15295097623789/15295150578030.jpg" alt=""/></p>
-
-<p>解决；<a href="http://www.laomn.com/article/item/60445">http://www.laomn.com/article/item/60445</a><br/>
-<a href="https://www.cnblogs.com/atomicbomb/p/7028917.html">https://www.cnblogs.com/atomicbomb/p/7028917.html</a><br/>
-<a href="https://blog.csdn.net/ChenVast/article/details/79103288">https://blog.csdn.net/ChenVast/article/details/79103288</a></p>
-
-<p>mac上安装正常，没有问题</p>
-
-<h2 id="toc_1">week1 hello word</h2>
-
-<p>Original file is located at<br/>
-    <a href="https://colab.research.google.com/github/lmoroney/dlaicourse/blob/master/Exercises/Exercise%201%20-%20House%20Prices/Exercise_1_House_Prices_Question.ipynb">https://colab.research.google.com/github/lmoroney/dlaicourse/blob/master/Exercises/Exercise%201%20-%20House%20Prices/Exercise_1_House_Prices_Question.ipynb</a></p>
-
-<p>In this exercise you&#39;ll try to build a neural network that predicts the price of a house according to a simple formula.</p>
-
-<p>So, imagine if house pricing was as easy as a house costs 50k + 50k per bedroom, so that a 1 bedroom house costs 100k, a 2 bedroom house costs 150k etc.</p>
-
-<p>How would you create a neural network that learns this relationship so that it would predict a 7 bedroom house as costing close to 400k etc.</p>
-
-<p>Hint: Your network might work better if you scale the house price down. You don&#39;t have to give the answer 400...it might be better to create something that predicts the number 4, and then your answer is in the &#39;hundreds of thousands&#39; etc.</p>
-
-<p>这里先以一个简单的”hello word“例子来介绍，假设我们想学习一个简单的线性关系<br/>
-\[y=50x+50 \]</p>
-
-<p>我们已知是输入数据x，以及答案Y，想知道的其实是背后x和y之间的关系(rule)。那么机器要怎么学习这种关系呢？</p>
-
-<pre><code># 线性回归例子
-import tensorflow as tf
-import numpy as np
-from tensorflow import keras
-
-model = tf.keras.Sequential([keras.layers.Dense(units=1, input_shape=[1])])
-model.compile(optimizer=&#39;sgd&#39;, loss=&#39;mean_squared_error&#39;)
-xs = np.array([1,2,3,4,5,6,7], dtype=float)
-ys = np.array([100, 150, 200,250, 300,350, 400], dtype=float)
-model.fit(xs, ys, epochs=500)
-print(model.predict([7.0]))
-</code></pre>
-
-
-		</div>
-
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15594599843014.html">估计的置信度</a></h1>
-			<p class="meta"><time datetime="2019-06-02T15:19:44+08:00" 
-			pubdate data-updated="true">2019/6/2</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p>在大多数的研究中，我们无法获取研究对象的总体数据，或者能获取但是成本非常大。实际情况中，我们往往是通过抽样的方法，在总体中进行随机抽样。根据获取的这部分样本数据去推动总体的一些属性。比如通过抽样人群的平均身高去估计所有人群的平均身高，通过抽样人群中的男女比例，去估计我国当前的男女比例状况。<br/>
-抽样样本量是直接影响到最终的估计准确度，所以这一章节，先来介绍下如何判断一种估计方法准确与否。</p>
-
-<p><strong>统计估计</strong></p>
-
-<p>统计中估计的方法有两类：点估计，区间估计。 比如问男性平均身高是多少，167cm就是一个点估计，160-170就是区间估计。</p>
-
-<p><strong>置信区间</strong></p>
-
-<p>根据前面介绍的常用的三种估计类型，其置信区间的计算方式也有所不同。</p>
-
-<h3 id="toc_0">1. 比例的置信区间</h3>
-
-<p>例：假设抛掷一枚不均匀的硬币，其正面朝上的真实概率P位置，每次实验结果只有X=1表示正面，X=0表示反面两种结果。现在实验了n次，其中正面向上个数是k次，想估计下这个硬币正面朝上的概率是多少。</p>
-
-<p>如果用点估计，自然的会用频率\(\hat p=\frac{k}{n}\)去估计真实的频率。而区间估计的主要步骤如下：</p>
-
-<p>\[E(\hat p)=p, V(\hat p)=p(1-p)/n\]<br/>
-所以有\[\hat p - N(p, p(1-p)/n)\]<br/>
-\[\frac{\hat p -p}{\sqrt\frac{p(1-p)}{n}} - N(0,1)\]</p>
-
-<p><strong>经典的Wald区间</strong></p>
-
-<p>Wald估计是用样本比例替代整体比例，比例估计的置信区间是 \(\hat p \pm z_{1-\alpha/2} \sqrt\frac{\hat p(1-\hat p)}{n} \)</p>
-
-<p>以上的置信区间是有个前提的：样本量比较大的时候，np&gt;5且n(1-p)&gt;5，二项分布才会近似是正态分布。</p>
-
-<p>在样本量比较小，或者是真实的p值接近0或者1的时候，估计的就不是很准确了。</p>
-
-<p><strong>小样本的比例估计</strong></p>
-
-<p>在实际的问题中，这种情况也是经常存在的。以搜索为例，一个具体的搜索策略上线前，通常都会对实验组和对照组进行一些人工评估。因为人力成本问题，一般是评估100或200qu。可能里面的good或者bad的case占比非常少，那么在估计good或badcase的比例的时候置信度就不是很高。</p>
-
-<p>下面介绍几种常用的修正的区间估计</p>
-
-<p>(0) 精确区间<br/>
-所谓精确区间，其实就是不对齐分布进行近似，而是直接使用原始的真实分布。我们知道正面朝上的个数k其真实分布是二项分布。这个一开始是Clopper和Pearson在1934年研究出来的，所以也叫做C-P 置信区间</p>
-
-<p>\[P(x=s) =C_n^s p^s(1-p)^{n-s}\]<br/>
-<img src="media/15594599843014/15625037226219.jpg" alt=""/></p>
-
-<p>最终可以反解出来这个置信下限和置信上限，这里就不在列出具体公式了。</p>
-
-<p>(1)Wilson区间/Wald矫正区间</p>
-
-<p>注意Wilson和wald两种方法上的区别，wald在设置置信区间的时候是简化了问题，用样本比例近似了真实的比例。wilson认为\(\frac{\hat p -p}{\sqrt\frac{p(1-p)}{n}} - N(0,1)\)</p>
-
-<p>简单的推理过程如下<br/>
-<img src="media/15594599843014/15625732527493.jpg" alt=""/></p>
-
-<p>最终推导出来的置信区间是<br/>
-<img src="media/15594599843014/15625732226377.jpg" alt=""/></p>
-
-<p>（2）wald矫正区间</p>
-
-<p>上述的置信区间有一个简单的计算方式-加2法，即在数据中增加2个成功案例和2个失败案例,然后再用传统的wald区间估计方法</p>
-
-<p>这是因为<br/>
-<img src="media/15594599843014/15625750107528.jpg" alt=""/></p>
-
-<h3 id="toc_1">2.等级量表和连续性数据的置信区间</h3>
-
-<ul>
-<li>t分布置信区间</li>
-</ul>
-
-<h2 id="toc_2">参考资料</h2>
-
-<p>维基百科 <a href="https://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval#Wilson_score_interval">https://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval#Wilson_score_interval</a></p>
-
-<p><a href="https://indico.ihep.ac.cn/event/6182/contribution/4/material/slides/0.pdf">https://indico.ihep.ac.cn/event/6182/contribution/4/material/slides/0.pdf</a></p>
+<h2 id="toc_1">2. Getting Corpus Data</h2>
 
 
 		</div>
@@ -385,7 +269,7 @@ print(model.predict([7.0]))
 	      </li>
 	  
 	      <li class="post">
-	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(5)</strong></a>
+	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(9)</strong></a>
 	        
 	        
 	        
@@ -406,14 +290,28 @@ print(model.predict([7.0]))
 	      </li>
 	  
 	      <li class="post">
-	        <a href="6%20NLP&%E5%9B%BE%E5%83%8F.html"><strong>6 NLP&图像&nbsp;(4)</strong></a>
+	        <a href="6%20%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86.html"><strong>6 图像处理&nbsp;(4)</strong></a>
 	        
 	        
 	        
 	      </li>
 	  
 	      <li class="post">
-	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(11)</strong></a>
+	        <a href="6%20%E6%90%9C%E7%B4%A2.html"><strong>6 搜索&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="6%20nlp.html"><strong>6 nlp&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(12)</strong></a>
 	        
 	        
 	        
@@ -441,31 +339,31 @@ print(model.predict([7.0]))
 	  
 	      
 		      <li class="post">
-		        <a href="15623124260572.html">1 抽样方法</a>
+		        <a href="15633781017095.html"></a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15598839206919.html">SC-FEGAN</a>
+		        <a href="15633691538884.html">3. 样本量的确定？</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15596648844646.html">【Tensorflow】week2 Introduction to Computer Vision</a>
+		        <a href="15633655285542.html">卡方检验</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15596470753558.html">TensorFlow</a>
+		        <a href="15632757602829.html">3. 假设检验的power</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15594599843014.html">估计的置信度</a>
+		        <a href="15630063899159.html">python自然语言处理学习笔记——1</a>
 		      </li>
 	     
 	  

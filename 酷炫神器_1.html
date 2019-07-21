@@ -88,7 +88,58 @@ $(document).ready(function(event) {
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	
+		  	<p>git log<br/>
+git reset --hard xxxxx</p>
+
+<p>查看本地与云端的diff</p>
+
+<p>git rm —cache  删除已经提交的内容</p>
+
+<p>（1）生成公钥<br/>
+ssh-keygen -t rsa -f ~/.ssh/id_rsa.zhenzhen<br/>
+cat ~/.ssh/id_rsa.zhenzhen.pub 保存到icode上<br/>
+chmod 644 ~/.ssh/config<br/>
+vim ~/.ssh/config<br/>
+添加下自己的配置<br/>
+Host icode.baidu.com<br/>
+User yangyang22<br/>
+IdentityFile ~/.ssh/id_rsa.yangyang22<br/>
+（2）clone<br/>
+git clone  xxxxx代码库<br/>
+git config --local user.email <a href="mailto:zhengzhenzhen@baidu.com">zhengzhenzhen@baidu.com</a><br/>
+git config --local user.name zhengzhenzhen</p>
+
+<p>git push origin master:refs/for/master<br/>
+（3）上传文件<br/>
+git add xxx<br/>
+git commit -m &#39;注释&#39;<br/>
+git push origin HEAD:refs/for/master</p>
+
+<p>我不知道”undo”是什么意思。您可以删除core.excludesfile设置，如下所示：<br/>
+git config --global --unset core.excludesfile<br/>
+当然你也可以简单地编辑配置文件：<br/>
+git config --global --edit<br/>
+…然后手动删除设置。</p>
+
+<p>git config --global --edit</p>
+
+<h1 id="toc_0">!/usr/bin/env python</h1>
+
+<h1 id="toc_1">-<em>- coding: utf-8 -</em>-</h1>
+
+<h1 id="toc_2">Copyright (c) 2017 Baidu.com, Inc. All Rights Reserved</h1>
+
+<p>&quot;&quot;&quot;<br/>
+File: dau.py<br/>
+Author: work(<a href="mailto:work@baidu.com">work@baidu.com</a>)<br/>
+Date: 2017/07/13 11:07:20<br/>
+Description: 计算官方号维度的dau<br/>
+             用户访问了已经关注过的官方号主页，IM页，设置页和文章落地页<br/>
+             其中主页访问从wiseps_click里拿<br/>
+             IM页和设置页从ubc日志里拿<br/>
+             文章落地页从搜索点击日志以及wiseps_click日志里拿<br/>
+&quot;&quot;&quot;</p>
+
 
 		</div>
 
@@ -399,7 +450,7 @@ python2 -m ipykernel install --user
 	      </li>
 	  
 	      <li class="post">
-	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(5)</strong></a>
+	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(9)</strong></a>
 	        
 	        
 	        
@@ -420,14 +471,28 @@ python2 -m ipykernel install --user
 	      </li>
 	  
 	      <li class="post">
-	        <a href="6%20NLP&%E5%9B%BE%E5%83%8F.html"><strong>6 NLP&图像&nbsp;(4)</strong></a>
+	        <a href="6%20%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86.html"><strong>6 图像处理&nbsp;(4)</strong></a>
 	        
 	        
 	        
 	      </li>
 	  
 	      <li class="post">
-	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(11)</strong></a>
+	        <a href="6%20%E6%90%9C%E7%B4%A2.html"><strong>6 搜索&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="6%20nlp.html"><strong>6 nlp&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(12)</strong></a>
 	        
 	        
 	        
@@ -455,31 +520,31 @@ python2 -m ipykernel install --user
 	  
 	      
 		      <li class="post">
-		        <a href="15623124260572.html">1 抽样方法</a>
+		        <a href="15633781017095.html"></a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15598839206919.html">SC-FEGAN</a>
+		        <a href="15633691538884.html">3. 样本量的确定？</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15596648844646.html">【Tensorflow】week2 Introduction to Computer Vision</a>
+		        <a href="15633655285542.html">卡方检验</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15596470753558.html">TensorFlow</a>
+		        <a href="15632757602829.html">3. 假设检验的power</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15594599843014.html">估计的置信度</a>
+		        <a href="15630063899159.html">python自然语言处理学习笔记——1</a>
 		      </li>
 	     
 	  

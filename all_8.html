@@ -82,23 +82,15 @@ $(document).ready(function(event) {
 
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15343921369482.html">Face综述</a></h1>
-			<p class="meta"><time datetime="2018-08-16T12:02:16+08:00" 
-			pubdate data-updated="true">2018/8/16</time></p>
+		  	<h1 class="entry-title"><a href="15382821285011.html">3.1 特征处理—— 特征选择</a></h1>
+			<p class="meta"><time datetime="2018-09-30T12:35:28+08:00" 
+			pubdate data-updated="true">2018/9/30</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<p><a href="https://blog.csdn.net/chenriwei2/article/details/50631212">https://blog.csdn.net/chenriwei2/article/details/50631212</a></p>
+		  	<h2 id="toc_0">参考</h2>
 
-<p>这个有数据，已经训练好的模型<br/>
-<a href="https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/">https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/</a></p>
-
-<p>综述@@@@ 需要精读！！！<br/>
-<a href="https://blog.csdn.net/Mr_EvanChen/article/details/75501730">https://blog.csdn.net/Mr_EvanChen/article/details/75501730</a><br/>
-<a href="https://zhuanlan.zhihu.com/p/24816781">https://zhuanlan.zhihu.com/p/24816781</a></p>
-
-<p>知乎 狗头山人七 专栏<br/>
-<a href="https://zhuanlan.zhihu.com/p/25025596">https://zhuanlan.zhihu.com/p/25025596</a></p>
+<p><a href="https://blog.csdn.net/kebu12345678/article/details/78437118">https://blog.csdn.net/kebu12345678/article/details/78437118</a></p>
 
 
 		</div>
@@ -109,80 +101,145 @@ $(document).ready(function(event) {
  
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15343431925455.html">二、起步篇—— 数据预处理[python]</a></h1>
-			<p class="meta"><time datetime="2018-08-15T22:26:32+08:00" 
-			pubdate data-updated="true">2018/8/15</time></p>
+		  	<h1 class="entry-title"><a href="15378048283915.html">markdown</a></h1>
+			<p class="meta"><time datetime="2018-09-25T00:00:28+08:00" 
+			pubdate data-updated="true">2018/9/25</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<h2 id="toc_0">图片</h2>
+
+<p>现在很多makdown编辑器是可以支持拖拽本地图片或者截屏就可以直接在markdown中生成图片的，非常方便，比如我现在在用的MWeb编辑器。</p>
+
+<p>但是如果同一篇内容需要在不同的平台上进行发布，那图片处理起来就比较麻烦。因为需要重新上传到不同平台。<br/>
+最方便的处理方式就是利用图床， 这里以七牛云存储为例。<br/>
+<img src="media/15378048283915/15383141468224.jpg" alt=""/></p>
+
+<p>step1： 首先在七牛官网上申请注册账号，并且添加<strong>对象存储</strong></p>
+
+
+		</div>
+
+		
+
+	</article>
+ 
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15366609658901.html">地图定位</a></h1>
+			<p class="meta"><time datetime="2018-09-11T18:16:05+08:00" 
+			pubdate data-updated="true">2018/9/11</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<p><a href="http://lbsyun.baidu.com/index.php?title=webapi/guide/webservice-geocoding-abroad">http://lbsyun.baidu.com/index.php?title=webapi/guide/webservice-geocoding-abroad</a></p>
+
+<p><a href="https://my.oschina.net/u/3093769/blog/1142709">https://my.oschina.net/u/3093769/blog/1142709</a></p>
+
+<pre><code># 方法一: baidumap
+library(baidumap)
+library(rjson)
+options(baidumap.key = &#39;V1YUGNIpKhENUtgmmBT6EbREkgENinyS&#39;)
+
+loc =  getCoordinate(&#39;同济大学&#39;, formatted = T)     # 根据名称查经纬度
+
+loc_json = getLocation(loc, output=&#39;json&#39;)         # 根据经纬度查对应地址信息
+out = fromJSON(loc_json)
+
+out$result$addressComponent$city
+
+## 方法二
+library(REmap)
+tmp = get_city_coord(&quot;同济大学&quot;) 
+
+
+library(RCurl)
+
+lon&lt;-tmp[1]
+lat&lt;-tmp[2]
+out&lt;-getURL(paste(&quot;https://geoindex.amap.com/geoIndex/area?callback=siptea_200823435167697&amp;adGrade=4&amp;region=&quot;,lon,&quot;%2C&quot;,lat,sep=&quot;&quot;))
+
+out 
+</code></pre>
+
+<p>google<br/>
+<a href="https://developers.google.com/places/web-service/search">https://developers.google.com/places/web-service/search</a></p>
+
+<p>AIzaSyB7YeDfBRxoc8LecatkxCv2pZlXLX2hab4</p>
+
+<p><a href="https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&amp;inputtype=textquery&amp;fields=photos,formatted_address,name,rating,opening_hours,geometry&amp;key=AIzaSyB7YeDfBRxoc8LecatkxCv2pZlXLX2hab4">https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&amp;inputtype=textquery&amp;fields=photos,formatted_address,name,rating,opening_hours,geometry&amp;key=AIzaSyB7YeDfBRxoc8LecatkxCv2pZlXLX2hab4</a></p>
+
+<p>高德</p>
+
+<p>d333738ea086fa17955ccbbc0eb12d4b</p>
+
+<ol>
+<li>数据处理</li>
+</ol>
+
+<p>数据本身的公司or学校名称是英文的，如果是可以使用google的地图接口的话，可以直接用google的地图接口。这里是先将其转为中文，然后调用百度的地图接口</p>
+
+<p>首先在百度翻译开放平台上申请app_key<br/>
+<a href="http://api.fanyi.baidu.com/api/trans/product/desktop?req=detail">http://api.fanyi.baidu.com/api/trans/product/desktop?req=detail</a></p>
+
+<p>在其文档与支持中心有具体的API接口的定义方式：传入参数和输出结果的格式</p>
+
+<p><a href="http://api.fanyi.baidu.com/api/trans/product/apidoc">http://api.fanyi.baidu.com/api/trans/product/apidoc</a></p>
+
+<p>并且为了方便使用，有不同版本的demo示例。</p>
+
+<p>2.地理位置</p>
+
+
+		</div>
+
+		
+
+	</article>
+ 
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15355316549948.html">FM 模型</a></h1>
+			<p class="meta"><time datetime="2018-08-29T16:34:14+08:00" 
+			pubdate data-updated="true">2018/8/29</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
 		  	<blockquote>
-<p>一方面可以多查些官方说明<br/>
-多去看些kaggle，tianchi等的比赛案例，他们数据预处理做的很全面到位<br/>
-实践一些工作中的项目，将代码规范化</p>
+<p>背景</p>
 </blockquote>
 
-<h2 id="toc_0">1.缺失表示</h2>
+<p>一般的线性模型 \(y=w_0 + \sum w_i x_i\)， 当考虑了特征之间的相关性即交互效应(这里以二阶为例)后模型形式是：<br/>
+\[y=w_0 + \sum w_i x_i + \sum_1^{n-1}\sum_{i+1}^n w_{ij}x_ix_j\]</p>
 
-<p>python中缺失是nan，如果本身数据中缺失是用其他方式表示的，可以先转换一下<br/>
-<code>df.replace(&#39;-&#39;,np.nan)</code></p>
+<p>这里n表示特征的个数</p>
 
-<pre><code class="language-python">
-import numpy as np
-import pandas as pd
-from io import StringIO
-import sys
+<blockquote>
+<p>模型如何求解呢？</p>
+</blockquote>
 
-df = pd.read_table(&#39;zz&#39;)
-df = df.replace(&#39;-&#39;,np.nan).head()
-df.head()
-</code></pre>
+<p>如果把\(x_ix_j\)看做一个新的变量，相当于整体上还是一个线性回归模型，似乎可以用正常的线性回归的办法进行求解。<br/>
+但是这里未知的要求解的参数有n(+1)/2个，很多时候特征中会有一些分类型的变量，当通过哑变量的方式引入模型中的时候，特征数目k会非常大，从而导致要求解的参数个数较大，并且数据特别稀疏。另一方面，分类特征就到时候，\(x_ix_j\)是非零的比例较小，从而导致\(w\)无法计算出来。</p>
 
-<h2 id="toc_1">2.缺失的简单处理办法</h2>
+<blockquote>
+<p>引入其他辅助信息</p>
+</blockquote>
 
-<h3 id="toc_2">暴力删除</h3>
+<p>我们可以引入一个辅助向量 对于\(w_{ij}\)形成的对称矩阵W，可以进行分解\(W=V^TV\)</p>
 
-<p><code>isnull()</code>   判断是否缺失</p>
+<p>将模型改成如下形式<br/>
+\[y=w_0 + \sum w_i x_i + \sum_1^{n-1}\sum_{i+1}^n &lt;v_i, v_j&gt;x_ix_j\]</p>
 
-<p><code>dropna( axis = 0 /1 )</code> 参数axis表示轴选择，axis=0 代表行，axis=1 代表列</p>
+<ul>
+<li>从形式上来看，我们知道\(w_ij\)的矩阵是对称的，其形式上和协差阵\(&lt;v_i, v_j&gt;\)很类似</li>
+</ul>
 
-<p><code>dropna(subset=[&#39;&#39;])</code>   删除指定列中有空值的一行数据</p>
+<p>\(v_i\)相当于是第i维隐向量，假设其维度是k&lt;&lt;n, 这样模型的参数就由原来的n(n+1)/2 变为了</p>
 
-<h3 id="toc_3">默认值填充</h3>
+<h2 id="toc_0">参考资料</h2>
 
-<p><code>df.fillna(value)</code><br/>
-或者对不同列填不同的值</p>
-
-<h3 id="toc_4">统计/算法填充</h3>
-
-<pre><code class="language-python">from sklearn.preprocessing import Imputer
-# strategy 有mean,median, most_frequent 方式
-# axis 默认是0，列向， axis=1行向
-dff = df.loc[:, [&#39;comment_time&#39;]]
-imr = Imputer(missing_values = &#39;NaN&#39;, strategy = &#39;mean&#39;, axis = 0 )
-imr = imr.fit(dff.values)
-imputed_data = imr.transform(dff.values)
-</code></pre>
-
-<pre><code class="language-python">## 3.分类数据处理
-from sklearn.preprocessing import LabelEncoder
-class_le = LabelEncoder()
-y = class_le.fit_transform(df[&#39;nid&#39;].values)
-
-</code></pre>
-
-<pre><code class="language-python">## 数据标准化
-from sklearn.preprocessing import MinMaxScaler
-mms = MinMaxScaler()
-X_train_norm = mms.fit_transform(imputed_data)
-X_test_norm = mms.transform(imputed_data)
-</code></pre>
-
-<h2 id="toc_5">参考资料</h2>
-
-<p><a href="https://blog.csdn.net/Amy_mm/article/details/79799629">https://blog.csdn.net/Amy_mm/article/details/79799629</a><br/>
-<a href="https://www.cnblogs.com/charlotte77/p/5622325.html">https://www.cnblogs.com/charlotte77/p/5622325.html</a></p>
-
-<p><a href="https://www.kaggle.com/pmarcelino/comprehensive-data-exploration-with-python">https://www.kaggle.com/pmarcelino/comprehensive-data-exploration-with-python</a></p>
+<p>简书-石晓文 <a href="https://www.jianshu.com/p/152ae633fb00">https://www.jianshu.com/p/152ae633fb00</a><br/>
+美团技术博客 <a href="https://tech.meituan.com/deep_understanding_of_ffm_principles_and_practices.html">https://tech.meituan.com/deep_understanding_of_ffm_principles_and_practices.html</a></p>
 
 
 		</div>
@@ -193,295 +250,132 @@ X_test_norm = mms.transform(imputed_data)
  
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15343314088861.html">jupyterLab</a></h1>
-			<p class="meta"><time datetime="2018-08-15T19:10:08+08:00" 
-			pubdate data-updated="true">2018/8/15</time></p>
+		  	<h1 class="entry-title"><a href="15350244372147.html">4.1 回归模型</a></h1>
+			<p class="meta"><time datetime="2018-08-23T19:40:37+08:00" 
+			pubdate data-updated="true">2018/8/23</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<p>现在Rstudio已经成为R社区使用最广泛的集成编辑器，其在配合Rstudio公司开发的软件包使用上有天然的优势，如knitr、bookdown、blogdown、sparklyr、tidyverse等，让我们在数据导入、清洗、可视化、分析过程中少踩了不少坑。</p>
+		  	<p>进入统计机器学习大门，最基础的从回归分析说起。</p>
 
-<p>然而，有时候我们也会发现，利用Rmarkdown进行探索性数据分析时，尤其是初学者，总是不断花费时间在文档编译上，而压缩了真正数据探索的时间。很多时候，我很羡慕python用户，因为他们拥有Ipython、jupyter notebook等工具，让我们一边分析数据，一边插入markdown文本，并且还能实时看到结果，这些特性R用户也可以实现吗？当然，这就是我今天推荐的jupyterlab 编辑器。</p>
+<h2 id="toc_0">1.回归分析</h2>
 
-<p>安装jupyterLab</p>
+<p>机器学习从最简单的回归分析说起，这次从最小二乘的几何意义角度去看回归分析。</p>
 
-<p>首先我们要明白，jupyterLab是一个python包，所以要使用jupyterLab首先要配置python环境。对于普通用户，包括linux、win和Mac用户，建议直接下载anaconda发行版进行安装，这样免去了既要安装python又要安装其他包的麻烦，是最简洁的方法。</p>
+<p>\[Y = X’B\]<br/>
+我们知道最终估计的满足 \((y-X\hat\beta)^TX=0\)。即最优估计是在空间上的正交投影</p>
 
-<p>对于平时很少使用python的人来说，可能无法忍受anaconda全家桶式的安装模式，想更轻便的安装使用，那也很容易。</p>
-
-<ol>
-<li>安装</li>
-</ol>
-
-<p>Mac 和 Linux用户系统自带了python，可以直接使用pip install jupyterlab安装jupyterLab包。</p>
-
-<p>win用户先在python官网下载安装python，然后使用pip install jupyterlab安装jupyterLab包。</p>
-
-<ol>
-<li>运行</li>
-</ol>
-
-<p>在终端输入jupyter lab即可以在默认浏览器中打开编辑器界面，若不能，请检查下python路径配置是否正确。</p>
-
-<p>“咦，怎么只能选择python，R去哪了”，各位看官莫急，这是因为R端缺少必要的包，还不能和jupyter进行通信，等把这些包安装好进行配置后就可以了。</p>
-
-<ol>
-<li>配置R</li>
-</ol>
-
-<p>要把先前打开的jupyterLab程序全部关闭后再进行以下操作</p>
-
-<h1 id="toc_0">安装必要的依赖包</h1>
-
-<pre><code>install.packages(c(&#39;repr&#39;, &#39;IRdisplay&#39;,&#39;evaluate&#39;, &#39;crayon&#39;,&#39;pbdZMQ&#39;,&#39;devtools&#39;,&#39;uuid&#39;, &#39;digest&#39;))
-</code></pre>
-
-<h1 id="toc_1">IRkernel包没有放在CRAN上，需要通过GitHub安装</h1>
-
-<pre><code>
-devtools::install_github(&#39;IRkernel/IRkernel&#39;)
-
-IRkernel::installspec() #确保jupyterLab能找到R解释器安装位置
-</code></pre>
-
-<ol>
-<li>再次在终端运行<code>jupyter lab</code>，选择R图标打开，你就可以在jupyterLab进行数据分析啦</li>
-</ol>
-
-<p>jupyterLab的主要特性绘图函数自动插入图片ggplot2绘图完美支持</p>
-
-<h2 id="toc_2">常见问题</h2>
-
-<ol>
-<li><code>jupyter lab</code> 启动提示</li>
-</ol>
-
-<p><img src="media/15343314088861/15403477589938.jpg" alt=""/></p>
-
-<p>应该是编码问题，暂时的解决方案<a href="https://github.com/jupyter/notebook/issues/2789#issuecomment-338380336">https://github.com/jupyter/notebook/issues/2789#issuecomment-338380336</a></p>
-
-<p><code>LANG=zn jupyter lab</code></p>
-
-<p><img src="media/15343314088861/15403476857109.jpg" alt=""/></p>
-
-<p>这个问题后来查了下说是python2的bug，安装python3就不会出现这个问题。<br/>
-但是很多代码都是python2写的，用pip3安装jupyter之后，想切换写内核。</p>
-
-<pre><code>jupyter kernelspec list
-</code></pre>
-
-<p><a href="https://www.cnblogs.com/Jeffiy/p/4861528.html">https://www.cnblogs.com/Jeffiy/p/4861528.html</a></p>
-
-<pre><code>本例的Jupyter安装在Python3下，以增加Python2内核为例。
-首先确认在Python3下已安装了内核：
-ipython kernel install --user
-#or
-python3 -m ipykernel install --user
-然后确保Python2下安装了ipykernel
-sudo pip2 install -U ipykernel
-然后运行如下命令：
-python2 -m ipykernel install --user
-
-</code></pre>
-
-<h2 id="toc_3">测试机上安装jupyter</h2>
-
-<p><a href="https://cloud.tencent.com/developer/article/1147487">https://cloud.tencent.com/developer/article/1147487</a></p>
+<p><img src="media/15350244372147/15350246581231.jpg" alt=""/><br/>
+统计中的一些基本概念：</p>
 
 <ul>
-<li>安装jupyter</li>
-<li>生成密码 python -c &quot;import IPython;print IPython.lib.passwd()&quot;</li>
-<li>修改配置文件 </li>
+<li>t 检验</li>
+<li>F 检验</li>
+<li>p value</li>
+<li>多重共线性</li>
+<li></li>
 </ul>
 
-<p>18机器上配置<br/>
-/home/work/.jupyter/jupyter_notebook_config.py</p>
+<h2 id="toc_1">2.正则化处理</h2>
 
-<p>如果启动报错</p>
+<p>训练数据是有限的时候，总可以通过增加参数的方法提高模型复杂度，降低训练误差，但是其泛化能力不好。正则化即通过调整参数的取值，来平衡<strong>偏差</strong>和<strong>方差</strong>的关系。</p>
 
-<pre><code>socket.gaierror: [Errno -2] Name or service not known
-</code></pre>
+<p>线性回归中，最直接的方法就行在loss function中添加正则化项。一般形式如下：</p>
 
-<p>可以加上自己的ip</p>
-
-<pre><code> jupyter notebook --ip=xxxx
- jupyter lab --ip=10.100.114.120
-</code></pre>
-
-<h2 id="toc_4">colab</h2>
-
-<p>google 基于jupyter开发的存在在google driver上的网页版</p>
-
-<p><a href="https://colab.research.google.com/">https://colab.research.google.com/</a></p>
-
-<p>本身功能上差不太多，主要是有search和share功能，查看别人分享的代码</p>
-
-
-		</div>
-
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15340577552786.html">face_recgnization</a></h1>
-			<p class="meta"><time datetime="2018-08-12T15:09:15+08:00" 
-			pubdate data-updated="true">2018/8/12</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p>github<br/>
-<a href="https://github.com/ageitgey/face_recognition">https://github.com/ageitgey/face_recognition</a></p>
-
-<h2 id="toc_0">1. 安装</h2>
-
-<p>文档： <a href="https://zhuanlan.zhihu.com/p/28271869">https://zhuanlan.zhihu.com/p/28271869</a></p>
-
-<pre><code>pip install face_recognition
-</code></pre>
-
-<p>直接安装会报错，安装face_recognition这个之前需要先安装编译dlib</p>
-
-<pre><code>brew install boost
-brew install boost-python --with-python3
-
-# install dlib
-git clone https://github.com/davisking/dlib.git
-cd dlib
-mkdir build; cd build; cmake .. -DDLIB_USE_CUDA=0 -DUSE_AVX_INSTRUCTIONS=1; cmake --build 
-
-cd ..
-python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
-</code></pre>
-
-<p>If there is no cmake on your mac, you can use  <code>brew install cmake</code>. After all these have been done, run</p>
-
-<pre><code>pip install face_recognition
-</code></pre>
-
-<h2 id="toc_1">2.usage</h2>
-
-<p>face_recognition有两种使用方式，命令行方式和python包方式</p>
-
-<p>(1) 命令行方式</p>
-
-<p>(2) python 包<br/>
-<a href="https://face-recognition.readthedocs.io/en/latest/face_recognition.html#module-face_recognition.api">https://face-recognition.readthedocs.io/en/latest/face_recognition.html#module-face_recognition.api</a></p>
-
-<p></p>
-
-<h2 id="toc_2">参考资料</h2>
-
-<p><a href="https://zhuanlan.zhihu.com/p/28271869">https://zhuanlan.zhihu.com/p/28271869</a></p>
-
-<p><a href="https://medium.com/@ageitgey">https://medium.com/@ageitgey</a></p>
-
-<hr/>
-
-<p><a href="https://www.jianshu.com/p/281aa6a3823a">https://www.jianshu.com/p/281aa6a3823a</a></p>
-
-<p>一个案例<br/>
-<a href="https://www.jianshu.com/p/38ca6daf6b40">https://www.jianshu.com/p/38ca6daf6b40</a><br/>
-<a href="http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html">http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html</a></p>
-
-<p>tf案例<br/>
-<a href="https://blog.csdn.net/u010016927/article/details/75722416">https://blog.csdn.net/u010016927/article/details/75722416</a></p>
-
-<p>knn<br/>
-<a href="https://www.leiphone.com/news/201707/gIbNsPtWk460m5vj.html">https://www.leiphone.com/news/201707/gIbNsPtWk460m5vj.html</a></p>
-
-<p><a href="https://blog.csdn.net/Mbx8X9u/article/details/79124840">https://blog.csdn.net/Mbx8X9u/article/details/79124840</a></p>
-
-<p><a href="https://www.ctolib.com/topics-101544.html">https://www.ctolib.com/topics-101544.html</a></p>
-
-<p><a href="https://www.oschina.net/code/snippet_2558914_54339">https://www.oschina.net/code/snippet_2558914_54339</a></p>
-
-<h2 id="toc_3">new</h2>
-
-<p><a href="https://www.leiphone.com/news/201704/rYdpAvh4SvgVPpRQ.html">https://www.leiphone.com/news/201704/rYdpAvh4SvgVPpRQ.html</a></p>
-
-
-		</div>
-
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15334844213158.html">二、起步篇——数据预处理[方法论]</a></h1>
-			<p class="meta"><time datetime="2018-08-05T23:53:41+08:00" 
-			pubdate data-updated="true">2018/8/5</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p><img src="media/15334844213158/15335717779664.jpg" alt=""/></p>
-
-<h2 id="toc_0">1.数据偏度</h2>
-
-<p>数据的处理，从数据特征本身的统计维度看，有尺度、偏度、</p>
-
-<p>1.数据尺度</p>
+<p>\[E(w) = \sum [f(x_i, w) - y_i]^2 + \lambda g(||w||_p)\]</p>
 
 <ul>
-<li>标准化 =&gt; 均值0，方差1</li>
-<li>归一化 =&gt; [0,1]</li>
+<li>当取一范数时，即为lasso；</li>
+<li>二范数：岭回归</li>
+<li>一范数和二范数组合：弹性网络。  \(a||w||^2_2 + (1-a)||w||_1\)</li>
 </ul>
 
-<p>2.数据偏度<br/>
-可以通过偏度来度量，数据中如果存在较大的偏度，可能是因为有异常点的存在。</p>
-
-<p>有偏数据处理，一般可以取log，或者开根号让他能近似正态</p>
-
-<h2 id="toc_1">2.异常点</h2>
-
-<p>首先什么是异常点<br/>
-异常点<br/>
-（1） 首先确认是不是错误导致，比如计算错误。取值错误<br/>
-（2）确认异常点的生成机制</p>
-
-<p>（1）异常点检测</p>
-
-<p>@@@<br/>
-sklearn中常用的包</p>
-
-<p>（2）异常点处理</p>
+<p>一范数和二范数的几何意义区别如下(这里就不解释了)：</p>
 
 <ul>
-<li>如果是少量可以直接删除</li>
-<li>当数据量较少，删除后造成可用信息较少时候，可以使用“空间标识”的数值处理方法</li>
+<li>lasso会将特征衰减到0</li>
+<li>岭回归大量特征系数都比较小</li>
+<li>弹性网络结合了两种方法的优点</li>
 </ul>
 
-<h2 id="toc_2">3.缺失值</h2>
+<p><img src="media/15350244372147/15350256600383.jpg" alt=""/></p>
 
-<p>缺失机制：随机缺失，还是非随机缺失</p>
+<blockquote>
+<p>从概率不同学派的角度来看上面的问题。<br/>
+正则化的方式，是从频率学派角度来看；而贝叶斯学派视角来看，正则化其实就是引入了关于参数的先验信息。</p>
+</blockquote>
 
-<p>补充原则：</p>
+<p>贝叶斯学派是假定参数服从某种分布，然后根据其分布利用积分的方法将其消除掉。这一过程叫<strong>边际化</strong>。边际化的过程其实恰好是正则化/泛化的过程。</p>
+
+<p>可以证明，岭回归是w满足正态分布，lasso是当w满足拉普拉斯分布时候通过最大后验概率得到的估计结果。</p>
+
+<blockquote>
+<p>code</p>
+</blockquote>
+
+<pre><code>import numpy as np # 快速操作结构数组的工具
+import matplotlib.pyplot as plt  # 可视化绘制
+from sklearn.linear_model import Lasso,LassoCV,LassoLarsCV   # Lasso回归,LassoCV交叉验证实现alpha的选取，LassoLarsCV基于最小角回归交叉验证实现alpha的选取
+
+# ========Lasso回归========
+model = Lasso(alpha=0.01)  # 调节alpha可以实现对拟合的程度
+# model = LassoCV()  # LassoCV自动调节alpha可以实现选择最佳的alpha。
+# model = LassoLarsCV()  # LassoLarsCV自动调节alpha可以实现选择最佳的alpha
+model.fit(X, y)   # 线性回归建模
+print(&#39;系数矩阵:\n&#39;,model.coef_)
+print(&#39;线性回归模型:\n&#39;,model)
+# print(&#39;最佳的alpha：&#39;,model.alpha_)  # 只有在使用LassoCV、LassoLarsCV时才有效
+# 使用模型预测
+predicted = model.predict(X)
+
+</code></pre>
+
+<h2 id="toc_2">3.广义线性模型</h2>
+
+<p>广义线性模型可以看做一般线性模型的推广，既然说他是推广，说明有一些问题是传统的线性模型没法解决的。</p>
+
+<p>广义线性模型中y的密度函数形式是基于指数分布族的\[p(y;\theta)=b(y)exp[\theta&#39;T(y)+a(\theta)]\]<br/>
+其中\(T(y)\)是一个充分统计量，通常可以等于\(y\)。 常见的正态分布、指数分布、二项分布、泊松分布都属于指数分布族，都可以转为这种形式。</p>
+
+<p>介绍一个常用的广义线性模型：</p>
+
+<p>xxx</p>
+
+<h2 id="toc_3">4.基函数扩展：属性的非线性化</h2>
+
+<p>线性模型的表达能力有限，前面广义线性模型的思路是将因变量y做了一个非线性映射。而从另一个角度，可以将解释变量变为非线性的，即<br/>
+\[y=\beta_0+\beta_1x_1 + ...+\beta_nx_n\]<br/>
+可以扩展为<strong>基函数扩展模型</strong><br/>
+\[y=\beta_0+\beta_1f(x_1) + ...+\beta_nf(x_n)\]</p>
+
+<p>比如常见的多项式回归\[y=\beta_0+\beta_1 x + ...+\beta_n x^n\]</p>
+
+<p>多项式回归会存在一些问题：</p>
 
 <ul>
-<li>如果缺失占比太大，删除</li>
+<li>\(x\)和\(x^k\)之间是相关的，不太好解释清楚每个变量的贡献程度</li>
+<li>会出现过拟合的情况</li>
 </ul>
 
-<p>补充方法：</p>
+<p><strong>多元自适应回归样条MARS</strong></p>
 
 <ul>
-<li>统计方法：均值</li>
-<li>机器学习方法：回归、K近邻</li>
+<li>多项式整体是线性，局部非非线性</li>
+<li>MARS: 整体是非线性，局部是线性(分段函数)</li>
 </ul>
 
-<h2 id="toc_3">4.特征冗余</h2>
+<p>样条函数，需要满足一些最基本的一些条件</p>
 
-<p>一般是说特征自相关性太高，即“共线性”。另外是指一些没有区分度的变量，比如一是特征取值的总数与样本数目的比例在 10% 以下，二是出现频率最高的特征取值的出现频率应该在出现频率次高的特征的20倍以上。</p>
+<ul>
+<li>在knot节点处满足函数的连续性</li>
+<li>一阶导数连续，二阶导数连续，则称为三次样条</li>
+</ul>
 
-<p>检测办法：<br/>
-解决办法：PCA</p>
+<p>平滑样条</p>
 
-<h2 id="toc_4">参考文章</h2>
+<p>\[E=\sum_{i=1}^n [y_i-g(x_i)]^2 +\lambda\int g&#39;&#39;(t)^2 \]</p>
 
-<p>离群点</p>
-
-<p><a href="https://blog.chih.me/Outlier-mining-review.html">https://blog.chih.me/Outlier-mining-review.html</a></p>
+<p>code: <code>patsy</code></p>
 
 
 		</div>
@@ -542,7 +436,7 @@ sklearn中常用的包</p>
 	      </li>
 	  
 	      <li class="post">
-	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(5)</strong></a>
+	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(9)</strong></a>
 	        
 	        
 	        
@@ -563,14 +457,28 @@ sklearn中常用的包</p>
 	      </li>
 	  
 	      <li class="post">
-	        <a href="6%20NLP&%E5%9B%BE%E5%83%8F.html"><strong>6 NLP&图像&nbsp;(4)</strong></a>
+	        <a href="6%20%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86.html"><strong>6 图像处理&nbsp;(4)</strong></a>
 	        
 	        
 	        
 	      </li>
 	  
 	      <li class="post">
-	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(11)</strong></a>
+	        <a href="6%20%E6%90%9C%E7%B4%A2.html"><strong>6 搜索&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="6%20nlp.html"><strong>6 nlp&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(12)</strong></a>
 	        
 	        
 	        
@@ -598,31 +506,31 @@ sklearn中常用的包</p>
 	  
 	      
 		      <li class="post">
-		        <a href="15623124260572.html">1 抽样方法</a>
+		        <a href="15633781017095.html"></a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15598839206919.html">SC-FEGAN</a>
+		        <a href="15633691538884.html">3. 样本量的确定？</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15596648844646.html">【Tensorflow】week2 Introduction to Computer Vision</a>
+		        <a href="15633655285542.html">卡方检验</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15596470753558.html">TensorFlow</a>
+		        <a href="15632757602829.html">3. 假设检验的power</a>
 		      </li>
 	     
 	  
 	      
 		      <li class="post">
-		        <a href="15594599843014.html">估计的置信度</a>
+		        <a href="15630063899159.html">python自然语言处理学习笔记——1</a>
 		      </li>
 	     
 	  
