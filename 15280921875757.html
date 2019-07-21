@@ -1,0 +1,417 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>
+    
+  leetcode - 学习笔记
+  
+
+  </title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href="asset/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="atom.xml" rel="alternate" title="学习笔记" type="application/atom+xml">
+  <script src="asset/js/modernizr-2.0.js"></script>
+  <script src="asset/js/jquery.min.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/solarized_light.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <style type="text/css">
+  .cat-children-p{ padding: 6px 0px;}
+  .hljs{background: none;}
+  </style>
+  <script type="text/javascript">
+  var isAddSildbar = true;
+  </script>
+  <script src="asset/js/octopress.js" type="text/javascript"></script>
+</head>
+<script type="text/javascript">
+//链接新开窗口
+function addBlankTargetForLinks () {
+  $('a[href^="http"]').each(function(){
+      $(this).attr('target', '_blank');
+  });
+}
+$(document).ready(function(event) {
+  addBlankTargetForLinks();
+});
+</script>
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="index.html">学习笔记</a></h1>
+  
+    <h2></h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+
+  <li id=""><a target="self" href="index.html">Home</a></li>
+
+  <li id=""><a target="_self" href="archives.html">Archives</a></li>
+
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content"> 
+<div>
+	<article class="hentry" role="article">
+	<header>
+			  	<h1 class="entry-title">leetcode</h1>
+				<p class="meta"><time datetime="2018-06-04T14:03:07+08:00" pubdate data-updated="true">2018/6/4</time></p>
+			 </header>
+		  	<div class="entry-content">
+			  	<h2 id="toc_0">数组</h2>
+
+<pre><code># 有效的数独
+class Solution(object):
+    
+   def isValidSudoku(self, board):
+        &quot;&quot;&quot;
+        :type board: List[List[str]]
+        :rtype: bool
+        &quot;&quot;&quot;
+        &quot;&quot;&quot;
+        把每一个9格子都拿出来，9+9+9=27个，比较麻烦；
+        直接扫描每一个点，看其是否在所在的行、列、单元格
+        &quot;&quot;&quot;
+        &#39;&#39;&#39;
+        #### 这种写法是错误的，row_list[4].append(5),结果所有的都append(5)了
+        row_list = 9 * [[]]
+        col_list = 9 * [[]]
+        area_list = 9 * [[]]
+        &#39;&#39;&#39;
+        row_list = [[] for i in range(9)]
+        col_list = [[] for i in range(9)]
+        area_list = [[] for i in range(9)]
+        
+        for i in range(9):
+            for j in range(9):
+                area_id = i/3*3 + j/3
+                item = board[i][j]
+                if item != &#39;.&#39;:
+                    if item in row_list[i] or item in col_list[j] or item in area_list[area_id]:
+                        return False
+                    else:
+                        row_list[i].append(item)
+                        col_list[j].append(item)
+                        area_list[area_id].append(item)
+        return True
+                
+        
+        
+</code></pre>
+
+<h2 id="toc_1">字符</h2>
+
+<p>Q1:<br/>
+尝试修改string的值（导致“ TypeError: ‘str’ object does not support item assignment”）</p>
+
+<p><strong>string是一种不可变的数据类型</strong>，该错误发生在如下代码中：</p>
+
+<pre><code>spam = &#39;I have a pet cat.&#39;
+spam[13] = &#39;r&#39;
+print(spam)
+</code></pre>
+
+<p>而你实际想要这样做：</p>
+
+<pre><code>spam = &#39;I have a pet cat.&#39;
+spam = spam[:13] + &#39;r&#39; + spam[14:]
+print(spam)
+</code></pre>
+
+<p>Q1:字符反转</p>
+
+<pre><code>def string_reverse1(string):  
+    return string[::-1]  
+  
+def string_reverse2(string):  
+    t = list(string)  
+    l = len(t)  
+    for i,j in zip(range(l-1, 0, -1), range(l//2)):  
+        t[i], t[j] = t[j], t[i]  
+    return &quot;&quot;.join(t)  
+  
+def string_reverse3(string):  
+    if len(string) &lt;= 1:  
+        return string  
+    return string_reverse3(string[1:]) + string[0]
+      
+ ```
+ 
+
+
+str为字符串 
+str.isalnum() 所有字符都是数字或者字母 
+str.isalpha() 所有字符都是字母 
+str.isdigit() 所有字符都是数字 
+str.islower() 所有字符都是小写 
+str.isupper() 所有字符都是大写 
+str.istitle() 所有单词都是首字母大写，像标题 
+str.isspace() 所有字符都是空白字符、\t、\n、\r
+
+</code></pre>
+
+			</div>
+
+		
+	  
+		<footer>
+		 <p class="meta">
+
+			<strong>Categories:</strong>&nbsp; 
+			<span class="categories">
+			
+			    <a class='category' href='10%20leetcode.html'>10 leetcode</a>&nbsp;
+			 
+			</span>
+		    </p>
+		    <p class="meta">
+		      
+		 </p>
+	    
+		<div class="sharing">
+		  
+          
+
+          
+
+		</div>
+
+	    <p class="meta">
+	    
+	        <a class="basic-alignment left" href="15281726452497.html" 
+	        title="Previous Post: 排序">&laquo; 排序</a>
+	    
+	    
+	        <a class="basic-alignment right" href="15275150216357.html" 
+	        title="Next Post: boosting">boosting &raquo;</a>
+	    
+	    </p>
+	  </footer>
+	</article>
+</div>
+ <aside class="sidebar"> 
+
+	<section>
+	  <h1>Categories</h1>
+	  <ul id="recent_posts">
+	  
+	      <li class="post">
+	        <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单&nbsp;(4)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="1%20Tools.html"><strong>1 Tools&nbsp;(33)</strong></a>
+	         <p class="cat-children-p"> 
+	        
+	        	<a href="%E9%85%B7%E7%82%AB%E7%A5%9E%E5%99%A8.html">酷炫神器&nbsp;(12)</a>&nbsp;&nbsp;
+	        
+	        	<a href="PaddlePaddle.html">PaddlePaddle&nbsp;(3)</a>&nbsp;&nbsp;
+	        
+	        	<a href="spark.html">spark&nbsp;(12)</a>&nbsp;&nbsp;
+	        
+	        	<a href="tensorflow.html">tensorflow&nbsp;(2)</a>&nbsp;&nbsp;
+	        
+	        	<a href="SQL.html">SQL&nbsp;(1)</a>&nbsp;&nbsp;
+	        
+	         </p> 
+	      </li>
+	  
+	      <li class="post">
+	        <a href="2%20Get%20Data.html"><strong>2 Get Data&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html"><strong>3 数据可视化&nbsp;(8)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(9)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习&nbsp;(23)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统&nbsp;(3)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="6%20%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86.html"><strong>6 图像处理&nbsp;(4)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="6%20%E6%90%9C%E7%B4%A2.html"><strong>6 搜索&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="6%20nlp.html"><strong>6 nlp&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(12)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="8%20Ai%E5%BA%94%E7%94%A8.html"><strong>8 Ai应用&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="10%20leetcode.html"><strong>10 leetcode&nbsp;(5)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="%E8%AE%B8%E5%BC%8F%E4%BC%9F-%E6%9E%B6%E6%9E%84%E8%AF%BE.html"><strong>许式伟-架构课&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	   
+	  </ul>
+	</section>
+	<section>
+	  <h1>Recent Posts</h1>
+	  <ul id="recent_posts">
+	  
+	      
+		      <li class="post">
+		        <a href="15636927966003.html">随机数</a>
+		      </li>
+	     
+	  
+	      
+		      <li class="post">
+		        <a href="15633781017095.html"></a>
+		      </li>
+	     
+	  
+	      
+		      <li class="post">
+		        <a href="15633691538884.html">3. 样本量的确定？</a>
+		      </li>
+	     
+	  
+	      
+		      <li class="post">
+		        <a href="15633655285542.html">卡方检验</a>
+		      </li>
+	     
+	  
+	      
+		      <li class="post">
+		        <a href="15632757602829.html">3. 假设检验的power</a>
+		      </li>
+	     
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	   
+	  </ul>
+	</section>
+	
+</aside> </div></div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 -  -
+  <span class="credit">Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a> &nbsp;&nbsp; Theme by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+
+  
+    
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+</body>
+</html>

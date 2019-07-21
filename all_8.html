@@ -82,6 +82,23 @@ $(document).ready(function(event) {
 
 	<article>
 		 <header>
+		  	<h1 class="entry-title"><a href="15383189964272.html">https://nteract.io</a></h1>
+			<p class="meta"><time datetime="2018-09-30T22:49:56+08:00" 
+			pubdate data-updated="true">2018/9/30</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<p>直接双击打开.ipynb的文件</p>
+
+
+		</div>
+
+		
+
+	</article>
+ 
+	<article>
+		 <header>
 		  	<h1 class="entry-title"><a href="15382821285011.html">3.1 特征处理—— 特征选择</a></h1>
 			<p class="meta"><time datetime="2018-09-30T12:35:28+08:00" 
 			pubdate data-updated="true">2018/9/30</time></p>
@@ -247,142 +264,6 @@ out
 		
 
 	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15350244372147.html">4.1 回归模型</a></h1>
-			<p class="meta"><time datetime="2018-08-23T19:40:37+08:00" 
-			pubdate data-updated="true">2018/8/23</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p>进入统计机器学习大门，最基础的从回归分析说起。</p>
-
-<h2 id="toc_0">1.回归分析</h2>
-
-<p>机器学习从最简单的回归分析说起，这次从最小二乘的几何意义角度去看回归分析。</p>
-
-<p>\[Y = X’B\]<br/>
-我们知道最终估计的满足 \((y-X\hat\beta)^TX=0\)。即最优估计是在空间上的正交投影</p>
-
-<p><img src="media/15350244372147/15350246581231.jpg" alt=""/><br/>
-统计中的一些基本概念：</p>
-
-<ul>
-<li>t 检验</li>
-<li>F 检验</li>
-<li>p value</li>
-<li>多重共线性</li>
-<li></li>
-</ul>
-
-<h2 id="toc_1">2.正则化处理</h2>
-
-<p>训练数据是有限的时候，总可以通过增加参数的方法提高模型复杂度，降低训练误差，但是其泛化能力不好。正则化即通过调整参数的取值，来平衡<strong>偏差</strong>和<strong>方差</strong>的关系。</p>
-
-<p>线性回归中，最直接的方法就行在loss function中添加正则化项。一般形式如下：</p>
-
-<p>\[E(w) = \sum [f(x_i, w) - y_i]^2 + \lambda g(||w||_p)\]</p>
-
-<ul>
-<li>当取一范数时，即为lasso；</li>
-<li>二范数：岭回归</li>
-<li>一范数和二范数组合：弹性网络。  \(a||w||^2_2 + (1-a)||w||_1\)</li>
-</ul>
-
-<p>一范数和二范数的几何意义区别如下(这里就不解释了)：</p>
-
-<ul>
-<li>lasso会将特征衰减到0</li>
-<li>岭回归大量特征系数都比较小</li>
-<li>弹性网络结合了两种方法的优点</li>
-</ul>
-
-<p><img src="media/15350244372147/15350256600383.jpg" alt=""/></p>
-
-<blockquote>
-<p>从概率不同学派的角度来看上面的问题。<br/>
-正则化的方式，是从频率学派角度来看；而贝叶斯学派视角来看，正则化其实就是引入了关于参数的先验信息。</p>
-</blockquote>
-
-<p>贝叶斯学派是假定参数服从某种分布，然后根据其分布利用积分的方法将其消除掉。这一过程叫<strong>边际化</strong>。边际化的过程其实恰好是正则化/泛化的过程。</p>
-
-<p>可以证明，岭回归是w满足正态分布，lasso是当w满足拉普拉斯分布时候通过最大后验概率得到的估计结果。</p>
-
-<blockquote>
-<p>code</p>
-</blockquote>
-
-<pre><code>import numpy as np # 快速操作结构数组的工具
-import matplotlib.pyplot as plt  # 可视化绘制
-from sklearn.linear_model import Lasso,LassoCV,LassoLarsCV   # Lasso回归,LassoCV交叉验证实现alpha的选取，LassoLarsCV基于最小角回归交叉验证实现alpha的选取
-
-# ========Lasso回归========
-model = Lasso(alpha=0.01)  # 调节alpha可以实现对拟合的程度
-# model = LassoCV()  # LassoCV自动调节alpha可以实现选择最佳的alpha。
-# model = LassoLarsCV()  # LassoLarsCV自动调节alpha可以实现选择最佳的alpha
-model.fit(X, y)   # 线性回归建模
-print(&#39;系数矩阵:\n&#39;,model.coef_)
-print(&#39;线性回归模型:\n&#39;,model)
-# print(&#39;最佳的alpha：&#39;,model.alpha_)  # 只有在使用LassoCV、LassoLarsCV时才有效
-# 使用模型预测
-predicted = model.predict(X)
-
-</code></pre>
-
-<h2 id="toc_2">3.广义线性模型</h2>
-
-<p>广义线性模型可以看做一般线性模型的推广，既然说他是推广，说明有一些问题是传统的线性模型没法解决的。</p>
-
-<p>广义线性模型中y的密度函数形式是基于指数分布族的\[p(y;\theta)=b(y)exp[\theta&#39;T(y)+a(\theta)]\]<br/>
-其中\(T(y)\)是一个充分统计量，通常可以等于\(y\)。 常见的正态分布、指数分布、二项分布、泊松分布都属于指数分布族，都可以转为这种形式。</p>
-
-<p>介绍一个常用的广义线性模型：</p>
-
-<p>xxx</p>
-
-<h2 id="toc_3">4.基函数扩展：属性的非线性化</h2>
-
-<p>线性模型的表达能力有限，前面广义线性模型的思路是将因变量y做了一个非线性映射。而从另一个角度，可以将解释变量变为非线性的，即<br/>
-\[y=\beta_0+\beta_1x_1 + ...+\beta_nx_n\]<br/>
-可以扩展为<strong>基函数扩展模型</strong><br/>
-\[y=\beta_0+\beta_1f(x_1) + ...+\beta_nf(x_n)\]</p>
-
-<p>比如常见的多项式回归\[y=\beta_0+\beta_1 x + ...+\beta_n x^n\]</p>
-
-<p>多项式回归会存在一些问题：</p>
-
-<ul>
-<li>\(x\)和\(x^k\)之间是相关的，不太好解释清楚每个变量的贡献程度</li>
-<li>会出现过拟合的情况</li>
-</ul>
-
-<p><strong>多元自适应回归样条MARS</strong></p>
-
-<ul>
-<li>多项式整体是线性，局部非非线性</li>
-<li>MARS: 整体是非线性，局部是线性(分段函数)</li>
-</ul>
-
-<p>样条函数，需要满足一些最基本的一些条件</p>
-
-<ul>
-<li>在knot节点处满足函数的连续性</li>
-<li>一阶导数连续，二阶导数连续，则称为三次样条</li>
-</ul>
-
-<p>平滑样条</p>
-
-<p>\[E=\sum_{i=1}^n [y_i-g(x_i)]^2 +\lambda\int g&#39;&#39;(t)^2 \]</p>
-
-<p>code: <code>patsy</code></p>
-
-
-		</div>
-
-		
-
-	</article>
   
 	<div class="pagination">
 	 <a class="prev" href="all_9.html">&larr; Older</a> 
@@ -492,6 +373,13 @@ predicted = model.predict(X)
 	      </li>
 	  
 	      <li class="post">
+	        <a href="10%20leetcode.html"><strong>10 leetcode&nbsp;(5)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
 	        <a href="%E8%AE%B8%E5%BC%8F%E4%BC%9F-%E6%9E%B6%E6%9E%84%E8%AF%BE.html"><strong>许式伟-架构课&nbsp;(1)</strong></a>
 	        
 	        
@@ -503,6 +391,12 @@ predicted = model.predict(X)
 	<section>
 	  <h1>Recent Posts</h1>
 	  <ul id="recent_posts">
+	  
+	      
+		      <li class="post">
+		        <a href="15636927966003.html">随机数</a>
+		      </li>
+	     
 	  
 	      
 		      <li class="post">
@@ -525,12 +419,6 @@ predicted = model.predict(X)
 	      
 		      <li class="post">
 		        <a href="15632757602829.html">3. 假设检验的power</a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="15630063899159.html">python自然语言处理学习笔记——1</a>
 		      </li>
 	     
 	  

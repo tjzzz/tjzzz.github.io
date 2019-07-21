@@ -82,6 +82,91 @@ $(document).ready(function(event) {
 
 	<article>
 		 <header>
+		  	<h1 class="entry-title"><a href="15340577552786.html">face_recgnization</a></h1>
+			<p class="meta"><time datetime="2018-08-12T15:09:15+08:00" 
+			pubdate data-updated="true">2018/8/12</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<p>github<br/>
+<a href="https://github.com/ageitgey/face_recognition">https://github.com/ageitgey/face_recognition</a></p>
+
+<h2 id="toc_0">1. 安装</h2>
+
+<p>文档： <a href="https://zhuanlan.zhihu.com/p/28271869">https://zhuanlan.zhihu.com/p/28271869</a></p>
+
+<pre><code>pip install face_recognition
+</code></pre>
+
+<p>直接安装会报错，安装face_recognition这个之前需要先安装编译dlib</p>
+
+<pre><code>brew install boost
+brew install boost-python --with-python3
+
+# install dlib
+git clone https://github.com/davisking/dlib.git
+cd dlib
+mkdir build; cd build; cmake .. -DDLIB_USE_CUDA=0 -DUSE_AVX_INSTRUCTIONS=1; cmake --build 
+
+cd ..
+python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
+</code></pre>
+
+<p>If there is no cmake on your mac, you can use  <code>brew install cmake</code>. After all these have been done, run</p>
+
+<pre><code>pip install face_recognition
+</code></pre>
+
+<h2 id="toc_1">2.usage</h2>
+
+<p>face_recognition有两种使用方式，命令行方式和python包方式</p>
+
+<p>(1) 命令行方式</p>
+
+<p>(2) python 包<br/>
+<a href="https://face-recognition.readthedocs.io/en/latest/face_recognition.html#module-face_recognition.api">https://face-recognition.readthedocs.io/en/latest/face_recognition.html#module-face_recognition.api</a></p>
+
+<p></p>
+
+<h2 id="toc_2">参考资料</h2>
+
+<p><a href="https://zhuanlan.zhihu.com/p/28271869">https://zhuanlan.zhihu.com/p/28271869</a></p>
+
+<p><a href="https://medium.com/@ageitgey">https://medium.com/@ageitgey</a></p>
+
+<hr/>
+
+<p><a href="https://www.jianshu.com/p/281aa6a3823a">https://www.jianshu.com/p/281aa6a3823a</a></p>
+
+<p>一个案例<br/>
+<a href="https://www.jianshu.com/p/38ca6daf6b40">https://www.jianshu.com/p/38ca6daf6b40</a><br/>
+<a href="http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html">http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html</a></p>
+
+<p>tf案例<br/>
+<a href="https://blog.csdn.net/u010016927/article/details/75722416">https://blog.csdn.net/u010016927/article/details/75722416</a></p>
+
+<p>knn<br/>
+<a href="https://www.leiphone.com/news/201707/gIbNsPtWk460m5vj.html">https://www.leiphone.com/news/201707/gIbNsPtWk460m5vj.html</a></p>
+
+<p><a href="https://blog.csdn.net/Mbx8X9u/article/details/79124840">https://blog.csdn.net/Mbx8X9u/article/details/79124840</a></p>
+
+<p><a href="https://www.ctolib.com/topics-101544.html">https://www.ctolib.com/topics-101544.html</a></p>
+
+<p><a href="https://www.oschina.net/code/snippet_2558914_54339">https://www.oschina.net/code/snippet_2558914_54339</a></p>
+
+<h2 id="toc_3">new</h2>
+
+<p><a href="https://www.leiphone.com/news/201704/rYdpAvh4SvgVPpRQ.html">https://www.leiphone.com/news/201704/rYdpAvh4SvgVPpRQ.html</a></p>
+
+
+		</div>
+
+		
+
+	</article>
+ 
+	<article>
+		 <header>
 		  	<h1 class="entry-title"><a href="15334844213158.html">二、起步篇——数据预处理[方法论]</a></h1>
 			<p class="meta"><time datetime="2018-08-05T23:53:41+08:00" 
 			pubdate data-updated="true">2018/8/5</time></p>
@@ -315,43 +400,42 @@ sklearn中常用的包</p>
  
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15295168951213.html">[2018-06-25]学习1</a></h1>
-			<p class="meta"><time datetime="2018-06-21T01:48:15+08:00" 
-			pubdate data-updated="true">2018/6/21</time></p>
+		  	<h1 class="entry-title"><a href="15300282836460.html">初级-字符</a></h1>
+			<p class="meta"><time datetime="2018-06-26T23:51:23+08:00" 
+			pubdate data-updated="true">2018/6/26</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<p>参考资源list<br/>
-2018年06月25日</p>
+		  	<p>给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。<br/>
+说明：本题中，我们将空字符串定义为有效的回文串。<br/>
+示例 1:</p>
 
-<p><a href="https://www.tensorflow.org/get_started/get_started_for_beginners">https://www.tensorflow.org/get_started/get_started_for_beginners</a></p>
+<p>输入: &quot;A man, a plan, a canal: Panama&quot;<br/>
+输出: true<br/>
+示例 2:</p>
 
-<p><a href="http://playground.tensorflow.org">http://playground.tensorflow.org</a></p>
+<p>输入: &quot;race a car&quot;<br/>
+输出: false</p>
 
-<p><a href="https://github.com/aymericdamien/TensorFlow-Examples">https://github.com/aymericdamien/TensorFlow-Examples</a></p>
+<pre><code>class Solution(object):
+    def isPalindrome(self, s):
+        &quot;&quot;&quot;
+        :type s: str
+        :rtype: bool
+        &quot;&quot;&quot;
+        clean_list = []
+        for i in range(len(s)):
+            if s[i].isalpha() or s[i].isdigit():
+                clean_list.append(s[i].lower())
+        #
+        n = len(clean_list)
+        for j in range(n/2):
+            if clean_list[j]!= clean_list[n-1-j]:
+                return False
+        return True
+        
+</code></pre>
 
-<p>中文社区<br/>
-<a href="http://www.tensorfly.cn/">http://www.tensorfly.cn/</a><br/>
-<a href="https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/1-2-install/">https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/1-2-install/</a></p>
-
-<h2 id="toc_0">1.为什么</h2>
-
-
-		</div>
-
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15275150216357.html">boosting</a></h1>
-			<p class="meta"><time datetime="2018-05-28T21:43:41+08:00" 
-			pubdate data-updated="true">2018/5/28</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	
 
 		</div>
 
@@ -467,6 +551,13 @@ sklearn中常用的包</p>
 	      </li>
 	  
 	      <li class="post">
+	        <a href="10%20leetcode.html"><strong>10 leetcode&nbsp;(5)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
 	        <a href="%E8%AE%B8%E5%BC%8F%E4%BC%9F-%E6%9E%B6%E6%9E%84%E8%AF%BE.html"><strong>许式伟-架构课&nbsp;(1)</strong></a>
 	        
 	        
@@ -478,6 +569,12 @@ sklearn中常用的包</p>
 	<section>
 	  <h1>Recent Posts</h1>
 	  <ul id="recent_posts">
+	  
+	      
+		      <li class="post">
+		        <a href="15636927966003.html">随机数</a>
+		      </li>
+	     
 	  
 	      
 		      <li class="post">
@@ -500,12 +597,6 @@ sklearn中常用的包</p>
 	      
 		      <li class="post">
 		        <a href="15632757602829.html">3. 假设检验的power</a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="15630063899159.html">python自然语言处理学习笔记——1</a>
 		      </li>
 	     
 	  

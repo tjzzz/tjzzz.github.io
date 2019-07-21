@@ -82,6 +82,94 @@ $(document).ready(function(event) {
 
 	<article>
 		 <header>
+		  	<h1 class="entry-title"><a href="15596470753558.html">TensorFlow</a></h1>
+			<p class="meta"><time datetime="2019-06-04T19:17:55+08:00" 
+			pubdate data-updated="true">2019/6/4</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<p>入门教程</p>
+
+<p><a href="https://github.com/machinelearningmindset/TensorFlow-Course">https://github.com/machinelearningmindset/TensorFlow-Course</a></p>
+
+<h2 id="toc_0">1.week1</h2>
+
+<p>传统编程与深度学习编程的区别</p>
+
+<p><img src="media/15596470753558/15596480786004.jpg" alt=""/></p>
+
+<p>安装tensorflow<br/>
+<a href="https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/1-2-install/">https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/1-2-install/</a></p>
+
+<pre><code># 安装CPU/GPU版本。需pip至少8.1版本
+pip install tensorflow
+pip install tensorflow-gpu
+</code></pre>
+
+<p>中间有报警<br/>
+<img src="media/15295097623789/15295102306245.jpg" alt=""/></p>
+
+<p>最后, 如果你需要升级 Tensorflow 的版本, 推荐的方式是：根据你的 python 版本, 在 terminal 中删除原有的版本,然后再装一遍</p>
+
+<pre><code># 如果你是 Python 2, 请复制下面
+pip uninstall tensorflow
+# 如果你是 Python 3, 请复制下面
+pip3 uninstall tensorflow
+</code></pre>
+
+<p>安装成功后</p>
+
+<pre><code>&gt; import tensorflow as tf
+</code></pre>
+
+<p>报错：<img src="media/15295097623789/15295150578030.jpg" alt=""/></p>
+
+<p>解决；<a href="http://www.laomn.com/article/item/60445">http://www.laomn.com/article/item/60445</a><br/>
+<a href="https://www.cnblogs.com/atomicbomb/p/7028917.html">https://www.cnblogs.com/atomicbomb/p/7028917.html</a><br/>
+<a href="https://blog.csdn.net/ChenVast/article/details/79103288">https://blog.csdn.net/ChenVast/article/details/79103288</a></p>
+
+<p>mac上安装正常，没有问题</p>
+
+<h2 id="toc_1">week1 hello word</h2>
+
+<p>Original file is located at<br/>
+    <a href="https://colab.research.google.com/github/lmoroney/dlaicourse/blob/master/Exercises/Exercise%201%20-%20House%20Prices/Exercise_1_House_Prices_Question.ipynb">https://colab.research.google.com/github/lmoroney/dlaicourse/blob/master/Exercises/Exercise%201%20-%20House%20Prices/Exercise_1_House_Prices_Question.ipynb</a></p>
+
+<p>In this exercise you&#39;ll try to build a neural network that predicts the price of a house according to a simple formula.</p>
+
+<p>So, imagine if house pricing was as easy as a house costs 50k + 50k per bedroom, so that a 1 bedroom house costs 100k, a 2 bedroom house costs 150k etc.</p>
+
+<p>How would you create a neural network that learns this relationship so that it would predict a 7 bedroom house as costing close to 400k etc.</p>
+
+<p>Hint: Your network might work better if you scale the house price down. You don&#39;t have to give the answer 400...it might be better to create something that predicts the number 4, and then your answer is in the &#39;hundreds of thousands&#39; etc.</p>
+
+<p>这里先以一个简单的”hello word“例子来介绍，假设我们想学习一个简单的线性关系<br/>
+\[y=50x+50 \]</p>
+
+<p>我们已知是输入数据x，以及答案Y，想知道的其实是背后x和y之间的关系(rule)。那么机器要怎么学习这种关系呢？</p>
+
+<pre><code># 线性回归例子
+import tensorflow as tf
+import numpy as np
+from tensorflow import keras
+
+model = tf.keras.Sequential([keras.layers.Dense(units=1, input_shape=[1])])
+model.compile(optimizer=&#39;sgd&#39;, loss=&#39;mean_squared_error&#39;)
+xs = np.array([1,2,3,4,5,6,7], dtype=float)
+ys = np.array([100, 150, 200,250, 300,350, 400], dtype=float)
+model.fit(xs, ys, epochs=500)
+print(model.predict([7.0]))
+</code></pre>
+
+
+		</div>
+
+		
+
+	</article>
+ 
+	<article>
+		 <header>
 		  	<h1 class="entry-title"><a href="15594599843014.html">1 参数估计</a></h1>
 			<p class="meta"><time datetime="2019-06-02T15:19:44+08:00" 
 			pubdate data-updated="true">2019/6/2</time></p>
@@ -277,41 +365,6 @@ Collecting bokeh<br/>
 		
 
 	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15552550960371.html">目录</a></h1>
-			<p class="meta"><time datetime="2019-04-14T23:18:16+08:00" 
-			pubdate data-updated="true">2019/4/14</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<ol>
-<li><p>基础工具</p>
-
-<ul>
-<li>markdown，git，R/python，MR,SQL</li>
-<li>linux</li>
-</ul></li>
-<li><p>获取数据</p></li>
-<li><p>数据清洗+ 探索性分析</p>
-
-<ul>
-<li>数据可视化</li>
-</ul></li>
-<li><p>统计推断</p></li>
-<li><p>机器学习</p></li>
-<li><p>深度学习</p></li>
-<li><p>数据产品开发</p></li>
-<li><p>平台架构</p></li>
-</ol>
-
-
-		</div>
-
-		
-
-	</article>
   
 	<div class="pagination">
 	 <a class="prev" href="all_3.html">&larr; Older</a> 
@@ -421,6 +474,13 @@ Collecting bokeh<br/>
 	      </li>
 	  
 	      <li class="post">
+	        <a href="10%20leetcode.html"><strong>10 leetcode&nbsp;(5)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
 	        <a href="%E8%AE%B8%E5%BC%8F%E4%BC%9F-%E6%9E%B6%E6%9E%84%E8%AF%BE.html"><strong>许式伟-架构课&nbsp;(1)</strong></a>
 	        
 	        
@@ -432,6 +492,12 @@ Collecting bokeh<br/>
 	<section>
 	  <h1>Recent Posts</h1>
 	  <ul id="recent_posts">
+	  
+	      
+		      <li class="post">
+		        <a href="15636927966003.html">随机数</a>
+		      </li>
+	     
 	  
 	      
 		      <li class="post">
@@ -454,12 +520,6 @@ Collecting bokeh<br/>
 	      
 		      <li class="post">
 		        <a href="15632757602829.html">3. 假设检验的power</a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="15630063899159.html">python自然语言处理学习笔记——1</a>
 		      </li>
 	     
 	  

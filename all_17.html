@@ -82,28 +82,79 @@ $(document).ready(function(event) {
 
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15082571023160.html">第五章 机器学习</a></h1>
-			<p class="meta"><time datetime="2017-10-18T00:18:22+08:00" 
-			pubdate data-updated="true">2017/10/18</time></p>
+		  	<h1 class="entry-title"><a href="15113301027700.html">0.准备工作</a></h1>
+			<p class="meta"><time datetime="2017-11-22T13:55:02+08:00" 
+			pubdate data-updated="true">2017/11/22</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<p>这部分主要是补充了机器学习的一席基础知识点，这里先略过。后期再进行相应的补充。具体包括</p>
+		  	<p>首先是下载安装spark <a href="http://spark.apache.org/downloads.html">http://spark.apache.org/downloads.html</a></p>
+
+<p>这里附上mac上的简单安装步骤<a href="https://www.jianshu.com/p/e9345328a817">https://www.jianshu.com/p/e9345328a817</a></p>
+
+<h2 id="toc_0">1.安装</h2>
 
 <ul>
-<li><p>容量/过拟合/欠拟合</p></li>
-<li><p>估计/偏差/方差</p></li>
-<li><p>最大似然估计</p></li>
-<li><p>贝叶斯统计</p></li>
-<li><p>监督学习算法</p></li>
-<li><p>无监督学习算法</p>
+<li><p>客户端拉取地址：</p>
+
+<p>wget <a href="ftp://cp01-ubskce25.epc.baidu.com/home/work/spark-client-tianqi-2.1.tar.gz">ftp://cp01-ubskce25.epc.baidu.com/home/work/spark-client-tianqi-2.1.tar.gz</a>  </p></li>
+<li><p>百度spark wiki地址<br/>
+<a href="http://wiki.baidu.com/display/SPRK/Baidu+Spark">http://wiki.baidu.com/display/SPRK/Baidu+Spark</a></p></li>
+<li><p>提交任务命令示例<br/>
+/home/work/spark-client-tianqi-2.1/bin/spark-submit --master yarn --deploy-mode client --queue spark-ubs-kce ./test.py</p></li>
+<li><p>任务进度查看页面<br/>
+<a href="http://yq01-tianqi-normandy.dmop.baidu.com:8033/queue.html?queue=spark-ubs-kce&amp;physical=tianqi-yarn_phy">http://yq01-tianqi-normandy.dmop.baidu.com:8033/queue.html?queue=spark-ubs-kce&amp;physical=tianqi-yarn_phy</a></p></li>
+</ul>
+
+<p>@华东26机器上安装的<br/>
+ssh <a href="mailto:work@cp01-ubskce26.epc.baidu.com">work@cp01-ubskce26.epc.baidu.com</a><br/>
+/home/work/spark-client-tianqi-2.1</p>
+
+<p>一个demo /home/work/spark-starter2/python</p>
+
+<h2 id="toc_1">2.测试 wordcount</h2>
+
+<p>home/work/spark-client-tianqi-2.1/bin/spark-submit --master yarn --deploy-mode client --queue spark-ubs-kce WordCount.py</p>
+
+<h2 id="toc_2">3. 文档教程doc</h2>
 
 <ul>
-<li>PCA</li>
-<li>聚类</li>
+<li><p>中文翻译 <a href="http://spark.apachecn.org/docs/cn/2.2.0/sql-programming-guide.html">http://spark.apachecn.org/docs/cn/2.2.0/sql-programming-guide.html</a></p></li>
+<li><p>官方文档示例</p>
+
+<ul>
+<li><a href="http://spark.apache.org/docs/latest/ml-clustering.html#k-means">http://spark.apache.org/docs/latest/ml-clustering.html#k-means</a></li>
+<li><a href="http://spark.apache.org/docs/latest/mllib-clustering.html">http://spark.apache.org/docs/latest/mllib-clustering.html</a></li>
 </ul></li>
-<li><p>梯度下降</p></li>
+<li><p><strong>【推荐】github 有demo代码，还有测试数据</strong><br/>
+<a href="https://github.com/apache/spark/blob/master/examples/src/main/python/ml/kmeans_example.py">https://github.com/apache/spark/blob/master/examples/src/main/python/ml/kmeans_example.py</a></p>
+
+<pre><code>https://tracholar.github.io/wiki/#tools
+</code></pre>
+
+<p>spark上有ml和mllib两个库，每个对应的应用方法不太一样。 ML的API是面向Dataset的（Dataframe是Dataset的子集，也就是Dataset[Row]）， mllib是面对RDD的。</p></li>
 </ul>
+
+<h2 id="toc_3">4. 学习</h2>
+
+<p>脚本地址：18机器   git clone <a href="https://github.com/apache/spark.git">https://github.com/apache/spark.git</a></p>
+
+<p><img src="media/15113301027700/15113617493859.jpg" alt=""/></p>
+
+<p><strong>命令行方式</strong></p>
+
+<p><img src="media/15113301027700/15124588805508.jpg" alt=""/></p>
+
+<p>Demo1： 测试word count，数据存在集群上的</p>
+
+<pre><code>~/zhenzhen/spark_study $  pyspark WordCount.py
+</code></pre>
+
+<p>Demo2： 测试mllib下的kmeans方法</p>
+
+<pre><code> # pyspark这个默认是启动的集群任务，之前测试的本地数据会出错，脚本中需把输入目录改成集群路径
+  ~/zhenzhen/spark_study $  pyspark kmeans.py  &gt; log.test
+</code></pre>
 
 
 		</div>
@@ -114,59 +165,36 @@ $(document).ready(function(event) {
  
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15080580137304.html">第四章 数值计算</a></h1>
-			<p class="meta"><time datetime="2017-10-15T17:00:13+08:00" 
-			pubdate data-updated="true">2017/10/15</time></p>
+		  	<h1 class="entry-title"><a href="15095119537608.html">R绘图散点覆盖问题</a></h1>
+			<p class="meta"><time datetime="2017-11-01T12:52:33+08:00" 
+			pubdate data-updated="true">2017/11/1</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<h2 id="toc_0">1.数值精度</h2>
-
-<p>这部分对于了解具体的算法并没影响，但是在进行底层库开发时候经常会遇到，可能会出现<strong>上溢</strong>或者<strong>下溢</strong></p>
-
-<p>（1）病态条件</p>
-
-<p>条件数：表示函数相对于输入的微小变化而变化的快慢程度。<br/>
-比如矩阵求逆运算的条件数=最大和最小特征值的模的比</p>
-
-<h2 id="toc_1">2.优化算法</h2>
-
-<ul>
-<li>梯度下降</li>
-<li>牛顿法</li>
-</ul>
-
-<p>一般把需要最优化的函数称为<strong>目标函数</strong></p>
-
-<p><strong>梯度下降</strong></p>
-
-<p>对于一个多维输入函数f，梯度\(\triangledown_x f(x)\),其在u方向上的<strong>方向导数</strong>，相当于f在u方向上的斜率<br/>
-\(f(x+\alpha u)\)关于\(\alpha\)的导数(在\(\alpha =0\)时取得)</p>
-
-<p>\[\frac{\partial}{\partial \alpha}f(x+\alpha u)=u^T\triangledown_x f(x)\]</p>
-
-<p>为了是f最小，希望找到f下降最快的方向，因此有<br/>
-\[min u^T\triangledown_x f(x)\]<br/>
-u取为单位向量，很明显是在u和f夹角180时候，也就是两个完全相反的时候，下降最快。<br/>
-梯度下降： \(x&#39;=x-\epsilon \triangledown_x f(x)\)</p>
-
-<p><strong>牛顿法</strong></p>
-
-<p>Hessian矩阵，二阶导数<br/>
-<img src="media/15080580137304/15082408605128.jpg" alt=""/></p>
-
-<h2 id="toc_2">3.有限制的约束</h2>
-
-<p>对于有限制的优化，有时候可以将约束条件转化到原始的优化函数中，这里主要介绍一下通用的方法：<strong>KKT方法</strong>(拉格朗日方法的推广，可以非等式约束)</p>
-
-<pre><code>@@@
-http://blog.csdn.net/mr_kktian/article/details/53750424
+		  	<pre><code>ggplot(diamonds, aes(x=carat, y=price))+ geom_point(alpha=.1)
+ggplot(diamonds, aes(x=carat, y=price))+ geom_point(alpha=.01)
+ggplot(diamonds, aes(x=carat, y=price))+ stat_bin2d()
 </code></pre>
 
-<h2 id="toc_3">参考资料</h2>
+<p>当其中的一个或者两个变量为离散型数据时，也会导致覆盖的问题。我们可以使用jitter方法和box的方法。</p>
 
-<p>梯度下降法 扩展阅读： <a href="https://www.jiqizhixin.com/articles/2016-11-21-4">https://www.jiqizhixin.com/articles/2016-11-21-4</a><br/>
-<a href="http://www.cnblogs.com/maybe2030/p/4751804.html">http://www.cnblogs.com/maybe2030/p/4751804.html</a></p>
+<pre><code>ggplot(ChickWeight, aes(x=Time, y=weight))+geom_point()
+ggplot(ChickWeight, aes(x=Time, y=weight))+geom_point(position=&quot;jitter&quot;)
+#position=&quot;jitter&quot;等价于geom_jitter，即下面的方法
+ggplot(ChickWeight, aes(x=Time, y=weight))+geom_point(position=position_jitter(width=.5, height=0))
+ggplot(ChickWeight, aes(x=Time, y=weight))+ geom_boxplot(aes(group=Time))
+</code></pre>
+
+<p><img src="media/15095119537608/15095129558652.jpg" alt=""/></p>
+
+<h1 id="toc_0">绘图中文问题</h1>
+
+<pre><code>
+par(family=&#39;STKaiti&#39;)
+symbols(x,y,circles = r,inches=0.3, bg=&quot;lightblue&quot;,fg=&quot;white&quot;, xlab=&#39;有点比&#39;,xlim=c(0.55, 0.8), ylim = c(0.3, 0.5),ylab=&#39;长点率&#39;)
+
+text(x,y,group,cex=0.8,font=2)
+</code></pre>
 
 
 		</div>
@@ -177,60 +205,105 @@ http://blog.csdn.net/mr_kktian/article/details/53750424
  
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15080561019055.html">第三章 概率与信息论</a></h1>
-			<p class="meta"><time datetime="2017-10-15T16:28:21+08:00" 
-			pubdate data-updated="true">2017/10/15</time></p>
+		  	<h1 class="entry-title"><a href="15090214789463.html">第六章 深度前馈网络</a></h1>
+			<p class="meta"><time datetime="2017-10-26T20:37:58+08:00" 
+			pubdate data-updated="true">2017/10/26</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<p>本章主要是介绍了一些概率论的基础以及常见的分布</p>
+		  	<p>前馈神经网络，也叫做<strong>多层感知机</strong>(MLP),其目标是近似某个函数\(f^*\)。前馈网络定义了一个映射函数\(y=f(x,\theta)\),然后学习参数\(\theta\)的值，从而近似函数\(f^*\)</p>
 
-<h2 id="toc_0">1.常用函数的有用性质</h2>
+<p><strong>前馈</strong></p>
 
-<ul>
-<li>sigmoid 函数</li>
-</ul>
-
-<p>\[\delta(x) = \frac{1}{1+exp(-x)}\]</p>
+<p>因为在模型的输出和模型本身之间没有反馈链接。一些基本术语概念：</p>
 
 <ul>
-<li>softplus函数
-\[log(1+exp(x))\]
-<img src="media/15080561019055/15080571562017.jpg" alt=""/></li>
+<li>输出层，隐藏层，</li>
 </ul>
 
-<p>是\(y=max(0,x)\)的平滑版本</p>
+<h2 id="toc_0">6.1 例子：学习XOR</h2>
 
-<h2 id="toc_1">2.信息论</h2>
+<p>【例】学习异或逻辑，即当两个二进制值中恰好有一个是1时候返回1，其他都返回0.</p>
 
-<p>信息论是应用数学的一个分支，主要研究的是对一个信号包含信息的多少进行量化。<br/>
-<img src="media/15080561019055/15080594230903.jpg" alt=""/></p>
+<p>【解法1】可以考虑按照回归分析的思路，使用均方误差作为损失函数(实际中对于二进制数据建模时不适合用MSE)。\(f(x,w,b)=x^Tw+b\)<br/>
+可以利用矩阵求解方程得到w=0,b=0.5， 线性模型得到的结果是任意一点都为0.5<br/>
+==&gt; 主要问题，该问题其实不是一个线性问题</p>
 
-<p>自信息：定义一个时间X=x的自信息<br/>
-\[I(x) = -log P(x)\]</p>
+<p>【解】另一种思路：<strong>使用一个模型来学习一个不同的特征空间，在这个空间上线性模型能够表示这个问题。</strong><br/>
+<img src="media/15090214789463/15093791249803.jpg" alt=""/></p>
 
-<p>熵：<br/>
-\[-\sum P(x_i) logP(x_i)\]</p>
+<p>构造一个非线性函数\(h\)，一般默认的推荐是<strong>整流线性单元</strong>ReLU:<br/>
+\[g(z)=max(0, z)\]<br/>
+所以整个网络是\(f(x)=w^Tmax(0, w^Tx+c)+b\)</p>
 
-<h3 id="toc_2">KL散度/相对熵</h3>
+<h2 id="toc_1">6.2 基于梯度的学习</h2>
 
-<p>\[KL(P||Q) = -\sum P_i ln(\frac{P_i}{Q_i})=-\sum P_i(ln(P_i)- ln(Q_i))\]</p>
+<p>很多神经网络的非线性导致代价函数变得非凸，所以一般神经网络的训练一般使用迭代的方法。<br/>
+凸优化从任何一种初始参数都会收敛，而用于非凸损失函数的随机梯度下降没有这种收敛的保障，并且对参数的初始值比较敏感。</p>
 
-<p>注意：</p>
+<h3 id="toc_2">代价函数</h3>
+
+<p>多数情况下，对于一个参数模型\(f(y|x,\theta)\)，</p>
 
 <ul>
-<li>KL距离其实并不是严格的距离，不满足对称性以及三角不等式。</li>
+<li>可以简单的使用最大似然原理。即利用训练数据和模型预测之间的<strong>交叉熵</strong>作为代价函数。</li>
+<li>有时候也会出现仅预测在给定x条件下y的某些统计量。</li>
 </ul>
 
-<p>JS距离：<br/>
-\[JS(P1||P2) = \frac{1}{2}KL(P1||(P1+P2)/2)+ \frac{1}{2}KL(P2||(P1+P2)/2)\]</p>
+<p><strong>最大似然学习条件分布</strong></p>
 
-<h3 id="toc_3">交叉熵</h3>
+<p>大多数的神经网络采用最大似然的训练方法。这意味着代价函数就是负的对数似然。它与训练数据</p>
 
-<p>相对熵的第一部分<br/>
-\[KL(P||Q) = -\sum P_i ln(Q_i)\]</p>
+<p>\[J(\theta) = -E log p_{model}(y|x)\]</p>
 
-<h2 id="toc_4">3.结构化概率模型——图模型(graphical model)</h2>
+<p><strong>学习条件统计量</strong></p>
+
+<p>这里好像有个和高统中类似的结论。比如<br/>
+\[f^*=arg min_{f} E_{x,y~p}||y-f(x)||^2\]<br/>
+可以得到\(f^*=E_{y~p(y|x)}(y)\)</p>
+
+<h3 id="toc_3">输出单元</h3>
+
+<p>其实代价函数的选择与输出单元是有一定关系的</p>
+
+<ul>
+<li>高斯输出分布的线性单元</li>
+</ul>
+
+<p>线性输出层一般用来产生高斯分布的均值。</p>
+
+<ul>
+<li>伯努利输出分布的sigmoid单元</li>
+<li>多项分布输出的softmax单元</li>
+</ul>
+
+<p>对于想要表示具有n个离散取值的变量分布时候，一般可以用softmax函数。其是sigmoid函数在多分类问题上的推广。<br/>
+\[softmax(z_j)=\frac{exp(z_i)}{\sum_j exp(z_j)}\]</p>
+
+<h2 id="toc_4">6.3 隐藏单元</h2>
+
+<p>隐藏层单元的选择没有一个固定的指导标准，一般默认选择<strong>整流线性单元</strong></p>
+
+<p><strong>整流线性单元的一些扩展</strong></p>
+
+<p>其扩展形式主要是基于\(z_i&lt;0\)时候使用一个非零的斜率\(\alpha_i\)</p>
+
+<p>绝对值整流、渗漏整流线性单元，参数化整流线性单元。</p>
+
+<p><strong>maxout单元</strong><br/>
+maxout将单元将z划分成k个组，每个组上的取值为其最大值。</p>
+
+<p><strong>sigmoid，tanh</strong></p>
+
+<h2 id="toc_5">6.4网络结构设计</h2>
+
+<p>网络结构设计主要是设计网络的<strong>深度</strong>和每一层的<strong>宽度</strong></p>
+
+<p><strong>1. 万能近似性质</strong></p>
+
+<p>万能近似定力：一个前馈神经网络,如果具有线性输出层和至少一个具有任何一种“挤压”性质的寄货函数的隐藏层。只要给予网络足够数量的隐藏单元，它可以以任意精度来近似任何一个有限维空间到另一个有限维空间的Borel可测函数。</p>
+
+<p>万能定理从理论上说明无论我们想要学习什么函数，都有一个大的MLP可以进行这个。但是我们并不能保证算法能够学习到这个函数</p>
 
 
 		</div>
@@ -241,64 +314,51 @@ http://blog.csdn.net/mr_kktian/article/details/53750424
  
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15080506207071.html">第二章 线性代数</a></h1>
-			<p class="meta"><time datetime="2017-10-15T14:57:00+08:00" 
-			pubdate data-updated="true">2017/10/15</time></p>
+		  	<h1 class="entry-title"><a href="15088219317149.html">paddle 学习</a></h1>
+			<p class="meta"><time datetime="2017-10-24T13:12:11+08:00" 
+			pubdate data-updated="true">2017/10/24</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<p>第二章主要是介绍了线性代数的一些基础知识</p>
-
-<p>这里补充几点吧</p>
-
-<h2 id="toc_0">特征分解</h2>
-
-<p>每个矩阵可以视为多个列向量组成的一个向量空间/或者是一个线性变化(一个矩阵乘以一个向量后相当于是对向量做了一个线性变换)。而矩阵的分解，相当于去提取这个向量空间最重要的特征。</p>
-
-<p>(1)首先是特征值和特征向量<br/>
-若<strong>方阵</strong>A满足 \(Av=\lambda v\),则\(v\)称为矩阵A的特征向量，\(\lambda\)称为对应的特征值。</p>
-
-<p><strong>特征分解</strong><br/>
-\[A=V \Lambda V^{-1}\]<br/>
-V是其特征向量构成的矩阵，\(\Lambda\)是特征值构成的对角矩阵</p>
-
-<p>性质：</p>
-
-<p>(1) 实对称矩阵A都可以分解为\(A=Q\Lambda Q^{-1}\)，Q为正交矩阵</p>
-
-<p>(2)用来计算矩阵的逆。若\(A=Q \Lambda Q^{-1}\)，则\(A^{-1}=Q \Lambda^{-1}Q^{-1}\)</p>
-
-<h2 id="toc_1">奇异值分解</h2>
-
-<p>特征分解对于提取矩阵的特征根是很好的方法，但是他只能针对<strong>方阵</strong>操作。当A不是方阵时候，就需要用到SVD<br/>
-\[A_{n*m}=U_{n*n}\Sigma_{n*m} V^{T}_{m*m}\]</p>
-
-<p>其中，U称为左奇异向量，V称为右奇异向量</p>
-
-<p>\(AA^T=UDV^TVDU^T=UD^2U^T\)<br/>
-\(A^TA=VDU^T UDV^T=VD^2V^T\)<br/>
-即：<br/>
-A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)的特征向量，A的奇异值是\(AA^T\)也是\(A^TA\)的特征之爱的平方根。</p>
-
-<blockquote>
-<p>对比：<br/>
-特征分解是有限制的，比如矩阵必须是方阵</p>
-</blockquote>
-
-<h3 id="toc_2">SVD与PCA的关系</h3>
+		  	<h2 id="toc_0">1.学习资料</h2>
 
 <ul>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 查一下之前多元的变换原理
-</li>
+<li><p>bit视频课程<br/>
+<a href="http://bit.baidu.com/course/datalist/column/117.html">http://bit.baidu.com/course/datalist/column/117.html</a></p></li>
+<li><p>wiki相关<br/>
+<a href="http://wiki.baidu.com/pages/viewpage.action?pageId=327596461">http://wiki.baidu.com/pages/viewpage.action?pageId=327596461</a></p></li>
+<li><p>官网教程<br/>
+<a href="http://book.paddlepaddle.org/index.cn.html">http://book.paddlepaddle.org/index.cn.html</a></p></li>
+<li><p>github<br/>
+<a href="https://github.com/PaddlePaddle/Paddle">https://github.com/PaddlePaddle/Paddle</a></p></li>
 </ul>
 
-<p>PCA的全部工作简单点说，就是对原始的空间中顺序地找一组相互正交的坐标轴，第一个轴是使得方差最大的，第二个轴是在与第一个轴正交的平面中使得方差最大的，第三个轴是在与第1、2个轴正交的平面中方差最大的，这样假设在N维空间中，我们可以找到N个这样的坐标轴，我们取前r个去近似这个空间，这样就从一个N维的空间压缩到r维的空间了，但是我们选择的r个坐标轴能够使得空间的压缩使得数据的损失最小。</p>
+<h2 id="toc_1">2. eg.词向量</h2>
 
-<h3 id="toc_3">SVD与潜在语义检索LSI</h3>
+<p>(1)生成词表文件，根据语料库中词的频次，进行word-id的映射</p>
 
-<h2 id="toc_4">参考资料</h2>
+<p>讲师 github地址<a href="https://github.com/reyoung/ChineseWordVectors">https://github.com/reyoung/ChineseWordVectors</a></p>
 
-<p><a href="http://www.cnblogs.com/LeftNotEasy/archive/2011/01/19/svd-and-applications.html">http://www.cnblogs.com/LeftNotEasy/archive/2011/01/19/svd-and-applications.html</a></p>
+<p>(2) 生成结果之后应用<br/>
+读取tar包</p>
+
+<p>(3) 可视化</p>
+
+<p>pca降维</p>
+
+<h2 id="toc_2">3.MR接口</h2>
+
+<h1 id="toc_3">paddle学习</h1>
+
+<p><a href="http://wiki.baidu.com/pages/viewpage.action?pageId=329462880">http://wiki.baidu.com/pages/viewpage.action?pageId=329462880</a></p>
+
+<p>/home/work/duhuadong/python27-gcc482/bin/python train.py</p>
+
+<p>/home/work/duhuadong/models-develop/text_classification</p>
+
+<p><a href="mailto:work@yq01-ps-feed201705-m120007.yq01.baidu.com">work@yq01-ps-feed201705-m120007.yq01.baidu.com</a></p>
+
+<p>ubskce</p>
 
 
 		</div>
@@ -309,75 +369,15 @@ A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)�
  
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15078740756158.html">paddlepaddle安装</a></h1>
-			<p class="meta"><time datetime="2017-10-13T13:54:35+08:00" 
-			pubdate data-updated="true">2017/10/13</time></p>
+		  	<h1 class="entry-title"><a href="15087625981306.html">Paddle-word2vec</a></h1>
+			<p class="meta"><time datetime="2017-10-23T20:43:18+08:00" 
+			pubdate data-updated="true">2017/10/23</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<p><a href="http://learn.baidu.com/pages/index.html#/video/?courseId=13655&amp;elementId=ec41cf99-5d69-4f17-807b-3b9668d64f75&amp;userId=5879362&amp;groupId=477326&amp;_k=imsxjl">http://learn.baidu.com/pages/index.html#/video/?courseId=13655&amp;elementId=ec41cf99-5d69-4f17-807b-3b9668d64f75&amp;userId=5879362&amp;groupId=477326&amp;_k=imsxjl</a><br/>
-mac安装</p>
+		  	<p><a href="http://book.paddlepaddle.org/04.word2vec/index.cn.html">http://book.paddlepaddle.org/04.word2vec/index.cn.html</a></p>
 
-<p>方法一：pip install paddlepaddle</p>
-
-<p>方法二： docker安装</p>
-
-<h3 id="toc_0">1.安装docker for mac</h3>
-
-<p>下载链接<br/>
-<a href="https://download.docker.com/mac/stable/Docker.dmg">https://download.docker.com/mac/stable/Docker.dmg</a></p>
-
-<pre><code>docker --version
-docker-compose --version
-docker-machine --version
-</code></pre>
-
-<h3 id="toc_1">2.安装paddlepaddle的镜像版本</h3>
-
-<p><a href="https://livc.io/173">https://livc.io/173</a></p>
-
-<p>(1)根据自己的机器选择合适的版本<br/>
-<a href="http://doc.paddlepaddle.org/release_doc/0.9.0/doc_cn/build_and_install/install/docker_install.html">http://doc.paddlepaddle.org/release_doc/0.9.0/doc_cn/build_and_install/install/docker_install.html</a></p>
-
-<p>我这个地方选择的是cpu-noavx-latest</p>
-
-<p>(2)下载镜像<br/>
-<img src="media/15078740756158/15078763330578.jpg" alt=""/></p>
-
-<p>docker pull paddledev/paddle:cpu-noavx-latest</p>
-
-<p>(3)运行</p>
-
-<pre><code>docker run -it paddledev/paddle:cpu-noavx-latest
-root@a60119636542:/# paddle version
-PaddlePaddle 0.9.0a0, compiled with
-    with_avx: OFF
-    with_gpu: OFF
-    with_double: OFF
-    with_python: ON
-    with_rdma: OFF
-    with_glog: ON
-    with_gflags: ON
-    with_metric_learning: 
-    with_timer: OFF
-    with_predict_sdk: 
-root@a60119636542:/# 
-</code></pre>
-
-<p>退出： ctrl+d</p>
-
-<h3 id="toc_2">3.试玩环境</h3>
-
-<p>华东在机器上装了一个环境。</p>
-
-<pre><code>http://wiki.baidu.com/pages/viewpage.action?pageId=329462880
-
-/home/work/duhuadong/python27-gcc482/bin/python train.py
-
-/home/work/duhuadong/models-develop/text_classification
-
-work@yq01-ps-feed201705-m120007.yq01.baidu.com
-</code></pre>
+<p>可以先用nlp的词向量方法实验下有没有效果</p>
 
 
 		</div>
@@ -494,6 +494,13 @@ work@yq01-ps-feed201705-m120007.yq01.baidu.com
 	      </li>
 	  
 	      <li class="post">
+	        <a href="10%20leetcode.html"><strong>10 leetcode&nbsp;(5)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
 	        <a href="%E8%AE%B8%E5%BC%8F%E4%BC%9F-%E6%9E%B6%E6%9E%84%E8%AF%BE.html"><strong>许式伟-架构课&nbsp;(1)</strong></a>
 	        
 	        
@@ -505,6 +512,12 @@ work@yq01-ps-feed201705-m120007.yq01.baidu.com
 	<section>
 	  <h1>Recent Posts</h1>
 	  <ul id="recent_posts">
+	  
+	      
+		      <li class="post">
+		        <a href="15636927966003.html">随机数</a>
+		      </li>
+	     
 	  
 	      
 		      <li class="post">
@@ -527,12 +540,6 @@ work@yq01-ps-feed201705-m120007.yq01.baidu.com
 	      
 		      <li class="post">
 		        <a href="15632757602829.html">3. 假设检验的power</a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="15630063899159.html">python自然语言处理学习笔记——1</a>
 		      </li>
 	     
 	  

@@ -1,0 +1,1141 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>
+    
+  10 leetcode - 学习笔记
+  
+
+  </title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href="asset/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="atom.xml" rel="alternate" title="学习笔记" type="application/atom+xml">
+  <script src="asset/js/modernizr-2.0.js"></script>
+  <script src="asset/js/jquery.min.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/solarized_light.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <style type="text/css">
+  .cat-children-p{ padding: 6px 0px;}
+  .hljs{background: none;}
+  </style>
+  <script type="text/javascript">
+  var isAddSildbar = true;
+  </script>
+  <script src="asset/js/octopress.js" type="text/javascript"></script>
+</head>
+<script type="text/javascript">
+//链接新开窗口
+function addBlankTargetForLinks () {
+  $('a[href^="http"]').each(function(){
+      $(this).attr('target', '_blank');
+  });
+}
+$(document).ready(function(event) {
+  addBlankTargetForLinks();
+});
+</script>
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="index.html">学习笔记</a></h1>
+  
+    <h2></h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+
+  <li id=""><a target="self" href="index.html">Home</a></li>
+
+  <li id=""><a target="_self" href="archives.html">Archives</a></li>
+
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content"> 
+<div class="blog-index">
+
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15636927966003.html">随机数</a></h1>
+			<p class="meta"><time datetime="2019-07-21T15:06:36+08:00" 
+			pubdate data-updated="true">2019/7/21</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<p>【问题】利用一个1-5的随机数生成器生成一个1-7的随机数。即利用rand5构造出rand7。</p>
+
+<p>【解答】<br/>
+(1) 先考虑简单的情况，根据rand7生成rand5。 因为rand7可以生成1-7的随机数，所以</p>
+
+
+		</div>
+
+		
+
+	</article>
+ 
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15300282836460.html">初级-字符</a></h1>
+			<p class="meta"><time datetime="2018-06-26T23:51:23+08:00" 
+			pubdate data-updated="true">2018/6/26</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<p>给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。<br/>
+说明：本题中，我们将空字符串定义为有效的回文串。<br/>
+示例 1:</p>
+
+<p>输入: &quot;A man, a plan, a canal: Panama&quot;<br/>
+输出: true<br/>
+示例 2:</p>
+
+<p>输入: &quot;race a car&quot;<br/>
+输出: false</p>
+
+<pre><code>class Solution(object):
+    def isPalindrome(self, s):
+        &quot;&quot;&quot;
+        :type s: str
+        :rtype: bool
+        &quot;&quot;&quot;
+        clean_list = []
+        for i in range(len(s)):
+            if s[i].isalpha() or s[i].isdigit():
+                clean_list.append(s[i].lower())
+        #
+        n = len(clean_list)
+        for j in range(n/2):
+            if clean_list[j]!= clean_list[n-1-j]:
+                return False
+        return True
+        
+</code></pre>
+
+
+		</div>
+
+		
+
+	</article>
+ 
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15282222140306.html">list</a></h1>
+			<p class="meta"><time datetime="2018-06-06T02:10:14+08:00" 
+			pubdate data-updated="true">2018/6/6</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<p>leetcode </p>
+
+<p>作业部落@Yano<br/>
+<a href="https://www.zybuluo.com/Yano/note/850644">https://www.zybuluo.com/Yano/note/850644</a><br/>
+@gitbook<br/>
+<a href="https://xidianwlc.gitbooks.io/python-data-structrue-and-algrothms/content/">https://xidianwlc.gitbooks.io/python-data-structrue-and-algrothms/content/</a></p>
+
+<p>1.二叉树的层次遍历</p>
+
+<pre><code># Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def levelOrder(self, root):
+        &quot;&quot;&quot;
+        :type root: TreeNode
+        :rtype: List[List[int]]
+        &quot;&quot;&quot;
+        res = []
+        if root is None:
+            return res
+        tmp_q = []
+        tmp_q.append(root)
+        
+        while len(tmp_q) != 0:
+            next_q = []
+            n = len(tmp_q)
+            tmp_value = []
+            for i in range(n):
+                r = tmp_q[i]
+                if r.left is not None:
+                    next_q.append(r.left)
+                if r.right is not None:
+                    next_q.append(r.right)
+                tmp_value.append(r.val)
+            res.append(tmp_value)
+            tmp_q = next_q
+        return res
+                    
+</code></pre>
+
+<p>2，树的最长路径 </p>
+
+<pre><code># Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def maxDepth(self, root):
+        &quot;&quot;&quot;
+        :type root: TreeNode
+        :rtype: int
+        &quot;&quot;&quot;
+        if root == None:
+            return 0
+        else:
+            left_depth = self.maxDepth(root.left)
+            right_depth = self.maxDepth(root.right)
+            return max(left_depth, right_depth) + 1
+        
+</code></pre>
+
+<p>3，两个数的和为0 </p>
+
+<pre><code>class Solution(object):
+    def twoSum(self, nums, target):
+        &quot;&quot;&quot;
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        &quot;&quot;&quot;
+        # for i in range(len(nums)):
+        #     for j in range(i+1, len(nums)):
+        #         if nums[i] + nums[j] == target:
+        #             return i,j
+        # return 0,0
+        #
+        num_dict = {}
+        for i in range(len(nums)):
+            num_dict[nums[i]] = i
+        #
+        for i in range(len(nums)):
+            other = target - nums[i]
+            if other in num_dict and num_dict[other]!= i:
+                return i, num_dict[other]
+        return &#39;error, no result&#39;
+            
+        
+</code></pre>
+
+<p>4，三个数的和为0 </p>
+
+<pre><code>    def threeSum(self, nums):
+        n = len(nums)
+        nums.sort()
+        for k in range(n):
+            if nums[k] &gt; 0:
+                return &#39;input error&#39;
+
+            i = k + 1
+            j = n - 1 
+
+            while i &lt; j:
+                ss = nums[k] + nums[i] + nums[j]
+                if ss &gt; 0:
+                    j -= 1
+                else:
+                    if ss &lt; 0:
+                        i += 1
+                    else:
+                        return [nums[k], nums[i], nums[j]]
+        return []
+
+</code></pre>
+
+<p>5，四个数的和为0 </p>
+
+<pre><code>    def FourSum(self, nums):
+        n = len(nums)
+        nums.sort()
+        for i in range(n):
+            for j in range(i+1, n):
+                if nums[i] + nums[j] &gt; 0:
+                    return []
+
+                k = j + 1
+                m = n - 1 
+
+                while k &lt; m:
+                    ss = nums[i] + nums[j] + nums[k] + nums[m]
+                    if ss &gt; 0:
+                        m -= 1
+                    else:
+                        if ss &lt; 0:
+                            k += 1
+                        else:
+                            return [nums[i], nums[j], nums[k], nums[m]]
+        return []
+</code></pre>
+
+<p>6，合并两个有序链表 </p>
+
+<p>7，合并n个有序的链表 </p>
+
+<p>8，树的根到叶子路径数字的和的最大值</p>
+
+<pre><code>### zzz
+    def sumpath(self, root):
+        &quot;&quot;&quot;
+        :type root: TreeNode
+        :rtype: int
+        &quot;&quot;&quot;
+        if root == None:
+            return 0
+        if root.left ==None and root.right == None:
+            return root.val
+        else:
+            sum_left = sumpath(root.left)
+            sum_right = sumpath(root.right)
+            return max(sum_left, sum_right) + root.val
+</code></pre>
+
+<p>9，leetcode排列组合问题permutation </p>
+
+<pre><code>class Solution(object): 
+    def permute(self, nums):  
+        res = []  #res 用于记录并返回所有排列组合。  
+        self.excute(nums,[],res)  
+        return res  
+          
+    def excute(self,nums,path,res): #path用于存放经过的元素  
+        if not nums:  
+            res.append(path)  
+        for i in xrange(len(nums)):  
+            self.excute(nums[:i]+nums[i+1:],path+[nums[i]],res) #每经过一个元素，将其从nums中取出，放入path，当nums为空时，就完成一个排列组合。  
+                    
+
+
+</code></pre>
+
+<p>10，回文字符串马拉车</p>
+
+<pre><code>    #Python
+    def manacher(self, s):
+        #预处理
+        s=&#39;#&#39;+&#39;#&#39;.join(s)+&#39;#&#39;
+        print s
+
+        RL=[0]*len(s)
+        MaxRight=0
+        pos=0
+        MaxLen=0
+        for i in range(len(s)):
+            if i&lt;MaxRight:
+                RL[i]=min(RL[2*pos-i], MaxRight-i)
+            else:
+                RL[i]=1
+            #尝试扩展，注意处理边界
+            while i-RL[i]&gt;=0 and i+RL[i]&lt;len(s) and s[i-RL[i]]==s[i+RL[i]]:
+                RL[i]+=1
+            #更新MaxRight,pos
+            if RL[i]+i-1&gt;MaxRight:
+                MaxRight=RL[i]+i-1
+                pos=i
+            #更新最长回文串的长度
+            MaxLen=max(MaxLen, RL[i])
+        return MaxLen-1
+</code></pre>
+
+<p>11，leetcode 32 有效的括号串 </p>
+
+<pre><code>
+    def isValidParentheses(self, s):
+
+        table = {&#39;(&#39;:&#39;)&#39;, &#39;[&#39;:&#39;]&#39;, &#39;{&#39;:&#39;}&#39;}
+
+        n = len(s)
+        res = []
+        for i in range(n):
+            if s[i] not in [&#39;(&#39;,&#39;[&#39;,&#39;{&#39;,&#39;}&#39;,&#39;]&#39;,&#39;)&#39;]:
+                continue
+            if len(res) &gt; 0 and res[-1] in table and table[res[-1]] == s[i]:
+                res = res[:-1]
+            else:
+                res.append(s[i])
+        print res
+        return len(res) == 0 
+
+
+</code></pre>
+
+<p>两个栈实现队列</p>
+
+<pre><code>class QueueWithTwoStacks(object):
+    def __init__(self):
+        self._stack1 = []
+        self._stack2 = []
+
+    def appendTail(self,x):
+        self._stack1.append(x)
+
+    def deleteHead(self):
+         if self._stack2:
+             return self._stack2.pop()
+         else:
+             if self._stack1:
+                while self._stack1:
+                    self._stack2.append(self._stack1.pop())
+                return self._stack2.pop()
+             else:
+                 return None
+</code></pre>
+
+<p>合并两个有序list</p>
+
+<pre><code>    # 归并排序
+    def merge(self, l1, l2):
+
+        result = []
+        i = 0
+        j = 0
+        while i &lt; len(l1) and j &lt; len(l2):
+            if l1[i] &lt;= l2[j]:
+                result.append(l1[i])
+                i += 1
+            else:
+                result.append(l2[j])
+                j += 1
+        #
+        if i== len(l1):
+            result += l2[j:]
+        if j == len(l2):
+            result += l1[i:]
+        return result
+
+    # 递归调用
+    def merge_sort(self, l):
+
+        if len(l) == 1:
+            return l
+        else:
+            mid = len(l)/2
+            left = l[:mid]
+            right = l[mid:]
+            l1 = self.merge_sort(left)
+            l2 = self.merge_sort(right)
+
+            return self.merge(l1, l2)
+            
+    def merge_k_list_sort(self, lists):
+            &quot;&quot;&quot;
+            多个有序序列的合并
+            &quot;&quot;&quot;
+        if len(lists) == 1:
+            return lists[0]
+        else:
+            n = len(lists)
+            mid = n/2
+            left = lists[:mid]
+            right = lists[mid:]
+            l1 = self.merge_k_list_sort(left)
+            l2 = self.merge_k_list_sort(right)
+            #print l1, l2
+
+            return self.merge(l1, l2)
+</code></pre>
+
+<p>假设链表L有n个元素，如果这n个元素中每一个元素被访问的概率都为相同，则访问到第i个元素所前移的指针的平均次数为：</p>
+
+<p>Average = （1+2+3+......+n）/n = n(1+n)/2/n = n/2 + 1/2</p>
+
+<p>所以，访问第i个元素的平均时间为O(n)。相比起来，在数组L中访问第i个元素的平均时间为O(1)。</p>
+
+<p>leetcode上练习</p>
+
+<pre><code>#encoding=utf8
+class Solution(object):
+    def plusOne(self, digits):
+        &quot;&quot;&quot;
+        :type digits: List[int]
+        :rtype: List[int]
+        &quot;&quot;&quot;
+        out = []
+        n = len(digits)
+        num = 0
+        for i in range(n):
+            num += 10**(n-1-i) * int(digits[i])
+        num_str = str(num + 1)
+        print num_str
+        return map(lambda i: int(num_str[i]), range(len(num_str)) )
+        
+    # 
+    def moveZeroes(self, nums):
+        &quot;&quot;&quot;
+        :type nums: List[int]
+        :rtype: void Do not return anything, modify nums in-place instead.
+        &quot;&quot;&quot;
+        k = 0
+        for i in range(len(nums)):
+            if nums[i] != 0:
+                nums[k] = nums[i]
+                k += 1
+        for j in range(k, len(nums)):
+            nums[j] = 0
+        return nums
+
+    def isValidSudoku(self, board):
+        &quot;&quot;&quot;
+        :type board: List[List[str]]
+        :rtype: bool
+        &quot;&quot;&quot;
+        &quot;&quot;&quot;
+        把每一个9格子都拿出来，9+9+9=27个，比较麻烦；
+        直接扫描每一个点，看其是否在所在的行、列、单元格
+        &quot;&quot;&quot;
+        
+        row_list = [[] for i in range(9)]
+        col_list = [[] for i in range(9)]
+        area_list = [[] for i in range(9)]
+        
+        for i in range(9):
+            for j in range(9):
+                area_id = i/3*3 + j/3
+                item = board[i][j]
+                if item != &#39;.&#39;:
+                    if item in row_list[i] or item in col_list[j] or item in area_list[area_id]:
+                        return False
+                    else:
+                        row_list[i].append(item)
+                        col_list[j].append(item)
+                        area_list[area_id].append(item)
+        return True
+                
+    def rotate(self, matrix):
+        &quot;&quot;&quot;
+        :type matrix: List[List[int]]
+        :rtype: void Do not return anything, modify matrix in-place instead.
+        &quot;&quot;&quot;
+        
+        &quot;&quot;&quot;
+        # M1
+        (x,y)关于原点顺时针90度是(y, -x). 所以可以有(x0,y0)为中心点坐标
+        x2 = x0 -y0 + y1= y1
+        y2 = x0 + y0 - x1 = n-1 - x1
+        # M2：
+        根据规律，按照辅对角线对称，然后上下颠倒即可
+        &quot;&quot;&quot;
+        print matrix
+        n = len(matrix)
+        for i in range(n-1):
+            for j in range(n-1-i):
+                tmp = matrix[i][j]
+                matrix[i][j] = matrix[n-1-j][n-1-i]
+                matrix[n-1-j][n-1-i] = tmp
+        #
+        print matrix
+        for i in range(n/2):
+            for j in range(n):
+                tmp = matrix[i][j]
+                matrix[i][j] = matrix[n-1-i][j]
+                matrix[n-1-i][j] = tmp
+        print matrix
+        
+    def reverseString(self, s):
+        &quot;&quot;&quot;
+        :type s: str
+        :rtype: str
+        &quot;&quot;&quot;
+        print s[0]
+        n = len(s)
+        for i in range(n/2):
+            tmp = s[i]
+            print i, n-1-i
+            s[i] = s[n-1-i]
+            s[n-1-i] = tmp
+        return s
+        
+    def reverse(self, x):
+        &quot;&quot;&quot;
+        :type x: int
+        :rtype: int
+        &quot;&quot;&quot;
+
+        if x &lt; 0:
+            x1 = str(-1 * x)
+            res = -1 * int(x1[::-1])
+        else:
+            x1 = str(x)
+            res = int(x1[::-1])
+        if res &gt; 2**31-1 or res &lt; -1 * 2**31:
+            return 0
+        return res
+
+
+    def ThreeSum(self, nums):
+        n = len(nums)
+        nums.sort()
+        for k in range(n):
+            if nums[k] &gt; 0:
+                return &#39;input error&#39;
+
+            i = k + 1
+            j = n - 1 
+
+            while i &lt; j:
+                ss = nums[k] + nums[i] + nums[j]
+                if ss &gt; 0:
+                    j -= 1
+                else:
+                    if ss &lt; 0:
+                        i += 1
+                    else:
+                        return [nums[k], nums[i], nums[j]]
+        return []
+
+
+    def FourSum(self, nums):
+        n = len(nums)
+        nums.sort()
+        for i in range(n):
+            for j in range(i+1, n):
+                if nums[i] + nums[j] &gt; 0:
+                    return []
+
+                k = j + 1
+                m = n - 1 
+
+                while k &lt; m:
+                    ss = nums[i] + nums[j] + nums[k] + nums[m]
+                    if ss &gt; 0:
+                        m -= 1
+                    else:
+                        if ss &lt; 0:
+                            k += 1
+                        else:
+                            return [nums[i], nums[j], nums[k], nums[m]]
+        return []
+
+    def sumpath(self, root):
+        &quot;&quot;&quot;
+        :type root: TreeNode
+        :rtype: int
+        &quot;&quot;&quot;
+        if root == None:
+            return 0
+        if root.left ==None and root.right == None:
+            return root.val
+        else:
+            sum_left = sumpath(root.left)
+            sum_right = sumpath(root.right)
+            return max(sum_left, sum_right) + root.val
+
+
+    # 
+    def permute(self, nums):  
+        res = []  #res 用于记录并返回所有排列组合。  
+        self.excute(nums,[],res)  
+        return res  
+          
+    def excute(self,nums,path,res): #path用于存放经过的元素  
+        if not nums:  
+            res.append(path)  
+        for i in xrange(len(nums)):  
+            self.excute(nums[:i]+nums[i+1:],path+[nums[i]],res) #每经过一个元素，将其从nums中取出，放入path，当nums为空时，就完成一个排列组合。  
+                    
+</code></pre>
+
+<pre><code>    # 归并排序
+    def merge(self, l1, l2):
+
+        result = []
+        i = 0
+        j = 0
+        while i &lt; len(l1) and j &lt; len(l2):
+            if l1[i] &lt;= l2[j]:
+                result.append(l1[i])
+                i += 1
+            else:
+                result.append(l2[j])
+                j += 1
+        #
+        if i== len(l1):
+            result += l2[j:]
+        if j == len(l2):
+            result += l1[i:]
+        return result
+
+    # 递归调用
+    def merge_sort(self, l):
+
+        if len(l) == 1:
+            return l
+        else:
+            mid = len(l)/2
+            left = l[:mid]
+            right = l[mid:]
+            l1 = self.merge_sort(left)
+            l2 = self.merge_sort(right)
+
+            return self.merge(l1, l2)
+
+</code></pre>
+
+<p>合并俩有序链表</p>
+
+<pre><code>class Solution(object):
+    def mergeTwoLists(self, l1, l2):
+        &quot;&quot;&quot;
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        &quot;&quot;&quot;
+        # 递归
+        if l1 is None:
+            return l2
+        if l2 is None:
+            return l1
+        
+        p = None
+        if l1.val &lt; l2.val:
+            p = l1
+            p.next = self.mergeTwoLists(l1.next, l2)
+        else:
+            p = l2
+            p.next = self.mergeTwoLists(l1, l2.next)
+        return p
+</code></pre>
+
+<p>快速排序</p>
+
+<pre><code>
+    def quicksort(self, nums, left, right):
+        &quot;&quot;&quot;
+        &quot;&quot;&quot;
+        n = len(nums)
+        if left &gt; right:
+            return 
+
+        tmp = nums[left]
+        i = left
+        j = right
+        while i != j:
+            # 先从右往左，找到小于tmp的
+            while nums[j] &gt;= tmp and i &lt; j:
+                j -= 1
+            # 从左往右找到大于tmp的
+            while nums[i] &lt;= tmp and i &lt; j:
+                i += 1
+            # 交换位置
+            if i &lt; j:
+                t = nums[i]
+                nums[i] = nums[j]
+                nums[j] = t
+            # 变换base
+            nums[left] = nums[i]
+            nums[i] = tmp
+
+            self.quicksort(nums, left, i-1)
+            self.quicksort(nums, i+1, right)
+        return nums
+</code></pre>
+
+<p>寻找无序数组中第k大，按照快速排序方法，每次数组切分两堆，<br/>
+左边小于基数，右边大于基数</p>
+
+<pre><code> def find_k_max(self, nums, left, right, k):
+        &quot;&quot;&quot;
+        &quot;&quot;&quot;
+        n = len(nums)
+        if left &gt; right:
+            return 
+
+        tmp = nums[left]
+        i = left
+        j = right
+        while i != j:
+            # 先从右往左，找到小于tmp的
+            while nums[j] &gt;= tmp and i &lt; j:
+                j -= 1
+            # 从左往右找到大于tmp的
+            while nums[i] &lt;= tmp and i &lt; j:
+                i += 1
+            # 交换位置
+            if i &lt; j:
+                t = nums[i]
+                nums[i] = nums[j]
+                nums[j] = t
+            # 变换base
+            nums[left] = nums[i]
+            nums[i] = tmp
+
+            # 判断
+            if n -i == k:
+                return nums[i]
+            else:
+                if n - i &gt; k:
+                    out = self.find_k_max(nums, i+1, right, k)
+                else:
+                    out = self.find_k_max(nums, left, i-1, k-(n-i))
+            
+        return out
+</code></pre>
+
+
+		</div>
+
+		
+
+	</article>
+ 
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15281726452497.html">排序</a></h1>
+			<p class="meta"><time datetime="2018-06-05T12:24:05+08:00" 
+			pubdate data-updated="true">2018/6/5</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	
+
+		</div>
+
+		
+
+	</article>
+ 
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15280921875757.html">leetcode</a></h1>
+			<p class="meta"><time datetime="2018-06-04T14:03:07+08:00" 
+			pubdate data-updated="true">2018/6/4</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<h2 id="toc_0">数组</h2>
+
+<pre><code># 有效的数独
+class Solution(object):
+    
+   def isValidSudoku(self, board):
+        &quot;&quot;&quot;
+        :type board: List[List[str]]
+        :rtype: bool
+        &quot;&quot;&quot;
+        &quot;&quot;&quot;
+        把每一个9格子都拿出来，9+9+9=27个，比较麻烦；
+        直接扫描每一个点，看其是否在所在的行、列、单元格
+        &quot;&quot;&quot;
+        &#39;&#39;&#39;
+        #### 这种写法是错误的，row_list[4].append(5),结果所有的都append(5)了
+        row_list = 9 * [[]]
+        col_list = 9 * [[]]
+        area_list = 9 * [[]]
+        &#39;&#39;&#39;
+        row_list = [[] for i in range(9)]
+        col_list = [[] for i in range(9)]
+        area_list = [[] for i in range(9)]
+        
+        for i in range(9):
+            for j in range(9):
+                area_id = i/3*3 + j/3
+                item = board[i][j]
+                if item != &#39;.&#39;:
+                    if item in row_list[i] or item in col_list[j] or item in area_list[area_id]:
+                        return False
+                    else:
+                        row_list[i].append(item)
+                        col_list[j].append(item)
+                        area_list[area_id].append(item)
+        return True
+                
+        
+        
+</code></pre>
+
+<h2 id="toc_1">字符</h2>
+
+<p>Q1:<br/>
+尝试修改string的值（导致“ TypeError: ‘str’ object does not support item assignment”）</p>
+
+<p><strong>string是一种不可变的数据类型</strong>，该错误发生在如下代码中：</p>
+
+<pre><code>spam = &#39;I have a pet cat.&#39;
+spam[13] = &#39;r&#39;
+print(spam)
+</code></pre>
+
+<p>而你实际想要这样做：</p>
+
+<pre><code>spam = &#39;I have a pet cat.&#39;
+spam = spam[:13] + &#39;r&#39; + spam[14:]
+print(spam)
+</code></pre>
+
+<p>Q1:字符反转</p>
+
+<pre><code>def string_reverse1(string):  
+    return string[::-1]  
+  
+def string_reverse2(string):  
+    t = list(string)  
+    l = len(t)  
+    for i,j in zip(range(l-1, 0, -1), range(l//2)):  
+        t[i], t[j] = t[j], t[i]  
+    return &quot;&quot;.join(t)  
+  
+def string_reverse3(string):  
+    if len(string) &lt;= 1:  
+        return string  
+    return string_reverse3(string[1:]) + string[0]
+      
+ ```
+ 
+
+
+str为字符串 
+str.isalnum() 所有字符都是数字或者字母 
+str.isalpha() 所有字符都是字母 
+str.isdigit() 所有字符都是数字 
+str.islower() 所有字符都是小写 
+str.isupper() 所有字符都是大写 
+str.istitle() 所有单词都是首字母大写，像标题 
+str.isspace() 所有字符都是空白字符、\t、\n、\r
+
+</code></pre>
+
+
+		</div>
+
+		
+
+	</article>
+  
+	<div class="pagination">
+	
+<a href="archives.html">Blog Archives</a>
+	 
+	    
+	</div>
+</div>
+ <aside class="sidebar"> 
+
+	<section>
+	  <h1>Categories</h1>
+	  <ul id="recent_posts">
+	  
+	      <li class="post">
+	        <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单&nbsp;(4)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="1%20Tools.html"><strong>1 Tools&nbsp;(33)</strong></a>
+	         <p class="cat-children-p"> 
+	        
+	        	<a href="%E9%85%B7%E7%82%AB%E7%A5%9E%E5%99%A8.html">酷炫神器&nbsp;(12)</a>&nbsp;&nbsp;
+	        
+	        	<a href="PaddlePaddle.html">PaddlePaddle&nbsp;(3)</a>&nbsp;&nbsp;
+	        
+	        	<a href="spark.html">spark&nbsp;(12)</a>&nbsp;&nbsp;
+	        
+	        	<a href="tensorflow.html">tensorflow&nbsp;(2)</a>&nbsp;&nbsp;
+	        
+	        	<a href="SQL.html">SQL&nbsp;(1)</a>&nbsp;&nbsp;
+	        
+	         </p> 
+	      </li>
+	  
+	      <li class="post">
+	        <a href="2%20Get%20Data.html"><strong>2 Get Data&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html"><strong>3 数据可视化&nbsp;(8)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="4%20%E4%BD%A0%E4%B8%8D%E5%BE%97%E4%B8%8D%E7%9F%A5%E7%9A%84%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 你不得不知的统计方法&nbsp;(9)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习&nbsp;(23)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统&nbsp;(3)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="6%20%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86.html"><strong>6 图像处理&nbsp;(4)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="6%20%E6%90%9C%E7%B4%A2.html"><strong>6 搜索&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="6%20nlp.html"><strong>6 nlp&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习&nbsp;(12)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="8%20Ai%E5%BA%94%E7%94%A8.html"><strong>8 Ai应用&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="10%20leetcode.html"><strong>10 leetcode&nbsp;(5)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
+	        <a href="%E8%AE%B8%E5%BC%8F%E4%BC%9F-%E6%9E%B6%E6%9E%84%E8%AF%BE.html"><strong>许式伟-架构课&nbsp;(1)</strong></a>
+	        
+	        
+	        
+	      </li>
+	   
+	  </ul>
+	</section>
+	<section>
+	  <h1>Recent Posts</h1>
+	  <ul id="recent_posts">
+	  
+	      
+		      <li class="post">
+		        <a href="15636927966003.html">随机数</a>
+		      </li>
+	     
+	  
+	      
+		      <li class="post">
+		        <a href="15633781017095.html"></a>
+		      </li>
+	     
+	  
+	      
+		      <li class="post">
+		        <a href="15633691538884.html">3. 样本量的确定？</a>
+		      </li>
+	     
+	  
+	      
+		      <li class="post">
+		        <a href="15633655285542.html">卡方检验</a>
+		      </li>
+	     
+	  
+	      
+		      <li class="post">
+		        <a href="15632757602829.html">3. 假设检验的power</a>
+		      </li>
+	     
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	  
+	      
+	   
+	  </ul>
+	</section>
+	
+</aside> </div></div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 -  -
+  <span class="credit">Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a> &nbsp;&nbsp; Theme by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+
+  
+    
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+</body>
+</html>

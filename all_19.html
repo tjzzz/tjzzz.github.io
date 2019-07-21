@@ -82,117 +82,214 @@ $(document).ready(function(event) {
 
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15072068811153.html">Remap</a></h1>
-			<p class="meta"><time datetime="2017-10-05T20:34:41+08:00" 
+		  	<h1 class="entry-title"><a href="15078603543147.html">【聚类】-效果评价</a></h1>
+			<p class="meta"><time datetime="2017-10-13T10:05:54+08:00" 
+			pubdate data-updated="true">2017/10/13</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<p>一般分为两类：</p>
+
+<ul>
+<li>外部标准：即基于人工的判断，需要有个标注集合</li>
+<li>内部标准：基于类内和类间聚类的目标函数的判断</li>
+</ul>
+
+<h2 id="toc_0">内部标准clustering-performance-evaluation</h2>
+
+<h2 id="toc_1">外部标准——人工判定</h2>
+
+<p>假设：<br/>
+机器判断的类别集合是：\(C=\{C_1,C_2,...C_m\}\)<br/>
+人工判断的类别集合是：\(P=\{P_1,P_2,...P_s\}\)</p>
+
+<h3 id="toc_2">1.1混淆矩阵</h3>
+
+<p>基于数据样本点的角度：<br/>
+对于任意两个数据pair，\((x_i,x_j)\)按照其在C和P中是否属于同一个簇，可以构造出混淆矩阵</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>P_1</th>
+<th>p_0</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>C_1</td>
+<td>a</td>
+<td>b</td>
+</tr>
+<tr>
+<td>C_0</td>
+<td>c</td>
+<td>d</td>
+</tr>
+</tbody>
+</table>
+
+<p><img src="media/15078603543147/15078631739679.jpg" alt=""/></p>
+
+<h3 id="toc_3">1.2簇的准确率/召回率</h3>
+
+<p>基于簇pair的，考虑对任意一个人工与机器的.\(P_j,C_i\)。对于每一个人工标注的\(P_j\),在机器标注中应该都会对应一个&quot;最相关的&quot;。可以遍历C中所有的cluster，分别计算准确率，召回率，F_score。<br/>
+<img src="media/15078603543147/15078720767171.jpg" alt=""/></p>
+
+<p>然后对于所有簇的F值做加权平均<br/>
+\[ClassF=\sum w_j F(p_j), w_i=n_j/n\]</p>
+
+<p>classF指标，相当于是以人工标注的簇为基准，将聚类的簇尽量逼近这个标注的结果。</p>
+
+<h2 id="toc_4">1.3</h2>
+
+<p>1.2中的方法相当于要求的比较严格，即以人工标注的集合簇为准。</p>
+
+<p>实际中其实只要保证我们聚的每一个类\(C_i\)是有意义的就可以，即以C为主</p>
+
+<p>类似的定义 \(F(C_i)=\max_{1\lt j \lt s}F(P_j, C_i)\)<br/>
+\[F=\sum w_i F(C_i), w_i=|C_i|/n\]</p>
+
+<ul>
+<li>问题： 这个指标可能变化不是非常明显</li>
+</ul>
+
+<h2 id="toc_5">1.4基于数据对象的准召F</h2>
+
+<p><img src="media/15078603543147/15078731022919.jpg" alt=""/></p>
+
+<h2 id="toc_6">思考</h2>
+
+<ol>
+<li>基于人工标注的方法中，认为人工标注的是准确的或者说结果是唯一的。实际上一堆sample可以有不同的分类方法，而且每种方法可能都是对的。
+<code>
+e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大学
+</code>
+如何进行标注，或者标注结果是非固定时候怎么衡量聚类效果的好坏？？</li>
+</ol>
+
+<h2 id="toc_7">参考资料</h2>
+
+<p><a href="http://blog.csdn.net/itplus/article/details/10322361">http://blog.csdn.net/itplus/article/details/10322361</a></p>
+
+
+		</div>
+
+		
+
+	</article>
+ 
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15075611675547.html">第一章 引言</a></h1>
+			<p class="meta"><time datetime="2017-10-09T22:59:27+08:00" 
+			pubdate data-updated="true">2017/10/9</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<p>别人的读后总结，可参考「Deep Learning」读书系列分享（一） | 分享总结</p>
+
+<p><a href="https://www.leiphone.com/news/201708/LEBNjZzvm0Q3Ipp0.html">https://www.leiphone.com/news/201708/LEBNjZzvm0Q3Ipp0.html</a></p>
+
+<h3 id="toc_0">需要明确的几个概念范围</h3>
+
+<p><img src="media/15075611675547/15075613801366.jpg" alt=""/></p>
+
+<p><img src="media/15075611675547/15075614908544.jpg" alt=""/></p>
+
+
+		</div>
+
+		
+
+	</article>
+ 
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15073875319013.html">平台相关</a></h1>
+			<p class="meta"><time datetime="2017-10-07T22:45:31+08:00" 
+			pubdate data-updated="true">2017/10/7</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 百度深度学习工程师认证考试19.1
+参考资料
+</li>
+</ul>
+
+<p>-教材推荐：PaddlePaddle深度学习实战</p>
+
+<p>-课程推荐：<a href="https://ai.baidu.com/paddlepaddle/openCourses">https://ai.baidu.com/paddlepaddle/openCourses</a> </p>
+
+<p>-实训平台：<a href="http://aistudio.baidu.com/">http://aistudio.baidu.com/</a> </p>
+
+<p><a href="http://ai.baidu.com/easydl/">http://ai.baidu.com/easydl/</a></p>
+
+<p><a href="http://bit.baidu.com/news/act/id/56.html">http://bit.baidu.com/news/act/id/56.html</a></p>
+
+<h1 id="toc_0">Deep Learning</h1>
+
+<p><strong>整理的list</strong></p>
+
+<p>要读的书：</p>
+
+<ul>
+<li>Deep Learning <a href="http://www.deeplearningbook.org/">http://www.deeplearningbook.org/</a> by Yoshua Bengio, Ian Goodfellow and Aaron Courville</li>
+</ul>
+
+<p>在线课程</p>
+
+<ul>
+<li>coursera：Andrew Ng的Deep Learning</li>
+<li><p>udacity上的deep learning纳米学位</p></li>
+<li><p>Machine Learning by Andrew Ng in Coursera</p></li>
+<li><p>Neural Networks for Machine Learning by Geoffrey Hinton in Coursera</p></li>
+</ul>
+
+<h1 id="toc_1">list</h1>
+
+<h2 id="toc_2">不错的个人博客资源</h2>
+
+<p><a href="http://www.cnblogs.com/maybe2030/">http://www.cnblogs.com/maybe2030/</a></p>
+
+<h2 id="toc_3">reading list</h2>
+
+<p><a href="http://jmozah.github.io/links/">http://jmozah.github.io/links/</a></p>
+
+<h1 id="toc_4">别人家的项目</h1>
+
+<p><a href="https://github.com/wepe/O2O-Coupon-Usage-Forecast/tree/master/code">https://github.com/wepe/O2O-Coupon-Usage-Forecast/tree/master/code</a></p>
+
+<p>udacity的github<br/>
+<a href="https://github.com/udacity/deep-learning.git">https://github.com/udacity/deep-learning.git</a></p>
+
+
+		</div>
+
+		
+
+	</article>
+ 
+	<article>
+		 <header>
+		  	<h1 class="entry-title"><a href="15072077620306.html">rCharts</a></h1>
+			<p class="meta"><time datetime="2017-10-05T20:49:22+08:00" 
 			pubdate data-updated="true">2017/10/5</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<p>随着互联网时代的数据形式的多样化，空间数据的分析也越来越受到重视。基于用户、出租车的轨迹的交通优化，调度问题也越来越多的出现在一些大数据竞赛中，通过这种众包的形式，这类社会化问题逐渐得到一定程度的解决。</p>
+		  	<p><a href="http://rdatascience.io/rCharts/">http://rdatascience.io/rCharts/</a></p>
 
-<p>REmap是一个基于Echarts(<a href="http://echarts.baidu.com/echarts2/doc/doc.html)%E7%9A%84R">http://echarts.baidu.com/echarts2/doc/doc.html)的R</a> pacakge，主要是提供一个渐变的可交互的地图可视化展现.<br/>
-<a href="https://github.com/lchiffon/REmap">https://github.com/lchiffon/REmap</a></p>
+<p>作者的github主页<br/>
+<a href="http://ramnathv.github.io/rCharts">http://ramnathv.github.io/rCharts</a></p>
 
-<p>其处理逻辑：</p>
-
-<ul>
-<li>使用R处理传入的数据</li>
-<li>写出Javascript脚本(Echarts)</li>
-<li>保存在临时的html文件中</li>
-<li>调用浏览器展示</li>
-</ul>
-
-<h2 id="toc_0">获取经纬度</h2>
-
-<pre><code class="language-{r,eval=F}">#library(devtools)
-#install_github(&#39;lchiffon/REmap&#39;)
-
-library(REmap)
-get_city_coord(&quot;Shanghai&quot;)   # 获取城市的经纬度  使用了baiduMapApi
-get_geo_position (c(&quot;北京&quot;,&quot;Shanghai&quot;,&quot;广州&quot;) )   #获取城市向量的经纬度
+<pre><code class="language-{r}">#Install 
+require(devtools)## 标题 ##
+install_github(&#39;rCharts&#39;, &#39;ramnathv&#39;)
 </code></pre>
-
-<h2 id="toc_1">迁移地图</h2>
-
-<p>通过remap函数绘制地图，生成一个html文件，保存在电脑里，并通过浏览器打开</p>
-
-<pre><code>library(REmap)
-origin = rep(&quot;北京&quot;,10)
-destination = c(&#39;上海&#39;,&#39;广州&#39;,&#39;大连&#39;,&#39;南宁&#39;,&#39;南昌&#39;,
-                &#39;拉萨&#39;,&#39;长春&#39;,&#39;包头&#39;,&#39;重庆&#39;,&#39;常州&#39;)
-dat = data.frame(origin,destination)
-out = remap(dat,title = &quot;REmap实例数据&quot;,subtitle = &quot;theme:Dark&quot;)
-plot(out)
-</code></pre>
-
-<p>同时可以通过<code>get_theme</code>函数来进行颜色样式的调整</p>
-
-<pre><code>get_theme(theme = &quot;Dark&quot;, lineColor = &quot;Random&quot;,
-  backgroundColor = &quot;#1b1b1b&quot;, titleColor = &quot;#fff&quot;,
-  borderColor = &quot;rgba(100,149,237,1)&quot;, regionColor = &quot;#1b1b1b&quot;)
-</code></pre>
-
-<pre><code>remap(dat,title = &quot;REmap实例数据&quot;,subtitle = &quot;theme:Bright&quot;,
-            theme = get_theme(&quot;Bright&quot;,lineColor = &quot;orange&quot;))
-</code></pre>
-
-<h2 id="toc_2">分级图</h2>
-
-<p>数据两列data.frame(x=地区名字,y=value)<br/>
-<code>rempC(data, maptype=c(&#39;china&#39;, &#39;world&#39;,&#39;省名字&#39;), color=, theme=)</code></p>
-
-<pre><code>library(REmap)
-remapC(chinaIphone, maptype=&#39;china&#39;,color = &#39;orange&#39;)
-remapC(chinaIphone, color = c(&#39;orange&#39;,&#39;red&#39;))
-</code></pre>
-
-<p><code>mapNames()</code>可以得到某个地图下的子图信息。</p>
-
-<pre><code>data = data.frame(country = mapNames(&#39;西藏&#39;), value = 50*sample(7)+200)
-head(data)
-remapC(data,maptype = &#39;西藏&#39;,color = &#39;skyblue&#39;)
-</code></pre>
-
-<h2 id="toc_3">remapB</h2>
-
-<p>remapB是用于创建一个以百度地图为底图的recharts效果,可以添加一些点或者线的动态效果</p>
-
-<pre><code>remapB(center=, zoom=5, markLineData， markPointData)
-center： 地图的中心，可以通过get_city_coord获取
-zoom: 5代表国家级的地图,15代表市级的地图
-markLineData 出发地，目的地
-</code></pre>
-
-<h3 id="toc_4">标线</h3>
-
-<p>markLine相关的参数</p>
-
-<ul>
-<li>markLineData 标线使用的数据,第一列为出发地,第二列为目的地</li>
-<li>markLineTheme 控制标线颜色,形状等,由markLineControl来控制</li>
-<li>geoData 标中各个点的经纬度坐标,如果没有,会使用BaiduAPI自动查找,用以储存markLine和markPoint的地理位置信息.具体的格式与get_city_coord返回相同:</li>
-</ul>
-
-<p>subway数据</p>
-
-<pre><code>remapB(center=get_city_coord(&#39;shanghai&#39;), zoom=10, markLineData = subway[[2]], geoData = subway[[1]])
-
-</code></pre>
-
-<h3 id="toc_5">标点</h3>
-
-<h2 id="toc_6">remapH()</h2>
-
-<p>热力图</p>
-
-<pre><code>heatmap = sampleData()
-remapH(heatmap,minAlpha = 0.1,title = &quot;Heat Map from REmap&quot;)
-# minAlpha 将小于minAlpha的值都设置为minAlpha以防止太小的值也能看到
-
-</code></pre>
-
-<p>【参考资料】<br/>
-郎大为的博客  <a href="http://langdawei.com/REmap/">http://langdawei.com/REmap/</a></p>
 
 
 		</div>
@@ -203,213 +300,13 @@ remapH(heatmap,minAlpha = 0.1,title = &quot;Heat Map from REmap&quot;)
  
 	<article>
 		 <header>
-		  	<h1 class="entry-title"><a href="15055593941505.html">【NG-DL】course2_week1 优化网络参数</a></h1>
-			<p class="meta"><time datetime="2017-09-16T18:56:34+08:00" 
-			pubdate data-updated="true">2017/9/16</time></p>
+		  	<h1 class="entry-title"><a href="15072077543747.html">googleVis</a></h1>
+			<p class="meta"><time datetime="2017-10-05T20:49:14+08:00" 
+			pubdate data-updated="true">2017/10/5</time></p>
 		 </header>
 	  	<div class="entry-content">
 		  	
-		  	<h2 id="toc_0">1.基本概念</h2>
-
-<p>很多优化参数：<br/>
-网络层数，隐层数，学习率，激活函数。。。</p>
-
-<ul>
-<li><p>训练集/验证集/测试集</p></li>
-<li><p>偏差， 训练集误差</p></li>
-<li><p>方差</p></li>
-</ul>
-
-<p>若有高bias： 尝试新的网络，更大网络</p>
-
-<p>高方差： 获取更多数据，或者正则化，更合适的网络机构</p>
-
-<p>bias和varaince的平衡<br/>
-一般来说更大的网络能减小偏差，更多的数据能减小方差。</p>
-
-<h2 id="toc_1">2.正则化-L2</h2>
-
-<p>以逻辑回归为例</p>
-
-<p>\(J(w,b)=\frac{1}{m}\sum L(\hat y_i, y_i)+\frac{\lambda}{2m}|w|^2_2\)L2惩罚，避免过拟合，导致高方差</p>
-
-<p>类似的神经网络在优化函数上加上</p>
-
-<p>\(J(w^{[1]},b^{[1]},...w^{[l]},b^{[l]})=\frac{1}{m}\sum L(\hat y_i, y_i)+\frac{\lambda}{2m}\sum||w^{[l]}||^2_2\)</p>
-
-<p>其中\(|w^{[l]}|^2\)F范数</p>
-
-<ul>
-<li>Ng.当\(\lambda\)较大时候,w会较小，sigmoid接近线性，降低方差。
-<img src="media/15055593941505/15103891828021.jpg" alt=""/></li>
-</ul>
-
-<h3 id="toc_2">正则化-dropout(随机失活)</h3>
-
-<p>每次对网络中的节点设置一个随机消失的概率p，即每个节点可能在也可能不在网络中，不在的时候即相当于该节点的数值置为0.</p>
-
-<p>dropout与l2类似都会shrink权重。</p>
-
-<h3 id="toc_3">early stoping</h3>
-
-<h2 id="toc_4">3.优化</h2>
-
-<h3 id="toc_5">归一化</h3>
-
-<p>归一化输入=&gt; 均值0，方差1<br/>
-* 零均值化<br/>
-* 归一化方差</p>
-
-<p><img src="media/15055593941505/15103915636569.jpg" alt=""/></p>
-
-<h3 id="toc_6">梯度消失与梯度爆炸</h3>
-
-<p>当梯度增长很大或者很微弱时，会导致优化出问题或者很慢。</p>
-
-
-		</div>
-
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="14782516826392.html">Rspark</a></h1>
-			<p class="meta"><time datetime="2016-11-04T17:28:02+08:00" 
-			pubdate data-updated="true">2016/11/4</time></p>
-		 </header>
-	  	<div class="entry-content">
 		  	
-		  	<p>官网：<br/>
-<a href="http://spark.rstudio.com/">http://spark.rstudio.com/</a><br/>
-内网wiki<br/>
-<a href="http://gollum.baidu.com/sparkR-starter">http://gollum.baidu.com/sparkR-starter</a></p>
-
-<p>安装步骤：</p>
-
-<pre><code>install.packages(&quot;sparklyr&quot;)
-library(sparklyr)
-spark_install(version = &quot;1.6.2&quot;)
-</code></pre>
-
-<h1 id="toc_0">dplyr</h1>
-
-<p><a href="https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html">https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html</a></p>
-
-
-		</div>
-
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="14733881665810.html">R-studio</a></h1>
-			<p class="meta"><time datetime="2016-09-09T10:29:26+08:00" 
-			pubdate data-updated="true">2016/9/9</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p><a href="http://cp01-ubskce18.epc.baidu.com:8787/">http://cp01-ubskce18.epc.baidu.com:8787/</a><br/>
-<a href="http://cq01-ubskce21.epc.baidu.com:8787">http://cq01-ubskce21.epc.baidu.com:8787</a></p>
-
-<pre><code>
-1. CentOS 6.3系统
-2. Unless you do not want to view graphs on-screen (or use a Mac) you need ‘X11’ installed, including its headers and client libraries. For recent Fedora distributions it means (at least) RPMs ‘libX11’, ‘libX11-devel’, ‘libXt’ and ‘libXt-devel’. On Debian we recommend the meta-package ‘xorg-dev’. If you really do not want these you will need to explicitly configure R without X11, using --with-x=no.
-3. 在我厂6.3系统上应该只需要：yum install libXt-devel.x86_64 -y
-4. 使用jumbo local-install r.jumbo本地安装R（这里使用3.3.1版，使用新版tarball需要更新md5sum）
-* 官网下载rstudio rpm包
-sudo yum install --nogpgcheck rstudio-server-rhel-0.99.903-x86_64.rpm（替换为最新版）
-sudo yum install libcrypto.so.6 -y
-sudo yum install libgfortran.so.1 -y
-sudo yum install libssl.so.6 -y
-sudo yum install openssl098e-0.9.8e -y
-sudo yum install gcc41-libgfortran-4.1.2 -y
-sudo yum install pango-1.28.1 -y
-sudo yum install libssl.so.10 -y
-sudo yum install libcrypto.so.10 -y
-sudo yum install xorg-x11-fonts-75dpi.noarch -y
-sudo yum install xorg-x11-fonts-100dpi.noarch -y
-sudo yum install xorg-x11-server-Xvfb.x86_64 -y
-cp到/etc/init/: xvfb.conf
-sudo initctl start xvfb
-sudo DISPLAY=0 rstudio-server start
-</code></pre>
-
-<p>绘图相关<br/>
-<a href="https://plot.ly/r/shiny-gallery/">https://plot.ly/r/shiny-gallery/</a><br/>
-<a href="http://shiny.rstudio.com/gallery/">http://shiny.rstudio.com/gallery/</a></p>
-
-<p>addins<br/>
-<a href="http://rstudio.github.io/rstudioaddins/">http://rstudio.github.io/rstudioaddins/</a></p>
-
-<p>搭建一个简单的httpserver<br/>
-python -m SimpleHTTPServer 8999</p>
-
-<hr/>
-
-<p>安装<code>rattle</code>包时候提示：</p>
-
-<pre><code>ERROR: configuration failed for package ‘RGtk2’
-</code></pre>
-
-<p>添加用户</p>
-
-
-		</div>
-
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="14609901056105.html">章2 利用用户行为数据</a></h1>
-			<p class="meta"><time datetime="2016-04-18T22:35:05+08:00" 
-			pubdate data-updated="true">2016/4/18</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<h1 id="toc_0">1.用户行为数据</h1>
-
-<p>用户行为数据在网页上的主要存在形式就是日志，可能包含的字段有</p>
-
-<ul>
-<li>uid</li>
-<li>itemid</li>
-<li>行为类型（点击、浏览、购买）</li>
-<li>context（产生行为的时间、地点等）</li>
-<li>行为权重（比如看视频行为的时长、打分行为的分数）</li>
-<li>行为内容（比如评论行为的评论内容）
-另外，这些数据大致上可以分为显性反馈行为和隐性反馈行为。显性行为就是可以明确用户是喜好的，比如购买。而多数的数据都是隐性的，比如浏览了某个网页、听了某个歌，这些行为无法判断出用户的喜好。</li>
-</ul>
-
-<p>物品流行度的幂率分布</p>
-
-<h1 id="toc_1">算法</h1>
-
-<p>一般把仅仅基于用户行为数据设计的推荐算法叫做协同过滤算法。主要包括：</p>
-
-<ul>
-<li>基于邻域的方法
-
-<ul>
-<li>基于用户的</li>
-<li>基于物品的</li>
-</ul></li>
-<li>隐语义模型LFM</li>
-<li>基于图的随机游走算法</li>
-</ul>
-
-<h2 id="toc_2">1.userCF</h2>
-
-<p>基本想法：对于一个用户A的推荐，可以先找到与这个人相似的那些人，然后看那些人中喜欢的，而用户A没有听过的物品推荐给A。<br/>
-step1: 找到相似用户，即需要定义相似度。</p>
-
-<h2 id="toc_3">标题</h2>
-
 
 		</div>
 
@@ -525,6 +422,13 @@ step1: 找到相似用户，即需要定义相似度。</p>
 	      </li>
 	  
 	      <li class="post">
+	        <a href="10%20leetcode.html"><strong>10 leetcode&nbsp;(5)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
 	        <a href="%E8%AE%B8%E5%BC%8F%E4%BC%9F-%E6%9E%B6%E6%9E%84%E8%AF%BE.html"><strong>许式伟-架构课&nbsp;(1)</strong></a>
 	        
 	        
@@ -536,6 +440,12 @@ step1: 找到相似用户，即需要定义相似度。</p>
 	<section>
 	  <h1>Recent Posts</h1>
 	  <ul id="recent_posts">
+	  
+	      
+		      <li class="post">
+		        <a href="15636927966003.html">随机数</a>
+		      </li>
+	     
 	  
 	      
 		      <li class="post">
@@ -558,12 +468,6 @@ step1: 找到相似用户，即需要定义相似度。</p>
 	      
 		      <li class="post">
 		        <a href="15632757602829.html">3. 假设检验的power</a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="15630063899159.html">python自然语言处理学习笔记——1</a>
 		      </li>
 	     
 	  

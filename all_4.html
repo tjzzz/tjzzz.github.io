@@ -82,6 +82,23 @@ $(document).ready(function(event) {
 
 	<article>
 		 <header>
+		  	<h1 class="entry-title"><a href="15479712192030.html">R 数据透视表</a></h1>
+			<p class="meta"><time datetime="2019-01-20T16:00:19+08:00" 
+			pubdate data-updated="true">2019/1/20</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<p><a href="https://zhuanlan.zhihu.com/p/33770068">https://zhuanlan.zhihu.com/p/33770068</a></p>
+
+
+		</div>
+
+		
+
+	</article>
+ 
+	<article>
+		 <header>
 		  	<h1 class="entry-title"><a href="15478782564851.html">mac安装mysql</a></h1>
 			<p class="meta"><time datetime="2019-01-19T14:10:56+08:00" 
 			pubdate data-updated="true">2019/1/19</time></p>
@@ -240,69 +257,6 @@ export PYSPARK_DRIVER_PYTHON_OPTS=&#39;notebook&#39;
 		
 
 	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15417735380783.html">任务迁移</a></h1>
-			<p class="meta"><time datetime="2018-11-09T22:25:38+08:00" 
-			pubdate data-updated="true">2018/11/9</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p><a href="http://wiki.baidu.com/pages/viewpage.action?pageId=496903743">http://wiki.baidu.com/pages/viewpage.action?pageId=496903743</a></p>
-
-<p><a href="http://wiki.baidu.com/display/SPRK/Tutorial+for+Spark-baidu">http://wiki.baidu.com/display/SPRK/Tutorial+for+Spark-baidu</a></p>
-
-<h2 id="toc_0">庆城</h2>
-
-<p>17年的spark资源已经到位，kce组2台机器，1095核，216549M内存，存储51.2T，队列为spark-ubs-kce, 客户端拉取地址：<br/>
-wget <a href="ftp://cp01-ubskce25.epc.baidu.com/home/work/spark-client-tianqi-2.1.tar.gz">ftp://cp01-ubskce25.epc.baidu.com/home/work/spark-client-tianqi-2.1.tar.gz</a><br/><br/>
-百度spark wiki地址：<a href="http://wiki.baidu.com/display/SPRK/Baidu+Spark">http://wiki.baidu.com/display/SPRK/Baidu+Spark</a><br/>
-提交任务命令示例：./spark-client-tianqi-2.1/bin/spark-submit --master yarn --deploy-mode client --queue spark-ubs-kce ./test.py<br/>
-任务进度查看页面：<a href="http://yq01-tianqi-normandy.dmop.baidu.com:8033/queue.html?queue=spark-ubs-kce&amp;physical=tianqi-yarn_phy">http://yq01-tianqi-normandy.dmop.baidu.com:8033/queue.html?queue=spark-ubs-kce&amp;physical=tianqi-yarn_phy</a><br/>
-欢迎各位试用，谢谢！</p>
-
-<h2 id="toc_1">1.pyspark 读取udw表</h2>
-
-<pre><code class="language-{python}">spark = SparkSession.builder.appName(&quot;video_test_&quot; + day).getOrCreate()
-video_session_sql = &quot;select event_time, event_cookie, event_urlparams, event_query,  event_others, wisepsdisplay_qid, wisepsdisplay_pn,  wisepsdisplay_tn, &quot; + \
-        &quot; wisepsdisplay_displayresult, wisepsdisplay_sampletags, clk_detail, media_time, event_browser, event_os, &quot; + \
-        &quot; event_os_version, event_pd, event_cuid, anti_spam, event_day &quot; + \
-        &quot; from ud_ml_sf_merge_data where event_day= &quot; + day + &quot; limit 100&quot;
-
-video_session = spark.sql(video_session_sql)
-</code></pre>
-
-<p>video_session是一个dataframe，可以直接取出里面的相关字段做特征提取</p>
-
-<h2 id="toc_2">2.特征提取</h2>
-
-<p>通过map函数对每条记录进行特征提取</p>
-
-<pre><code>def parser_record(row):
-    # do something
-    
-    # 返回key，value形式
-    return (key, value)
-    
-    
-video_session.rdd.map(parser_record)
-</code></pre>
-
-<h2 id="toc_3">合并汇总</h2>
-
-<p>假设map输出格式是 (key, [1,2,3]), 下面对相同的key的list中的指标值进行累加</p>
-
-<pre><code>video_session.rdd.map(simple_test).reduceByKey(lambda x,y : x + y)   # 单个值的累加
-video_session.rdd.map(simple_test).reduceByKey(lambda x,y : [x[i] + y[i] for i in range(len(x))])
-</code></pre>
-
-
-		</div>
-
-		
-
-	</article>
   
 	<div class="pagination">
 	 <a class="prev" href="all_5.html">&larr; Older</a> 
@@ -412,6 +366,13 @@ video_session.rdd.map(simple_test).reduceByKey(lambda x,y : [x[i] + y[i] for i i
 	      </li>
 	  
 	      <li class="post">
+	        <a href="10%20leetcode.html"><strong>10 leetcode&nbsp;(5)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
 	        <a href="%E8%AE%B8%E5%BC%8F%E4%BC%9F-%E6%9E%B6%E6%9E%84%E8%AF%BE.html"><strong>许式伟-架构课&nbsp;(1)</strong></a>
 	        
 	        
@@ -423,6 +384,12 @@ video_session.rdd.map(simple_test).reduceByKey(lambda x,y : [x[i] + y[i] for i i
 	<section>
 	  <h1>Recent Posts</h1>
 	  <ul id="recent_posts">
+	  
+	      
+		      <li class="post">
+		        <a href="15636927966003.html">随机数</a>
+		      </li>
+	     
 	  
 	      
 		      <li class="post">
@@ -445,12 +412,6 @@ video_session.rdd.map(simple_test).reduceByKey(lambda x,y : [x[i] + y[i] for i i
 	      
 		      <li class="post">
 		        <a href="15632757602829.html">3. 假设检验的power</a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="15630063899159.html">python自然语言处理学习笔记——1</a>
 		      </li>
 	     
 	  

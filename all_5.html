@@ -82,6 +82,69 @@ $(document).ready(function(event) {
 
 	<article>
 		 <header>
+		  	<h1 class="entry-title"><a href="15417735380783.html">任务迁移</a></h1>
+			<p class="meta"><time datetime="2018-11-09T22:25:38+08:00" 
+			pubdate data-updated="true">2018/11/9</time></p>
+		 </header>
+	  	<div class="entry-content">
+		  	
+		  	<p><a href="http://wiki.baidu.com/pages/viewpage.action?pageId=496903743">http://wiki.baidu.com/pages/viewpage.action?pageId=496903743</a></p>
+
+<p><a href="http://wiki.baidu.com/display/SPRK/Tutorial+for+Spark-baidu">http://wiki.baidu.com/display/SPRK/Tutorial+for+Spark-baidu</a></p>
+
+<h2 id="toc_0">庆城</h2>
+
+<p>17年的spark资源已经到位，kce组2台机器，1095核，216549M内存，存储51.2T，队列为spark-ubs-kce, 客户端拉取地址：<br/>
+wget <a href="ftp://cp01-ubskce25.epc.baidu.com/home/work/spark-client-tianqi-2.1.tar.gz">ftp://cp01-ubskce25.epc.baidu.com/home/work/spark-client-tianqi-2.1.tar.gz</a><br/><br/>
+百度spark wiki地址：<a href="http://wiki.baidu.com/display/SPRK/Baidu+Spark">http://wiki.baidu.com/display/SPRK/Baidu+Spark</a><br/>
+提交任务命令示例：./spark-client-tianqi-2.1/bin/spark-submit --master yarn --deploy-mode client --queue spark-ubs-kce ./test.py<br/>
+任务进度查看页面：<a href="http://yq01-tianqi-normandy.dmop.baidu.com:8033/queue.html?queue=spark-ubs-kce&amp;physical=tianqi-yarn_phy">http://yq01-tianqi-normandy.dmop.baidu.com:8033/queue.html?queue=spark-ubs-kce&amp;physical=tianqi-yarn_phy</a><br/>
+欢迎各位试用，谢谢！</p>
+
+<h2 id="toc_1">1.pyspark 读取udw表</h2>
+
+<pre><code class="language-{python}">spark = SparkSession.builder.appName(&quot;video_test_&quot; + day).getOrCreate()
+video_session_sql = &quot;select event_time, event_cookie, event_urlparams, event_query,  event_others, wisepsdisplay_qid, wisepsdisplay_pn,  wisepsdisplay_tn, &quot; + \
+        &quot; wisepsdisplay_displayresult, wisepsdisplay_sampletags, clk_detail, media_time, event_browser, event_os, &quot; + \
+        &quot; event_os_version, event_pd, event_cuid, anti_spam, event_day &quot; + \
+        &quot; from ud_ml_sf_merge_data where event_day= &quot; + day + &quot; limit 100&quot;
+
+video_session = spark.sql(video_session_sql)
+</code></pre>
+
+<p>video_session是一个dataframe，可以直接取出里面的相关字段做特征提取</p>
+
+<h2 id="toc_2">2.特征提取</h2>
+
+<p>通过map函数对每条记录进行特征提取</p>
+
+<pre><code>def parser_record(row):
+    # do something
+    
+    # 返回key，value形式
+    return (key, value)
+    
+    
+video_session.rdd.map(parser_record)
+</code></pre>
+
+<h2 id="toc_3">合并汇总</h2>
+
+<p>假设map输出格式是 (key, [1,2,3]), 下面对相同的key的list中的指标值进行累加</p>
+
+<pre><code>video_session.rdd.map(simple_test).reduceByKey(lambda x,y : x + y)   # 单个值的累加
+video_session.rdd.map(simple_test).reduceByKey(lambda x,y : [x[i] + y[i] for i in range(len(x))])
+</code></pre>
+
+
+		</div>
+
+		
+
+	</article>
+ 
+	<article>
+		 <header>
 		  	<h1 class="entry-title"><a href="15415917511283.html">安装类</a></h1>
 			<p class="meta"><time datetime="2018-11-07T19:55:51+08:00" 
 			pubdate data-updated="true">2018/11/7</time></p>
@@ -350,73 +413,6 @@ Available on the App Store! :)</p>
 		
 
 	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="15394116175346.html">git</a></h1>
-			<p class="meta"><time datetime="2018-10-13T14:20:17+08:00" 
-			pubdate data-updated="true">2018/10/13</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p>git log<br/>
-git reset --hard xxxxx</p>
-
-<p>查看本地与云端的diff</p>
-
-<p>git rm —cache  删除已经提交的内容</p>
-
-<p>（1）生成公钥<br/>
-ssh-keygen -t rsa -f ~/.ssh/id_rsa.zhenzhen<br/>
-cat ~/.ssh/id_rsa.zhenzhen.pub 保存到icode上<br/>
-chmod 644 ~/.ssh/config<br/>
-vim ~/.ssh/config<br/>
-添加下自己的配置<br/>
-Host icode.baidu.com<br/>
-User yangyang22<br/>
-IdentityFile ~/.ssh/id_rsa.yangyang22<br/>
-（2）clone<br/>
-git clone  xxxxx代码库<br/>
-git config --local user.email <a href="mailto:zhengzhenzhen@baidu.com">zhengzhenzhen@baidu.com</a><br/>
-git config --local user.name zhengzhenzhen</p>
-
-<p>git push origin master:refs/for/master<br/>
-（3）上传文件<br/>
-git add xxx<br/>
-git commit -m &#39;注释&#39;<br/>
-git push origin HEAD:refs/for/master</p>
-
-<p>我不知道”undo”是什么意思。您可以删除core.excludesfile设置，如下所示：<br/>
-git config --global --unset core.excludesfile<br/>
-当然你也可以简单地编辑配置文件：<br/>
-git config --global --edit<br/>
-…然后手动删除设置。</p>
-
-<p>git config --global --edit</p>
-
-<h1 id="toc_0">!/usr/bin/env python</h1>
-
-<h1 id="toc_1">-<em>- coding: utf-8 -</em>-</h1>
-
-<h1 id="toc_2">Copyright (c) 2017 Baidu.com, Inc. All Rights Reserved</h1>
-
-<p>&quot;&quot;&quot;<br/>
-File: dau.py<br/>
-Author: work(<a href="mailto:work@baidu.com">work@baidu.com</a>)<br/>
-Date: 2017/07/13 11:07:20<br/>
-Description: 计算官方号维度的dau<br/>
-             用户访问了已经关注过的官方号主页，IM页，设置页和文章落地页<br/>
-             其中主页访问从wiseps_click里拿<br/>
-             IM页和设置页从ubc日志里拿<br/>
-             文章落地页从搜索点击日志以及wiseps_click日志里拿<br/>
-&quot;&quot;&quot;</p>
-
-
-		</div>
-
-		
-
-	</article>
   
 	<div class="pagination">
 	 <a class="prev" href="all_6.html">&larr; Older</a> 
@@ -526,6 +522,13 @@ Description: 计算官方号维度的dau<br/>
 	      </li>
 	  
 	      <li class="post">
+	        <a href="10%20leetcode.html"><strong>10 leetcode&nbsp;(5)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
 	        <a href="%E8%AE%B8%E5%BC%8F%E4%BC%9F-%E6%9E%B6%E6%9E%84%E8%AF%BE.html"><strong>许式伟-架构课&nbsp;(1)</strong></a>
 	        
 	        
@@ -537,6 +540,12 @@ Description: 计算官方号维度的dau<br/>
 	<section>
 	  <h1>Recent Posts</h1>
 	  <ul id="recent_posts">
+	  
+	      
+		      <li class="post">
+		        <a href="15636927966003.html">随机数</a>
+		      </li>
+	     
 	  
 	      
 		      <li class="post">
@@ -559,12 +568,6 @@ Description: 计算官方号维度的dau<br/>
 	      
 		      <li class="post">
 		        <a href="15632757602829.html">3. 假设检验的power</a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="15630063899159.html">python自然语言处理学习笔记——1</a>
 		      </li>
 	     
 	  

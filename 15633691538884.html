@@ -85,7 +85,36 @@ $(document).ready(function(event) {
 				<p class="meta"><time datetime="2019-07-17T21:12:33+08:00" pubdate data-updated="true">2019/7/17</time></p>
 			 </header>
 		  	<div class="entry-content">
-			  	<p>前面说过，估计的置信区间是</p>
+			  	<p>例如，我们想估计一个学校中学生的平均身高。假设希望误差能控制在d=1cm范围内，那么至少要抽取多少学生数呢？</p>
+
+<p>显然我们如果全校范围内都进行统计得到的就是真实的答案，不存在误差的问题了。然后再有些情况下，我们希望能通过简单的抽样的办法，在给定尽可能少的样本量条件下，给出尽可能高的置信结果。</p>
+
+<p>前面说过，在单样本的t检验或者z检验的时候，检验的统计量是<br/>
+\[t=\frac{d}{s/\sqrt n} 或者 z=\frac{d}{s/\sqrt n}\]<br/>
+从而可以推出来所需要的样本量<br/>
+\[n=\frac{t^2s^2}{d^2}或者n=\frac{z^2s^2}{d^2}\]</p>
+
+<p>说明：</p>
+
+<ul>
+<li>这里\(s^2\)即为方差，可以通过样本进行估计</li>
+<li>\(d\)是实验的临界误差，在这个例子中是1cm，在不同的场合下没有一个固定的办法去确定一个合适的d，比如就是误差是在1cm可以接受，还是0.1cm可以接受，这个往往由具体的业务场景来人工决定。</li>
+<li>对于大样本来说，z检验其临界的水平可以直接查表或者计算出，但是当小样本时候，t检验来说略微有些不同。因为t检验的t值还取决于本身的自由度df=n-1,其也是关于n的函数。</li>
+</ul>
+
+<p><strong>小样本的t检验迭代法</strong></p>
+
+<p>(1) 先用z分数替代t分数，计算所需的样本量n<br/>
+(2) 根据计算出来的n，在df=n-1的条件下，用t分数替代上一步的z分数，重新计算所需样本量n<br/>
+(3) 由于t分布比z分布扁平一些，相同置信度下，t分数&gt;z分布。所以(2)新估计出来的n要比(1)的略大。<br/>
+(4) 依次重复该步骤，当发现相邻两次迭代中n(取整之后)相同，则停止迭代流程即可。</p>
+
+<p><strong>没有方差的预估</strong></p>
+
+<p>前面说明中\(s^2\)为方差，可以通过样本进行预估，假设我们很不幸连方差的样本信息也没有该怎么办呢？</p>
+
+<p>\[n=\frac{t^2}{e^2}或者n=\frac{z^2}{e^2}\]<br/>
+其中\(e=\frac{d}{s}\) 即我们不去关注方差的情况，而关于误差相比于标准差的比例，即标准化d。</p>
 
 			</div>
 
@@ -227,6 +256,13 @@ $(document).ready(function(event) {
 	      </li>
 	  
 	      <li class="post">
+	        <a href="10%20leetcode.html"><strong>10 leetcode&nbsp;(5)</strong></a>
+	        
+	        
+	        
+	      </li>
+	  
+	      <li class="post">
 	        <a href="%E8%AE%B8%E5%BC%8F%E4%BC%9F-%E6%9E%B6%E6%9E%84%E8%AF%BE.html"><strong>许式伟-架构课&nbsp;(1)</strong></a>
 	        
 	        
@@ -238,6 +274,12 @@ $(document).ready(function(event) {
 	<section>
 	  <h1>Recent Posts</h1>
 	  <ul id="recent_posts">
+	  
+	      
+		      <li class="post">
+		        <a href="15636927966003.html">随机数</a>
+		      </li>
+	     
 	  
 	      
 		      <li class="post">
@@ -260,12 +302,6 @@ $(document).ready(function(event) {
 	      
 		      <li class="post">
 		        <a href="15632757602829.html">3. 假设检验的power</a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="15630063899159.html">python自然语言处理学习笔记——1</a>
 		      </li>
 	     
 	  
