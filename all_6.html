@@ -122,6 +122,165 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15637025345613.html">
+                
+                  <h1>query文本聚类</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 是不是cache问题tf-idf
+</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 添加下降维的步骤
+</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 稀疏矩阵
+</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 数据切分更小li&#39;du
+</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Mini Batch KMeans <a href="http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/">http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/</a>
+</li>
+</ul>
+
+<p>实验全量的<br/>
+<a href="http://yq01-tianqi-spark-yarn00.yq01.baidu.com:8388/proxy/application_1511855101950_42074/">http://yq01-tianqi-spark-yarn00.yq01.baidu.com:8388/proxy/application_1511855101950_42074/</a></p>
+
+<hr/>
+
+<p>刚哥的代码：<a href="https://github.com/honestOrg/gxdgroup/blob/master/src/main/scala/cn/com/gxdgroup/dataplatform/avm/utils/AVMUtils.scala">https://github.com/honestOrg/gxdgroup/blob/master/src/main/scala/cn/com/gxdgroup/dataplatform/avm/utils/AVMUtils.scala</a></p>
+
+<h2 id="toc_0">全量</h2>
+
+<p>前期构造词频矩阵：</p>
+
+<h2 id="toc_1">1.生成原始的词频矩阵</h2>
+
+<ul>
+<li><a href="http://spark.apache.org/docs/latest/ml-features.html#countvectorizer">http://spark.apache.org/docs/latest/ml-features.html#countvectorizer</a></li>
+<li><code>examples/src/main/python/sql/basic.py</code></li>
+</ul>
+
+<p>输入数据：每行是切分好的term</p>
+
+<pre><code>spark = SparkSession.builder.appName(&quot;CountVectorizerExample&quot;).getOrCreate()
+sc = spark.sparkContext
+# $example on$
+# Input data: Each row is a bag of words with a ID.
+
+lines = sc.textFile(&quot;/user/ubs/kce/zhenzhen/spark/test_data/corpus_title2&quot;)
+parts = lines.map(lambda l: l.split(&#39;#&#39;))   # convert all the term to a list
+termRDD = parts.map(lambda p: Row(tid=p[0], words=p[1].split(&#39; &#39;)))
+
+df = spark.createDataFrame(termRDD)
+# fit a CountVectorizerModel from the corpus.
+cv = CountVectorizer(inputCol=&quot;words&quot;, outputCol=&quot;features&quot;)
+#, vocabSize=3, minDF=2.0)
+
+model = cv.fit(df)
+
+result = model.transform(df)
+</code></pre>
+
+<h2 id="toc_2">2.tf-idf</h2>
+
+<ul>
+<li><a href="http://spark.apache.org/docs/latest/mllib-feature-extraction.html#tf-idf">http://spark.apache.org/docs/latest/mllib-feature-extraction.html#tf-idf</a></li>
+<li><a href="http://spark.apache.org/docs/latest/ml-features.html#feature-extractors">http://spark.apache.org/docs/latest/ml-features.html#feature-extractors</a>
+ml中的函数比mllib中的多
+examples/src/main/python/mllib/tf_idf_example.py</li>
+</ul>
+
+<pre><code>~/zhenzhen/spark_study/spark/examples/src/main/python/mllib $  pyspark zzz_tf_idf_example.py
+</code></pre>
+
+<h2 id="toc_3">3.降维</h2>
+
+<h2 id="toc_4">4.直接聚类</h2>
+
+<pre><code> # pyspark这个默认是启动的集群任务，之前测试的本地数据会出错，脚本中需把输入目录改成集群路径
+  ~/zhenzhen/spark_study $  pyspark kmeans.py  &gt; log.test
+</code></pre>
+
+<h2 id="toc_5">六神合体</h2>
+
+<ul>
+<li>词频矩阵+tfidf</li>
+</ul>
+
+<p><a href="http://www.zengyilun.com/spark-similarity/">http://www.zengyilun.com/spark-similarity/</a></p>
+
+<p>上述所有步骤(tfidf，降维,聚类)合并在一起</p>
+
+<pre><code> # pyspark这个默认是启动的集群任务，之前测试的本地数据会出错，脚本中需把输入目录改成集群路径
+  ~/zhenzhen/spark_study $  pyspark tfidf_kmeans.py  &gt; log.test
+  这个测试ok，但是中心点都是0，应该是数据问题
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037678380.html">
+                
+                  <h1>rCharts</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><a href="http://rdatascience.io/rCharts/">http://rdatascience.io/rCharts/</a></p>
+
+<p>作者的github主页<br/>
+<a href="http://ramnathv.github.io/rCharts">http://ramnathv.github.io/rCharts</a></p>
+
+<pre><code class="language-{r}">#Install 
+require(devtools)## 标题 ##
+install_github(&#39;rCharts&#39;, &#39;ramnathv&#39;)
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html'>3 数据可视化</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15637037680741.html">
                 
                   <h1>sublime</h1>
@@ -412,154 +571,6 @@ plt.scatter(X_pca[:, 0], X_pca[:, 1], c=data[200])
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025344767.html">
-                
-                  <h1>【NG-DL】course2_week1 优化网络参数</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">1.基本概念</h2>
-
-<p>很多优化参数：<br/>
-网络层数，隐层数，学习率，激活函数。。。</p>
-
-<ul>
-<li><p>训练集/验证集/测试集</p></li>
-<li><p>偏差， 训练集误差</p></li>
-<li><p>方差</p></li>
-</ul>
-
-<p>若有高bias： 尝试新的网络，更大网络</p>
-
-<p>高方差： 获取更多数据，或者正则化，更合适的网络机构</p>
-
-<p>bias和varaince的平衡<br/>
-一般来说更大的网络能减小偏差，更多的数据能减小方差。</p>
-
-<h2 id="toc_1">2.正则化-L2</h2>
-
-<p>以逻辑回归为例</p>
-
-<p>\(J(w,b)=\frac{1}{m}\sum L(\hat y_i, y_i)+\frac{\lambda}{2m}|w|^2_2\)L2惩罚，避免过拟合，导致高方差</p>
-
-<p>类似的神经网络在优化函数上加上</p>
-
-<p>\(J(w^{[1]},b^{[1]},...w^{[l]},b^{[l]})=\frac{1}{m}\sum L(\hat y_i, y_i)+\frac{\lambda}{2m}\sum||w^{[l]}||^2_2\)</p>
-
-<p>其中\(|w^{[l]}|^2\)F范数</p>
-
-<ul>
-<li>Ng.当\(\lambda\)较大时候,w会较小，sigmoid接近线性，降低方差。
-<img src="media/15055593941505/15103891828021.jpg" alt=""/></li>
-</ul>
-
-<h3 id="toc_2">正则化-dropout(随机失活)</h3>
-
-<p>每次对网络中的节点设置一个随机消失的概率p，即每个节点可能在也可能不在网络中，不在的时候即相当于该节点的数值置为0.</p>
-
-<p>dropout与l2类似都会shrink权重。</p>
-
-<h3 id="toc_3">early stoping</h3>
-
-<h2 id="toc_4">3.优化</h2>
-
-<h3 id="toc_5">归一化</h3>
-
-<p>归一化输入=&gt; 均值0，方差1<br/>
-* 零均值化<br/>
-* 归一化方差</p>
-
-<p><img src="media/15055593941505/15103915636569.jpg" alt=""/></p>
-
-<h3 id="toc_6">梯度消失与梯度爆炸</h3>
-
-<p>当梯度增长很大或者很微弱时，会导致优化出问题或者很慢。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025345757.html">
-                
-                  <h1>【Tensorflow】week2 Introduction to Computer Vision</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>前面说的hello word的例子，输入输出比较简单，这里考虑稍微复杂一点的情况—— 输入数据是图像</p>
-
-<p>人类看到下面的图像之后，能很清楚的分辨出哪个是裤子，哪个是鞋子，那么计算机要怎么分辨呢？</p>
-
-<p><img src="media/15596648844646/15600952203749.jpg" alt=""/></p>
-
-<h2 id="toc_0">1 fashion-mnist数据集介绍</h2>
-
-<p>图像数据集 <br/>
-<a href="https://github.com/zalandoresearch/fashion-mnist">https://github.com/zalandoresearch/fashion-mnist</a></p>
-
-<p>这个数据集是MNIST dataset——手写识别数字的的数据集的一个替换集合。数据格式上和手写识别数字的数据一样。</p>
-
-<pre><code>import tensorflow as tf
-import numpy as np
-from tensorflow import keras
-
-model = tf.keras.Sequential([
-keras.layers.Dense(units=1, input_shape=[1])])
-
-
-
-model.compile(optimizer=&#39;sgd&#39;, loss=&#39;mean_squared_error&#39;)
-xs = np.array([1,2,3,4,5,6,7], dtype=float)
-ys = np.array([100, 150, 200,250, 300,350, 400], dtype=float)
-model.fit(xs, ys, epochs=500)
-print(model.predict([7.0]))
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
           				   
                   </div>
                   <div class="more-right right">

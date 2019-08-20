@@ -122,6 +122,210 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15637025346412.html">
+                
+                  <h1>conda</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ul>
+<li>包管理</li>
+</ul>
+
+<p>Anaconda 安装，conda包管理器与pip类似，不同之处是可用的包以数据科学包为主，而 pip 适合一般用途。它也可以安装非 Python 的包。它是支持任何软件的包管理器。</p>
+
+<ul>
+<li>虚拟环境管理器</li>
+</ul>
+
+<p>它类似于另外两个很流行的环境管理器，即 virtualenv 和 pyenv</p>
+
+<p>脚本和程序使用的默认 Python 是 Anaconda 附带的 Python。</p>
+
+<p>安装conda <a href="https://conda.io/miniconda.html">https://conda.io/miniconda.html</a></p>
+
+<h2 id="toc_0">包管理-常用命令</h2>
+
+<pre><code>conda list  #查看安装的内容
+conda upgrade --all   #初次下载安装好后，建议更新所有包
+</code></pre>
+
+<p>安装包</p>
+
+<pre><code>conda install package
+conda install numpy=1.10   #指定包的版本
+
+conda remove package
+conda upgrade --all
+</code></pre>
+
+<pre><code>模糊查询相关包
+conda search search_term
+</code></pre>
+
+<h2 id="toc_1">环境管理</h2>
+
+<p>默认的环境名字叫base(我的电脑上是)</p>
+
+<p>通过<code>conda env list</code>可以列出你创建的所有环境</p>
+
+<pre><code>#创建环境
+conda create -n env_name list of packages
+eg. conda create -n my_env numpy
+
+conda create -n py3 python=3
+conda create -n py2 python=2
+
+#进入环境
+source activate my_env
+#离开环境
+source deactivate
+
+# 删除环境
+conda env remove -n env_name
+</code></pre>
+
+<h2 id="toc_2">其他</h2>
+
+<p>共享环境：将自己的工作环境保存下来给别人共享</p>
+
+<pre><code>#进入到你的环境中
+source activate base
+conda env export &gt; environment.yaml
+
+# 通过环境文件创建环境
+conda env create -f environment.yaml
+</code></pre>
+
+<p>练习<br/>
+conda create -n myenv python=2</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037690385.html">
+                
+                  <h1>face_recgnization</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>github<br/>
+<a href="https://github.com/ageitgey/face_recognition">https://github.com/ageitgey/face_recognition</a></p>
+
+<h2 id="toc_0">1. 安装</h2>
+
+<p>文档： <a href="https://zhuanlan.zhihu.com/p/28271869">https://zhuanlan.zhihu.com/p/28271869</a></p>
+
+<pre><code>pip install face_recognition
+</code></pre>
+
+<p>直接安装会报错，安装face_recognition这个之前需要先安装编译dlib</p>
+
+<pre><code>brew install boost
+brew install boost-python --with-python3
+
+# install dlib
+git clone https://github.com/davisking/dlib.git
+cd dlib
+mkdir build; cd build; cmake .. -DDLIB_USE_CUDA=0 -DUSE_AVX_INSTRUCTIONS=1; cmake --build 
+
+cd ..
+python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
+</code></pre>
+
+<p>If there is no cmake on your mac, you can use  <code>brew install cmake</code>. After all these have been done, run</p>
+
+<pre><code>pip install face_recognition
+</code></pre>
+
+<h2 id="toc_1">2.usage</h2>
+
+<p>face_recognition有两种使用方式，命令行方式和python包方式</p>
+
+<p>(1) 命令行方式</p>
+
+<p>(2) python 包<br/>
+<a href="https://face-recognition.readthedocs.io/en/latest/face_recognition.html#module-face_recognition.api">https://face-recognition.readthedocs.io/en/latest/face_recognition.html#module-face_recognition.api</a></p>
+
+<p></p>
+
+<h2 id="toc_2">参考资料</h2>
+
+<p><a href="https://zhuanlan.zhihu.com/p/28271869">https://zhuanlan.zhihu.com/p/28271869</a></p>
+
+<p><a href="https://medium.com/@ageitgey">https://medium.com/@ageitgey</a></p>
+
+<hr/>
+
+<p><a href="https://www.jianshu.com/p/281aa6a3823a">https://www.jianshu.com/p/281aa6a3823a</a></p>
+
+<p>一个案例<br/>
+<a href="https://www.jianshu.com/p/38ca6daf6b40">https://www.jianshu.com/p/38ca6daf6b40</a><br/>
+<a href="http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html">http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html</a></p>
+
+<p>tf案例<br/>
+<a href="https://blog.csdn.net/u010016927/article/details/75722416">https://blog.csdn.net/u010016927/article/details/75722416</a></p>
+
+<p>knn<br/>
+<a href="https://www.leiphone.com/news/201707/gIbNsPtWk460m5vj.html">https://www.leiphone.com/news/201707/gIbNsPtWk460m5vj.html</a></p>
+
+<p><a href="https://blog.csdn.net/Mbx8X9u/article/details/79124840">https://blog.csdn.net/Mbx8X9u/article/details/79124840</a></p>
+
+<p><a href="https://www.ctolib.com/topics-101544.html">https://www.ctolib.com/topics-101544.html</a></p>
+
+<p><a href="https://www.oschina.net/code/snippet_2558914_54339">https://www.oschina.net/code/snippet_2558914_54339</a></p>
+
+<h2 id="toc_3">new</h2>
+
+<p><a href="https://www.leiphone.com/news/201704/rYdpAvh4SvgVPpRQ.html">https://www.leiphone.com/news/201704/rYdpAvh4SvgVPpRQ.html</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html'>6 文本&视频</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15637037678160.html">
                 
                   <h1>git</h1>
@@ -364,165 +568,6 @@ python2 -m ipykernel install --user
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025345613.html">
-                
-                  <h1>query文本聚类</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ul>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 是不是cache问题tf-idf
-</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 添加下降维的步骤
-</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 稀疏矩阵
-</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 数据切分更小li&#39;du
-</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Mini Batch KMeans <a href="http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/">http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/</a>
-</li>
-</ul>
-
-<p>实验全量的<br/>
-<a href="http://yq01-tianqi-spark-yarn00.yq01.baidu.com:8388/proxy/application_1511855101950_42074/">http://yq01-tianqi-spark-yarn00.yq01.baidu.com:8388/proxy/application_1511855101950_42074/</a></p>
-
-<hr/>
-
-<p>刚哥的代码：<a href="https://github.com/honestOrg/gxdgroup/blob/master/src/main/scala/cn/com/gxdgroup/dataplatform/avm/utils/AVMUtils.scala">https://github.com/honestOrg/gxdgroup/blob/master/src/main/scala/cn/com/gxdgroup/dataplatform/avm/utils/AVMUtils.scala</a></p>
-
-<h2 id="toc_0">全量</h2>
-
-<p>前期构造词频矩阵：</p>
-
-<h2 id="toc_1">1.生成原始的词频矩阵</h2>
-
-<ul>
-<li><a href="http://spark.apache.org/docs/latest/ml-features.html#countvectorizer">http://spark.apache.org/docs/latest/ml-features.html#countvectorizer</a></li>
-<li><code>examples/src/main/python/sql/basic.py</code></li>
-</ul>
-
-<p>输入数据：每行是切分好的term</p>
-
-<pre><code>spark = SparkSession.builder.appName(&quot;CountVectorizerExample&quot;).getOrCreate()
-sc = spark.sparkContext
-# $example on$
-# Input data: Each row is a bag of words with a ID.
-
-lines = sc.textFile(&quot;/user/ubs/kce/zhenzhen/spark/test_data/corpus_title2&quot;)
-parts = lines.map(lambda l: l.split(&#39;#&#39;))   # convert all the term to a list
-termRDD = parts.map(lambda p: Row(tid=p[0], words=p[1].split(&#39; &#39;)))
-
-df = spark.createDataFrame(termRDD)
-# fit a CountVectorizerModel from the corpus.
-cv = CountVectorizer(inputCol=&quot;words&quot;, outputCol=&quot;features&quot;)
-#, vocabSize=3, minDF=2.0)
-
-model = cv.fit(df)
-
-result = model.transform(df)
-</code></pre>
-
-<h2 id="toc_2">2.tf-idf</h2>
-
-<ul>
-<li><a href="http://spark.apache.org/docs/latest/mllib-feature-extraction.html#tf-idf">http://spark.apache.org/docs/latest/mllib-feature-extraction.html#tf-idf</a></li>
-<li><a href="http://spark.apache.org/docs/latest/ml-features.html#feature-extractors">http://spark.apache.org/docs/latest/ml-features.html#feature-extractors</a>
-ml中的函数比mllib中的多
-examples/src/main/python/mllib/tf_idf_example.py</li>
-</ul>
-
-<pre><code>~/zhenzhen/spark_study/spark/examples/src/main/python/mllib $  pyspark zzz_tf_idf_example.py
-</code></pre>
-
-<h2 id="toc_3">3.降维</h2>
-
-<h2 id="toc_4">4.直接聚类</h2>
-
-<pre><code> # pyspark这个默认是启动的集群任务，之前测试的本地数据会出错，脚本中需把输入目录改成集群路径
-  ~/zhenzhen/spark_study $  pyspark kmeans.py  &gt; log.test
-</code></pre>
-
-<h2 id="toc_5">六神合体</h2>
-
-<ul>
-<li>词频矩阵+tfidf</li>
-</ul>
-
-<p><a href="http://www.zengyilun.com/spark-similarity/">http://www.zengyilun.com/spark-similarity/</a></p>
-
-<p>上述所有步骤(tfidf，降维,聚类)合并在一起</p>
-
-<pre><code> # pyspark这个默认是启动的集群任务，之前测试的本地数据会出错，脚本中需把输入目录改成集群路径
-  ~/zhenzhen/spark_study $  pyspark tfidf_kmeans.py  &gt; log.test
-  这个测试ok，但是中心点都是0，应该是数据问题
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037678380.html">
-                
-                  <h1>rCharts</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><a href="http://rdatascience.io/rCharts/">http://rdatascience.io/rCharts/</a></p>
-
-<p>作者的github主页<br/>
-<a href="http://ramnathv.github.io/rCharts">http://ramnathv.github.io/rCharts</a></p>
-
-<pre><code class="language-{r}">#Install 
-require(devtools)## 标题 ##
-install_github(&#39;rCharts&#39;, &#39;ramnathv&#39;)
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html'>3 数据可视化</a></span>
           				   
                   </div>
                   <div class="more-right right">

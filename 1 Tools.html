@@ -195,6 +195,200 @@ export PYSPARK_DRIVER_PYTHON_OPTS=&#39;notebook&#39;
               </div><!-- article -->
         
 			<div class="article">
+                <a class="clearlink" href="15637037683461.html">
+                
+                  <h1>Jupyter notebook</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>类似于r的markdown</p>
+
+<p>GitHub 上也直接支持 Jupyter notebook 的渲染。借助此出色的功能，你可以轻松地共享工作。<a href="http://nbviewer.jupyter.org/">http://nbviewer.jupyter.org/</a> 也会提供 GitHub 代码库中的 notebook ，以及存储在其他地方的 notebook。</p>
+
+<p>名称 Jupyter 由 Julia、Python 和 R 组合而成，早期的两个非 Python 内核分别是 R 语言和 Julia 语言</p>
+
+<h2 id="toc_0">1.安装</h2>
+
+<ul>
+<li>如果安装anaconda 会自带</li>
+<li>通过conda环境安装 <code>conda install jupyter notebook</code>，或者<code>pip install jupyter notebook</code></li>
+</ul>
+
+<pre><code># 启动
+jupyter notebook
+</code></pre>
+
+<p>快捷键</p>
+
+<p><img src="media/15017829276727/15018110676261.jpg" alt=""/></p>
+
+<p>m 切换至markdown<br/>
+y 切换至单元格</p>
+
+<h2 id="toc_1">magic 关键字</h2>
+
+<p>Magic 关键字是可以在单元格中运行的特殊命令，能让你控制notebook 本身或执行系统调用（例如更改目录）</p>
+
+<p>Magic 命令的前面带有一个或两个百分号（% 或 %%），分别对应行 Magic 命令和单元格 Magic 命令。行 Magic 命令仅应用于编写 Magic 命令时所在的行，而单元格 Magic 命令应用于整个单元格。</p>
+
+<p>对于 Python 内核，可以使用 Magic 命令 %pdb 开启交互式调试器。出错时，你能检查当前命名空间中的变量。</p>
+
+<h2 id="toc_2">转换 notebook</h2>
+
+<p>Notebook 只是扩展名为 .ipynb 的大型 JSON 文件。</p>
+
+<p>转换格式的命令 <code>nbconvert</code></p>
+
+<pre><code>jupyter nbconvert --to html notebook.ipynb   #转成html
+jupyter nbconvert --to markdown xxx.ipynb 
+</code></pre>
+
+<p>目前支持的转换格式(<a href="https://nbconvert.readthedocs.io/en/latest/usage.html">https://nbconvert.readthedocs.io/en/latest/usage.html</a>)<br/>
+HTML,<br/>
+LaTeX,<br/>
+PDF,<br/>
+Reveal.js HTML slideshow,<br/>
+Markdown,<br/>
+reStructuredText,<br/>
+executable script,<br/>
+notebook.</p>
+
+<p><strong>创建幻灯片</strong></p>
+
+<p>在 notebook 中创建幻灯片的过程像平常一样，但需要指定作为幻灯片的单元格和单元格的幻灯片类型。在菜单栏中，点击“View”（视图）&gt;“Cell Toolbar”（单元格工具栏）&gt;“Slideshow”（幻灯片），以便在每个单元格上弹出幻灯片单元格菜单。</p>
+
+<pre><code>#转换并在浏览器中展示
+jupyter nbconvert notebook.ipynb --to slides --post serve
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637025346412.html">
+                
+                  <h1>conda</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ul>
+<li>包管理</li>
+</ul>
+
+<p>Anaconda 安装，conda包管理器与pip类似，不同之处是可用的包以数据科学包为主，而 pip 适合一般用途。它也可以安装非 Python 的包。它是支持任何软件的包管理器。</p>
+
+<ul>
+<li>虚拟环境管理器</li>
+</ul>
+
+<p>它类似于另外两个很流行的环境管理器，即 virtualenv 和 pyenv</p>
+
+<p>脚本和程序使用的默认 Python 是 Anaconda 附带的 Python。</p>
+
+<p>安装conda <a href="https://conda.io/miniconda.html">https://conda.io/miniconda.html</a></p>
+
+<h2 id="toc_0">包管理-常用命令</h2>
+
+<pre><code>conda list  #查看安装的内容
+conda upgrade --all   #初次下载安装好后，建议更新所有包
+</code></pre>
+
+<p>安装包</p>
+
+<pre><code>conda install package
+conda install numpy=1.10   #指定包的版本
+
+conda remove package
+conda upgrade --all
+</code></pre>
+
+<pre><code>模糊查询相关包
+conda search search_term
+</code></pre>
+
+<h2 id="toc_1">环境管理</h2>
+
+<p>默认的环境名字叫base(我的电脑上是)</p>
+
+<p>通过<code>conda env list</code>可以列出你创建的所有环境</p>
+
+<pre><code>#创建环境
+conda create -n env_name list of packages
+eg. conda create -n my_env numpy
+
+conda create -n py3 python=3
+conda create -n py2 python=2
+
+#进入环境
+source activate my_env
+#离开环境
+source deactivate
+
+# 删除环境
+conda env remove -n env_name
+</code></pre>
+
+<h2 id="toc_2">其他</h2>
+
+<p>共享环境：将自己的工作环境保存下来给别人共享</p>
+
+<pre><code>#进入到你的环境中
+source activate base
+conda env export &gt; environment.yaml
+
+# 通过环境文件创建环境
+conda env create -f environment.yaml
+</code></pre>
+
+<p>练习<br/>
+conda create -n myenv python=2</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15637037678160.html">
                 
                   <h1>git</h1>
@@ -384,250 +578,6 @@ python2 -m ipykernel install --user
 <p><a href="https://colab.research.google.com/">https://colab.research.google.com/</a></p>
 
 <p>本身功能上差不太多，主要是有search和share功能，查看别人分享的代码</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037679256.html">
-                
-                  <h1>markdown</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">图片</h2>
-
-<p>现在很多makdown编辑器是可以支持拖拽本地图片或者截屏就可以直接在markdown中生成图片的，非常方便，比如我现在在用的MWeb编辑器。</p>
-
-<p>但是如果同一篇内容需要在不同的平台上进行发布，那图片处理起来就比较麻烦。因为需要重新上传到不同平台。<br/>
-最方便的处理方式就是利用图床， 这里以七牛云存储为例。<br/>
-<img src="media/15378048283915/15383141468224.jpg" alt=""/></p>
-
-<p>step1： 首先在七牛官网上申请注册账号，并且添加<strong>对象存储</strong></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037680741.html">
-                
-                  <h1>sublime</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>sublime除了具有基本的文本编辑功能之外，还可以安装很多package来扩展其强大的功能。这里罗列出一些工作中经常能用到的</p>
-
-<p><strong>安装install package</strong></p>
-
-<p>点击菜单中的 “View”–“Show Console”，调出console面板，然后到<a href="https://packagecontrol.io/installation#st3%E5%AE%98%E7%BD%91%E4%B8%8A%E7%9A%84%EF%BC%8C%E5%A4%8D%E5%88%B6%E5%87%BA%E4%BB%A3%E7%A0%81%E9%BB%8F%E8%B4%B4%E6%89%A7%E8%A1%8C">https://packagecontrol.io/installation#st3官网上的，复制出代码黏贴执行</a></p>
-
-<h2 id="toc_0">diff对比</h2>
-
-<h1 id="toc_1">Package Control Messages</h1>
-
-<h2 id="toc_2">Sublimerge 3</h2>
-
-<p>Sublimerge 3 (beta) has just been installed. Thanks for trying it out!</p>
-
-<p>It is highly recommended to restart Sublime Text before first use.</p>
-
-<hr/>
-
-<p>!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br/>
-  !!                                                                                                       !!<br/>
-  !!                NOTE: THIS IS A BETA VERSION. PLEASE REPORT ANY BUGS YOU MAY ENCOUNTER.                !!<br/>
-  !!                                                                                                       !!<br/>
-  !!                                                                                                       !!<br/>
-  !!     <a href="http://www.sublimerge.com/support.html">http://www.sublimerge.com/support.html</a>                                <a href="mailto:support@sublimerge.com">support@sublimerge.com</a>      !!<br/>
-  !!                                                                                                       !!<br/>
-  !!     Issue Tracker: <a href="https://bitbucket.org/borysforytarz/sublimerge-3/issues?status=new&amp;status=open">https://bitbucket.org/borysforytarz/sublimerge-3/issues?status=new&amp;status=open</a>     !!<br/>
-  !!                                                                                                       !!<br/>
-  !!                                                                                                       !!<br/>
-  !!                                                                                                       !!<br/>
-  !!     Please visit <a href="http://www.sublimerge.com/sm3/docs/">http://www.sublimerge.com/sm3/docs/</a> for more information.                            !!<br/>
-  !!                                                                                                       !!<br/>
-  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>
-
-<p>The first steps after installation<br/>
-  ==================================</p>
-
-<ol>
-<li><p>By default Sublimerge&#39;s colors theme conforms to default Sublime Text theme. If you are using some<br/>
- custom theme and find the colors poorly visible, you may need to change them.</p></li>
-<li><p>If you&#39;re on Windows and want to use VCS-related commands, you may need to configure the executable<br/>
- path for your VCS. Linux and OS X users with non-standard VCS installation may need to configure this too.</p>
-
-<p>Please visit <a href="http://www.sublimerge.com/sm3/docs/configuration.html">http://www.sublimerge.com/sm3/docs/configuration.html</a> for more information about configuration.</p>
-
-<h1 id="toc_3">Simplified usage instructions</h1>
-
-<p>In file view:</p>
-
-<p>[ctrl]+[alt]+[d]                      - display Quick Panel with commands available for current view</p>
-
-<p>In diff view:</p>
-
-<p>Windows/Linux:</p>
-
-<p>[ctrl]+[down]                         - select next change<br/>
-  [ctrl]+[up]                           - select previous change</p>
-
-<ul>
-<li>[ctrl]+[left]                         - copy selected change (or active line) to left from right</li>
-<li><p>[ctrl]+[right]                        - copy selected change (or active line) to right from left<br/>
-[ctrl]+[shift]+[left]                 - copy all changes to left from right<br/>
-[ctrl]+[shift]+[right]                - copy all changes to right from left</p>
-
-<p>OSX:</p>
-
-<p>[alt]+[down]                          - select next change<br/>
-[alt]+[up]                            - select previous change</p></li>
-<li><p>[alt]+[left]                          - copy selected change (or active line) to left from right</p></li>
-<li><p>[alt]+[right]                         - copy selected change (or active line) to right from left<br/>
-[alt]+[shift]+[left]                  - copy all changes to left from right<br/>
-[alt]+[shift]+[right]                 - copy all changes to right from left</p>
-
-<p>Common:</p>
-
-<p>[f3]                                  - swap panels<br/>
-[f4]                                  - show changes navigator<br/>
-[f5]                                  - recompare buffers</p></li>
-<li><ul>
-<li>if change is selected the command will copy its whole contents, otherwise will copy only the focused line</li>
-</ul></li>
-</ul>
-
-<p>In directories diff view:</p>
-
-<p>[down]                              - select next file/directory<br/>
-  [up]                                - select previous file/directory<br/>
-  [left]                              - copy file/directory from right to left<br/>
-  [right]                             - copy file/directory from left to right<br/>
-  [enter]                             - enter sub directory / compare text files<br/>
-  [backspace]                         - enter parent directory</p>
-
-<p>Windows/Linux:</p>
-
-<p>[ctrl]+[down]                       - select next different file/directory<br/>
-  [ctrl]+[up]                         - select previous different file/directory</p>
-
-<p>OS X:</p>
-
-<p>[alt]+[down]                        - select next different file/directory<br/>
-  [alt]+[up]                          - select previous different file/directory</p>
-
-<p>For convenience Sublimerge also supports standard OS X keyboard shortcuts for directories navigation:</p>
-
-<p>[cmd]+[down]                        - enter sub directory / compare text files<br/>
-  [cmd]+[up]                          - enter parent directory</p>
-
-<h1 id="toc_4">End-User License Agreement (EULA)</h1></li>
-<li><p>LICENSES<br/>
-  SUBLIMERGE is licensed as follows:<br/>
-  a) Evaluation time.<br/>
-      You can evaluate SUBLIMERGE freely for 90 days. Later you will need to purchase<br/>
-      a license for continued use.<br/>
-  b) Installation and Usage.<br/>
-      Licenses are per user and valid for use on all supported operating systems.<br/>
-      License keys may be used on multiple computers and operating systems, provided<br/>
-      the license key holder is the primary user. Businesses must purchase at least<br/>
-      as many licenses as the number of people using SUBLIMERGE.<br/>
-  c) Backup Copies.<br/>
-      You may make copies of the license key and/or SUBLIMERGE for backup and archival<br/>
-      purposes.<br/>
-  d) Evaluation time.<br/>
-      You can evaluate SUBLIMERGE freely for 90 days. Later you will need to purchase<br/>
-      a license for continued use.</p></li>
-<li><p>ILLEGAL USAGE<br/>
-  Any illegal usage of SUBLIMERGE, including reverse engineering, using unauthorized license <br/>
-  keys, creating keygens and cracks is prohibited and will be subject for prosecution.</p></li>
-<li><p>DESCRIPTION OF OTHER RIGHTS AND LIMITATIONS<br/>
-  a) Maintenance of Copyright Notices.<br/>
-      You must not remove or alter any copyright notices on any copy of SUBLIMERGE.</p>
-
-<p>b) Distribution.<br/>
-      You may not distribute or sell license keys or SUBLIMERGE to third parties.<br/>
-      Licenses will be revoked if distributed or sold to third parties.</p>
-
-<p>c) Rental.<br/>
-      You may not rent, lease, or lend the license key or SUBLIMERGE.</p></li>
-<li><p>COPYRIGHT<br/>
-  All title, including but not limited to copyrights, in and to SUBLIMERGE and any copies<br/>
-  thereof are owned by BORYS FORYTARZ (AUTHOR).</p></li>
-<li><p>REFUND POLICY<br/>
-  Refunds are not available. Because of this, before purchasing a license, you can evaluate<br/>
-  SUBLIMERGE without any functionality limitations for 90 days. Later you will need to<br/>
-  purchase a license.</p></li>
-<li><p>NO WARRANTIES<br/>
-  AUTHOR expressly disclaims any warranty for SUBLIMERGE, which is provided<br/>
-  &#39;as is&#39; without any express or implied warranty of any kind, including but not limited<br/>
-  to any warranties of merchantability, non-infringement, or fitness of a particular<br/>
-  purpose.</p></li>
-<li><p>LIMITATION OF LIABILITY<br/>
-  In no event shall AUTHOR be liable for any damages due to use of SUBLIMERGE,<br/>
-  to the maximum extent permitted by law. This includes without limitation, lost profits,<br/>
-  business interruption, or lost information. In no event will AUTHOR be liable<br/>
-  for loss of data or for indirect, special, incidental, consequential (including lost<br/>
-  profit), or other damages. AUTHOR shall have no liability with respect to the<br/>
-  content of SUBLIMERGE or any part thereof, including but not limited to errors or<br/>
-  omissions contained therein, libel, trademark rights, business interruption, loss of<br/>
-  privacy or the disclosure of confidential information.</p>
-
-<h1 id="toc_5">More information</h1>
-
-<p>For more information, troubleshooting, customizing settings and more, please visit <a href="http://www.sublimerge.com">www.sublimerge.com</a></p>
-
-<h1 id="toc_6">By the way...</h1>
-
-<p>Take a break from your work and play my BF&#39;s Draughts on your iOS device!<br/>
-Available on the App Store! :)</p>
-
-<p><a href="http://www.bfdraughts.com/as/">http://www.bfdraughts.com/as/</a></p></li>
-</ol>
-
-<h2 id="toc_7">参考资料</h2>
 
                         
                       </div>
