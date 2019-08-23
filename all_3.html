@@ -122,6 +122,200 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15636947700701.html">
+                
+                  <h1>4.7 聚类1</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>聚类分析（cluster analysis）是属于无监督学习，他的目的是去探索数据隐含的规律。其基本思想是基于相似度/距离远近来将样本进行聚类。</p>
+
+<h2 id="toc_0">1.距离的度量方法</h2>
+
+<p>常见的聚类方法：</p>
+
+<table>
+<thead>
+<tr>
+<th>方法类别</th>
+<th>聚类方法</th>
+<th>优缺点</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>基于距离</td>
+<td>Kmeans</td>
+<td></td>
+</tr>
+<tr>
+<td>基于密度</td>
+<td>Dbscan</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>kmeans</li>
+</ul>
+
+<p>选择初始种子</p>
+
+<p>从概率角度看，k均值算法是高斯混合模型的一种特例</p>
+
+<ul>
+<li>基于密度的聚类 DBSCAN</li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037683688.html">
+                
+                  <h1>4.7 聚类2——-效果评价</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>一般分为两类：</p>
+
+<ul>
+<li>外部标准：即基于人工的判断，需要有个标注集合</li>
+<li>内部标准：基于类内和类间聚类的目标函数的判断</li>
+</ul>
+
+<h2 id="toc_0">内部标准clustering-performance-evaluation</h2>
+
+<ul>
+<li>CH 准则</li>
+<li>轮廓系数</li>
+</ul>
+
+<h2 id="toc_1">外部标准——人工判定</h2>
+
+<p>假设：<br/>
+机器判断的类别集合是：\(C=\{C_1,C_2,...C_m\}\)<br/>
+人工判断的类别集合是：\(P=\{P_1,P_2,...P_s\}\)</p>
+
+<h3 id="toc_2">1.1混淆矩阵</h3>
+
+<p>基于数据样本点的角度：<br/>
+对于任意两个数据pair，\((x_i,x_j)\)按照其在C和P中是否属于同一个簇，可以构造出混淆矩阵</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>P_1</th>
+<th>p_0</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>C_1</td>
+<td>a</td>
+<td>b</td>
+</tr>
+<tr>
+<td>C_0</td>
+<td>c</td>
+<td>d</td>
+</tr>
+</tbody>
+</table>
+
+<p><img src="media/15078603543147/15078631739679.jpg" alt=""/></p>
+
+<h3 id="toc_3">1.2簇的准确率/召回率</h3>
+
+<p>基于簇pair的，考虑对任意一个人工与机器的.\(P_j,C_i\)。对于每一个人工标注的\(P_j\),在机器标注中应该都会对应一个&quot;最相关的&quot;。可以遍历C中所有的cluster，分别计算准确率，召回率，F_score。<br/>
+<img src="media/15078603543147/15078720767171.jpg" alt=""/></p>
+
+<p>然后对于所有簇的F值做加权平均<br/>
+\[ClassF=\sum w_j F(p_j), w_i=n_j/n\]</p>
+
+<p>classF指标，相当于是以人工标注的簇为基准，将聚类的簇尽量逼近这个标注的结果。</p>
+
+<h2 id="toc_4">1.3</h2>
+
+<p>1.2中的方法相当于要求的比较严格，即以人工标注的集合簇为准。</p>
+
+<p>实际中其实只要保证我们聚的每一个类\(C_i\)是有意义的就可以，即以C为主</p>
+
+<p>类似的定义 \(F(C_i)=\max_{1\lt j \lt s}F(P_j, C_i)\)<br/>
+\[F=\sum w_i F(C_i), w_i=|C_i|/n\]</p>
+
+<ul>
+<li>问题： 这个指标可能变化不是非常明显</li>
+</ul>
+
+<h2 id="toc_5">1.4基于数据对象的准召F</h2>
+
+<p><img src="media/15078603543147/15078731022919.jpg" alt=""/></p>
+
+<h2 id="toc_6">思考</h2>
+
+<ol>
+<li>基于人工标注的方法中，认为人工标注的是准确的或者说结果是唯一的。实际上一堆sample可以有不同的分类方法，而且每种方法可能都是对的。
+<code>
+e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大学
+</code>
+如何进行标注，或者标注结果是非固定时候怎么衡量聚类效果的好坏？？</li>
+</ol>
+
+<h2 id="toc_7">参考资料</h2>
+
+<p><a href="http://blog.csdn.net/itplus/article/details/10322361">http://blog.csdn.net/itplus/article/details/10322361</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15637025348085.html">
                 
                   <h1>4.8 自适应的基函数——神经网络</h1>
@@ -278,178 +472,6 @@ webshot::install_phantomjs()
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15637037720747.html">
-                
-                  <h1>FM</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>学习地址 <a href="https://github.com/babakx/fm_tensorflow">https://github.com/babakx/fm_tensorflow</a></p>
-
-<h2 id="toc_0">1. 环境包安装</h2>
-
-<p>安装tensorflow</p>
-
-<h2 id="toc_1">2.试运行</h2>
-
-<p>这个是用tf实现的FM<br/>
-<a href="https://www.jianshu.com/p/152ae633fb00">https://www.jianshu.com/p/152ae633fb00</a></p>
-
-<ul>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked /> 试运行成功
-</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 了解原理
-</li>
-</ul>
-
-<p>小数据集版本（进入tf的仍然是dense矩阵，只适合小数据）<br/>
- <a href="https://github.com/babakx/fm_tensorflow">https://github.com/babakx/fm_tensorflow</a></p>
-
-<p>大数据量版本</p>
-
-<h2 id="toc_2">3.原理</h2>
-
-<h2 id="toc_3">PYTHON版本的包实现方式</h2>
-
-<ul>
-<li>LibFM</li>
-<li>libFFM</li>
-<li>xLearn</li>
-<li>tffm</li>
-</ul>
-
-<p>目前在python中的支持FM相关的包主要有</p>
-
-<p>__</p>
-
-<h3 id="toc_4">1.libFM</h3>
-
-<p>官网 <a href="http://www.libfm.org/">http://www.libfm.org/</a><br/>
-github <a href="https://github.com/srendle/libfm">https://github.com/srendle/libfm</a></p>
-
-<p>从官网下载安装包</p>
-
-<h3 id="toc_5">tffm</h3>
-
-<p><a href="https://github.com/geffy/tffm">https://github.com/geffy/tffm</a></p>
-
-<p>tffm是FM方法的tensorflow版本，他支持：</p>
-
-<ul>
-<li>dense or sparse输出</li>
-<li>order &gt;= 2</li>
-</ul>
-
-<pre><code># 安装 
-pip install tffm
-</code></pre>
-
-<p>按照github上的example</p>
-
-<p>log</p>
-
-<p>todo:</p>
-
-<ul>
-<li>调整参数k， int_std, red</li>
-<li>统一 content_len的量纲</li>
-<li>文章添加关键字</li>
-</ul>
-
-<h2 id="toc_6">* tffm，添加field</h2>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037680228.html">
-                
-                  <h1>FM 模型</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>背景</p>
-</blockquote>
-
-<p>一般的线性模型 \(y=w_0 + \sum w_i x_i\)， 当考虑了特征之间的相关性即交互效应(这里以二阶为例)后模型形式是：<br/>
-\[y=w_0 + \sum w_i x_i + \sum_1^{n-1}\sum_{i+1}^n w_{ij}x_ix_j\]</p>
-
-<p>这里n表示特征的个数</p>
-
-<blockquote>
-<p>模型如何求解呢？</p>
-</blockquote>
-
-<p>如果把\(x_ix_j\)看做一个新的变量，相当于整体上还是一个线性回归模型，似乎可以用正常的线性回归的办法进行求解。<br/>
-但是这里未知的要求解的参数有n(+1)/2个，很多时候特征中会有一些分类型的变量，当通过哑变量的方式引入模型中的时候，特征数目k会非常大，从而导致要求解的参数个数较大，并且数据特别稀疏。另一方面，分类特征就到时候，\(x_ix_j\)是非零的比例较小，从而导致\(w\)无法计算出来。</p>
-
-<blockquote>
-<p>引入其他辅助信息</p>
-</blockquote>
-
-<p>我们可以引入一个辅助向量 对于\(w_{ij}\)形成的对称矩阵W，可以进行分解\(W=V^TV\)</p>
-
-<p>将模型改成如下形式<br/>
-\[y=w_0 + \sum w_i x_i + \sum_1^{n-1}\sum_{i+1}^n &lt;v_i, v_j&gt;x_ix_j\]</p>
-
-<ul>
-<li>从形式上来看，我们知道\(w_ij\)的矩阵是对称的，其形式上和协差阵\(&lt;v_i, v_j&gt;\)很类似</li>
-</ul>
-
-<p>\(v_i\)相当于是第i维隐向量，假设其维度是k&lt;&lt;n, 这样模型的参数就由原来的n(n+1)/2 变为了</p>
-
-<h2 id="toc_0">参考资料</h2>
-
-<p>简书-石晓文 <a href="https://www.jianshu.com/p/152ae633fb00">https://www.jianshu.com/p/152ae633fb00</a><br/>
-美团技术博客 <a href="https://tech.meituan.com/deep_understanding_of_ffm_principles_and_practices.html">https://tech.meituan.com/deep_understanding_of_ffm_principles_and_practices.html</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -543,7 +565,7 @@ pip install tffm
 		  
 		      
 			      <li class="post">
-			        <a href="15637025344954.html">1 安装-mac</a>
+			        <a href="15637025346412.html">1. conda 环境管理</a>
 			      </li>
 		     
 		  
@@ -555,13 +577,13 @@ pip install tffm
 		  
 		      
 			      <li class="post">
-			        <a href="15637036605080.html">3 样本量的确定</a>
+			        <a href="15664761738125.html">2. iterm终端配置-oh my zsh</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037691936.html">3.1 特征处理—— 特征选择</a>
+			        <a href="15637036605080.html">3 样本量的确定</a>
 			      </li>
 		     
 		  

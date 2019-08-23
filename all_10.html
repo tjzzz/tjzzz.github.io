@@ -122,6 +122,74 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15637037679634.html">
+                
+                  <h1>神经网络解释性问题</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><a href="https://ask.hellobi.com/blog/zlx19930503/10578">https://ask.hellobi.com/blog/zlx19930503/10578</a></p>
+
+<p>但是深度学习是一个黑箱。我第一次听说它时，就对其工作原理非常费解。几年过去了，我仍然在探索合理的答案。尝试解释现代神经网络很难，但是至关重要。如果我们打算依赖深度学习制造新的 AI、处理敏感的用户数据，或者开药，那么我们必须理解这些模型的工作原理。</p>
+
+<p>很幸运，学界人士也提出了很多对深度学习的理解。以下是几个近期论文示例：</p>
+
+<h2 id="toc_0">Grad-Cam（Selvaraju et. al. 2017）</h2>
+
+<p>使用最后卷积层的梯度生成热力图，突出显示输入图像中的重要像素用于分类。</p>
+
+<h2 id="toc_1">LIME（Ribeiro et. al. 2016）</h2>
+
+<p>使用稀疏线性模型（可轻松识别重要特征）逼近 DNN 的预测。</p>
+
+<p>论文地址：<a href="https://arxiv.org/abs/1602.04938">https://arxiv.org/abs/1602.04938</a></p>
+
+<p>一些中文解读：<a href="https://www.oreilly.com.cn/ideas/?p=563%EF%BC%9B">https://www.oreilly.com.cn/ideas/?p=563；</a><br/>
+<a href="http://geek.csdn.net/news/detail/66259">http://geek.csdn.net/news/detail/66259</a></p>
+
+<p>一个例子<br/>
+<a href="http://marcotcr.github.io/lime/tutorials/Lime%20-%20basic%20usage%2C%20two%20class%20case.html">http://marcotcr.github.io/lime/tutorials/Lime%20-%20basic%20usage%2C%20two%20class%20case.html</a></p>
+
+<p><a href="https://www.jiqizhixin.com/articles/2017-12-20-2">https://www.jiqizhixin.com/articles/2017-12-20-2</a></p>
+
+<h2 id="toc_2">特征可视化（Olah 2017）</h2>
+
+<p>对于带有随机噪声的图像，优化像素来激活训练的 DNN 中的特定神经元，进而可视化神经元学到的内容。</p>
+
+<h2 id="toc_3">Loss Landscape（Li et. al. 2017）</h2>
+
+<p>可视化 DNN 尝试最小化的非凸损失函数，查看架构／参数如何影响损失情况。</p>
+
+<h2 id="toc_4">关于xgboost</h2>
+
+<p>R: <a href="https://github.com/AppliedDataSciencePartners/xgboostExplainer">https://github.com/AppliedDataSciencePartners/xgboostExplainer</a><br/>
+python <a href="https://github.com/gameofdimension/xgboost_explainer">https://github.com/gameofdimension/xgboost_explainer</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15637025348511.html">
                 
                   <h1>章1 基本介绍</h1>
@@ -424,86 +492,6 @@ L2正则化/岭回归，又叫权重衰减； 可以参照岭回归<br/>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15637025345792.html">
-                
-                  <h1>第三章 概率与信息论</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>本章主要是介绍了一些概率论的基础以及常见的分布</p>
-
-<h2 id="toc_0">1.常用函数的有用性质</h2>
-
-<ul>
-<li>sigmoid 函数</li>
-</ul>
-
-<p>\[\delta(x) = \frac{1}{1+exp(-x)}\]</p>
-
-<ul>
-<li>softplus函数
-\[log(1+exp(x))\]
-<img src="media/15080561019055/15080571562017.jpg" alt=""/></li>
-</ul>
-
-<p>是\(y=max(0,x)\)的平滑版本</p>
-
-<h2 id="toc_1">2.信息论</h2>
-
-<p>信息论是应用数学的一个分支，主要研究的是对一个信号包含信息的多少进行量化。<br/>
-<img src="media/15080561019055/15080594230903.jpg" alt=""/></p>
-
-<p>自信息：定义一个时间X=x的自信息<br/>
-\[I(x) = -log P(x)\]</p>
-
-<p>熵：<br/>
-\[-\sum P(x_i) logP(x_i)\]</p>
-
-<h3 id="toc_2">KL散度/相对熵</h3>
-
-<p>\[KL(P||Q) = -\sum P_i ln(\frac{P_i}{Q_i})=-\sum P_i(ln(P_i)- ln(Q_i))\]</p>
-
-<p>注意：</p>
-
-<ul>
-<li>KL距离其实并不是严格的距离，不满足对称性以及三角不等式。</li>
-</ul>
-
-<p>JS距离：<br/>
-\[JS(P1||P2) = \frac{1}{2}KL(P1||(P1+P2)/2)+ \frac{1}{2}KL(P2||(P1+P2)/2)\]</p>
-
-<h3 id="toc_3">交叉熵</h3>
-
-<p>相对熵的第一部分<br/>
-\[KL(P||Q) = -\sum P_i ln(Q_i)\]</p>
-
-<h2 id="toc_4">3.结构化概率模型——图模型(graphical model)</h2>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -597,7 +585,7 @@ L2正则化/岭回归，又叫权重衰减； 可以参照岭回归<br/>
 		  
 		      
 			      <li class="post">
-			        <a href="15637025344954.html">1 安装-mac</a>
+			        <a href="15637025346412.html">1. conda 环境管理</a>
 			      </li>
 		     
 		  
@@ -609,13 +597,13 @@ L2正则化/岭回归，又叫权重衰减； 可以参照岭回归<br/>
 		  
 		      
 			      <li class="post">
-			        <a href="15637036605080.html">3 样本量的确定</a>
+			        <a href="15664761738125.html">2. iterm终端配置-oh my zsh</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037691936.html">3.1 特征处理—— 特征选择</a>
+			        <a href="15637036605080.html">3 样本量的确定</a>
 			      </li>
 		     
 		  

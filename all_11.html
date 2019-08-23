@@ -122,6 +122,86 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15637025345792.html">
+                
+                  <h1>第三章 概率与信息论</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>本章主要是介绍了一些概率论的基础以及常见的分布</p>
+
+<h2 id="toc_0">1.常用函数的有用性质</h2>
+
+<ul>
+<li>sigmoid 函数</li>
+</ul>
+
+<p>\[\delta(x) = \frac{1}{1+exp(-x)}\]</p>
+
+<ul>
+<li>softplus函数
+\[log(1+exp(x))\]
+<img src="media/15080561019055/15080571562017.jpg" alt=""/></li>
+</ul>
+
+<p>是\(y=max(0,x)\)的平滑版本</p>
+
+<h2 id="toc_1">2.信息论</h2>
+
+<p>信息论是应用数学的一个分支，主要研究的是对一个信号包含信息的多少进行量化。<br/>
+<img src="media/15080561019055/15080594230903.jpg" alt=""/></p>
+
+<p>自信息：定义一个时间X=x的自信息<br/>
+\[I(x) = -log P(x)\]</p>
+
+<p>熵：<br/>
+\[-\sum P(x_i) logP(x_i)\]</p>
+
+<h3 id="toc_2">KL散度/相对熵</h3>
+
+<p>\[KL(P||Q) = -\sum P_i ln(\frac{P_i}{Q_i})=-\sum P_i(ln(P_i)- ln(Q_i))\]</p>
+
+<p>注意：</p>
+
+<ul>
+<li>KL距离其实并不是严格的距离，不满足对称性以及三角不等式。</li>
+</ul>
+
+<p>JS距离：<br/>
+\[JS(P1||P2) = \frac{1}{2}KL(P1||(P1+P2)/2)+ \frac{1}{2}KL(P2||(P1+P2)/2)\]</p>
+
+<h3 id="toc_3">交叉熵</h3>
+
+<p>相对熵的第一部分<br/>
+\[KL(P||Q) = -\sum P_i ln(Q_i)\]</p>
+
+<h2 id="toc_4">3.结构化概率模型——图模型(graphical model)</h2>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15637025345723.html">
                 
                   <h1>第二章 线性代数</h1>
@@ -445,85 +525,6 @@ maxout将单元将z划分成k个组，每个组上的取值为其最大值。</p
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15637037679680.html">
-                
-                  <h1>第四章 数值计算</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">1.数值精度</h2>
-
-<p>这部分对于了解具体的算法并没影响，但是在进行底层库开发时候经常会遇到，可能会出现<strong>上溢</strong>或者<strong>下溢</strong></p>
-
-<p>（1）病态条件</p>
-
-<p>条件数：表示函数相对于输入的微小变化而变化的快慢程度。<br/>
-比如矩阵求逆运算的条件数=最大和最小特征值的模的比</p>
-
-<h2 id="toc_1">2.优化算法</h2>
-
-<ul>
-<li>梯度下降</li>
-<li>牛顿法</li>
-</ul>
-
-<p>一般把需要最优化的函数称为<strong>目标函数</strong></p>
-
-<p><strong>梯度下降</strong></p>
-
-<p>对于一个多维输入函数f，梯度\(\triangledown_x f(x)\),其在u方向上的<strong>方向导数</strong>，相当于f在u方向上的斜率<br/>
-\(f(x+\alpha u)\)关于\(\alpha\)的导数(在\(\alpha =0\)时取得)</p>
-
-<p>\[\frac{\partial}{\partial \alpha}f(x+\alpha u)=u^T\triangledown_x f(x)\]</p>
-
-<p>为了是f最小，希望找到f下降最快的方向，因此有<br/>
-\[min u^T\triangledown_x f(x)\]<br/>
-u取为单位向量，很明显是在u和f夹角180时候，也就是两个完全相反的时候，下降最快。<br/>
-梯度下降： \(x&#39;=x-\epsilon \triangledown_x f(x)\)</p>
-
-<p><strong>牛顿法</strong></p>
-
-<p>Hessian矩阵，二阶导数<br/>
-<img src="media/15080580137304/15082408605128.jpg" alt=""/></p>
-
-<h2 id="toc_2">3.有限制的约束</h2>
-
-<p>对于有限制的优化，有时候可以将约束条件转化到原始的优化函数中，这里主要介绍一下通用的方法：<strong>KKT方法</strong>(拉格朗日方法的推广，可以非等式约束)</p>
-
-<pre><code>@@@
-http://blog.csdn.net/mr_kktian/article/details/53750424
-</code></pre>
-
-<h2 id="toc_3">参考资料</h2>
-
-<p>梯度下降法 扩展阅读： <a href="https://www.jiqizhixin.com/articles/2016-11-21-4">https://www.jiqizhixin.com/articles/2016-11-21-4</a><br/>
-<a href="http://www.cnblogs.com/maybe2030/p/4751804.html">http://www.cnblogs.com/maybe2030/p/4751804.html</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -617,7 +618,7 @@ http://blog.csdn.net/mr_kktian/article/details/53750424
 		  
 		      
 			      <li class="post">
-			        <a href="15637025344954.html">1 安装-mac</a>
+			        <a href="15637025346412.html">1. conda 环境管理</a>
 			      </li>
 		     
 		  
@@ -629,13 +630,13 @@ http://blog.csdn.net/mr_kktian/article/details/53750424
 		  
 		      
 			      <li class="post">
-			        <a href="15637036605080.html">3 样本量的确定</a>
+			        <a href="15664761738125.html">2. iterm终端配置-oh my zsh</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037691936.html">3.1 特征处理—— 特征选择</a>
+			        <a href="15637036605080.html">3 样本量的确定</a>
 			      </li>
 		     
 		  

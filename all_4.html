@@ -122,6 +122,178 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15637037720747.html">
+                
+                  <h1>FM</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>学习地址 <a href="https://github.com/babakx/fm_tensorflow">https://github.com/babakx/fm_tensorflow</a></p>
+
+<h2 id="toc_0">1. 环境包安装</h2>
+
+<p>安装tensorflow</p>
+
+<h2 id="toc_1">2.试运行</h2>
+
+<p>这个是用tf实现的FM<br/>
+<a href="https://www.jianshu.com/p/152ae633fb00">https://www.jianshu.com/p/152ae633fb00</a></p>
+
+<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked /> 试运行成功
+</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 了解原理
+</li>
+</ul>
+
+<p>小数据集版本（进入tf的仍然是dense矩阵，只适合小数据）<br/>
+ <a href="https://github.com/babakx/fm_tensorflow">https://github.com/babakx/fm_tensorflow</a></p>
+
+<p>大数据量版本</p>
+
+<h2 id="toc_2">3.原理</h2>
+
+<h2 id="toc_3">PYTHON版本的包实现方式</h2>
+
+<ul>
+<li>LibFM</li>
+<li>libFFM</li>
+<li>xLearn</li>
+<li>tffm</li>
+</ul>
+
+<p>目前在python中的支持FM相关的包主要有</p>
+
+<p>__</p>
+
+<h3 id="toc_4">1.libFM</h3>
+
+<p>官网 <a href="http://www.libfm.org/">http://www.libfm.org/</a><br/>
+github <a href="https://github.com/srendle/libfm">https://github.com/srendle/libfm</a></p>
+
+<p>从官网下载安装包</p>
+
+<h3 id="toc_5">tffm</h3>
+
+<p><a href="https://github.com/geffy/tffm">https://github.com/geffy/tffm</a></p>
+
+<p>tffm是FM方法的tensorflow版本，他支持：</p>
+
+<ul>
+<li>dense or sparse输出</li>
+<li>order &gt;= 2</li>
+</ul>
+
+<pre><code># 安装 
+pip install tffm
+</code></pre>
+
+<p>按照github上的example</p>
+
+<p>log</p>
+
+<p>todo:</p>
+
+<ul>
+<li>调整参数k， int_std, red</li>
+<li>统一 content_len的量纲</li>
+<li>文章添加关键字</li>
+</ul>
+
+<h2 id="toc_6">* tffm，添加field</h2>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037680228.html">
+                
+                  <h1>FM 模型</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>背景</p>
+</blockquote>
+
+<p>一般的线性模型 \(y=w_0 + \sum w_i x_i\)， 当考虑了特征之间的相关性即交互效应(这里以二阶为例)后模型形式是：<br/>
+\[y=w_0 + \sum w_i x_i + \sum_1^{n-1}\sum_{i+1}^n w_{ij}x_ix_j\]</p>
+
+<p>这里n表示特征的个数</p>
+
+<blockquote>
+<p>模型如何求解呢？</p>
+</blockquote>
+
+<p>如果把\(x_ix_j\)看做一个新的变量，相当于整体上还是一个线性回归模型，似乎可以用正常的线性回归的办法进行求解。<br/>
+但是这里未知的要求解的参数有n(+1)/2个，很多时候特征中会有一些分类型的变量，当通过哑变量的方式引入模型中的时候，特征数目k会非常大，从而导致要求解的参数个数较大，并且数据特别稀疏。另一方面，分类特征就到时候，\(x_ix_j\)是非零的比例较小，从而导致\(w\)无法计算出来。</p>
+
+<blockquote>
+<p>引入其他辅助信息</p>
+</blockquote>
+
+<p>我们可以引入一个辅助向量 对于\(w_{ij}\)形成的对称矩阵W，可以进行分解\(W=V^TV\)</p>
+
+<p>将模型改成如下形式<br/>
+\[y=w_0 + \sum w_i x_i + \sum_1^{n-1}\sum_{i+1}^n &lt;v_i, v_j&gt;x_ix_j\]</p>
+
+<ul>
+<li>从形式上来看，我们知道\(w_ij\)的矩阵是对称的，其形式上和协差阵\(&lt;v_i, v_j&gt;\)很类似</li>
+</ul>
+
+<p>\(v_i\)相当于是第i维隐向量，假设其维度是k&lt;&lt;n, 这样模型的参数就由原来的n(n+1)/2 变为了</p>
+
+<h2 id="toc_0">参考资料</h2>
+
+<p>简书-石晓文 <a href="https://www.jianshu.com/p/152ae633fb00">https://www.jianshu.com/p/152ae633fb00</a><br/>
+美团技术博客 <a href="https://tech.meituan.com/deep_understanding_of_ffm_principles_and_practices.html">https://tech.meituan.com/deep_understanding_of_ffm_principles_and_practices.html</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15637037688620.html">
                 
                   <h1>Face综述</h1>
@@ -191,8 +363,6 @@ jupyter notebook
 
 <p>快捷键</p>
 
-<p><img src="media/15017829276727/15018110676261.jpg" alt=""/></p>
-
 <p>m 切换至markdown<br/>
 y 切换至单元格</p>
 
@@ -204,7 +374,7 @@ y 切换至单元格</p>
 
 <p>对于 Python 内核，可以使用 Magic 命令 %pdb 开启交互式调试器。出错时，你能检查当前命名空间中的变量。</p>
 
-<h2 id="toc_2">转换 notebook</h2>
+<h2 id="toc_2">2.转换 notebook格式</h2>
 
 <p>Notebook 只是扩展名为 .ipynb 的大型 JSON 文件。</p>
 
@@ -232,6 +402,37 @@ notebook.</p>
 jupyter nbconvert notebook.ipynb --to slides --post serve
 </code></pre>
 
+<h2 id="toc_3">3.测试机上安装jupyter</h2>
+
+<p><a href="https://cloud.tencent.com/developer/article/1147487">https://cloud.tencent.com/developer/article/1147487</a></p>
+
+<ul>
+<li>安装jupyter</li>
+<li>生成密码 python -c &quot;import IPython;print IPython.lib.passwd()&quot;</li>
+<li>修改配置文件 </li>
+</ul>
+
+<p>/home/work/.jupyter/jupyter_notebook_config.py</p>
+
+<p>如果启动报错</p>
+
+<pre><code>socket.gaierror: [Errno -2] Name or service not known
+</code></pre>
+
+<p>可以加上自己的ip</p>
+
+<pre><code> jupyter notebook --ip=xxxx
+ jupyter lab --ip=xxx
+</code></pre>
+
+<h2 id="toc_4">4.colab</h2>
+
+<p>google 基于jupyter开发的存在在google driver上的网页版</p>
+
+<p><a href="https://colab.research.google.com/">https://colab.research.google.com/</a></p>
+
+<p>本身功能上差不太多，主要是有search和share功能，查看别人分享的代码</p>
+
                         
                       </div>
                   </div>
@@ -243,110 +444,6 @@ jupyter nbconvert notebook.ipynb --to slides --post serve
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037730028.html">
-                
-                  <h1>TensorFlow</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>入门教程</p>
-
-<p><a href="https://github.com/machinelearningmindset/TensorFlow-Course">https://github.com/machinelearningmindset/TensorFlow-Course</a></p>
-
-<h2 id="toc_0">1.week1</h2>
-
-<p>传统编程与深度学习编程的区别</p>
-
-<p><img src="media/15596470753558/15596480786004.jpg" alt=""/></p>
-
-<p>安装tensorflow<br/>
-<a href="https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/1-2-install/">https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/1-2-install/</a></p>
-
-<pre><code># 安装CPU/GPU版本。需pip至少8.1版本
-pip install tensorflow
-pip install tensorflow-gpu
-</code></pre>
-
-<p>中间有报警<br/>
-<img src="media/15295097623789/15295102306245.jpg" alt=""/></p>
-
-<p>最后, 如果你需要升级 Tensorflow 的版本, 推荐的方式是：根据你的 python 版本, 在 terminal 中删除原有的版本,然后再装一遍</p>
-
-<pre><code># 如果你是 Python 2, 请复制下面
-pip uninstall tensorflow
-# 如果你是 Python 3, 请复制下面
-pip3 uninstall tensorflow
-</code></pre>
-
-<p>安装成功后</p>
-
-<pre><code>&gt; import tensorflow as tf
-</code></pre>
-
-<p>报错：<img src="media/15295097623789/15295150578030.jpg" alt=""/></p>
-
-<p>解决；<a href="http://www.laomn.com/article/item/60445">http://www.laomn.com/article/item/60445</a><br/>
-<a href="https://www.cnblogs.com/atomicbomb/p/7028917.html">https://www.cnblogs.com/atomicbomb/p/7028917.html</a><br/>
-<a href="https://blog.csdn.net/ChenVast/article/details/79103288">https://blog.csdn.net/ChenVast/article/details/79103288</a></p>
-
-<p>mac上安装正常，没有问题</p>
-
-<h2 id="toc_1">week1 hello word</h2>
-
-<p>Original file is located at<br/>
-    <a href="https://colab.research.google.com/github/lmoroney/dlaicourse/blob/master/Exercises/Exercise%201%20-%20House%20Prices/Exercise_1_House_Prices_Question.ipynb">https://colab.research.google.com/github/lmoroney/dlaicourse/blob/master/Exercises/Exercise%201%20-%20House%20Prices/Exercise_1_House_Prices_Question.ipynb</a></p>
-
-<p>In this exercise you&#39;ll try to build a neural network that predicts the price of a house according to a simple formula.</p>
-
-<p>So, imagine if house pricing was as easy as a house costs 50k + 50k per bedroom, so that a 1 bedroom house costs 100k, a 2 bedroom house costs 150k etc.</p>
-
-<p>How would you create a neural network that learns this relationship so that it would predict a 7 bedroom house as costing close to 400k etc.</p>
-
-<p>Hint: Your network might work better if you scale the house price down. You don&#39;t have to give the answer 400...it might be better to create something that predicts the number 4, and then your answer is in the &#39;hundreds of thousands&#39; etc.</p>
-
-<p>这里先以一个简单的”hello word“例子来介绍，假设我们想学习一个简单的线性关系<br/>
-\[y=50x+50 \]</p>
-
-<p>我们已知是输入数据x，以及答案Y，想知道的其实是背后x和y之间的关系(rule)。那么机器要怎么学习这种关系呢？</p>
-
-<pre><code># 线性回归例子
-import tensorflow as tf
-import numpy as np
-from tensorflow import keras
-
-model = tf.keras.Sequential([keras.layers.Dense(units=1, input_shape=[1])])
-model.compile(optimizer=&#39;sgd&#39;, loss=&#39;mean_squared_error&#39;)
-xs = np.array([1,2,3,4,5,6,7], dtype=float)
-ys = np.array([100, 150, 200,250, 300,350, 400], dtype=float)
-model.fit(xs, ys, epochs=500)
-print(model.predict([7.0]))
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -393,37 +490,6 @@ print(model.predict([7.0]))
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637065259056.html">
-                
-                  <h1>about me</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>about me  </p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    
           				   
                   </div>
                   <div class="more-right right">
@@ -529,7 +595,7 @@ print(model.predict([7.0]))
 		  
 		      
 			      <li class="post">
-			        <a href="15637025344954.html">1 安装-mac</a>
+			        <a href="15637025346412.html">1. conda 环境管理</a>
 			      </li>
 		     
 		  
@@ -541,13 +607,13 @@ print(model.predict([7.0]))
 		  
 		      
 			      <li class="post">
-			        <a href="15637036605080.html">3 样本量的确定</a>
+			        <a href="15664761738125.html">2. iterm终端配置-oh my zsh</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037691936.html">3.1 特征处理—— 特征选择</a>
+			        <a href="15637036605080.html">3 样本量的确定</a>
 			      </li>
 		     
 		  

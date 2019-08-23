@@ -196,110 +196,6 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037730028.html">
-                
-                  <h1>TensorFlow</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>入门教程</p>
-
-<p><a href="https://github.com/machinelearningmindset/TensorFlow-Course">https://github.com/machinelearningmindset/TensorFlow-Course</a></p>
-
-<h2 id="toc_0">1.week1</h2>
-
-<p>传统编程与深度学习编程的区别</p>
-
-<p><img src="media/15596470753558/15596480786004.jpg" alt=""/></p>
-
-<p>安装tensorflow<br/>
-<a href="https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/1-2-install/">https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/1-2-install/</a></p>
-
-<pre><code># 安装CPU/GPU版本。需pip至少8.1版本
-pip install tensorflow
-pip install tensorflow-gpu
-</code></pre>
-
-<p>中间有报警<br/>
-<img src="media/15295097623789/15295102306245.jpg" alt=""/></p>
-
-<p>最后, 如果你需要升级 Tensorflow 的版本, 推荐的方式是：根据你的 python 版本, 在 terminal 中删除原有的版本,然后再装一遍</p>
-
-<pre><code># 如果你是 Python 2, 请复制下面
-pip uninstall tensorflow
-# 如果你是 Python 3, 请复制下面
-pip3 uninstall tensorflow
-</code></pre>
-
-<p>安装成功后</p>
-
-<pre><code>&gt; import tensorflow as tf
-</code></pre>
-
-<p>报错：<img src="media/15295097623789/15295150578030.jpg" alt=""/></p>
-
-<p>解决；<a href="http://www.laomn.com/article/item/60445">http://www.laomn.com/article/item/60445</a><br/>
-<a href="https://www.cnblogs.com/atomicbomb/p/7028917.html">https://www.cnblogs.com/atomicbomb/p/7028917.html</a><br/>
-<a href="https://blog.csdn.net/ChenVast/article/details/79103288">https://blog.csdn.net/ChenVast/article/details/79103288</a></p>
-
-<p>mac上安装正常，没有问题</p>
-
-<h2 id="toc_1">week1 hello word</h2>
-
-<p>Original file is located at<br/>
-    <a href="https://colab.research.google.com/github/lmoroney/dlaicourse/blob/master/Exercises/Exercise%201%20-%20House%20Prices/Exercise_1_House_Prices_Question.ipynb">https://colab.research.google.com/github/lmoroney/dlaicourse/blob/master/Exercises/Exercise%201%20-%20House%20Prices/Exercise_1_House_Prices_Question.ipynb</a></p>
-
-<p>In this exercise you&#39;ll try to build a neural network that predicts the price of a house according to a simple formula.</p>
-
-<p>So, imagine if house pricing was as easy as a house costs 50k + 50k per bedroom, so that a 1 bedroom house costs 100k, a 2 bedroom house costs 150k etc.</p>
-
-<p>How would you create a neural network that learns this relationship so that it would predict a 7 bedroom house as costing close to 400k etc.</p>
-
-<p>Hint: Your network might work better if you scale the house price down. You don&#39;t have to give the answer 400...it might be better to create something that predicts the number 4, and then your answer is in the &#39;hundreds of thousands&#39; etc.</p>
-
-<p>这里先以一个简单的”hello word“例子来介绍，假设我们想学习一个简单的线性关系<br/>
-\[y=50x+50 \]</p>
-
-<p>我们已知是输入数据x，以及答案Y，想知道的其实是背后x和y之间的关系(rule)。那么机器要怎么学习这种关系呢？</p>
-
-<pre><code># 线性回归例子
-import tensorflow as tf
-import numpy as np
-from tensorflow import keras
-
-model = tf.keras.Sequential([keras.layers.Dense(units=1, input_shape=[1])])
-model.compile(optimizer=&#39;sgd&#39;, loss=&#39;mean_squared_error&#39;)
-xs = np.array([1,2,3,4,5,6,7], dtype=float)
-ys = np.array([100, 150, 200,250, 300,350, 400], dtype=float)
-model.fit(xs, ys, epochs=500)
-print(model.predict([7.0]))
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
                 <a class="clearlink" href="15637037693934.html">
                 
                   <h1>[2018-06-25]学习1</h1>
@@ -434,41 +330,90 @@ print(model.predict([7.0]))
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637025345757.html">
+                <a class="clearlink" href="15637037679634.html">
                 
-                  <h1>【Tensorflow】week2 Introduction to Computer Vision</h1>
+                  <h1>神经网络解释性问题</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>前面说的hello word的例子，输入输出比较简单，这里考虑稍微复杂一点的情况—— 输入数据是图像</p>
+                        	<p><a href="https://ask.hellobi.com/blog/zlx19930503/10578">https://ask.hellobi.com/blog/zlx19930503/10578</a></p>
 
-<p>人类看到下面的图像之后，能很清楚的分辨出哪个是裤子，哪个是鞋子，那么计算机要怎么分辨呢？</p>
+<p>但是深度学习是一个黑箱。我第一次听说它时，就对其工作原理非常费解。几年过去了，我仍然在探索合理的答案。尝试解释现代神经网络很难，但是至关重要。如果我们打算依赖深度学习制造新的 AI、处理敏感的用户数据，或者开药，那么我们必须理解这些模型的工作原理。</p>
 
-<p><img src="media/15596648844646/15600952203749.jpg" alt=""/></p>
+<p>很幸运，学界人士也提出了很多对深度学习的理解。以下是几个近期论文示例：</p>
 
-<h2 id="toc_0">1 fashion-mnist数据集介绍</h2>
+<h2 id="toc_0">Grad-Cam（Selvaraju et. al. 2017）</h2>
 
-<p>图像数据集 <br/>
-<a href="https://github.com/zalandoresearch/fashion-mnist">https://github.com/zalandoresearch/fashion-mnist</a></p>
+<p>使用最后卷积层的梯度生成热力图，突出显示输入图像中的重要像素用于分类。</p>
 
-<p>这个数据集是MNIST dataset——手写识别数字的的数据集的一个替换集合。数据格式上和手写识别数字的数据一样。</p>
+<h2 id="toc_1">LIME（Ribeiro et. al. 2016）</h2>
 
-<pre><code>import tensorflow as tf
-import numpy as np
-from tensorflow import keras
+<p>使用稀疏线性模型（可轻松识别重要特征）逼近 DNN 的预测。</p>
 
-model = tf.keras.Sequential([
-keras.layers.Dense(units=1, input_shape=[1])])
+<p>论文地址：<a href="https://arxiv.org/abs/1602.04938">https://arxiv.org/abs/1602.04938</a></p>
 
+<p>一些中文解读：<a href="https://www.oreilly.com.cn/ideas/?p=563%EF%BC%9B">https://www.oreilly.com.cn/ideas/?p=563；</a><br/>
+<a href="http://geek.csdn.net/news/detail/66259">http://geek.csdn.net/news/detail/66259</a></p>
 
+<p>一个例子<br/>
+<a href="http://marcotcr.github.io/lime/tutorials/Lime%20-%20basic%20usage%2C%20two%20class%20case.html">http://marcotcr.github.io/lime/tutorials/Lime%20-%20basic%20usage%2C%20two%20class%20case.html</a></p>
 
-model.compile(optimizer=&#39;sgd&#39;, loss=&#39;mean_squared_error&#39;)
-xs = np.array([1,2,3,4,5,6,7], dtype=float)
-ys = np.array([100, 150, 200,250, 300,350, 400], dtype=float)
-model.fit(xs, ys, epochs=500)
-print(model.predict([7.0]))
-</code></pre>
+<p><a href="https://www.jiqizhixin.com/articles/2017-12-20-2">https://www.jiqizhixin.com/articles/2017-12-20-2</a></p>
+
+<h2 id="toc_2">特征可视化（Olah 2017）</h2>
+
+<p>对于带有随机噪声的图像，优化像素来激活训练的 DNN 中的特定神经元，进而可视化神经元学到的内容。</p>
+
+<h2 id="toc_3">Loss Landscape（Li et. al. 2017）</h2>
+
+<p>可视化 DNN 尝试最小化的非凸损失函数，查看架构／参数如何影响损失情况。</p>
+
+<h2 id="toc_4">关于xgboost</h2>
+
+<p>R: <a href="https://github.com/AppliedDataSciencePartners/xgboostExplainer">https://github.com/AppliedDataSciencePartners/xgboostExplainer</a><br/>
+python <a href="https://github.com/gameofdimension/xgboost_explainer">https://github.com/gameofdimension/xgboost_explainer</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637025345079.html">
+                
+                  <h1>第一章 引言</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>别人的读后总结，可参考「Deep Learning」读书系列分享（一） | 分享总结</p>
+
+<p><a href="https://www.leiphone.com/news/201708/LEBNjZzvm0Q3Ipp0.html">https://www.leiphone.com/news/201708/LEBNjZzvm0Q3Ipp0.html</a></p>
+
+<h3 id="toc_0">需要明确的几个概念范围</h3>
+
+<p><img src="media/15075611675547/15075613801366.jpg" alt=""/></p>
+
+<p><img src="media/15075611675547/15075614908544.jpg" alt=""/></p>
 
                         
                       </div>
@@ -586,7 +531,7 @@ print(model.predict([7.0]))
 		  
 		      
 			      <li class="post">
-			        <a href="15637025344954.html">1 安装-mac</a>
+			        <a href="15637025346412.html">1. conda 环境管理</a>
 			      </li>
 		     
 		  
@@ -598,13 +543,13 @@ print(model.predict([7.0]))
 		  
 		      
 			      <li class="post">
-			        <a href="15637036605080.html">3 样本量的确定</a>
+			        <a href="15664761738125.html">2. iterm终端配置-oh my zsh</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037691936.html">3.1 特征处理—— 特征选择</a>
+			        <a href="15637036605080.html">3 样本量的确定</a>
 			      </li>
 		     
 		  

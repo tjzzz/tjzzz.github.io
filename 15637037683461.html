@@ -161,8 +161,6 @@ jupyter notebook
 
 <p>快捷键</p>
 
-<p><img src="media/15017829276727/15018110676261.jpg" alt=""/></p>
-
 <p>m 切换至markdown<br/>
 y 切换至单元格</p>
 
@@ -174,7 +172,7 @@ y 切换至单元格</p>
 
 <p>对于 Python 内核，可以使用 Magic 命令 %pdb 开启交互式调试器。出错时，你能检查当前命名空间中的变量。</p>
 
-<h2 id="toc_2">转换 notebook</h2>
+<h2 id="toc_2">2.转换 notebook格式</h2>
 
 <p>Notebook 只是扩展名为 .ipynb 的大型 JSON 文件。</p>
 
@@ -202,6 +200,37 @@ notebook.</p>
 jupyter nbconvert notebook.ipynb --to slides --post serve
 </code></pre>
 
+<h2 id="toc_3">3.测试机上安装jupyter</h2>
+
+<p><a href="https://cloud.tencent.com/developer/article/1147487">https://cloud.tencent.com/developer/article/1147487</a></p>
+
+<ul>
+<li>安装jupyter</li>
+<li>生成密码 python -c &quot;import IPython;print IPython.lib.passwd()&quot;</li>
+<li>修改配置文件 </li>
+</ul>
+
+<p>/home/work/.jupyter/jupyter_notebook_config.py</p>
+
+<p>如果启动报错</p>
+
+<pre><code>socket.gaierror: [Errno -2] Name or service not known
+</code></pre>
+
+<p>可以加上自己的ip</p>
+
+<pre><code> jupyter notebook --ip=xxxx
+ jupyter lab --ip=xxx
+</code></pre>
+
+<h2 id="toc_4">4.colab</h2>
+
+<p>google 基于jupyter开发的存在在google driver上的网页版</p>
+
+<p><a href="https://colab.research.google.com/">https://colab.research.google.com/</a></p>
+
+<p>本身功能上差不太多，主要是有search和share功能，查看别人分享的代码</p>
+
 
     
 
@@ -219,8 +248,8 @@ jupyter nbconvert notebook.ipynb --to slides --post serve
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="15637037730028.html" 
-          title="Next Post: TensorFlow">TensorFlow &raquo;</a>
+          <a  href="15637037693934.html" 
+          title="Next Post: [2018-06-25]学习1">[2018-06-25]学习1 &raquo;</a>
       
       </p>
         </div>
@@ -315,7 +344,7 @@ jupyter nbconvert notebook.ipynb --to slides --post serve
 		  
 		      
 			      <li class="post">
-			        <a href="15637025344954.html">1 安装-mac</a>
+			        <a href="15637025346412.html">1. conda 环境管理</a>
 			      </li>
 		     
 		  
@@ -327,13 +356,13 @@ jupyter nbconvert notebook.ipynb --to slides --post serve
 		  
 		      
 			      <li class="post">
-			        <a href="15637036605080.html">3 样本量的确定</a>
+			        <a href="15664761738125.html">2. iterm终端配置-oh my zsh</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037691936.html">3.1 特征处理—— 特征选择</a>
+			        <a href="15637036605080.html">3 样本量的确定</a>
 			      </li>
 		     
 		  

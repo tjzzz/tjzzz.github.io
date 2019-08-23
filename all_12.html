@@ -122,6 +122,85 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15637037679680.html">
+                
+                  <h1>第四章 数值计算</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">1.数值精度</h2>
+
+<p>这部分对于了解具体的算法并没影响，但是在进行底层库开发时候经常会遇到，可能会出现<strong>上溢</strong>或者<strong>下溢</strong></p>
+
+<p>（1）病态条件</p>
+
+<p>条件数：表示函数相对于输入的微小变化而变化的快慢程度。<br/>
+比如矩阵求逆运算的条件数=最大和最小特征值的模的比</p>
+
+<h2 id="toc_1">2.优化算法</h2>
+
+<ul>
+<li>梯度下降</li>
+<li>牛顿法</li>
+</ul>
+
+<p>一般把需要最优化的函数称为<strong>目标函数</strong></p>
+
+<p><strong>梯度下降</strong></p>
+
+<p>对于一个多维输入函数f，梯度\(\triangledown_x f(x)\),其在u方向上的<strong>方向导数</strong>，相当于f在u方向上的斜率<br/>
+\(f(x+\alpha u)\)关于\(\alpha\)的导数(在\(\alpha =0\)时取得)</p>
+
+<p>\[\frac{\partial}{\partial \alpha}f(x+\alpha u)=u^T\triangledown_x f(x)\]</p>
+
+<p>为了是f最小，希望找到f下降最快的方向，因此有<br/>
+\[min u^T\triangledown_x f(x)\]<br/>
+u取为单位向量，很明显是在u和f夹角180时候，也就是两个完全相反的时候，下降最快。<br/>
+梯度下降： \(x&#39;=x-\epsilon \triangledown_x f(x)\)</p>
+
+<p><strong>牛顿法</strong></p>
+
+<p>Hessian矩阵，二阶导数<br/>
+<img src="media/15080580137304/15082408605128.jpg" alt=""/></p>
+
+<h2 id="toc_2">3.有限制的约束</h2>
+
+<p>对于有限制的优化，有时候可以将约束条件转化到原始的优化函数中，这里主要介绍一下通用的方法：<strong>KKT方法</strong>(拉格朗日方法的推广，可以非等式约束)</p>
+
+<pre><code>@@@
+http://blog.csdn.net/mr_kktian/article/details/53750424
+</code></pre>
+
+<h2 id="toc_3">参考资料</h2>
+
+<p>梯度下降法 扩展阅读： <a href="https://www.jiqizhixin.com/articles/2016-11-21-4">https://www.jiqizhixin.com/articles/2016-11-21-4</a><br/>
+<a href="http://www.cnblogs.com/maybe2030/p/4751804.html">http://www.cnblogs.com/maybe2030/p/4751804.html</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15637037730576.html">
                 
                   <h1>统计阈值</h1>
@@ -304,47 +383,6 @@ pre_clu = clf.labels_
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15637025347693.html">
-                
-                  <h1>视频广告</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><a href="http://ai.baidu.com/docs#/Begin/top">http://ai.baidu.com/docs#/Begin/top</a></p>
-
-<pre><code>ffmpeg -i jcr_21.mp4  -vn -codec:a pcm_s16le -ar 16000 -ac 1 -f f16le   -f segment -segment_time 30  out%03d.wav      
-</code></pre>
-
-<p>任意一个视频  这么切,就可以生成访问百度语音转文字的音频了   可以改的两个地方一个是输入视频名字  另一个是按多少秒一分割   这个是30秒分割</p>
-
-<p>代码<br/>
-<a href="media/15086420955998/get_baiduimage_data.py">get_baiduimage_data.py</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -438,7 +476,7 @@ pre_clu = clf.labels_
 		  
 		      
 			      <li class="post">
-			        <a href="15637025344954.html">1 安装-mac</a>
+			        <a href="15637025346412.html">1. conda 环境管理</a>
 			      </li>
 		     
 		  
@@ -450,13 +488,13 @@ pre_clu = clf.labels_
 		  
 		      
 			      <li class="post">
-			        <a href="15637036605080.html">3 样本量的确定</a>
+			        <a href="15664761738125.html">2. iterm终端配置-oh my zsh</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037691936.html">3.1 特征处理—— 特征选择</a>
+			        <a href="15637036605080.html">3 样本量的确定</a>
 			      </li>
 		     
 		  

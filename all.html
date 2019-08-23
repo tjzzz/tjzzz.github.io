@@ -157,54 +157,83 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637025344954.html">
+                <a class="clearlink" href="15637025346412.html">
                 
-                  <h1>1 安装-mac</h1>
+                  <h1>1. conda 环境管理</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><strong>安装准备</strong></p>
+                        	<p>conda的主要作用有如下两个：</p>
 
-<p>(1) 安装jdk8</p>
+<ul>
+<li>包管理</li>
+</ul>
 
-<p>官网下载， 这个好像比较慢<a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a></p>
+<p>Anaconda 安装，conda包管理器与pip类似，不同之处是可用的包以数据科学包为主，而 pip 适合一般用途。它也可以安装非 Python 的包。它是支持任何软件的包管理器。</p>
 
-<p>我把下载好的放到了百度网盘上: <a href="https://pan.baidu.com/s/1fpiSse78YObfalSerql4Zw">https://pan.baidu.com/s/1fpiSse78YObfalSerql4Zw</a> 提取码: t6q3</p>
+<ul>
+<li>虚拟环境管理器</li>
+</ul>
 
-<pre><code>vim ~/.bash_profile
-## 添加如下环境变量信息
-export JAVA_HOME=&quot;/Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home/&quot;
-export PATH=&quot;$JAVA_HOME/bin:$PATH&quot;
+<p>它类似于另外两个很流行的环境管理器，即 virtualenv 和 pyenv<br/>
+脚本和程序使用的默认 Python 是 Anaconda 附带的 Python。</p>
+
+<p>可以安装完整版： <a href="https://www.anaconda.com/distribution/#download-section">https://www.anaconda.com/distribution/#download-section</a><br/>
+也可以安装精简版miniconda： <a href="https://conda.io/miniconda.html">https://conda.io/miniconda.html</a></p>
+
+<h2 id="toc_0">包管理-常用命令</h2>
+
+<pre><code>conda list  #查看安装的内容
+conda upgrade --all   #初次下载安装好后，建议更新所有包
 </code></pre>
 
-<p>(2) 官网下载 <a href="http://mirror.bit.edu.cn/apache/spark/spark-2.4.0/spark-2.4.0-bin-hadoop2.7.tgz">http://mirror.bit.edu.cn/apache/spark/spark-2.4.0/spark-2.4.0-bin-hadoop2.7.tgz</a><br/>
-或者 <code>brew install apache-spark</code></p>
+<p>安装包</p>
 
-<p>然后将文件解压到想要放到的目录，我这里是/Users/zhengzhenzhen/ 为例方便版本管理以及后续使用，可以创建一个软链</p>
+<pre><code>conda install xxx
+conda install numpy=1.10   #指定包的版本
 
-<pre><code>ln -s /Users/zhengzhenzhen/spark-2.4.0-bin-hadoop2.7 /Users/zhengzhenzhen/spark
+conda remove package
+conda upgrade --all
 </code></pre>
 
-<p>（3） </p>
-
-<pre><code>pip install pyspark
+<pre><code>模糊查询相关包
+conda search search_term
 </code></pre>
 
-<p><strong>使用jupyter nootbook</strong></p>
+<h2 id="toc_1">环境管理</h2>
 
-<p>在jupyter notebook中使用pyspark，需要配置环境变量</p>
+<p>默认的环境名字叫base(我的电脑上是)</p>
 
-<pre><code># 基于python的版本
-export PYSPARK_DRIVER_PYTHON=jupyter
-export PYSPARK_DRIVER_PYTHON_OPTS=&#39;notebook&#39;
+<p>通过<code>conda env list</code>可以列出你创建的所有环境</p>
+
+<pre><code>#创建环境
+conda create -n env_name list of packages
+eg. conda create -n my_env numpy
+
+conda create -n py3 python=3
+conda create -n py2 python=2
+
+#进入环境
+source activate my_env
+#离开环境
+source deactivate
+
+# 删除环境
+conda env remove -n env_name
 </code></pre>
 
-<h2 id="toc_0">参考资料</h2>
+<h2 id="toc_2">其他</h2>
 
-<p><a href="https://www.jianshu.com/p/f284b77289ca">https://www.jianshu.com/p/f284b77289ca</a></p>
+<p>共享环境：将自己的工作环境保存下来给别人共享</p>
 
-<p><a href="https://www.jianshu.com/p/cc83d047383d">https://www.jianshu.com/p/cc83d047383d</a></p>
+<pre><code>#进入到你的环境中
+source activate base
+conda env export &gt; environment.yaml
+
+# 通过环境文件创建环境
+conda env create -f environment.yaml
+</code></pre>
 
                         
                       </div>
@@ -264,6 +293,61 @@ export PYSPARK_DRIVER_PYTHON_OPTS=&#39;notebook&#39;
               </div><!-- article -->
         
 			<div class="article">
+                <a class="clearlink" href="15664761738125.html">
+                
+                  <h1>2. iterm终端配置-oh my zsh</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">安装</h2>
+
+<p>oh my zsh 是一款强大的虚拟终端，兼容bash，提供了各种主题配置、插件。<br/>
+官网：<a href="https://ohmyz.sh/">https://ohmyz.sh/</a></p>
+
+<pre><code># 安装
+git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+#备份旧.zshrc配置
+cp ~/.zshrc ~/.zshrc.orig
+cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+#修改默认shell
+chsh -s /bin/zsh
+</code></pre>
+
+<p>卸载 <code>uninstall_oh_my_zsh</code></p>
+
+<p>注意：如果安装oh my zsh后conda命令无法使用，这个时候需要修改一下.zshrc文件，添加一句<br/>
+<code>export PATH=/home/username/anaconda/bin:$PATH</code></p>
+
+<h2 id="toc_1">主题</h2>
+
+<p><a href="https://github.com/robbyrussell/oh-my-zsh/wiki/Themes">https://github.com/robbyrussell/oh-my-zsh/wiki/Themes</a><br/>
+oh my zsh 有各种丰富的主题可供选择，可以在其github上找到对应的主题样式。其对应的配置文件在<code>vim ~/.zshrc</code>中，只需修改其中的<code>ZSH_THEME=&quot;robbyrussell&quot;</code> 即可。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/8/22</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15637036605080.html">
                 
                   <h1>3 样本量的确定</h1>
@@ -285,41 +369,6 @@ export PYSPARK_DRIVER_PYTHON_OPTS=&#39;notebook&#39;
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037691936.html">
-                
-                  <h1>3.1 特征处理—— 特征选择</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">参考</h2>
-
-<p><a href="https://blog.csdn.net/kebu12345678/article/details/78437118">https://blog.csdn.net/kebu12345678/article/details/78437118</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -425,7 +474,7 @@ export PYSPARK_DRIVER_PYTHON_OPTS=&#39;notebook&#39;
 		  
 		      
 			      <li class="post">
-			        <a href="15637025344954.html">1 安装-mac</a>
+			        <a href="15637025346412.html">1. conda 环境管理</a>
 			      </li>
 		     
 		  
@@ -437,13 +486,13 @@ export PYSPARK_DRIVER_PYTHON_OPTS=&#39;notebook&#39;
 		  
 		      
 			      <li class="post">
-			        <a href="15637036605080.html">3 样本量的确定</a>
+			        <a href="15664761738125.html">2. iterm终端配置-oh my zsh</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037691936.html">3.1 特征处理—— 特征选择</a>
+			        <a href="15637036605080.html">3 样本量的确定</a>
 			      </li>
 		     
 		  

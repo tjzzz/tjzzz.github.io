@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  1 安装-mac - zhenzhen学习笔记
+  docker - zhenzhen学习笔记
   
   </title>
   
@@ -122,10 +122,10 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>1 安装-mac</h1>
+          <h1>docker</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2019/7/21</span>
+          <span class="date">2019/8/23</span>
 
           <span>posted in&nbsp;</span> 
           
@@ -142,47 +142,97 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <p><strong>安装准备</strong></p>
+      <p>docker是一个容器，可以让开发者打包他们的应用以及依赖的环境到一个容器中，然后可以移植到别的机器上。容器是使用的沙箱机制，相互之间不会有任何接口。</p>
 
-<p>(1) 安装jdk8</p>
+<p>docker 官网： <a href="http://www.docker.com">http://www.docker.com</a><br/>
+容器:  对象<br/>
+镜像images: 类，是用于创建docker容器的模版<br/>
+docker仓库<a href="https://hub.docker.com%EF%BC%8C">https://hub.docker.com，</a> 是用来提供各种镜像的仓库。</p>
 
-<p>官网下载， 这个好像比较慢<a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a></p>
+<p><strong>mac安装</strong><br/>
+直接从官网下载安装即可 <a href="https://download.docker.com/mac/stable/Docker.dmg%E3%80%82">https://download.docker.com/mac/stable/Docker.dmg。</a><br/>
+由于国内网速问题，安装完docker后，后续拉取镜像可能会十分缓慢，可以配置加速器来解决，如下图所示。</p>
 
-<p>我把下载好的放到了百度网盘上: <a href="https://pan.baidu.com/s/1fpiSse78YObfalSerql4Zw">https://pan.baidu.com/s/1fpiSse78YObfalSerql4Zw</a> 提取码: t6q3</p>
+<p>阿里云的加速器：<a href="https://help.aliyun.com/document_detail/60750.html">https://help.aliyun.com/document_detail/60750.html</a><br/>
+网易加速器：<a href="http://hub-mirror.c.163.com">http://hub-mirror.c.163.com</a><br/>
+官方中国加速器：<a href="https://registry.docker-cn.com">https://registry.docker-cn.com</a><br/>
+ustc的镜像：<a href="https://docker.mirrors.ustc.edu.cn">https://docker.mirrors.ustc.edu.cn</a><br/>
+daocloud：<a href="https://www.daocloud.io/mirror#accelerator-doc%EF%BC%88%E6%B3%A8%E5%86%8C%E5%90%8E%E4%BD%BF%E7%94%A8%EF%BC%89">https://www.daocloud.io/mirror#accelerator-doc（注册后使用）</a></p>
 
-<pre><code>vim ~/.bash_profile
-## 添加如下环境变量信息
-export JAVA_HOME=&quot;/Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home/&quot;
-export PATH=&quot;$JAVA_HOME/bin:$PATH&quot;
+<p><img src="media/15665281146000/15665304699914.jpg" alt=""/></p>
+
+<p><strong>基本使用</strong></p>
+
+<pre><code># 运行方式 1： 类似于运行pyhton脚本 python xxx.py  参数
+docker run ubuntu:18.10 /bin/echo &quot;Hello world&quot;
 </code></pre>
 
-<p>(2) 官网下载 <a href="http://mirror.bit.edu.cn/apache/spark/spark-2.4.0/spark-2.4.0-bin-hadoop2.7.tgz">http://mirror.bit.edu.cn/apache/spark/spark-2.4.0/spark-2.4.0-bin-hadoop2.7.tgz</a><br/>
-或者 <code>brew install apache-spark</code></p>
+<ul>
+<li>ubuntu:18.10是指定要运行的镜像，docker会先从本机上检查是否存在，如果不存在会从docker hub下载公共镜像。</li>
+<li> /bin/echo &quot;Hello world&quot;， 在启动容器里执行命令</li>
+</ul>
 
-<p>然后将文件解压到想要放到的目录，我这里是/Users/zhengzhenzhen/ 为例方便版本管理以及后续使用，可以创建一个软链</p>
-
-<pre><code>ln -s /Users/zhengzhenzhen/spark-2.4.0-bin-hadoop2.7 /Users/zhengzhenzhen/spark
+<pre><code># 运行方式2： 交互式运行
+docker run -i -t ubuntu:18.10 /bin/bash
 </code></pre>
 
-<p>（3） </p>
+<ul>
+<li>-t 在新容器中指定一个终端</li>
+<li>-i 允许你对容器内的标准输入 (STDIN) 进行交互。</li>
+</ul>
 
-<pre><code>pip install pyspark
+<p>后台以进程方式运行docker</p>
+
+<pre><code>docker run -d ubuntu:18.10 /bin/sh -c &quot;while true; do echo hello world; sleep 1; done&quot;
 </code></pre>
 
-<p><strong>使用jupyter nootbook</strong></p>
+<p>这个时候发现会出现一串字符，这个就是dicker的id。</p>
 
-<p>在jupyter notebook中使用pyspark，需要配置环境变量</p>
+<ul>
+<li>-d 让容器在后台运行</li>
+</ul>
 
-<pre><code># 基于python的版本
-export PYSPARK_DRIVER_PYTHON=jupyter
-export PYSPARK_DRIVER_PYTHON_OPTS=&#39;notebook&#39;
+<pre><code>docker ps   # 查看当前有哪些容器在运行
+exit    #退出容器或者`ctrl +D`
+docker logs 容器id    #查看容器内的标准输出
+docker stop  容器id    # 停止正在运行的docker
+</code></pre>
+
+<p><strong>docker 镜像</strong></p>
+
+<pre><code>docker pull   REPOSITORY:TAG    # 下载镜像
+docker search httpd                      # 查找镜像
+
+# 更新镜像，当自己在镜像内做了一些更新后，可以提交
+# commit -m &#39;更新信息&#39; -a 作者 容器id 新版本的镜像名
+docker commit -m=&quot;zzz update&quot; -a=&quot;zzz&quot; 容器的id zzz/ubuntu:v2
+</code></pre>
+
+<p>从零创建一个镜像<br/>
+从零创建镜像的命令是 <code>docker build</code>, 其依赖于一个配置文件Dockerfile，这个文件包含了一组命令来告诉docker如何创建镜像。</p>
+
+<p><code>docker build -t 镜像名 配置文件地址</code></p>
+
+<p>配置文件的一个例子：</p>
+
+<pre><code># 每一个指令的前缀必须是大写
+# FROM 表示使用哪个镜像源
+# RUN 表示告诉docker在镜像内执行命令
+FROM ubuntu:16.04
+RUN apt-get update
+RUN apt-get install -y unzip cmake g++ make ffmpeg libx264-dev wget
+WORKDIR /opt/
+</code></pre>
+
+<p><strong>删除</strong></p>
+
+<pre><code>docker rm 容器
+docker rmi 镜像名
 </code></pre>
 
 <h2 id="toc_0">参考资料</h2>
 
-<p><a href="https://www.jianshu.com/p/f284b77289ca">https://www.jianshu.com/p/f284b77289ca</a></p>
-
-<p><a href="https://www.jianshu.com/p/cc83d047383d">https://www.jianshu.com/p/cc83d047383d</a></p>
+<p><a href="https://www.runoob.com/docker/macos-docker-install.html">https://www.runoob.com/docker/macos-docker-install.html</a></p>
 
 
     
@@ -193,16 +243,16 @@ export PYSPARK_DRIVER_PYTHON_OPTS=&#39;notebook&#39;
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="15637036455584.html" 
-          title="Previous Post: 1 估计的置信度">&laquo; 1 估计的置信度</a>
+          <a href="15637065259056.html" 
+          title="Previous Post: about me">&laquo; about me</a>
       
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="15637025346225.html" 
-          title="Next Post: 2 不同设计之间有统计学差异吗">2 不同设计之间有统计学差异吗 &raquo;</a>
+          <a  href="15637037690385.html" 
+          title="Next Post: face_recgnization">face_recgnization &raquo;</a>
       
       </p>
         </div>
@@ -297,7 +347,7 @@ export PYSPARK_DRIVER_PYTHON_OPTS=&#39;notebook&#39;
 		  
 		      
 			      <li class="post">
-			        <a href="15637025344954.html">1 安装-mac</a>
+			        <a href="15637025346412.html">1. conda 环境管理</a>
 			      </li>
 		     
 		  
@@ -309,13 +359,13 @@ export PYSPARK_DRIVER_PYTHON_OPTS=&#39;notebook&#39;
 		  
 		      
 			      <li class="post">
-			        <a href="15637036605080.html">3 样本量的确定</a>
+			        <a href="15664761738125.html">2. iterm终端配置-oh my zsh</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037691936.html">3.1 特征处理—— 特征选择</a>
+			        <a href="15637036605080.html">3 样本量的确定</a>
 			      </li>
 		     
 		  
