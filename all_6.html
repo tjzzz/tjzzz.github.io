@@ -97,7 +97,7 @@
         
             <li><a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">7 深度学习</a></li>
         
-            <li><a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">10 比赛学习</a></li>
+            <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
          
@@ -122,22 +122,96 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637037679256.html">
+                <a class="clearlink" href="15637037731266.html">
                 
-                  <h1>markdown</h1>
+                  <h1>4.4 k近邻 —— 非参模型</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">图片</h2>
+                        	<p>基于实例的学习，其学习的不是明确的泛化模型，而是样本之间的关系。</p>
 
-<p>现在很多makdown编辑器是可以支持拖拽本地图片或者截屏就可以直接在markdown中生成图片的，非常方便，比如我现在在用的MWeb编辑器。</p>
+<p>k近邻方法：先找到与未知样本最接近的k个实例，再根据少数服从多数的准则，给未知样本打上标签。</p>
 
-<p>但是如果同一篇内容需要在不同的平台上进行发布，那图片处理起来就比较麻烦。因为需要重新上传到不同平台。<br/>
-最方便的处理方式就是利用图床， 这里以七牛云存储为例。<br/>
-<img src="media/15378048283915/15383141468224.jpg" alt=""/></p>
+<ul>
+<li>超参数k</li>
+<li>距离度量</li>
+<li>高维灾难</li>
+</ul>
 
-<p>step1： 首先在七牛官网上申请注册账号，并且添加<strong>对象存储</strong></p>
+<p>k近邻方法和传统的参数方法不同，参数模型在求得参数后，任务就完成了。新来了一个样本后直接拿训练好的参数进行预测即可；而k近邻不同，它需要将数据存储下来，每来了一个新样本后，要计算离他最近的k个实例。</p>
+
+<p>sklearn中<code>sklearn.neighbors</code>模块</p>
+
+<p>应用</p>
+
+<ul>
+<li>无监督的<code>NearestNeighbors</code></li>
+</ul>
+
+<p>具体计算的时候可以选择不同的计算方法，&#39;algorithm&#39; =[&#39;auto&#39;, &#39;ball_tree&#39;, </p>
+
+<ul>
+<li>有监督的</li>
+</ul>
+
+<p>KNeighborsClassifier: 可以指定参数k<br/>
+RadiusNeighborsClassifier: 可以指定查询的固定半径r</p>
+
+<pre><code class="language-python">## 官网的示例demo
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.colors import ListedColormap
+from sklearn import neighbors, datasets
+
+n_neighbors = 15
+
+# import some data to play with
+iris = datasets.load_iris()
+
+# we only take the first two features. We could avoid this ugly
+# slicing by using a two-dim dataset
+X = iris.data[:, :2]
+y = iris.target
+
+h = .02  # step size in the mesh
+
+# Create color maps
+cmap_light = ListedColormap([&#39;#FFAAAA&#39;, &#39;#AAFFAA&#39;, &#39;#AAAAFF&#39;])
+cmap_bold = ListedColormap([&#39;#FF0000&#39;, &#39;#00FF00&#39;, &#39;#0000FF&#39;])
+
+for weights in [&#39;uniform&#39;, &#39;distance&#39;]:
+    # we create an instance of Neighbours Classifier and fit the data.
+    clf = neighbors.KNeighborsClassifier(n_neighbors, weights=weights)
+    clf.fit(X, y)
+
+    # Plot the decision boundary. For that, we will assign a color to each
+    # point in the mesh [x_min, x_max]x[y_min, y_max].
+    x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
+    y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
+    xx, yy = np.meshgrid(np.arange(x_min, x_max, h),
+                         np.arange(y_min, y_max, h))
+    Z = clf.predict(np.c_[xx.ravel(), yy.ravel()])
+
+    # Put the result into a color plot
+    Z = Z.reshape(xx.shape)
+    plt.figure()
+    plt.pcolormesh(xx, yy, Z, cmap=cmap_light)
+
+    # Plot also the training points
+    plt.scatter(X[:, 0], X[:, 1], c=y, cmap=cmap_bold,
+                edgecolor=&#39;k&#39;, s=20)
+    plt.xlim(xx.min(), xx.max())
+    plt.ylim(yy.min(), yy.max())
+    plt.title(&quot;3-Class classification (k = %i, weights = &#39;%s&#39;)&quot;
+              % (n_neighbors, weights))
+
+plt.show()
+</code></pre>
+
+<p>最近邻回归<br/>
+KNeighborsRegressor<br/>
+RadiusNeighborsRegressor</p>
 
                         
                       </div>
@@ -149,7 +223,7 @@
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -163,99 +237,342 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637025345613.html">
+                <a class="clearlink" href="15637037731727.html">
                 
-                  <h1>query文本聚类</h1>
+                  <h1>聚类方法-spark的bisecting和streaming</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<ul>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 是不是cache问题tf-idf
+                        	<p><a href="http://blog.csdn.net/franket268/article/details/23604671">http://blog.csdn.net/franket268/article/details/23604671</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037720747.html">
+                
+                  <h1>FM</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>学习地址 <a href="https://github.com/babakx/fm_tensorflow">https://github.com/babakx/fm_tensorflow</a></p>
+
+<h2 id="toc_0">1. 环境包安装</h2>
+
+<p>安装tensorflow</p>
+
+<h2 id="toc_1">2.试运行</h2>
+
+<p>这个是用tf实现的FM<br/>
+<a href="https://www.jianshu.com/p/152ae633fb00">https://www.jianshu.com/p/152ae633fb00</a></p>
+
+<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked /> 试运行成功
 </li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 添加下降维的步骤
-</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 稀疏矩阵
-</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 数据切分更小li&#39;du
-</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Mini Batch KMeans <a href="http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/">http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/</a>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 了解原理
 </li>
 </ul>
 
-<p>实验全量的<br/>
-<a href="http://yq01-tianqi-spark-yarn00.yq01.baidu.com:8388/proxy/application_1511855101950_42074/">http://yq01-tianqi-spark-yarn00.yq01.baidu.com:8388/proxy/application_1511855101950_42074/</a></p>
+<p>小数据集版本（进入tf的仍然是dense矩阵，只适合小数据）<br/>
+ <a href="https://github.com/babakx/fm_tensorflow">https://github.com/babakx/fm_tensorflow</a></p>
+
+<p>大数据量版本</p>
+
+<h2 id="toc_2">3.原理</h2>
+
+<h2 id="toc_3">PYTHON版本的包实现方式</h2>
+
+<ul>
+<li>LibFM</li>
+<li>libFFM</li>
+<li>xLearn</li>
+<li>tffm</li>
+</ul>
+
+<p>目前在python中的支持FM相关的包主要有</p>
+
+<p>__</p>
+
+<h3 id="toc_4">1.libFM</h3>
+
+<p>官网 <a href="http://www.libfm.org/">http://www.libfm.org/</a><br/>
+github <a href="https://github.com/srendle/libfm">https://github.com/srendle/libfm</a></p>
+
+<p>从官网下载安装包</p>
+
+<h3 id="toc_5">tffm</h3>
+
+<p><a href="https://github.com/geffy/tffm">https://github.com/geffy/tffm</a></p>
+
+<p>tffm是FM方法的tensorflow版本，他支持：</p>
+
+<ul>
+<li>dense or sparse输出</li>
+<li>order &gt;= 2</li>
+</ul>
+
+<pre><code># 安装 
+pip install tffm
+</code></pre>
+
+<p>按照github上的example</p>
+
+<p>log</p>
+
+<p>todo:</p>
+
+<ul>
+<li>调整参数k， int_std, red</li>
+<li>统一 content_len的量纲</li>
+<li>文章添加关键字</li>
+</ul>
+
+<h2 id="toc_6">* tffm，添加field</h2>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037708871.html">
+                
+                  <h1>图像识别模型—— 1.利用已有的进行微调</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>这里以VGG16网络为例，</p>
+
+<h2 id="toc_0">1.准备数据</h2>
+
+<pre><code> python data_convert.py -t pic --train-shards 2 --validation-shards 2 --num-threads 2 --dataset-name guangdong
+</code></pre>
+
+<p>执行完后会在pic下生成tf格式的训练+测试数据，以及label.txt<br/>
+<img src="media/15388051366041/15388065002449.jpg" alt=""/></p>
+
+<h2 id="toc_1">2.使用tensorflow的slim微调模型</h2>
+
+<p>简单介绍下google的这个图像分类工具包tensorflow-slim</p>
+
+<pre><code>├── README.md
+├── datasets                    # 定义训练时候使用的数据。如果是自己的数据，必须在此文件夹下定义
+├── deployment
+├── download_and_convert_data.py
+├── export_inference_graph.py
+├── export_inference_graph_test.py
+├── nets                        # 定义了一些常用的网络，比如vgg16，vgg19，resnet等
+├── preprocessing               # 在读入图像前，对图像做的一些预处理
+├── scripts
+│   ├── finetune_inception_v1_on_flowers.sh
+│   ├── finetune_inception_v3_on_flowers.sh
+│   ├── finetune_resnet_v1_50_on_flowers.sh
+│   ├── train_cifarnet_on_cifar10.sh
+│   └── train_lenet_on_mnist.sh
+├── setup.py
+├── slim_walkthrough.ipynb
+├── eval_image_classifier.py      # 验证模型入口
+└── train_image_classifier.py     # 训练模型入口
+</code></pre>
+
+<p>(1) 定义新的dataset文件</p>
+
+<p>仿照<code>datasets/flowers.py</code> 写一个自己的数据文件<code>guangdong.py</code> 并且在<code>dataset_factory.py</code>中进行注册</p>
+
+<p>(2)准备训练文件夹</p>
+
+<p>(3)train model</p>
+
+<pre><code>python train_image_classifier.py \
+  --train_dir=guangdong/train_dir \
+  --dataset_name=guangdong \
+  --dataset_split_name=train \
+  --dataset_dir=guangdong/data \
+  --model_name=inception_v3 \
+  --checkpoint_path=guangdong/pretrained/inception_v3.ckpt \
+  --checkpoint_exclude_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
+  --trainable_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
+  --max_number_of_steps=100000 \
+  --batch_size=32 \
+  --learning_rate=0.001 \
+  --learning_rate_decay_type=fixed \
+  --save_interval_secs=300 \
+  --save_summaries_secs=2 \
+  --log_every_n_steps=10 \
+  --optimizer=rmsprop \
+  --weight_decay=0.00004
+
+</code></pre>
+
+<p>如果执行后报错<code>Cannot assign a device for operation &#39;InceptionV3/AuxLogits/Conv2d_2b_1x1/weights/RMSProp1&#39;: Could not satisfy explicit device specification &#39;/device:GPU:0&#39; because no supported kernel for GPU devices is available</code> 之类的话</p>
+
+<p>可以参看这个的解决办法<a href="https://blog.csdn.net/xd_wjc/article/details/80550862">https://blog.csdn.net/xd_wjc/article/details/80550862</a></p>
+
+<p>tensorboard 查看任务运行情况</p>
+
+<pre><code>tensorboard --logdir guangdong/train_dir
+</code></pre>
+
+<p>训练完毕之后进行模型评估</p>
+
+<pre><code>python eval_image_classifier.py \
+  --checkpoint_path=guangdong/train_dir \
+  --eval_dir=guangdong/eval_dir \
+  --dataset_name=guangdong \
+  --dataset_split_name=validation \
+  --dataset_dir=guangdong/data \
+  --model_name=inception_v3
+</code></pre>
+
+<h3 id="toc_2">案例</h3>
+
+<p><a href="https://github.com/ns2250225/python3_tf_slim_image_classify">https://github.com/ns2250225/python3_tf_slim_image_classify</a></p>
+
+<h2 id="toc_3">阿里云服务</h2>
+
+<p><a href="https://help.aliyun.com/document_detail/49571.html#OSS">https://help.aliyun.com/document_detail/49571.html#OSS</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html'>6 文本&视频</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037690385.html">
+                
+                  <h1>face_recgnization</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>github<br/>
+<a href="https://github.com/ageitgey/face_recognition">https://github.com/ageitgey/face_recognition</a></p>
+
+<h2 id="toc_0">1. 安装</h2>
+
+<p>文档： <a href="https://zhuanlan.zhihu.com/p/28271869">https://zhuanlan.zhihu.com/p/28271869</a></p>
+
+<pre><code>pip install face_recognition
+</code></pre>
+
+<p>直接安装会报错，安装face_recognition这个之前需要先安装编译dlib</p>
+
+<pre><code>brew install boost
+brew install boost-python --with-python3
+
+# install dlib
+git clone https://github.com/davisking/dlib.git
+cd dlib
+mkdir build; cd build; cmake .. -DDLIB_USE_CUDA=0 -DUSE_AVX_INSTRUCTIONS=1; cmake --build 
+
+cd ..
+python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
+</code></pre>
+
+<p>If there is no cmake on your mac, you can use  <code>brew install cmake</code>. After all these have been done, run</p>
+
+<pre><code>pip install face_recognition
+</code></pre>
+
+<h2 id="toc_1">2.usage</h2>
+
+<p>face_recognition有两种使用方式，命令行方式和python包方式</p>
+
+<p>(1) 命令行方式</p>
+
+<p>(2) python 包<br/>
+<a href="https://face-recognition.readthedocs.io/en/latest/face_recognition.html#module-face_recognition.api">https://face-recognition.readthedocs.io/en/latest/face_recognition.html#module-face_recognition.api</a></p>
+
+<p></p>
+
+<h2 id="toc_2">参考资料</h2>
+
+<p><a href="https://zhuanlan.zhihu.com/p/28271869">https://zhuanlan.zhihu.com/p/28271869</a></p>
+
+<p><a href="https://medium.com/@ageitgey">https://medium.com/@ageitgey</a></p>
 
 <hr/>
 
-<p>刚哥的代码：<a href="https://github.com/honestOrg/gxdgroup/blob/master/src/main/scala/cn/com/gxdgroup/dataplatform/avm/utils/AVMUtils.scala">https://github.com/honestOrg/gxdgroup/blob/master/src/main/scala/cn/com/gxdgroup/dataplatform/avm/utils/AVMUtils.scala</a></p>
+<p><a href="https://www.jianshu.com/p/281aa6a3823a">https://www.jianshu.com/p/281aa6a3823a</a></p>
 
-<h2 id="toc_0">全量</h2>
+<p>一个案例<br/>
+<a href="https://www.jianshu.com/p/38ca6daf6b40">https://www.jianshu.com/p/38ca6daf6b40</a><br/>
+<a href="http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html">http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html</a></p>
 
-<p>前期构造词频矩阵：</p>
+<p>tf案例<br/>
+<a href="https://blog.csdn.net/u010016927/article/details/75722416">https://blog.csdn.net/u010016927/article/details/75722416</a></p>
 
-<h2 id="toc_1">1.生成原始的词频矩阵</h2>
+<p>knn<br/>
+<a href="https://www.leiphone.com/news/201707/gIbNsPtWk460m5vj.html">https://www.leiphone.com/news/201707/gIbNsPtWk460m5vj.html</a></p>
 
-<ul>
-<li><a href="http://spark.apache.org/docs/latest/ml-features.html#countvectorizer">http://spark.apache.org/docs/latest/ml-features.html#countvectorizer</a></li>
-<li><code>examples/src/main/python/sql/basic.py</code></li>
-</ul>
+<p><a href="https://blog.csdn.net/Mbx8X9u/article/details/79124840">https://blog.csdn.net/Mbx8X9u/article/details/79124840</a></p>
 
-<p>输入数据：每行是切分好的term</p>
+<p><a href="https://www.ctolib.com/topics-101544.html">https://www.ctolib.com/topics-101544.html</a></p>
 
-<pre><code>spark = SparkSession.builder.appName(&quot;CountVectorizerExample&quot;).getOrCreate()
-sc = spark.sparkContext
-# $example on$
-# Input data: Each row is a bag of words with a ID.
+<p><a href="https://www.oschina.net/code/snippet_2558914_54339">https://www.oschina.net/code/snippet_2558914_54339</a></p>
 
-lines = sc.textFile(&quot;/user/ubs/kce/zhenzhen/spark/test_data/corpus_title2&quot;)
-parts = lines.map(lambda l: l.split(&#39;#&#39;))   # convert all the term to a list
-termRDD = parts.map(lambda p: Row(tid=p[0], words=p[1].split(&#39; &#39;)))
+<h2 id="toc_3">new</h2>
 
-df = spark.createDataFrame(termRDD)
-# fit a CountVectorizerModel from the corpus.
-cv = CountVectorizer(inputCol=&quot;words&quot;, outputCol=&quot;features&quot;)
-#, vocabSize=3, minDF=2.0)
-
-model = cv.fit(df)
-
-result = model.transform(df)
-</code></pre>
-
-<h2 id="toc_2">2.tf-idf</h2>
-
-<ul>
-<li><a href="http://spark.apache.org/docs/latest/mllib-feature-extraction.html#tf-idf">http://spark.apache.org/docs/latest/mllib-feature-extraction.html#tf-idf</a></li>
-<li><a href="http://spark.apache.org/docs/latest/ml-features.html#feature-extractors">http://spark.apache.org/docs/latest/ml-features.html#feature-extractors</a>
-ml中的函数比mllib中的多
-examples/src/main/python/mllib/tf_idf_example.py</li>
-</ul>
-
-<pre><code>~/zhenzhen/spark_study/spark/examples/src/main/python/mllib $  pyspark zzz_tf_idf_example.py
-</code></pre>
-
-<h2 id="toc_3">3.降维</h2>
-
-<h2 id="toc_4">4.直接聚类</h2>
-
-<pre><code> # pyspark这个默认是启动的集群任务，之前测试的本地数据会出错，脚本中需把输入目录改成集群路径
-  ~/zhenzhen/spark_study $  pyspark kmeans.py  &gt; log.test
-</code></pre>
-
-<h2 id="toc_5">六神合体</h2>
-
-<ul>
-<li>词频矩阵+tfidf</li>
-</ul>
-
-<p><a href="http://www.zengyilun.com/spark-similarity/">http://www.zengyilun.com/spark-similarity/</a></p>
-
-<p>上述所有步骤(tfidf，降维,聚类)合并在一起</p>
-
-<pre><code> # pyspark这个默认是启动的集群任务，之前测试的本地数据会出错，脚本中需把输入目录改成集群路径
-  ~/zhenzhen/spark_study $  pyspark tfidf_kmeans.py  &gt; log.test
-  这个测试ok，但是中心点都是0，应该是数据问题
-</code></pre>
+<p><a href="https://www.leiphone.com/news/201704/rYdpAvh4SvgVPpRQ.html">https://www.leiphone.com/news/201704/rYdpAvh4SvgVPpRQ.html</a></p>
 
                         
                       </div>
@@ -267,165 +584,7 @@ examples/src/main/python/mllib/tf_idf_example.py</li>
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037678380.html">
-                
-                  <h1>rCharts</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><a href="http://rdatascience.io/rCharts/">http://rdatascience.io/rCharts/</a></p>
-
-<p>作者的github主页<br/>
-<a href="http://ramnathv.github.io/rCharts">http://ramnathv.github.io/rCharts</a></p>
-
-<pre><code class="language-{r}">#Install 
-require(devtools)## 标题 ##
-install_github(&#39;rCharts&#39;, &#39;ramnathv&#39;)
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html'>3 数据可视化</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037680741.html">
-                
-                  <h1>sublime</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>sublime除了具有基本的文本编辑功能之外，还可以安装很多package来扩展其强大的功能。这里罗列出一些工作中经常能用到的</p>
-
-<p><strong>安装install package</strong></p>
-
-<p>点击菜单中的 “View”–“Show Console”，调出console面板，然后到<a href="https://packagecontrol.io/installation#st3">https://packagecontrol.io/installation#st3</a></p>
-
-<p>官网上的，复制出代码黏贴执行。执行完毕即可。</p>
-
-<h2 id="toc_0">格式化json</h2>
-
-<p>打开 Sublime，command + shift + p -&gt; Install package<br/>
-搜索 Pretty JSON，安装</p>
-
-<p>之后mac上用： <code>command + ctrl + j</code> 即可直接格式化显示。</p>
-
-<h2 id="toc_1">比较diff</h2>
-
-<h2 id="toc_2">git</h2>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037679781.html">
-                
-                  <h1>t-sne</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<pre><code>from sklearn.manifold import TSNE
-from sklearn.datasets import load_iris
-from sklearn.decomposition import PCA
-import matplotlib.pyplot as plt
-import pandas as pd
-import numpy as np
- 
- 
- 
-data=pd.read_csv(&#39;test.data&#39;, sep=&#39;,&#39;,header=None)
-dd= data[range(200)]
-
-X_tsne = TSNE().fit_transform(dd)
-X_pca = PCA().fit_transform(dd)
-
-out = DataFrame(np.hstack((X_tsne, X_pca)))
-
-out2=data[200])
-
-out.to_csv(&#39;save_data.csv&#39;)
-
-
-plt.figure(figsize=(10, 5))
-plt.subplot(121)
-plt.scatter(X_tsne[:, 0], X_tsne[:, 1],c=data[200])
-plt.subplot(122)
-#plt.scatter(X_pca[:, 0], X_pca[:, 1], c=iris.target)
-plt.scatter(X_pca[:, 0], X_pca[:, 1], c=data[200])
-</code></pre>
-
-<p>R<br/>
-```</p>
-
-<pre><code>
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          					    <span class="posted-in"><a href='6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html'>6 文本&视频</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -506,7 +665,7 @@ plt.scatter(X_pca[:, 0], X_pca[:, 1], c=data[200])
         
             <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习</strong></a>
         
-            <a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>10 比赛学习</strong></a>
+            <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
          
@@ -525,7 +684,13 @@ plt.scatter(X_pca[:, 0], X_pca[:, 1], c=data[200])
 	      
 		      
 			      <li class="post">
-			        <a href="15637036455584.html">1 估计的置信度</a>
+			        <a href="15637037683461.html">Jupyter notebook</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15680210974066.html">因子分析</a>
 			      </li>
 		     
 		  
@@ -537,19 +702,13 @@ plt.scatter(X_pca[:, 0], X_pca[:, 1], c=data[200])
 		  
 		      
 			      <li class="post">
-			        <a href="15637025346225.html">2 不同设计之间有统计学差异吗</a>
+			        <a href="15637037679256.html">Rmarkdown</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15664761738125.html">2. iterm终端配置-oh my zsh</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637036605080.html">3 样本量的确定</a>
+			        <a href="15637037713554.html">数据可视化概述</a>
 			      </li>
 		     
 		  

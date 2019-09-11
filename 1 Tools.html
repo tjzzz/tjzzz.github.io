@@ -97,7 +97,7 @@
         
             <li><a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">7 深度学习</a></li>
         
-            <li><a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">10 比赛学习</a></li>
+            <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
          
@@ -121,6 +121,140 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15637037683461.html">
+                
+                  <h1>Jupyter notebook</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>类似于r的markdown</p>
+
+<p>GitHub 上也直接支持 Jupyter notebook 的渲染。借助此出色的功能，你可以轻松地共享工作。<a href="http://nbviewer.jupyter.org/">http://nbviewer.jupyter.org/</a> 也会提供 GitHub 代码库中的 notebook ，以及存储在其他地方的 notebook。</p>
+
+<p>名称 Jupyter 由 Julia、Python 和 R 组合而成，早期的两个非 Python 内核分别是 R 语言和 Julia 语言</p>
+
+<h2 id="toc_0">1.安装</h2>
+
+<ul>
+<li>如果安装anaconda 会自带</li>
+<li>通过conda环境安装 <code>conda install jupyter notebook</code>，或者<code>pip install jupyter notebook</code></li>
+</ul>
+
+<pre><code># 启动
+jupyter notebook
+</code></pre>
+
+<p>快捷键</p>
+
+<p>在上方插入cell：a<br/>
+在下方插入cell：b<br/>
+剪切当前cell：x<br/>
+删除当前cell：dd<br/>
+撤销删除：u<br/>
+上下：方向键 or jk (同vim)<br/>
+扩展选中上下左右：shift+jk<br/>
+当前cell转入markdown状态：m<br/>
+当前cell转入代码状态：y</p>
+
+<h2 id="toc_1">magic 关键字</h2>
+
+<p>Magic 关键字是可以在单元格中运行的特殊命令，能让你控制notebook 本身或执行系统调用（例如更改目录）</p>
+
+<p>Magic 命令的前面带有一个或两个百分号（% 或 %%），分别对应行 Magic 命令和单元格 Magic 命令。行 Magic 命令仅应用于编写 Magic 命令时所在的行，而单元格 Magic 命令应用于整个单元格。</p>
+
+<p>对于 Python 内核，可以使用 Magic 命令 %pdb 开启交互式调试器。出错时，你能检查当前命名空间中的变量。</p>
+
+<h2 id="toc_2">2.转换 notebook格式</h2>
+
+<p>Notebook 只是扩展名为 .ipynb 的大型 JSON 文件。</p>
+
+<p>转换格式的命令 <code>nbconvert</code></p>
+
+<pre><code>jupyter nbconvert --to html notebook.ipynb   #转成html
+jupyter nbconvert --to markdown xxx.ipynb 
+</code></pre>
+
+<p>目前支持的转换格式(<a href="https://nbconvert.readthedocs.io/en/latest/usage.html">https://nbconvert.readthedocs.io/en/latest/usage.html</a>)<br/>
+HTML,<br/>
+LaTeX,<br/>
+PDF,<br/>
+Reveal.js HTML slideshow,<br/>
+Markdown,<br/>
+reStructuredText,<br/>
+executable script,<br/>
+notebook.</p>
+
+<p><strong>创建幻灯片</strong></p>
+
+<p>在 notebook 中创建幻灯片的过程像平常一样，但需要指定作为幻灯片的单元格和单元格的幻灯片类型。在菜单栏中，点击“View”（视图）&gt;“Cell Toolbar”（单元格工具栏）&gt;“Slideshow”（幻灯片），以便在每个单元格上弹出幻灯片单元格菜单。</p>
+
+<pre><code>#转换并在浏览器中展示
+jupyter nbconvert notebook.ipynb --to slides --post serve
+</code></pre>
+
+<h2 id="toc_3">3.测试机上安装jupyter</h2>
+
+<p><a href="https://cloud.tencent.com/developer/article/1147487">https://cloud.tencent.com/developer/article/1147487</a></p>
+
+<ul>
+<li>安装jupyter</li>
+<li>生成密码 python -c &quot;import IPython;print IPython.lib.passwd()&quot;</li>
+<li>修改配置文件 </li>
+</ul>
+
+<p>/home/work/.jupyter/jupyter_notebook_config.py</p>
+
+<p>如果启动报错</p>
+
+<pre><code>socket.gaierror: [Errno -2] Name or service not known
+</code></pre>
+
+<p>可以加上自己的ip</p>
+
+<pre><code> jupyter notebook --ip=xxxx
+ jupyter lab --ip=xxx
+</code></pre>
+
+<h2 id="toc_4">4.其他工具</h2>
+
+<p><strong>jupyter-lab</strong><br/>
+jupyter-lab 是jupyter-notebook的升级版，界面更加炫酷，也支持更多功能，强烈建议使用lab方式</p>
+
+<p><strong>colab</strong><br/>
+google 基于jupyter开发的存在在google driver上的网页版<br/>
+<a href="https://colab.research.google.com/">https://colab.research.google.com/</a><br/>
+本身功能上差不太多，主要是有search和share功能，查看别人分享的代码</p>
+
+<h2 id="toc_5">5.常见问题</h2>
+
+<p>Q1: 若import了自己写的外部模块，如果这个外部模块有更新，再次执行import，jupyter是不会重新导入的<br/>
+<a href="https://blog.csdn.net/ybdesire/article/details/86709727">https://blog.csdn.net/ybdesire/article/details/86709727</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15637025346412.html">
                 
@@ -200,6 +334,17 @@ conda env export &gt; environment.yaml
 conda env create -f environment.yaml
 </code></pre>
 
+<h2 id="toc_3">conda install 与pip install的区别</h2>
+
+<p>，pip list和conda list列表却不一致，conda数量 &gt; pip<br/>
+conda 安装包路径是 xxxxx\Anaconda3\pkgs<br/>
+pip 安装包路径在虚拟环境下是 xxxx\Anaconda3\envs\a_conda_env\Lib\site-packages<br/>
+所以当前环境下pip list只列举出当前包list<br/>
+此处需要留意如果使用conda install 多个环境时，对于同一个包只需要安装一次。有conda集中管理。<br/>
+但是如果使用pip因为每个环境安装使用的pip在不同的路径下，故会重复安装，而包会从缓存中取。</p>
+
+<p>(2) 另外从体验上看感觉conda速度快很多</p>
+
                         
                       </div>
                   </div>
@@ -224,36 +369,26 @@ conda env create -f environment.yaml
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15664761738125.html">
+                <a class="clearlink" href="15637037679256.html">
                 
-                  <h1>2. iterm终端配置-oh my zsh</h1>
+                  <h1>Rmarkdown</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">安装</h2>
+                        	<h2 id="toc_0">python支持</h2>
 
-<p>oh my zsh 是一款强大的虚拟终端，兼容bash，提供了各种主题配置、插件。<br/>
-官网：<a href="https://ohmyz.sh/">https://ohmyz.sh/</a></p>
+<p>Rmarkdown对python兼容 <a href="https://github.com/rstudio/reticulate">https://github.com/rstudio/reticulate</a></p>
 
-<pre><code># 安装
-git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-#备份旧.zshrc配置
-cp ~/.zshrc ~/.zshrc.orig
-cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
-#修改默认shell
-chsh -s /bin/zsh
-</code></pre>
+<h2 id="toc_1">图片</h2>
 
-<p>卸载 <code>uninstall_oh_my_zsh</code></p>
+<p>现在很多makdown编辑器是可以支持拖拽本地图片或者截屏就可以直接在markdown中生成图片的，非常方便，比如我现在在用的MWeb编辑器。</p>
 
-<p>注意：如果安装oh my zsh后conda命令无法使用，这个时候需要修改一下.zshrc文件，添加一句<br/>
-<code>export PATH=/home/username/anaconda/bin:$PATH</code></p>
+<p>但是如果同一篇内容需要在不同的平台上进行发布，那图片处理起来就比较麻烦。因为需要重新上传到不同平台。<br/>
+最方便的处理方式就是利用图床， 这里以七牛云存储为例。<br/>
+<img src="media/15378048283915/15383141468224.jpg" alt=""/></p>
 
-<h2 id="toc_1">主题</h2>
-
-<p><a href="https://github.com/robbyrussell/oh-my-zsh/wiki/Themes">https://github.com/robbyrussell/oh-my-zsh/wiki/Themes</a><br/>
-oh my zsh 有各种丰富的主题可供选择，可以在其github上找到对应的主题样式。其对应的配置文件在<code>vim ~/.zshrc</code>中，只需修改其中的<code>ZSH_THEME=&quot;robbyrussell&quot;</code> 即可。</p>
+<p>step1： 首先在七牛官网上申请注册账号，并且添加<strong>对象存储</strong></p>
 
                         
                       </div>
@@ -262,7 +397,39 @@ oh my zsh 有各种丰富的主题可供选择，可以在其github上找到对�
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/8/22</span>
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15669633176007.html">
+                
+                  <h1>kafka</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/8/28</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
@@ -302,45 +469,15 @@ chmod +x install;
 
 <p><strong>2 vimrc配置中一些常用命令说明</strong></p>
 
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>colorscheme desert </td>
-<td>设置主题</td>
-</tr>
-<tr>
-<td>set number  </td>
-<td>显示行号</td>
-</tr>
-<tr>
-<td>set autoindent</td>
-<td>自动缩进</td>
-</tr>
-<tr>
-<td>set cursorcolumn ; set cursorline </td>
-<td>光垂直平方向高亮显示; 光标水平方向高亮显示</td>
-</tr>
-<tr>
-<td>set mouse=a  </td>
-<td>激活鼠标可用</td>
-</tr>
-<tr>
-<td>set tabstop=4</td>
-<td>设置tab和缩进为4个空格</td>
-</tr>
-<tr>
-<td>syntax enable </td>
-<td>开启语法</td>
-</tr>
-</tbody>
-</table>
+<pre><code>colorscheme desert  &quot;设置主题 
+set number   &quot;显示行号 
+set autoindent   &quot;自动缩进 
+set cursorcolumn  &quot;光垂直平方向高亮显示
+set cursorline  &quot;光标水平方向高亮显示
+set mouse=a   &quot;激活鼠标可用 
+set tabstop=4  &quot;设置tab和缩进为4个空格
+syntax enable   &quot;开启语法 
+</code></pre>
 
 <p><strong>3 vim 操作快捷键</strong></p>
 
@@ -359,249 +496,6 @@ chmod +x install;
 </tr>
 </tbody>
 </table>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/8/23</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037683461.html">
-                
-                  <h1>Jupyter notebook</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>类似于r的markdown</p>
-
-<p>GitHub 上也直接支持 Jupyter notebook 的渲染。借助此出色的功能，你可以轻松地共享工作。<a href="http://nbviewer.jupyter.org/">http://nbviewer.jupyter.org/</a> 也会提供 GitHub 代码库中的 notebook ，以及存储在其他地方的 notebook。</p>
-
-<p>名称 Jupyter 由 Julia、Python 和 R 组合而成，早期的两个非 Python 内核分别是 R 语言和 Julia 语言</p>
-
-<h2 id="toc_0">1.安装</h2>
-
-<ul>
-<li>如果安装anaconda 会自带</li>
-<li>通过conda环境安装 <code>conda install jupyter notebook</code>，或者<code>pip install jupyter notebook</code></li>
-</ul>
-
-<pre><code># 启动
-jupyter notebook
-</code></pre>
-
-<p>快捷键</p>
-
-<p>m 切换至markdown<br/>
-y 切换至单元格</p>
-
-<h2 id="toc_1">magic 关键字</h2>
-
-<p>Magic 关键字是可以在单元格中运行的特殊命令，能让你控制notebook 本身或执行系统调用（例如更改目录）</p>
-
-<p>Magic 命令的前面带有一个或两个百分号（% 或 %%），分别对应行 Magic 命令和单元格 Magic 命令。行 Magic 命令仅应用于编写 Magic 命令时所在的行，而单元格 Magic 命令应用于整个单元格。</p>
-
-<p>对于 Python 内核，可以使用 Magic 命令 %pdb 开启交互式调试器。出错时，你能检查当前命名空间中的变量。</p>
-
-<h2 id="toc_2">2.转换 notebook格式</h2>
-
-<p>Notebook 只是扩展名为 .ipynb 的大型 JSON 文件。</p>
-
-<p>转换格式的命令 <code>nbconvert</code></p>
-
-<pre><code>jupyter nbconvert --to html notebook.ipynb   #转成html
-jupyter nbconvert --to markdown xxx.ipynb 
-</code></pre>
-
-<p>目前支持的转换格式(<a href="https://nbconvert.readthedocs.io/en/latest/usage.html">https://nbconvert.readthedocs.io/en/latest/usage.html</a>)<br/>
-HTML,<br/>
-LaTeX,<br/>
-PDF,<br/>
-Reveal.js HTML slideshow,<br/>
-Markdown,<br/>
-reStructuredText,<br/>
-executable script,<br/>
-notebook.</p>
-
-<p><strong>创建幻灯片</strong></p>
-
-<p>在 notebook 中创建幻灯片的过程像平常一样，但需要指定作为幻灯片的单元格和单元格的幻灯片类型。在菜单栏中，点击“View”（视图）&gt;“Cell Toolbar”（单元格工具栏）&gt;“Slideshow”（幻灯片），以便在每个单元格上弹出幻灯片单元格菜单。</p>
-
-<pre><code>#转换并在浏览器中展示
-jupyter nbconvert notebook.ipynb --to slides --post serve
-</code></pre>
-
-<h2 id="toc_3">3.测试机上安装jupyter</h2>
-
-<p><a href="https://cloud.tencent.com/developer/article/1147487">https://cloud.tencent.com/developer/article/1147487</a></p>
-
-<ul>
-<li>安装jupyter</li>
-<li>生成密码 python -c &quot;import IPython;print IPython.lib.passwd()&quot;</li>
-<li>修改配置文件 </li>
-</ul>
-
-<p>/home/work/.jupyter/jupyter_notebook_config.py</p>
-
-<p>如果启动报错</p>
-
-<pre><code>socket.gaierror: [Errno -2] Name or service not known
-</code></pre>
-
-<p>可以加上自己的ip</p>
-
-<pre><code> jupyter notebook --ip=xxxx
- jupyter lab --ip=xxx
-</code></pre>
-
-<h2 id="toc_4">4.colab</h2>
-
-<p>google 基于jupyter开发的存在在google driver上的网页版</p>
-
-<p><a href="https://colab.research.google.com/">https://colab.research.google.com/</a></p>
-
-<p>本身功能上差不太多，主要是有search和share功能，查看别人分享的代码</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15665281146000.html">
-                
-                  <h1>docker</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>docker是一个容器，可以让开发者打包他们的应用以及依赖的环境到一个容器中，然后可以移植到别的机器上。容器是使用的沙箱机制，相互之间不会有任何接口。</p>
-
-<p>docker 官网： <a href="http://www.docker.com">http://www.docker.com</a><br/>
-容器:  对象<br/>
-镜像images: 类，是用于创建docker容器的模版<br/>
-docker仓库<a href="https://hub.docker.com%EF%BC%8C">https://hub.docker.com，</a> 是用来提供各种镜像的仓库。</p>
-
-<p><strong>mac安装</strong><br/>
-直接从官网下载安装即可 <a href="https://download.docker.com/mac/stable/Docker.dmg%E3%80%82">https://download.docker.com/mac/stable/Docker.dmg。</a><br/>
-由于国内网速问题，安装完docker后，后续拉取镜像可能会十分缓慢，可以配置加速器来解决，如下图所示。</p>
-
-<p>阿里云的加速器：<a href="https://help.aliyun.com/document_detail/60750.html">https://help.aliyun.com/document_detail/60750.html</a><br/>
-网易加速器：<a href="http://hub-mirror.c.163.com">http://hub-mirror.c.163.com</a><br/>
-官方中国加速器：<a href="https://registry.docker-cn.com">https://registry.docker-cn.com</a><br/>
-ustc的镜像：<a href="https://docker.mirrors.ustc.edu.cn">https://docker.mirrors.ustc.edu.cn</a><br/>
-daocloud：<a href="https://www.daocloud.io/mirror#accelerator-doc%EF%BC%88%E6%B3%A8%E5%86%8C%E5%90%8E%E4%BD%BF%E7%94%A8%EF%BC%89">https://www.daocloud.io/mirror#accelerator-doc（注册后使用）</a></p>
-
-<p><img src="media/15665281146000/15665304699914.jpg" alt=""/></p>
-
-<p><strong>基本使用</strong></p>
-
-<pre><code># 运行方式 1： 类似于运行pyhton脚本 python xxx.py  参数
-docker run ubuntu:18.10 /bin/echo &quot;Hello world&quot;
-</code></pre>
-
-<ul>
-<li>ubuntu:18.10是指定要运行的镜像，docker会先从本机上检查是否存在，如果不存在会从docker hub下载公共镜像。</li>
-<li> /bin/echo &quot;Hello world&quot;， 在启动容器里执行命令</li>
-</ul>
-
-<pre><code># 运行方式2： 交互式运行
-docker run -i -t ubuntu:18.10 /bin/bash
-</code></pre>
-
-<ul>
-<li>-t 在新容器中指定一个终端</li>
-<li>-i 允许你对容器内的标准输入 (STDIN) 进行交互。</li>
-</ul>
-
-<p>后台以进程方式运行docker</p>
-
-<pre><code>docker run -d ubuntu:18.10 /bin/sh -c &quot;while true; do echo hello world; sleep 1; done&quot;
-</code></pre>
-
-<p>这个时候发现会出现一串字符，这个就是dicker的id。</p>
-
-<ul>
-<li>-d 让容器在后台运行</li>
-</ul>
-
-<pre><code>docker ps   # 查看当前有哪些容器在运行
-exit    #退出容器或者`ctrl +D`
-docker logs 容器id    #查看容器内的标准输出
-docker stop  容器id    # 停止正在运行的docker
-</code></pre>
-
-<p><strong>docker 镜像</strong></p>
-
-<pre><code>docker pull   REPOSITORY:TAG    # 下载镜像
-docker search httpd                      # 查找镜像
-
-# 更新镜像，当自己在镜像内做了一些更新后，可以提交
-# commit -m &#39;更新信息&#39; -a 作者 容器id 新版本的镜像名
-docker commit -m=&quot;zzz update&quot; -a=&quot;zzz&quot; 容器的id zzz/ubuntu:v2
-</code></pre>
-
-<p>从零创建一个镜像<br/>
-从零创建镜像的命令是 <code>docker build</code>, 其依赖于一个配置文件Dockerfile，这个文件包含了一组命令来告诉docker如何创建镜像。</p>
-
-<p><code>docker build -t 镜像名 配置文件地址</code></p>
-
-<p>配置文件的一个例子：</p>
-
-<pre><code># 每一个指令的前缀必须是大写
-# FROM 表示使用哪个镜像源
-# RUN 表示告诉docker在镜像内执行命令
-FROM ubuntu:16.04
-RUN apt-get update
-RUN apt-get install -y unzip cmake g++ make ffmpeg libx264-dev wget
-WORKDIR /opt/
-</code></pre>
-
-<p><strong>删除</strong></p>
-
-<pre><code>docker rm 容器
-docker rmi 镜像名
-</code></pre>
-
-<h2 id="toc_0">参考资料</h2>
-
-<p><a href="https://www.runoob.com/docker/macos-docker-install.html">https://www.runoob.com/docker/macos-docker-install.html</a></p>
 
                         
                       </div>
@@ -694,7 +588,7 @@ docker rmi 镜像名
         
             <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习</strong></a>
         
-            <a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>10 比赛学习</strong></a>
+            <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
          
@@ -713,7 +607,13 @@ docker rmi 镜像名
 	      
 		      
 			      <li class="post">
-			        <a href="15637036455584.html">1 估计的置信度</a>
+			        <a href="15637037683461.html">Jupyter notebook</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15680210974066.html">因子分析</a>
 			      </li>
 		     
 		  
@@ -725,19 +625,13 @@ docker rmi 镜像名
 		  
 		      
 			      <li class="post">
-			        <a href="15637025346225.html">2 不同设计之间有统计学差异吗</a>
+			        <a href="15637037679256.html">Rmarkdown</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15664761738125.html">2. iterm终端配置-oh my zsh</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637036605080.html">3 样本量的确定</a>
+			        <a href="15637037713554.html">数据可视化概述</a>
 			      </li>
 		     
 		  

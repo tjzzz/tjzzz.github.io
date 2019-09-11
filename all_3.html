@@ -97,7 +97,7 @@
         
             <li><a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">7 深度学习</a></li>
         
-            <li><a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">10 比赛学习</a></li>
+            <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
          
@@ -122,53 +122,120 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15636947700701.html">
+                <a class="clearlink" href="15662005967642.html">
                 
-                  <h1>4.7 聚类1</h1>
+                  <h1>正交实验设计</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>聚类分析（cluster analysis）是属于无监督学习，他的目的是去探索数据隐含的规律。其基本思想是基于相似度/距离远近来将样本进行聚类。</p>
+                        	
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/8/19</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
-<h2 id="toc_0">1.距离的度量方法</h2>
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037677178.html">
+                
+                  <h1>一、基础篇</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h1 id="toc_0">1.计算学习理论——是否可学习</h1>
 
-<p>常见的聚类方法：</p>
+<p>一直在说机器学习，主要是在说怎么去学。在怎么学之前，首先需要了解下能不能学，学习的机制是什么</p>
 
-<table>
-<thead>
-<tr>
-<th>方法类别</th>
-<th>聚类方法</th>
-<th>优缺点</th>
-</tr>
-</thead>
+<h2 id="toc_1">PAC（概率近似正确）</h2>
 
-<tbody>
-<tr>
-<td>基于距离</td>
-<td>Kmeans</td>
-<td></td>
-</tr>
-<tr>
-<td>基于密度</td>
-<td>Dbscan</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<p><a href="https://blog.csdn.net/wangjianguobj/article/details/57413819">https://blog.csdn.net/wangjianguobj/article/details/57413819</a></p>
+
+<h2 id="toc_2">VC维度</h2>
+
+<p>这个介绍的挺详细<br/>
+<a href="http://www.flickering.cn/machine_learning/2015/04/vc%E7%BB%B4%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89/?from=singlemessage">http://www.flickering.cn/machine_learning/2015/04/vc%E7%BB%B4%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89/?from=singlemessage</a></p>
+
+<h2 id="toc_3">参考</h2>
+
+<p>台大-机器学习基石</p>
+
+<h1 id="toc_4">6.模型设计准则</h1>
+
+<ol>
+<li>模型拟合</li>
+</ol>
+
+<p>(1) 无免费午餐定理 NFL</p>
+
+<p>就是任何一个算法，针对所有问题，在平均意义上效果是一样的。</p>
+
+<p>=&gt; 所以要具体问题具体分析，针对不同问题，选择适合该问题的方法</p>
+
+<p>(2)奥卡姆剃刀原则</p>
+
+<p>即在预测效果差不多的情况下，模型越简单余越好</p>
+
+<p>误差 = bias + varaince + noise</p>
 
 <ul>
-<li>kmeans</li>
+<li>过拟合</li>
+<li>欠拟合</li>
 </ul>
 
-<p>选择初始种子</p>
+<h1 id="toc_5">7.模型验证</h1>
 
-<p>从概率角度看，k均值算法是高斯混合模型的一种特例</p>
+<p>1.估计泛化误差</p>
+
+<p>训练集，验证集</p>
+
+<p>2.对数据的重采样</p>
 
 <ul>
-<li>基于密度的聚类 DBSCAN</li>
+<li>留出法</li>
+<li>k折交叉验证</li>
+<li>自助法(有放回)</li>
 </ul>
+
+<h1 id="toc_6">8.模型的评估指标</h1>
+
+<h1 id="toc_7">9.实验设计</h1>
+
+<p>设计实验是要要成的任务是对整个机器学习过程的优化。实验中因子的设计可能会包含很多，比如：算法的类别、算法的参数、数据集等。</p>
+
+<p>当因子较多的时候，如何确定单一因子的影响就需要一些技巧<br/>
+<strong>控制变量法</strong></p>
+
+<p>它暗含着一个较强的假设，就是不同因子之间相互独立，互不影响。然而这个并不总是成立的。</p>
+
+<p><strong>因子设计</strong><br/>
+他关注的是不同因子之间系统化的变化对学习效果的影响，他的一个特例就是<strong>全因子实验</strong>，也叫<strong>完全交叉设计</strong>。</p>
+
+<p>在具体操作的时候，当分析的因子的离散取值较多时候，可以通过粗调+微调的方法。</p>
+
+<p>在对因子进行精调时候，可以使用<strong>响应面方法</strong>（zzz:根据百科资料解释,就是做了一个二次函数的拟合）</p>
+
+<h2 id="toc_8">正交抽样设计</h2>
+
+<p>@@@补充下：</p>
 
                         
                       </div>
@@ -194,103 +261,43 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037683688.html">
+                <a class="clearlink" href="15645026184752.html">
                 
-                  <h1>4.7 聚类2——-效果评价</h1>
+                  <h1>调查问卷的信度、效度</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>一般分为两类：</p>
+                        	<h2 id="toc_0">信度</h2>
+
+<p>信度表示的是数据是否可信，是否具有一致性，他是一种稳定性的度量，并不能保证结果是准确的。</p>
+
+<p><strong>信度的评价方法</strong></p>
 
 <ul>
-<li>外部标准：即基于人工的判断，需要有个标注集合</li>
-<li>内部标准：基于类内和类间聚类的目标函数的判断</li>
+<li>重测信度：即相同的标准下，间隔一定时间段后再测试一次，看下前后两次结果的相关度</li>
+<li>复本信度：让同一个测试者一次填写两份平行问卷，平行问卷是指题目的表述不同其他方面一样。这种方法有个明显的缺点就是不太好执行。</li>
+<li>折半系数：将问卷的题目分为奇数题和偶数题两部分，计算这两部分的相关系数，以此来衡量问卷的信度。</li>
+<li>\(\alpha\)系数：他等于所有可能组合的折半系数的均值</li>
 </ul>
 
-<h2 id="toc_0">内部标准clustering-performance-evaluation</h2>
+<p>\[\alpha = \frac{K}{K-1}(1 - \frac{\sum S_i^2}{S_x^2})\]<br/>
+其中k表示总的题目数，\(s_i\)表示是第i题的方差，\(s_x\)是总的方差。当信度比较高的时候\(\alpha\)值也会比较大，当信度较低的时候方差比应该近似为1，导致整个\(\alpha\) 都比较小</p>
+
+<h2 id="toc_1">效度</h2>
+
+<p>效度是表示数据是否有效，即其是否反映了问卷者真实的问题，效度用来衡量结果是否是准确的，但是不一定能保证稳定性。</p>
+
+<p><strong>效度的评价方法</strong></p>
 
 <ul>
-<li>CH 准则</li>
-<li>轮廓系数</li>
+<li>表面效度：通过专家评价的办法</li>
+<li>内容效度</li>
 </ul>
 
-<h2 id="toc_1">外部标准——人工判定</h2>
+<p><a href="https://wenku.baidu.com/view/a18a33b47e21af45b207a8ac.html?re=view">https://wenku.baidu.com/view/a18a33b47e21af45b207a8ac.html?re=view</a></p>
 
-<p>假设：<br/>
-机器判断的类别集合是：\(C=\{C_1,C_2,...C_m\}\)<br/>
-人工判断的类别集合是：\(P=\{P_1,P_2,...P_s\}\)</p>
-
-<h3 id="toc_2">1.1混淆矩阵</h3>
-
-<p>基于数据样本点的角度：<br/>
-对于任意两个数据pair，\((x_i,x_j)\)按照其在C和P中是否属于同一个簇，可以构造出混淆矩阵</p>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>P_1</th>
-<th>p_0</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>C_1</td>
-<td>a</td>
-<td>b</td>
-</tr>
-<tr>
-<td>C_0</td>
-<td>c</td>
-<td>d</td>
-</tr>
-</tbody>
-</table>
-
-<p><img src="media/15078603543147/15078631739679.jpg" alt=""/></p>
-
-<h3 id="toc_3">1.2簇的准确率/召回率</h3>
-
-<p>基于簇pair的，考虑对任意一个人工与机器的.\(P_j,C_i\)。对于每一个人工标注的\(P_j\),在机器标注中应该都会对应一个&quot;最相关的&quot;。可以遍历C中所有的cluster，分别计算准确率，召回率，F_score。<br/>
-<img src="media/15078603543147/15078720767171.jpg" alt=""/></p>
-
-<p>然后对于所有簇的F值做加权平均<br/>
-\[ClassF=\sum w_j F(p_j), w_i=n_j/n\]</p>
-
-<p>classF指标，相当于是以人工标注的簇为基准，将聚类的簇尽量逼近这个标注的结果。</p>
-
-<h2 id="toc_4">1.3</h2>
-
-<p>1.2中的方法相当于要求的比较严格，即以人工标注的集合簇为准。</p>
-
-<p>实际中其实只要保证我们聚的每一个类\(C_i\)是有意义的就可以，即以C为主</p>
-
-<p>类似的定义 \(F(C_i)=\max_{1\lt j \lt s}F(P_j, C_i)\)<br/>
-\[F=\sum w_i F(C_i), w_i=|C_i|/n\]</p>
-
-<ul>
-<li>问题： 这个指标可能变化不是非常明显</li>
-</ul>
-
-<h2 id="toc_5">1.4基于数据对象的准召F</h2>
-
-<p><img src="media/15078603543147/15078731022919.jpg" alt=""/></p>
-
-<h2 id="toc_6">思考</h2>
-
-<ol>
-<li>基于人工标注的方法中，认为人工标注的是准确的或者说结果是唯一的。实际上一堆sample可以有不同的分类方法，而且每种方法可能都是对的。
-<code>
-e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大学
-</code>
-如何进行标注，或者标注结果是非固定时候怎么衡量聚类效果的好坏？？</li>
-</ol>
-
-<h2 id="toc_7">参考资料</h2>
-
-<p><a href="http://blog.csdn.net/itplus/article/details/10322361">http://blog.csdn.net/itplus/article/details/10322361</a></p>
+<p><a href="https://wenku.baidu.com/view/cf19e18ca0116c175f0e48c1.html">https://wenku.baidu.com/view/cf19e18ca0116c175f0e48c1.html</a></p>
 
                         
                       </div>
@@ -299,10 +306,44 @@ e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
+                    <span class="date">2019/7/31</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637036605080.html">
+                
+                  <h1>3 样本量的确定</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>抽样中样本量的确定是一个非常重要的问题，在不考虑抽样成本的前提下，样本量越多估计的越准，然而实际情况中我们需要平衡抽样成本与估计结果的置信度——以尽可能低的样本得到尽可能高的置信结果。</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15637036605080.html">Read more</a>&nbsp;&nbsp; 
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -350,116 +391,6 @@ e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037686386.html">
-                
-                  <h1>4.9 深度学习综述</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>这里只是简单介绍，后续会在深度学习章节中进行详细说明</p>
-
-<p><strong>通用逼近定理</strong></p>
-
-<p><img src="media/15394437873112/15394453932519.jpg" alt=""/></p>
-
-<h2 id="toc_0">参考资料</h2>
-
-<p><a href="https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2650739143&amp;idx=1&amp;sn=f51551128021e7747205f87971f4762e&amp;chksm=871ad5b9b06d5caf0a5b4601863adc213eb42573bbdc2773e54ff1c585b3954a8644df024015&amp;mpshare=1&amp;scene=1&amp;srcid=0313P1tfCgE3zTBXJuNIHaBl%23rd">https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2650739143&amp;idx=1&amp;sn=f51551128021e7747205f87971f4762e&amp;chksm=871ad5b9b06d5caf0a5b4601863adc213eb42573bbdc2773e54ff1c585b3954a8644df024015&amp;mpshare=1&amp;scene=1&amp;srcid=0313P1tfCgE3zTBXJuNIHaBl%23rd</a></p>
-
-<p><a href="https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2650739820&amp;idx=1&amp;sn=260173be8cecc3a10d7b455922c10e0c&amp;chksm=871ad012b06d5904e65e96d0cfa236d0b6c7ce5683dd8d29514e4cbe420dc5b1ccd2786eea2c&amp;mpshare=1&amp;scene=1&amp;srcid=0324xGIxttOochJWNMPaDibb%23rd">https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2650739820&amp;idx=1&amp;sn=260173be8cecc3a10d7b455922c10e0c&amp;chksm=871ad012b06d5904e65e96d0cfa236d0b6c7ce5683dd8d29514e4cbe420dc5b1ccd2786eea2c&amp;mpshare=1&amp;scene=1&amp;srcid=0324xGIxttOochJWNMPaDibb%23rd</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037683065.html">
-                
-                  <h1>Data product</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>We describe our methods in this chapter.</p>
-
-<p>bookdown</p>
-
-<p>bookdown是基于markdown，knitr用来进行write book的一个package。<br/>
-其主要功能和markdown差不多，参考gitbook的方式，能基于Rmd或者md进行书写。</p>
-
-<p>加载一些html widgets</p>
-
-<p>首先安装相应的支持包</p>
-
-<pre><code>install.packages(&quot;webshot&quot;)
-webshot::install_phantomjs()
-</code></pre>
-
-<h2 id="toc_0">输出格式</h2>
-
-<p>在<code>_output.yaml</code>中进行设置<br/>
-(1)html格式</p>
-
-<ul>
-<li>gtbook style</li>
-</ul>
-
-<p>*</p>
-
-<h2 id="toc_1">生成</h2>
-
-<p>实时预览</p>
-
-<p>serve_book(dir=&#39;.&#39;, output_dir=&quot;_book&quot;,preview=TRUE, in_session=TRUE)</p>
-
-<h1 id="toc_2">flexdashbaord</h1>
-
-<p><a href="http://rmarkdown.rstudio.com/flexdashboard/">http://rmarkdown.rstudio.com/flexdashboard/</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html'>3 数据可视化</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -540,7 +471,7 @@ webshot::install_phantomjs()
         
             <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习</strong></a>
         
-            <a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>10 比赛学习</strong></a>
+            <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
          
@@ -559,7 +490,13 @@ webshot::install_phantomjs()
 	      
 		      
 			      <li class="post">
-			        <a href="15637036455584.html">1 估计的置信度</a>
+			        <a href="15637037683461.html">Jupyter notebook</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15680210974066.html">因子分析</a>
 			      </li>
 		     
 		  
@@ -571,19 +508,13 @@ webshot::install_phantomjs()
 		  
 		      
 			      <li class="post">
-			        <a href="15637025346225.html">2 不同设计之间有统计学差异吗</a>
+			        <a href="15637037679256.html">Rmarkdown</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15664761738125.html">2. iterm终端配置-oh my zsh</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637036605080.html">3 样本量的确定</a>
+			        <a href="15637037713554.html">数据可视化概述</a>
 			      </li>
 		     
 		  

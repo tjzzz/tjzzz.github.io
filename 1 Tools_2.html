@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  10 比赛学习 - zhenzhen学习笔记
+  1 Tools - zhenzhen学习笔记
   
   </title>
   
@@ -97,7 +97,7 @@
         
             <li><a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">7 深度学习</a></li>
         
-            <li><a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">10 比赛学习</a></li>
+            <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
          
@@ -122,42 +122,74 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637037730631.html">
+                <a class="clearlink" href="15637037680349.html">
                 
-                  <h1>比赛学习</h1>
+                  <h1>jupyterLab-安装R支持</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">天池</h2>
+                        	<p>jupyterlab是jupyter notebook的一个升级版，界面更炫酷，而且同时支持R语言。</p>
 
-<ul>
-<li>o2o优惠券</li>
-</ul>
+<p>现在Rstudio已经成为R社区使用最广泛的集成编辑器，其在配合Rstudio公司开发的软件包使用上有天然的优势，如knitr、bookdown、blogdown、sparklyr、tidyverse等，让我们在数据导入、清洗、可视化、分析过程中少踩了不少坑。</p>
 
-<p><a href="https://tianchi.aliyun.com/getStart/information.htm?raceId=231593">https://tianchi.aliyun.com/getStart/information.htm?raceId=231593</a></p>
+<p>然而，有时候我们也会发现，利用Rmarkdown进行探索性数据分析时，尤其是初学者，总是不断花费时间在文档编译上，而压缩了真正数据探索的时间。很多时候，我很羡慕python用户，因为他们拥有Ipython、jupyter notebook等工具，让我们一边分析数据，一边插入markdown文本，并且还能实时看到结果，这些特性R用户也可以实现吗？当然，这就是我今天推荐的jupyterlab 编辑器。</p>
 
-<p><a href="https://github.com/wepe/O2O-Coupon-Usage-Forecast/tree/master/code">https://github.com/wepe/O2O-Coupon-Usage-Forecast/tree/master/code</a></p>
+<p>安装jupyterLab</p>
 
-<ul>
-<li>fashion_tag</li>
-</ul>
+<p>首先我们要明白，jupyterLab是一个python包，所以要使用jupyterLab首先要配置python环境。对于普通用户，包括linux、win和Mac用户，建议直接下载anaconda发行版进行安装，这样免去了既要安装python又要安装其他包的麻烦，是最简洁的方法。</p>
 
-<p><a href="https://github.com/DavexPro/fashion-tag">https://github.com/DavexPro/fashion-tag</a></p>
+<p>对于平时很少使用python的人来说，可能无法忍受anaconda全家桶式的安装模式，想更轻便的安装使用，那也很容易。</p>
 
-<p><a href="https://github.com/tworuler/tensorcv">https://github.com/tworuler/tensorcv</a></p>
+<p>1.安装</p>
 
-<h2 id="toc_1">kaggle</h2>
+<p>Mac 和 Linux用户系统自带了python，可以直接使用pip install jupyterlab安装jupyterLab包。</p>
 
-<p>kaggle-ctr预估<br/>
-<a href="https://www.kaggle.com/c/avazu-ctr-prediction/discussion/12608">https://www.kaggle.com/c/avazu-ctr-prediction/discussion/12608</a><br/>
-<a href="https://github.com/guestwalk/kaggle-avazu">https://github.com/guestwalk/kaggle-avazu</a></p>
+<p>win用户先在python官网下载安装python，然后使用pip install jupyterlab安装jupyterLab包。</p>
 
-<p>FM学习<a href="https://www.jianshu.com/p/152ae633fb00">https://www.jianshu.com/p/152ae633fb00</a></p>
+<p>2.运行</p>
 
-<h2 id="toc_2">kesci</h2>
+<p>在终端输入jupyter lab即可以在默认浏览器中打开编辑器界面，若不能，请检查下python路径配置是否正确。</p>
 
-<p><a href="https://www.kesci.com/home/competition">https://www.kesci.com/home/competition</a></p>
+<p>“咦，怎么只能选择python，R去哪了”，各位看官莫急，这是因为R端缺少必要的包，还不能和jupyter进行通信，等把这些包安装好进行配置后就可以了。</p>
+
+<p>3.配置R</p>
+
+<p>要把先前打开的jupyterLab程序全部关闭后再进行以下操作</p>
+
+<pre><code>#安装必要的依赖包
+install.packages(c(&#39;repr&#39;, &#39;IRdisplay&#39;,&#39;evaluate&#39;, &#39;crayon&#39;,&#39;pbdZMQ&#39;,&#39;devtools&#39;,&#39;uuid&#39;, &#39;digest&#39;))
+</code></pre>
+
+<pre><code>#IRkernel包没有放在CRAN上，需要通过GitHub安装
+devtools::install_github(&#39;IRkernel/IRkernel&#39;)
+IRkernel::installspec() #确保jupyterLab能找到R解释器安装位置
+</code></pre>
+
+<p>4.再次在终端运行<code>jupyter lab</code>，选择R图标打开，你就可以在jupyterLab进行数据分析啦</p>
+
+<p>jupyterLab的主要特性绘图函数自动插入图片ggplot2绘图完美支持</p>
+
+<h2 id="toc_0">常见问题</h2>
+
+<ol>
+<li><code>jupyter lab</code> 启动提示</li>
+</ol>
+
+<p><img src="media/15637037680349/15665439689997.jpg" alt=""/></p>
+
+<p>应该是编码问题，暂时的解决方案<a href="https://github.com/jupyter/notebook/issues/2789#issuecomment-338380336">https://github.com/jupyter/notebook/issues/2789#issuecomment-338380336</a></p>
+
+<p><code>LANG=zn jupyter lab</code></p>
+
+<p>这个问题后来查了下说是python2的bug，安装python3就不会出现这个问题。</p>
+
+<p>2.切换内核<br/>
+很多代码都是python2写的，用pip3安装jupyter之后，想切换写内核。<br/>
+<a href="https://www.cnblogs.com/Jeffiy/p/4861528.html">https://www.cnblogs.com/Jeffiy/p/4861528.html</a></p>
+
+<pre><code>jupyter kernelspec list
+</code></pre>
 
                         
                       </div>
@@ -169,7 +201,62 @@
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html'>10 比赛学习</a></span>
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15664761738125.html">
+                
+                  <h1>2. iterm终端配置-oh my zsh</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">安装</h2>
+
+<p>oh my zsh 是一款强大的虚拟终端，兼容bash，提供了各种主题配置、插件。<br/>
+官网：<a href="https://ohmyz.sh/">https://ohmyz.sh/</a></p>
+
+<pre><code># 安装
+git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+#备份旧.zshrc配置
+cp ~/.zshrc ~/.zshrc.orig
+cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+#修改默认shell
+chsh -s /bin/zsh
+</code></pre>
+
+<p>卸载 <code>uninstall_oh_my_zsh</code></p>
+
+<p>注意：如果安装oh my zsh后conda命令无法使用，这个时候需要修改一下.zshrc文件，添加一句<br/>
+<code>export PATH=/home/username/anaconda/bin:$PATH</code></p>
+
+<h2 id="toc_1">主题</h2>
+
+<p><a href="https://github.com/robbyrussell/oh-my-zsh/wiki/Themes">https://github.com/robbyrussell/oh-my-zsh/wiki/Themes</a><br/>
+oh my zsh 有各种丰富的主题可供选择，可以在其github上找到对应的主题样式。其对应的配置文件在<code>vim ~/.zshrc</code>中，只需修改其中的<code>ZSH_THEME=&quot;robbyrussell&quot;</code> 即可。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/8/22</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -188,7 +275,7 @@
 			<div class="row">
 			  <div class="large-6 columns">
 			  <p class="text-left" style="padding-top:25px;">
-			   
+			   <a href="1 Tools_1.html">&laquo; Prev Page</a>  
 			  </p>
 			  </div>
 			  <div class="large-6 columns">
@@ -250,7 +337,7 @@
         
             <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习</strong></a>
         
-            <a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>10 比赛学习</strong></a>
+            <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
          
@@ -269,7 +356,13 @@
 	      
 		      
 			      <li class="post">
-			        <a href="15637036455584.html">1 估计的置信度</a>
+			        <a href="15637037683461.html">Jupyter notebook</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15680210974066.html">因子分析</a>
 			      </li>
 		     
 		  
@@ -281,19 +374,13 @@
 		  
 		      
 			      <li class="post">
-			        <a href="15637025346225.html">2 不同设计之间有统计学差异吗</a>
+			        <a href="15637037679256.html">Rmarkdown</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15664761738125.html">2. iterm终端配置-oh my zsh</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637036605080.html">3 样本量的确定</a>
+			        <a href="15637037713554.html">数据可视化概述</a>
 			      </li>
 		     
 		  

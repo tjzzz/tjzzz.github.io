@@ -97,7 +97,7 @@
         
             <li><a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">7 深度学习</a></li>
         
-            <li><a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">10 比赛学习</a></li>
+            <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
          
@@ -121,6 +121,206 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15665281146000.html">
+                
+                  <h1>docker</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>docker是一个容器，可以让开发者打包他们的应用以及依赖的环境到一个容器中，然后可以移植到别的机器上。容器是使用的沙箱机制，相互之间不会有任何接口。</p>
+
+<p>docker 官网： <a href="http://www.docker.com">http://www.docker.com</a><br/>
+容器:  对象<br/>
+镜像images: 类，是用于创建docker容器的模版<br/>
+docker仓库<a href="https://hub.docker.com%EF%BC%8C">https://hub.docker.com，</a> 是用来提供各种镜像的仓库。</p>
+
+<p><strong>mac安装</strong><br/>
+直接从官网下载安装即可 <a href="https://download.docker.com/mac/stable/Docker.dmg%E3%80%82">https://download.docker.com/mac/stable/Docker.dmg。</a><br/>
+由于国内网速问题，安装完docker后，后续拉取镜像可能会十分缓慢，可以配置加速器来解决，如下图所示。</p>
+
+<p>阿里云的加速器：<a href="https://help.aliyun.com/document_detail/60750.html">https://help.aliyun.com/document_detail/60750.html</a><br/>
+网易加速器：<a href="http://hub-mirror.c.163.com">http://hub-mirror.c.163.com</a><br/>
+官方中国加速器：<a href="https://registry.docker-cn.com">https://registry.docker-cn.com</a><br/>
+ustc的镜像：<a href="https://docker.mirrors.ustc.edu.cn">https://docker.mirrors.ustc.edu.cn</a><br/>
+daocloud：<a href="https://www.daocloud.io/mirror#accelerator-doc%EF%BC%88%E6%B3%A8%E5%86%8C%E5%90%8E%E4%BD%BF%E7%94%A8%EF%BC%89">https://www.daocloud.io/mirror#accelerator-doc（注册后使用）</a></p>
+
+<p><img src="media/15665281146000/15665304699914.jpg" alt=""/></p>
+
+<p><strong>基本使用</strong></p>
+
+<pre><code># 运行方式 1： 类似于运行pyhton脚本 python xxx.py  参数
+docker run ubuntu:18.10 /bin/echo &quot;Hello world&quot;
+</code></pre>
+
+<ul>
+<li>ubuntu:18.10是指定要运行的镜像，docker会先从本机上检查是否存在，如果不存在会从docker hub下载公共镜像。</li>
+<li> /bin/echo &quot;Hello world&quot;， 在启动容器里执行命令</li>
+</ul>
+
+<pre><code># 运行方式2： 交互式运行
+docker run -i -t ubuntu:18.10 /bin/bash
+</code></pre>
+
+<ul>
+<li>-t 在新容器中指定一个终端</li>
+<li>-i 允许你对容器内的标准输入 (STDIN) 进行交互。</li>
+</ul>
+
+<p>后台以进程方式运行docker</p>
+
+<pre><code>docker run -d ubuntu:18.10 /bin/sh -c &quot;while true; do echo hello world; sleep 1; done&quot;
+</code></pre>
+
+<p>这个时候发现会出现一串字符，这个就是dicker的id。</p>
+
+<ul>
+<li>-d 让容器在后台运行</li>
+</ul>
+
+<pre><code>docker ps   # 查看当前有哪些容器在运行
+exit    #退出容器或者`ctrl +D`
+docker logs 容器id    #查看容器内的标准输出
+docker stop  容器id    # 停止正在运行的docker
+</code></pre>
+
+<p><strong>docker 镜像</strong></p>
+
+<pre><code>docker pull   REPOSITORY:TAG    # 下载镜像
+docker search httpd                      # 查找镜像
+
+# 更新镜像，当自己在镜像内做了一些更新后，可以提交
+# commit -m &#39;更新信息&#39; -a 作者 容器id 新版本的镜像名
+docker commit -m=&quot;zzz update&quot; -a=&quot;zzz&quot; 容器的id zzz/ubuntu:v2
+</code></pre>
+
+<p>从零创建一个镜像<br/>
+从零创建镜像的命令是 <code>docker build</code>, 其依赖于一个配置文件Dockerfile，这个文件包含了一组命令来告诉docker如何创建镜像。</p>
+
+<p><code>docker build -t 镜像名 配置文件地址</code></p>
+
+<p>配置文件的一个例子：</p>
+
+<pre><code># 每一个指令的前缀必须是大写
+# FROM 表示使用哪个镜像源
+# RUN 表示告诉docker在镜像内执行命令
+FROM ubuntu:16.04
+RUN apt-get update
+RUN apt-get install -y unzip cmake g++ make ffmpeg libx264-dev wget
+WORKDIR /opt/
+</code></pre>
+
+<p><strong>删除</strong></p>
+
+<pre><code>docker rm 容器
+docker rmi 镜像名
+</code></pre>
+
+<h2 id="toc_0">参考资料</h2>
+
+<p><a href="https://www.runoob.com/docker/macos-docker-install.html">https://www.runoob.com/docker/macos-docker-install.html</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/8/23</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15662808343723.html">
+                
+                  <h1>有用的网址&小工具</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ul>
+<li>论文下载，知网论文</li>
+</ul>
+
+<p><a href="https://www.cn-ki.net/">https://www.cn-ki.net/</a></p>
+
+<p>google学术   <a href="https://en.ehn3.com:92/">https://en.ehn3.com:92/</a></p>
+
+<ul>
+<li>微信公众号平台文章同步知乎、简书等平台</li>
+</ul>
+
+<p><a href="https://www.wechatsync.com/#intro">https://www.wechatsync.com/#intro</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/8/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15665545372148.html">
+                
+                  <h1>shell</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/8/23</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15637037678160.html">
                 
@@ -167,140 +367,6 @@ git reset --hard xxxxx</p>
 <p>查看本地与云端的diff</p>
 
 <p>git rm —cache  删除已经提交的内容</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037680349.html">
-                
-                  <h1>jupyterLab-安装R支持</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>jupyterlab是jupyter notebook的一个升级版，界面更炫酷，而且同时支持R语言。</p>
-
-<p>现在Rstudio已经成为R社区使用最广泛的集成编辑器，其在配合Rstudio公司开发的软件包使用上有天然的优势，如knitr、bookdown、blogdown、sparklyr、tidyverse等，让我们在数据导入、清洗、可视化、分析过程中少踩了不少坑。</p>
-
-<p>然而，有时候我们也会发现，利用Rmarkdown进行探索性数据分析时，尤其是初学者，总是不断花费时间在文档编译上，而压缩了真正数据探索的时间。很多时候，我很羡慕python用户，因为他们拥有Ipython、jupyter notebook等工具，让我们一边分析数据，一边插入markdown文本，并且还能实时看到结果，这些特性R用户也可以实现吗？当然，这就是我今天推荐的jupyterlab 编辑器。</p>
-
-<p>安装jupyterLab</p>
-
-<p>首先我们要明白，jupyterLab是一个python包，所以要使用jupyterLab首先要配置python环境。对于普通用户，包括linux、win和Mac用户，建议直接下载anaconda发行版进行安装，这样免去了既要安装python又要安装其他包的麻烦，是最简洁的方法。</p>
-
-<p>对于平时很少使用python的人来说，可能无法忍受anaconda全家桶式的安装模式，想更轻便的安装使用，那也很容易。</p>
-
-<p>1.安装</p>
-
-<p>Mac 和 Linux用户系统自带了python，可以直接使用pip install jupyterlab安装jupyterLab包。</p>
-
-<p>win用户先在python官网下载安装python，然后使用pip install jupyterlab安装jupyterLab包。</p>
-
-<p>2.运行</p>
-
-<p>在终端输入jupyter lab即可以在默认浏览器中打开编辑器界面，若不能，请检查下python路径配置是否正确。</p>
-
-<p>“咦，怎么只能选择python，R去哪了”，各位看官莫急，这是因为R端缺少必要的包，还不能和jupyter进行通信，等把这些包安装好进行配置后就可以了。</p>
-
-<p>3.配置R</p>
-
-<p>要把先前打开的jupyterLab程序全部关闭后再进行以下操作</p>
-
-<pre><code>#安装必要的依赖包
-install.packages(c(&#39;repr&#39;, &#39;IRdisplay&#39;,&#39;evaluate&#39;, &#39;crayon&#39;,&#39;pbdZMQ&#39;,&#39;devtools&#39;,&#39;uuid&#39;, &#39;digest&#39;))
-</code></pre>
-
-<pre><code>#IRkernel包没有放在CRAN上，需要通过GitHub安装
-devtools::install_github(&#39;IRkernel/IRkernel&#39;)
-IRkernel::installspec() #确保jupyterLab能找到R解释器安装位置
-</code></pre>
-
-<p>4.再次在终端运行<code>jupyter lab</code>，选择R图标打开，你就可以在jupyterLab进行数据分析啦</p>
-
-<p>jupyterLab的主要特性绘图函数自动插入图片ggplot2绘图完美支持</p>
-
-<h2 id="toc_0">常见问题</h2>
-
-<ol>
-<li><code>jupyter lab</code> 启动提示</li>
-</ol>
-
-<p><img src="media/15637037680349/15665439689997.jpg" alt=""/></p>
-
-<p>应该是编码问题，暂时的解决方案<a href="https://github.com/jupyter/notebook/issues/2789#issuecomment-338380336">https://github.com/jupyter/notebook/issues/2789#issuecomment-338380336</a></p>
-
-<p><code>LANG=zn jupyter lab</code></p>
-
-<p>这个问题后来查了下说是python2的bug，安装python3就不会出现这个问题。</p>
-
-<p>2.切换内核<br/>
-很多代码都是python2写的，用pip3安装jupyter之后，想切换写内核。<br/>
-<a href="https://www.cnblogs.com/Jeffiy/p/4861528.html">https://www.cnblogs.com/Jeffiy/p/4861528.html</a></p>
-
-<pre><code>jupyter kernelspec list
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037679256.html">
-                
-                  <h1>markdown</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">图片</h2>
-
-<p>现在很多makdown编辑器是可以支持拖拽本地图片或者截屏就可以直接在markdown中生成图片的，非常方便，比如我现在在用的MWeb编辑器。</p>
-
-<p>但是如果同一篇内容需要在不同的平台上进行发布，那图片处理起来就比较麻烦。因为需要重新上传到不同平台。<br/>
-最方便的处理方式就是利用图床， 这里以七牛云存储为例。<br/>
-<img src="media/15378048283915/15383141468224.jpg" alt=""/></p>
-
-<p>step1： 首先在七牛官网上申请注册账号，并且添加<strong>对象存储</strong></p>
 
                         
                       </div>
@@ -375,45 +441,6 @@ IRkernel::installspec() #确保jupyterLab能找到R解释器安装位置
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15662808343723.html">
-                
-                  <h1>有用的网址</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ol>
-<li>论文下载，知网论文</li>
-</ol>
-
-<p><a href="https://www.cn-ki.net/">https://www.cn-ki.net/</a></p>
-
-<p>google学术   <a href="https://en.ehn3.com:92/">https://en.ehn3.com:92/</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/8/20</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -425,7 +452,7 @@ IRkernel::installspec() #确保jupyterLab能找到R解释器安装位置
 			  </div>
 			  <div class="large-6 columns">
 			<p class="text-right" style="padding-top:25px;">
-			
+			 <a href="1 Tools_2.html">&raquo; Next Page</a> 
 			</p>
 			  </div>
 			</div>
@@ -482,7 +509,7 @@ IRkernel::installspec() #确保jupyterLab能找到R解释器安装位置
         
             <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习</strong></a>
         
-            <a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>10 比赛学习</strong></a>
+            <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
          
@@ -501,7 +528,13 @@ IRkernel::installspec() #确保jupyterLab能找到R解释器安装位置
 	      
 		      
 			      <li class="post">
-			        <a href="15637036455584.html">1 估计的置信度</a>
+			        <a href="15637037683461.html">Jupyter notebook</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15680210974066.html">因子分析</a>
 			      </li>
 		     
 		  
@@ -513,19 +546,13 @@ IRkernel::installspec() #确保jupyterLab能找到R解释器安装位置
 		  
 		      
 			      <li class="post">
-			        <a href="15637025346225.html">2 不同设计之间有统计学差异吗</a>
+			        <a href="15637037679256.html">Rmarkdown</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15664761738125.html">2. iterm终端配置-oh my zsh</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637036605080.html">3 样本量的确定</a>
+			        <a href="15637037713554.html">数据可视化概述</a>
 			      </li>
 		     
 		  

@@ -97,7 +97,7 @@
         
             <li><a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">7 深度学习</a></li>
         
-            <li><a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">10 比赛学习</a></li>
+            <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
          
@@ -122,135 +122,258 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637065259056.html">
+                <a class="clearlink" href="15637037728199.html">
                 
-                  <h1>about me</h1>
+                  <h1>4.3 支持向量机</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>about me  </p>
+                        	<p>支持向量机属于上一节中说的硬输出的方法，是从几何角度出发考虑的。</p>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<p>在介绍SVM之前，先解释一下几个基本概念。<br/>
+<img src="media/15384698920685/15386228139164.jpg" alt="" style="width:400px;"/></p>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15665281146000.html">
-                
-                  <h1>docker</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>docker是一个容器，可以让开发者打包他们的应用以及依赖的环境到一个容器中，然后可以移植到别的机器上。容器是使用的沙箱机制，相互之间不会有任何接口。</p>
+<blockquote>
+<p>函数间隔与几何间隔</p>
+</blockquote>
 
-<p>docker 官网： <a href="http://www.docker.com">http://www.docker.com</a><br/>
-容器:  对象<br/>
-镜像images: 类，是用于创建docker容器的模版<br/>
-docker仓库<a href="https://hub.docker.com%EF%BC%8C">https://hub.docker.com，</a> 是用来提供各种镜像的仓库。</p>
+<p>一般的，一个点距离分离超平面的远近可以标识分类预测的确信程度。当超平面\(wx+b=0\)确定后，\(|wx+b|\)的大小能够相对的表示远近，而\(wx+b\)的符号与\(y\)类别是否一致则可以表示是否分类正确。 <br/>
+\[d_i = y_i(wx_i+b)\]  定义函数间隔\(d = \min d_i\)</p>
 
-<p><strong>mac安装</strong><br/>
-直接从官网下载安装即可 <a href="https://download.docker.com/mac/stable/Docker.dmg%E3%80%82">https://download.docker.com/mac/stable/Docker.dmg。</a><br/>
-由于国内网速问题，安装完docker后，后续拉取镜像可能会十分缓慢，可以配置加速器来解决，如下图所示。</p>
+<p>但是很明显的会发现这个间隔与\(w\)的量纲是有关系的，\(kw+kb\)与之前超平面是一样的，但是间隔却差了k倍。因此需要<strong>几何间隔</strong></p>
 
-<p>阿里云的加速器：<a href="https://help.aliyun.com/document_detail/60750.html">https://help.aliyun.com/document_detail/60750.html</a><br/>
-网易加速器：<a href="http://hub-mirror.c.163.com">http://hub-mirror.c.163.com</a><br/>
-官方中国加速器：<a href="https://registry.docker-cn.com">https://registry.docker-cn.com</a><br/>
-ustc的镜像：<a href="https://docker.mirrors.ustc.edu.cn">https://docker.mirrors.ustc.edu.cn</a><br/>
-daocloud：<a href="https://www.daocloud.io/mirror#accelerator-doc%EF%BC%88%E6%B3%A8%E5%86%8C%E5%90%8E%E4%BD%BF%E7%94%A8%EF%BC%89">https://www.daocloud.io/mirror#accelerator-doc（注册后使用）</a></p>
+<p>\[d_i = y_i(\frac{w}{||w||}x_i+\frac{b}{||w||}), d = \min d_i\]  </p>
 
-<p><img src="media/15665281146000/15665304699914.jpg" alt=""/></p>
+<blockquote>
+<p>间隔最大化</p>
+</blockquote>
 
-<p><strong>基本使用</strong></p>
+<p>有了前面关于间隔的定义，或者是关于分类距离的定义，就有了目标。SVM的目标就是: 求解能够将数据集正确划分并且几何间隔最大的分离超平面。</p>
 
-<pre><code># 运行方式 1： 类似于运行pyhton脚本 python xxx.py  参数
-docker run ubuntu:18.10 /bin/echo &quot;Hello world&quot;
-</code></pre>
+<p>注：对于线性可分的数据，超平面有无数个(等价于感知机)，但是间隔最大的只有一个。间隔最大其实是两个要求:</p>
 
 <ul>
-<li>ubuntu:18.10是指定要运行的镜像，docker会先从本机上检查是否存在，如果不存在会从docker hub下载公共镜像。</li>
-<li> /bin/echo &quot;Hello world&quot;， 在启动容器里执行命令</li>
+<li>能尽可能的将正负例区分开</li>
+<li>对于难分的点(距离平面较近的点)也有很好的置信把握，即泛化能力会好一些</li>
 </ul>
 
-<pre><code># 运行方式2： 交互式运行
-docker run -i -t ubuntu:18.10 /bin/bash
-</code></pre>
+<blockquote>
+<p>SVM对应的三种问题类型</p>
+</blockquote>
+
+<p>根据分类问题，可分为以下三种</p>
 
 <ul>
-<li>-t 在新容器中指定一个终端</li>
-<li>-i 允许你对容器内的标准输入 (STDIN) 进行交互。</li>
+<li>线性可分与硬间隔最大化</li>
+<li>线性支持向量机与软间隔最大化</li>
+<li>非线性支持向量机与核函数</li>
 </ul>
 
-<p>后台以进程方式运行docker</p>
+<p>这些会在下面中进行详细介绍</p>
 
-<pre><code>docker run -d ubuntu:18.10 /bin/sh -c &quot;while true; do echo hello world; sleep 1; done&quot;
-</code></pre>
+<blockquote>
+<p>支持向量</p>
+</blockquote>
 
-<p>这个时候发现会出现一串字符，这个就是dicker的id。</p>
+<p>这个需要看完下面关于三部分的介绍之后，再来了解这个概念。</p>
 
 <ul>
-<li>-d 让容器在后台运行</li>
+<li>在线性可分的情况下，样本中与超平面距离最近的样本点称为<strong>支持向量</strong>. 支持向量是满足\(y_i(wx_i+b)-1=0\)的点。</li>
+<li>分隔边界最终只是由支持向量的点决定的，其他距离比较远的点并没有影响。</li>
 </ul>
 
-<pre><code>docker ps   # 查看当前有哪些容器在运行
-exit    #退出容器或者`ctrl +D`
-docker logs 容器id    #查看容器内的标准输出
-docker stop  容器id    # 停止正在运行的docker
+<h2 id="toc_0">1.线性可分与硬间隔最大化</h2>
+
+<p>先讨论一种最简单的情况，当数据集本身可以线性可分时候(实际数据中可能并没有这么好的性质)，我们只要找到对应的超平面即可。从前面的集合图形上我们的目标：希望每个点到超平面的间隔的最小值达到最大，即\(max min d_i\)</p>
+
+<p>数学模型：\[max_{w,b} d(几何间隔)\]<br/>
+\[s.t \quad d_i = y_i(wx_i+b)&gt;= d, i=1,..n\]</p>
+
+<p>因为几何间隔\(d=d&#39;/||w||\)，所以原问题等价于<br/>
+\[max_{w,b} \frac{d&#39;}{||w||}\]<br/>
+\[s.t \quad d_i = y_i(wx_i+b)&gt;= d&#39;, i=1,..n\]</p>
+
+<p>注意到</p>
+
+<ul>
+<li>函数间隔的取值\(d&#39;\)并不影响最优解\(w,b\)的求解。(如果w,b是最优解，则\(kw,kb\)也是，函数距离就是\(d&#39;\)和\(kd&#39;\))。所以这里可以取\(d&#39;=1\)。</li>
+<li>\(1/||w||\)与\(\frac{1}{2}||w||^2\)是等价的</li>
+</ul>
+
+<p>因此最终优化的问题等价于如下的凸二次规划问题：<br/>
+\[min_{w,b} \frac{1}{2}||w||^2\]<br/>
+\[s.t \quad d_i = y_i(wx_i+b) -1 &gt;=0, i=1,..n\]</p>
+
+<p>解法：关于这个优化问题的解法，在后面会详细给出。可以证明这个解是存在且唯一的。</p>
+
+<p><strong>几何角度</strong></p>
+
+<ul>
+<li>过两个类的边界的点的平行线(\(wx-b=1, wx-b=-1\))，有点类似于楚河汉界</li>
+<li>将两条平行线进行旋转，保证同类划分不变。两者距离就会改变</li>
+<li>落在两个平行线上的异类点就是<strong>支持向量</strong></li>
+</ul>
+
+<p><img src="media/15384698920685/15387096705813.jpg" alt="线性可分示意图"/></p>
+
+<h2 id="toc_1">2.线性支持向量机与软间隔最大化</h2>
+
+<p>上一节说的是对线性可分数据的，如果数据本身不可分该怎么办呢，此时线性分割必然存在误分类的点？对于线性不可分我们不可能要求其严格满足上面说的不等式约束。这时我们只能退而求其次：</p>
+
+<p>思路：使得之前的几何间隔尽量大，同时使误分类的个数尽可能少</p>
+
+<p>数学表示：对于每个样本，类似运筹学中的方法我们可以引入一个松弛变量\(\xi_i\ge 0\),满足\(y_i(wx_i+b)\ge 1-\xi_i\) 之前是要求一定要大于等于1，现在因为并不完全可分，所以不一定要大于等于1。</p>
+
+<p><strong>数学模型：</strong></p>
+
+<p>\[min_{w,b} \frac{1}{2}||w||^2 + C\sum_1^n \xi_i\]<br/>
+\[s.t \quad y_i(wx_i+b)&gt;=1-\xi_i, i=1,..n\]<br/>
+\[\xi_i &gt;= 0\]</p>
+
+<p>这时候其实可以发现线性可分的相当于是这里的一种特殊情况，即\(\xi_i=0\)</p>
+
+<p><strong>求解：</strong><br/>
+该优化问题的拉格朗日函数是<br/>
+\[L(w,b,\xi,\alpha,u)=\frac{1}{2}||w||^2+C\sum\xi_i-\sum\alpha_i(y_i(wx_i+b)-1+\xi_i)-\sum u_i\xi_i\]<br/>
+因此原问题等价于 \[\max_{\alpha,u}\min_{w,b,\xi}L\]</p>
+
+<p>（1）首先求L对\(w,b,\xi\)的极小<br/>
+<img src="media/15384698920685/15387191773648.jpg" alt=""/></p>
+
+<p>可得\[\min_{w,b\xi}L=-\frac{1}{2}\sum_{i=1}^n\sum_{j=1}^n \alpha_i\alpha_jy_iy_j(x_i*x_j)+\sum_{i=1}^n\alpha_i\]</p>
+
+<p>(2) 再对\(\min L\)求最大，即有<br/>
+\[\max_{\alpha}-\frac{1}{2}\sum_{i=1}^n\sum_{j=1}^n \alpha_i\alpha_jy_iy_j(x_i*x_j)+\sum_{i=1}^n\alpha_i\]<br/>
+\[s.t.\quad \sum\alpha_iy_i=0\]<br/>
+\[C-\alpha_i-u_i&gt;=0;\alpha_i&gt;=0;u_i&gt;=0\]</p>
+
+<p>最后一个条件其实等价于\(0\le\alpha_i\le C\)</p>
+
+<p>对于线性可分问题其max函数是一样的，只是约束条件是\(0\le\alpha_i\)</p>
+
+<p>【定理】若\(\alpha^*=(\alpha_1^*,...\alpha_n)\)是上述优化问题的一个解，若存在一个分量\(0&lt;\alpha_j^*&lt;C\)，则原始问题的解可按如下形式求得 <br/>
+\[w^* = \sum\alpha_i^*y_ix_i\]<br/>
+\[b^*=y_j-\sum_{i=1}^n y_i\alpha_i^*(x_i*x_j)\]</p>
+
+<p>从中可以发现b的解并不唯一。</p>
+
+<p>最终的分离超平面是\[\sum\alpha_i^*y_i(x_i*x_j)+b^*=0\]<br/>
+分类的决策函数是\[f(x)=sign(\alpha_i^*y_i(x_i*x_j)+b^*)\]</p>
+
+<p><strong>几何解释</strong></p>
+
+<ul>
+<li>如果在分解边界上，则\(\xi_i=0\),距离是1</li>
+<li>如果是在两个分界边界中间，\(0&lt;\xi_i&lt;1\)</li>
+<li>越过分界边界，到了另外一边，\(\xi_i &gt;1\) 这个时候\(y_i(wx_i+b)\ge 1-\xi_i\)是小于0的，属于误分类，在优化的时候会考虑</li>
+</ul>
+
+<p><img src="media/15384698920685/15387133378663.jpg" alt=""/></p>
+
+<p><strong>合页损失函数</strong>：与原优化问题等价的一种损失函数形式<br/>
+\[\min_{w,b} \sum[1-y_i(wx_i+b)]_{+}+\lambda||w||^2\]</p>
+
+<h2 id="toc_2">3.非线性支持向量机与核函数</h2>
+
+<p>当数据的分布呈现的是一种非线性的时候，用之前的线性分割的方法肯定就会出现问题。比如数据是在一个椭圆内外分布，这个时候就需要先对原始数据做一个映射，\(x_1^2,x_2^2\)然后变成线性可分的。而这里主要用到了核技巧。</p>
+
+<p>【核函数】如果存在一个映射\(\phi(x):X-&gt; H\),使得对于所有\(x,z\in X\),函数\(K(x,z)\)满足<br/>
+\[K(x,z)=\phi(x)*\phi(z)\]<br/>
+则\(K(x,z)\)为核函数，\(\phi(x)\)为映射函数。</p>
+
+<p>核函数的想法是：在学习中值定义核函数，而不显示的定义映射函数，通常映射函数不太好找且不唯一。<br/>
+在支持向量机中的应用：<br/>
+如前所述，在支持向量机的对偶问题中，只涉及样本之间的内积运算。\[W(\alpha)=\max_{\alpha}-\frac{1}{2}\sum_{i=1}^n\sum_{j=1}^n \alpha_i\alpha_jy_iy_j(x_i*x_j)+\sum_{i=1}^n\alpha_i\]<br/>
+因此可以用核函数代替<br/>
+\[W(\alpha)=\max_{\alpha}-\frac{1}{2}\sum_{i=1}^n\sum_{j=1}^n \alpha_i\alpha_jy_iy_jK(x_i,x_j)+\sum_{i=1}^n\alpha_i\]</p>
+
+<p><strong>常用的核函数</strong></p>
+
+<ul>
+<li>多项式核函数 \(K(x,z)=(x*z+1)^p\)</li>
+<li>高斯核函数 \(K(x,z)=exp(\frac{-||x-z||^z}{2\sigma^2})\)</li>
+<li>字符串核函数</li>
+</ul>
+
+<h2 id="toc_3">优化算法SMO</h2>
+
+<p>前面介绍了SVM中的三类问题，最终都是通过一个凸二次规划进行求解。当样本量较大的时候，SMO是一种相对求解较快的方法。简言之，是采用了启发式算法，每次只更新两个\(\alpha_i,\alpha_j\)</p>
+
+<p><a href="https://www.cnblogs.com/nolonely/p/6541527.html">https://www.cnblogs.com/nolonely/p/6541527.html</a></p>
+
+<p>Sequential Minimal Optimization A Fast Algorithm for Training Support Vector Machines</p>
+
+<h2 id="toc_4">代码</h2>
+
+<p><code>sklearn.svc</code>模块 <a href="http://scikit-learn.org/stable/modules/svm.html#svm">http://scikit-learn.org/stable/modules/svm.html#svm</a></p>
+
+<p>主要包含</p>
+
+<ul>
+<li>SVC 标准的</li>
+</ul>
+
+<pre><code>from sklearn import svm
+X = [[0, 0], [1, 1]]
+y = [0, 1]
+clf = svm.SVC()
+clf.fit(X, y)  
 </code></pre>
 
-<p><strong>docker 镜像</strong></p>
+<p>以iris数据为例</p>
 
-<pre><code>docker pull   REPOSITORY:TAG    # 下载镜像
-docker search httpd                      # 查找镜像
+<pre><code class="language-python">### iris数据
+from sklearn import datasets, svm
+import matplotlib.pyplot as plt
+import numpy as np
 
-# 更新镜像，当自己在镜像内做了一些更新后，可以提交
-# commit -m &#39;更新信息&#39; -a 作者 容器id 新版本的镜像名
-docker commit -m=&quot;zzz update&quot; -a=&quot;zzz&quot; 容器的id zzz/ubuntu:v2
+
+iris = datasets.load_iris()
+X = iris.data[:, :2]
+y = iris.target
+
+
+# model
+C = 1.0
+model = svm.SVC(kernel=&#39;linear&#39;, C=C)
+model.fit(X, y)
+
+
+
+## 绘制可视化图
+x1 = X[:,0]
+x2 = X[:,1]
+h=0.1
+x_min, x_max = x1.min()-1, x1.max()+1
+y_min, y_max = x2.min()-1, x2.max()+1
+xx,yy = np.meshgrid(np.arange(x_min, x_max, h),
+                    np.arange(y_min, y_max, h))  #生成对应的坐标矩阵
+
+Z = model.predict(np.c_[xx.ravel(), yy.ravel()])    # 在新的坐标点上预测分类
+Z = Z.reshape(xx.shape)
+plt.contourf(xx, yy, Z, cmap=plt.cm.coolwarm, alpha=0.8)
+
+
+plt.scatter(x1, x2, c=y, cmap=plt.cm.coolwarm, s=20, edgecolors=&#39;k&#39;)
+
+plt.xlabel(&#39;Sepal length&#39;)
+plt.ylabel(&#39;Sepal width&#39;)
 </code></pre>
 
-<p>从零创建一个镜像<br/>
-从零创建镜像的命令是 <code>docker build</code>, 其依赖于一个配置文件Dockerfile，这个文件包含了一组命令来告诉docker如何创建镜像。</p>
+<p><img src="media/15384698920685/15387991752806.jpg" alt=""/></p>
 
-<p><code>docker build -t 镜像名 配置文件地址</code></p>
+<ul>
+<li>NuSVC 与SVC的优化目标函数略微不同</li>
+<li>LinearSVC： 只针对linear kernel</li>
+</ul>
 
-<p>配置文件的一个例子：</p>
+<p>在进行多分类的时候SVC中参数<code>decision_function_shape</code>可以选择是<code>ovo</code>还是<code>ovr</code><br/>
+LinearSVC是通过参数<code>multi_class</code>进行选择，</p>
 
-<pre><code># 每一个指令的前缀必须是大写
-# FROM 表示使用哪个镜像源
-# RUN 表示告诉docker在镜像内执行命令
-FROM ubuntu:16.04
-RUN apt-get update
-RUN apt-get install -y unzip cmake g++ make ffmpeg libx264-dev wget
-WORKDIR /opt/
-</code></pre>
+<h2 id="toc_5">小结</h2>
 
-<p><strong>删除</strong></p>
-
-<pre><code>docker rm 容器
-docker rmi 镜像名
-</code></pre>
-
-<h2 id="toc_0">参考资料</h2>
-
-<p><a href="https://www.runoob.com/docker/macos-docker-install.html">https://www.runoob.com/docker/macos-docker-install.html</a></p>
+<p><img src="media/15384698920685/15388009994951.jpg" alt=""/></p>
 
                         
                       </div>
@@ -259,10 +382,10 @@ docker rmi 镜像名
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/8/23</span>
+                    <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -276,82 +399,176 @@ docker rmi 镜像名
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037690385.html">
+                <a class="clearlink" href="15637037730522.html">
                 
-                  <h1>face_recgnization</h1>
+                  <h1>关于长点击阈值划分方法</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>github<br/>
-<a href="https://github.com/ageitgey/face_recognition">https://github.com/ageitgey/face_recognition</a></p>
+                        	<p>用户停留时长一直是衡量用户在落地页满意度的一个重要度量指标。在具体业务设计的时候，可以去看时长分布的中位数、平均时长等统计级指标，亦有类似于衡量时长好坏的长点击率，长点击占比等指标。</p>
 
-<h2 id="toc_0">1. 安装</h2>
+<p>首先来说下长点击，简单来说长点击即停留时长比较长的一个点击时间。</p>
 
-<p>文档： <a href="https://zhuanlan.zhihu.com/p/28271869">https://zhuanlan.zhihu.com/p/28271869</a></p>
+<h3 id="toc_0">1. 长点击，满意点击，人工打分</h3>
 
-<pre><code>pip install face_recognition
-</code></pre>
+<p>我们说停留时间“比较长”，其实是一个相对概念，不同的资源类型可能划分的标准会不同。但是他们的出发点是一样的: 我们认为在特定资源类型下落地页时长越长，用户越倾向于满意。所以长点击本质上是用来刻画满意点击的。</p>
 
-<p>直接安装会报错，安装face_recognition这个之前需要先安装编译dlib</p>
+<p><strong>(1) 无监督的划分</strong><br/>
+即我们不知道groundtruth，这个时候可以根据本身时长的分布，按照经验值比如60%，70%作为其长点击的分界点。这种划分方式 xxxx</p>
 
-<pre><code>brew install boost
-brew install boost-python --with-python3
+<p><strong>(2) 有监督的</strong><br/>
+通过人工评估（比如qu相关性，qu的页面质量等维度），可以对qu结果进行人工打分，一般是0-4档。0，1代表不太好，2代表一般，3-4代表比较好。可以根据业务需求比如3-4认为是满意点击，2认为是一般点击，0-1认为是不满意点击。<br/>
+以此人工标注来决定如何选择长点击划分阈值。</p>
 
-# install dlib
-git clone https://github.com/davisking/dlib.git
-cd dlib
-mkdir build; cd build; cmake .. -DDLIB_USE_CUDA=0 -DUSE_AVX_INSTRUCTIONS=1; cmake --build 
+<h3 id="toc_1">2. 如何划分长点击</h3>
 
-cd ..
-python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
-</code></pre>
+<p>长点击阈值划分的目标，即寻找如下决策函数的参数x</p>
 
-<p>If there is no cmake on your mac, you can use  <code>brew install cmake</code>. After all these have been done, run</p>
+<p>\[<br/>
+F(t) = \left\{<br/>
+             \begin{array}{lr}<br/>
+            1，长点击 t \ge x &amp;  \\<br/>
+            0，非长点击 t&lt; x\\  <br/>
+             \end{array}<br/>
+\right.<br/>
+\]</p>
 
-<pre><code>pip install face_recognition
-</code></pre>
+<p>从统计分布的角度看，即使是时长比较长的结果，人工打分也可能很低，时长很短的结果人工打分也可能是满意的。所以不管寻找到的最优参数\(x\)是多少，它都有可能会误分。而我们的目的是让这种因为误分而犯错的可能性尽可能的小。<br/>
+<img src="media/15542962343188/15543644977641.jpg" alt=""/></p>
 
-<h2 id="toc_1">2.usage</h2>
+<p>从以上的分布图来说更直观一些，我们的误判损失即是图中阴影部分，很容易证明，移动阈值划分x时候，损失最小的是当两个分布曲线相交的点的时候。这指导我们可以按照如下的方法进行长点击划分：</p>
 
-<p>face_recognition有两种使用方式，命令行方式和python包方式</p>
+<p>执行步骤<br/>
+<strong>Step0： 摸底时长分布</strong></p>
 
-<p>(1) 命令行方式</p>
+<p>首先需要了解清楚数据本身的时长分布，根据时长的分布情况，大概划分不同的区间段。比如0-5，5-10，10-15，15-20，20-25，25-30，30-35，35-40， 40-50，50-60，60-100，&gt;100这样进行划分。<br/>
+同于频次分布较高的部分可以划分的细致一些，频次分布较低的部分可以划分的宽度较宽一些。</p>
 
-<p>(2) python 包<br/>
-<a href="https://face-recognition.readthedocs.io/en/latest/face_recognition.html#module-face_recognition.api">https://face-recognition.readthedocs.io/en/latest/face_recognition.html#module-face_recognition.api</a></p>
+<p><strong>Step1： 抽样送评qu数据</strong></p>
 
-<p></p>
+<p>确定送评样本，因为人工评估是需要成本的，我们不可能得到整体的good或者bad的分布曲线，我们所有的只是抽取的送评样本的标注数据。这就要求我们送评的数据对于总体一定要有好的代表性：</p>
 
-<h2 id="toc_2">参考资料</h2>
+<ul>
+<li>抽样分布应该和总体分布尽量一致</li>
+<li>抽样量不能太小，否则样本估计总体的误差会比较大</li>
+</ul>
 
-<p><a href="https://zhuanlan.zhihu.com/p/28271869">https://zhuanlan.zhihu.com/p/28271869</a></p>
+<blockquote>
+<p>如何确定最优送评样本量？（这个回来再写）<br/>
+统计学的研究方法是要找到我们所关注变量的统计分布，我们最终是希望通过抽取得到的good和not_good的时长分布与整体差不多。</p>
+</blockquote>
 
-<p><a href="https://medium.com/@ageitgey">https://medium.com/@ageitgey</a></p>
+<p>数据抽取：</p>
 
-<hr/>
+<ul>
+<li>考虑到数据抽取是基于qu粒度，一个qu其实会有多次用户点击行为，也就会有多个时长，可能波动较大。所以一般是取count(qu)&gt;5的，并且时长取的是其中位数</li>
+<li><p>预送评，一般先进行少量的预送评，比如送评1000个样本。返回会用来检验数据质量和划分的精细度</p>
 
-<p><a href="https://www.jianshu.com/p/281aa6a3823a">https://www.jianshu.com/p/281aa6a3823a</a></p>
+<ul>
+<li>check自己送评的数据中是否有一些异常数据。比如sf的url路径不完成</li>
+<li>check人工打分的质量程度</li>
+<li>初步看下good和not_good的分布情况，大概确定长点的分布区间，从而看下送评的样本的时间段间隔精度是否需要调整</li>
+</ul></li>
+<li><p>正式送评</p></li>
+</ul>
 
-<p>一个案例<br/>
-<a href="https://www.jianshu.com/p/38ca6daf6b40">https://www.jianshu.com/p/38ca6daf6b40</a><br/>
-<a href="http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html">http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html</a></p>
+<p><strong>Step2： 返回分析</strong></p>
 
-<p>tf案例<br/>
-<a href="https://blog.csdn.net/u010016927/article/details/75722416">https://blog.csdn.net/u010016927/article/details/75722416</a></p>
+<p>根据good和not_good的频数分布，找到曲线的交点，即满足good(x) = not_good(x)的点，即可认为是长点击的分界点。短点击的划分类似，可以认为0-1的是短点击，或者更严格的0分的是短点击。 绘制bad和not_bad的频数分布，找到曲线交点。即满足bood(x) = not_bood(x)的点</p>
 
-<p>knn<br/>
-<a href="https://www.leiphone.com/news/201707/gIbNsPtWk460m5vj.html">https://www.leiphone.com/news/201707/gIbNsPtWk460m5vj.html</a></p>
+<ul>
+<li>实际操作：实际数据的分布图可能不如示意图那么明显，甚至有多个交点的情况。这时候可以计算图中b+c的面积，绘制(x,g(x))的曲线图，找到g(x)=0.5的点即可。 如果有多个可能是因为样本量不足够，或者本身指标数据不可信(前提假定是要研究的指标与人工打分是存在单调关系的)</li>
+</ul>
 
-<p><a href="https://blog.csdn.net/Mbx8X9u/article/details/79124840">https://blog.csdn.net/Mbx8X9u/article/details/79124840</a></p>
+<h3 id="toc_2">3 应用-关于sigmoid函数的理解</h3>
 
-<p><a href="https://www.ctolib.com/topics-101544.html">https://www.ctolib.com/topics-101544.html</a></p>
+<ul>
+<li><p>AB实验<br/>
+对于AB实验来说，有了长短点击时间阈值之后，可以直接计算长点击和短点击，更新指标评估即可。</p></li>
+<li><p>interleaving实验<br/>
+对于interleaving来说，实际中是将dt经过一个映射(一般是sigmoid函数)将其转化为一个0-1的打分。</p></li>
+</ul>
 
-<p><a href="https://www.oschina.net/code/snippet_2558914_54339">https://www.oschina.net/code/snippet_2558914_54339</a></p>
+<p>这里我们从另外一个角度来看这件事。LR或者说sigmoid函数能将一个负无穷到正无穷的数映射到0-1的一个概率值。是否是长点其实也是一个概率，当然这里时长t是取的(0, 正无穷)</p>
 
-<h2 id="toc_3">new</h2>
+<p>假设<br/>
+\[g(x) = \frac{good(x)}{good(x) + not\_good(x)}\]<br/>
+其中 \(good(x)= \#good(t=x)\), \(not\_good(x)=\#not\_good(t= x)\)。 <br/>
+所以\(g(x)\)其实表示的是在\(t=x\)时候是长点击的概率。为了书写方便，</p>
 
-<p><a href="https://www.leiphone.com/news/201704/rYdpAvh4SvgVPpRQ.html">https://www.leiphone.com/news/201704/rYdpAvh4SvgVPpRQ.html</a></p>
+<p>\[g(x) = \frac{1}{1+ not\_good(x)/good(x)}= \frac{1}{1+ e^{ln\frac{p}{1-p}}}\]</p>
+
+<p>这里\(p(x)\)是表示当时间等于x时是长点击的概率。</p>
+
+<p>从这个角度说，之前的sigmoid映射函数中\(\frac{1}{1+ e^{-a(x-b)}}\) 系数项即是log odds ratio。</p>
+
+<p>因此只需对送评数据中\(ln\frac{p}{1-p}\)的分布数据去拟合一条曲线 \(\hat f(t)\)即可，最终的sigmoid映射函数就是</p>
+
+<p>\[g(t) = \frac{1}{1+ e^{\hat f(t)}}\]</p>
+
+<p>并且其中\(\hat f(t)=0\)的点恰巧就是长点击的分界点。</p>
+
+<p>注意：实际送评的时候因为样本量的限制，不可能每一个分界点(在这里是每个停留时间dt)都会去送评，</p>
+
+<h3 id="toc_3">4.其他:从模型准召的角度</h3>
+
+<p>其实从分类评估角度来看，</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>not_good</th>
+<th>Good</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>F=0</td>
+<td>a</td>
+<td>b</td>
+</tr>
+<tr>
+<td>F=1</td>
+<td>c</td>
+<td>d</td>
+</tr>
+</tbody>
+</table>
+
+<p>上面说的损失即阴影部分的面积=b+c, 所以其实从分类模型评估的角度，就是不一致率最小的时候的最优解,即<br/>
+\[min b+c\]</p>
+
+<ul>
+<li>准确&amp;召回</li>
+</ul>
+
+<p>分类模型中其实用的更多的是准确和召回指标，\(accurate=\frac{d}{c+d}\),\(recall = \frac{d}{b+d}\)<br/>
+\[Max F\_score = 1-\frac{b+c}{b+c+2d}\]</p>
+
+<p>这个标准下，和之前还是略微有些不同的</p>
+
+<h3 id="toc_4">5.如何泛化</h3>
+
+<p>泛化问题主要是指：</p>
+
+<ul>
+<li>业务层面</li>
+</ul>
+
+<p>搜索，视频，以后其他的大小业务都可能面临这种问题。对于新的业务类型，人工送评应该是避免不了了。</p>
+
+<ul>
+<li>时间层面变更</li>
+</ul>
+
+<p>随着线上效果变更，当前调研的结果可能已经不再试用后续的结果。需要不断进行更新，比如视频铺量后，整体的时长分布和之前的可能变化很大。或者是需要拆解不同的维度类别</p>
+
+<p>方案1：再次人工送评一遍，<br/>
+方案2：进行时长分布映射<br/>
+这种方案有个问题，相当于是按照top百分比进行划分的，认为top百分比所代表的满意度保持一致。可能整体时长都变长了，映射完后阈值也变长了，相对的满意度并没变。</p>
 
                         
                       </div>
@@ -363,7 +580,7 @@ python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html'>6 文本&视频</a></span>
+          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -377,51 +594,45 @@ python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037678160.html">
+                <a class="clearlink" href="15637037730576.html">
                 
-                  <h1>git</h1>
+                  <h1>统计阈值</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>git 是一个版本管理的工具</p>
+                        	<h2 id="toc_0">1.dab类指标</h2>
 
-<p><strong>1 基本配置</strong></p>
+<p>newpo, po, rank, rr, f1 最终计算方式都是 \[dab_{xx} = 0.5\frac{\sum awin -\sum bwin}{\sum awin + \sum bwin + \sum tie}\]</p>
 
-<p>（1）生成公钥<br/>
-ssh-keygen -t rsa -f ~/.ssh/id_rsa.zhenzhen<br/>
-cat ~/.ssh/id_rsa.zhenzhen.pub 保存到icode上<br/>
-chmod 644 ~/.ssh/config<br/>
-vim ~/.ssh/config<br/>
-添加下自己的配置<br/>
-Host icode.baidu.com<br/>
-User yangyang22<br/>
-IdentityFile ~/.ssh/id_rsa.yangyang22<br/>
-（2）clone<br/>
-git clone  xxxxx代码库<br/>
-git config --local user.email <a href="mailto:zhengzhenzhen@baidu.com">zhengzhenzhen@baidu.com</a><br/>
-git config --local user.name zhengzhenzhen</p>
+<p>其中awin，bwin，tie可以按照不同的逻辑或方法进行计算。</p>
 
-<p>git push origin master:refs/for/master<br/>
-（3）上传文件<br/>
-git add xxx<br/>
-git commit -m &#39;注释&#39;<br/>
-git push origin HEAD:refs/for/master</p>
+<p>\[p_1 = \frac{\sum awin}{\sum awin + \sum bwin + \sum tie}\]</p>
 
-<p>我不知道”undo”是什么意思。您可以删除core.excludesfile设置，如下所示：<br/>
-git config --global --unset core.excludesfile<br/>
-当然你也可以简单地编辑配置文件：<br/>
-git config --global --edit<br/>
-…然后手动删除设置。</p>
+<p>\[p_2 = \frac{\sum bwin}{\sum awin + \sum bwin + \sum tie}\]</p>
 
-<p>git config --global --edit</p>
+<p>基于有点有diff的流量：<br/>
+每次pv下，awin，bwin，tie必然出现且只出现其一。因此p1可以看做策略好的概率， p2可以看做基线好的概率。 概率本身是服从两点分布的，每次pv取0或1，样本量较大的时候(一般interleaving实验的样本量足够大了)，可以近似成正态分布，即有</p>
 
-<p>git log<br/>
-git reset --hard xxxxx</p>
+<p>\[p_1 - N(P_1,P_1(1-P_1)/n1 )\]<br/>
+\[p_2 - N(P_2,P_2(1-P_2)/n1 )\]</p>
 
-<p>查看本地与云端的diff</p>
+<p>所以两者的差也是近似正态分布，有(注意P1与P2并不是相互独立的)</p>
 
-<p>git rm —cache  删除已经提交的内容</p>
+<p>\[p_1 - p_2 ~ N(P_1 - P_2, \frac{(P_1+P_2-(P_1-P_2)^2)}{n})\]</p>
+
+<p>所以dab的置信区间就是</p>
+
+<p>\[[\frac{p_1 -p_2}{2}- z_{\alpha}\sqrt \frac{p_1+p_2-(p_1-p_2)^2}{4n}, \frac{p_1 -p_2}{2}+ z_{\alpha}\sqrt \frac{p_1+p_2-(p_1-p_2)^2}{4n}]\]</p>
+
+<h3 id="toc_1">根据空转确定阈值</h3>
+
+<p>空转时候理论上两边是没diff的，但是因为随机波动，产出的指标数据肯定不可能完全等于0，大概率上也是服从一个正态分布。根据小概率原理，在5%和95%的置信点上可以认为是异常值，就策略和基线不是持平而是有显著diff。<br/>
+对应的阈值就是</p>
+
+<p>\[z_{\alpha}\sqrt \frac{p_1+p_2-(p_1-p_2)^2}{4n}= z_{\alpha}\sqrt \frac{p}{2n}\]</p>
+
+<p>所以这个阈值是与本身的p值的大小有关，与样本量也有关。</p>
 
                         
                       </div>
@@ -433,7 +644,7 @@ git reset --hard xxxxx</p>
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -447,74 +658,42 @@ git reset --hard xxxxx</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037680349.html">
+                <a class="clearlink" href="15637037730631.html">
                 
-                  <h1>jupyterLab-安装R支持</h1>
+                  <h1>比赛学习</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>jupyterlab是jupyter notebook的一个升级版，界面更炫酷，而且同时支持R语言。</p>
+                        	<h2 id="toc_0">天池</h2>
 
-<p>现在Rstudio已经成为R社区使用最广泛的集成编辑器，其在配合Rstudio公司开发的软件包使用上有天然的优势，如knitr、bookdown、blogdown、sparklyr、tidyverse等，让我们在数据导入、清洗、可视化、分析过程中少踩了不少坑。</p>
+<ul>
+<li>o2o优惠券</li>
+</ul>
 
-<p>然而，有时候我们也会发现，利用Rmarkdown进行探索性数据分析时，尤其是初学者，总是不断花费时间在文档编译上，而压缩了真正数据探索的时间。很多时候，我很羡慕python用户，因为他们拥有Ipython、jupyter notebook等工具，让我们一边分析数据，一边插入markdown文本，并且还能实时看到结果，这些特性R用户也可以实现吗？当然，这就是我今天推荐的jupyterlab 编辑器。</p>
+<p><a href="https://tianchi.aliyun.com/getStart/information.htm?raceId=231593">https://tianchi.aliyun.com/getStart/information.htm?raceId=231593</a></p>
 
-<p>安装jupyterLab</p>
+<p><a href="https://github.com/wepe/O2O-Coupon-Usage-Forecast/tree/master/code">https://github.com/wepe/O2O-Coupon-Usage-Forecast/tree/master/code</a></p>
 
-<p>首先我们要明白，jupyterLab是一个python包，所以要使用jupyterLab首先要配置python环境。对于普通用户，包括linux、win和Mac用户，建议直接下载anaconda发行版进行安装，这样免去了既要安装python又要安装其他包的麻烦，是最简洁的方法。</p>
+<ul>
+<li>fashion_tag</li>
+</ul>
 
-<p>对于平时很少使用python的人来说，可能无法忍受anaconda全家桶式的安装模式，想更轻便的安装使用，那也很容易。</p>
+<p><a href="https://github.com/DavexPro/fashion-tag">https://github.com/DavexPro/fashion-tag</a></p>
 
-<p>1.安装</p>
+<p><a href="https://github.com/tworuler/tensorcv">https://github.com/tworuler/tensorcv</a></p>
 
-<p>Mac 和 Linux用户系统自带了python，可以直接使用pip install jupyterlab安装jupyterLab包。</p>
+<h2 id="toc_1">kaggle</h2>
 
-<p>win用户先在python官网下载安装python，然后使用pip install jupyterlab安装jupyterLab包。</p>
+<p>kaggle-ctr预估<br/>
+<a href="https://www.kaggle.com/c/avazu-ctr-prediction/discussion/12608">https://www.kaggle.com/c/avazu-ctr-prediction/discussion/12608</a><br/>
+<a href="https://github.com/guestwalk/kaggle-avazu">https://github.com/guestwalk/kaggle-avazu</a></p>
 
-<p>2.运行</p>
+<p>FM学习<a href="https://www.jianshu.com/p/152ae633fb00">https://www.jianshu.com/p/152ae633fb00</a></p>
 
-<p>在终端输入jupyter lab即可以在默认浏览器中打开编辑器界面，若不能，请检查下python路径配置是否正确。</p>
+<h2 id="toc_2">kesci</h2>
 
-<p>“咦，怎么只能选择python，R去哪了”，各位看官莫急，这是因为R端缺少必要的包，还不能和jupyter进行通信，等把这些包安装好进行配置后就可以了。</p>
-
-<p>3.配置R</p>
-
-<p>要把先前打开的jupyterLab程序全部关闭后再进行以下操作</p>
-
-<pre><code>#安装必要的依赖包
-install.packages(c(&#39;repr&#39;, &#39;IRdisplay&#39;,&#39;evaluate&#39;, &#39;crayon&#39;,&#39;pbdZMQ&#39;,&#39;devtools&#39;,&#39;uuid&#39;, &#39;digest&#39;))
-</code></pre>
-
-<pre><code>#IRkernel包没有放在CRAN上，需要通过GitHub安装
-devtools::install_github(&#39;IRkernel/IRkernel&#39;)
-IRkernel::installspec() #确保jupyterLab能找到R解释器安装位置
-</code></pre>
-
-<p>4.再次在终端运行<code>jupyter lab</code>，选择R图标打开，你就可以在jupyterLab进行数据分析啦</p>
-
-<p>jupyterLab的主要特性绘图函数自动插入图片ggplot2绘图完美支持</p>
-
-<h2 id="toc_0">常见问题</h2>
-
-<ol>
-<li><code>jupyter lab</code> 启动提示</li>
-</ol>
-
-<p><img src="media/15637037680349/15665439689997.jpg" alt=""/></p>
-
-<p>应该是编码问题，暂时的解决方案<a href="https://github.com/jupyter/notebook/issues/2789#issuecomment-338380336">https://github.com/jupyter/notebook/issues/2789#issuecomment-338380336</a></p>
-
-<p><code>LANG=zn jupyter lab</code></p>
-
-<p>这个问题后来查了下说是python2的bug，安装python3就不会出现这个问题。</p>
-
-<p>2.切换内核<br/>
-很多代码都是python2写的，用pip3安装jupyter之后，想切换写内核。<br/>
-<a href="https://www.cnblogs.com/Jeffiy/p/4861528.html">https://www.cnblogs.com/Jeffiy/p/4861528.html</a></p>
-
-<pre><code>jupyter kernelspec list
-</code></pre>
+<p><a href="https://www.kesci.com/home/competition">https://www.kesci.com/home/competition</a></p>
 
                         
                       </div>
@@ -526,7 +705,74 @@ IRkernel::installspec() #确保jupyterLab能找到R解释器安装位置
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          					    <span class="posted-in"><a href='8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html'>8 比赛学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037731128.html">
+                
+                  <h1>第八章 深度模型中的优化</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">8.1 优化与学习</h2>
+
+<p>本章主要关注这一类特定的优化问题:寻找神经网络上的一组参数 θ，它能显 著地降低代价函数 J(θ)，该代价函数通常包括整个训练集上的性能评估和额外的正 则化项。</p>
+
+<p>通常来说极其学习的算法目标大概可以写成，降低期望泛化误差。即<strong>风险</strong><br/>
+<img src="media/15209459008411/15209462294325.jpg" alt=""/></p>
+
+<p>其中p_data是真实的分布，实际中我们只能最小化<strong>经验风险</strong><br/>
+<img src="media/15209459008411/15209463229280.jpg" alt=""/></p>
+
+<h2 id="toc_1">8.2神经网络优化中的挑战</h2>
+
+<ul>
+<li>病态： hessain矩阵病态</li>
+<li>局部最小值：对于非凸函数可能存在多个局部最小值。</li>
+<li>。。。</li>
+</ul>
+
+<h2 id="toc_2">8.3基本算法</h2>
+
+<p>梯度下降机器变种一般是机器学习中应用较多的优化算法。</p>
+
+<h3 id="toc_3">(1)随机梯度下降SGD</h3>
+
+<p><img src="media/15209459008411/15221677256921.jpg" alt=""/></p>
+
+<h3 id="toc_4">（2）动量</h3>
+
+<p>动量是比SGD速度更快的一种方法，SGD相当于只是考虑梯度的方向，而动量是在此基础上加上速度。</p>
+
+<p><img src="media/15209459008411/15221680917826.jpg" alt=""/></p>
+
+<h2 id="toc_5">8.4 参数初始化</h2>
+
+<h2 id="toc_6">参考资料</h2>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -607,7 +853,7 @@ IRkernel::installspec() #确保jupyterLab能找到R解释器安装位置
         
             <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习</strong></a>
         
-            <a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>10 比赛学习</strong></a>
+            <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
          
@@ -626,7 +872,13 @@ IRkernel::installspec() #确保jupyterLab能找到R解释器安装位置
 	      
 		      
 			      <li class="post">
-			        <a href="15637036455584.html">1 估计的置信度</a>
+			        <a href="15637037683461.html">Jupyter notebook</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15680210974066.html">因子分析</a>
 			      </li>
 		     
 		  
@@ -638,19 +890,13 @@ IRkernel::installspec() #确保jupyterLab能找到R解释器安装位置
 		  
 		      
 			      <li class="post">
-			        <a href="15637025346225.html">2 不同设计之间有统计学差异吗</a>
+			        <a href="15637037679256.html">Rmarkdown</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15664761738125.html">2. iterm终端配置-oh my zsh</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637036605080.html">3 样本量的确定</a>
+			        <a href="15637037713554.html">数据可视化概述</a>
 			      </li>
 		     
 		  

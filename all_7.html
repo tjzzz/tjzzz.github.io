@@ -97,7 +97,7 @@
         
             <li><a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">7 深度学习</a></li>
         
-            <li><a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">10 比赛学习</a></li>
+            <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
          
@@ -122,14 +122,133 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637025344879.html">
+                <a class="clearlink" href="15637037691075.html">
                 
-                  <h1>xgboost</h1>
+                  <h1>4.1 回归模型</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><a href="http://xgboost.readthedocs.io/en/latest/python/python_intro.html">http://xgboost.readthedocs.io/en/latest/python/python_intro.html</a></p>
+                        	<p>进入统计机器学习大门，最基础的从回归分析说起。</p>
+
+<h2 id="toc_0">1.回归分析</h2>
+
+<p>机器学习从最简单的回归分析说起，这次从最小二乘的几何意义角度去看回归分析。</p>
+
+<p>\[Y = X’B\]<br/>
+我们知道最终估计的满足 \((y-X\hat\beta)^TX=0\)。即最优估计是在空间上的正交投影</p>
+
+<p><img src="media/15350244372147/15350246581231.jpg" alt=""/><br/>
+统计中的一些基本概念：</p>
+
+<ul>
+<li>t 检验</li>
+<li>F 检验</li>
+<li>p value</li>
+<li>多重共线性</li>
+<li></li>
+</ul>
+
+<h2 id="toc_1">2.正则化处理</h2>
+
+<p>训练数据是有限的时候，总可以通过增加参数的方法提高模型复杂度，降低训练误差，但是其泛化能力不好。正则化即通过调整参数的取值，来平衡<strong>偏差</strong>和<strong>方差</strong>的关系。</p>
+
+<p>线性回归中，最直接的方法就行在loss function中添加正则化项。一般形式如下：</p>
+
+<p>\[E(w) = \sum [f(x_i, w) - y_i]^2 + \lambda g(||w||_p)\]</p>
+
+<ul>
+<li>当取一范数时，即为lasso；</li>
+<li>二范数：岭回归</li>
+<li>一范数和二范数组合：弹性网络。  \(a||w||^2_2 + (1-a)||w||_1\)</li>
+</ul>
+
+<p>一范数和二范数的几何意义区别如下(这里就不解释了)：</p>
+
+<ul>
+<li>lasso会将特征衰减到0</li>
+<li>岭回归大量特征系数都比较小</li>
+<li>弹性网络结合了两种方法的优点</li>
+</ul>
+
+<p><img src="media/15350244372147/15350256600383.jpg" alt=""/></p>
+
+<blockquote>
+<p>从概率不同学派的角度来看上面的问题。<br/>
+正则化的方式，是从频率学派角度来看；而贝叶斯学派视角来看，正则化其实就是引入了关于参数的先验信息。</p>
+</blockquote>
+
+<p>贝叶斯学派是假定参数服从某种分布，然后根据其分布利用积分的方法将其消除掉。这一过程叫<strong>边际化</strong>。边际化的过程其实恰好是正则化/泛化的过程。</p>
+
+<p>可以证明，岭回归是w满足正态分布，lasso是当w满足拉普拉斯分布时候通过最大后验概率得到的估计结果。</p>
+
+<blockquote>
+<p>code</p>
+</blockquote>
+
+<pre><code>import numpy as np # 快速操作结构数组的工具
+import matplotlib.pyplot as plt  # 可视化绘制
+from sklearn.linear_model import Lasso,LassoCV,LassoLarsCV   # Lasso回归,LassoCV交叉验证实现alpha的选取，LassoLarsCV基于最小角回归交叉验证实现alpha的选取
+
+# ========Lasso回归========
+model = Lasso(alpha=0.01)  # 调节alpha可以实现对拟合的程度
+# model = LassoCV()  # LassoCV自动调节alpha可以实现选择最佳的alpha。
+# model = LassoLarsCV()  # LassoLarsCV自动调节alpha可以实现选择最佳的alpha
+model.fit(X, y)   # 线性回归建模
+print(&#39;系数矩阵:\n&#39;,model.coef_)
+print(&#39;线性回归模型:\n&#39;,model)
+# print(&#39;最佳的alpha：&#39;,model.alpha_)  # 只有在使用LassoCV、LassoLarsCV时才有效
+# 使用模型预测
+predicted = model.predict(X)
+
+</code></pre>
+
+<h2 id="toc_2">3.广义线性模型</h2>
+
+<p>广义线性模型可以看做一般线性模型的推广，既然说他是推广，说明有一些问题是传统的线性模型没法解决的。</p>
+
+<p>广义线性模型中y的密度函数形式是基于指数分布族的\[p(y;\theta)=b(y)exp[\theta&#39;T(y)+a(\theta)]\]<br/>
+其中\(T(y)\)是一个充分统计量，通常可以等于\(y\)。 常见的正态分布、指数分布、二项分布、泊松分布都属于指数分布族，都可以转为这种形式。</p>
+
+<p>介绍一个常用的广义线性模型：</p>
+
+<p>xxx</p>
+
+<h2 id="toc_3">4.基函数扩展：属性的非线性化</h2>
+
+<p>线性模型的表达能力有限，前面广义线性模型的思路是将因变量y做了一个非线性映射。而从另一个角度，可以将解释变量变为非线性的，即<br/>
+\[y=\beta_0+\beta_1x_1 + ...+\beta_nx_n\]<br/>
+可以扩展为<strong>基函数扩展模型</strong><br/>
+\[y=\beta_0+\beta_1f(x_1) + ...+\beta_nf(x_n)\]</p>
+
+<p>比如常见的多项式回归\[y=\beta_0+\beta_1 x + ...+\beta_n x^n\]</p>
+
+<p>多项式回归会存在一些问题：</p>
+
+<ul>
+<li>\(x\)和\(x^k\)之间是相关的，不太好解释清楚每个变量的贡献程度</li>
+<li>会出现过拟合的情况</li>
+</ul>
+
+<p><strong>多元自适应回归样条MARS</strong></p>
+
+<ul>
+<li>多项式整体是线性，局部非非线性</li>
+<li>MARS: 整体是非线性，局部是线性(分段函数)</li>
+</ul>
+
+<p>样条函数，需要满足一些最基本的一些条件</p>
+
+<ul>
+<li>在knot节点处满足函数的连续性</li>
+<li>一阶导数连续，二阶导数连续，则称为三次样条</li>
+</ul>
+
+<p>平滑样条</p>
+
+<p>\[E=\sum_{i=1}^n [y_i-g(x_i)]^2 +\lambda\int g&#39;&#39;(t)^2 \]</p>
+
+<p>code: <code>patsy</code></p>
 
                         
                       </div>
@@ -155,69 +274,99 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637025344767.html">
+                <a class="clearlink" href="15637037691936.html">
                 
-                  <h1>【NG-DL】course2_week1 优化网络参数</h1>
+                  <h1>3.1 特征处理—— 特征选择</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">1.基本概念</h2>
+                        	<h2 id="toc_0">参考</h2>
 
-<p>很多优化参数：<br/>
-网络层数，隐层数，学习率，激活函数。。。</p>
+<p><a href="https://blog.csdn.net/kebu12345678/article/details/78437118">https://blog.csdn.net/kebu12345678/article/details/78437118</a></p>
 
-<ul>
-<li><p>训练集/验证集/测试集</p></li>
-<li><p>偏差， 训练集误差</p></li>
-<li><p>方差</p></li>
-</ul>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
-<p>若有高bias： 尝试新的网络，更大网络</p>
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037692016.html">
+                
+                  <h1>4.6 集成</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><a href="http://www.52caml.com/head_first_ml/ml-chapter6-boosting-family/">http://www.52caml.com/head_first_ml/ml-chapter6-boosting-family/</a></p>
 
-<p>高方差： 获取更多数据，或者正则化，更合适的网络机构</p>
+<p><img src="media/15275150216357/15275150424366.jpg" alt=""/></p>
 
-<p>bias和varaince的平衡<br/>
-一般来说更大的网络能减小偏差，更多的数据能减小方差。</p>
+<p><a href="http://www.cnblogs.com/gasongjian/p/7648633.html">http://www.cnblogs.com/gasongjian/p/7648633.html</a></p>
 
-<h2 id="toc_1">2.正则化-L2</h2>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
-<p>以逻辑回归为例</p>
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037693934.html">
+                
+                  <h1>[2018-06-25]学习1</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>参考资源list<br/>
+2018年06月25日</p>
 
-<p>\(J(w,b)=\frac{1}{m}\sum L(\hat y_i, y_i)+\frac{\lambda}{2m}|w|^2_2\)L2惩罚，避免过拟合，导致高方差</p>
+<p><a href="https://www.tensorflow.org/get_started/get_started_for_beginners">https://www.tensorflow.org/get_started/get_started_for_beginners</a></p>
 
-<p>类似的神经网络在优化函数上加上</p>
+<p><a href="http://playground.tensorflow.org">http://playground.tensorflow.org</a></p>
 
-<p>\(J(w^{[1]},b^{[1]},...w^{[l]},b^{[l]})=\frac{1}{m}\sum L(\hat y_i, y_i)+\frac{\lambda}{2m}\sum||w^{[l]}||^2_2\)</p>
+<p><a href="https://github.com/aymericdamien/TensorFlow-Examples">https://github.com/aymericdamien/TensorFlow-Examples</a></p>
 
-<p>其中\(|w^{[l]}|^2\)F范数</p>
+<p>中文社区<br/>
+<a href="http://www.tensorfly.cn/">http://www.tensorfly.cn/</a><br/>
+<a href="https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/1-2-install/">https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/1-2-install/</a></p>
 
-<ul>
-<li>Ng.当\(\lambda\)较大时候,w会较小，sigmoid接近线性，降低方差。
-<img src="media/15055593941505/15103891828021.jpg" alt=""/></li>
-</ul>
-
-<h3 id="toc_2">正则化-dropout(随机失活)</h3>
-
-<p>每次对网络中的节点设置一个随机消失的概率p，即每个节点可能在也可能不在网络中，不在的时候即相当于该节点的数值置为0.</p>
-
-<p>dropout与l2类似都会shrink权重。</p>
-
-<h3 id="toc_3">early stoping</h3>
-
-<h2 id="toc_4">3.优化</h2>
-
-<h3 id="toc_5">归一化</h3>
-
-<p>归一化输入=&gt; 均值0，方差1<br/>
-* 零均值化<br/>
-* 归一化方差</p>
-
-<p><img src="media/15055593941505/15103915636569.jpg" alt=""/></p>
-
-<h3 id="toc_6">梯度消失与梯度爆炸</h3>
-
-<p>当梯度增长很大或者很微弱时，会导致优化出问题或者很慢。</p>
+<h2 id="toc_0">1.为什么</h2>
 
                         
                       </div>
@@ -359,213 +508,6 @@ e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15637037677178.html">
-                
-                  <h1>一、基础篇</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h1 id="toc_0">1.计算学习理论——是否可学习</h1>
-
-<p>一直在说机器学习，主要是在说怎么去学。在怎么学之前，首先需要了解下能不能学，学习的机制是什么</p>
-
-<h2 id="toc_1">PAC（概率近似正确）</h2>
-
-<p><a href="https://blog.csdn.net/wangjianguobj/article/details/57413819">https://blog.csdn.net/wangjianguobj/article/details/57413819</a></p>
-
-<h2 id="toc_2">VC维度</h2>
-
-<p>这个介绍的挺详细<br/>
-<a href="http://www.flickering.cn/machine_learning/2015/04/vc%E7%BB%B4%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89/?from=singlemessage">http://www.flickering.cn/machine_learning/2015/04/vc%E7%BB%B4%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89/?from=singlemessage</a></p>
-
-<h2 id="toc_3">参考</h2>
-
-<p>台大-机器学习基石</p>
-
-<h1 id="toc_4">6.模型设计准则</h1>
-
-<ol>
-<li>模型拟合</li>
-</ol>
-
-<p>(1) 无免费午餐定理 NFL</p>
-
-<p>就是任何一个算法，针对所有问题，在平均意义上效果是一样的。</p>
-
-<p>=&gt; 所以要具体问题具体分析，针对不同问题，选择适合该问题的方法</p>
-
-<p>(2)奥卡姆剃刀原则</p>
-
-<p>即在预测效果差不多的情况下，模型越简单余越好</p>
-
-<p>误差 = bias + varaince + noise</p>
-
-<ul>
-<li>过拟合</li>
-<li>欠拟合</li>
-</ul>
-
-<h1 id="toc_5">7.模型验证</h1>
-
-<p>1.估计泛化误差</p>
-
-<p>训练集，验证集</p>
-
-<p>2.对数据的重采样</p>
-
-<ul>
-<li>留出法</li>
-<li>k折交叉验证</li>
-<li>自助法(有放回)</li>
-</ul>
-
-<h1 id="toc_6">8.模型的评估指标</h1>
-
-<h1 id="toc_7">9.实验设计</h1>
-
-<p>设计实验是要要成的任务是对整个机器学习过程的优化。实验中因子的设计可能会包含很多，比如：算法的类别、算法的参数、数据集等。</p>
-
-<p>当因子较多的时候，如何确定单一因子的影响就需要一些技巧<br/>
-<strong>控制变量法</strong></p>
-
-<p>它暗含着一个较强的假设，就是不同因子之间相互独立，互不影响。然而这个并不总是成立的。</p>
-
-<p><strong>因子设计</strong><br/>
-他关注的是不同因子之间系统化的变化对学习效果的影响，他的一个特例就是<strong>全因子实验</strong>，也叫<strong>完全交叉设计</strong>。</p>
-
-<p>在具体操作的时候，当分析的因子的离散取值较多时候，可以通过粗调+微调的方法。</p>
-
-<p>在对因子进行精调时候，可以使用<strong>响应面方法</strong>（zzz:根据百科资料解释,就是做了一个二次函数的拟合）</p>
-
-<h2 id="toc_8">正交抽样设计</h2>
-
-<p>@@@补充下：</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025346988.html">
-                
-                  <h1>二、起步篇—— 数据预处理[python]</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>一方面可以多查些官方说明<br/>
-多去看些kaggle，tianchi等的比赛案例，他们数据预处理做的很全面到位<br/>
-实践一些工作中的项目，将代码规范化</p>
-</blockquote>
-
-<h2 id="toc_0">1.缺失表示</h2>
-
-<p>python中缺失是nan，如果本身数据中缺失是用其他方式表示的，可以先转换一下<br/>
-<code>df.replace(&#39;-&#39;,np.nan)</code></p>
-
-<pre><code class="language-python">
-import numpy as np
-import pandas as pd
-from io import StringIO
-import sys
-
-df = pd.read_table(&#39;zz&#39;)
-df = df.replace(&#39;-&#39;,np.nan).head()
-df.head()
-</code></pre>
-
-<h2 id="toc_1">2.缺失的简单处理办法</h2>
-
-<h3 id="toc_2">暴力删除</h3>
-
-<p><code>isnull()</code>   判断是否缺失</p>
-
-<p><code>dropna( axis = 0 /1 )</code> 参数axis表示轴选择，axis=0 代表行，axis=1 代表列</p>
-
-<p><code>dropna(subset=[&#39;&#39;])</code>   删除指定列中有空值的一行数据</p>
-
-<h3 id="toc_3">默认值填充</h3>
-
-<p><code>df.fillna(value)</code><br/>
-或者对不同列填不同的值</p>
-
-<h3 id="toc_4">统计/算法填充</h3>
-
-<pre><code class="language-python">from sklearn.preprocessing import Imputer
-# strategy 有mean,median, most_frequent 方式
-# axis 默认是0，列向， axis=1行向
-dff = df.loc[:, [&#39;comment_time&#39;]]
-imr = Imputer(missing_values = &#39;NaN&#39;, strategy = &#39;mean&#39;, axis = 0 )
-imr = imr.fit(dff.values)
-imputed_data = imr.transform(dff.values)
-</code></pre>
-
-<pre><code class="language-python">## 3.分类数据处理
-from sklearn.preprocessing import LabelEncoder
-class_le = LabelEncoder()
-y = class_le.fit_transform(df[&#39;nid&#39;].values)
-
-</code></pre>
-
-<pre><code class="language-python">## 数据标准化
-from sklearn.preprocessing import MinMaxScaler
-mms = MinMaxScaler()
-X_train_norm = mms.fit_transform(imputed_data)
-X_test_norm = mms.transform(imputed_data)
-</code></pre>
-
-<h2 id="toc_5">参考资料</h2>
-
-<p><a href="https://blog.csdn.net/Amy_mm/article/details/79799629">https://blog.csdn.net/Amy_mm/article/details/79799629</a><br/>
-<a href="https://www.cnblogs.com/charlotte77/p/5622325.html">https://www.cnblogs.com/charlotte77/p/5622325.html</a></p>
-
-<p><a href="https://www.kaggle.com/pmarcelino/comprehensive-data-exploration-with-python">https://www.kaggle.com/pmarcelino/comprehensive-data-exploration-with-python</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -634,7 +576,7 @@ X_test_norm = mms.transform(imputed_data)
         
             <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习</strong></a>
         
-            <a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>10 比赛学习</strong></a>
+            <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
          
@@ -653,7 +595,13 @@ X_test_norm = mms.transform(imputed_data)
 	      
 		      
 			      <li class="post">
-			        <a href="15637036455584.html">1 估计的置信度</a>
+			        <a href="15637037683461.html">Jupyter notebook</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15680210974066.html">因子分析</a>
 			      </li>
 		     
 		  
@@ -665,19 +613,13 @@ X_test_norm = mms.transform(imputed_data)
 		  
 		      
 			      <li class="post">
-			        <a href="15637025346225.html">2 不同设计之间有统计学差异吗</a>
+			        <a href="15637037679256.html">Rmarkdown</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15664761738125.html">2. iterm终端配置-oh my zsh</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637036605080.html">3 样本量的确定</a>
+			        <a href="15637037713554.html">数据可视化概述</a>
 			      </li>
 		     
 		  

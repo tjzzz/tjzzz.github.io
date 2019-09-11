@@ -97,7 +97,7 @@
         
             <li><a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">7 深度学习</a></li>
         
-            <li><a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">10 比赛学习</a></li>
+            <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
          
@@ -122,16 +122,115 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637036455584.html">
+                <a class="clearlink" href="15637037683461.html">
                 
-                  <h1>1 估计的置信度</h1>
+                  <h1>Jupyter notebook</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>在大多数的研究中，我们无法获取研究对象的总体数据，或者能获取但是成本非常大。实际情况中，我们往往是通过抽样的方法，在总体中进行随机抽样。根据获取的这部分样本数据去推动总体的一些属性。比如通过抽样人群的平均身高去估计所有人群的平均身高，通过抽样人群中的男女比例，去估计我国当前的男女比例状况。<br/>
-抽样样本量是直接影响到最终的估计准确度，所以这一章节，先来介绍下如何判断一种估计方法准确与否。</p>
+                        	<p>类似于r的markdown</p>
 
+<p>GitHub 上也直接支持 Jupyter notebook 的渲染。借助此出色的功能，你可以轻松地共享工作。<a href="http://nbviewer.jupyter.org/">http://nbviewer.jupyter.org/</a> 也会提供 GitHub 代码库中的 notebook ，以及存储在其他地方的 notebook。</p>
+
+<p>名称 Jupyter 由 Julia、Python 和 R 组合而成，早期的两个非 Python 内核分别是 R 语言和 Julia 语言</p>
+
+<h2 id="toc_0">1.安装</h2>
+
+<ul>
+<li>如果安装anaconda 会自带</li>
+<li>通过conda环境安装 <code>conda install jupyter notebook</code>，或者<code>pip install jupyter notebook</code></li>
+</ul>
+
+<pre><code># 启动
+jupyter notebook
+</code></pre>
+
+<p>快捷键</p>
+
+<p>在上方插入cell：a<br/>
+在下方插入cell：b<br/>
+剪切当前cell：x<br/>
+删除当前cell：dd<br/>
+撤销删除：u<br/>
+上下：方向键 or jk (同vim)<br/>
+扩展选中上下左右：shift+jk<br/>
+当前cell转入markdown状态：m<br/>
+当前cell转入代码状态：y</p>
+
+<h2 id="toc_1">magic 关键字</h2>
+
+<p>Magic 关键字是可以在单元格中运行的特殊命令，能让你控制notebook 本身或执行系统调用（例如更改目录）</p>
+
+<p>Magic 命令的前面带有一个或两个百分号（% 或 %%），分别对应行 Magic 命令和单元格 Magic 命令。行 Magic 命令仅应用于编写 Magic 命令时所在的行，而单元格 Magic 命令应用于整个单元格。</p>
+
+<p>对于 Python 内核，可以使用 Magic 命令 %pdb 开启交互式调试器。出错时，你能检查当前命名空间中的变量。</p>
+
+<h2 id="toc_2">2.转换 notebook格式</h2>
+
+<p>Notebook 只是扩展名为 .ipynb 的大型 JSON 文件。</p>
+
+<p>转换格式的命令 <code>nbconvert</code></p>
+
+<pre><code>jupyter nbconvert --to html notebook.ipynb   #转成html
+jupyter nbconvert --to markdown xxx.ipynb 
+</code></pre>
+
+<p>目前支持的转换格式(<a href="https://nbconvert.readthedocs.io/en/latest/usage.html">https://nbconvert.readthedocs.io/en/latest/usage.html</a>)<br/>
+HTML,<br/>
+LaTeX,<br/>
+PDF,<br/>
+Reveal.js HTML slideshow,<br/>
+Markdown,<br/>
+reStructuredText,<br/>
+executable script,<br/>
+notebook.</p>
+
+<p><strong>创建幻灯片</strong></p>
+
+<p>在 notebook 中创建幻灯片的过程像平常一样，但需要指定作为幻灯片的单元格和单元格的幻灯片类型。在菜单栏中，点击“View”（视图）&gt;“Cell Toolbar”（单元格工具栏）&gt;“Slideshow”（幻灯片），以便在每个单元格上弹出幻灯片单元格菜单。</p>
+
+<pre><code>#转换并在浏览器中展示
+jupyter nbconvert notebook.ipynb --to slides --post serve
+</code></pre>
+
+<h2 id="toc_3">3.测试机上安装jupyter</h2>
+
+<p><a href="https://cloud.tencent.com/developer/article/1147487">https://cloud.tencent.com/developer/article/1147487</a></p>
+
+<ul>
+<li>安装jupyter</li>
+<li>生成密码 python -c &quot;import IPython;print IPython.lib.passwd()&quot;</li>
+<li>修改配置文件 </li>
+</ul>
+
+<p>/home/work/.jupyter/jupyter_notebook_config.py</p>
+
+<p>如果启动报错</p>
+
+<pre><code>socket.gaierror: [Errno -2] Name or service not known
+</code></pre>
+
+<p>可以加上自己的ip</p>
+
+<pre><code> jupyter notebook --ip=xxxx
+ jupyter lab --ip=xxx
+</code></pre>
+
+<h2 id="toc_4">4.其他工具</h2>
+
+<p><strong>jupyter-lab</strong><br/>
+jupyter-lab 是jupyter-notebook的升级版，界面更加炫酷，也支持更多功能，强烈建议使用lab方式</p>
+
+<p><strong>colab</strong><br/>
+google 基于jupyter开发的存在在google driver上的网页版<br/>
+<a href="https://colab.research.google.com/">https://colab.research.google.com/</a><br/>
+本身功能上差不太多，主要是有search和share功能，查看别人分享的代码</p>
+
+<h2 id="toc_5">5.常见问题</h2>
+
+<p>Q1: 若import了自己写的外部模块，如果这个外部模块有更新，再次执行import，jupyter是不会重新导入的<br/>
+<a href="https://blog.csdn.net/ybdesire/article/details/86709727">https://blog.csdn.net/ybdesire/article/details/86709727</a></p>
 
                         
                       </div>
@@ -139,11 +238,74 @@
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15637036455584.html">Read more</a>&nbsp;&nbsp; 
+                  
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15680210974066.html">
+                
+                  <h1>因子分析</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code>from factor_analyzer import FactorAnalyzer
+f=FactorAnalyzer(n_factors = 10, rotation=&#39;varimax&#39;)
+f.fit(data)
+</code></pre>
+
+<p>FactorAnalyzer 主要参数</p>
+
+<ul>
+<li>n_factors: 设置因子的个数</li>
+<li>rotation： 表示旋转的个数，如果不设置的话默认不进行旋转。可旋转的旋转方法有：varimax， promax。。。</li>
+</ul>
+
+<p>输出结果属性包括：</p>
+
+<ul>
+<li>loadings_   因子载荷矩阵</li>
+<li>rotation_matrix   旋转矩阵</li>
+<li>structure：  The structure loading matrix.</li>
+<li>get_factor_variance()   计算因子的方差信息，包括方差、方差的比例，以及累计方差比重</li>
+</ul>
+
+<p>获取转换后的数据矩阵</p>
+
+<pre><code>f.transform(data)
+</code></pre>
+
+<h2 id="toc_0">参考</h2>
+
+<p><a href="https://pypi.org/project/factor-analyzer/">https://pypi.org/project/factor-analyzer/</a><br/>
+<a href="https://blog.csdn.net/hfutxiaoguozhi/article/details/78840126">https://blog.csdn.net/hfutxiaoguozhi/article/details/78840126</a><br/>
+<a href="https://factor-analyzer.readthedocs.io/en/latest/factor_analyzer.html#module-factor_analyzer.factor_analyzer">https://factor-analyzer.readthedocs.io/en/latest/factor_analyzer.html#module-factor_analyzer.factor_analyzer</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/9/9</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -235,6 +397,17 @@ conda env export &gt; environment.yaml
 conda env create -f environment.yaml
 </code></pre>
 
+<h2 id="toc_3">conda install 与pip install的区别</h2>
+
+<p>，pip list和conda list列表却不一致，conda数量 &gt; pip<br/>
+conda 安装包路径是 xxxxx\Anaconda3\pkgs<br/>
+pip 安装包路径在虚拟环境下是 xxxx\Anaconda3\envs\a_conda_env\Lib\site-packages<br/>
+所以当前环境下pip list只列举出当前包list<br/>
+此处需要留意如果使用conda install 多个环境时，对于同一个包只需要安装一次。有conda集中管理。<br/>
+但是如果使用pip因为每个环境安装使用的pip在不同的路径下，故会重复安装，而包会从缓存中取。</p>
+
+<p>(2) 另外从体验上看感觉conda速度快很多</p>
+
                         
                       </div>
                   </div>
@@ -259,70 +432,26 @@ conda env create -f environment.yaml
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637025346225.html">
+                <a class="clearlink" href="15637037679256.html">
                 
-                  <h1>2 不同设计之间有统计学差异吗</h1>
+                  <h1>Rmarkdown</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>本章主要介绍对均值、比例的假设检验，来判断两组不同设计之间是否有显著差别。</p>
+                        	<h2 id="toc_0">python支持</h2>
 
+<p>Rmarkdown对python兼容 <a href="https://github.com/rstudio/reticulate">https://github.com/rstudio/reticulate</a></p>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15637025346225.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<h2 id="toc_1">图片</h2>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15664761738125.html">
-                
-                  <h1>2. iterm终端配置-oh my zsh</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">安装</h2>
+<p>现在很多makdown编辑器是可以支持拖拽本地图片或者截屏就可以直接在markdown中生成图片的，非常方便，比如我现在在用的MWeb编辑器。</p>
 
-<p>oh my zsh 是一款强大的虚拟终端，兼容bash，提供了各种主题配置、插件。<br/>
-官网：<a href="https://ohmyz.sh/">https://ohmyz.sh/</a></p>
+<p>但是如果同一篇内容需要在不同的平台上进行发布，那图片处理起来就比较麻烦。因为需要重新上传到不同平台。<br/>
+最方便的处理方式就是利用图床， 这里以七牛云存储为例。<br/>
+<img src="media/15378048283915/15383141468224.jpg" alt=""/></p>
 
-<pre><code># 安装
-git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-#备份旧.zshrc配置
-cp ~/.zshrc ~/.zshrc.orig
-cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
-#修改默认shell
-chsh -s /bin/zsh
-</code></pre>
-
-<p>卸载 <code>uninstall_oh_my_zsh</code></p>
-
-<p>注意：如果安装oh my zsh后conda命令无法使用，这个时候需要修改一下.zshrc文件，添加一句<br/>
-<code>export PATH=/home/username/anaconda/bin:$PATH</code></p>
-
-<h2 id="toc_1">主题</h2>
-
-<p><a href="https://github.com/robbyrussell/oh-my-zsh/wiki/Themes">https://github.com/robbyrussell/oh-my-zsh/wiki/Themes</a><br/>
-oh my zsh 有各种丰富的主题可供选择，可以在其github上找到对应的主题样式。其对应的配置文件在<code>vim ~/.zshrc</code>中，只需修改其中的<code>ZSH_THEME=&quot;robbyrussell&quot;</code> 即可。</p>
+<p>step1： 首先在七牛官网上申请注册账号，并且添加<strong>对象存储</strong></p>
 
                         
                       </div>
@@ -331,7 +460,7 @@ oh my zsh 有各种丰富的主题可供选择，可以在其github上找到对�
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/8/22</span>
+                    <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
@@ -348,15 +477,103 @@ oh my zsh 有各种丰富的主题可供选择，可以在其github上找到对�
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637036605080.html">
+                <a class="clearlink" href="15637037713554.html">
                 
-                  <h1>3 样本量的确定</h1>
+                  <h1>数据可视化概述</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>抽样中样本量的确定是一个非常重要的问题，在不考虑抽样成本的前提下，样本量越多估计的越准，然而实际情况中我们需要平衡抽样成本与估计结果的置信度——以尽可能低的样本得到尽可能高的置信结果。</p>
+                        	<blockquote>
+<p>目标: 系统的梳理在进行数据分析的时候，如何进行数据可视化。具体操作的时候以python的seaborn包为主。</p>
+</blockquote>
 
+<p>在进行数据分析的时候，经常需要进行数据可视化。俗话说一图胜千言，如何将从数据中发现的结论以一种简单易懂、形象化的方式展现出来，是很考验数据分析人员的能力的。</p>
+
+<h2 id="toc_0">1 方法部分</h2>
+
+<p>数据可视化，首先是要有数据，即我们的研究对象，而可视化的功能就是将数据中蕴含的关系或规律以图形的形式展示出来。 因此在进行数据可视化之前，一定要搞清楚的两件事：</p>
+
+<ul>
+<li>数据类型</li>
+<li>数据要传递的信息以及有展示的关系</li>
+</ul>
+
+<p>不同的数据类型适合的图形表现是不同的，随着现在数据分析应用的越来越广泛，数据类型随着其应用的场景不同也是越来越多。</p>
+
+<ul>
+<li>分类型变量：比如性别</li>
+<li>连续型变量：比如年龄</li>
+</ul>
+
+<p>数据之间的关系：</p>
+
+<table>
+<thead>
+<tr>
+<th>关系</th>
+<th>示例图形</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>比较大小，包括不同个体或者分组之间</td>
+<td>常用的比如将面积、尺寸进行可视化。条形图、面积图</td>
+</tr>
+<tr>
+<td>数据的集中程度</td>
+<td>一般是热力图，比如地图上交通的拥挤程度</td>
+</tr>
+<tr>
+<td>地理信息</td>
+<td>地理位置数据</td>
+</tr>
+</tbody>
+</table>
+
+<p><a href="https://zhuanlan.zhihu.com/p/25632363">https://zhuanlan.zhihu.com/p/25632363</a></p>
+
+<p>python中常用的绘图pacakge是<code>matplotlib</code></p>
+
+<p>本篇文章介绍的seaborn就是一个基于<code>matplotlib</code>的外包，其操作命令比较简单。有点类似R中的<code>ggplot</code>.</p>
+
+<h2 id="toc_1">2 工具部分</h2>
+
+<ul>
+<li><p>excel<br/>
+excel适合一些相对简单的数据，</p></li>
+<li><p>可视化BI </p></li>
+</ul>
+
+<p>比如tableau， power BI， FineBI等常见的一些可视化软件</p>
+
+<ul>
+<li>编程工具-python</li>
+</ul>
+
+<p>seaborn<br/>
+pyecharts  <a href="https://github.com/pyecharts/pyecharts">https://github.com/pyecharts/pyecharts</a></p>
+
+<ul>
+<li>编程工具-R语言</li>
+</ul>
+
+<p>ggplot </p>
+
+<h2 id="toc_2">参考资料</h2>
+
+<p><a href="https://blog.csdn.net/suzyu12345/article/details/69029106">https://blog.csdn.net/suzyu12345/article/details/69029106</a></p>
+
+<h2 id="toc_3">2.echarts接口</h2>
+
+<p>pyecharts</p>
+
+<p><a href="http://pyecharts.org/#/zh-cn/charts?id=treemap%EF%BC%88%E7%9F%A9%E5%BD%A2%E6%A0%91%E5%9B%BE%EF%BC%89">http://pyecharts.org/#/zh-cn/charts?id=treemap%EF%BC%88%E7%9F%A9%E5%BD%A2%E6%A0%91%E5%9B%BE%EF%BC%89</a></p>
+
+<h2 id="toc_4">工具平台</h2>
+
+<p><a href="https://antv.alipay.com/zh-cn/vis/chart/color-map.html">https://antv.alipay.com/zh-cn/vis/chart/color-map.html</a></p>
 
                         
                       </div>
@@ -364,11 +581,11 @@ oh my zsh 有各种丰富的主题可供选择，可以在其github上找到对�
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15637036605080.html">Read more</a>&nbsp;&nbsp; 
+                  
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
+          					    <span class="posted-in"><a href='3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html'>3 数据可视化</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -449,7 +666,7 @@ oh my zsh 有各种丰富的主题可供选择，可以在其github上找到对�
         
             <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习</strong></a>
         
-            <a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>10 比赛学习</strong></a>
+            <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
          
@@ -468,7 +685,13 @@ oh my zsh 有各种丰富的主题可供选择，可以在其github上找到对�
 	      
 		      
 			      <li class="post">
-			        <a href="15637036455584.html">1 估计的置信度</a>
+			        <a href="15637037683461.html">Jupyter notebook</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15680210974066.html">因子分析</a>
 			      </li>
 		     
 		  
@@ -480,19 +703,13 @@ oh my zsh 有各种丰富的主题可供选择，可以在其github上找到对�
 		  
 		      
 			      <li class="post">
-			        <a href="15637025346225.html">2 不同设计之间有统计学差异吗</a>
+			        <a href="15637037679256.html">Rmarkdown</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15664761738125.html">2. iterm终端配置-oh my zsh</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637036605080.html">3 样本量的确定</a>
+			        <a href="15637037713554.html">数据可视化概述</a>
 			      </li>
 		     
 		  

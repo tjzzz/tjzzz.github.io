@@ -97,7 +97,7 @@
         
             <li><a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">7 深度学习</a></li>
         
-            <li><a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">10 比赛学习</a></li>
+            <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
          
@@ -213,6 +213,17 @@ conda env export &gt; environment.yaml
 conda env create -f environment.yaml
 </code></pre>
 
+<h2 id="toc_3">conda install 与pip install的区别</h2>
+
+<p>，pip list和conda list列表却不一致，conda数量 &gt; pip<br/>
+conda 安装包路径是 xxxxx\Anaconda3\pkgs<br/>
+pip 安装包路径在虚拟环境下是 xxxx\Anaconda3\envs\a_conda_env\Lib\site-packages<br/>
+所以当前环境下pip list只列举出当前包list<br/>
+此处需要留意如果使用conda install 多个环境时，对于同一个包只需要安装一次。有conda集中管理。<br/>
+但是如果使用pip因为每个环境安装使用的pip在不同的路径下，故会重复安装，而包会从缓存中取。</p>
+
+<p>(2) 另外从体验上看感觉conda速度快很多</p>
+
 
     
 
@@ -222,16 +233,16 @@ conda env create -f environment.yaml
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="15637036455584.html" 
-          title="Previous Post: 1 估计的置信度">&laquo; 1 估计的置信度</a>
+          <a href="15680210974066.html" 
+          title="Previous Post: 因子分析">&laquo; 因子分析</a>
       
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="15637025346225.html" 
-          title="Next Post: 2 不同设计之间有统计学差异吗">2 不同设计之间有统计学差异吗 &raquo;</a>
+          <a  href="15637037679256.html" 
+          title="Next Post: Rmarkdown">Rmarkdown &raquo;</a>
       
       </p>
         </div>
@@ -301,7 +312,7 @@ conda env create -f environment.yaml
         
             <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习</strong></a>
         
-            <a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>10 比赛学习</strong></a>
+            <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
          
@@ -320,7 +331,13 @@ conda env create -f environment.yaml
 	      
 		      
 			      <li class="post">
-			        <a href="15637036455584.html">1 估计的置信度</a>
+			        <a href="15637037683461.html">Jupyter notebook</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15680210974066.html">因子分析</a>
 			      </li>
 		     
 		  
@@ -332,19 +349,13 @@ conda env create -f environment.yaml
 		  
 		      
 			      <li class="post">
-			        <a href="15637025346225.html">2 不同设计之间有统计学差异吗</a>
+			        <a href="15637037679256.html">Rmarkdown</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15664761738125.html">2. iterm终端配置-oh my zsh</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637036605080.html">3 样本量的确定</a>
+			        <a href="15637037713554.html">数据可视化概述</a>
 			      </li>
 		     
 		  

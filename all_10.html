@@ -97,7 +97,7 @@
         
             <li><a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">7 深度学习</a></li>
         
-            <li><a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">10 比赛学习</a></li>
+            <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
          
@@ -190,173 +190,60 @@ python <a href="https://github.com/gameofdimension/xgboost_explainer">https://gi
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637025348511.html">
+                <a class="clearlink" href="15637037679680.html">
                 
-                  <h1>章1 基本介绍</h1>
+                  <h1>第四章 数值计算</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>标签（空格分隔）： 推荐系统</p>
+                        	<h2 id="toc_0">1.数值精度</h2>
 
-<hr/>
+<p>这部分对于了解具体的算法并没影响，但是在进行底层库开发时候经常会遇到，可能会出现<strong>上溢</strong>或者<strong>下溢</strong></p>
 
-<h1 id="toc_0">推荐系统评测</h1>
+<p>（1）病态条件</p>
 
-<h2 id="toc_1">1.推荐系统实验方法</h2>
+<p>条件数：表示函数相对于输入的微小变化而变化的快慢程度。<br/>
+比如矩阵求逆运算的条件数=最大和最小特征值的模的比</p>
 
-<p>在进行推荐之前，先从数据获得方法入手。数据的获得方法主要有 </p>
+<h2 id="toc_1">2.优化算法</h2>
 
 <ul>
-<li><p>离线实验<br/>
-这个应该是最常见的那种，即数据使用的是离线的数据，提取数据-&gt;训练集和测试集——&gt; 建立模型 ——&gt; 测试集上进行实验——&gt;效果评价</p></li>
-<li><p>用户调查<br/>
-可以获得一些推荐效果的主观指标</p></li>
-<li><p>在线实验<br/>
-即切分流量，进行AB test</p></li>
+<li>梯度下降</li>
+<li>牛顿法</li>
 </ul>
 
-<h2 id="toc_2">2.指标评测</h2>
+<p>一般把需要最优化的函数称为<strong>目标函数</strong></p>
 
-<p>不同的实验方法可能会对应着不同的衡量指标，简单的介绍如下：</p>
+<p><strong>梯度下降</strong></p>
 
-<ul>
-<li>用户满意度
-这个指标相对来说是一个主观的指标，可以通过用户调查，或者是对用户客观行为进行分析（比如：点击率、停留时间等）</li>
-<li>预测准确率
+<p>对于一个多维输入函数f，梯度\(\triangledown_x f(x)\),其在u方向上的<strong>方向导数</strong>，相当于f在u方向上的斜率<br/>
+\(f(x+\alpha u)\)关于\(\alpha\)的导数(在\(\alpha =0\)时取得)</p>
 
-<ul>
-<li>评分预测
-评分预测类主要是让用户对商品进行打分，比如1-5级的打分。其主要的计算指标是均方根误差RMSE或者平均绝对误差MAE</li>
-<li>TopN推荐
-topN推荐，即给用户推荐一个其可能感兴趣的item列表，也是我们主要要讨论的。其主要的评价指标即PR（precision recall）</li>
-</ul></li>
-<li>覆盖率
-覆盖率主要是刻画了推荐系统对<strong>长尾物品</strong>的发掘能力。我们希望推荐系统不止推荐出一些热门的，这样只能覆盖很少的一部分items。
+<p>\[\frac{\partial}{\partial \alpha}f(x+\alpha u)=u^T\triangledown_x f(x)\]</p>
 
-<ul>
-<li>最简单的计算方法：推荐系统推荐出来的物品占所有物品的比重。但是没有考虑到分布情况</li>
-<li>统计推荐列表中不同物品的出现次数的分布
-信息熵 \(H=-\sum p_i\log p_i\)
-基尼系数 \(G=\frac{1}{n-1}\sum (2j-n-1)p(i_j)\) </li>
-</ul></li>
-<li>多样性
-即希望推荐给用户的东西类型是多样的，比如对于电影，用户可能喜欢看爱情类、科幻类，那么推荐系统在进行推荐的时候，只推荐爱情类的效果显然不如既有爱情类又有科幻类的效果好。</li>
-<li>新颖性</li>
-<li>惊喜度</li>
-<li>信任度</li>
-<li>。。。</li>
-</ul>
+<p>为了是f最小，希望找到f下降最快的方向，因此有<br/>
+\[min u^T\triangledown_x f(x)\]<br/>
+u取为单位向量，很明显是在u和f夹角180时候，也就是两个完全相反的时候，下降最快。<br/>
+梯度下降： \(x&#39;=x-\epsilon \triangledown_x f(x)\)</p>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html'>6 推荐系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<p><strong>牛顿法</strong></p>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025347286.html">
-                
-                  <h1>章2 利用用户行为数据</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h1 id="toc_0">1.用户行为数据</h1>
+<p>Hessian矩阵，二阶导数<br/>
+<img src="media/15080580137304/15082408605128.jpg" alt=""/></p>
 
-<p>用户行为数据在网页上的主要存在形式就是日志，可能包含的字段有</p>
+<h2 id="toc_2">3.有限制的约束</h2>
 
-<ul>
-<li>uid</li>
-<li>itemid</li>
-<li>行为类型（点击、浏览、购买）</li>
-<li>context（产生行为的时间、地点等）</li>
-<li>行为权重（比如看视频行为的时长、打分行为的分数）</li>
-<li>行为内容（比如评论行为的评论内容）
-另外，这些数据大致上可以分为显性反馈行为和隐性反馈行为。显性行为就是可以明确用户是喜好的，比如购买。而多数的数据都是隐性的，比如浏览了某个网页、听了某个歌，这些行为无法判断出用户的喜好。</li>
-</ul>
+<p>对于有限制的优化，有时候可以将约束条件转化到原始的优化函数中，这里主要介绍一下通用的方法：<strong>KKT方法</strong>(拉格朗日方法的推广，可以非等式约束)</p>
 
-<p>物品流行度的幂率分布</p>
+<pre><code>@@@
+http://blog.csdn.net/mr_kktian/article/details/53750424
+</code></pre>
 
-<h1 id="toc_1">算法</h1>
+<h2 id="toc_3">参考资料</h2>
 
-<p>一般把仅仅基于用户行为数据设计的推荐算法叫做协同过滤算法。主要包括：</p>
-
-<ul>
-<li>基于邻域的方法
-
-<ul>
-<li>基于用户的</li>
-<li>基于物品的</li>
-</ul></li>
-<li>隐语义模型LFM</li>
-<li>基于图的随机游走算法</li>
-</ul>
-
-<h2 id="toc_2">1.userCF</h2>
-
-<p>基本想法：对于一个用户A的推荐，可以先找到与这个人相似的那些人，然后看那些人中喜欢的，而用户A没有听过的物品推荐给A。<br/>
-step1: 找到相似用户，即需要定义相似度。</p>
-
-<h2 id="toc_3">标题</h2>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html'>6 推荐系统</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025345079.html">
-                
-                  <h1>第一章 引言</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>别人的读后总结，可参考「Deep Learning」读书系列分享（一） | 分享总结</p>
-
-<p><a href="https://www.leiphone.com/news/201708/LEBNjZzvm0Q3Ipp0.html">https://www.leiphone.com/news/201708/LEBNjZzvm0Q3Ipp0.html</a></p>
-
-<h3 id="toc_0">需要明确的几个概念范围</h3>
-
-<p><img src="media/15075611675547/15075613801366.jpg" alt=""/></p>
-
-<p><img src="media/15075611675547/15075614908544.jpg" alt=""/></p>
+<p>梯度下降法 扩展阅读： <a href="https://www.jiqizhixin.com/articles/2016-11-21-4">https://www.jiqizhixin.com/articles/2016-11-21-4</a><br/>
+<a href="http://www.cnblogs.com/maybe2030/p/4751804.html">http://www.cnblogs.com/maybe2030/p/4751804.html</a></p>
 
                         
                       </div>
@@ -382,92 +269,136 @@ step1: 找到相似用户，即需要定义相似度。</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637025346077.html">
+                <a class="clearlink" href="15637037679781.html">
                 
-                  <h1>第七章 正则化</h1>
+                  <h1>t-sne</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>机器学习不止要求在训练数据上有良好的表现，还希望有较好的泛化能力，即在测试数据上也能减少测试误差。这些策略被统称为<strong>正则化</strong></p>
+                        	<pre><code>from sklearn.manifold import TSNE
+from sklearn.datasets import load_iris
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+ 
+ 
+ 
+data=pd.read_csv(&#39;test.data&#39;, sep=&#39;,&#39;,header=None)
+dd= data[range(200)]
 
-<p>常见的一些正则化方法：</p>
+X_tsne = TSNE().fit_transform(dd)
+X_pca = PCA().fit_transform(dd)
 
-<h2 id="toc_0">1.参数范数惩罚</h2>
+out = DataFrame(np.hstack((X_tsne, X_pca)))
 
-<p>即在原有的优化函数中，添加一个对参数的惩罚，来限制模型的学习能力<br/>
-<img src="media/15120469131645/15206725126887.jpg" alt=""/></p>
+out2=data[200])
 
-<p>(1) L2参数正则化<br/>
-L2正则化/岭回归，又叫权重衰减； 可以参照岭回归<br/>
-<img src="media/15120469131645/15206732558707.jpg" alt=""/></p>
+out.to_csv(&#39;save_data.csv&#39;)
 
-<p>(X⊤X + αI)−1 这个新矩阵与原来的是一样的，不同的仅仅是在对 角加了 α。这个矩阵的对角项对应每个输入特征的方差。我们可以看到，L2正则化能 让学习算法 ‘‘感知’’ 到具有较高方差的输入 x，因此与输出目标的协方差较小(相对 增加方差)的特征的权重将会收缩。</p>
 
-<p>（2）L1正则化： 具有稀疏性，很多会衰减成0，所以有时候会用来做变量选择lasso</p>
+plt.figure(figsize=(10, 5))
+plt.subplot(121)
+plt.scatter(X_tsne[:, 0], X_tsne[:, 1],c=data[200])
+plt.subplot(122)
+#plt.scatter(X_pca[:, 0], X_pca[:, 1], c=iris.target)
+plt.scatter(X_pca[:, 0], X_pca[:, 1], c=data[200])
+</code></pre>
 
-<h2 id="toc_1">2.作为约束的范数惩罚</h2>
+<p>R<br/>
+```</p>
 
-<p>从另一个角度来看这个问题，可以被看做是构造一个广义拉格朗日函数来最小化带约束的函数</p>
+<pre><code>
+</code></pre>
 
-<p><img src="media/15120469131645/15206742273357.jpg" alt=""/></p>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
-<p><img src="media/15120469131645/15206742365336.jpg" alt=""/></p>
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637025344767.html">
+                
+                  <h1>【NG-DL】course2_week1 优化网络参数</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">1.基本概念</h2>
 
-<p>最小化约束 + 重投影的角度</p>
-
-<h2 id="toc_2">3.正则化和欠约束问题</h2>
-
-<p>正则化还有个好处可以保证X&#39;X+aI 是可逆的</p>
-
-<h2 id="toc_3">4.数据集增强</h2>
-
-<p>可以通过一些方法在不改变label的情况下自己构造一批数据集，比如图像识别时候对图像的旋转；有些时候也可以通过输入噪声的方式来进行数据集增强。</p>
-
-<h2 id="toc_4">5.噪声鲁棒性</h2>
+<p>很多优化参数：<br/>
+网络层数，隐层数，学习率，激活函数。。。</p>
 
 <ul>
-<li>向模型的输入或者是权重中加入噪音。</li>
-<li>向输出目标中加入噪音，即标注数据有一定的错误，不是百分百准确的时候。<strong>标签平滑</strong>方法是将0，1分类，变为e/(k-1)和1-e的k个输出的softmax函数。（e是标注的错误率）</li>
+<li><p>训练集/验证集/测试集</p></li>
+<li><p>偏差， 训练集误差</p></li>
+<li><p>方差</p></li>
 </ul>
 
-<h2 id="toc_5">6.半监督学习</h2>
+<p>若有高bias： 尝试新的网络，更大网络</p>
 
-<p>大概意思是说：P(x) 产生的未标记样本和P(x,y)中的标记样本都用 于估计 P(y|x)或者根据x预测y。</p>
+<p>高方差： 获取更多数据，或者正则化，更合适的网络机构</p>
 
-<h2 id="toc_6">7.多任务学习</h2>
+<p>bias和varaince的平衡<br/>
+一般来说更大的网络能减小偏差，更多的数据能减小方差。</p>
 
-<p>就是通过合并几个任务中的样例（可以视为对参数施加的软约束），我感觉就是类似于group_lasso这样的，对参数加了一个别的约束，部分样本需要共享同一个参数</p>
+<h2 id="toc_1">2.正则化-L2</h2>
 
-<h2 id="toc_7">8.提前终止</h2>
+<p>以逻辑回归为例</p>
 
-<p><img src="media/15120469131645/15206764319925.jpg" alt=""/><br/>
-当训练的能力较强时候会发现，随着训练次数的增加，训练误差在逐步减小，但是测试误差会呈现一个U型状态。即先减小后增加。</p>
+<p>\(J(w,b)=\frac{1}{m}\sum L(\hat y_i, y_i)+\frac{\lambda}{2m}|w|^2_2\)L2惩罚，避免过拟合，导致高方差</p>
 
-<p>不是从模型的优化函数入手，相当于是一个实践的经验技巧。</p>
+<p>类似的神经网络在优化函数上加上</p>
 
-<p>提前终止具有正则化的效果</p>
+<p>\(J(w^{[1]},b^{[1]},...w^{[l]},b^{[l]})=\frac{1}{m}\sum L(\hat y_i, y_i)+\frac{\lambda}{2m}\sum||w^{[l]}||^2_2\)</p>
 
-<h2 id="toc_8">9.参数绑定和参数共享</h2>
+<p>其中\(|w^{[l]}|^2\)F范数</p>
 
-<h2 id="toc_9">10.稀疏表示</h2>
+<ul>
+<li>Ng.当\(\lambda\)较大时候,w会较小，sigmoid接近线性，降低方差。
+<img src="media/15055593941505/15103891828021.jpg" alt=""/></li>
+</ul>
 
-<p>前文所述的权重衰减直接惩罚模型参数。另一种策略是惩罚神经网络中的激活 单元，稀疏化激活单元。这种策略间接地对模型参数施加了复杂惩罚。<br/>
-<img src="media/15120469131645/15207643423743.jpg" alt=""/></p>
+<h3 id="toc_2">正则化-dropout(随机失活)</h3>
 
-<h2 id="toc_10">11.Bagging 和其他集成方法</h2>
+<p>每次对网络中的节点设置一个随机消失的概率p，即每个节点可能在也可能不在网络中，不在的时候即相当于该节点的数值置为0.</p>
 
-<p>结合多个模型，进行模型平均</p>
+<p>dropout与l2类似都会shrink权重。</p>
 
-<h2 id="toc_11">12.dropout</h2>
+<h3 id="toc_3">early stoping</h3>
 
-<p>@@@@</p>
+<h2 id="toc_4">3.优化</h2>
 
-<h2 id="toc_12">13.对抗训练</h2>
+<h3 id="toc_5">归一化</h3>
 
-<h1 id="toc_13">14 切面距离、正切传播和流形正切分类器</h1>
+<p>归一化输入=&gt; 均值0，方差1<br/>
+* 零均值化<br/>
+* 归一化方差</p>
 
-<p>略</p>
+<p><img src="media/15055593941505/15103915636569.jpg" alt=""/></p>
+
+<h3 id="toc_6">梯度消失与梯度爆炸</h3>
+
+<p>当梯度增长很大或者很微弱时，会导致优化出问题或者很慢。</p>
 
                         
                       </div>
@@ -480,6 +411,59 @@ L2正则化/岭回归，又叫权重衰减； 可以参照岭回归<br/>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637025344831.html">
+                
+                  <h1>聚类方法Mini Batch KMeans</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>kmeans在数据量大的时候聚类时间会很久。Mini Batch KMeans使用了一个种叫做Mini Batch（分批处理）的方法对数据点之间的距离进行计算。Mini Batch的好处是计算过程中不必使用所有的数据样本，而是从不同类别的样本中抽取一部分样本来代表各自类型进行计算。由于计算样本量少，所以会相应的减少运行时间，但另一方面抽样也必然会带来准确度的下降</p>
+
+<h2 id="toc_0">迭代步骤：</h2>
+
+<p>1：从数据集中随机抽取一些数据形成小批量，把他们分配给最近的质心<br/>
+2：更新质心<br/>
+与K均值算法相比，数据的更新是在每一个小的样本集上。对于每一个小批量，通过计算平均值得到更新质心，并把小批量里的数据分配给该质心，随着迭代次数的增加，这些质心的变化是逐渐减小的，直到质心稳定或者达到指定的迭代次数，停止计算</p>
+
+<h2 id="toc_1">训练方法</h2>
+
+<p>和一般的Kmeans一样</p>
+
+<pre><code>from sklearn.cluster import MiniBatchKMeans
+
+clf = MiniBatchKMeans(n_clusters = 3)
+clf.fit(X)
+pre_clu = clf.labels_
+</code></pre>
+
+<p>【参考资料】<br/>
+<a href="http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/">http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -560,7 +544,7 @@ L2正则化/岭回归，又叫权重衰减； 可以参照岭回归<br/>
         
             <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习</strong></a>
         
-            <a href="10%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>10 比赛学习</strong></a>
+            <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
          
@@ -579,7 +563,13 @@ L2正则化/岭回归，又叫权重衰减； 可以参照岭回归<br/>
 	      
 		      
 			      <li class="post">
-			        <a href="15637036455584.html">1 估计的置信度</a>
+			        <a href="15637037683461.html">Jupyter notebook</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15680210974066.html">因子分析</a>
 			      </li>
 		     
 		  
@@ -591,19 +581,13 @@ L2正则化/岭回归，又叫权重衰减； 可以参照岭回归<br/>
 		  
 		      
 			      <li class="post">
-			        <a href="15637025346225.html">2 不同设计之间有统计学差异吗</a>
+			        <a href="15637037679256.html">Rmarkdown</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15664761738125.html">2. iterm终端配置-oh my zsh</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637036605080.html">3 样本量的确定</a>
+			        <a href="15637037713554.html">数据可视化概述</a>
 			      </li>
 		     
 		  
