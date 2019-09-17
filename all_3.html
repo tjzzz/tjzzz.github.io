@@ -100,6 +100,8 @@
             <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
+        
+            <li><a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html">轨迹数据</a></li>
          
 
       </ul>
@@ -122,6 +124,213 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15665545372148.html">
+                
+                  <h1>shell</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/8/23</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037678160.html">
+                
+                  <h1>git</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>git 是一个版本管理的工具</p>
+
+<p><strong>1 基本配置</strong></p>
+
+<p>（1）生成公钥<br/>
+ssh-keygen -t rsa -f ~/.ssh/id_rsa.zhenzhen<br/>
+cat ~/.ssh/id_rsa.zhenzhen.pub 保存到icode上<br/>
+chmod 644 ~/.ssh/config<br/>
+vim ~/.ssh/config<br/>
+添加下自己的配置<br/>
+Host icode.baidu.com<br/>
+User yangyang22<br/>
+IdentityFile ~/.ssh/id_rsa.yangyang22<br/>
+（2）clone<br/>
+git clone  xxxxx代码库<br/>
+git config --local user.email <a href="mailto:zhengzhenzhen@baidu.com">zhengzhenzhen@baidu.com</a><br/>
+git config --local user.name zhengzhenzhen</p>
+
+<p>git push origin master:refs/for/master<br/>
+（3）上传文件<br/>
+git add xxx<br/>
+git commit -m &#39;注释&#39;<br/>
+git push origin HEAD:refs/for/master</p>
+
+<p>我不知道”undo”是什么意思。您可以删除core.excludesfile设置，如下所示：<br/>
+git config --global --unset core.excludesfile<br/>
+当然你也可以简单地编辑配置文件：<br/>
+git config --global --edit<br/>
+…然后手动删除设置。</p>
+
+<p>git config --global --edit</p>
+
+<p>git log<br/>
+git reset --hard xxxxx</p>
+
+<p>查看本地与云端的diff</p>
+
+<p>git rm —cache  删除已经提交的内容</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037680741.html">
+                
+                  <h1>sublime</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>sublime除了具有基本的文本编辑功能之外，还可以安装很多package来扩展其强大的功能。这里罗列出一些工作中经常能用到的</p>
+
+<p><strong>安装install package</strong></p>
+
+<p>点击菜单中的 “View”–“Show Console”，调出console面板，然后到<a href="https://packagecontrol.io/installation#st3">https://packagecontrol.io/installation#st3</a></p>
+
+<p>官网上的，复制出代码黏贴执行。执行完毕即可。</p>
+
+<h2 id="toc_0">格式化json</h2>
+
+<p>打开 Sublime，command + shift + p -&gt; Install package<br/>
+搜索 Pretty JSON，安装</p>
+
+<p>之后mac上用： <code>command + ctrl + j</code> 即可直接格式化显示。</p>
+
+<h2 id="toc_1">比较diff</h2>
+
+<h2 id="toc_2">git</h2>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15664761738125.html">
+                
+                  <h1>2. iterm终端配置-oh my zsh</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">安装</h2>
+
+<p>oh my zsh 是一款强大的虚拟终端，兼容bash，提供了各种主题配置、插件。<br/>
+官网：<a href="https://ohmyz.sh/">https://ohmyz.sh/</a></p>
+
+<pre><code># 安装
+git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+#备份旧.zshrc配置
+cp ~/.zshrc ~/.zshrc.orig
+cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+#修改默认shell
+chsh -s /bin/zsh
+</code></pre>
+
+<p>卸载 <code>uninstall_oh_my_zsh</code></p>
+
+<p>注意：如果安装oh my zsh后conda命令无法使用，这个时候需要修改一下.zshrc文件，添加一句<br/>
+<code>export PATH=/home/username/anaconda/bin:$PATH</code></p>
+
+<h2 id="toc_1">主题</h2>
+
+<p><a href="https://github.com/robbyrussell/oh-my-zsh/wiki/Themes">https://github.com/robbyrussell/oh-my-zsh/wiki/Themes</a><br/>
+oh my zsh 有各种丰富的主题可供选择，可以在其github上找到对应的主题样式。其对应的配置文件在<code>vim ~/.zshrc</code>中，只需修改其中的<code>ZSH_THEME=&quot;robbyrussell&quot;</code> 即可。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/8/22</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15662005967642.html">
                 
                   <h1>正交实验设计</h1>
@@ -141,256 +350,6 @@
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037677178.html">
-                
-                  <h1>一、基础篇</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h1 id="toc_0">1.计算学习理论——是否可学习</h1>
-
-<p>一直在说机器学习，主要是在说怎么去学。在怎么学之前，首先需要了解下能不能学，学习的机制是什么</p>
-
-<h2 id="toc_1">PAC（概率近似正确）</h2>
-
-<p><a href="https://blog.csdn.net/wangjianguobj/article/details/57413819">https://blog.csdn.net/wangjianguobj/article/details/57413819</a></p>
-
-<h2 id="toc_2">VC维度</h2>
-
-<p>这个介绍的挺详细<br/>
-<a href="http://www.flickering.cn/machine_learning/2015/04/vc%E7%BB%B4%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89/?from=singlemessage">http://www.flickering.cn/machine_learning/2015/04/vc%E7%BB%B4%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89/?from=singlemessage</a></p>
-
-<h2 id="toc_3">参考</h2>
-
-<p>台大-机器学习基石</p>
-
-<h1 id="toc_4">6.模型设计准则</h1>
-
-<ol>
-<li>模型拟合</li>
-</ol>
-
-<p>(1) 无免费午餐定理 NFL</p>
-
-<p>就是任何一个算法，针对所有问题，在平均意义上效果是一样的。</p>
-
-<p>=&gt; 所以要具体问题具体分析，针对不同问题，选择适合该问题的方法</p>
-
-<p>(2)奥卡姆剃刀原则</p>
-
-<p>即在预测效果差不多的情况下，模型越简单余越好</p>
-
-<p>误差 = bias + varaince + noise</p>
-
-<ul>
-<li>过拟合</li>
-<li>欠拟合</li>
-</ul>
-
-<h1 id="toc_5">7.模型验证</h1>
-
-<p>1.估计泛化误差</p>
-
-<p>训练集，验证集</p>
-
-<p>2.对数据的重采样</p>
-
-<ul>
-<li>留出法</li>
-<li>k折交叉验证</li>
-<li>自助法(有放回)</li>
-</ul>
-
-<h1 id="toc_6">8.模型的评估指标</h1>
-
-<h1 id="toc_7">9.实验设计</h1>
-
-<p>设计实验是要要成的任务是对整个机器学习过程的优化。实验中因子的设计可能会包含很多，比如：算法的类别、算法的参数、数据集等。</p>
-
-<p>当因子较多的时候，如何确定单一因子的影响就需要一些技巧<br/>
-<strong>控制变量法</strong></p>
-
-<p>它暗含着一个较强的假设，就是不同因子之间相互独立，互不影响。然而这个并不总是成立的。</p>
-
-<p><strong>因子设计</strong><br/>
-他关注的是不同因子之间系统化的变化对学习效果的影响，他的一个特例就是<strong>全因子实验</strong>，也叫<strong>完全交叉设计</strong>。</p>
-
-<p>在具体操作的时候，当分析的因子的离散取值较多时候，可以通过粗调+微调的方法。</p>
-
-<p>在对因子进行精调时候，可以使用<strong>响应面方法</strong>（zzz:根据百科资料解释,就是做了一个二次函数的拟合）</p>
-
-<h2 id="toc_8">正交抽样设计</h2>
-
-<p>@@@补充下：</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15645026184752.html">
-                
-                  <h1>调查问卷的信度、效度</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">信度</h2>
-
-<p>信度表示的是数据是否可信，是否具有一致性，他是一种稳定性的度量，并不能保证结果是准确的。</p>
-
-<p><strong>信度的评价方法</strong></p>
-
-<ul>
-<li>重测信度：即相同的标准下，间隔一定时间段后再测试一次，看下前后两次结果的相关度</li>
-<li>复本信度：让同一个测试者一次填写两份平行问卷，平行问卷是指题目的表述不同其他方面一样。这种方法有个明显的缺点就是不太好执行。</li>
-<li>折半系数：将问卷的题目分为奇数题和偶数题两部分，计算这两部分的相关系数，以此来衡量问卷的信度。</li>
-<li>\(\alpha\)系数：他等于所有可能组合的折半系数的均值</li>
-</ul>
-
-<p>\[\alpha = \frac{K}{K-1}(1 - \frac{\sum S_i^2}{S_x^2})\]<br/>
-其中k表示总的题目数，\(s_i\)表示是第i题的方差，\(s_x\)是总的方差。当信度比较高的时候\(\alpha\)值也会比较大，当信度较低的时候方差比应该近似为1，导致整个\(\alpha\) 都比较小</p>
-
-<h2 id="toc_1">效度</h2>
-
-<p>效度是表示数据是否有效，即其是否反映了问卷者真实的问题，效度用来衡量结果是否是准确的，但是不一定能保证稳定性。</p>
-
-<p><strong>效度的评价方法</strong></p>
-
-<ul>
-<li>表面效度：通过专家评价的办法</li>
-<li>内容效度</li>
-</ul>
-
-<p><a href="https://wenku.baidu.com/view/a18a33b47e21af45b207a8ac.html?re=view">https://wenku.baidu.com/view/a18a33b47e21af45b207a8ac.html?re=view</a></p>
-
-<p><a href="https://wenku.baidu.com/view/cf19e18ca0116c175f0e48c1.html">https://wenku.baidu.com/view/cf19e18ca0116c175f0e48c1.html</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/31</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637036605080.html">
-                
-                  <h1>3 样本量的确定</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>抽样中样本量的确定是一个非常重要的问题，在不考虑抽样成本的前提下，样本量越多估计的越准，然而实际情况中我们需要平衡抽样成本与估计结果的置信度——以尽可能低的样本得到尽可能高的置信结果。</p>
-
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15637036605080.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025348085.html">
-                
-                  <h1>4.8 自适应的基函数——神经网络</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>人工神经网络的鼻祖是<strong>感知器</strong></p>
-
-<p><img src="media/15394428762655/15394429750357.jpg" alt=""/></p>
-
-<p>感知器的激活函数是符号函数。<br/>
-\[w_1x_1 + w_2x_2+...+w_nx_n\]</p>
-
-<p><strong>学习策略</strong><br/>
-感知机形式上也是对原始特征x在权重\(W\)条件下进行映射，然后根据输出值进行判断，相当于是一种判别式的分类模型。但是和之前的判别分析略有不同，之前的判别分析其实是依赖于数据X的一些统计量进行最优参数的求解。而感知机是一个不断试错，不断优化自己学习最优参数的过程。</p>
-
-<blockquote>
-<p>感觉这也是统计学习和机器学习的一个很显著的区别，基于统计的学习是利用一些关于数据分布的假定，然后基于统计的方法寻找到最优的问题参数。而机器学习是有个目标，里面一段参数，然后让机器去不断迭代优化，在这个不断的“学习”过程中寻找到”最优的参数“</p>
-</blockquote>
-
-<p>目标：</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -474,6 +433,8 @@
             <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
+        
+            <a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html"><strong>轨迹数据</strong></a>
          
         </p>
 
@@ -490,31 +451,31 @@
 	      
 		      
 			      <li class="post">
+			        <a href="15686309605233.html">matplotlib</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15687050894061.html">综述</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15686368904229.html">基于dtw进行聚类</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15636947700701.html">4.7 聚类1</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15637037683461.html">Jupyter notebook</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15680210974066.html">因子分析</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637025346412.html">1. conda 环境管理</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637037679256.html">Rmarkdown</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637037713554.html">数据可视化概述</a>
 			      </li>
 		     
 		  

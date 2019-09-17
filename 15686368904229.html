@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  sublime - zhenzhen学习笔记
+  基于dtw进行聚类 - zhenzhen学习笔记
   
   </title>
   
@@ -124,14 +124,14 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>sublime</h1>
+          <h1>基于dtw进行聚类</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2019/7/21</span>
+          <span class="date">2019/9/16</span>
 
           <span>posted in&nbsp;</span> 
           
-              <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+              <span class="posted-in"><a href='%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html'>轨迹数据</a></span>
            
          
           <span class="comments">
@@ -144,24 +144,12 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <p>sublime除了具有基本的文本编辑功能之外，还可以安装很多package来扩展其强大的功能。这里罗列出一些工作中经常能用到的</p>
+      <p><a href="https://blog.csdn.net/songbinxu/article/details/86660136">https://blog.csdn.net/songbinxu/article/details/86660136</a></p>
 
-<p><strong>安装install package</strong></p>
+<p>成对数据计算效率问题<br/>
+<a href="http://cn.voidcc.com/question/p-pvczjbyi-bmw.html">http://cn.voidcc.com/question/p-pvczjbyi-bmw.html</a></p>
 
-<p>点击菜单中的 “View”–“Show Console”，调出console面板，然后到<a href="https://packagecontrol.io/installation#st3">https://packagecontrol.io/installation#st3</a></p>
-
-<p>官网上的，复制出代码黏贴执行。执行完毕即可。</p>
-
-<h2 id="toc_0">格式化json</h2>
-
-<p>打开 Sublime，command + shift + p -&gt; Install package<br/>
-搜索 Pretty JSON，安装</p>
-
-<p>之后mac上用： <code>command + ctrl + j</code> 即可直接格式化显示。</p>
-
-<h2 id="toc_1">比较diff</h2>
-
-<h2 id="toc_2">git</h2>
+<p>这里踩了一个坑：安装上fastdtw后速度仍然慢。在测试机上跑n=30条数据两两组队，耗时38s，mac上才3s。后来发现是mac上采用的是Cpython， 测试机上运行的是纯python版本。</p>
 
 
     
@@ -172,16 +160,16 @@
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="15637037678160.html" 
-          title="Previous Post: git">&laquo; git</a>
+          <a href="15687050894061.html" 
+          title="Previous Post: 综述">&laquo; 综述</a>
       
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="15664761738125.html" 
-          title="Next Post: 2. iterm终端配置-oh my zsh">2. iterm终端配置-oh my zsh &raquo;</a>
+          <a  href="15636947700701.html" 
+          title="Next Post: 4.7 聚类1">4.7 聚类1 &raquo;</a>
       
       </p>
         </div>

@@ -100,6 +100,8 @@
             <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
+        
+            <li><a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html">轨迹数据</a></li>
          
 
       </ul>
@@ -122,6 +124,293 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15637037679680.html">
+                
+                  <h1>第四章 数值计算</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">1.数值精度</h2>
+
+<p>这部分对于了解具体的算法并没影响，但是在进行底层库开发时候经常会遇到，可能会出现<strong>上溢</strong>或者<strong>下溢</strong></p>
+
+<p>（1）病态条件</p>
+
+<p>条件数：表示函数相对于输入的微小变化而变化的快慢程度。<br/>
+比如矩阵求逆运算的条件数=最大和最小特征值的模的比</p>
+
+<h2 id="toc_1">2.优化算法</h2>
+
+<ul>
+<li>梯度下降</li>
+<li>牛顿法</li>
+</ul>
+
+<p>一般把需要最优化的函数称为<strong>目标函数</strong></p>
+
+<p><strong>梯度下降</strong></p>
+
+<p>对于一个多维输入函数f，梯度\(\triangledown_x f(x)\),其在u方向上的<strong>方向导数</strong>，相当于f在u方向上的斜率<br/>
+\(f(x+\alpha u)\)关于\(\alpha\)的导数(在\(\alpha =0\)时取得)</p>
+
+<p>\[\frac{\partial}{\partial \alpha}f(x+\alpha u)=u^T\triangledown_x f(x)\]</p>
+
+<p>为了是f最小，希望找到f下降最快的方向，因此有<br/>
+\[min u^T\triangledown_x f(x)\]<br/>
+u取为单位向量，很明显是在u和f夹角180时候，也就是两个完全相反的时候，下降最快。<br/>
+梯度下降： \(x&#39;=x-\epsilon \triangledown_x f(x)\)</p>
+
+<p><strong>牛顿法</strong></p>
+
+<p>Hessian矩阵，二阶导数<br/>
+<img src="media/15080580137304/15082408605128.jpg" alt=""/></p>
+
+<h2 id="toc_2">3.有限制的约束</h2>
+
+<p>对于有限制的优化，有时候可以将约束条件转化到原始的优化函数中，这里主要介绍一下通用的方法：<strong>KKT方法</strong>(拉格朗日方法的推广，可以非等式约束)</p>
+
+<pre><code>@@@
+http://blog.csdn.net/mr_kktian/article/details/53750424
+</code></pre>
+
+<h2 id="toc_3">参考资料</h2>
+
+<p>梯度下降法 扩展阅读： <a href="https://www.jiqizhixin.com/articles/2016-11-21-4">https://www.jiqizhixin.com/articles/2016-11-21-4</a><br/>
+<a href="http://www.cnblogs.com/maybe2030/p/4751804.html">http://www.cnblogs.com/maybe2030/p/4751804.html</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037679781.html">
+                
+                  <h1>t-sne</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code>from sklearn.manifold import TSNE
+from sklearn.datasets import load_iris
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+ 
+ 
+ 
+data=pd.read_csv(&#39;test.data&#39;, sep=&#39;,&#39;,header=None)
+dd= data[range(200)]
+
+X_tsne = TSNE().fit_transform(dd)
+X_pca = PCA().fit_transform(dd)
+
+out = DataFrame(np.hstack((X_tsne, X_pca)))
+
+out2=data[200])
+
+out.to_csv(&#39;save_data.csv&#39;)
+
+
+plt.figure(figsize=(10, 5))
+plt.subplot(121)
+plt.scatter(X_tsne[:, 0], X_tsne[:, 1],c=data[200])
+plt.subplot(122)
+#plt.scatter(X_pca[:, 0], X_pca[:, 1], c=iris.target)
+plt.scatter(X_pca[:, 0], X_pca[:, 1], c=data[200])
+</code></pre>
+
+<p>R<br/>
+```</p>
+
+<pre><code>
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637025344767.html">
+                
+                  <h1>【NG-DL】course2_week1 优化网络参数</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">1.基本概念</h2>
+
+<p>很多优化参数：<br/>
+网络层数，隐层数，学习率，激活函数。。。</p>
+
+<ul>
+<li><p>训练集/验证集/测试集</p></li>
+<li><p>偏差， 训练集误差</p></li>
+<li><p>方差</p></li>
+</ul>
+
+<p>若有高bias： 尝试新的网络，更大网络</p>
+
+<p>高方差： 获取更多数据，或者正则化，更合适的网络机构</p>
+
+<p>bias和varaince的平衡<br/>
+一般来说更大的网络能减小偏差，更多的数据能减小方差。</p>
+
+<h2 id="toc_1">2.正则化-L2</h2>
+
+<p>以逻辑回归为例</p>
+
+<p>\(J(w,b)=\frac{1}{m}\sum L(\hat y_i, y_i)+\frac{\lambda}{2m}|w|^2_2\)L2惩罚，避免过拟合，导致高方差</p>
+
+<p>类似的神经网络在优化函数上加上</p>
+
+<p>\(J(w^{[1]},b^{[1]},...w^{[l]},b^{[l]})=\frac{1}{m}\sum L(\hat y_i, y_i)+\frac{\lambda}{2m}\sum||w^{[l]}||^2_2\)</p>
+
+<p>其中\(|w^{[l]}|^2\)F范数</p>
+
+<ul>
+<li>Ng.当\(\lambda\)较大时候,w会较小，sigmoid接近线性，降低方差。
+<img src="media/15055593941505/15103891828021.jpg" alt=""/></li>
+</ul>
+
+<h3 id="toc_2">正则化-dropout(随机失活)</h3>
+
+<p>每次对网络中的节点设置一个随机消失的概率p，即每个节点可能在也可能不在网络中，不在的时候即相当于该节点的数值置为0.</p>
+
+<p>dropout与l2类似都会shrink权重。</p>
+
+<h3 id="toc_3">early stoping</h3>
+
+<h2 id="toc_4">3.优化</h2>
+
+<h3 id="toc_5">归一化</h3>
+
+<p>归一化输入=&gt; 均值0，方差1<br/>
+* 零均值化<br/>
+* 归一化方差</p>
+
+<p><img src="media/15055593941505/15103915636569.jpg" alt=""/></p>
+
+<h3 id="toc_6">梯度消失与梯度爆炸</h3>
+
+<p>当梯度增长很大或者很微弱时，会导致优化出问题或者很慢。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637025344831.html">
+                
+                  <h1>聚类方法Mini Batch KMeans</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>kmeans在数据量大的时候聚类时间会很久。Mini Batch KMeans使用了一个种叫做Mini Batch（分批处理）的方法对数据点之间的距离进行计算。Mini Batch的好处是计算过程中不必使用所有的数据样本，而是从不同类别的样本中抽取一部分样本来代表各自类型进行计算。由于计算样本量少，所以会相应的减少运行时间，但另一方面抽样也必然会带来准确度的下降</p>
+
+<h2 id="toc_0">迭代步骤：</h2>
+
+<p>1：从数据集中随机抽取一些数据形成小批量，把他们分配给最近的质心<br/>
+2：更新质心<br/>
+与K均值算法相比，数据的更新是在每一个小的样本集上。对于每一个小批量，通过计算平均值得到更新质心，并把小批量里的数据分配给该质心，随着迭代次数的增加，这些质心的变化是逐渐减小的，直到质心稳定或者达到指定的迭代次数，停止计算</p>
+
+<h2 id="toc_1">训练方法</h2>
+
+<p>和一般的Kmeans一样</p>
+
+<pre><code>from sklearn.cluster import MiniBatchKMeans
+
+clf = MiniBatchKMeans(n_clusters = 3)
+clf.fit(X)
+pre_clu = clf.labels_
+</code></pre>
+
+<p>【参考资料】<br/>
+<a href="http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/">http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15637025344879.html">
                 
                   <h1>xgboost</h1>
@@ -142,329 +431,6 @@
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025345079.html">
-                
-                  <h1>第一章 引言</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>别人的读后总结，可参考「Deep Learning」读书系列分享（一） | 分享总结</p>
-
-<p><a href="https://www.leiphone.com/news/201708/LEBNjZzvm0Q3Ipp0.html">https://www.leiphone.com/news/201708/LEBNjZzvm0Q3Ipp0.html</a></p>
-
-<h3 id="toc_0">需要明确的几个概念范围</h3>
-
-<p><img src="media/15075611675547/15075613801366.jpg" alt=""/></p>
-
-<p><img src="media/15075611675547/15075614908544.jpg" alt=""/></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025345613.html">
-                
-                  <h1>query文本聚类</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ul>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 是不是cache问题tf-idf
-</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 添加下降维的步骤
-</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 稀疏矩阵
-</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 数据切分更小li&#39;du
-</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Mini Batch KMeans <a href="http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/">http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/</a>
-</li>
-</ul>
-
-<p>实验全量的<br/>
-<a href="http://yq01-tianqi-spark-yarn00.yq01.baidu.com:8388/proxy/application_1511855101950_42074/">http://yq01-tianqi-spark-yarn00.yq01.baidu.com:8388/proxy/application_1511855101950_42074/</a></p>
-
-<hr/>
-
-<p>刚哥的代码：<a href="https://github.com/honestOrg/gxdgroup/blob/master/src/main/scala/cn/com/gxdgroup/dataplatform/avm/utils/AVMUtils.scala">https://github.com/honestOrg/gxdgroup/blob/master/src/main/scala/cn/com/gxdgroup/dataplatform/avm/utils/AVMUtils.scala</a></p>
-
-<h2 id="toc_0">全量</h2>
-
-<p>前期构造词频矩阵：</p>
-
-<h2 id="toc_1">1.生成原始的词频矩阵</h2>
-
-<ul>
-<li><a href="http://spark.apache.org/docs/latest/ml-features.html#countvectorizer">http://spark.apache.org/docs/latest/ml-features.html#countvectorizer</a></li>
-<li><code>examples/src/main/python/sql/basic.py</code></li>
-</ul>
-
-<p>输入数据：每行是切分好的term</p>
-
-<pre><code>spark = SparkSession.builder.appName(&quot;CountVectorizerExample&quot;).getOrCreate()
-sc = spark.sparkContext
-# $example on$
-# Input data: Each row is a bag of words with a ID.
-
-lines = sc.textFile(&quot;/user/ubs/kce/zhenzhen/spark/test_data/corpus_title2&quot;)
-parts = lines.map(lambda l: l.split(&#39;#&#39;))   # convert all the term to a list
-termRDD = parts.map(lambda p: Row(tid=p[0], words=p[1].split(&#39; &#39;)))
-
-df = spark.createDataFrame(termRDD)
-# fit a CountVectorizerModel from the corpus.
-cv = CountVectorizer(inputCol=&quot;words&quot;, outputCol=&quot;features&quot;)
-#, vocabSize=3, minDF=2.0)
-
-model = cv.fit(df)
-
-result = model.transform(df)
-</code></pre>
-
-<h2 id="toc_2">2.tf-idf</h2>
-
-<ul>
-<li><a href="http://spark.apache.org/docs/latest/mllib-feature-extraction.html#tf-idf">http://spark.apache.org/docs/latest/mllib-feature-extraction.html#tf-idf</a></li>
-<li><a href="http://spark.apache.org/docs/latest/ml-features.html#feature-extractors">http://spark.apache.org/docs/latest/ml-features.html#feature-extractors</a>
-ml中的函数比mllib中的多
-examples/src/main/python/mllib/tf_idf_example.py</li>
-</ul>
-
-<pre><code>~/zhenzhen/spark_study/spark/examples/src/main/python/mllib $  pyspark zzz_tf_idf_example.py
-</code></pre>
-
-<h2 id="toc_3">3.降维</h2>
-
-<h2 id="toc_4">4.直接聚类</h2>
-
-<pre><code> # pyspark这个默认是启动的集群任务，之前测试的本地数据会出错，脚本中需把输入目录改成集群路径
-  ~/zhenzhen/spark_study $  pyspark kmeans.py  &gt; log.test
-</code></pre>
-
-<h2 id="toc_5">六神合体</h2>
-
-<ul>
-<li>词频矩阵+tfidf</li>
-</ul>
-
-<p><a href="http://www.zengyilun.com/spark-similarity/">http://www.zengyilun.com/spark-similarity/</a></p>
-
-<p>上述所有步骤(tfidf，降维,聚类)合并在一起</p>
-
-<pre><code> # pyspark这个默认是启动的集群任务，之前测试的本地数据会出错，脚本中需把输入目录改成集群路径
-  ~/zhenzhen/spark_study $  pyspark tfidf_kmeans.py  &gt; log.test
-  这个测试ok，但是中心点都是0，应该是数据问题
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025345723.html">
-                
-                  <h1>第二章 线性代数</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>第二章主要是介绍了线性代数的一些基础知识</p>
-
-<p>这里补充几点吧</p>
-
-<h2 id="toc_0">特征分解</h2>
-
-<p>每个矩阵可以视为多个列向量组成的一个向量空间/或者是一个线性变化(一个矩阵乘以一个向量后相当于是对向量做了一个线性变换)。而矩阵的分解，相当于去提取这个向量空间最重要的特征。</p>
-
-<p>(1)首先是特征值和特征向量<br/>
-若<strong>方阵</strong>A满足 \(Av=\lambda v\),则\(v\)称为矩阵A的特征向量，\(\lambda\)称为对应的特征值。</p>
-
-<p><strong>特征分解</strong><br/>
-\[A=V \Lambda V^{-1}\]<br/>
-V是其特征向量构成的矩阵，\(\Lambda\)是特征值构成的对角矩阵</p>
-
-<p>性质：</p>
-
-<p>(1) 实对称矩阵A都可以分解为\(A=Q\Lambda Q^{-1}\)，Q为正交矩阵</p>
-
-<p>(2)用来计算矩阵的逆。若\(A=Q \Lambda Q^{-1}\)，则\(A^{-1}=Q \Lambda^{-1}Q^{-1}\)</p>
-
-<h2 id="toc_1">奇异值分解</h2>
-
-<p>特征分解对于提取矩阵的特征根是很好的方法，但是他只能针对<strong>方阵</strong>操作。当A不是方阵时候，就需要用到SVD<br/>
-\[A_{n*m}=U_{n*n}\Sigma_{n*m} V^{T}_{m*m}\]</p>
-
-<p>其中，U称为左奇异向量，V称为右奇异向量</p>
-
-<p>\(AA^T=UDV^TVDU^T=UD^2U^T\)<br/>
-\(A^TA=VDU^T UDV^T=VD^2V^T\)<br/>
-即：<br/>
-A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)的特征向量，A的奇异值是\(AA^T\)也是\(A^TA\)的特征之爱的平方根。</p>
-
-<blockquote>
-<p>对比：<br/>
-特征分解是有限制的，比如矩阵必须是方阵</p>
-</blockquote>
-
-<h3 id="toc_2">SVD与PCA的关系</h3>
-
-<ul>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 查一下之前多元的变换原理
-</li>
-</ul>
-
-<p>PCA的全部工作简单点说，就是对原始的空间中顺序地找一组相互正交的坐标轴，第一个轴是使得方差最大的，第二个轴是在与第一个轴正交的平面中使得方差最大的，第三个轴是在与第1、2个轴正交的平面中方差最大的，这样假设在N维空间中，我们可以找到N个这样的坐标轴，我们取前r个去近似这个空间，这样就从一个N维的空间压缩到r维的空间了，但是我们选择的r个坐标轴能够使得空间的压缩使得数据的损失最小。</p>
-
-<h3 id="toc_3">SVD与潜在语义检索LSI</h3>
-
-<h2 id="toc_4">参考资料</h2>
-
-<p><a href="http://www.cnblogs.com/LeftNotEasy/archive/2011/01/19/svd-and-applications.html">http://www.cnblogs.com/LeftNotEasy/archive/2011/01/19/svd-and-applications.html</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025345792.html">
-                
-                  <h1>第三章 概率与信息论</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>本章主要是介绍了一些概率论的基础以及常见的分布</p>
-
-<h2 id="toc_0">1.常用函数的有用性质</h2>
-
-<ul>
-<li>sigmoid 函数</li>
-</ul>
-
-<p>\[\delta(x) = \frac{1}{1+exp(-x)}\]</p>
-
-<ul>
-<li>softplus函数
-\[log(1+exp(x))\]
-<img src="media/15080561019055/15080571562017.jpg" alt=""/></li>
-</ul>
-
-<p>是\(y=max(0,x)\)的平滑版本</p>
-
-<h2 id="toc_1">2.信息论</h2>
-
-<p>信息论是应用数学的一个分支，主要研究的是对一个信号包含信息的多少进行量化。<br/>
-<img src="media/15080561019055/15080594230903.jpg" alt=""/></p>
-
-<p>自信息：定义一个时间X=x的自信息<br/>
-\[I(x) = -log P(x)\]</p>
-
-<p>熵：<br/>
-\[-\sum P(x_i) logP(x_i)\]</p>
-
-<h3 id="toc_2">KL散度/相对熵</h3>
-
-<p>\[KL(P||Q) = -\sum P_i ln(\frac{P_i}{Q_i})=-\sum P_i(ln(P_i)- ln(Q_i))\]</p>
-
-<p>注意：</p>
-
-<ul>
-<li>KL距离其实并不是严格的距离，不满足对称性以及三角不等式。</li>
-</ul>
-
-<p>JS距离：<br/>
-\[JS(P1||P2) = \frac{1}{2}KL(P1||(P1+P2)/2)+ \frac{1}{2}KL(P2||(P1+P2)/2)\]</p>
-
-<h3 id="toc_3">交叉熵</h3>
-
-<p>相对熵的第一部分<br/>
-\[KL(P||Q) = -\sum P_i ln(Q_i)\]</p>
-
-<h2 id="toc_4">3.结构化概率模型——图模型(graphical model)</h2>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -548,6 +514,8 @@ A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)�
             <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
+        
+            <a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html"><strong>轨迹数据</strong></a>
          
         </p>
 
@@ -564,31 +532,31 @@ A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)�
 	      
 		      
 			      <li class="post">
+			        <a href="15686309605233.html">matplotlib</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15687050894061.html">综述</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15686368904229.html">基于dtw进行聚类</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15636947700701.html">4.7 聚类1</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15637037683461.html">Jupyter notebook</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15680210974066.html">因子分析</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637025346412.html">1. conda 环境管理</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637037679256.html">Rmarkdown</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637037713554.html">数据可视化概述</a>
 			      </li>
 		     
 		  

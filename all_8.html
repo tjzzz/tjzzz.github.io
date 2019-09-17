@@ -100,6 +100,8 @@
             <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
+        
+            <li><a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html">轨迹数据</a></li>
          
 
       </ul>
@@ -122,48 +124,16 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637037680228.html">
+                <a class="clearlink" href="15637037691936.html">
                 
-                  <h1>FM 模型</h1>
+                  <h1>3.1 特征处理—— 特征选择</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>背景</p>
-</blockquote>
+                        	<h2 id="toc_0">参考</h2>
 
-<p>一般的线性模型 \(y=w_0 + \sum w_i x_i\)， 当考虑了特征之间的相关性即交互效应(这里以二阶为例)后模型形式是：<br/>
-\[y=w_0 + \sum w_i x_i + \sum_1^{n-1}\sum_{i+1}^n w_{ij}x_ix_j\]</p>
-
-<p>这里n表示特征的个数</p>
-
-<blockquote>
-<p>模型如何求解呢？</p>
-</blockquote>
-
-<p>如果把\(x_ix_j\)看做一个新的变量，相当于整体上还是一个线性回归模型，似乎可以用正常的线性回归的办法进行求解。<br/>
-但是这里未知的要求解的参数有n(+1)/2个，很多时候特征中会有一些分类型的变量，当通过哑变量的方式引入模型中的时候，特征数目k会非常大，从而导致要求解的参数个数较大，并且数据特别稀疏。另一方面，分类特征就到时候，\(x_ix_j\)是非零的比例较小，从而导致\(w\)无法计算出来。</p>
-
-<blockquote>
-<p>引入其他辅助信息</p>
-</blockquote>
-
-<p>我们可以引入一个辅助向量 对于\(w_{ij}\)形成的对称矩阵W，可以进行分解\(W=V^TV\)</p>
-
-<p>将模型改成如下形式<br/>
-\[y=w_0 + \sum w_i x_i + \sum_1^{n-1}\sum_{i+1}^n &lt;v_i, v_j&gt;x_ix_j\]</p>
-
-<ul>
-<li>从形式上来看，我们知道\(w_ij\)的矩阵是对称的，其形式上和协差阵\(&lt;v_i, v_j&gt;\)很类似</li>
-</ul>
-
-<p>\(v_i\)相当于是第i维隐向量，假设其维度是k&lt;&lt;n, 这样模型的参数就由原来的n(n+1)/2 变为了</p>
-
-<h2 id="toc_0">参考资料</h2>
-
-<p>简书-石晓文 <a href="https://www.jianshu.com/p/152ae633fb00">https://www.jianshu.com/p/152ae633fb00</a><br/>
-美团技术博客 <a href="https://tech.meituan.com/deep_understanding_of_ffm_principles_and_practices.html">https://tech.meituan.com/deep_understanding_of_ffm_principles_and_practices.html</a></p>
+<p><a href="https://blog.csdn.net/kebu12345678/article/details/78437118">https://blog.csdn.net/kebu12345678/article/details/78437118</a></p>
 
                         
                       </div>
@@ -189,14 +159,18 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037682671.html">
+                <a class="clearlink" href="15637037692016.html">
                 
-                  <h1>聚类Tools篇</h1>
+                  <h1>4.6 集成</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><a href="http://glaros.dtc.umn.edu/gkhome/cluto/cluto/download">http://glaros.dtc.umn.edu/gkhome/cluto/cluto/download</a></p>
+                        	<p><a href="http://www.52caml.com/head_first_ml/ml-chapter6-boosting-family/">http://www.52caml.com/head_first_ml/ml-chapter6-boosting-family/</a></p>
+
+<p><img src="media/15275150216357/15275150424366.jpg" alt=""/></p>
+
+<p><a href="http://www.cnblogs.com/gasongjian/p/7648633.html">http://www.cnblogs.com/gasongjian/p/7648633.html</a></p>
 
                         
                       </div>
@@ -222,48 +196,27 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037683065.html">
+                <a class="clearlink" href="15637037693934.html">
                 
-                  <h1>Data product</h1>
+                  <h1>[2018-06-25]学习1</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>We describe our methods in this chapter.</p>
+                        	<p>参考资源list<br/>
+2018年06月25日</p>
 
-<p>bookdown</p>
+<p><a href="https://www.tensorflow.org/get_started/get_started_for_beginners">https://www.tensorflow.org/get_started/get_started_for_beginners</a></p>
 
-<p>bookdown是基于markdown，knitr用来进行write book的一个package。<br/>
-其主要功能和markdown差不多，参考gitbook的方式，能基于Rmd或者md进行书写。</p>
+<p><a href="http://playground.tensorflow.org">http://playground.tensorflow.org</a></p>
 
-<p>加载一些html widgets</p>
+<p><a href="https://github.com/aymericdamien/TensorFlow-Examples">https://github.com/aymericdamien/TensorFlow-Examples</a></p>
 
-<p>首先安装相应的支持包</p>
+<p>中文社区<br/>
+<a href="http://www.tensorfly.cn/">http://www.tensorfly.cn/</a><br/>
+<a href="https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/1-2-install/">https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/1-2-install/</a></p>
 
-<pre><code>install.packages(&quot;webshot&quot;)
-webshot::install_phantomjs()
-</code></pre>
-
-<h2 id="toc_0">输出格式</h2>
-
-<p>在<code>_output.yaml</code>中进行设置<br/>
-(1)html格式</p>
-
-<ul>
-<li>gtbook style</li>
-</ul>
-
-<p>*</p>
-
-<h2 id="toc_1">生成</h2>
-
-<p>实时预览</p>
-
-<p>serve_book(dir=&#39;.&#39;, output_dir=&quot;_book&quot;,preview=TRUE, in_session=TRUE)</p>
-
-<h1 id="toc_2">flexdashbaord</h1>
-
-<p><a href="http://rmarkdown.rstudio.com/flexdashboard/">http://rmarkdown.rstudio.com/flexdashboard/</a></p>
+<h2 id="toc_0">1.为什么</h2>
 
                         
                       </div>
@@ -275,7 +228,7 @@ webshot::install_phantomjs()
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html'>3 数据可视化</a></span>
+          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -289,9 +242,9 @@ webshot::install_phantomjs()
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037683688.html">
+                <a class="clearlink" href="15637037699016.html">
                 
-                  <h1>4.7 聚类2——-效果评价</h1>
+                  <h1>【聚类】-效果评价</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
@@ -304,11 +257,6 @@ webshot::install_phantomjs()
 </ul>
 
 <h2 id="toc_0">内部标准clustering-performance-evaluation</h2>
-
-<ul>
-<li>CH 准则</li>
-<li>轮廓系数</li>
-</ul>
 
 <h2 id="toc_1">外部标准——人工判定</h2>
 
@@ -411,24 +359,48 @@ e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037686386.html">
+                <a class="clearlink" href="15637037680228.html">
                 
-                  <h1>4.9 深度学习综述</h1>
+                  <h1>FM 模型</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>这里只是简单介绍，后续会在深度学习章节中进行详细说明</p>
+                        	<blockquote>
+<p>背景</p>
+</blockquote>
 
-<p><strong>通用逼近定理</strong></p>
+<p>一般的线性模型 \(y=w_0 + \sum w_i x_i\)， 当考虑了特征之间的相关性即交互效应(这里以二阶为例)后模型形式是：<br/>
+\[y=w_0 + \sum w_i x_i + \sum_1^{n-1}\sum_{i+1}^n w_{ij}x_ix_j\]</p>
 
-<p><img src="media/15394437873112/15394453932519.jpg" alt=""/></p>
+<p>这里n表示特征的个数</p>
+
+<blockquote>
+<p>模型如何求解呢？</p>
+</blockquote>
+
+<p>如果把\(x_ix_j\)看做一个新的变量，相当于整体上还是一个线性回归模型，似乎可以用正常的线性回归的办法进行求解。<br/>
+但是这里未知的要求解的参数有n(+1)/2个，很多时候特征中会有一些分类型的变量，当通过哑变量的方式引入模型中的时候，特征数目k会非常大，从而导致要求解的参数个数较大，并且数据特别稀疏。另一方面，分类特征就到时候，\(x_ix_j\)是非零的比例较小，从而导致\(w\)无法计算出来。</p>
+
+<blockquote>
+<p>引入其他辅助信息</p>
+</blockquote>
+
+<p>我们可以引入一个辅助向量 对于\(w_{ij}\)形成的对称矩阵W，可以进行分解\(W=V^TV\)</p>
+
+<p>将模型改成如下形式<br/>
+\[y=w_0 + \sum w_i x_i + \sum_1^{n-1}\sum_{i+1}^n &lt;v_i, v_j&gt;x_ix_j\]</p>
+
+<ul>
+<li>从形式上来看，我们知道\(w_ij\)的矩阵是对称的，其形式上和协差阵\(&lt;v_i, v_j&gt;\)很类似</li>
+</ul>
+
+<p>\(v_i\)相当于是第i维隐向量，假设其维度是k&lt;&lt;n, 这样模型的参数就由原来的n(n+1)/2 变为了</p>
 
 <h2 id="toc_0">参考资料</h2>
 
-<p><a href="https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2650739143&amp;idx=1&amp;sn=f51551128021e7747205f87971f4762e&amp;chksm=871ad5b9b06d5caf0a5b4601863adc213eb42573bbdc2773e54ff1c585b3954a8644df024015&amp;mpshare=1&amp;scene=1&amp;srcid=0313P1tfCgE3zTBXJuNIHaBl%23rd">https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2650739143&amp;idx=1&amp;sn=f51551128021e7747205f87971f4762e&amp;chksm=871ad5b9b06d5caf0a5b4601863adc213eb42573bbdc2773e54ff1c585b3954a8644df024015&amp;mpshare=1&amp;scene=1&amp;srcid=0313P1tfCgE3zTBXJuNIHaBl%23rd</a></p>
-
-<p><a href="https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2650739820&amp;idx=1&amp;sn=260173be8cecc3a10d7b455922c10e0c&amp;chksm=871ad012b06d5904e65e96d0cfa236d0b6c7ce5683dd8d29514e4cbe420dc5b1ccd2786eea2c&amp;mpshare=1&amp;scene=1&amp;srcid=0324xGIxttOochJWNMPaDibb%23rd">https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2650739820&amp;idx=1&amp;sn=260173be8cecc3a10d7b455922c10e0c&amp;chksm=871ad012b06d5904e65e96d0cfa236d0b6c7ce5683dd8d29514e4cbe420dc5b1ccd2786eea2c&amp;mpshare=1&amp;scene=1&amp;srcid=0324xGIxttOochJWNMPaDibb%23rd</a></p>
+<p>简书-石晓文 <a href="https://www.jianshu.com/p/152ae633fb00">https://www.jianshu.com/p/152ae633fb00</a><br/>
+美团技术博客 <a href="https://tech.meituan.com/deep_understanding_of_ffm_principles_and_practices.html">https://tech.meituan.com/deep_understanding_of_ffm_principles_and_practices.html</a></p>
 
                         
                       </div>
@@ -524,6 +496,8 @@ e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大
             <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
+        
+            <a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html"><strong>轨迹数据</strong></a>
          
         </p>
 
@@ -540,31 +514,31 @@ e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大
 	      
 		      
 			      <li class="post">
+			        <a href="15686309605233.html">matplotlib</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15687050894061.html">综述</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15686368904229.html">基于dtw进行聚类</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15636947700701.html">4.7 聚类1</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15637037683461.html">Jupyter notebook</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15680210974066.html">因子分析</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637025346412.html">1. conda 环境管理</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637037679256.html">Rmarkdown</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637037713554.html">数据可视化概述</a>
 			      </li>
 		     
 		  

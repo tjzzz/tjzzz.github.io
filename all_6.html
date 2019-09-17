@@ -100,6 +100,8 @@
             <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
+        
+            <li><a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html">轨迹数据</a></li>
          
 
       </ul>
@@ -121,6 +123,393 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15637037730522.html">
+                
+                  <h1>关于长点击阈值划分方法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>用户停留时长一直是衡量用户在落地页满意度的一个重要度量指标。在具体业务设计的时候，可以去看时长分布的中位数、平均时长等统计级指标，亦有类似于衡量时长好坏的长点击率，长点击占比等指标。</p>
+
+<p>首先来说下长点击，简单来说长点击即停留时长比较长的一个点击时间。</p>
+
+<h3 id="toc_0">1. 长点击，满意点击，人工打分</h3>
+
+<p>我们说停留时间“比较长”，其实是一个相对概念，不同的资源类型可能划分的标准会不同。但是他们的出发点是一样的: 我们认为在特定资源类型下落地页时长越长，用户越倾向于满意。所以长点击本质上是用来刻画满意点击的。</p>
+
+<p><strong>(1) 无监督的划分</strong><br/>
+即我们不知道groundtruth，这个时候可以根据本身时长的分布，按照经验值比如60%，70%作为其长点击的分界点。这种划分方式 xxxx</p>
+
+<p><strong>(2) 有监督的</strong><br/>
+通过人工评估（比如qu相关性，qu的页面质量等维度），可以对qu结果进行人工打分，一般是0-4档。0，1代表不太好，2代表一般，3-4代表比较好。可以根据业务需求比如3-4认为是满意点击，2认为是一般点击，0-1认为是不满意点击。<br/>
+以此人工标注来决定如何选择长点击划分阈值。</p>
+
+<h3 id="toc_1">2. 如何划分长点击</h3>
+
+<p>长点击阈值划分的目标，即寻找如下决策函数的参数x</p>
+
+<p>\[<br/>
+F(t) = \left\{<br/>
+             \begin{array}{lr}<br/>
+            1，长点击 t \ge x &amp;  \\<br/>
+            0，非长点击 t&lt; x\\  <br/>
+             \end{array}<br/>
+\right.<br/>
+\]</p>
+
+<p>从统计分布的角度看，即使是时长比较长的结果，人工打分也可能很低，时长很短的结果人工打分也可能是满意的。所以不管寻找到的最优参数\(x\)是多少，它都有可能会误分。而我们的目的是让这种因为误分而犯错的可能性尽可能的小。<br/>
+<img src="media/15542962343188/15543644977641.jpg" alt=""/></p>
+
+<p>从以上的分布图来说更直观一些，我们的误判损失即是图中阴影部分，很容易证明，移动阈值划分x时候，损失最小的是当两个分布曲线相交的点的时候。这指导我们可以按照如下的方法进行长点击划分：</p>
+
+<p>执行步骤<br/>
+<strong>Step0： 摸底时长分布</strong></p>
+
+<p>首先需要了解清楚数据本身的时长分布，根据时长的分布情况，大概划分不同的区间段。比如0-5，5-10，10-15，15-20，20-25，25-30，30-35，35-40， 40-50，50-60，60-100，&gt;100这样进行划分。<br/>
+同于频次分布较高的部分可以划分的细致一些，频次分布较低的部分可以划分的宽度较宽一些。</p>
+
+<p><strong>Step1： 抽样送评qu数据</strong></p>
+
+<p>确定送评样本，因为人工评估是需要成本的，我们不可能得到整体的good或者bad的分布曲线，我们所有的只是抽取的送评样本的标注数据。这就要求我们送评的数据对于总体一定要有好的代表性：</p>
+
+<ul>
+<li>抽样分布应该和总体分布尽量一致</li>
+<li>抽样量不能太小，否则样本估计总体的误差会比较大</li>
+</ul>
+
+<blockquote>
+<p>如何确定最优送评样本量？（这个回来再写）<br/>
+统计学的研究方法是要找到我们所关注变量的统计分布，我们最终是希望通过抽取得到的good和not_good的时长分布与整体差不多。</p>
+</blockquote>
+
+<p>数据抽取：</p>
+
+<ul>
+<li>考虑到数据抽取是基于qu粒度，一个qu其实会有多次用户点击行为，也就会有多个时长，可能波动较大。所以一般是取count(qu)&gt;5的，并且时长取的是其中位数</li>
+<li><p>预送评，一般先进行少量的预送评，比如送评1000个样本。返回会用来检验数据质量和划分的精细度</p>
+
+<ul>
+<li>check自己送评的数据中是否有一些异常数据。比如sf的url路径不完成</li>
+<li>check人工打分的质量程度</li>
+<li>初步看下good和not_good的分布情况，大概确定长点的分布区间，从而看下送评的样本的时间段间隔精度是否需要调整</li>
+</ul></li>
+<li><p>正式送评</p></li>
+</ul>
+
+<p><strong>Step2： 返回分析</strong></p>
+
+<p>根据good和not_good的频数分布，找到曲线的交点，即满足good(x) = not_good(x)的点，即可认为是长点击的分界点。短点击的划分类似，可以认为0-1的是短点击，或者更严格的0分的是短点击。 绘制bad和not_bad的频数分布，找到曲线交点。即满足bood(x) = not_bood(x)的点</p>
+
+<ul>
+<li>实际操作：实际数据的分布图可能不如示意图那么明显，甚至有多个交点的情况。这时候可以计算图中b+c的面积，绘制(x,g(x))的曲线图，找到g(x)=0.5的点即可。 如果有多个可能是因为样本量不足够，或者本身指标数据不可信(前提假定是要研究的指标与人工打分是存在单调关系的)</li>
+</ul>
+
+<h3 id="toc_2">3 应用-关于sigmoid函数的理解</h3>
+
+<ul>
+<li><p>AB实验<br/>
+对于AB实验来说，有了长短点击时间阈值之后，可以直接计算长点击和短点击，更新指标评估即可。</p></li>
+<li><p>interleaving实验<br/>
+对于interleaving来说，实际中是将dt经过一个映射(一般是sigmoid函数)将其转化为一个0-1的打分。</p></li>
+</ul>
+
+<p>这里我们从另外一个角度来看这件事。LR或者说sigmoid函数能将一个负无穷到正无穷的数映射到0-1的一个概率值。是否是长点其实也是一个概率，当然这里时长t是取的(0, 正无穷)</p>
+
+<p>假设<br/>
+\[g(x) = \frac{good(x)}{good(x) + not\_good(x)}\]<br/>
+其中 \(good(x)= \#good(t=x)\), \(not\_good(x)=\#not\_good(t= x)\)。 <br/>
+所以\(g(x)\)其实表示的是在\(t=x\)时候是长点击的概率。为了书写方便，</p>
+
+<p>\[g(x) = \frac{1}{1+ not\_good(x)/good(x)}= \frac{1}{1+ e^{ln\frac{p}{1-p}}}\]</p>
+
+<p>这里\(p(x)\)是表示当时间等于x时是长点击的概率。</p>
+
+<p>从这个角度说，之前的sigmoid映射函数中\(\frac{1}{1+ e^{-a(x-b)}}\) 系数项即是log odds ratio。</p>
+
+<p>因此只需对送评数据中\(ln\frac{p}{1-p}\)的分布数据去拟合一条曲线 \(\hat f(t)\)即可，最终的sigmoid映射函数就是</p>
+
+<p>\[g(t) = \frac{1}{1+ e^{\hat f(t)}}\]</p>
+
+<p>并且其中\(\hat f(t)=0\)的点恰巧就是长点击的分界点。</p>
+
+<p>注意：实际送评的时候因为样本量的限制，不可能每一个分界点(在这里是每个停留时间dt)都会去送评，</p>
+
+<h3 id="toc_3">4.其他:从模型准召的角度</h3>
+
+<p>其实从分类评估角度来看，</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>not_good</th>
+<th>Good</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>F=0</td>
+<td>a</td>
+<td>b</td>
+</tr>
+<tr>
+<td>F=1</td>
+<td>c</td>
+<td>d</td>
+</tr>
+</tbody>
+</table>
+
+<p>上面说的损失即阴影部分的面积=b+c, 所以其实从分类模型评估的角度，就是不一致率最小的时候的最优解,即<br/>
+\[min b+c\]</p>
+
+<ul>
+<li>准确&amp;召回</li>
+</ul>
+
+<p>分类模型中其实用的更多的是准确和召回指标，\(accurate=\frac{d}{c+d}\),\(recall = \frac{d}{b+d}\)<br/>
+\[Max F\_score = 1-\frac{b+c}{b+c+2d}\]</p>
+
+<p>这个标准下，和之前还是略微有些不同的</p>
+
+<h3 id="toc_4">5.如何泛化</h3>
+
+<p>泛化问题主要是指：</p>
+
+<ul>
+<li>业务层面</li>
+</ul>
+
+<p>搜索，视频，以后其他的大小业务都可能面临这种问题。对于新的业务类型，人工送评应该是避免不了了。</p>
+
+<ul>
+<li>时间层面变更</li>
+</ul>
+
+<p>随着线上效果变更，当前调研的结果可能已经不再试用后续的结果。需要不断进行更新，比如视频铺量后，整体的时长分布和之前的可能变化很大。或者是需要拆解不同的维度类别</p>
+
+<p>方案1：再次人工送评一遍，<br/>
+方案2：进行时长分布映射<br/>
+这种方案有个问题，相当于是按照top百分比进行划分的，认为top百分比所代表的满意度保持一致。可能整体时长都变长了，映射完后阈值也变长了，相对的满意度并没变。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037730576.html">
+                
+                  <h1>统计阈值</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">1.dab类指标</h2>
+
+<p>newpo, po, rank, rr, f1 最终计算方式都是 \[dab_{xx} = 0.5\frac{\sum awin -\sum bwin}{\sum awin + \sum bwin + \sum tie}\]</p>
+
+<p>其中awin，bwin，tie可以按照不同的逻辑或方法进行计算。</p>
+
+<p>\[p_1 = \frac{\sum awin}{\sum awin + \sum bwin + \sum tie}\]</p>
+
+<p>\[p_2 = \frac{\sum bwin}{\sum awin + \sum bwin + \sum tie}\]</p>
+
+<p>基于有点有diff的流量：<br/>
+每次pv下，awin，bwin，tie必然出现且只出现其一。因此p1可以看做策略好的概率， p2可以看做基线好的概率。 概率本身是服从两点分布的，每次pv取0或1，样本量较大的时候(一般interleaving实验的样本量足够大了)，可以近似成正态分布，即有</p>
+
+<p>\[p_1 - N(P_1,P_1(1-P_1)/n1 )\]<br/>
+\[p_2 - N(P_2,P_2(1-P_2)/n1 )\]</p>
+
+<p>所以两者的差也是近似正态分布，有(注意P1与P2并不是相互独立的)</p>
+
+<p>\[p_1 - p_2 ~ N(P_1 - P_2, \frac{(P_1+P_2-(P_1-P_2)^2)}{n})\]</p>
+
+<p>所以dab的置信区间就是</p>
+
+<p>\[[\frac{p_1 -p_2}{2}- z_{\alpha}\sqrt \frac{p_1+p_2-(p_1-p_2)^2}{4n}, \frac{p_1 -p_2}{2}+ z_{\alpha}\sqrt \frac{p_1+p_2-(p_1-p_2)^2}{4n}]\]</p>
+
+<h3 id="toc_1">根据空转确定阈值</h3>
+
+<p>空转时候理论上两边是没diff的，但是因为随机波动，产出的指标数据肯定不可能完全等于0，大概率上也是服从一个正态分布。根据小概率原理，在5%和95%的置信点上可以认为是异常值，就策略和基线不是持平而是有显著diff。<br/>
+对应的阈值就是</p>
+
+<p>\[z_{\alpha}\sqrt \frac{p_1+p_2-(p_1-p_2)^2}{4n}= z_{\alpha}\sqrt \frac{p}{2n}\]</p>
+
+<p>所以这个阈值是与本身的p值的大小有关，与样本量也有关。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037730631.html">
+                
+                  <h1>比赛学习</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">天池</h2>
+
+<ul>
+<li>o2o优惠券</li>
+</ul>
+
+<p><a href="https://tianchi.aliyun.com/getStart/information.htm?raceId=231593">https://tianchi.aliyun.com/getStart/information.htm?raceId=231593</a></p>
+
+<p><a href="https://github.com/wepe/O2O-Coupon-Usage-Forecast/tree/master/code">https://github.com/wepe/O2O-Coupon-Usage-Forecast/tree/master/code</a></p>
+
+<ul>
+<li>fashion_tag</li>
+</ul>
+
+<p><a href="https://github.com/DavexPro/fashion-tag">https://github.com/DavexPro/fashion-tag</a></p>
+
+<p><a href="https://github.com/tworuler/tensorcv">https://github.com/tworuler/tensorcv</a></p>
+
+<h2 id="toc_1">kaggle</h2>
+
+<p>kaggle-ctr预估<br/>
+<a href="https://www.kaggle.com/c/avazu-ctr-prediction/discussion/12608">https://www.kaggle.com/c/avazu-ctr-prediction/discussion/12608</a><br/>
+<a href="https://github.com/guestwalk/kaggle-avazu">https://github.com/guestwalk/kaggle-avazu</a></p>
+
+<p>FM学习<a href="https://www.jianshu.com/p/152ae633fb00">https://www.jianshu.com/p/152ae633fb00</a></p>
+
+<h2 id="toc_2">kesci</h2>
+
+<p><a href="https://www.kesci.com/home/competition">https://www.kesci.com/home/competition</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html'>8 比赛学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037731128.html">
+                
+                  <h1>第八章 深度模型中的优化</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">8.1 优化与学习</h2>
+
+<p>本章主要关注这一类特定的优化问题:寻找神经网络上的一组参数 θ，它能显 著地降低代价函数 J(θ)，该代价函数通常包括整个训练集上的性能评估和额外的正 则化项。</p>
+
+<p>通常来说极其学习的算法目标大概可以写成，降低期望泛化误差。即<strong>风险</strong><br/>
+<img src="media/15209459008411/15209462294325.jpg" alt=""/></p>
+
+<p>其中p_data是真实的分布，实际中我们只能最小化<strong>经验风险</strong><br/>
+<img src="media/15209459008411/15209463229280.jpg" alt=""/></p>
+
+<h2 id="toc_1">8.2神经网络优化中的挑战</h2>
+
+<ul>
+<li>病态： hessain矩阵病态</li>
+<li>局部最小值：对于非凸函数可能存在多个局部最小值。</li>
+<li>。。。</li>
+</ul>
+
+<h2 id="toc_2">8.3基本算法</h2>
+
+<p>梯度下降机器变种一般是机器学习中应用较多的优化算法。</p>
+
+<h3 id="toc_3">(1)随机梯度下降SGD</h3>
+
+<p><img src="media/15209459008411/15221677256921.jpg" alt=""/></p>
+
+<h3 id="toc_4">（2）动量</h3>
+
+<p>动量是比SGD速度更快的一种方法，SGD相当于只是考虑梯度的方向，而动量是在此基础上加上速度。</p>
+
+<p><img src="media/15209459008411/15221680917826.jpg" alt=""/></p>
+
+<h2 id="toc_5">8.4 参数初始化</h2>
+
+<h2 id="toc_6">参考资料</h2>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15637037731266.html">
                 
@@ -236,367 +625,6 @@ RadiusNeighborsRegressor</p>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15637037731727.html">
-                
-                  <h1>聚类方法-spark的bisecting和streaming</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><a href="http://blog.csdn.net/franket268/article/details/23604671">http://blog.csdn.net/franket268/article/details/23604671</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037720747.html">
-                
-                  <h1>FM</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>学习地址 <a href="https://github.com/babakx/fm_tensorflow">https://github.com/babakx/fm_tensorflow</a></p>
-
-<h2 id="toc_0">1. 环境包安装</h2>
-
-<p>安装tensorflow</p>
-
-<h2 id="toc_1">2.试运行</h2>
-
-<p>这个是用tf实现的FM<br/>
-<a href="https://www.jianshu.com/p/152ae633fb00">https://www.jianshu.com/p/152ae633fb00</a></p>
-
-<ul>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked /> 试运行成功
-</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 了解原理
-</li>
-</ul>
-
-<p>小数据集版本（进入tf的仍然是dense矩阵，只适合小数据）<br/>
- <a href="https://github.com/babakx/fm_tensorflow">https://github.com/babakx/fm_tensorflow</a></p>
-
-<p>大数据量版本</p>
-
-<h2 id="toc_2">3.原理</h2>
-
-<h2 id="toc_3">PYTHON版本的包实现方式</h2>
-
-<ul>
-<li>LibFM</li>
-<li>libFFM</li>
-<li>xLearn</li>
-<li>tffm</li>
-</ul>
-
-<p>目前在python中的支持FM相关的包主要有</p>
-
-<p>__</p>
-
-<h3 id="toc_4">1.libFM</h3>
-
-<p>官网 <a href="http://www.libfm.org/">http://www.libfm.org/</a><br/>
-github <a href="https://github.com/srendle/libfm">https://github.com/srendle/libfm</a></p>
-
-<p>从官网下载安装包</p>
-
-<h3 id="toc_5">tffm</h3>
-
-<p><a href="https://github.com/geffy/tffm">https://github.com/geffy/tffm</a></p>
-
-<p>tffm是FM方法的tensorflow版本，他支持：</p>
-
-<ul>
-<li>dense or sparse输出</li>
-<li>order &gt;= 2</li>
-</ul>
-
-<pre><code># 安装 
-pip install tffm
-</code></pre>
-
-<p>按照github上的example</p>
-
-<p>log</p>
-
-<p>todo:</p>
-
-<ul>
-<li>调整参数k， int_std, red</li>
-<li>统一 content_len的量纲</li>
-<li>文章添加关键字</li>
-</ul>
-
-<h2 id="toc_6">* tffm，添加field</h2>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037708871.html">
-                
-                  <h1>图像识别模型—— 1.利用已有的进行微调</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>这里以VGG16网络为例，</p>
-
-<h2 id="toc_0">1.准备数据</h2>
-
-<pre><code> python data_convert.py -t pic --train-shards 2 --validation-shards 2 --num-threads 2 --dataset-name guangdong
-</code></pre>
-
-<p>执行完后会在pic下生成tf格式的训练+测试数据，以及label.txt<br/>
-<img src="media/15388051366041/15388065002449.jpg" alt=""/></p>
-
-<h2 id="toc_1">2.使用tensorflow的slim微调模型</h2>
-
-<p>简单介绍下google的这个图像分类工具包tensorflow-slim</p>
-
-<pre><code>├── README.md
-├── datasets                    # 定义训练时候使用的数据。如果是自己的数据，必须在此文件夹下定义
-├── deployment
-├── download_and_convert_data.py
-├── export_inference_graph.py
-├── export_inference_graph_test.py
-├── nets                        # 定义了一些常用的网络，比如vgg16，vgg19，resnet等
-├── preprocessing               # 在读入图像前，对图像做的一些预处理
-├── scripts
-│   ├── finetune_inception_v1_on_flowers.sh
-│   ├── finetune_inception_v3_on_flowers.sh
-│   ├── finetune_resnet_v1_50_on_flowers.sh
-│   ├── train_cifarnet_on_cifar10.sh
-│   └── train_lenet_on_mnist.sh
-├── setup.py
-├── slim_walkthrough.ipynb
-├── eval_image_classifier.py      # 验证模型入口
-└── train_image_classifier.py     # 训练模型入口
-</code></pre>
-
-<p>(1) 定义新的dataset文件</p>
-
-<p>仿照<code>datasets/flowers.py</code> 写一个自己的数据文件<code>guangdong.py</code> 并且在<code>dataset_factory.py</code>中进行注册</p>
-
-<p>(2)准备训练文件夹</p>
-
-<p>(3)train model</p>
-
-<pre><code>python train_image_classifier.py \
-  --train_dir=guangdong/train_dir \
-  --dataset_name=guangdong \
-  --dataset_split_name=train \
-  --dataset_dir=guangdong/data \
-  --model_name=inception_v3 \
-  --checkpoint_path=guangdong/pretrained/inception_v3.ckpt \
-  --checkpoint_exclude_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
-  --trainable_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
-  --max_number_of_steps=100000 \
-  --batch_size=32 \
-  --learning_rate=0.001 \
-  --learning_rate_decay_type=fixed \
-  --save_interval_secs=300 \
-  --save_summaries_secs=2 \
-  --log_every_n_steps=10 \
-  --optimizer=rmsprop \
-  --weight_decay=0.00004
-
-</code></pre>
-
-<p>如果执行后报错<code>Cannot assign a device for operation &#39;InceptionV3/AuxLogits/Conv2d_2b_1x1/weights/RMSProp1&#39;: Could not satisfy explicit device specification &#39;/device:GPU:0&#39; because no supported kernel for GPU devices is available</code> 之类的话</p>
-
-<p>可以参看这个的解决办法<a href="https://blog.csdn.net/xd_wjc/article/details/80550862">https://blog.csdn.net/xd_wjc/article/details/80550862</a></p>
-
-<p>tensorboard 查看任务运行情况</p>
-
-<pre><code>tensorboard --logdir guangdong/train_dir
-</code></pre>
-
-<p>训练完毕之后进行模型评估</p>
-
-<pre><code>python eval_image_classifier.py \
-  --checkpoint_path=guangdong/train_dir \
-  --eval_dir=guangdong/eval_dir \
-  --dataset_name=guangdong \
-  --dataset_split_name=validation \
-  --dataset_dir=guangdong/data \
-  --model_name=inception_v3
-</code></pre>
-
-<h3 id="toc_2">案例</h3>
-
-<p><a href="https://github.com/ns2250225/python3_tf_slim_image_classify">https://github.com/ns2250225/python3_tf_slim_image_classify</a></p>
-
-<h2 id="toc_3">阿里云服务</h2>
-
-<p><a href="https://help.aliyun.com/document_detail/49571.html#OSS">https://help.aliyun.com/document_detail/49571.html#OSS</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html'>6 文本&视频</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037690385.html">
-                
-                  <h1>face_recgnization</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>github<br/>
-<a href="https://github.com/ageitgey/face_recognition">https://github.com/ageitgey/face_recognition</a></p>
-
-<h2 id="toc_0">1. 安装</h2>
-
-<p>文档： <a href="https://zhuanlan.zhihu.com/p/28271869">https://zhuanlan.zhihu.com/p/28271869</a></p>
-
-<pre><code>pip install face_recognition
-</code></pre>
-
-<p>直接安装会报错，安装face_recognition这个之前需要先安装编译dlib</p>
-
-<pre><code>brew install boost
-brew install boost-python --with-python3
-
-# install dlib
-git clone https://github.com/davisking/dlib.git
-cd dlib
-mkdir build; cd build; cmake .. -DDLIB_USE_CUDA=0 -DUSE_AVX_INSTRUCTIONS=1; cmake --build 
-
-cd ..
-python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
-</code></pre>
-
-<p>If there is no cmake on your mac, you can use  <code>brew install cmake</code>. After all these have been done, run</p>
-
-<pre><code>pip install face_recognition
-</code></pre>
-
-<h2 id="toc_1">2.usage</h2>
-
-<p>face_recognition有两种使用方式，命令行方式和python包方式</p>
-
-<p>(1) 命令行方式</p>
-
-<p>(2) python 包<br/>
-<a href="https://face-recognition.readthedocs.io/en/latest/face_recognition.html#module-face_recognition.api">https://face-recognition.readthedocs.io/en/latest/face_recognition.html#module-face_recognition.api</a></p>
-
-<p></p>
-
-<h2 id="toc_2">参考资料</h2>
-
-<p><a href="https://zhuanlan.zhihu.com/p/28271869">https://zhuanlan.zhihu.com/p/28271869</a></p>
-
-<p><a href="https://medium.com/@ageitgey">https://medium.com/@ageitgey</a></p>
-
-<hr/>
-
-<p><a href="https://www.jianshu.com/p/281aa6a3823a">https://www.jianshu.com/p/281aa6a3823a</a></p>
-
-<p>一个案例<br/>
-<a href="https://www.jianshu.com/p/38ca6daf6b40">https://www.jianshu.com/p/38ca6daf6b40</a><br/>
-<a href="http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html">http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html</a></p>
-
-<p>tf案例<br/>
-<a href="https://blog.csdn.net/u010016927/article/details/75722416">https://blog.csdn.net/u010016927/article/details/75722416</a></p>
-
-<p>knn<br/>
-<a href="https://www.leiphone.com/news/201707/gIbNsPtWk460m5vj.html">https://www.leiphone.com/news/201707/gIbNsPtWk460m5vj.html</a></p>
-
-<p><a href="https://blog.csdn.net/Mbx8X9u/article/details/79124840">https://blog.csdn.net/Mbx8X9u/article/details/79124840</a></p>
-
-<p><a href="https://www.ctolib.com/topics-101544.html">https://www.ctolib.com/topics-101544.html</a></p>
-
-<p><a href="https://www.oschina.net/code/snippet_2558914_54339">https://www.oschina.net/code/snippet_2558914_54339</a></p>
-
-<h2 id="toc_3">new</h2>
-
-<p><a href="https://www.leiphone.com/news/201704/rYdpAvh4SvgVPpRQ.html">https://www.leiphone.com/news/201704/rYdpAvh4SvgVPpRQ.html</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html'>6 文本&视频</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -668,6 +696,8 @@ python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
             <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
+        
+            <a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html"><strong>轨迹数据</strong></a>
          
         </p>
 
@@ -684,31 +714,31 @@ python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
 	      
 		      
 			      <li class="post">
+			        <a href="15686309605233.html">matplotlib</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15687050894061.html">综述</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15686368904229.html">基于dtw进行聚类</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15636947700701.html">4.7 聚类1</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15637037683461.html">Jupyter notebook</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15680210974066.html">因子分析</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637025346412.html">1. conda 环境管理</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637037679256.html">Rmarkdown</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637037713554.html">数据可视化概述</a>
 			      </li>
 		     
 		  

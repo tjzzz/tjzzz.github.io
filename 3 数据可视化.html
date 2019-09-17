@@ -100,6 +100,8 @@
             <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
+        
+            <li><a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html">轨迹数据</a></li>
          
 
       </ul>
@@ -121,6 +123,214 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15686309605233.html">
+                
+                  <h1>matplotlib</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>matplotlib是python绘图的一个基础包，其用法和matlab语法有些相似。<br/>
+大量第三方包扩展并构建了Matplotlib功能，包括几个较高级别的绘图接口(seaborn、holoviews、ggplot 等)，以及两个投影和绘图工具包(basemap和cartopy)<br/>
+这里总结一些基本用法</p>
+
+<h2 id="toc_0">1.matplotlib.pylab</h2>
+
+<h2 id="toc_1">2.matplotlib.pyplot</h2>
+
+<p><img src="media/15686309605233/15686322692816.png" alt=""/></p>
+
+<pre><code>import matplotlib.pyplot as plt
+plt.plot(x, y, 其他属性)
+</code></pre>
+
+<p>pyplot是matplotlib中最常用的模块，</p>
+
+<h3 id="toc_2">常用的图形参数设置</h3>
+
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>axis([xmin, xmax, ymin, ymax])</td>
+<td>设置坐标轴范围</td>
+</tr>
+<tr>
+<td>plot(x, y1,属性, y2, 属性)</td>
+<td>绘制线图</td>
+</tr>
+<tr>
+<td>title</td>
+<td></td>
+</tr>
+<tr>
+<td>xlabel, ylabel</td>
+<td>横纵坐标轴的标签</td>
+</tr>
+<tr>
+<td>text(x, y, 文字)</td>
+<td>添加文字描述</td>
+</tr>
+<tr>
+<td>annotate(&#39;注释&#39;, xy=(2, 1), xytext=(3, 1.5)</td>
+<td>添加箭头注释</td>
+</tr>
+<tr>
+<td>plt.yscale(&#39;linear’)   # linear, log, logit</td>
+<td>更换坐标轴刻度</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>subplot 绘制子图</strong></p>
+
+<pre><code>plt.figure()
+plt.subplot(2, 3, 1)   #n行m列的子图
+plt.plot(x1, y1)
+
+plt.subplot(2, 3, 2)   #n行m列的子图
+plt.plot(x2, y2)
+</code></pre>
+
+<pre><code>data = np.random.randn(2, 100)
+fig, axs = plt.subplots(2, 2, figsize=(5, 5))
+axs[0, 0].hist(data[0])
+axs[1, 0].scatter(data[0], data[1])
+axs[0, 1].plot(data[0], data[1])
+axs[1, 1].hist2d(data[0], data[1])
+
+plt.show()
+</code></pre>
+
+<p><strong>显示图像，读取图片</strong></p>
+
+<p>需要先安装<code>pillow</code>包<br/>
+<code><br/>
+im = plt.imread(&#39;cat.jpg&#39;)  #将图像读取为数组<br/>
+ax.imshow(im)                  # imshow将数组显示为图像<br/>
+</code><br/>
+plt.colorbar()      #  可以添加颜色条</p>
+
+<p><strong>3d绘图</strong></p>
+
+<p>mplot3d</p>
+
+<h2 id="toc_3">3. 绘制案例</h2>
+
+<p>常用的图像类型  <a href="https://www.matplotlib.org.cn/tutorials/introductory/sample_plots.html">https://www.matplotlib.org.cn/tutorials/introductory/sample_plots.html</a></p>
+
+<h3 id="toc_4">1 绘制随时间动态变化的散点图</h3>
+
+<p>想要得到动画效果的图像，就是让多幅图连续播放，所以需要不断修改图中曲线的属性。首先需要了解下面像对象编程，在matplotlib中我们调用的任何函数，都会返回一个对象的实例。所以可以通过修改其相应的属性来改变曲线。比如常见的设置title，xlim等<br/>
+<code>plt.plot(x, y); plt.title(&#39;plot title&#39;)</code></p>
+
+<p>主要用到的函数<br/>
+<code>FuncAnimation(fig, func, frames=None,fargs=None)</code><br/>
+FuncAnimation的参数比较多，这里只列举出最重要的四个。</p>
+
+<ul>
+<li>fig: 指得是目前曲线所在在的figure。</li>
+<li>func: 这个函数主要是修改lines的属性，并返回。</li>
+<li>frames: 这是func参数中，跟每一帧相关的参数，靠它曲线才会发生变化。动画长度，一次循环包含的帧数</li>
+<li>fargs： 对应func中其他参数。</li>
+<li>interval 更新频率，以ms记</li>
+<li>blit: 选择更新所有点，还是仅更新产生变化的点。</li>
+<li>可选参数 repeat，指定是否循环动画</li>
+</ul>
+
+<p>官网的一个案例 <br/>
+<a href="https://matplotlib.org/gallery/animation/simple_anim.html">https://matplotlib.org/gallery/animation/simple_anim.html</a></p>
+
+<p>模仿写的一个小例子  <a href="https://www.smslit.top/2018/11/12/matplotlib-animation/">https://www.smslit.top/2018/11/12/matplotlib-animation/</a></p>
+
+<pre><code>import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib import animation
+
+def plot_trace_animation(x, y):
+
+    fig, ax = plt.subplots()
+    plt.xlim(min(x), max(x))
+    plt.ylim(min(y), max(y))
+    line, = ax.plot(x[0], y[0])
+
+    def init():  # only required for blitting to give a clean slate.
+        line.set_ydata([np.nan] * len(x))
+        return line,
+
+    def update(i):
+        print(i)
+        line.set_xdata(x[:i])
+        line.set_ydata(y[:i])
+        #scat.set_data(x[:i], y[:i])
+        return line,
+
+    anim = animation.FuncAnimation(fig, update, init_func=init,frames=10, interval=100)
+    plt.show()
+
+    #anim.to_html5_video()
+    #anim.to_jshtml()
+    anim.save(&#39;out.mp4&#39;)   # 需要先安装ffmpeg
+
+x = range(1, 11)
+y = range(5, 15)
+
+plot_trace_animation(x, y)
+</code></pre>
+
+<p>保存</p>
+
+<p>anim.save(&#39;out.mp4&#39;)   # 需要先安装ffmpeg<br/>
+anim.save的 save 方法可以指定 writer ，这里要保存 gif 默认选择的 writer 为 pillow ，所以需要安装 pillow 库：</p>
+
+<p>$ pip3 install pillow<br/>
+按照如下调用方法即可保存动画为 gif，这里保存动画的帧数是受 animation.FuncAnimation 的 frames 和 save_count 影响的：</p>
+
+<p>ani.save(&#39;animation.gif&#39;, writer=&#39;pillow&#39;)</p>
+
+<h2 id="toc_5">参考</h2>
+
+<p><a href="https://www.matplotlib.org.cn/home.html">https://www.matplotlib.org.cn/home.html</a></p>
+
+<pre><code>
+
+
+
+
+
+
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/9/16</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html'>3 数据可视化</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15637037713554.html">
                 
@@ -422,6 +632,8 @@ install_github(&#39;rCharts&#39;, &#39;ramnathv&#39;)
             <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
+        
+            <a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html"><strong>轨迹数据</strong></a>
          
         </p>
 
@@ -438,31 +650,31 @@ install_github(&#39;rCharts&#39;, &#39;ramnathv&#39;)
 	      
 		      
 			      <li class="post">
+			        <a href="15686309605233.html">matplotlib</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15687050894061.html">综述</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15686368904229.html">基于dtw进行聚类</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15636947700701.html">4.7 聚类1</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15637037683461.html">Jupyter notebook</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15680210974066.html">因子分析</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637025346412.html">1. conda 环境管理</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637037679256.html">Rmarkdown</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637037713554.html">数据可视化概述</a>
 			      </li>
 		     
 		  

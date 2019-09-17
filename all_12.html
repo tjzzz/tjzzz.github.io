@@ -100,6 +100,8 @@
             <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
+        
+            <li><a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html">轨迹数据</a></li>
          
 
       </ul>
@@ -121,6 +123,329 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15637025345079.html">
+                
+                  <h1>第一章 引言</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>别人的读后总结，可参考「Deep Learning」读书系列分享（一） | 分享总结</p>
+
+<p><a href="https://www.leiphone.com/news/201708/LEBNjZzvm0Q3Ipp0.html">https://www.leiphone.com/news/201708/LEBNjZzvm0Q3Ipp0.html</a></p>
+
+<h3 id="toc_0">需要明确的几个概念范围</h3>
+
+<p><img src="media/15075611675547/15075613801366.jpg" alt=""/></p>
+
+<p><img src="media/15075611675547/15075614908544.jpg" alt=""/></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637025345613.html">
+                
+                  <h1>query文本聚类</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 是不是cache问题tf-idf
+</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 添加下降维的步骤
+</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 稀疏矩阵
+</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 数据切分更小li&#39;du
+</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Mini Batch KMeans <a href="http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/">http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/</a>
+</li>
+</ul>
+
+<p>实验全量的<br/>
+<a href="http://yq01-tianqi-spark-yarn00.yq01.baidu.com:8388/proxy/application_1511855101950_42074/">http://yq01-tianqi-spark-yarn00.yq01.baidu.com:8388/proxy/application_1511855101950_42074/</a></p>
+
+<hr/>
+
+<p>刚哥的代码：<a href="https://github.com/honestOrg/gxdgroup/blob/master/src/main/scala/cn/com/gxdgroup/dataplatform/avm/utils/AVMUtils.scala">https://github.com/honestOrg/gxdgroup/blob/master/src/main/scala/cn/com/gxdgroup/dataplatform/avm/utils/AVMUtils.scala</a></p>
+
+<h2 id="toc_0">全量</h2>
+
+<p>前期构造词频矩阵：</p>
+
+<h2 id="toc_1">1.生成原始的词频矩阵</h2>
+
+<ul>
+<li><a href="http://spark.apache.org/docs/latest/ml-features.html#countvectorizer">http://spark.apache.org/docs/latest/ml-features.html#countvectorizer</a></li>
+<li><code>examples/src/main/python/sql/basic.py</code></li>
+</ul>
+
+<p>输入数据：每行是切分好的term</p>
+
+<pre><code>spark = SparkSession.builder.appName(&quot;CountVectorizerExample&quot;).getOrCreate()
+sc = spark.sparkContext
+# $example on$
+# Input data: Each row is a bag of words with a ID.
+
+lines = sc.textFile(&quot;/user/ubs/kce/zhenzhen/spark/test_data/corpus_title2&quot;)
+parts = lines.map(lambda l: l.split(&#39;#&#39;))   # convert all the term to a list
+termRDD = parts.map(lambda p: Row(tid=p[0], words=p[1].split(&#39; &#39;)))
+
+df = spark.createDataFrame(termRDD)
+# fit a CountVectorizerModel from the corpus.
+cv = CountVectorizer(inputCol=&quot;words&quot;, outputCol=&quot;features&quot;)
+#, vocabSize=3, minDF=2.0)
+
+model = cv.fit(df)
+
+result = model.transform(df)
+</code></pre>
+
+<h2 id="toc_2">2.tf-idf</h2>
+
+<ul>
+<li><a href="http://spark.apache.org/docs/latest/mllib-feature-extraction.html#tf-idf">http://spark.apache.org/docs/latest/mllib-feature-extraction.html#tf-idf</a></li>
+<li><a href="http://spark.apache.org/docs/latest/ml-features.html#feature-extractors">http://spark.apache.org/docs/latest/ml-features.html#feature-extractors</a>
+ml中的函数比mllib中的多
+examples/src/main/python/mllib/tf_idf_example.py</li>
+</ul>
+
+<pre><code>~/zhenzhen/spark_study/spark/examples/src/main/python/mllib $  pyspark zzz_tf_idf_example.py
+</code></pre>
+
+<h2 id="toc_3">3.降维</h2>
+
+<h2 id="toc_4">4.直接聚类</h2>
+
+<pre><code> # pyspark这个默认是启动的集群任务，之前测试的本地数据会出错，脚本中需把输入目录改成集群路径
+  ~/zhenzhen/spark_study $  pyspark kmeans.py  &gt; log.test
+</code></pre>
+
+<h2 id="toc_5">六神合体</h2>
+
+<ul>
+<li>词频矩阵+tfidf</li>
+</ul>
+
+<p><a href="http://www.zengyilun.com/spark-similarity/">http://www.zengyilun.com/spark-similarity/</a></p>
+
+<p>上述所有步骤(tfidf，降维,聚类)合并在一起</p>
+
+<pre><code> # pyspark这个默认是启动的集群任务，之前测试的本地数据会出错，脚本中需把输入目录改成集群路径
+  ~/zhenzhen/spark_study $  pyspark tfidf_kmeans.py  &gt; log.test
+  这个测试ok，但是中心点都是0，应该是数据问题
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637025345723.html">
+                
+                  <h1>第二章 线性代数</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>第二章主要是介绍了线性代数的一些基础知识</p>
+
+<p>这里补充几点吧</p>
+
+<h2 id="toc_0">特征分解</h2>
+
+<p>每个矩阵可以视为多个列向量组成的一个向量空间/或者是一个线性变化(一个矩阵乘以一个向量后相当于是对向量做了一个线性变换)。而矩阵的分解，相当于去提取这个向量空间最重要的特征。</p>
+
+<p>(1)首先是特征值和特征向量<br/>
+若<strong>方阵</strong>A满足 \(Av=\lambda v\),则\(v\)称为矩阵A的特征向量，\(\lambda\)称为对应的特征值。</p>
+
+<p><strong>特征分解</strong><br/>
+\[A=V \Lambda V^{-1}\]<br/>
+V是其特征向量构成的矩阵，\(\Lambda\)是特征值构成的对角矩阵</p>
+
+<p>性质：</p>
+
+<p>(1) 实对称矩阵A都可以分解为\(A=Q\Lambda Q^{-1}\)，Q为正交矩阵</p>
+
+<p>(2)用来计算矩阵的逆。若\(A=Q \Lambda Q^{-1}\)，则\(A^{-1}=Q \Lambda^{-1}Q^{-1}\)</p>
+
+<h2 id="toc_1">奇异值分解</h2>
+
+<p>特征分解对于提取矩阵的特征根是很好的方法，但是他只能针对<strong>方阵</strong>操作。当A不是方阵时候，就需要用到SVD<br/>
+\[A_{n*m}=U_{n*n}\Sigma_{n*m} V^{T}_{m*m}\]</p>
+
+<p>其中，U称为左奇异向量，V称为右奇异向量</p>
+
+<p>\(AA^T=UDV^TVDU^T=UD^2U^T\)<br/>
+\(A^TA=VDU^T UDV^T=VD^2V^T\)<br/>
+即：<br/>
+A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)的特征向量，A的奇异值是\(AA^T\)也是\(A^TA\)的特征之爱的平方根。</p>
+
+<blockquote>
+<p>对比：<br/>
+特征分解是有限制的，比如矩阵必须是方阵</p>
+</blockquote>
+
+<h3 id="toc_2">SVD与PCA的关系</h3>
+
+<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 查一下之前多元的变换原理
+</li>
+</ul>
+
+<p>PCA的全部工作简单点说，就是对原始的空间中顺序地找一组相互正交的坐标轴，第一个轴是使得方差最大的，第二个轴是在与第一个轴正交的平面中使得方差最大的，第三个轴是在与第1、2个轴正交的平面中方差最大的，这样假设在N维空间中，我们可以找到N个这样的坐标轴，我们取前r个去近似这个空间，这样就从一个N维的空间压缩到r维的空间了，但是我们选择的r个坐标轴能够使得空间的压缩使得数据的损失最小。</p>
+
+<h3 id="toc_3">SVD与潜在语义检索LSI</h3>
+
+<h2 id="toc_4">参考资料</h2>
+
+<p><a href="http://www.cnblogs.com/LeftNotEasy/archive/2011/01/19/svd-and-applications.html">http://www.cnblogs.com/LeftNotEasy/archive/2011/01/19/svd-and-applications.html</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637025345792.html">
+                
+                  <h1>第三章 概率与信息论</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>本章主要是介绍了一些概率论的基础以及常见的分布</p>
+
+<h2 id="toc_0">1.常用函数的有用性质</h2>
+
+<ul>
+<li>sigmoid 函数</li>
+</ul>
+
+<p>\[\delta(x) = \frac{1}{1+exp(-x)}\]</p>
+
+<ul>
+<li>softplus函数
+\[log(1+exp(x))\]
+<img src="media/15080561019055/15080571562017.jpg" alt=""/></li>
+</ul>
+
+<p>是\(y=max(0,x)\)的平滑版本</p>
+
+<h2 id="toc_1">2.信息论</h2>
+
+<p>信息论是应用数学的一个分支，主要研究的是对一个信号包含信息的多少进行量化。<br/>
+<img src="media/15080561019055/15080594230903.jpg" alt=""/></p>
+
+<p>自信息：定义一个时间X=x的自信息<br/>
+\[I(x) = -log P(x)\]</p>
+
+<p>熵：<br/>
+\[-\sum P(x_i) logP(x_i)\]</p>
+
+<h3 id="toc_2">KL散度/相对熵</h3>
+
+<p>\[KL(P||Q) = -\sum P_i ln(\frac{P_i}{Q_i})=-\sum P_i(ln(P_i)- ln(Q_i))\]</p>
+
+<p>注意：</p>
+
+<ul>
+<li>KL距离其实并不是严格的距离，不满足对称性以及三角不等式。</li>
+</ul>
+
+<p>JS距离：<br/>
+\[JS(P1||P2) = \frac{1}{2}KL(P1||(P1+P2)/2)+ \frac{1}{2}KL(P2||(P1+P2)/2)\]</p>
+
+<h3 id="toc_3">交叉熵</h3>
+
+<p>相对熵的第一部分<br/>
+\[KL(P||Q) = -\sum P_i ln(Q_i)\]</p>
+
+<h2 id="toc_4">3.结构化概率模型——图模型(graphical model)</h2>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15637025346040.html">
                 
@@ -219,411 +544,6 @@ sklearn中常用的包</p>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15637025346077.html">
-                
-                  <h1>第七章 正则化</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>机器学习不止要求在训练数据上有良好的表现，还希望有较好的泛化能力，即在测试数据上也能减少测试误差。这些策略被统称为<strong>正则化</strong></p>
-
-<p>常见的一些正则化方法：</p>
-
-<h2 id="toc_0">1.参数范数惩罚</h2>
-
-<p>即在原有的优化函数中，添加一个对参数的惩罚，来限制模型的学习能力<br/>
-<img src="media/15120469131645/15206725126887.jpg" alt=""/></p>
-
-<p>(1) L2参数正则化<br/>
-L2正则化/岭回归，又叫权重衰减； 可以参照岭回归<br/>
-<img src="media/15120469131645/15206732558707.jpg" alt=""/></p>
-
-<p>(X⊤X + αI)−1 这个新矩阵与原来的是一样的，不同的仅仅是在对 角加了 α。这个矩阵的对角项对应每个输入特征的方差。我们可以看到，L2正则化能 让学习算法 ‘‘感知’’ 到具有较高方差的输入 x，因此与输出目标的协方差较小(相对 增加方差)的特征的权重将会收缩。</p>
-
-<p>（2）L1正则化： 具有稀疏性，很多会衰减成0，所以有时候会用来做变量选择lasso</p>
-
-<h2 id="toc_1">2.作为约束的范数惩罚</h2>
-
-<p>从另一个角度来看这个问题，可以被看做是构造一个广义拉格朗日函数来最小化带约束的函数</p>
-
-<p><img src="media/15120469131645/15206742273357.jpg" alt=""/></p>
-
-<p><img src="media/15120469131645/15206742365336.jpg" alt=""/></p>
-
-<p>最小化约束 + 重投影的角度</p>
-
-<h2 id="toc_2">3.正则化和欠约束问题</h2>
-
-<p>正则化还有个好处可以保证X&#39;X+aI 是可逆的</p>
-
-<h2 id="toc_3">4.数据集增强</h2>
-
-<p>可以通过一些方法在不改变label的情况下自己构造一批数据集，比如图像识别时候对图像的旋转；有些时候也可以通过输入噪声的方式来进行数据集增强。</p>
-
-<h2 id="toc_4">5.噪声鲁棒性</h2>
-
-<ul>
-<li>向模型的输入或者是权重中加入噪音。</li>
-<li>向输出目标中加入噪音，即标注数据有一定的错误，不是百分百准确的时候。<strong>标签平滑</strong>方法是将0，1分类，变为e/(k-1)和1-e的k个输出的softmax函数。（e是标注的错误率）</li>
-</ul>
-
-<h2 id="toc_5">6.半监督学习</h2>
-
-<p>大概意思是说：P(x) 产生的未标记样本和P(x,y)中的标记样本都用 于估计 P(y|x)或者根据x预测y。</p>
-
-<h2 id="toc_6">7.多任务学习</h2>
-
-<p>就是通过合并几个任务中的样例（可以视为对参数施加的软约束），我感觉就是类似于group_lasso这样的，对参数加了一个别的约束，部分样本需要共享同一个参数</p>
-
-<h2 id="toc_7">8.提前终止</h2>
-
-<p><img src="media/15120469131645/15206764319925.jpg" alt=""/><br/>
-当训练的能力较强时候会发现，随着训练次数的增加，训练误差在逐步减小，但是测试误差会呈现一个U型状态。即先减小后增加。</p>
-
-<p>不是从模型的优化函数入手，相当于是一个实践的经验技巧。</p>
-
-<p>提前终止具有正则化的效果</p>
-
-<h2 id="toc_8">9.参数绑定和参数共享</h2>
-
-<h2 id="toc_9">10.稀疏表示</h2>
-
-<p>前文所述的权重衰减直接惩罚模型参数。另一种策略是惩罚神经网络中的激活 单元，稀疏化激活单元。这种策略间接地对模型参数施加了复杂惩罚。<br/>
-<img src="media/15120469131645/15207643423743.jpg" alt=""/></p>
-
-<h2 id="toc_10">11.Bagging 和其他集成方法</h2>
-
-<p>结合多个模型，进行模型平均</p>
-
-<h2 id="toc_11">12.dropout</h2>
-
-<p>@@@@</p>
-
-<h2 id="toc_12">13.对抗训练</h2>
-
-<h1 id="toc_13">14 切面距离、正切传播和流形正切分类器</h1>
-
-<p>略</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025346262.html">
-                
-                  <h1>卡方检验</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>以2分类的列联表为例:</p>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>通过</th>
-<th>失败</th>
-<th>总计</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>实验A</td>
-<td>a</td>
-<td>b</td>
-<td>m</td>
-</tr>
-<tr>
-<td>实验B</td>
-<td>c</td>
-<td>d</td>
-<td>n</td>
-</tr>
-<tr>
-<td>总计</td>
-<td>r</td>
-<td>s</td>
-<td>N</td>
-</tr>
-</tbody>
-</table>
-
-<p>H0：实验A和实验B对于是否通过没有差异， H1： 实验A和实验B有显著差异</p>
-
-<p>在零假设成立的条件下，即A和B没有差异，那么对通过和失败的概率估计是r/N 和s/N。所以实验A的理论的通过人数和失败人数分别是\(rm/N\),\(sm/N\)。 同理，实验B的理论的通过人数和失败人数分别是\(rn/N\),\(sn/N\)。</p>
-
-<p>理论与现实的差异</p>
-
-<p>一般地</p>
-
-<blockquote>
-<p>卡方检验是皮尔逊1900年提出来的，这里简单回顾下其基本原理。</p>
-</blockquote>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025346338.html">
-                
-                  <h1>资源List</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>2017-12-12想学习更多点这☞人工智能大数据与深度学习</p>
-
-<p>向AI转型的程序员都关注了这个号???</p>
-
-<pre><code>    人工智能大数据与深度学习  公众号： weic2c
-</code></pre>
-
-<p>这是使用 TensorFlow 实现流行的机器学习算法的教程汇集。本汇集的目标是让读者可以轻松通过案例深入 TensorFlow。</p>
-
-<p>这些案例适合那些想要清晰简明的 TensorFlow 实现案例的初学者。本教程还包含了笔记和带有注解的代码。</p>
-
-<ul>
-<li>项目地址：<a href="https://github.com/aymericdamien/TensorFlow-Examples">https://github.com/aymericdamien/TensorFlow-Examples</a></li>
-</ul>
-
-<p>教程索引<br/>
-0 - 先决条件<br/>
-机器学习入门：<br/>
-* 笔记：<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/0_Prerequisite/ml_introduction.ipynb">https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/0_Prerequisite/ml_introduction.ipynb</a><br/>
-* MNIST 数据集入门<br/>
-* 笔记：<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/0_Prerequisite/mnist_dataset_intro.ipynb">https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/0_Prerequisite/mnist_dataset_intro.ipynb</a><br/>
-1 - 入门<br/>
-Hello World：<br/>
-* 笔记：<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/1_Introduction/helloworld.ipynb">https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/1_Introduction/helloworld.ipynb</a><br/>
-* 代码<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/1_Introduction/helloworld.py">https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/1_Introduction/helloworld.py</a><br/>
-基本操作：<br/>
-* 笔记：<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/1_Introduction/basic_operations.ipynb">https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/1_Introduction/basic_operations.ipynb</a><br/>
-* 代码：<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/1_Introduction/basic_operations.py">https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/1_Introduction/basic_operations.py</a><br/>
-2 - 基本模型<br/>
-最近邻：<br/>
-* 笔记：<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/2_BasicModels/nearest_neighbor.ipynb">https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/2_BasicModels/nearest_neighbor.ipynb</a><br/>
-* 代码：<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/2_BasicModels/nearest_neighbor.py">https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/2_BasicModels/nearest_neighbor.py</a><br/>
-线性回归：<br/>
-* 笔记：<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/2_BasicModels/linear_regression.ipynb">https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/2_BasicModels/linear_regression.ipynb</a><br/>
-* 代码：<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/2_BasicModels/linear_regression.py">https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/2_BasicModels/linear_regression.py</a><br/>
-Logistic 回归：<br/>
-* 笔记：<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/2_BasicModels/logistic_regression.ipynb">https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/2_BasicModels/logistic_regression.ipynb</a><br/>
-* 代码：<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/2_BasicModels/logistic_regression.py">https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/2_BasicModels/logistic_regression.py</a></p>
-
-<p>3 - 神经网络<br/>
-多层感知器：<br/>
-* 笔记：<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/3_NeuralNetworks/multilayer_perceptron.ipynb">https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/3_NeuralNetworks/multilayer_perceptron.ipynb</a><br/>
-* 代码：<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/3_NeuralNetworks/multilayer_perceptron.py">https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/3_NeuralNetworks/multilayer_perceptron.py</a><br/>
-卷积神经网络：<br/>
-* 笔记：<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/3_NeuralNetworks/convolutional_network.ipynb">https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/3_NeuralNetworks/convolutional_network.ipynb</a><br/>
-* 代码：<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/3_NeuralNetworks/convolutional_network.py">https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/3_NeuralNetworks/convolutional_network.py</a><br/>
-循环神经网络（LSTM）：<br/>
-* 笔记：<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/3_NeuralNetworks/recurrent_network.ipynb">https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/3_NeuralNetworks/recurrent_network.ipynb</a><br/>
-* 代码：<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/3_NeuralNetworks/recurrent_network.py">https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/3_NeuralNetworks/recurrent_network.py</a><br/>
-双向循环神经网络（LSTM）：<br/>
-* 笔记：<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/3_NeuralNetworks/bidirectional_rnn.ipynb">https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/3_NeuralNetworks/bidirectional_rnn.ipynb</a><br/>
-* 代码：<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/3_NeuralNetworks/bidirectional_rnn.py">https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/3_NeuralNetworks/bidirectional_rnn.py</a><br/>
-动态循环神经网络（LSTM）<br/>
-* 代码：<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/3_NeuralNetworks/dynamic_rnn.py">https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/3_NeuralNetworks/dynamic_rnn.py</a><br/>
-自编码器<br/>
-* 笔记：<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/3_NeuralNetworks/autoencoder.ipynb">https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/3_NeuralNetworks/autoencoder.ipynb</a><br/>
-* 代码：<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/3_NeuralNetworks/autoencoder.py">https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/3_NeuralNetworks/autoencoder.py</a><br/>
-4 - 实用技术<br/>
-保存和恢复模型<br/>
-* 笔记：<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/4_Utils/save_restore_model.ipynb">https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/4_Utils/save_restore_model.ipynb</a><br/>
-* 代码：<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/4_Utils/save_restore_model.py">https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/4_Utils/save_restore_model.py</a><br/>
-图和损失可视化<br/>
-* 笔记：<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/4_Utils/tensorboard_basic.ipynb">https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/4_Utils/tensorboard_basic.ipynb</a><br/>
-* 代码：<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/4_Utils/tensorboard_basic.py">https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/4_Utils/tensorboard_basic.py</a><br/>
-Tensorboard——高级可视化<br/>
-* 代码：<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/4_Utils/tensorboard_advanced.py">https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/4_Utils/tensorboard_advanced.py</a><br/>
-5 - 多 GPU<br/>
-多 GPU 上的基本操作<br/>
-* 笔记：<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/5_MultiGPU/multigpu_basics.ipynb">https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/5_MultiGPU/multigpu_basics.ipynb</a><br/>
-* 代码：<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/5_MultiGPU/multigpu_basics.py">https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/5_MultiGPU/multigpu_basics.py</a><br/>
-数据集<br/>
-一些案例需要 MNIST 数据集进行训练和测试。不要担心，运行这些案例时，该数据集会被自动下载下来（使用input_data.py）。MNIST 是一个手写数字的数据库，查看这个笔记了解关于该数据集的描述：<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/0_Prerequisite/mnist_dataset_intro.ipynb">https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/0_Prerequisite/mnist_dataset_intro.ipynb</a><br/>
-* 官方网站：<a href="http://yann.lecun.com/exdb/mnist/">http://yann.lecun.com/exdb/mnist/</a><br/>
-更多案例</p>
-
-<p>接下来的示例来自 TFLearn，这是一个为 TensorFlow 提供了简化的接口的库。你可以看看，这里有很多示例和预构建的运算和层。<br/>
-* 示例：<a href="https://github.com/tflearn/tflearn/tree/master/examples">https://github.com/tflearn/tflearn/tree/master/examples</a><br/>
-* 预构建的运算和层：<a href="http://tflearn.org/doc_index/#api">http://tflearn.org/doc_index/#api</a><br/>
-教程</p>
-
-<p>TFLearn 快速入门。通过一个具体的机器学习任务学习 TFLearn 基础。开发和训练一个深度神经网络分类器。<br/>
-* 笔记：<a href="https://github.com/tflearn/tflearn/blob/master/tutorials/intro/quickstart.md">https://github.com/tflearn/tflearn/blob/master/tutorials/intro/quickstart.md</a><br/>
-基础</p>
-
-<ul>
-<li>线性回归，使用 TFLearn 实现线性回归：<a href="https://github.com/tflearn/tflearn/blob/master/examples/basics/linear_regression.py">https://github.com/tflearn/tflearn/blob/master/examples/basics/linear_regression.py</a></li>
-<li>逻辑运算符。使用 TFLearn 实现逻辑运算符：<a href="https://github.com/tflearn/tflearn/blob/master/examples/basics/logical.py">https://github.com/tflearn/tflearn/blob/master/examples/basics/logical.py</a></li>
-<li>权重保持。保存和还原一个模型：<a href="https://github.com/tflearn/tflearn/blob/master/examples/basics/weights_persistence.py">https://github.com/tflearn/tflearn/blob/master/examples/basics/weights_persistence.py</a></li>
-<li>微调。在一个新任务上微调一个预训练的模型：<a href="https://github.com/tflearn/tflearn/blob/master/examples/basics/finetuning.py">https://github.com/tflearn/tflearn/blob/master/examples/basics/finetuning.py</a></li>
-<li>使用 HDF5。使用 HDF5 处理大型数据集：<a href="https://github.com/tflearn/tflearn/blob/master/examples/basics/use_hdf5.py">https://github.com/tflearn/tflearn/blob/master/examples/basics/use_hdf5.py</a></li>
-<li><p>使用 DASK。使用 DASK 处理大型数据集：<a href="https://github.com/tflearn/tflearn/blob/master/examples/basics/use_dask.py">https://github.com/tflearn/tflearn/blob/master/examples/basics/use_dask.py</a><br/>
-计算机视觉</p></li>
-<li><p>多层感知器。一种用于 MNIST 分类任务的多层感知实现：<a href="https://github.com/tflearn/tflearn/blob/master/examples/images/dnn.py">https://github.com/tflearn/tflearn/blob/master/examples/images/dnn.py</a></p></li>
-<li><p>卷积网络（MNIST）。用于分类 MNIST 数据集的一种卷积神经网络实现：<a href="https://github.com/tflearn/tflearn/blob/master/examples/images/convnet_mnist.py">https://github.com/tflearn/tflearn/blob/master/examples/images/convnet_mnist.py</a></p></li>
-<li><p>卷积网络（CIFAR-10）。用于分类 CIFAR-10 数据集的一种卷积神经网络实现：<a href="https://github.com/tflearn/tflearn/blob/master/examples/images/convnet_cifar10.py">https://github.com/tflearn/tflearn/blob/master/examples/images/convnet_cifar10.py</a></p></li>
-<li><p>网络中的网络。用于分类 CIFAR-10 数据集的 Network in Network 实现：<a href="https://github.com/tflearn/tflearn/blob/master/examples/images/network_in_network.py">https://github.com/tflearn/tflearn/blob/master/examples/images/network_in_network.py</a></p></li>
-<li><p>Alexnet。将 Alexnet 应用于 Oxford Flowers 17 分类任务：<a href="https://github.com/tflearn/tflearn/blob/master/examples/images/alexnet.py">https://github.com/tflearn/tflearn/blob/master/examples/images/alexnet.py</a></p></li>
-<li><p>VGGNet。将 VGGNet 应用于 Oxford Flowers 17 分类任务：<a href="https://github.com/tflearn/tflearn/blob/master/examples/images/vgg_network.py">https://github.com/tflearn/tflearn/blob/master/examples/images/vgg_network.py</a></p></li>
-<li><p>VGGNet Finetuning (Fast Training)。使用一个预训练的 VGG 网络并将其约束到你自己的数据上，以便实现快速训练：<a href="https://github.com/tflearn/tflearn/blob/master/examples/images/vgg_network_finetuning.py">https://github.com/tflearn/tflearn/blob/master/examples/images/vgg_network_finetuning.py</a></p></li>
-<li><p>RNN Pixels。使用 RNN（在像素的序列上）分类图像：<a href="https://github.com/tflearn/tflearn/blob/master/examples/images/rnn_pixels.py">https://github.com/tflearn/tflearn/blob/master/examples/images/rnn_pixels.py</a></p></li>
-<li><p>Highway Network。用于分类 MNIST 数据集的 Highway Network 实现：<a href="https://github.com/tflearn/tflearn/blob/master/examples/images/highway_dnn.py">https://github.com/tflearn/tflearn/blob/master/examples/images/highway_dnn.py</a></p></li>
-<li><p>Highway Convolutional Network。用于分类 MNIST 数据集的 Highway Convolutional Network 实现：<a href="https://github.com/tflearn/tflearn/blob/master/examples/images/convnet_highway_mnist.py">https://github.com/tflearn/tflearn/blob/master/examples/images/convnet_highway_mnist.py</a></p></li>
-<li><p>Residual Network (MNIST) (<a href="https://github.com/tflearn/tflearn/blob/master/examples/images/residual_network_mnist.py).%E3%80%82%E5%BA%94%E7%94%A8%E4%BA%8E">https://github.com/tflearn/tflearn/blob/master/examples/images/residual_network_mnist.py).。应用于</a> MNIST 分类任务的一种瓶颈残差网络（bottleneck residual network）：<a href="https://github.com/tflearn/tflearn/blob/master/examples/images/residual_network_mnist.py">https://github.com/tflearn/tflearn/blob/master/examples/images/residual_network_mnist.py</a></p></li>
-<li><p>Residual Network (CIFAR-10)。应用于 CIFAR-10 分类任务的一种残差网络：<a href="https://github.com/tflearn/tflearn/blob/master/examples/images/residual_network_cifar10.py">https://github.com/tflearn/tflearn/blob/master/examples/images/residual_network_cifar10.py</a></p></li>
-<li><p>Google Inception（v3）。应用于 Oxford Flowers 17 分类任务的谷歌 Inception v3 网络：<a href="https://github.com/tflearn/tflearn/blob/master/examples/images/googlenet.py">https://github.com/tflearn/tflearn/blob/master/examples/images/googlenet.py</a></p></li>
-<li><p>自编码器。用于 MNIST 手写数字的自编码器：<a href="https://github.com/tflearn/tflearn/blob/master/examples/images/autoencoder.py">https://github.com/tflearn/tflearn/blob/master/examples/images/autoencoder.py</a><br/>
-自然语言处理</p></li>
-<li><p>循环神经网络（LSTM），应用 LSTM 到 IMDB 情感数据集分类任务：<a href="https://github.com/tflearn/tflearn/blob/master/examples/nlp/lstm.py">https://github.com/tflearn/tflearn/blob/master/examples/nlp/lstm.py</a></p></li>
-<li><p>双向 RNN（LSTM），将一个双向 LSTM 应用到 IMDB 情感数据集分类任务：<a href="https://github.com/tflearn/tflearn/blob/master/examples/nlp/bidirectional_lstm.py">https://github.com/tflearn/tflearn/blob/master/examples/nlp/bidirectional_lstm.py</a></p></li>
-<li><p>动态 RNN（LSTM），利用动态 LSTM 从 IMDB 数据集分类可变长度文本：<a href="https://github.com/tflearn/tflearn/blob/master/examples/nlp/dynamic_lstm.py">https://github.com/tflearn/tflearn/blob/master/examples/nlp/dynamic_lstm.py</a></p></li>
-<li><p>城市名称生成，使用 LSTM 网络生成新的美国城市名：<a href="https://github.com/tflearn/tflearn/blob/master/examples/nlp/lstm_generator_cityname.py">https://github.com/tflearn/tflearn/blob/master/examples/nlp/lstm_generator_cityname.py</a></p></li>
-<li><p>莎士比亚手稿生成，使用 LSTM 网络生成新的莎士比亚手稿：<a href="https://github.com/tflearn/tflearn/blob/master/examples/nlp/lstm_generator_shakespeare.py">https://github.com/tflearn/tflearn/blob/master/examples/nlp/lstm_generator_shakespeare.py</a></p></li>
-<li><p>Seq2seq，seq2seq 循环网络的教学示例：<a href="https://github.com/tflearn/tflearn/blob/master/examples/nlp/seq2seq_example.py">https://github.com/tflearn/tflearn/blob/master/examples/nlp/seq2seq_example.py</a></p></li>
-<li><p>CNN Seq，应用一个 1-D 卷积网络从 IMDB 情感数据集中分类词序列：<a href="https://github.com/tflearn/tflearn/blob/master/examples/nlp/cnn_sentence_classification.py">https://github.com/tflearn/tflearn/blob/master/examples/nlp/cnn_sentence_classification.py</a><br/>
-强化学习</p></li>
-</ul>
-
-<p>Atari Pacman 1-step Q-Learning，使用 1-step Q-learning 教一台机器玩 Atari 游戏：<a href="https://github.com/tflearn/tflearn/blob/master/examples/reinforcement_learning/atari_1step_qlearning.py">https://github.com/tflearn/tflearn/blob/master/examples/reinforcement_learning/atari_1step_qlearning.py</a><br/>
-其他<br/>
-Recommender-Wide&amp;Deep Network，推荐系统中 wide &amp; deep 网络的教学示例：<a href="https://github.com/tflearn/tflearn/blob/master/examples/others/recommender_wide_and_deep.py">https://github.com/tflearn/tflearn/blob/master/examples/others/recommender_wide_and_deep.py</a><br/>
-Notebooks<br/>
-* Spiral Classification Problem，对斯坦福 CS231n spiral 分类难题的 TFLearn 实现：<a href="https://github.com/tflearn/tflearn/blob/master/examples/notebooks/spiral.ipynb">https://github.com/tflearn/tflearn/blob/master/examples/notebooks/spiral.ipynb</a></p>
-
-<p>可延展的 TensorFlow</p>
-
-<ul>
-<li>层，与 TensorFlow 一起使用  TFLearn 层：<a href="https://github.com/tflearn/tflearn/blob/master/examples/extending_tensorflow/layers.py">https://github.com/tflearn/tflearn/blob/master/examples/extending_tensorflow/layers.py</a></li>
-<li>训练器，使用 TFLearn 训练器类训练任何 TensorFlow 图：<a href="https://github.com/tflearn/tflearn/blob/master/examples/extending_tensorflow/layers.py">https://github.com/tflearn/tflearn/blob/master/examples/extending_tensorflow/layers.py</a></li>
-<li>Bulit-in Ops，连同 TensorFlow 使用 TFLearn built-in 操作：<a href="https://github.com/tflearn/tflearn/blob/master/examples/extending_tensorflow/builtin_ops.py">https://github.com/tflearn/tflearn/blob/master/examples/extending_tensorflow/builtin_ops.py</a></li>
-<li>Summaries，连同 TensorFlow 使用 TFLearn summarizers：<a href="https://github.com/tflearn/tflearn/blob/master/examples/extending_tensorflow/summaries.py">https://github.com/tflearn/tflearn/blob/master/examples/extending_tensorflow/summaries.py</a></li>
-<li>Variables，连同 TensorFlow 使用 TFLearn Variables：<a href="https://github.com/tflearn/tflearn/blob/master/examples/extending_tensorflow/variables.py">https://github.com/tflearn/tflearn/blob/master/examples/extending_tensorflow/variables.py</a></li>
-</ul>
-
-<p>搜索公众号添加： weic2c<br/><br/>
-人工智能大数据与深度学习</p>
-
-<p>长按图片，识别二维码，点关注</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html'>数据科学-清单</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025346737.html">
-                
-                  <h1>第五章 机器学习</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>这部分主要是补充了机器学习的一席基础知识点，这里先略过。后期再进行相应的补充。具体包括</p>
-
-<ul>
-<li><p>容量/过拟合/欠拟合</p></li>
-<li><p>估计/偏差/方差</p></li>
-<li><p>最大似然估计</p></li>
-<li><p>贝叶斯统计</p></li>
-<li><p>监督学习算法</p></li>
-<li><p>无监督学习算法</p>
-
-<ul>
-<li>PCA</li>
-<li>聚类</li>
-</ul></li>
-<li><p>梯度下降</p></li>
-</ul>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -695,6 +615,8 @@ Notebooks<br/>
             <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
+        
+            <a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html"><strong>轨迹数据</strong></a>
          
         </p>
 
@@ -711,31 +633,31 @@ Notebooks<br/>
 	      
 		      
 			      <li class="post">
+			        <a href="15686309605233.html">matplotlib</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15687050894061.html">综述</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15686368904229.html">基于dtw进行聚类</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15636947700701.html">4.7 聚类1</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15637037683461.html">Jupyter notebook</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15680210974066.html">因子分析</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637025346412.html">1. conda 环境管理</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637037679256.html">Rmarkdown</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637037713554.html">数据可视化概述</a>
 			      </li>
 		     
 		  

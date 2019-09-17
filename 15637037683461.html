@@ -100,6 +100,8 @@
             <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
+        
+            <li><a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html">轨迹数据</a></li>
          
 
       </ul>
@@ -245,6 +247,37 @@ google 基于jupyter开发的存在在google driver上的网页版<br/>
 <p>Q1: 若import了自己写的外部模块，如果这个外部模块有更新，再次执行import，jupyter是不会重新导入的<br/>
 <a href="https://blog.csdn.net/ybdesire/article/details/86709727">https://blog.csdn.net/ybdesire/article/details/86709727</a></p>
 
+<p>对于 Python2.x<br/>
+import some_module<br/>
+reload(some_module)</p>
+
+<p>对于 Python 3.2 and 3.3:<br/>
+import some_module<br/>
+import importlib<br/>
+importlib.reload(some_module)</p>
+
+<p>对于 Python3.4+<br/>
+import some_module<br/>
+import imp<br/>
+imp.reload(some_module)</p>
+
+<p>Q2. <code>jupyter lab</code> 启动提示</p>
+
+<p><img src="media/15637037680349/15665439689997.jpg" alt=""/></p>
+
+<p>应该是编码问题，暂时的解决方案<a href="https://github.com/jupyter/notebook/issues/2789#issuecomment-338380336">https://github.com/jupyter/notebook/issues/2789#issuecomment-338380336</a></p>
+
+<p><code>LANG=zn jupyter lab</code></p>
+
+<p>这个问题后来查了下说是python2的bug，安装python3就不会出现这个问题。</p>
+
+<p>Q3. 切换内核<br/>
+很多代码都是python2写的，用pip3安装jupyter之后，想切换写内核。<br/>
+<a href="https://www.cnblogs.com/Jeffiy/p/4861528.html">https://www.cnblogs.com/Jeffiy/p/4861528.html</a></p>
+
+<pre><code>jupyter kernelspec list
+</code></pre>
+
 
     
 
@@ -254,13 +287,16 @@ google 基于jupyter开发的存在在google driver上的网页版<br/>
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
+          <a href="15636947700701.html" 
+          title="Previous Post: 4.7 聚类1">&laquo; 4.7 聚类1</a>
+      
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="15680210974066.html" 
-          title="Next Post: 因子分析">因子分析 &raquo;</a>
+          <a  href="15637037680349.html" 
+          title="Next Post: jupyterLab-安装R支持">jupyterLab-安装R支持 &raquo;</a>
       
       </p>
         </div>
@@ -333,6 +369,8 @@ google 基于jupyter开发的存在在google driver上的网页版<br/>
             <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
+        
+            <a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html"><strong>轨迹数据</strong></a>
          
         </p>
 
@@ -349,31 +387,31 @@ google 基于jupyter开发的存在在google driver上的网页版<br/>
 	      
 		      
 			      <li class="post">
+			        <a href="15686309605233.html">matplotlib</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15687050894061.html">综述</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15686368904229.html">基于dtw进行聚类</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15636947700701.html">4.7 聚类1</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15637037683461.html">Jupyter notebook</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15680210974066.html">因子分析</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637025346412.html">1. conda 环境管理</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637037679256.html">Rmarkdown</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637037713554.html">数据可视化概述</a>
 			      </li>
 		     
 		  

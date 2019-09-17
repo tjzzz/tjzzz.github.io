@@ -100,6 +100,8 @@
             <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
+        
+            <li><a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html">轨迹数据</a></li>
          
 
       </ul>
@@ -121,6 +123,231 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15637025345687.html">
+                
+                  <h1>第六章 深度前馈网络</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>前馈神经网络，也叫做<strong>多层感知机</strong>(MLP),其目标是近似某个函数\(f^*\)。前馈网络定义了一个映射函数\(y=f(x,\theta)\),然后学习参数\(\theta\)的值，从而近似函数\(f^*\)</p>
+
+<p><strong>前馈</strong></p>
+
+<p>因为在模型的输出和模型本身之间没有反馈链接。一些基本术语概念：</p>
+
+<ul>
+<li>输出层，隐藏层，</li>
+</ul>
+
+<h2 id="toc_0">6.1 例子：学习XOR</h2>
+
+<p>【例】学习异或逻辑，即当两个二进制值中恰好有一个是1时候返回1，其他都返回0.</p>
+
+<p>【解法1】可以考虑按照回归分析的思路，使用均方误差作为损失函数(实际中对于二进制数据建模时不适合用MSE)。\(f(x,w,b)=x^Tw+b\)<br/>
+可以利用矩阵求解方程得到w=0,b=0.5， 线性模型得到的结果是任意一点都为0.5<br/>
+==&gt; 主要问题，该问题其实不是一个线性问题</p>
+
+<p>【解】另一种思路：<strong>使用一个模型来学习一个不同的特征空间，在这个空间上线性模型能够表示这个问题。</strong><br/>
+<img src="media/15090214789463/15093791249803.jpg" alt=""/></p>
+
+<p>构造一个非线性函数\(h\)，一般默认的推荐是<strong>整流线性单元</strong>ReLU:<br/>
+\[g(z)=max(0, z)\]<br/>
+所以整个网络是\(f(x)=w^Tmax(0, w^Tx+c)+b\)</p>
+
+<h2 id="toc_1">6.2 基于梯度的学习</h2>
+
+<p>很多神经网络的非线性导致代价函数变得非凸，所以一般神经网络的训练一般使用迭代的方法。<br/>
+凸优化从任何一种初始参数都会收敛，而用于非凸损失函数的随机梯度下降没有这种收敛的保障，并且对参数的初始值比较敏感。</p>
+
+<h3 id="toc_2">代价函数</h3>
+
+<p>多数情况下，对于一个参数模型\(f(y|x,\theta)\)，</p>
+
+<ul>
+<li>可以简单的使用最大似然原理。即利用训练数据和模型预测之间的<strong>交叉熵</strong>作为代价函数。</li>
+<li>有时候也会出现仅预测在给定x条件下y的某些统计量。</li>
+</ul>
+
+<p><strong>最大似然学习条件分布</strong></p>
+
+<p>大多数的神经网络采用最大似然的训练方法。这意味着代价函数就是负的对数似然。它与训练数据</p>
+
+<p>\[J(\theta) = -E log p_{model}(y|x)\]</p>
+
+<p><strong>学习条件统计量</strong></p>
+
+<p>这里好像有个和高统中类似的结论。比如<br/>
+\[f^*=arg min_{f} E_{x,y~p}||y-f(x)||^2\]<br/>
+可以得到\(f^*=E_{y~p(y|x)}(y)\)</p>
+
+<h3 id="toc_3">输出单元</h3>
+
+<p>其实代价函数的选择与输出单元是有一定关系的</p>
+
+<ul>
+<li>高斯输出分布的线性单元</li>
+</ul>
+
+<p>线性输出层一般用来产生高斯分布的均值。</p>
+
+<ul>
+<li>伯努利输出分布的sigmoid单元</li>
+<li>多项分布输出的softmax单元</li>
+</ul>
+
+<p>对于想要表示具有n个离散取值的变量分布时候，一般可以用softmax函数。其是sigmoid函数在多分类问题上的推广。<br/>
+\[softmax(z_j)=\frac{exp(z_i)}{\sum_j exp(z_j)}\]</p>
+
+<h2 id="toc_4">6.3 隐藏单元</h2>
+
+<p>隐藏层单元的选择没有一个固定的指导标准，一般默认选择<strong>整流线性单元</strong></p>
+
+<p><strong>整流线性单元的一些扩展</strong></p>
+
+<p>其扩展形式主要是基于\(z_i&lt;0\)时候使用一个非零的斜率\(\alpha_i\)</p>
+
+<p>绝对值整流、渗漏整流线性单元，参数化整流线性单元。</p>
+
+<p><strong>maxout单元</strong><br/>
+maxout将单元将z划分成k个组，每个组上的取值为其最大值。</p>
+
+<p><strong>sigmoid，tanh</strong></p>
+
+<h2 id="toc_5">6.4网络结构设计</h2>
+
+<p>网络结构设计主要是设计网络的<strong>深度</strong>和每一层的<strong>宽度</strong></p>
+
+<p><strong>1. 万能近似性质</strong></p>
+
+<p>万能近似定力：一个前馈神经网络,如果具有线性输出层和至少一个具有任何一种“挤压”性质的寄货函数的隐藏层。只要给予网络足够数量的隐藏单元，它可以以任意精度来近似任何一个有限维空间到另一个有限维空间的Borel可测函数。</p>
+
+<p>万能定理从理论上说明无论我们想要学习什么函数，都有一个大的MLP可以进行这个。但是我们并不能保证算法能够学习到这个函数</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637065259056.html">
+                
+                  <h1>about me</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>about me  </p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637025346225.html">
+                
+                  <h1>2 不同设计之间有统计学差异吗</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>本章主要介绍对均值、比例的假设检验，来判断两组不同设计之间是否有显著差别。</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15637025346225.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637036455584.html">
+                
+                  <h1>1 估计的置信度</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>在大多数的研究中，我们无法获取研究对象的总体数据，或者能获取但是成本非常大。实际情况中，我们往往是通过抽样的方法，在总体中进行随机抽样。根据获取的这部分样本数据去推动总体的一些属性。比如通过抽样人群的平均身高去估计所有人群的平均身高，通过抽样人群中的男女比例，去估计我国当前的男女比例状况。<br/>
+抽样样本量是直接影响到最终的估计准确度，所以这一章节，先来介绍下如何判断一种估计方法准确与否。</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15637036455584.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15637037728199.html">
                 
@@ -398,393 +625,6 @@ LinearSVC是通过参数<code>multi_class</code>进行选择，</p>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15637037730522.html">
-                
-                  <h1>关于长点击阈值划分方法</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>用户停留时长一直是衡量用户在落地页满意度的一个重要度量指标。在具体业务设计的时候，可以去看时长分布的中位数、平均时长等统计级指标，亦有类似于衡量时长好坏的长点击率，长点击占比等指标。</p>
-
-<p>首先来说下长点击，简单来说长点击即停留时长比较长的一个点击时间。</p>
-
-<h3 id="toc_0">1. 长点击，满意点击，人工打分</h3>
-
-<p>我们说停留时间“比较长”，其实是一个相对概念，不同的资源类型可能划分的标准会不同。但是他们的出发点是一样的: 我们认为在特定资源类型下落地页时长越长，用户越倾向于满意。所以长点击本质上是用来刻画满意点击的。</p>
-
-<p><strong>(1) 无监督的划分</strong><br/>
-即我们不知道groundtruth，这个时候可以根据本身时长的分布，按照经验值比如60%，70%作为其长点击的分界点。这种划分方式 xxxx</p>
-
-<p><strong>(2) 有监督的</strong><br/>
-通过人工评估（比如qu相关性，qu的页面质量等维度），可以对qu结果进行人工打分，一般是0-4档。0，1代表不太好，2代表一般，3-4代表比较好。可以根据业务需求比如3-4认为是满意点击，2认为是一般点击，0-1认为是不满意点击。<br/>
-以此人工标注来决定如何选择长点击划分阈值。</p>
-
-<h3 id="toc_1">2. 如何划分长点击</h3>
-
-<p>长点击阈值划分的目标，即寻找如下决策函数的参数x</p>
-
-<p>\[<br/>
-F(t) = \left\{<br/>
-             \begin{array}{lr}<br/>
-            1，长点击 t \ge x &amp;  \\<br/>
-            0，非长点击 t&lt; x\\  <br/>
-             \end{array}<br/>
-\right.<br/>
-\]</p>
-
-<p>从统计分布的角度看，即使是时长比较长的结果，人工打分也可能很低，时长很短的结果人工打分也可能是满意的。所以不管寻找到的最优参数\(x\)是多少，它都有可能会误分。而我们的目的是让这种因为误分而犯错的可能性尽可能的小。<br/>
-<img src="media/15542962343188/15543644977641.jpg" alt=""/></p>
-
-<p>从以上的分布图来说更直观一些，我们的误判损失即是图中阴影部分，很容易证明，移动阈值划分x时候，损失最小的是当两个分布曲线相交的点的时候。这指导我们可以按照如下的方法进行长点击划分：</p>
-
-<p>执行步骤<br/>
-<strong>Step0： 摸底时长分布</strong></p>
-
-<p>首先需要了解清楚数据本身的时长分布，根据时长的分布情况，大概划分不同的区间段。比如0-5，5-10，10-15，15-20，20-25，25-30，30-35，35-40， 40-50，50-60，60-100，&gt;100这样进行划分。<br/>
-同于频次分布较高的部分可以划分的细致一些，频次分布较低的部分可以划分的宽度较宽一些。</p>
-
-<p><strong>Step1： 抽样送评qu数据</strong></p>
-
-<p>确定送评样本，因为人工评估是需要成本的，我们不可能得到整体的good或者bad的分布曲线，我们所有的只是抽取的送评样本的标注数据。这就要求我们送评的数据对于总体一定要有好的代表性：</p>
-
-<ul>
-<li>抽样分布应该和总体分布尽量一致</li>
-<li>抽样量不能太小，否则样本估计总体的误差会比较大</li>
-</ul>
-
-<blockquote>
-<p>如何确定最优送评样本量？（这个回来再写）<br/>
-统计学的研究方法是要找到我们所关注变量的统计分布，我们最终是希望通过抽取得到的good和not_good的时长分布与整体差不多。</p>
-</blockquote>
-
-<p>数据抽取：</p>
-
-<ul>
-<li>考虑到数据抽取是基于qu粒度，一个qu其实会有多次用户点击行为，也就会有多个时长，可能波动较大。所以一般是取count(qu)&gt;5的，并且时长取的是其中位数</li>
-<li><p>预送评，一般先进行少量的预送评，比如送评1000个样本。返回会用来检验数据质量和划分的精细度</p>
-
-<ul>
-<li>check自己送评的数据中是否有一些异常数据。比如sf的url路径不完成</li>
-<li>check人工打分的质量程度</li>
-<li>初步看下good和not_good的分布情况，大概确定长点的分布区间，从而看下送评的样本的时间段间隔精度是否需要调整</li>
-</ul></li>
-<li><p>正式送评</p></li>
-</ul>
-
-<p><strong>Step2： 返回分析</strong></p>
-
-<p>根据good和not_good的频数分布，找到曲线的交点，即满足good(x) = not_good(x)的点，即可认为是长点击的分界点。短点击的划分类似，可以认为0-1的是短点击，或者更严格的0分的是短点击。 绘制bad和not_bad的频数分布，找到曲线交点。即满足bood(x) = not_bood(x)的点</p>
-
-<ul>
-<li>实际操作：实际数据的分布图可能不如示意图那么明显，甚至有多个交点的情况。这时候可以计算图中b+c的面积，绘制(x,g(x))的曲线图，找到g(x)=0.5的点即可。 如果有多个可能是因为样本量不足够，或者本身指标数据不可信(前提假定是要研究的指标与人工打分是存在单调关系的)</li>
-</ul>
-
-<h3 id="toc_2">3 应用-关于sigmoid函数的理解</h3>
-
-<ul>
-<li><p>AB实验<br/>
-对于AB实验来说，有了长短点击时间阈值之后，可以直接计算长点击和短点击，更新指标评估即可。</p></li>
-<li><p>interleaving实验<br/>
-对于interleaving来说，实际中是将dt经过一个映射(一般是sigmoid函数)将其转化为一个0-1的打分。</p></li>
-</ul>
-
-<p>这里我们从另外一个角度来看这件事。LR或者说sigmoid函数能将一个负无穷到正无穷的数映射到0-1的一个概率值。是否是长点其实也是一个概率，当然这里时长t是取的(0, 正无穷)</p>
-
-<p>假设<br/>
-\[g(x) = \frac{good(x)}{good(x) + not\_good(x)}\]<br/>
-其中 \(good(x)= \#good(t=x)\), \(not\_good(x)=\#not\_good(t= x)\)。 <br/>
-所以\(g(x)\)其实表示的是在\(t=x\)时候是长点击的概率。为了书写方便，</p>
-
-<p>\[g(x) = \frac{1}{1+ not\_good(x)/good(x)}= \frac{1}{1+ e^{ln\frac{p}{1-p}}}\]</p>
-
-<p>这里\(p(x)\)是表示当时间等于x时是长点击的概率。</p>
-
-<p>从这个角度说，之前的sigmoid映射函数中\(\frac{1}{1+ e^{-a(x-b)}}\) 系数项即是log odds ratio。</p>
-
-<p>因此只需对送评数据中\(ln\frac{p}{1-p}\)的分布数据去拟合一条曲线 \(\hat f(t)\)即可，最终的sigmoid映射函数就是</p>
-
-<p>\[g(t) = \frac{1}{1+ e^{\hat f(t)}}\]</p>
-
-<p>并且其中\(\hat f(t)=0\)的点恰巧就是长点击的分界点。</p>
-
-<p>注意：实际送评的时候因为样本量的限制，不可能每一个分界点(在这里是每个停留时间dt)都会去送评，</p>
-
-<h3 id="toc_3">4.其他:从模型准召的角度</h3>
-
-<p>其实从分类评估角度来看，</p>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>not_good</th>
-<th>Good</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>F=0</td>
-<td>a</td>
-<td>b</td>
-</tr>
-<tr>
-<td>F=1</td>
-<td>c</td>
-<td>d</td>
-</tr>
-</tbody>
-</table>
-
-<p>上面说的损失即阴影部分的面积=b+c, 所以其实从分类模型评估的角度，就是不一致率最小的时候的最优解,即<br/>
-\[min b+c\]</p>
-
-<ul>
-<li>准确&amp;召回</li>
-</ul>
-
-<p>分类模型中其实用的更多的是准确和召回指标，\(accurate=\frac{d}{c+d}\),\(recall = \frac{d}{b+d}\)<br/>
-\[Max F\_score = 1-\frac{b+c}{b+c+2d}\]</p>
-
-<p>这个标准下，和之前还是略微有些不同的</p>
-
-<h3 id="toc_4">5.如何泛化</h3>
-
-<p>泛化问题主要是指：</p>
-
-<ul>
-<li>业务层面</li>
-</ul>
-
-<p>搜索，视频，以后其他的大小业务都可能面临这种问题。对于新的业务类型，人工送评应该是避免不了了。</p>
-
-<ul>
-<li>时间层面变更</li>
-</ul>
-
-<p>随着线上效果变更，当前调研的结果可能已经不再试用后续的结果。需要不断进行更新，比如视频铺量后，整体的时长分布和之前的可能变化很大。或者是需要拆解不同的维度类别</p>
-
-<p>方案1：再次人工送评一遍，<br/>
-方案2：进行时长分布映射<br/>
-这种方案有个问题，相当于是按照top百分比进行划分的，认为top百分比所代表的满意度保持一致。可能整体时长都变长了，映射完后阈值也变长了，相对的满意度并没变。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037730576.html">
-                
-                  <h1>统计阈值</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">1.dab类指标</h2>
-
-<p>newpo, po, rank, rr, f1 最终计算方式都是 \[dab_{xx} = 0.5\frac{\sum awin -\sum bwin}{\sum awin + \sum bwin + \sum tie}\]</p>
-
-<p>其中awin，bwin，tie可以按照不同的逻辑或方法进行计算。</p>
-
-<p>\[p_1 = \frac{\sum awin}{\sum awin + \sum bwin + \sum tie}\]</p>
-
-<p>\[p_2 = \frac{\sum bwin}{\sum awin + \sum bwin + \sum tie}\]</p>
-
-<p>基于有点有diff的流量：<br/>
-每次pv下，awin，bwin，tie必然出现且只出现其一。因此p1可以看做策略好的概率， p2可以看做基线好的概率。 概率本身是服从两点分布的，每次pv取0或1，样本量较大的时候(一般interleaving实验的样本量足够大了)，可以近似成正态分布，即有</p>
-
-<p>\[p_1 - N(P_1,P_1(1-P_1)/n1 )\]<br/>
-\[p_2 - N(P_2,P_2(1-P_2)/n1 )\]</p>
-
-<p>所以两者的差也是近似正态分布，有(注意P1与P2并不是相互独立的)</p>
-
-<p>\[p_1 - p_2 ~ N(P_1 - P_2, \frac{(P_1+P_2-(P_1-P_2)^2)}{n})\]</p>
-
-<p>所以dab的置信区间就是</p>
-
-<p>\[[\frac{p_1 -p_2}{2}- z_{\alpha}\sqrt \frac{p_1+p_2-(p_1-p_2)^2}{4n}, \frac{p_1 -p_2}{2}+ z_{\alpha}\sqrt \frac{p_1+p_2-(p_1-p_2)^2}{4n}]\]</p>
-
-<h3 id="toc_1">根据空转确定阈值</h3>
-
-<p>空转时候理论上两边是没diff的，但是因为随机波动，产出的指标数据肯定不可能完全等于0，大概率上也是服从一个正态分布。根据小概率原理，在5%和95%的置信点上可以认为是异常值，就策略和基线不是持平而是有显著diff。<br/>
-对应的阈值就是</p>
-
-<p>\[z_{\alpha}\sqrt \frac{p_1+p_2-(p_1-p_2)^2}{4n}= z_{\alpha}\sqrt \frac{p}{2n}\]</p>
-
-<p>所以这个阈值是与本身的p值的大小有关，与样本量也有关。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037730631.html">
-                
-                  <h1>比赛学习</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">天池</h2>
-
-<ul>
-<li>o2o优惠券</li>
-</ul>
-
-<p><a href="https://tianchi.aliyun.com/getStart/information.htm?raceId=231593">https://tianchi.aliyun.com/getStart/information.htm?raceId=231593</a></p>
-
-<p><a href="https://github.com/wepe/O2O-Coupon-Usage-Forecast/tree/master/code">https://github.com/wepe/O2O-Coupon-Usage-Forecast/tree/master/code</a></p>
-
-<ul>
-<li>fashion_tag</li>
-</ul>
-
-<p><a href="https://github.com/DavexPro/fashion-tag">https://github.com/DavexPro/fashion-tag</a></p>
-
-<p><a href="https://github.com/tworuler/tensorcv">https://github.com/tworuler/tensorcv</a></p>
-
-<h2 id="toc_1">kaggle</h2>
-
-<p>kaggle-ctr预估<br/>
-<a href="https://www.kaggle.com/c/avazu-ctr-prediction/discussion/12608">https://www.kaggle.com/c/avazu-ctr-prediction/discussion/12608</a><br/>
-<a href="https://github.com/guestwalk/kaggle-avazu">https://github.com/guestwalk/kaggle-avazu</a></p>
-
-<p>FM学习<a href="https://www.jianshu.com/p/152ae633fb00">https://www.jianshu.com/p/152ae633fb00</a></p>
-
-<h2 id="toc_2">kesci</h2>
-
-<p><a href="https://www.kesci.com/home/competition">https://www.kesci.com/home/competition</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html'>8 比赛学习</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037731128.html">
-                
-                  <h1>第八章 深度模型中的优化</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">8.1 优化与学习</h2>
-
-<p>本章主要关注这一类特定的优化问题:寻找神经网络上的一组参数 θ，它能显 著地降低代价函数 J(θ)，该代价函数通常包括整个训练集上的性能评估和额外的正 则化项。</p>
-
-<p>通常来说极其学习的算法目标大概可以写成，降低期望泛化误差。即<strong>风险</strong><br/>
-<img src="media/15209459008411/15209462294325.jpg" alt=""/></p>
-
-<p>其中p_data是真实的分布，实际中我们只能最小化<strong>经验风险</strong><br/>
-<img src="media/15209459008411/15209463229280.jpg" alt=""/></p>
-
-<h2 id="toc_1">8.2神经网络优化中的挑战</h2>
-
-<ul>
-<li>病态： hessain矩阵病态</li>
-<li>局部最小值：对于非凸函数可能存在多个局部最小值。</li>
-<li>。。。</li>
-</ul>
-
-<h2 id="toc_2">8.3基本算法</h2>
-
-<p>梯度下降机器变种一般是机器学习中应用较多的优化算法。</p>
-
-<h3 id="toc_3">(1)随机梯度下降SGD</h3>
-
-<p><img src="media/15209459008411/15221677256921.jpg" alt=""/></p>
-
-<h3 id="toc_4">（2）动量</h3>
-
-<p>动量是比SGD速度更快的一种方法，SGD相当于只是考虑梯度的方向，而动量是在此基础上加上速度。</p>
-
-<p><img src="media/15209459008411/15221680917826.jpg" alt=""/></p>
-
-<h2 id="toc_5">8.4 参数初始化</h2>
-
-<h2 id="toc_6">参考资料</h2>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -856,6 +696,8 @@ F(t) = \left\{<br/>
             <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
+        
+            <a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html"><strong>轨迹数据</strong></a>
          
         </p>
 
@@ -872,31 +714,31 @@ F(t) = \left\{<br/>
 	      
 		      
 			      <li class="post">
+			        <a href="15686309605233.html">matplotlib</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15687050894061.html">综述</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15686368904229.html">基于dtw进行聚类</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15636947700701.html">4.7 聚类1</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15637037683461.html">Jupyter notebook</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15680210974066.html">因子分析</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637025346412.html">1. conda 环境管理</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637037679256.html">Rmarkdown</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637037713554.html">数据可视化概述</a>
 			      </li>
 		     
 		  

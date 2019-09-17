@@ -100,6 +100,8 @@
             <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
+        
+            <li><a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html">轨迹数据</a></li>
          
 
       </ul>
@@ -121,6 +123,357 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15686309605233.html">
+                
+                  <h1>matplotlib</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>matplotlib是python绘图的一个基础包，其用法和matlab语法有些相似。<br/>
+大量第三方包扩展并构建了Matplotlib功能，包括几个较高级别的绘图接口(seaborn、holoviews、ggplot 等)，以及两个投影和绘图工具包(basemap和cartopy)<br/>
+这里总结一些基本用法</p>
+
+<h2 id="toc_0">1.matplotlib.pylab</h2>
+
+<h2 id="toc_1">2.matplotlib.pyplot</h2>
+
+<p><img src="media/15686309605233/15686322692816.png" alt=""/></p>
+
+<pre><code>import matplotlib.pyplot as plt
+plt.plot(x, y, 其他属性)
+</code></pre>
+
+<p>pyplot是matplotlib中最常用的模块，</p>
+
+<h3 id="toc_2">常用的图形参数设置</h3>
+
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>axis([xmin, xmax, ymin, ymax])</td>
+<td>设置坐标轴范围</td>
+</tr>
+<tr>
+<td>plot(x, y1,属性, y2, 属性)</td>
+<td>绘制线图</td>
+</tr>
+<tr>
+<td>title</td>
+<td></td>
+</tr>
+<tr>
+<td>xlabel, ylabel</td>
+<td>横纵坐标轴的标签</td>
+</tr>
+<tr>
+<td>text(x, y, 文字)</td>
+<td>添加文字描述</td>
+</tr>
+<tr>
+<td>annotate(&#39;注释&#39;, xy=(2, 1), xytext=(3, 1.5)</td>
+<td>添加箭头注释</td>
+</tr>
+<tr>
+<td>plt.yscale(&#39;linear’)   # linear, log, logit</td>
+<td>更换坐标轴刻度</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>subplot 绘制子图</strong></p>
+
+<pre><code>plt.figure()
+plt.subplot(2, 3, 1)   #n行m列的子图
+plt.plot(x1, y1)
+
+plt.subplot(2, 3, 2)   #n行m列的子图
+plt.plot(x2, y2)
+</code></pre>
+
+<pre><code>data = np.random.randn(2, 100)
+fig, axs = plt.subplots(2, 2, figsize=(5, 5))
+axs[0, 0].hist(data[0])
+axs[1, 0].scatter(data[0], data[1])
+axs[0, 1].plot(data[0], data[1])
+axs[1, 1].hist2d(data[0], data[1])
+
+plt.show()
+</code></pre>
+
+<p><strong>显示图像，读取图片</strong></p>
+
+<p>需要先安装<code>pillow</code>包<br/>
+<code><br/>
+im = plt.imread(&#39;cat.jpg&#39;)  #将图像读取为数组<br/>
+ax.imshow(im)                  # imshow将数组显示为图像<br/>
+</code><br/>
+plt.colorbar()      #  可以添加颜色条</p>
+
+<p><strong>3d绘图</strong></p>
+
+<p>mplot3d</p>
+
+<h2 id="toc_3">3. 绘制案例</h2>
+
+<p>常用的图像类型  <a href="https://www.matplotlib.org.cn/tutorials/introductory/sample_plots.html">https://www.matplotlib.org.cn/tutorials/introductory/sample_plots.html</a></p>
+
+<h3 id="toc_4">1 绘制随时间动态变化的散点图</h3>
+
+<p>想要得到动画效果的图像，就是让多幅图连续播放，所以需要不断修改图中曲线的属性。首先需要了解下面像对象编程，在matplotlib中我们调用的任何函数，都会返回一个对象的实例。所以可以通过修改其相应的属性来改变曲线。比如常见的设置title，xlim等<br/>
+<code>plt.plot(x, y); plt.title(&#39;plot title&#39;)</code></p>
+
+<p>主要用到的函数<br/>
+<code>FuncAnimation(fig, func, frames=None,fargs=None)</code><br/>
+FuncAnimation的参数比较多，这里只列举出最重要的四个。</p>
+
+<ul>
+<li>fig: 指得是目前曲线所在在的figure。</li>
+<li>func: 这个函数主要是修改lines的属性，并返回。</li>
+<li>frames: 这是func参数中，跟每一帧相关的参数，靠它曲线才会发生变化。动画长度，一次循环包含的帧数</li>
+<li>fargs： 对应func中其他参数。</li>
+<li>interval 更新频率，以ms记</li>
+<li>blit: 选择更新所有点，还是仅更新产生变化的点。</li>
+<li>可选参数 repeat，指定是否循环动画</li>
+</ul>
+
+<p>官网的一个案例 <br/>
+<a href="https://matplotlib.org/gallery/animation/simple_anim.html">https://matplotlib.org/gallery/animation/simple_anim.html</a></p>
+
+<p>模仿写的一个小例子  <a href="https://www.smslit.top/2018/11/12/matplotlib-animation/">https://www.smslit.top/2018/11/12/matplotlib-animation/</a></p>
+
+<pre><code>import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib import animation
+
+def plot_trace_animation(x, y):
+
+    fig, ax = plt.subplots()
+    plt.xlim(min(x), max(x))
+    plt.ylim(min(y), max(y))
+    line, = ax.plot(x[0], y[0])
+
+    def init():  # only required for blitting to give a clean slate.
+        line.set_ydata([np.nan] * len(x))
+        return line,
+
+    def update(i):
+        print(i)
+        line.set_xdata(x[:i])
+        line.set_ydata(y[:i])
+        #scat.set_data(x[:i], y[:i])
+        return line,
+
+    anim = animation.FuncAnimation(fig, update, init_func=init,frames=10, interval=100)
+    plt.show()
+
+    #anim.to_html5_video()
+    #anim.to_jshtml()
+    anim.save(&#39;out.mp4&#39;)   # 需要先安装ffmpeg
+
+x = range(1, 11)
+y = range(5, 15)
+
+plot_trace_animation(x, y)
+</code></pre>
+
+<p>保存</p>
+
+<p>anim.save(&#39;out.mp4&#39;)   # 需要先安装ffmpeg<br/>
+anim.save的 save 方法可以指定 writer ，这里要保存 gif 默认选择的 writer 为 pillow ，所以需要安装 pillow 库：</p>
+
+<p>$ pip3 install pillow<br/>
+按照如下调用方法即可保存动画为 gif，这里保存动画的帧数是受 animation.FuncAnimation 的 frames 和 save_count 影响的：</p>
+
+<p>ani.save(&#39;animation.gif&#39;, writer=&#39;pillow&#39;)</p>
+
+<h2 id="toc_5">参考</h2>
+
+<p><a href="https://www.matplotlib.org.cn/home.html">https://www.matplotlib.org.cn/home.html</a></p>
+
+<pre><code>
+
+
+
+
+
+
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/9/16</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html'>3 数据可视化</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15687050894061.html">
+                
+                  <h1>综述</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><a href="https://www.jianshu.com/p/e78016feda12">https://www.jianshu.com/p/e78016feda12</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/9/17</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html'>轨迹数据</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15686368904229.html">
+                
+                  <h1>基于dtw进行聚类</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><a href="https://blog.csdn.net/songbinxu/article/details/86660136">https://blog.csdn.net/songbinxu/article/details/86660136</a></p>
+
+<p>成对数据计算效率问题<br/>
+<a href="http://cn.voidcc.com/question/p-pvczjbyi-bmw.html">http://cn.voidcc.com/question/p-pvczjbyi-bmw.html</a></p>
+
+<p>这里踩了一个坑：安装上fastdtw后速度仍然慢。在测试机上跑n=30条数据两两组队，耗时38s，mac上才3s。后来发现是mac上采用的是Cpython， 测试机上运行的是纯python版本。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/9/16</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html'>轨迹数据</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15636947700701.html">
+                
+                  <h1>4.7 聚类1</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>聚类分析（cluster analysis）是属于无监督学习，他的目的是去探索数据隐含的规律。其基本思想是基于相似度/距离远近来将样本进行聚类。</p>
+
+<h2 id="toc_0">1.距离的度量方法</h2>
+
+<p>常见的聚类方法：</p>
+
+<table>
+<thead>
+<tr>
+<th>方法类别</th>
+<th>聚类方法</th>
+<th>优缺点</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>基于距离</td>
+<td>Kmeans</td>
+<td></td>
+</tr>
+<tr>
+<td>基于密度</td>
+<td>Dbscan</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>kmeans</li>
+</ul>
+
+<p>选择初始种子</p>
+
+<p>从概率角度看，k均值算法是高斯混合模型的一种特例</p>
+
+<ul>
+<li>基于密度的聚类 DBSCAN</li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15637037683461.html">
                 
@@ -232,181 +585,36 @@ google 基于jupyter开发的存在在google driver上的网页版<br/>
 <p>Q1: 若import了自己写的外部模块，如果这个外部模块有更新，再次执行import，jupyter是不会重新导入的<br/>
 <a href="https://blog.csdn.net/ybdesire/article/details/86709727">https://blog.csdn.net/ybdesire/article/details/86709727</a></p>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<p>对于 Python2.x<br/>
+import some_module<br/>
+reload(some_module)</p>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15680210974066.html">
-                
-                  <h1>因子分析</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<pre><code>from factor_analyzer import FactorAnalyzer
-f=FactorAnalyzer(n_factors = 10, rotation=&#39;varimax&#39;)
-f.fit(data)
+<p>对于 Python 3.2 and 3.3:<br/>
+import some_module<br/>
+import importlib<br/>
+importlib.reload(some_module)</p>
+
+<p>对于 Python3.4+<br/>
+import some_module<br/>
+import imp<br/>
+imp.reload(some_module)</p>
+
+<p>Q2. <code>jupyter lab</code> 启动提示</p>
+
+<p><img src="media/15637037680349/15665439689997.jpg" alt=""/></p>
+
+<p>应该是编码问题，暂时的解决方案<a href="https://github.com/jupyter/notebook/issues/2789#issuecomment-338380336">https://github.com/jupyter/notebook/issues/2789#issuecomment-338380336</a></p>
+
+<p><code>LANG=zn jupyter lab</code></p>
+
+<p>这个问题后来查了下说是python2的bug，安装python3就不会出现这个问题。</p>
+
+<p>Q3. 切换内核<br/>
+很多代码都是python2写的，用pip3安装jupyter之后，想切换写内核。<br/>
+<a href="https://www.cnblogs.com/Jeffiy/p/4861528.html">https://www.cnblogs.com/Jeffiy/p/4861528.html</a></p>
+
+<pre><code>jupyter kernelspec list
 </code></pre>
-
-<p>FactorAnalyzer 主要参数</p>
-
-<ul>
-<li>n_factors: 设置因子的个数</li>
-<li>rotation： 表示旋转的个数，如果不设置的话默认不进行旋转。可旋转的旋转方法有：varimax， promax。。。</li>
-</ul>
-
-<p>输出结果属性包括：</p>
-
-<ul>
-<li>loadings_   因子载荷矩阵</li>
-<li>rotation_matrix   旋转矩阵</li>
-<li>structure：  The structure loading matrix.</li>
-<li>get_factor_variance()   计算因子的方差信息，包括方差、方差的比例，以及累计方差比重</li>
-</ul>
-
-<p>获取转换后的数据矩阵</p>
-
-<pre><code>f.transform(data)
-</code></pre>
-
-<h2 id="toc_0">参考</h2>
-
-<p><a href="https://pypi.org/project/factor-analyzer/">https://pypi.org/project/factor-analyzer/</a><br/>
-<a href="https://blog.csdn.net/hfutxiaoguozhi/article/details/78840126">https://blog.csdn.net/hfutxiaoguozhi/article/details/78840126</a><br/>
-<a href="https://factor-analyzer.readthedocs.io/en/latest/factor_analyzer.html#module-factor_analyzer.factor_analyzer">https://factor-analyzer.readthedocs.io/en/latest/factor_analyzer.html#module-factor_analyzer.factor_analyzer</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/9/9</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025346412.html">
-                
-                  <h1>1. conda 环境管理</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>conda的主要作用有如下两个：</p>
-
-<ul>
-<li>包管理</li>
-</ul>
-
-<p>Anaconda 安装，conda包管理器与pip类似，不同之处是可用的包以数据科学包为主，而 pip 适合一般用途。它也可以安装非 Python 的包。它是支持任何软件的包管理器。</p>
-
-<ul>
-<li>虚拟环境管理器</li>
-</ul>
-
-<p>它类似于另外两个很流行的环境管理器，即 virtualenv 和 pyenv<br/>
-脚本和程序使用的默认 Python 是 Anaconda 附带的 Python。</p>
-
-<p>可以安装完整版： <a href="https://www.anaconda.com/distribution/#download-section">https://www.anaconda.com/distribution/#download-section</a><br/>
-也可以安装精简版miniconda： <a href="https://conda.io/miniconda.html">https://conda.io/miniconda.html</a></p>
-
-<h2 id="toc_0">包管理-常用命令</h2>
-
-<pre><code>conda list  #查看安装的内容
-conda upgrade --all   #初次下载安装好后，建议更新所有包
-</code></pre>
-
-<p>安装包</p>
-
-<pre><code>conda install xxx
-conda install numpy=1.10   #指定包的版本
-
-conda remove package
-conda upgrade --all
-</code></pre>
-
-<pre><code>模糊查询相关包
-conda search search_term
-</code></pre>
-
-<h2 id="toc_1">环境管理</h2>
-
-<p>默认的环境名字叫base(我的电脑上是)</p>
-
-<p>通过<code>conda env list</code>可以列出你创建的所有环境</p>
-
-<pre><code>#创建环境
-conda create -n env_name list of packages
-eg. conda create -n my_env numpy
-
-conda create -n py3 python=3
-conda create -n py2 python=2
-
-#进入环境
-source activate my_env
-#离开环境
-source deactivate
-
-# 删除环境
-conda env remove -n env_name
-</code></pre>
-
-<h2 id="toc_2">其他</h2>
-
-<p>共享环境：将自己的工作环境保存下来给别人共享</p>
-
-<pre><code>#进入到你的环境中
-source activate base
-conda env export &gt; environment.yaml
-
-# 通过环境文件创建环境
-conda env create -f environment.yaml
-</code></pre>
-
-<h2 id="toc_3">conda install 与pip install的区别</h2>
-
-<p>，pip list和conda list列表却不一致，conda数量 &gt; pip<br/>
-conda 安装包路径是 xxxxx\Anaconda3\pkgs<br/>
-pip 安装包路径在虚拟环境下是 xxxx\Anaconda3\envs\a_conda_env\Lib\site-packages<br/>
-所以当前环境下pip list只列举出当前包list<br/>
-此处需要留意如果使用conda install 多个环境时，对于同一个包只需要安装一次。有conda集中管理。<br/>
-但是如果使用pip因为每个环境安装使用的pip在不同的路径下，故会重复安装，而包会从缓存中取。</p>
-
-<p>(2) 另外从体验上看感觉conda速度快很多</p>
 
                         
                       </div>
@@ -419,173 +627,6 @@ pip 安装包路径在虚拟环境下是 xxxx\Anaconda3\envs\a_conda_env\Lib\sit
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037679256.html">
-                
-                  <h1>Rmarkdown</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">python支持</h2>
-
-<p>Rmarkdown对python兼容 <a href="https://github.com/rstudio/reticulate">https://github.com/rstudio/reticulate</a></p>
-
-<h2 id="toc_1">图片</h2>
-
-<p>现在很多makdown编辑器是可以支持拖拽本地图片或者截屏就可以直接在markdown中生成图片的，非常方便，比如我现在在用的MWeb编辑器。</p>
-
-<p>但是如果同一篇内容需要在不同的平台上进行发布，那图片处理起来就比较麻烦。因为需要重新上传到不同平台。<br/>
-最方便的处理方式就是利用图床， 这里以七牛云存储为例。<br/>
-<img src="media/15378048283915/15383141468224.jpg" alt=""/></p>
-
-<p>step1： 首先在七牛官网上申请注册账号，并且添加<strong>对象存储</strong></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037713554.html">
-                
-                  <h1>数据可视化概述</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>目标: 系统的梳理在进行数据分析的时候，如何进行数据可视化。具体操作的时候以python的seaborn包为主。</p>
-</blockquote>
-
-<p>在进行数据分析的时候，经常需要进行数据可视化。俗话说一图胜千言，如何将从数据中发现的结论以一种简单易懂、形象化的方式展现出来，是很考验数据分析人员的能力的。</p>
-
-<h2 id="toc_0">1 方法部分</h2>
-
-<p>数据可视化，首先是要有数据，即我们的研究对象，而可视化的功能就是将数据中蕴含的关系或规律以图形的形式展示出来。 因此在进行数据可视化之前，一定要搞清楚的两件事：</p>
-
-<ul>
-<li>数据类型</li>
-<li>数据要传递的信息以及有展示的关系</li>
-</ul>
-
-<p>不同的数据类型适合的图形表现是不同的，随着现在数据分析应用的越来越广泛，数据类型随着其应用的场景不同也是越来越多。</p>
-
-<ul>
-<li>分类型变量：比如性别</li>
-<li>连续型变量：比如年龄</li>
-</ul>
-
-<p>数据之间的关系：</p>
-
-<table>
-<thead>
-<tr>
-<th>关系</th>
-<th>示例图形</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>比较大小，包括不同个体或者分组之间</td>
-<td>常用的比如将面积、尺寸进行可视化。条形图、面积图</td>
-</tr>
-<tr>
-<td>数据的集中程度</td>
-<td>一般是热力图，比如地图上交通的拥挤程度</td>
-</tr>
-<tr>
-<td>地理信息</td>
-<td>地理位置数据</td>
-</tr>
-</tbody>
-</table>
-
-<p><a href="https://zhuanlan.zhihu.com/p/25632363">https://zhuanlan.zhihu.com/p/25632363</a></p>
-
-<p>python中常用的绘图pacakge是<code>matplotlib</code></p>
-
-<p>本篇文章介绍的seaborn就是一个基于<code>matplotlib</code>的外包，其操作命令比较简单。有点类似R中的<code>ggplot</code>.</p>
-
-<h2 id="toc_1">2 工具部分</h2>
-
-<ul>
-<li><p>excel<br/>
-excel适合一些相对简单的数据，</p></li>
-<li><p>可视化BI </p></li>
-</ul>
-
-<p>比如tableau， power BI， FineBI等常见的一些可视化软件</p>
-
-<ul>
-<li>编程工具-python</li>
-</ul>
-
-<p>seaborn<br/>
-pyecharts  <a href="https://github.com/pyecharts/pyecharts">https://github.com/pyecharts/pyecharts</a></p>
-
-<ul>
-<li>编程工具-R语言</li>
-</ul>
-
-<p>ggplot </p>
-
-<h2 id="toc_2">参考资料</h2>
-
-<p><a href="https://blog.csdn.net/suzyu12345/article/details/69029106">https://blog.csdn.net/suzyu12345/article/details/69029106</a></p>
-
-<h2 id="toc_3">2.echarts接口</h2>
-
-<p>pyecharts</p>
-
-<p><a href="http://pyecharts.org/#/zh-cn/charts?id=treemap%EF%BC%88%E7%9F%A9%E5%BD%A2%E6%A0%91%E5%9B%BE%EF%BC%89">http://pyecharts.org/#/zh-cn/charts?id=treemap%EF%BC%88%E7%9F%A9%E5%BD%A2%E6%A0%91%E5%9B%BE%EF%BC%89</a></p>
-
-<h2 id="toc_4">工具平台</h2>
-
-<p><a href="https://antv.alipay.com/zh-cn/vis/chart/color-map.html">https://antv.alipay.com/zh-cn/vis/chart/color-map.html</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html'>3 数据可视化</a></span>
           				   
                   </div>
                   <div class="more-right right">
@@ -669,6 +710,8 @@ pyecharts  <a href="https://github.com/pyecharts/pyecharts">https://github.com/p
             <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
+        
+            <a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html"><strong>轨迹数据</strong></a>
          
         </p>
 
@@ -685,31 +728,31 @@ pyecharts  <a href="https://github.com/pyecharts/pyecharts">https://github.com/p
 	      
 		      
 			      <li class="post">
+			        <a href="15686309605233.html">matplotlib</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15687050894061.html">综述</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15686368904229.html">基于dtw进行聚类</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15636947700701.html">4.7 聚类1</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15637037683461.html">Jupyter notebook</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15680210974066.html">因子分析</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637025346412.html">1. conda 环境管理</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637037679256.html">Rmarkdown</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637037713554.html">数据可视化概述</a>
 			      </li>
 		     
 		  

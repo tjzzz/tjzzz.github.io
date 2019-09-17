@@ -100,6 +100,8 @@
             <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
+        
+            <li><a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html">轨迹数据</a></li>
          
 
       </ul>
@@ -121,6 +123,128 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15637037683688.html">
+                
+                  <h1>4.7 聚类2——-效果评价</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>一般分为两类：</p>
+
+<ul>
+<li>外部标准：即基于人工的判断，需要有个标注集合</li>
+<li>内部标准：基于类内和类间聚类的目标函数的判断</li>
+</ul>
+
+<h2 id="toc_0">内部标准clustering-performance-evaluation</h2>
+
+<ul>
+<li>CH 准则</li>
+<li>轮廓系数</li>
+</ul>
+
+<h2 id="toc_1">外部标准——人工判定</h2>
+
+<p>假设：<br/>
+机器判断的类别集合是：\(C=\{C_1,C_2,...C_m\}\)<br/>
+人工判断的类别集合是：\(P=\{P_1,P_2,...P_s\}\)</p>
+
+<h3 id="toc_2">1.1混淆矩阵</h3>
+
+<p>基于数据样本点的角度：<br/>
+对于任意两个数据pair，\((x_i,x_j)\)按照其在C和P中是否属于同一个簇，可以构造出混淆矩阵</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>P_1</th>
+<th>p_0</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>C_1</td>
+<td>a</td>
+<td>b</td>
+</tr>
+<tr>
+<td>C_0</td>
+<td>c</td>
+<td>d</td>
+</tr>
+</tbody>
+</table>
+
+<p><img src="media/15078603543147/15078631739679.jpg" alt=""/></p>
+
+<h3 id="toc_3">1.2簇的准确率/召回率</h3>
+
+<p>基于簇pair的，考虑对任意一个人工与机器的.\(P_j,C_i\)。对于每一个人工标注的\(P_j\),在机器标注中应该都会对应一个&quot;最相关的&quot;。可以遍历C中所有的cluster，分别计算准确率，召回率，F_score。<br/>
+<img src="media/15078603543147/15078720767171.jpg" alt=""/></p>
+
+<p>然后对于所有簇的F值做加权平均<br/>
+\[ClassF=\sum w_j F(p_j), w_i=n_j/n\]</p>
+
+<p>classF指标，相当于是以人工标注的簇为基准，将聚类的簇尽量逼近这个标注的结果。</p>
+
+<h2 id="toc_4">1.3</h2>
+
+<p>1.2中的方法相当于要求的比较严格，即以人工标注的集合簇为准。</p>
+
+<p>实际中其实只要保证我们聚的每一个类\(C_i\)是有意义的就可以，即以C为主</p>
+
+<p>类似的定义 \(F(C_i)=\max_{1\lt j \lt s}F(P_j, C_i)\)<br/>
+\[F=\sum w_i F(C_i), w_i=|C_i|/n\]</p>
+
+<ul>
+<li>问题： 这个指标可能变化不是非常明显</li>
+</ul>
+
+<h2 id="toc_5">1.4基于数据对象的准召F</h2>
+
+<p><img src="media/15078603543147/15078731022919.jpg" alt=""/></p>
+
+<h2 id="toc_6">思考</h2>
+
+<ol>
+<li>基于人工标注的方法中，认为人工标注的是准确的或者说结果是唯一的。实际上一堆sample可以有不同的分类方法，而且每种方法可能都是对的。
+<code>
+e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大学
+</code>
+如何进行标注，或者标注结果是非固定时候怎么衡量聚类效果的好坏？？</li>
+</ol>
+
+<h2 id="toc_7">参考资料</h2>
+
+<p><a href="http://blog.csdn.net/itplus/article/details/10322361">http://blog.csdn.net/itplus/article/details/10322361</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15637037686386.html">
                 
@@ -410,59 +534,6 @@ plt.scatter(X_pca[:, 0], X_pca[:, 1], c=data[200])
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15637025344831.html">
-                
-                  <h1>聚类方法Mini Batch KMeans</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>kmeans在数据量大的时候聚类时间会很久。Mini Batch KMeans使用了一个种叫做Mini Batch（分批处理）的方法对数据点之间的距离进行计算。Mini Batch的好处是计算过程中不必使用所有的数据样本，而是从不同类别的样本中抽取一部分样本来代表各自类型进行计算。由于计算样本量少，所以会相应的减少运行时间，但另一方面抽样也必然会带来准确度的下降</p>
-
-<h2 id="toc_0">迭代步骤：</h2>
-
-<p>1：从数据集中随机抽取一些数据形成小批量，把他们分配给最近的质心<br/>
-2：更新质心<br/>
-与K均值算法相比，数据的更新是在每一个小的样本集上。对于每一个小批量，通过计算平均值得到更新质心，并把小批量里的数据分配给该质心，随着迭代次数的增加，这些质心的变化是逐渐减小的，直到质心稳定或者达到指定的迭代次数，停止计算</p>
-
-<h2 id="toc_1">训练方法</h2>
-
-<p>和一般的Kmeans一样</p>
-
-<pre><code>from sklearn.cluster import MiniBatchKMeans
-
-clf = MiniBatchKMeans(n_clusters = 3)
-clf.fit(X)
-pre_clu = clf.labels_
-</code></pre>
-
-<p>【参考资料】<br/>
-<a href="http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/">http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -534,6 +605,8 @@ pre_clu = clf.labels_
             <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
+        
+            <a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html"><strong>轨迹数据</strong></a>
          
         </p>
 
@@ -550,31 +623,31 @@ pre_clu = clf.labels_
 	      
 		      
 			      <li class="post">
+			        <a href="15686309605233.html">matplotlib</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15687050894061.html">综述</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15686368904229.html">基于dtw进行聚类</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15636947700701.html">4.7 聚类1</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15637037683461.html">Jupyter notebook</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15680210974066.html">因子分析</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637025346412.html">1. conda 环境管理</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637037679256.html">Rmarkdown</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15637037713554.html">数据可视化概述</a>
 			      </li>
 		     
 		  
