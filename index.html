@@ -50,7 +50,7 @@
 
         <ul class="right" id="search-wrap">
           <li>
-<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
     <input type="hidden" id="search_q" name="q" value="" />
     <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
 </form>
@@ -102,6 +102,8 @@
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html">轨迹数据</a></li>
+        
+            <li><a href="%E8%AF%BB%E4%B9%A6.html">读书</a></li>
          
 
       </ul>
@@ -124,190 +126,14 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15686309605233.html">
+                <a class="clearlink" href="15706729896574.html">
                 
-                  <h1>matplotlib</h1>
+                  <h1></h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>matplotlib是python绘图的一个基础包，其用法和matlab语法有些相似。<br/>
-大量第三方包扩展并构建了Matplotlib功能，包括几个较高级别的绘图接口(seaborn、holoviews、ggplot 等)，以及两个投影和绘图工具包(basemap和cartopy)<br/>
-这里总结一些基本用法</p>
-
-<h2 id="toc_0">1.matplotlib.pylab</h2>
-
-<h2 id="toc_1">2.matplotlib.pyplot</h2>
-
-<p><img src="media/15686309605233/15686322692816.png" alt=""/></p>
-
-<pre><code>import matplotlib.pyplot as plt
-plt.plot(x, y, 其他属性)
-</code></pre>
-
-<p>pyplot是matplotlib中最常用的模块，</p>
-
-<h3 id="toc_2">常用的图形参数设置</h3>
-
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>功能</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>axis([xmin, xmax, ymin, ymax])</td>
-<td>设置坐标轴范围</td>
-</tr>
-<tr>
-<td>plot(x, y1,属性, y2, 属性)</td>
-<td>绘制线图</td>
-</tr>
-<tr>
-<td>title</td>
-<td></td>
-</tr>
-<tr>
-<td>xlabel, ylabel</td>
-<td>横纵坐标轴的标签</td>
-</tr>
-<tr>
-<td>text(x, y, 文字)</td>
-<td>添加文字描述</td>
-</tr>
-<tr>
-<td>annotate(&#39;注释&#39;, xy=(2, 1), xytext=(3, 1.5)</td>
-<td>添加箭头注释</td>
-</tr>
-<tr>
-<td>plt.yscale(&#39;linear’)   # linear, log, logit</td>
-<td>更换坐标轴刻度</td>
-</tr>
-</tbody>
-</table>
-
-<p><strong>subplot 绘制子图</strong></p>
-
-<pre><code>plt.figure()
-plt.subplot(2, 3, 1)   #n行m列的子图
-plt.plot(x1, y1)
-
-plt.subplot(2, 3, 2)   #n行m列的子图
-plt.plot(x2, y2)
-</code></pre>
-
-<pre><code>data = np.random.randn(2, 100)
-fig, axs = plt.subplots(2, 2, figsize=(5, 5))
-axs[0, 0].hist(data[0])
-axs[1, 0].scatter(data[0], data[1])
-axs[0, 1].plot(data[0], data[1])
-axs[1, 1].hist2d(data[0], data[1])
-
-plt.show()
-</code></pre>
-
-<p><strong>显示图像，读取图片</strong></p>
-
-<p>需要先安装<code>pillow</code>包<br/>
-<code><br/>
-im = plt.imread(&#39;cat.jpg&#39;)  #将图像读取为数组<br/>
-ax.imshow(im)                  # imshow将数组显示为图像<br/>
-</code><br/>
-plt.colorbar()      #  可以添加颜色条</p>
-
-<p><strong>3d绘图</strong></p>
-
-<p>mplot3d</p>
-
-<h2 id="toc_3">3. 绘制案例</h2>
-
-<p>常用的图像类型  <a href="https://www.matplotlib.org.cn/tutorials/introductory/sample_plots.html">https://www.matplotlib.org.cn/tutorials/introductory/sample_plots.html</a></p>
-
-<h3 id="toc_4">1 绘制随时间动态变化的散点图</h3>
-
-<p>想要得到动画效果的图像，就是让多幅图连续播放，所以需要不断修改图中曲线的属性。首先需要了解下面像对象编程，在matplotlib中我们调用的任何函数，都会返回一个对象的实例。所以可以通过修改其相应的属性来改变曲线。比如常见的设置title，xlim等<br/>
-<code>plt.plot(x, y); plt.title(&#39;plot title&#39;)</code></p>
-
-<p>主要用到的函数<br/>
-<code>FuncAnimation(fig, func, frames=None,fargs=None)</code><br/>
-FuncAnimation的参数比较多，这里只列举出最重要的四个。</p>
-
-<ul>
-<li>fig: 指得是目前曲线所在在的figure。</li>
-<li>func: 这个函数主要是修改lines的属性，并返回。</li>
-<li>frames: 这是func参数中，跟每一帧相关的参数，靠它曲线才会发生变化。动画长度，一次循环包含的帧数</li>
-<li>fargs： 对应func中其他参数。</li>
-<li>interval 更新频率，以ms记</li>
-<li>blit: 选择更新所有点，还是仅更新产生变化的点。</li>
-<li>可选参数 repeat，指定是否循环动画</li>
-</ul>
-
-<p>官网的一个案例 <br/>
-<a href="https://matplotlib.org/gallery/animation/simple_anim.html">https://matplotlib.org/gallery/animation/simple_anim.html</a></p>
-
-<p>模仿写的一个小例子  <a href="https://www.smslit.top/2018/11/12/matplotlib-animation/">https://www.smslit.top/2018/11/12/matplotlib-animation/</a></p>
-
-<pre><code>import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib import animation
-
-def plot_trace_animation(x, y):
-
-    fig, ax = plt.subplots()
-    plt.xlim(min(x), max(x))
-    plt.ylim(min(y), max(y))
-    line, = ax.plot(x[0], y[0])
-
-    def init():  # only required for blitting to give a clean slate.
-        line.set_ydata([np.nan] * len(x))
-        return line,
-
-    def update(i):
-        print(i)
-        line.set_xdata(x[:i])
-        line.set_ydata(y[:i])
-        #scat.set_data(x[:i], y[:i])
-        return line,
-
-    anim = animation.FuncAnimation(fig, update, init_func=init,frames=10, interval=100)
-    plt.show()
-
-    #anim.to_html5_video()
-    #anim.to_jshtml()
-    anim.save(&#39;out.mp4&#39;)   # 需要先安装ffmpeg
-
-x = range(1, 11)
-y = range(5, 15)
-
-plot_trace_animation(x, y)
-</code></pre>
-
-<p>保存</p>
-
-<p>anim.save(&#39;out.mp4&#39;)   # 需要先安装ffmpeg<br/>
-anim.save的 save 方法可以指定 writer ，这里要保存 gif 默认选择的 writer 为 pillow ，所以需要安装 pillow 库：</p>
-
-<p>$ pip3 install pillow<br/>
-按照如下调用方法即可保存动画为 gif，这里保存动画的帧数是受 animation.FuncAnimation 的 frames 和 save_count 影响的：</p>
-
-<p>ani.save(&#39;animation.gif&#39;, writer=&#39;pillow&#39;)</p>
-
-<h2 id="toc_5">参考</h2>
-
-<p><a href="https://www.matplotlib.org.cn/home.html">https://www.matplotlib.org.cn/home.html</a></p>
-
-<pre><code>
-
-
-
-
-
-
-</code></pre>
-
+                        	
                         
                       </div>
                   </div>
@@ -315,11 +141,13 @@ anim.save的 save 方法可以指定 writer ，这里要保存 gif 默认选择�
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/9/16</span>
+                    <span class="date">2019/10/10</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html'>3 数据可视化</a></span>
+          					    <span class="posted-in"><a href='%E8%AF%BB%E4%B9%A6.html'>读书</a></span>
           				   
+                    
+
                   </div>
                   <div class="more-right right">
                   <span class="comments">
@@ -334,12 +162,130 @@ anim.save的 save 方法可以指定 writer ，这里要保存 gif 默认选择�
 			<div class="article">
                 <a class="clearlink" href="15687050894061.html">
                 
-                  <h1>综述</h1>
+                  <h1>0.综述</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><a href="https://www.jianshu.com/p/e78016feda12">https://www.jianshu.com/p/e78016feda12</a></p>
+                        	<p><img src="media/15687050894061/15694883044237.jpg" alt=""/></p>
+
+<p>首先是关于整个轨迹数据涉及的存储、数据清洗、分析、挖掘的一个整体模块。</p>
+
+<h2 id="toc_0">1 trajectory preprocessing</h2>
+
+<p>详见 <a href="15694859531608.html"> trajectory preprocessing</a></p>
+
+<p>GPS点漂移问题<br/>
+<a href="http://www.xml-data.org/CHDLXX/html/62356297-1a5a-4b3f-bb57-547e9a401da0.htm">http://www.xml-data.org/CHDLXX/html/62356297-1a5a-4b3f-bb57-547e9a401da0.htm</a></p>
+
+<h2 id="toc_1">2 trajectory data management</h2>
+
+<h3 id="toc_2">2.1 trajectory indexing和retrieval</h3>
+
+<p>常见的检索类型有：<br/>
+(1) range 检索： 检索在指定空间或时间内的轨迹<br/>
+(2) KNN 检索：找到和指定轨迹或者点最近的k条轨迹<br/>
+检索涉及到数据存储形式，可以看下原文，这里不细说了。</p>
+
+<p>一般都是采用专门的GIS数据库进行存储和管理。</p>
+
+<h3 id="toc_3">2.2 trajectory的距离/相似性</h3>
+
+<p>详见 <a href="15694875253508.html">2 轨迹相似性度量</a></p>
+
+<h2 id="toc_4">3.uncertainty in a trajectory</h2>
+
+<p>(1) 减少不确定性<br/>
+多条不确定性的路线合并=&gt; 相对确定性的路线<br/>
+(2) 将空间进行grids划分，将原本的轨迹点重新归属到新的单元格中，简化轨迹</p>
+
+<h2 id="toc_5">4. trajectory pattern mining</h2>
+
+<h3 id="toc_6">(1) moving together patterns</h3>
+
+<p>move together pattern 主要是找到一组在一定时间内共同移动的物体。一般都是通过基于密度聚类的方法。<br/>
+Jensen[2007] Continuous clustering of moving objects扩展了这种方法，使得在原来的距离的基础上增加了移动的方向、角度等因素。</p>
+
+<h3 id="toc_7">(2) trajectory clustering</h3>
+
+<p>根据前面的关于轨迹距离/相似度的定义，可以对轨迹进行聚类。在这之前一般都需要对轨迹数据进行一步的处理，比如切分segment。</p>
+
+<h3 id="toc_8">（3）mining sequential patterns</h3>
+
+<p>进行子序列模式挖掘，首先要定义序列中的location，即将(x,y)转为一个有标识性的概念，比如一个地点。方法：</p>
+
+<ul>
+<li>line simplification based 方法：比如先用DP方法识别出来key points。然后对每个轨迹的segment为一个item进行模式挖掘</li>
+<li>cluster based： 先把轨迹上的点，聚类到regions of interest，然后每条轨迹就可以用这些“关键点”来表示。</li>
+</ul>
+
+<h3 id="toc_9">(4) periodical patterns</h3>
+
+<h2 id="toc_10">5. trajectory classification</h2>
+
+<p>一般来说，一个轨迹分类的过程大概是<br/>
+(1)将轨迹切分成segment<br/>
+(2) 提取特征<br/>
+(3) 建立模型： As a trajectory is essentially a sequence, we can leverage existing sequence inference models, such as Dynamic Bayesian Network (DBN), HMM, and Conditional Random Field (CRF)</p>
+
+<p>==&gt; 可以看看相关论文</p>
+
+<h2 id="toc_11">6. 轨迹异常检测</h2>
+
+<h2 id="toc_12">7.把轨迹转成其他的形式</h2>
+
+<p>(1) graph</p>
+
+<ul>
+<li>travel recommendation, 旅游的stay points, 然后研究图的联通，最大流之类的问题</li>
+<li>计算user similarity。 通过更细粒度的停留点，以停留点为单位，每个人的轨迹就可以用停留点来刻画，即user1= (place1, place2, place3), user2 = (place1&#39;, place2&#39;, place3&#39;, place4&#39;)。然后可以进行user之间的相似度度量。</li>
+<li><br/>
+(2) matrix<br/>
+可以做travel recommendation。  比如 user-location矩阵，zheng[2010b]提出了一个coupled-MF的方法。构造了一个location-activity矩阵。</li>
+</ul>
+
+<p>(3) tensor<br/>
+user-location-activity。作者介绍了一种分解方法</p>
+
+<h2 id="toc_13">8.常用的轨迹数据集</h2>
+
+<p>public trajectory dataset<br/>
+—GeoLife Trajectory Dataset [GeoLife Data]<br/>
+—T-Drive Taxi Trajectories [T-Drive Data]<br/>
+—GPS Trajectory with Transportation Labels<br/>
+—Check-in Data from Location-based Social Networks [User check-in data]<br/>
+—Hurricane Trajectories [Hurricane trajectory (HURDAT)]<br/>
+—The Greek Truck Trajectories [The Greek Trucks Dataset]<br/>
+—Movebank Animal Tracking Data [Movebank data]</p>
+
+<hr/>
+
+<h2 id="toc_14">基于轨迹特征的挖掘应用</h2>
+
+<p>轨迹数据应用案例<br/>
+<a href="https://www.jianshu.com/p/e78016feda12">https://www.jianshu.com/p/e78016feda12</a></p>
+
+<p>一个挖掘案例<br/>
+<a href="https://github.com/haicg/datamining-geolife-with-python">https://github.com/haicg/datamining-geolife-with-python</a></p>
+
+<p><a href="https://github.com/jbremz/Beijing-Trajectories-Project">https://github.com/jbremz/Beijing-Trajectories-Project</a><br/>
+这个项目本身是个分类的项目，通过各种轨迹特征来判断交通方式。其中有很多关于轨迹特征指标的设计可以借鉴(比如角度、面积。。。)</p>
+
+<p>数据来源，微软GeoLife GPS Trajectories项目，<a href="https://www.microsoft.com/en-us/research/publication/geolife-gps-trajectory-dataset-user-guide/">https://www.microsoft.com/en-us/research/publication/geolife-gps-trajectory-dataset-user-guide/</a></p>
+
+<p><a href="https://chuansongme.com/n/1884212353776">https://chuansongme.com/n/1884212353776</a></p>
+
+<p>研究paper：<br/>
+Trajectory Clustering: A Partition-and-Group Framework，Jae-Gil Lee, Jiawei Han，Kyu-Young Whang</p>
+
+<p>很好的综述，有部分code<br/>
+<a href="http://www.idataskys.com/2019/07/20/%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E7%9B%B8%E5%85%B3%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/">http://www.idataskys.com/2019/07/20/%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E7%9B%B8%E5%85%B3%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/</a></p>
+
+<h2 id="toc_15">参考资料</h2>
+
+<p>郑宇 <a href="https://www.microsoft.com/en-us/research/publication/trajectory-data-mining-an-overview/">https://www.microsoft.com/en-us/research/publication/trajectory-data-mining-an-overview/</a></p>
+
+<p>其他综述类资料：<a href="http://www.idataskys.com/2019/07/20/%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E7%9B%B8%E5%85%B3%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/">http://www.idataskys.com/2019/07/20/%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E7%9B%B8%E5%85%B3%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/</a></p>
 
                         
                       </div>
@@ -353,6 +299,8 @@ anim.save的 save 方法可以指定 writer ，这里要保存 gif 默认选择�
           				  
           					    <span class="posted-in"><a href='%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html'>轨迹数据</a></span>
           				   
+                    
+
                   </div>
                   <div class="more-right right">
                   <span class="comments">
@@ -365,19 +313,16 @@ anim.save的 save 方法可以指定 writer ，这里要保存 gif 默认选择�
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15686368904229.html">
+                <a class="clearlink" href="15637036455584.html">
                 
-                  <h1>基于dtw进行聚类</h1>
+                  <h1>1 估计的置信度</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><a href="https://blog.csdn.net/songbinxu/article/details/86660136">https://blog.csdn.net/songbinxu/article/details/86660136</a></p>
+                        	<p>在大多数的研究中，我们无法获取研究对象的总体数据，或者能获取但是成本非常大。实际情况中，我们往往是通过抽样的方法，在总体中进行随机抽样。根据获取的这部分样本数据去推动总体的一些属性。比如通过抽样人群的平均身高去估计所有人群的平均身高，通过抽样人群中的男女比例，去估计我国当前的男女比例状况。<br/>
+抽样样本量是直接影响到最终的估计准确度，所以这一章节，先来介绍下如何判断一种估计方法准确与否。</p>
 
-<p>成对数据计算效率问题<br/>
-<a href="http://cn.voidcc.com/question/p-pvczjbyi-bmw.html">http://cn.voidcc.com/question/p-pvczjbyi-bmw.html</a></p>
-
-<p>这里踩了一个坑：安装上fastdtw后速度仍然慢。在测试机上跑n=30条数据两两组队，耗时38s，mac上才3s。后来发现是mac上采用的是Cpython， 测试机上运行的是纯python版本。</p>
 
                         
                       </div>
@@ -385,84 +330,14 @@ anim.save的 save 方法可以指定 writer ，这里要保存 gif 默认选择�
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                  
-                    <span class="date">2019/9/16</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html'>轨迹数据</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15636947700701.html">
-                
-                  <h1>4.7 聚类1</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>聚类分析（cluster analysis）是属于无监督学习，他的目的是去探索数据隐含的规律。其基本思想是基于相似度/距离远近来将样本进行聚类。</p>
-
-<h2 id="toc_0">1.距离的度量方法</h2>
-
-<p>常见的聚类方法：</p>
-
-<table>
-<thead>
-<tr>
-<th>方法类别</th>
-<th>聚类方法</th>
-<th>优缺点</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>基于距离</td>
-<td>Kmeans</td>
-<td></td>
-</tr>
-<tr>
-<td>基于密度</td>
-<td>Dbscan</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-<ul>
-<li>kmeans</li>
-</ul>
-
-<p>选择初始种子</p>
-
-<p>从概率角度看，k均值算法是高斯混合模型的一种特例</p>
-
-<ul>
-<li>基于密度的聚类 DBSCAN</li>
-</ul>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
+                   <a href="15637036455584.html">Read more</a>&nbsp;&nbsp; 
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
           				   
+                    
+
                   </div>
                   <div class="more-right right">
                   <span class="comments">
@@ -475,146 +350,94 @@ anim.save的 save 方法可以指定 writer ，这里要保存 gif 默认选择�
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037683461.html">
+                <a class="clearlink" href="15637025346412.html">
                 
-                  <h1>Jupyter notebook</h1>
+                  <h1>1. conda 环境管理</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>类似于r的markdown</p>
-
-<p>GitHub 上也直接支持 Jupyter notebook 的渲染。借助此出色的功能，你可以轻松地共享工作。<a href="http://nbviewer.jupyter.org/">http://nbviewer.jupyter.org/</a> 也会提供 GitHub 代码库中的 notebook ，以及存储在其他地方的 notebook。</p>
-
-<p>名称 Jupyter 由 Julia、Python 和 R 组合而成，早期的两个非 Python 内核分别是 R 语言和 Julia 语言</p>
-
-<h2 id="toc_0">1.安装</h2>
+                        	<p>conda的主要作用有如下两个：</p>
 
 <ul>
-<li>如果安装anaconda 会自带</li>
-<li>通过conda环境安装 <code>conda install jupyter notebook</code>，或者<code>pip install jupyter notebook</code></li>
+<li>包管理</li>
 </ul>
 
-<pre><code># 启动
-jupyter notebook
-</code></pre>
-
-<p>快捷键</p>
-
-<p>在上方插入cell：a<br/>
-在下方插入cell：b<br/>
-剪切当前cell：x<br/>
-删除当前cell：dd<br/>
-撤销删除：u<br/>
-上下：方向键 or jk (同vim)<br/>
-扩展选中上下左右：shift+jk<br/>
-当前cell转入markdown状态：m<br/>
-当前cell转入代码状态：y</p>
-
-<h2 id="toc_1">magic 关键字</h2>
-
-<p>Magic 关键字是可以在单元格中运行的特殊命令，能让你控制notebook 本身或执行系统调用（例如更改目录）</p>
-
-<p>Magic 命令的前面带有一个或两个百分号（% 或 %%），分别对应行 Magic 命令和单元格 Magic 命令。行 Magic 命令仅应用于编写 Magic 命令时所在的行，而单元格 Magic 命令应用于整个单元格。</p>
-
-<p>对于 Python 内核，可以使用 Magic 命令 %pdb 开启交互式调试器。出错时，你能检查当前命名空间中的变量。</p>
-
-<h2 id="toc_2">2.转换 notebook格式</h2>
-
-<p>Notebook 只是扩展名为 .ipynb 的大型 JSON 文件。</p>
-
-<p>转换格式的命令 <code>nbconvert</code></p>
-
-<pre><code>jupyter nbconvert --to html notebook.ipynb   #转成html
-jupyter nbconvert --to markdown xxx.ipynb 
-</code></pre>
-
-<p>目前支持的转换格式(<a href="https://nbconvert.readthedocs.io/en/latest/usage.html">https://nbconvert.readthedocs.io/en/latest/usage.html</a>)<br/>
-HTML,<br/>
-LaTeX,<br/>
-PDF,<br/>
-Reveal.js HTML slideshow,<br/>
-Markdown,<br/>
-reStructuredText,<br/>
-executable script,<br/>
-notebook.</p>
-
-<p><strong>创建幻灯片</strong></p>
-
-<p>在 notebook 中创建幻灯片的过程像平常一样，但需要指定作为幻灯片的单元格和单元格的幻灯片类型。在菜单栏中，点击“View”（视图）&gt;“Cell Toolbar”（单元格工具栏）&gt;“Slideshow”（幻灯片），以便在每个单元格上弹出幻灯片单元格菜单。</p>
-
-<pre><code>#转换并在浏览器中展示
-jupyter nbconvert notebook.ipynb --to slides --post serve
-</code></pre>
-
-<h2 id="toc_3">3.测试机上安装jupyter</h2>
-
-<p><a href="https://cloud.tencent.com/developer/article/1147487">https://cloud.tencent.com/developer/article/1147487</a></p>
+<p>Anaconda 安装，conda包管理器与pip类似，不同之处是可用的包以数据科学包为主，而 pip 适合一般用途。它也可以安装非 Python 的包。它是支持任何软件的包管理器。</p>
 
 <ul>
-<li>安装jupyter</li>
-<li>生成密码 python -c &quot;import IPython;print IPython.lib.passwd()&quot;</li>
-<li>修改配置文件 </li>
+<li>虚拟环境管理器</li>
 </ul>
 
-<p>/home/work/.jupyter/jupyter_notebook_config.py</p>
+<p>它类似于另外两个很流行的环境管理器，即 virtualenv 和 pyenv<br/>
+脚本和程序使用的默认 Python 是 Anaconda 附带的 Python。</p>
 
-<p>如果启动报错</p>
+<p>可以安装完整版： <a href="https://www.anaconda.com/distribution/#download-section">https://www.anaconda.com/distribution/#download-section</a><br/>
+也可以安装精简版miniconda： <a href="https://conda.io/miniconda.html">https://conda.io/miniconda.html</a></p>
 
-<pre><code>socket.gaierror: [Errno -2] Name or service not known
+<h2 id="toc_0">包管理-常用命令</h2>
+
+<pre><code class="language-text">conda list  #查看安装的内容
+conda upgrade --all   #初次下载安装好后，建议更新所有包
 </code></pre>
 
-<p>可以加上自己的ip</p>
+<p>安装包</p>
 
-<pre><code> jupyter notebook --ip=xxxx
- jupyter lab --ip=xxx
+<pre><code class="language-text">conda install xxx
+conda install numpy=1.10   #指定包的版本
+
+conda remove package
+conda upgrade --all
 </code></pre>
 
-<h2 id="toc_4">4.其他工具</h2>
-
-<p><strong>jupyter-lab</strong><br/>
-jupyter-lab 是jupyter-notebook的升级版，界面更加炫酷，也支持更多功能，强烈建议使用lab方式</p>
-
-<p><strong>colab</strong><br/>
-google 基于jupyter开发的存在在google driver上的网页版<br/>
-<a href="https://colab.research.google.com/">https://colab.research.google.com/</a><br/>
-本身功能上差不太多，主要是有search和share功能，查看别人分享的代码</p>
-
-<h2 id="toc_5">5.常见问题</h2>
-
-<p>Q1: 若import了自己写的外部模块，如果这个外部模块有更新，再次执行import，jupyter是不会重新导入的<br/>
-<a href="https://blog.csdn.net/ybdesire/article/details/86709727">https://blog.csdn.net/ybdesire/article/details/86709727</a></p>
-
-<p>对于 Python2.x<br/>
-import some_module<br/>
-reload(some_module)</p>
-
-<p>对于 Python 3.2 and 3.3:<br/>
-import some_module<br/>
-import importlib<br/>
-importlib.reload(some_module)</p>
-
-<p>对于 Python3.4+<br/>
-import some_module<br/>
-import imp<br/>
-imp.reload(some_module)</p>
-
-<p>Q2. <code>jupyter lab</code> 启动提示</p>
-
-<p><img src="media/15637037680349/15665439689997.jpg" alt=""/></p>
-
-<p>应该是编码问题，暂时的解决方案<a href="https://github.com/jupyter/notebook/issues/2789#issuecomment-338380336">https://github.com/jupyter/notebook/issues/2789#issuecomment-338380336</a></p>
-
-<p><code>LANG=zn jupyter lab</code></p>
-
-<p>这个问题后来查了下说是python2的bug，安装python3就不会出现这个问题。</p>
-
-<p>Q3. 切换内核<br/>
-很多代码都是python2写的，用pip3安装jupyter之后，想切换写内核。<br/>
-<a href="https://www.cnblogs.com/Jeffiy/p/4861528.html">https://www.cnblogs.com/Jeffiy/p/4861528.html</a></p>
-
-<pre><code>jupyter kernelspec list
+<pre><code class="language-text">模糊查询相关包
+conda search search_term
 </code></pre>
+
+<h2 id="toc_1">环境管理</h2>
+
+<p>默认的环境名字叫base(我的电脑上是)</p>
+
+<p>通过<code>conda env list</code>可以列出你创建的所有环境</p>
+
+<pre><code class="language-text">#创建环境
+conda create -n env_name list of packages
+eg. conda create -n my_env numpy
+
+conda create -n py3 python=3
+conda create -n py2 python=2
+
+#进入环境
+source activate my_env
+#离开环境
+source deactivate
+
+# 删除环境
+conda env remove -n env_name
+</code></pre>
+
+<h2 id="toc_2">其他</h2>
+
+<p>共享环境：将自己的工作环境保存下来给别人共享</p>
+
+<pre><code class="language-text">#进入到你的环境中
+source activate base
+conda env export &gt; environment.yaml
+
+# 通过环境文件创建环境
+conda env create -f environment.yaml
+</code></pre>
+
+<h2 id="toc_3">conda install 与pip install的区别</h2>
+
+<p>，pip list和conda list列表却不一致，conda数量 &gt; pip<br/>
+conda 安装包路径是 xxxxx\Anaconda3\pkgs<br/>
+pip 安装包路径在虚拟环境下是 xxxx\Anaconda3\envs\a_conda_env\Lib\site-packages<br/>
+所以当前环境下pip list只列举出当前包list<br/>
+此处需要留意如果使用conda install 多个环境时，对于同一个包只需要安装一次。有conda集中管理。<br/>
+但是如果使用pip因为每个环境安装使用的pip在不同的路径下，故会重复安装，而包会从缓存中取。</p>
+
+<p>(2) 另外从体验上看感觉conda速度快很多</p>
 
                         
                       </div>
@@ -628,6 +451,158 @@ imp.reload(some_module)</p>
           				  
           					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
           				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15694859531608.html">
+                
+                  <h1>1.trajectory preprocessing</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ul>
+<li>noise filtering</li>
+<li>stay point detect</li>
+<li>trajectory compression</li>
+<li>trajectory segmentation</li>
+</ul>
+
+<h2 id="toc_0">1. nosie filtering</h2>
+
+<p>(1) 均值/ 中位数 平滑<br/>
+一种简单的方法是使用一个均值滤波器来平滑噪声。对于测量到的点𝑧𝑖,对真正的点的估计是𝑧𝑖及其n-1个前驱的平均值.均值滤波器可以看作是一个滑动窗口,覆盖了𝑧𝑖 的时间相邻值.</p>
+
+<p>(2) 卡尔曼滤波，粒子滤波</p>
+
+<p>不光考虑轨迹(x,y), 还考虑了在x，y方向上的速度vx，vy。不考虑速度的相当于是<br/>
+<img src="media/15694859531608/15697504854923.jpg" alt=""/></p>
+
+<p>考虑速度的相当于是：<br/>
+<img src="media/15694859531608/15697505518925.jpg" alt=""/></p>
+
+<p>也就是<br/>
+<img src="media/15694859531608/15697507024669.jpg" alt=""/></p>
+
+<p>(3) 删除法<br/>
+上面两种是对点进行估计，删除法是用异常点检查的方法找到异常点，然后直接删除。<br/>
+一种方式就是计算从pi -&gt; pj点的速度，超过一定阈值的认为是异常值。</p>
+
+<h2 id="toc_1">2. stay point detect</h2>
+
+<p>停留点一般有两种情况：</p>
+
+<ul>
+<li>单一点。一个人长时间驻足在一个点，这种情况相对较少</li>
+<li>驻留区域，一个人长时间在一个小范围内活动</li>
+</ul>
+
+<p><img src="media/15694859531608/15694905917851.jpg" alt=""/></p>
+
+<p>驻留点发掘后，可以将原来的轨迹(x,y,t) 数据 转为地点 (place, delta_t) 数据</p>
+
+<p>停留点检测算法：</p>
+
+<h2 id="toc_2">3. trajectory compression</h2>
+
+<p>轨迹压缩主要是为了在保证一定精度的条件下，减少数据的存储成本。</p>
+
+<p>为了衡量压缩的损失，需要测度压缩后的轨迹与原始轨迹的距离度量。距离的度量有两种方式：<br/>
+(1) 垂直距离<br/>
+(2) 时间同步距离<br/>
+比如下面的例子，将一条有12个点的轨迹压缩到3个点p1，p7，p12。 垂直距离就是直接做点到直线的垂线，而时间同步距离就是假设这个人在p1p7上是匀速行驶的，按照时间间隔为权重划分其他点对应的距离。</p>
+
+<p><img src="media/15694859531608/15695045972823.jpg" alt=""/></p>
+
+<p>压缩方法大致分为两大类别：<br/>
+(1) offline compression<br/>
+即给定一条轨迹，需要生成一个一定误差范围内的近似轨迹。这个问题类似于line simplification问题。一个经典的算法就是 Douglas-Peucker</p>
+
+<pre><code class="language-text">算法描述如下:
+（1）在曲线首尾两点A，B之间连接一条直线AB，该直线为曲线的弦；
+（2）得到曲线上离该直线段距离最大的点C，计算其与AB的距离d；
+（3）比较该距离与预先给定的阈值threshold的大小，如果小于threshold，则该直线段作为曲线的近似，该段曲线处理完毕。
+（4）如果距离大于阈值，则用C将曲线分为两段AC和BC，并分别对两段曲线进行1~3的处理。
+（5）当所有曲线都处理完毕时，依次连接各个分割点形成的折线，即可以作为曲线的近似。
+</code></pre>
+
+<p>注意DP算法中需要计算点到直线的垂直距离，这里可以使用海伦公式。假设一个三角形三边长度分别是a,b,c，则其面积计算公式可写成<br/>
+\(s=\sqrt{p(p-a)(p-b)(p-c)}\)， 其中\(p\)是半周长\(p=(a+b+c)/2\)</p>
+
+<p>除了DP方法之外，还有</p>
+
+<ul>
+<li>TD-TR（Top-Down Time-Ratio）算法<br/>
+DP是考虑的垂直距离，TDTR是考虑的时间同步距离，</li>
+<li>Bellman算法<br/>
+动态规划的方法</li>
+</ul>
+
+<p>(2) online compression<br/>
+online-compression，即数据会源源不断过来，无法提前预知轨迹点数。来了个新点之后决定是否保留的过程。方法大致有两大类</p>
+
+<ul>
+<li>window-based algorithm： sliding window algorithm，open window algorithm</li>
+</ul>
+
+<p>滑动窗口：从p0开始，依次看p0pi的长度，如果没超过阈值则舍弃，否则将其纳入。比如下面例子中的p5是第一个超过阈值的，p5纳入后，再以p5为开始点继续进行。<br/>
+<img src="media/15694859531608/15697244621130.jpg" alt=""/><br/>
+开放窗口：滑动窗口是选择最后一个带来超过阈值的点作为新的起点，而开放窗口是选择线段内误差最大的点。<br/>
+比如p5超过阈值后，看p2-p4这些点中到p1-p5直线的误差哪个最大，因此p3会被选上。</p>
+
+<ul>
+<li>依赖物体移动的速度和方向</li>
+</ul>
+
+<p>依据给定的一个阈值，以及上两次的位置，定义一个safe area，如果后续来的点在该safe area之内则认为是多余的被忽略。</p>
+
+<p>compression with semantic meaning. <br/>
+有些轨迹上是包含了用户的驻足点信息的，比如游览景区。这些点的信息量要比一般走路的信息量大。针对这种情况的压缩，chen[2009] 提出了一个TS(trajectory simplification)算法。既考虑整体的轨迹形状也考虑这些import points。</p>
+
+<h2 id="toc_3">4. trajectory segmentation</h2>
+
+<p>轨迹切分主要是为了研究的方便。比如可以按照如下的方法进行切分：<br/>
+<img src="media/15694859531608/15697265750574.jpg" alt=""/><br/>
+这些切分需要结合实际的研究目的和场景。可以按照时间切分，转折点切分、驻留点切分。还有一些研究室研究人们乘坐交通工具的，可以按照乘坐方式分。<br/>
+除此之外，还有基于轨迹点密度进行的轨迹分割：一般都基于密度聚类算法的改进算法来进行检测，如：K-中值算法，DJ-Cluster算法，cb_swot算法，MSN(Move-Stop-Noise)算法等。</p>
+
+<h2 id="toc_4">5. map matching</h2>
+
+<p>这里也有很多研究，简单的说下，就是讲坐标点构成的路径和地图上的路线进行match。方法有geometric，概率建模的，以及其他的一些方法。<br/>
+根据考虑的抽样点数，可以分为local/incremental 和global的方法。</p>
+
+<h2 id="toc_5">参考</h2>
+
+<p>paper：郑宇2015. trajectory data mining: an overview<br/>
+<a href="https://www.cnblogs.com/xueqiuqiu/p/7635516.html?utm_source=debugrun&amp;utm_medium=referral">https://www.cnblogs.com/xueqiuqiu/p/7635516.html?utm_source=debugrun&amp;utm_medium=referral</a><br/>
+均值，中位数平滑，滤波器<br/>
+知乎：<a href="https://zhuanlan.zhihu.com/p/51976835">https://zhuanlan.zhihu.com/p/51976835</a>  应该是翻译的ppt</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/9/26</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html'>轨迹数据</a></span>
+          				   
+                    
+
                   </div>
                   <div class="more-right right">
                   <span class="comments">
@@ -712,6 +687,8 @@ imp.reload(some_module)</p>
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html"><strong>轨迹数据</strong></a>
+        
+            <a href="%E8%AF%BB%E4%B9%A6.html"><strong>读书</strong></a>
          
         </p>
 
@@ -728,31 +705,31 @@ imp.reload(some_module)</p>
 	      
 		      
 			      <li class="post">
-			        <a href="15686309605233.html">matplotlib</a>
+			        <a href="15706729896574.html"></a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">综述</a>
+			        <a href="15687050894061.html">0.综述</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15686368904229.html">基于dtw进行聚类</a>
+			        <a href="15637036455584.html">1 估计的置信度</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15636947700701.html">4.7 聚类1</a>
+			        <a href="15637025346412.html">1. conda 环境管理</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037683461.html">Jupyter notebook</a>
+			        <a href="15694859531608.html">1.trajectory preprocessing</a>
 			      </li>
 		     
 		  

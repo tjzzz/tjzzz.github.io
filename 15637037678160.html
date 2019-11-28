@@ -50,7 +50,7 @@
 
         <ul class="right" id="search-wrap">
           <li>
-<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
     <input type="hidden" id="search_q" name="q" value="" />
     <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
 </form>
@@ -102,6 +102,8 @@
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html">轨迹数据</a></li>
+        
+            <li><a href="%E8%AF%BB%E4%B9%A6.html">读书</a></li>
          
 
       </ul>
@@ -144,29 +146,51 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <p>git 是一个版本管理的工具</p>
+      <p>git 是一个版本管理的工具，能够非常方便的对项目进行版本控制。</p>
 
-<p><strong>1 基本配置</strong></p>
+<h2 id="toc_0">1建立自己的代码库</h2>
 
-<p>（1）生成公钥<br/>
-ssh-keygen -t rsa -f ~/.ssh/id_rsa.zhenzhen<br/>
-cat ~/.ssh/id_rsa.zhenzhen.pub 保存到icode上<br/>
-chmod 644 ~/.ssh/config<br/>
-vim ~/.ssh/config<br/>
-添加下自己的配置<br/>
-Host icode.baidu.com<br/>
-User yangyang22<br/>
-IdentityFile ~/.ssh/id_rsa.yangyang22<br/>
-（2）clone<br/>
-git clone  xxxxx代码库<br/>
-git config --local user.email <a href="mailto:zhengzhenzhen@baidu.com">zhengzhenzhen@baidu.com</a><br/>
-git config --local user.name zhengzhenzhen</p>
+<p>假设你的用户名是zzz<br/>
+（1）生成公钥<br/>
+ssh-keygen -t rsa -f ~/.ssh/id_rsa.zzz<br/>
+cat ~/.ssh/id_rsa.zzz.pub 保存到icode或者是自己的github上<br/>
+（2）clone</p>
 
-<p>git push origin master:refs/for/master<br/>
-（3）上传文件<br/>
-git add xxx<br/>
-git commit -m &#39;注释&#39;<br/>
-git push origin HEAD:refs/for/master</p>
+<pre><code class="language-text">git clone  xxxxx代码库             # 将代码库克隆到本地
+## 如果机器是多个人使用的话用--local,如果是自己一个人的话可以设置成--global
+git config --local user.email zzz邮箱
+git config --local user.name zzz用户名
+git push origin master:refs/for/master
+</code></pre>
+
+<h2 id="toc_1">2 基本操作</h2>
+
+<p>当我们新增或者更新了一个文件后，如何上传到代码库</p>
+
+<pre><code class="language-text">git add xxx
+git commit -m &#39;注释&#39;
+git push origin HEAD:refs/for/master
+</code></pre>
+
+<p>从代码库将新代码下载到本地，更新本地库</p>
+
+<pre><code class="language-text">git pull
+</code></pre>
+
+<h2 id="toc_2">3.常用操作</h2>
+
+<p>(1) 还原文件到之前的某个版本。</p>
+
+<p>当发现新提交的版本有问题，想回退到之前的某个版本的之后，可以进行如下操作。<code>git long</code><br/>
+比如我想修改自己写的这个<code>utils.py</code> 代码</p>
+
+<pre><code class="language-text">git log utils.py
+## 可以看到一共提交了3次，假设喔想回退到9.25提交的那个版本
+git checkout 742bf4a53e473b2536b53cb3ad56072ae236a1c3 utils.py 
+git commit -m &quot;revert to previous version&quot;
+</code></pre>
+
+<p><img src="media/15637037678160/15699932802240.jpg" alt=""/></p>
 
 <p>我不知道”undo”是什么意思。您可以删除core.excludesfile设置，如下所示：<br/>
 git config --global --unset core.excludesfile<br/>
@@ -192,16 +216,16 @@ git reset --hard xxxxx</p>
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="15665545372148.html" 
-          title="Previous Post: shell">&laquo; shell</a>
+          <a href="15637037690385.html" 
+          title="Previous Post: face_recgnization">&laquo; face_recgnization</a>
       
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="15637037680741.html" 
-          title="Next Post: sublime">sublime &raquo;</a>
+          <a  href="15637037680349.html" 
+          title="Next Post: jupyterLab-安装R支持">jupyterLab-安装R支持 &raquo;</a>
       
       </p>
         </div>
@@ -276,6 +300,8 @@ git reset --hard xxxxx</p>
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html"><strong>轨迹数据</strong></a>
+        
+            <a href="%E8%AF%BB%E4%B9%A6.html"><strong>读书</strong></a>
          
         </p>
 
@@ -292,31 +318,31 @@ git reset --hard xxxxx</p>
 	      
 		      
 			      <li class="post">
-			        <a href="15686309605233.html">matplotlib</a>
+			        <a href="15706729896574.html"></a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">综述</a>
+			        <a href="15687050894061.html">0.综述</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15686368904229.html">基于dtw进行聚类</a>
+			        <a href="15637036455584.html">1 估计的置信度</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15636947700701.html">4.7 聚类1</a>
+			        <a href="15637025346412.html">1. conda 环境管理</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037683461.html">Jupyter notebook</a>
+			        <a href="15694859531608.html">1.trajectory preprocessing</a>
 			      </li>
 		     
 		  

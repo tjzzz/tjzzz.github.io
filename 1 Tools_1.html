@@ -50,7 +50,7 @@
 
         <ul class="right" id="search-wrap">
           <li>
-<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
     <input type="hidden" id="search_q" name="q" value="" />
     <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
 </form>
@@ -102,6 +102,8 @@
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html">轨迹数据</a></li>
+        
+            <li><a href="%E8%AF%BB%E4%B9%A6.html">读书</a></li>
          
 
       </ul>
@@ -123,81 +125,6 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
-			<div class="article">
-                <a class="clearlink" href="15665275932673.html">
-                
-                  <h1>3.vim 配置</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><strong>1 简单版，直接配置好的</strong><br/>
-mac vim 配置<br/>
-<a href="https://github.com/barretlee/autoconfig-mac-vimrc">https://github.com/barretlee/autoconfig-mac-vimrc</a></p>
-
-<pre><code>git clone https://github.com/barretlee/autoconfig-mac-vimrc.git;
-cd autoconfig-mac-vimrc;
-chmod +x install;
-./install;
-</code></pre>
-
-<p>调整终端配色： <a href="https://github.com/mitsuhide1992/vim-colors-solarized">https://github.com/mitsuhide1992/vim-colors-solarized</a></p>
-
-<p>macvim:  <a href="https://www.jianshu.com/p/923aec861af3">https://www.jianshu.com/p/923aec861af3</a></p>
-
-<p><strong>2 vimrc配置中一些常用命令说明</strong></p>
-
-<pre><code>colorscheme desert  &quot;设置主题 
-set number   &quot;显示行号 
-set autoindent   &quot;自动缩进 
-set cursorcolumn  &quot;光垂直平方向高亮显示
-set cursorline  &quot;光标水平方向高亮显示
-set mouse=a   &quot;激活鼠标可用 
-set tabstop=4  &quot;设置tab和缩进为4个空格
-syntax enable   &quot;开启语法 
-</code></pre>
-
-<p><strong>3 vim 操作快捷键</strong></p>
-
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/8/23</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
 			<div class="article">
                 <a class="clearlink" href="15665281146000.html">
                 
@@ -227,7 +154,7 @@ daocloud：<a href="https://www.daocloud.io/mirror#accelerator-doc%EF%BC%88%E6%B
 
 <p><strong>基本使用</strong></p>
 
-<pre><code># 运行方式 1： 类似于运行pyhton脚本 python xxx.py  参数
+<pre><code class="language-text"># 运行方式 1： 类似于运行pyhton脚本 python xxx.py  参数
 docker run ubuntu:18.10 /bin/echo &quot;Hello world&quot;
 </code></pre>
 
@@ -236,7 +163,7 @@ docker run ubuntu:18.10 /bin/echo &quot;Hello world&quot;
 <li> /bin/echo &quot;Hello world&quot;， 在启动容器里执行命令</li>
 </ul>
 
-<pre><code># 运行方式2： 交互式运行
+<pre><code class="language-text"># 运行方式2： 交互式运行
 docker run -i -t ubuntu:18.10 /bin/bash
 </code></pre>
 
@@ -247,7 +174,7 @@ docker run -i -t ubuntu:18.10 /bin/bash
 
 <p>后台以进程方式运行docker</p>
 
-<pre><code>docker run -d ubuntu:18.10 /bin/sh -c &quot;while true; do echo hello world; sleep 1; done&quot;
+<pre><code class="language-text">docker run -d ubuntu:18.10 /bin/sh -c &quot;while true; do echo hello world; sleep 1; done&quot;
 </code></pre>
 
 <p>这个时候发现会出现一串字符，这个就是dicker的id。</p>
@@ -256,7 +183,7 @@ docker run -i -t ubuntu:18.10 /bin/bash
 <li>-d 让容器在后台运行</li>
 </ul>
 
-<pre><code>docker ps   # 查看当前有哪些容器在运行
+<pre><code class="language-text">docker ps   # 查看当前有哪些容器在运行
 exit    #退出容器或者`ctrl +D`
 docker logs 容器id    #查看容器内的标准输出
 docker stop  容器id    # 停止正在运行的docker
@@ -264,7 +191,7 @@ docker stop  容器id    # 停止正在运行的docker
 
 <p><strong>docker 镜像</strong></p>
 
-<pre><code>docker pull   REPOSITORY:TAG    # 下载镜像
+<pre><code class="language-text">docker pull   REPOSITORY:TAG    # 下载镜像
 docker search httpd                      # 查找镜像
 
 # 更新镜像，当自己在镜像内做了一些更新后，可以提交
@@ -279,7 +206,7 @@ docker commit -m=&quot;zzz update&quot; -a=&quot;zzz&quot; 容器的id zzz/ubunt
 
 <p>配置文件的一个例子：</p>
 
-<pre><code># 每一个指令的前缀必须是大写
+<pre><code class="language-text"># 每一个指令的前缀必须是大写
 # FROM 表示使用哪个镜像源
 # RUN 表示告诉docker在镜像内执行命令
 FROM ubuntu:16.04
@@ -290,13 +217,14 @@ WORKDIR /opt/
 
 <p><strong>删除</strong></p>
 
-<pre><code>docker rm 容器
+<pre><code class="language-text">docker rm 容器
 docker rmi 镜像名
 </code></pre>
 
 <h2 id="toc_0">参考资料</h2>
 
-<p><a href="https://www.runoob.com/docker/macos-docker-install.html">https://www.runoob.com/docker/macos-docker-install.html</a></p>
+<p><a href="https://www.runoob.com/docker/macos-docker-install.html">https://www.runoob.com/docker/macos-docker-install.html</a><br/>
+docker 常用参数 <a href="https://blog.csdn.net/Hello_World_QWP/article/details/84554031">https://blog.csdn.net/Hello_World_QWP/article/details/84554031</a></p>
 
                         
                       </div>
@@ -310,6 +238,8 @@ docker rmi 镜像名
           				  
           					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
           				   
+                    
+
                   </div>
                   <div class="more-right right">
                   <span class="comments">
@@ -322,26 +252,73 @@ docker rmi 镜像名
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15662808343723.html">
+                <a class="clearlink" href="15637037678160.html">
                 
-                  <h1>有用的网址&小工具</h1>
+                  <h1>git</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<ul>
-<li>论文下载，知网论文</li>
-</ul>
+                        	<p>git 是一个版本管理的工具，能够非常方便的对项目进行版本控制。</p>
 
-<p><a href="https://www.cn-ki.net/">https://www.cn-ki.net/</a></p>
+<h2 id="toc_0">1建立自己的代码库</h2>
 
-<p>google学术   <a href="https://en.ehn3.com:92/">https://en.ehn3.com:92/</a></p>
+<p>假设你的用户名是zzz<br/>
+（1）生成公钥<br/>
+ssh-keygen -t rsa -f ~/.ssh/id_rsa.zzz<br/>
+cat ~/.ssh/id_rsa.zzz.pub 保存到icode或者是自己的github上<br/>
+（2）clone</p>
 
-<ul>
-<li>微信公众号平台文章同步知乎、简书等平台</li>
-</ul>
+<pre><code class="language-text">git clone  xxxxx代码库             # 将代码库克隆到本地
+## 如果机器是多个人使用的话用--local,如果是自己一个人的话可以设置成--global
+git config --local user.email zzz邮箱
+git config --local user.name zzz用户名
+git push origin master:refs/for/master
+</code></pre>
 
-<p><a href="https://www.wechatsync.com/#intro">https://www.wechatsync.com/#intro</a></p>
+<h2 id="toc_1">2 基本操作</h2>
+
+<p>当我们新增或者更新了一个文件后，如何上传到代码库</p>
+
+<pre><code class="language-text">git add xxx
+git commit -m &#39;注释&#39;
+git push origin HEAD:refs/for/master
+</code></pre>
+
+<p>从代码库将新代码下载到本地，更新本地库</p>
+
+<pre><code class="language-text">git pull
+</code></pre>
+
+<h2 id="toc_2">3.常用操作</h2>
+
+<p>(1) 还原文件到之前的某个版本。</p>
+
+<p>当发现新提交的版本有问题，想回退到之前的某个版本的之后，可以进行如下操作。<code>git long</code><br/>
+比如我想修改自己写的这个<code>utils.py</code> 代码</p>
+
+<pre><code class="language-text">git log utils.py
+## 可以看到一共提交了3次，假设喔想回退到9.25提交的那个版本
+git checkout 742bf4a53e473b2536b53cb3ad56072ae236a1c3 utils.py 
+git commit -m &quot;revert to previous version&quot;
+</code></pre>
+
+<p><img src="media/15637037678160/15699932802240.jpg" alt=""/></p>
+
+<p>我不知道”undo”是什么意思。您可以删除core.excludesfile设置，如下所示：<br/>
+git config --global --unset core.excludesfile<br/>
+当然你也可以简单地编辑配置文件：<br/>
+git config --global --edit<br/>
+…然后手动删除设置。</p>
+
+<p>git config --global --edit</p>
+
+<p>git log<br/>
+git reset --hard xxxxx</p>
+
+<p>查看本地与云端的diff</p>
+
+<p>git rm —cache  删除已经提交的内容</p>
 
                         
                       </div>
@@ -350,11 +327,121 @@ docker rmi 镜像名
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/8/20</span>
+                    <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
           				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037680349.html">
+                
+                  <h1>jupyterLab-安装R支持</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>jupyterlab是jupyter notebook的一个升级版，界面更炫酷，而且同时支持R语言。</p>
+
+<p>现在Rstudio已经成为R社区使用最广泛的集成编辑器，其在配合Rstudio公司开发的软件包使用上有天然的优势，如knitr、bookdown、blogdown、sparklyr、tidyverse等，让我们在数据导入、清洗、可视化、分析过程中少踩了不少坑。</p>
+
+<p>然而，有时候我们也会发现，利用Rmarkdown进行探索性数据分析时，尤其是初学者，总是不断花费时间在文档编译上，而压缩了真正数据探索的时间。很多时候，我很羡慕python用户，因为他们拥有Ipython、jupyter notebook等工具，让我们一边分析数据，一边插入markdown文本，并且还能实时看到结果，这些特性R用户也可以实现吗？当然，这就是我今天推荐的jupyterlab 编辑器。</p>
+
+<p>安装jupyterLab</p>
+
+<p>首先我们要明白，jupyterLab是一个python包，所以要使用jupyterLab首先要配置python环境。对于普通用户，包括linux、win和Mac用户，建议直接下载anaconda发行版进行安装，这样免去了既要安装python又要安装其他包的麻烦，是最简洁的方法。</p>
+
+<p>对于平时很少使用python的人来说，可能无法忍受anaconda全家桶式的安装模式，想更轻便的安装使用，那也很容易。</p>
+
+<p>1.安装</p>
+
+<p>Mac 和 Linux用户系统自带了python，可以直接使用pip install jupyterlab安装jupyterLab包。</p>
+
+<p>win用户先在python官网下载安装python，然后使用pip install jupyterlab安装jupyterLab包。</p>
+
+<p>2.运行</p>
+
+<p>在终端输入jupyter lab即可以在默认浏览器中打开编辑器界面，若不能，请检查下python路径配置是否正确。</p>
+
+<p>“咦，怎么只能选择python，R去哪了”，各位看官莫急，这是因为R端缺少必要的包，还不能和jupyter进行通信，等把这些包安装好进行配置后就可以了。</p>
+
+<p>3.配置R</p>
+
+<p>要把先前打开的jupyterLab程序全部关闭后再进行以下操作</p>
+
+<pre><code class="language-text">#安装必要的依赖包
+install.packages(c(&#39;repr&#39;, &#39;IRdisplay&#39;,&#39;evaluate&#39;, &#39;crayon&#39;,&#39;pbdZMQ&#39;,&#39;devtools&#39;,&#39;uuid&#39;, &#39;digest&#39;))
+</code></pre>
+
+<pre><code class="language-text">#IRkernel包没有放在CRAN上，需要通过GitHub安装
+devtools::install_github(&#39;IRkernel/IRkernel&#39;)
+IRkernel::installspec() #确保jupyterLab能找到R解释器安装位置
+</code></pre>
+
+<p>4.再次在终端运行<code>jupyter lab</code>，选择R图标打开，你就可以在jupyterLab进行数据分析啦</p>
+
+<p>jupyterLab的主要特性绘图函数自动插入图片ggplot2绘图完美支持</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15669633176007.html">
+                
+                  <h1>kafka</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/8/28</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          				   
+                    
+
                   </div>
                   <div class="more-right right">
                   <span class="comments">
@@ -387,76 +474,8 @@ docker rmi 镜像名
           				  
           					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
           				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+                    
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037678160.html">
-                
-                  <h1>git</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>git 是一个版本管理的工具</p>
-
-<p><strong>1 基本配置</strong></p>
-
-<p>（1）生成公钥<br/>
-ssh-keygen -t rsa -f ~/.ssh/id_rsa.zhenzhen<br/>
-cat ~/.ssh/id_rsa.zhenzhen.pub 保存到icode上<br/>
-chmod 644 ~/.ssh/config<br/>
-vim ~/.ssh/config<br/>
-添加下自己的配置<br/>
-Host icode.baidu.com<br/>
-User yangyang22<br/>
-IdentityFile ~/.ssh/id_rsa.yangyang22<br/>
-（2）clone<br/>
-git clone  xxxxx代码库<br/>
-git config --local user.email <a href="mailto:zhengzhenzhen@baidu.com">zhengzhenzhen@baidu.com</a><br/>
-git config --local user.name zhengzhenzhen</p>
-
-<p>git push origin master:refs/for/master<br/>
-（3）上传文件<br/>
-git add xxx<br/>
-git commit -m &#39;注释&#39;<br/>
-git push origin HEAD:refs/for/master</p>
-
-<p>我不知道”undo”是什么意思。您可以删除core.excludesfile设置，如下所示：<br/>
-git config --global --unset core.excludesfile<br/>
-当然你也可以简单地编辑配置文件：<br/>
-git config --global --edit<br/>
-…然后手动删除设置。</p>
-
-<p>git config --global --edit</p>
-
-<p>git log<br/>
-git reset --hard xxxxx</p>
-
-<p>查看本地与云端的diff</p>
-
-<p>git rm —cache  删除已经提交的内容</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
-          				   
                   </div>
                   <div class="more-right right">
                   <span class="comments">
@@ -541,6 +560,8 @@ git reset --hard xxxxx</p>
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html"><strong>轨迹数据</strong></a>
+        
+            <a href="%E8%AF%BB%E4%B9%A6.html"><strong>读书</strong></a>
          
         </p>
 
@@ -557,31 +578,31 @@ git reset --hard xxxxx</p>
 	      
 		      
 			      <li class="post">
-			        <a href="15686309605233.html">matplotlib</a>
+			        <a href="15706729896574.html"></a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">综述</a>
+			        <a href="15687050894061.html">0.综述</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15686368904229.html">基于dtw进行聚类</a>
+			        <a href="15637036455584.html">1 估计的置信度</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15636947700701.html">4.7 聚类1</a>
+			        <a href="15637025346412.html">1. conda 环境管理</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037683461.html">Jupyter notebook</a>
+			        <a href="15694859531608.html">1.trajectory preprocessing</a>
 			      </li>
 		     
 		  

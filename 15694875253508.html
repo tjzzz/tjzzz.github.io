@@ -1,0 +1,470 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  2 轨迹相似性度量 - zhenzhen学习笔记
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="zhenzhen学习笔记" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li id=""><a target="_self" href="about_me.html">aboutme</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; zhenzhen学习笔记</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li><a target="_self" href="about_me.html">aboutme</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="1%20Tools.html">1 Tools</a></li>
+        
+            <li><a href="2%20Get%20Data.html">2 Get Data</a></li>
+        
+            <li><a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html">3 数据可视化</a></li>
+        
+            <li><a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html">4 统计方法</a></li>
+        
+            <li><a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html">5 机器学习</a></li>
+        
+            <li><a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html">6 推荐系统</a></li>
+        
+            <li><a href="6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html">6 文本&视频</a></li>
+        
+            <li><a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">7 深度学习</a></li>
+        
+            <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
+        
+            <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
+        
+            <li><a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html">轨迹数据</a></li>
+        
+            <li><a href="%E8%AF%BB%E4%B9%A6.html">读书</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>2 轨迹相似性度量</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2019/9/26</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html'>轨迹数据</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <p>相似性度量方法<br/>
+<a href="https://www.jianshu.com/p/8a5755c1831a">https://www.jianshu.com/p/8a5755c1831a</a></p>
+
+<p>基于轨迹点的相似性度量方法：</p>
+
+<p><strong>全局匹配度量法</strong><br/>
+即两条轨迹要整体相似，每个点都要在另一条轨迹中找到对应点。常见的方法有：</p>
+
+<ul>
+<li>Euclid 欧式距离</li>
+<li>ERP 编辑距离</li>
+<li>DTW 动态时间扭曲方法。 对轨迹进行局部的拉伸或者缩放，从而可以对不同采样率和不同长度的轨迹进行比较，DWT距离就是所有最优匹配轨迹点间距离的累加和</li>
+</ul>
+
+<p><strong>局部匹配度量法</strong></p>
+
+<p>只要求两条轨迹部分相似，并且计算距离的时候只看匹配点之间的距离。常见的方法有</p>
+
+<ul>
+<li>EDR 编辑距离法。 将距离量化为0，1两个值来消除噪音。方法鲁棒性好，但是不满足距离的三角不等式</li>
+<li>LCSS 最长公共子序列</li>
+</ul>
+
+<p>zzz: 对于轨迹数据，可以将(x,y,t) 做一个映射，映射到一个格子标号。即将(x,y) 对应到一个位置范围。在这个位置范围内相同出现的次数可以认为是两个轨迹的相似度度量。<br/>
+而且实际情况中，在商场的环境下。用户浏览路线的宽度其实是可以没有限制的可以进行适当的放松，这个必须得结合真实的商场布局图来设计。</p>
+
+<p>这样(x, y, t) =&gt; x_y的字符id</p>
+
+<p>python实现 <a href="https://www.jianshu.com/p/d7b8db280a01">https://www.jianshu.com/p/d7b8db280a01</a></p>
+
+<ul>
+<li>Frechet 费累歇距离。人遛狗的狗绳距离</li>
+<li>KBCT：K-BCT是一个参数free的方法，结合了DTW和LCSS</li>
+<li> LCS, </li>
+<li>CATS</li>
+</ul>
+
+<p>方法对比</p>
+
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>优缺点</th>
+<th></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>欧式距离</td>
+<td>x 采样率，轨迹点必须一致</td>
+<td></td>
+</tr>
+<tr>
+<td>DTW</td>
+<td>可以不同采样频率，不同长度；</td>
+<td></td>
+</tr>
+<tr>
+<td>ERP</td>
+<td>可以不同采样频率，不同长度；不是所有的匹配点都计算距离，减少噪音</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_0">code - DTW</h3>
+
+<p>dtw实现</p>
+
+<pre><code class="language-python">from fastdtw import fastdtw
+euclidean_norm = lambda x, y: np.abs(x - y)
+fastdtw(x, y, dist=euclidean_norm)
+
+</code></pre>
+
+<pre><code class="language-python">import numpy as np
+from cdtw import pydtw
+r = np.array([1,2,3,4])
+q = np.array([2,3,4,5])
+d = pydtw.dtw(r,q,pydtw.Settings(step = &#39;p0sym&#39;, #Sakoe-Chiba symmetric step with slope constraint p = 0
+window = &#39;palival&#39;, #type of the window
+param = 2.0, #window parameter
+norm = False, #normalization
+compute_path = True))
+
+d.get_dist()
+
+# 连接 https://pypi.org/project/cdtw/
+</code></pre>
+
+<pre><code class="language-text">参考资料
+
+* https://blog.csdn.net/songbinxu/article/details/86660136
+* 成对数据计算效率问题: http://cn.voidcc.com/question/p-pvczjbyi-bmw.html
+* 这里踩了一个坑：安装上fastdtw后速度仍然慢。在测试机上跑n=30条数据两两组队，耗时38s，mac上才3s。后来发现是mac上采用的是Cpython， 测试机上运行的是纯python版本。
+* dtw加速计算的一些资料: https://jozeelin.github.io/2019/07/03/UCR-DTW%E5%92%8CUCR-ED%E6%A8%A1%E5%9E%8B%E8%AF%A6%E8%A7%A3/
+
+</code></pre>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15637025346225.html" 
+          title="Previous Post: 2 不同设计之间有统计学差异吗">&laquo; 2 不同设计之间有统计学差异吗</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15664761738125.html" 
+          title="Next Post: 2. iterm终端配置-oh my zsh">2. iterm终端配置-oh my zsh &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>zhenzhen学习笔记</h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="github" target="_blank" href="tjzzz.github.io" title="GitHub">GitHub</a>
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="1%20Tools.html"><strong>1 Tools</strong></a>
+        
+            <a href="2%20Get%20Data.html"><strong>2 Get Data</strong></a>
+        
+            <a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html"><strong>3 数据可视化</strong></a>
+        
+            <a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 统计方法</strong></a>
+        
+            <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习</strong></a>
+        
+            <a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统</strong></a>
+        
+            <a href="6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html"><strong>6 文本&视频</strong></a>
+        
+            <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习</strong></a>
+        
+            <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
+        
+            <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
+        
+            <a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html"><strong>轨迹数据</strong></a>
+        
+            <a href="%E8%AF%BB%E4%B9%A6.html"><strong>读书</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15706729896574.html"></a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15687050894061.html">0.综述</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637036455584.html">1 估计的置信度</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637025346412.html">1. conda 环境管理</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15694859531608.html">1.trajectory preprocessing</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+
+  </body>
+</html>

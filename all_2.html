@@ -50,7 +50,7 @@
 
         <ul class="right" id="search-wrap">
           <li>
-<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
     <input type="hidden" id="search_q" name="q" value="" />
     <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
 </form>
@@ -102,6 +102,8 @@
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html">轨迹数据</a></li>
+        
+            <li><a href="%E8%AF%BB%E4%B9%A6.html">读书</a></li>
          
 
       </ul>
@@ -124,14 +126,17 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15669633176007.html">
+                <a class="clearlink" href="15637037691936.html">
                 
-                  <h1>kafka</h1>
+                  <h1>3.1 特征处理—— 特征选择</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	
+                        	<h2 id="toc_0">参考</h2>
+
+<p><a href="https://blog.csdn.net/kebu12345678/article/details/78437118">https://blog.csdn.net/kebu12345678/article/details/78437118</a></p>
+
                         
                       </div>
                   </div>
@@ -139,11 +144,182 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/8/28</span>
+                    <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
           				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037731313.html">
+                
+                  <h1>3.2 特征处理——降维</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>关于降维的讨论主要是来源于“维度灾难”, 这个是数学家理查德-贝尔曼提出的。</p>
+
+<blockquote>
+<p>当所有参数是已知的时候，维度的增加可以让分类问题的错误率渐近为0.<br/>
+当未知参数只能根据有限样本来估计时，维度的增加使错误率先降低后增加，最终收敛到0.5</p>
+</blockquote>
+
+<p>维数灾难的本质原因在于<code>数据样本的有限性</code>。而在数据有限的条件下，去解决维度问题，自然的方法就是去降维。降维的方法有很多</p>
+
+<h2 id="toc_0">1. 常用的线性降维方法：</h2>
+
+<ul>
+<li>PCA 主成分分析</li>
+<li>IDA</li>
+<li>LDA</li>
+</ul>
+
+<h2 id="toc_1">2.非线性的方法——流形</h2>
+
+<p><strong>流形</strong><br/>
+是指嵌入在高维空间中的低维子空间，它的维度是低维数据变化的自由度。（比如地球仪的球面，虽然它是在一个三维空间中，但其实是一个二维的地图卷曲而成，\(x^2+y^2+z^2=1\)，维度是2）</p>
+
+<p><strong>流形学习</strong><br/>
+就是通过挖掘数据的内在结构实现向故由维度的转化，找到对应的低维嵌入流形。其大部分是非线性的、非参的。所以相比线性方法有更强的表达能力，但是同时对噪声更加敏感。</p>
+
+<p><strong>流形学习方法</strong></p>
+
+<p>流形学习，首先需要确定低维流形的结构，然后是高维到低维的映射关系。实际中因为都未知，所以需要做一些假设。</p>
+
+<blockquote>
+<ul>
+<li>多维缩放MDS (multi dimensional scaling)</li>
+</ul>
+</blockquote>
+
+<p>原则:让高维空间上样本之间的距离在低维空间中尽量保持一致以距离重建的误差最小为优化目标。</p>
+
+<p>具体来说：</p>
+
+<p>(1) 对于原始的数据\(X_{np}\),首先可以计算出任何两个样本之间的距离，从而构造出一个距离矩阵\(D\)，MDS算法的目的就是根据距离矩阵，寻找向量\(Z_1,Z_2...Z_k\),使得\(||Z_i-Z_j||≈\sigma_{ij}\)</p>
+
+<p>假设\(Z\)是经过中心化处理过的，即\(\sum z_i = 0\) , 则有</p>
+
+<p>\[XX^T = D≈ZZ^T\]</p>
+
+<p>看到这个形式，应该就能明白怎么取解了。对D做特征分解\(D=VAV^T\)， V是对应的特征向量，我们选择前k个特征值比较大的作为最终的降维维度即可。</p>
+
+<p><code>问题：高维空间的距离与低维空间距离保持一致这个假设是否合理？</code></p>
+
+<p>以地球仪的球面为例，三维空间中两个点的距离和平面中两个点的距离显然是不一样的。三维空间中如果用欧式距离去度量那么北京与纽约的距离是连接两点的直线，而在平面上他是一条曲线。</p>
+
+<pre><code class="language-text"># MDS
+mds = manifold.MDS(n_components, max_iter=100, n_init=1)
+Y = mds.fit_transform(X)
+</code></pre>
+
+<p>下面再说一些以几何性质作为同构基础的降维方法</p>
+
+<blockquote>
+<ul>
+<li>等度量映射Isomap</li>
+</ul>
+</blockquote>
+
+<p>等度量映射，以数据所在的低维流形与欧式空间子集的等距性为基础。描述距离的是<strong>测地距离</strong>，即流形上两点的真实距离。测地距离的近似计算方法：近邻点之间的欧式距离近似为近邻点之间的测地距离。</p>
+
+<p>通过对每一个近邻点建立连接，就可以让所有数据点共同构成一张带权重的近邻连接图。这样在这张图上任意两个点的测地距离就相当于是两点之间的最短路径。可以用图论中的Dijkstra算法求解。</p>
+
+<p>当计算出距离后，剩下的处理方法和MDS一致。所以总的来说包括三步：<br/>
+(1) 最近邻搜索<br/>
+(2) 最短路径搜索<br/>
+(3) 部分特征值分解</p>
+
+<pre><code class="language-text">model = manifold.Isomap(n_neighbors, n_components)
+Y = model.fit_transform(X)
+</code></pre>
+
+<blockquote>
+<ul>
+<li>局部线性嵌入LLE(local linear embedding)</li>
+</ul>
+</blockquote>
+
+<p>想法：待求解的低维流形在局部上是线性的，每个点可以表示成近邻点的线性组合。而局部线性嵌入就是在求解流形的过程中保持每个领域中的线性系数不变的基础上重构原数据点。</p>
+
+<p>详细的推导过程<a href="https://blog.csdn.net/yukgwy60648/article/details/54578141">https://blog.csdn.net/yukgwy60648/article/details/54578141</a></p>
+
+<pre><code class="language-text"># 其中method可选 [&#39;standard&#39;, &#39;ltsa&#39;, &#39;hessian&#39;, &#39;modified&#39;]
+model = manifold.LocallyLinearEmbedding(n_neighbors, n_components, eigen_solver=&#39;auto&#39;, method=method)
+Y = model.fit_transform(X)
+</code></pre>
+
+<p>从概率角度</p>
+
+<blockquote>
+<ul>
+<li>随机近邻嵌入 SNE</li>
+</ul>
+</blockquote>
+
+<p>随机近邻嵌入的特点：保持数据降维前后的概率分布不变,他将高维空间中的距离首先映射到了一个服从正态分布的条件概率上。这个概率描述了不同数据点之间的相似性。</p>
+
+<p>\[p_{j|i}=\frac{exp(-||x_j-x_i||^2/2\sigma^2_i)}{\sum_{k\ne i}exp(-||x_k-x_i||^2/2\sigma^2_i)}\]</p>
+
+<p>映射到低维空间后，按照同样方式计算条件概率，希望连个概率分布尽量一致。这里是KL散度最小化<br/>
+\[KL(P||Q) = -\sum P_i ln(\frac{P_i}{Q_i})=-\sum P_i(ln(P_i)- ln(Q_i))\]</p>
+
+<p><code>问题</code>：<br/>
+KL距离是不对称的，会导致相聚较远的点出现较大的散度差。为了是KL距离最小化，数据就会被压缩到极小的范围，产生拥挤问题。</p>
+
+<p><code>改进</code></p>
+
+<ul>
+<li>将KL散度改为对称形式 \(p_{ij}=p_{ji}=(p_{i|j}+p_{j|i})/2\)</li>
+<li>令低维空间中的条件概率服从t分布，t分布有长尾效应，从而使高维中分布较远的点降维后也能区分开</li>
+</ul>
+
+<pre><code class="language-text">tsne = manifold.TSNE(n_components=n_components, init=&#39;pca&#39;, random_state=0)
+Y = tsne.fit_transform(X)
+</code></pre>
+
+<p><img src="media/15382821564829/15383222417494.jpg" alt=""/></p>
+
+<h2 id="toc_2">小结</h2>
+
+<ul>
+<li><p>本章主要知识结构<br/>
+<img src="https://upload-images.jianshu.io/upload_images/127231-bf906252693ca552.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"/></p></li>
+<li><p>sklearn中关于流形学习内容都在<code>sklearn.manifold</code>模块。<br/>
+官网示例 <a href="http://sklearn.apachecn.org/cn/0.19.0/auto_examples/manifold/plot_compare_methods.html#sphx-glr-auto-examples-manifold-plot-compare-methods-py">http://sklearn.apachecn.org/cn/0.19.0/auto_examples/manifold/plot_compare_methods.html#sphx-glr-auto-examples-manifold-plot-compare-methods-py</a></p></li>
+<li><p>参考文档<br/>
+<a href="https://blog.csdn.net/yukgwy60648/article/details/54578141">https://blog.csdn.net/yukgwy60648/article/details/54578141</a><br/>
+sklearn—文档 <a href="http://scikit-learn.org/stable/modules/manifold.html">http://scikit-learn.org/stable/modules/manifold.html</a><br/>
+<a href="http://sklearn.apachecn.org/cn/0.19.0/modules/manifold.html">http://sklearn.apachecn.org/cn/0.19.0/modules/manifold.html</a></p></li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                    
+
                   </div>
                   <div class="more-right right">
                   <span class="comments">
@@ -167,7 +343,7 @@
 mac vim 配置<br/>
 <a href="https://github.com/barretlee/autoconfig-mac-vimrc">https://github.com/barretlee/autoconfig-mac-vimrc</a></p>
 
-<pre><code>git clone https://github.com/barretlee/autoconfig-mac-vimrc.git;
+<pre><code class="language-text">git clone https://github.com/barretlee/autoconfig-mac-vimrc.git;
 cd autoconfig-mac-vimrc;
 chmod +x install;
 ./install;
@@ -179,7 +355,7 @@ chmod +x install;
 
 <p><strong>2 vimrc配置中一些常用命令说明</strong></p>
 
-<pre><code>colorscheme desert  &quot;设置主题 
+<pre><code class="language-text">colorscheme desert  &quot;设置主题 
 set number   &quot;显示行号 
 set autoindent   &quot;自动缩进 
 set cursorcolumn  &quot;光垂直平方向高亮显示
@@ -219,6 +395,8 @@ syntax enable   &quot;开启语法
           				  
           					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
           				   
+                    
+
                   </div>
                   <div class="more-right right">
                   <span class="comments">
@@ -231,170 +409,55 @@ syntax enable   &quot;开启语法
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15665281146000.html">
+                <a class="clearlink" href="15637037677008.html">
                 
-                  <h1>docker</h1>
+                  <h1>3.【解释性】LIME</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>docker是一个容器，可以让开发者打包他们的应用以及依赖的环境到一个容器中，然后可以移植到别的机器上。容器是使用的沙箱机制，相互之间不会有任何接口。</p>
+                        	<p>机器学习得到的模型有时候是一个black box不具有解释性，作者提出了一个问题，我们究竟是相信一个predict result，还是相信一个model。</p>
 
-<p>docker 官网： <a href="http://www.docker.com">http://www.docker.com</a><br/>
-容器:  对象<br/>
-镜像images: 类，是用于创建docker容器的模版<br/>
-docker仓库<a href="https://hub.docker.com%EF%BC%8C">https://hub.docker.com，</a> 是用来提供各种镜像的仓库。</p>
+<p>本文作者主要是利用局部近似的方法，来对any classifier进行解释<br/>
+一个大概的示意图<br/>
+<img src="media/15227606288131/15227612016423.jpg" alt=""/></p>
 
-<p><strong>mac安装</strong><br/>
-直接从官网下载安装即可 <a href="https://download.docker.com/mac/stable/Docker.dmg%E3%80%82">https://download.docker.com/mac/stable/Docker.dmg。</a><br/>
-由于国内网速问题，安装完docker后，后续拉取镜像可能会十分缓慢，可以配置加速器来解决，如下图所示。</p>
-
-<p>阿里云的加速器：<a href="https://help.aliyun.com/document_detail/60750.html">https://help.aliyun.com/document_detail/60750.html</a><br/>
-网易加速器：<a href="http://hub-mirror.c.163.com">http://hub-mirror.c.163.com</a><br/>
-官方中国加速器：<a href="https://registry.docker-cn.com">https://registry.docker-cn.com</a><br/>
-ustc的镜像：<a href="https://docker.mirrors.ustc.edu.cn">https://docker.mirrors.ustc.edu.cn</a><br/>
-daocloud：<a href="https://www.daocloud.io/mirror#accelerator-doc%EF%BC%88%E6%B3%A8%E5%86%8C%E5%90%8E%E4%BD%BF%E7%94%A8%EF%BC%89">https://www.daocloud.io/mirror#accelerator-doc（注册后使用）</a></p>
-
-<p><img src="media/15665281146000/15665304699914.jpg" alt=""/></p>
-
-<p><strong>基本使用</strong></p>
-
-<pre><code># 运行方式 1： 类似于运行pyhton脚本 python xxx.py  参数
-docker run ubuntu:18.10 /bin/echo &quot;Hello world&quot;
-</code></pre>
+<h2 id="toc_0">2.可解释性</h2>
 
 <ul>
-<li>ubuntu:18.10是指定要运行的镜像，docker会先从本机上检查是否存在，如果不存在会从docker hub下载公共镜像。</li>
-<li> /bin/echo &quot;Hello world&quot;， 在启动容器里执行命令</li>
+<li>可解释：首先必须是可解释的易懂的，在特征很多的时候，线性模型、梯度向量、可加模型等都不太适合。</li>
+<li>local faithfull：局部忠诚</li>
+<li>与模型无关的，可解释any classifier</li>
 </ul>
 
-<pre><code># 运行方式2： 交互式运行
-docker run -i -t ubuntu:18.10 /bin/bash
-</code></pre>
+<h2 id="toc_1">3 Local Interpretable Model-agnostic Explanations</h2>
+
+<p>LIME，首先区分两个东西</p>
 
 <ul>
-<li>-t 在新容器中指定一个终端</li>
-<li>-i 允许你对容器内的标准输入 (STDIN) 进行交互。</li>
+<li>features</li>
+<li>interpretable data representations</li>
 </ul>
 
-<p>后台以进程方式运行docker</p>
+<p>比如文本文类时具体的features是一个vector，而可解释的representation可能是是否出现某个关键词</p>
 
-<pre><code>docker run -d ubuntu:18.10 /bin/sh -c &quot;while true; do echo hello world; sleep 1; done&quot;
-</code></pre>
+<p>基本原理示意图：<br/>
+<img src="media/15227606288131/15227631412258.jpg" alt=""/></p>
 
-<p>这个时候发现会出现一串字符，这个就是dicker的id。</p>
+<p>说明：</p>
 
-<ul>
-<li>-d 让容器在后台运行</li>
-</ul>
+<p>抽象的数学描述<br/>
+<img src="media/15227606288131/15227633252420.jpg" alt=""/></p>
 
-<pre><code>docker ps   # 查看当前有哪些容器在运行
-exit    #退出容器或者`ctrl +D`
-docker logs 容器id    #查看容器内的标准输出
-docker stop  容器id    # 停止正在运行的docker
-</code></pre>
+<p>作者在后面主要是讲了候选集是稀疏线性模型的方法</p>
 
-<p><strong>docker 镜像</strong></p>
+<h3 id="toc_2">稀疏线性解释</h3>
 
-<pre><code>docker pull   REPOSITORY:TAG    # 下载镜像
-docker search httpd                      # 查找镜像
+<p>即G为线性模型，一致性的度量\(\pi_x=exp(-D(x,z)^2/\sigma^2)\), 在x局部用一个线性函数去近似</p>
 
-# 更新镜像，当自己在镜像内做了一些更新后，可以提交
-# commit -m &#39;更新信息&#39; -a 作者 容器id 新版本的镜像名
-docker commit -m=&quot;zzz update&quot; -a=&quot;zzz&quot; 容器的id zzz/ubuntu:v2
-</code></pre>
-
-<p>从零创建一个镜像<br/>
-从零创建镜像的命令是 <code>docker build</code>, 其依赖于一个配置文件Dockerfile，这个文件包含了一组命令来告诉docker如何创建镜像。</p>
-
-<p><code>docker build -t 镜像名 配置文件地址</code></p>
-
-<p>配置文件的一个例子：</p>
-
-<pre><code># 每一个指令的前缀必须是大写
-# FROM 表示使用哪个镜像源
-# RUN 表示告诉docker在镜像内执行命令
-FROM ubuntu:16.04
-RUN apt-get update
-RUN apt-get install -y unzip cmake g++ make ffmpeg libx264-dev wget
-WORKDIR /opt/
-</code></pre>
-
-<p><strong>删除</strong></p>
-
-<pre><code>docker rm 容器
-docker rmi 镜像名
-</code></pre>
-
-<h2 id="toc_0">参考资料</h2>
-
-<p><a href="https://www.runoob.com/docker/macos-docker-install.html">https://www.runoob.com/docker/macos-docker-install.html</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/8/23</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025347820.html">
-                
-                  <h1>目录</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>Github:</p>
-
-<ul>
-<li>统计学 cheet-sheet整理</li>
-</ul>
-
-<hr/>
-
-<ol>
-<li><p>基础工具</p>
-
-<ul>
-<li>markdown，git，R/python，MR,SQL</li>
-<li>linux</li>
-</ul></li>
-<li><p>获取数据</p></li>
-<li><p>数据清洗+ 探索性分析</p>
-
-<ul>
-<li>数据可视化</li>
-</ul></li>
-<li><p>统计推断</p></li>
-<li><p>机器学习</p></li>
-<li><p>深度学习</p></li>
-<li><p>数据产品开发</p></li>
-<li><p>平台架构</p></li>
-</ol>
-
-<h1 id="toc_0">study list</h1>
-
-<p><a href="https://tracholar.github.io/wiki/#tools">https://tracholar.github.io/wiki/#tools</a></p>
-
-<p>pyspark RDD<br/>
-  <a href="http://www.jianshu.com/p/4cd22eda363f">http://www.jianshu.com/p/4cd22eda363f</a></p>
+<p><img src="media/15227606288131/15227718128055.jpg" alt=""/><br/>
+具体操作，先用lasso选择k个特征，然后用最小二乘学习特征的权重，K-LASSO<br/>
+<img src="media/15227606288131/15227724362604.jpg" alt=""/></p>
 
                         
                       </div>
@@ -406,8 +469,10 @@ docker rmi 镜像名
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html'>数据科学-清单</a></span>
+          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
           				   
+                    
+
                   </div>
                   <div class="more-right right">
                   <span class="comments">
@@ -420,26 +485,133 @@ docker rmi 镜像名
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15662808343723.html">
+                <a class="clearlink" href="15637037691075.html">
                 
-                  <h1>有用的网址&小工具</h1>
+                  <h1>4.1 回归模型</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<ul>
-<li>论文下载，知网论文</li>
-</ul>
+                        	<p>进入统计机器学习大门，最基础的从回归分析说起。</p>
 
-<p><a href="https://www.cn-ki.net/">https://www.cn-ki.net/</a></p>
+<h2 id="toc_0">1.回归分析</h2>
 
-<p>google学术   <a href="https://en.ehn3.com:92/">https://en.ehn3.com:92/</a></p>
+<p>机器学习从最简单的回归分析说起，这次从最小二乘的几何意义角度去看回归分析。</p>
+
+<p>\[Y = X’B\]<br/>
+我们知道最终估计的满足 \((y-X\hat\beta)^TX=0\)。即最优估计是在空间上的正交投影</p>
+
+<p><img src="media/15350244372147/15350246581231.jpg" alt=""/><br/>
+统计中的一些基本概念：</p>
 
 <ul>
-<li>微信公众号平台文章同步知乎、简书等平台</li>
+<li>t 检验</li>
+<li>F 检验</li>
+<li>p value</li>
+<li>多重共线性</li>
+<li></li>
 </ul>
 
-<p><a href="https://www.wechatsync.com/#intro">https://www.wechatsync.com/#intro</a></p>
+<h2 id="toc_1">2.正则化处理</h2>
+
+<p>训练数据是有限的时候，总可以通过增加参数的方法提高模型复杂度，降低训练误差，但是其泛化能力不好。正则化即通过调整参数的取值，来平衡<strong>偏差</strong>和<strong>方差</strong>的关系。</p>
+
+<p>线性回归中，最直接的方法就行在loss function中添加正则化项。一般形式如下：</p>
+
+<p>\[E(w) = \sum [f(x_i, w) - y_i]^2 + \lambda g(||w||_p)\]</p>
+
+<ul>
+<li>当取一范数时，即为lasso；</li>
+<li>二范数：岭回归</li>
+<li>一范数和二范数组合：弹性网络。  \(a||w||^2_2 + (1-a)||w||_1\)</li>
+</ul>
+
+<p>一范数和二范数的几何意义区别如下(这里就不解释了)：</p>
+
+<ul>
+<li>lasso会将特征衰减到0</li>
+<li>岭回归大量特征系数都比较小</li>
+<li>弹性网络结合了两种方法的优点</li>
+</ul>
+
+<p><img src="media/15350244372147/15350256600383.jpg" alt=""/></p>
+
+<blockquote>
+<p>从概率不同学派的角度来看上面的问题。<br/>
+正则化的方式，是从频率学派角度来看；而贝叶斯学派视角来看，正则化其实就是引入了关于参数的先验信息。</p>
+</blockquote>
+
+<p>贝叶斯学派是假定参数服从某种分布，然后根据其分布利用积分的方法将其消除掉。这一过程叫<strong>边际化</strong>。边际化的过程其实恰好是正则化/泛化的过程。</p>
+
+<p>可以证明，岭回归是w满足正态分布，lasso是当w满足拉普拉斯分布时候通过最大后验概率得到的估计结果。</p>
+
+<blockquote>
+<p>code</p>
+</blockquote>
+
+<pre><code class="language-text">import numpy as np # 快速操作结构数组的工具
+import matplotlib.pyplot as plt  # 可视化绘制
+from sklearn.linear_model import Lasso,LassoCV,LassoLarsCV   # Lasso回归,LassoCV交叉验证实现alpha的选取，LassoLarsCV基于最小角回归交叉验证实现alpha的选取
+
+# ========Lasso回归========
+model = Lasso(alpha=0.01)  # 调节alpha可以实现对拟合的程度
+# model = LassoCV()  # LassoCV自动调节alpha可以实现选择最佳的alpha。
+# model = LassoLarsCV()  # LassoLarsCV自动调节alpha可以实现选择最佳的alpha
+model.fit(X, y)   # 线性回归建模
+print(&#39;系数矩阵:\n&#39;,model.coef_)
+print(&#39;线性回归模型:\n&#39;,model)
+# print(&#39;最佳的alpha：&#39;,model.alpha_)  # 只有在使用LassoCV、LassoLarsCV时才有效
+# 使用模型预测
+predicted = model.predict(X)
+
+</code></pre>
+
+<h2 id="toc_2">3.广义线性模型</h2>
+
+<p>广义线性模型可以看做一般线性模型的推广，既然说他是推广，说明有一些问题是传统的线性模型没法解决的。</p>
+
+<p>广义线性模型中y的密度函数形式是基于指数分布族的\[p(y;\theta)=b(y)exp[\theta&#39;T(y)+a(\theta)]\]<br/>
+其中\(T(y)\)是一个充分统计量，通常可以等于\(y\)。 常见的正态分布、指数分布、二项分布、泊松分布都属于指数分布族，都可以转为这种形式。</p>
+
+<p>介绍一个常用的广义线性模型：</p>
+
+<p>xxx</p>
+
+<h2 id="toc_3">4.基函数扩展：属性的非线性化</h2>
+
+<p>线性模型的表达能力有限，前面广义线性模型的思路是将因变量y做了一个非线性映射。而从另一个角度，可以将解释变量变为非线性的，即<br/>
+\[y=\beta_0+\beta_1x_1 + ...+\beta_nx_n\]<br/>
+可以扩展为<strong>基函数扩展模型</strong><br/>
+\[y=\beta_0+\beta_1f(x_1) + ...+\beta_nf(x_n)\]</p>
+
+<p>比如常见的多项式回归\[y=\beta_0+\beta_1 x + ...+\beta_n x^n\]</p>
+
+<p>多项式回归会存在一些问题：</p>
+
+<ul>
+<li>\(x\)和\(x^k\)之间是相关的，不太好解释清楚每个变量的贡献程度</li>
+<li>会出现过拟合的情况</li>
+</ul>
+
+<p><strong>多元自适应回归样条MARS</strong></p>
+
+<ul>
+<li>多项式整体是线性，局部非非线性</li>
+<li>MARS: 整体是非线性，局部是线性(分段函数)</li>
+</ul>
+
+<p>样条函数，需要满足一些最基本的一些条件</p>
+
+<ul>
+<li>在knot节点处满足函数的连续性</li>
+<li>一阶导数连续，二阶导数连续，则称为三次样条</li>
+</ul>
+
+<p>平滑样条</p>
+
+<p>\[E=\sum_{i=1}^n [y_i-g(x_i)]^2 +\lambda\int g&#39;&#39;(t)^2 \]</p>
+
+<p>code: <code>patsy</code></p>
 
                         
                       </div>
@@ -448,11 +620,13 @@ docker rmi 镜像名
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/8/20</span>
+                    <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
           				   
+                    
+
                   </div>
                   <div class="more-right right">
                   <span class="comments">
@@ -537,6 +711,8 @@ docker rmi 镜像名
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html"><strong>轨迹数据</strong></a>
+        
+            <a href="%E8%AF%BB%E4%B9%A6.html"><strong>读书</strong></a>
          
         </p>
 
@@ -553,31 +729,31 @@ docker rmi 镜像名
 	      
 		      
 			      <li class="post">
-			        <a href="15686309605233.html">matplotlib</a>
+			        <a href="15706729896574.html"></a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">综述</a>
+			        <a href="15687050894061.html">0.综述</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15686368904229.html">基于dtw进行聚类</a>
+			        <a href="15637036455584.html">1 估计的置信度</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15636947700701.html">4.7 聚类1</a>
+			        <a href="15637025346412.html">1. conda 环境管理</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037683461.html">Jupyter notebook</a>
+			        <a href="15694859531608.html">1.trajectory preprocessing</a>
 			      </li>
 		     
 		  

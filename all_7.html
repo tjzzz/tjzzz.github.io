@@ -50,7 +50,7 @@
 
         <ul class="right" id="search-wrap">
           <li>
-<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
     <input type="hidden" id="search_q" name="q" value="" />
     <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
 </form>
@@ -102,6 +102,8 @@
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html">轨迹数据</a></li>
+        
+            <li><a href="%E8%AF%BB%E4%B9%A6.html">读书</a></li>
          
 
       </ul>
@@ -124,14 +126,73 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637037731727.html">
+                <a class="clearlink" href="15637037678160.html">
                 
-                  <h1>聚类方法-spark的bisecting和streaming</h1>
+                  <h1>git</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><a href="http://blog.csdn.net/franket268/article/details/23604671">http://blog.csdn.net/franket268/article/details/23604671</a></p>
+                        	<p>git 是一个版本管理的工具，能够非常方便的对项目进行版本控制。</p>
+
+<h2 id="toc_0">1建立自己的代码库</h2>
+
+<p>假设你的用户名是zzz<br/>
+（1）生成公钥<br/>
+ssh-keygen -t rsa -f ~/.ssh/id_rsa.zzz<br/>
+cat ~/.ssh/id_rsa.zzz.pub 保存到icode或者是自己的github上<br/>
+（2）clone</p>
+
+<pre><code class="language-text">git clone  xxxxx代码库             # 将代码库克隆到本地
+## 如果机器是多个人使用的话用--local,如果是自己一个人的话可以设置成--global
+git config --local user.email zzz邮箱
+git config --local user.name zzz用户名
+git push origin master:refs/for/master
+</code></pre>
+
+<h2 id="toc_1">2 基本操作</h2>
+
+<p>当我们新增或者更新了一个文件后，如何上传到代码库</p>
+
+<pre><code class="language-text">git add xxx
+git commit -m &#39;注释&#39;
+git push origin HEAD:refs/for/master
+</code></pre>
+
+<p>从代码库将新代码下载到本地，更新本地库</p>
+
+<pre><code class="language-text">git pull
+</code></pre>
+
+<h2 id="toc_2">3.常用操作</h2>
+
+<p>(1) 还原文件到之前的某个版本。</p>
+
+<p>当发现新提交的版本有问题，想回退到之前的某个版本的之后，可以进行如下操作。<code>git long</code><br/>
+比如我想修改自己写的这个<code>utils.py</code> 代码</p>
+
+<pre><code class="language-text">git log utils.py
+## 可以看到一共提交了3次，假设喔想回退到9.25提交的那个版本
+git checkout 742bf4a53e473b2536b53cb3ad56072ae236a1c3 utils.py 
+git commit -m &quot;revert to previous version&quot;
+</code></pre>
+
+<p><img src="media/15637037678160/15699932802240.jpg" alt=""/></p>
+
+<p>我不知道”undo”是什么意思。您可以删除core.excludesfile设置，如下所示：<br/>
+git config --global --unset core.excludesfile<br/>
+当然你也可以简单地编辑配置文件：<br/>
+git config --global --edit<br/>
+…然后手动删除设置。</p>
+
+<p>git config --global --edit</p>
+
+<p>git log<br/>
+git reset --hard xxxxx</p>
+
+<p>查看本地与云端的diff</p>
+
+<p>git rm —cache  删除已经提交的内容</p>
 
                         
                       </div>
@@ -143,8 +204,10 @@
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
           				   
+                    
+
                   </div>
                   <div class="more-right right">
                   <span class="comments">
@@ -157,86 +220,53 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037720747.html">
+                <a class="clearlink" href="15637037680349.html">
                 
-                  <h1>FM</h1>
+                  <h1>jupyterLab-安装R支持</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>学习地址 <a href="https://github.com/babakx/fm_tensorflow">https://github.com/babakx/fm_tensorflow</a></p>
+                        	<p>jupyterlab是jupyter notebook的一个升级版，界面更炫酷，而且同时支持R语言。</p>
 
-<h2 id="toc_0">1. 环境包安装</h2>
+<p>现在Rstudio已经成为R社区使用最广泛的集成编辑器，其在配合Rstudio公司开发的软件包使用上有天然的优势，如knitr、bookdown、blogdown、sparklyr、tidyverse等，让我们在数据导入、清洗、可视化、分析过程中少踩了不少坑。</p>
 
-<p>安装tensorflow</p>
+<p>然而，有时候我们也会发现，利用Rmarkdown进行探索性数据分析时，尤其是初学者，总是不断花费时间在文档编译上，而压缩了真正数据探索的时间。很多时候，我很羡慕python用户，因为他们拥有Ipython、jupyter notebook等工具，让我们一边分析数据，一边插入markdown文本，并且还能实时看到结果，这些特性R用户也可以实现吗？当然，这就是我今天推荐的jupyterlab 编辑器。</p>
 
-<h2 id="toc_1">2.试运行</h2>
+<p>安装jupyterLab</p>
 
-<p>这个是用tf实现的FM<br/>
-<a href="https://www.jianshu.com/p/152ae633fb00">https://www.jianshu.com/p/152ae633fb00</a></p>
+<p>首先我们要明白，jupyterLab是一个python包，所以要使用jupyterLab首先要配置python环境。对于普通用户，包括linux、win和Mac用户，建议直接下载anaconda发行版进行安装，这样免去了既要安装python又要安装其他包的麻烦，是最简洁的方法。</p>
 
-<ul>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked /> 试运行成功
-</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 了解原理
-</li>
-</ul>
+<p>对于平时很少使用python的人来说，可能无法忍受anaconda全家桶式的安装模式，想更轻便的安装使用，那也很容易。</p>
 
-<p>小数据集版本（进入tf的仍然是dense矩阵，只适合小数据）<br/>
- <a href="https://github.com/babakx/fm_tensorflow">https://github.com/babakx/fm_tensorflow</a></p>
+<p>1.安装</p>
 
-<p>大数据量版本</p>
+<p>Mac 和 Linux用户系统自带了python，可以直接使用pip install jupyterlab安装jupyterLab包。</p>
 
-<h2 id="toc_2">3.原理</h2>
+<p>win用户先在python官网下载安装python，然后使用pip install jupyterlab安装jupyterLab包。</p>
 
-<h2 id="toc_3">PYTHON版本的包实现方式</h2>
+<p>2.运行</p>
 
-<ul>
-<li>LibFM</li>
-<li>libFFM</li>
-<li>xLearn</li>
-<li>tffm</li>
-</ul>
+<p>在终端输入jupyter lab即可以在默认浏览器中打开编辑器界面，若不能，请检查下python路径配置是否正确。</p>
 
-<p>目前在python中的支持FM相关的包主要有</p>
+<p>“咦，怎么只能选择python，R去哪了”，各位看官莫急，这是因为R端缺少必要的包，还不能和jupyter进行通信，等把这些包安装好进行配置后就可以了。</p>
 
-<p>__</p>
+<p>3.配置R</p>
 
-<h3 id="toc_4">1.libFM</h3>
+<p>要把先前打开的jupyterLab程序全部关闭后再进行以下操作</p>
 
-<p>官网 <a href="http://www.libfm.org/">http://www.libfm.org/</a><br/>
-github <a href="https://github.com/srendle/libfm">https://github.com/srendle/libfm</a></p>
-
-<p>从官网下载安装包</p>
-
-<h3 id="toc_5">tffm</h3>
-
-<p><a href="https://github.com/geffy/tffm">https://github.com/geffy/tffm</a></p>
-
-<p>tffm是FM方法的tensorflow版本，他支持：</p>
-
-<ul>
-<li>dense or sparse输出</li>
-<li>order &gt;= 2</li>
-</ul>
-
-<pre><code># 安装 
-pip install tffm
+<pre><code class="language-text">#安装必要的依赖包
+install.packages(c(&#39;repr&#39;, &#39;IRdisplay&#39;,&#39;evaluate&#39;, &#39;crayon&#39;,&#39;pbdZMQ&#39;,&#39;devtools&#39;,&#39;uuid&#39;, &#39;digest&#39;))
 </code></pre>
 
-<p>按照github上的example</p>
+<pre><code class="language-text">#IRkernel包没有放在CRAN上，需要通过GitHub安装
+devtools::install_github(&#39;IRkernel/IRkernel&#39;)
+IRkernel::installspec() #确保jupyterLab能找到R解释器安装位置
+</code></pre>
 
-<p>log</p>
+<p>4.再次在终端运行<code>jupyter lab</code>，选择R图标打开，你就可以在jupyterLab进行数据分析啦</p>
 
-<p>todo:</p>
-
-<ul>
-<li>调整参数k， int_std, red</li>
-<li>统一 content_len的量纲</li>
-<li>文章添加关键字</li>
-</ul>
-
-<h2 id="toc_6">* tffm，添加field</h2>
+<p>jupyterLab的主要特性绘图函数自动插入图片ggplot2绘图完美支持</p>
 
                         
                       </div>
@@ -248,8 +278,10 @@ pip install tffm
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
           				   
+                    
+
                   </div>
                   <div class="more-right right">
                   <span class="comments">
@@ -262,104 +294,14 @@ pip install tffm
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037708871.html">
+                <a class="clearlink" href="15669633176007.html">
                 
-                  <h1>图像识别模型—— 1.利用已有的进行微调</h1>
+                  <h1>kafka</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>这里以VGG16网络为例，</p>
-
-<h2 id="toc_0">1.准备数据</h2>
-
-<pre><code> python data_convert.py -t pic --train-shards 2 --validation-shards 2 --num-threads 2 --dataset-name guangdong
-</code></pre>
-
-<p>执行完后会在pic下生成tf格式的训练+测试数据，以及label.txt<br/>
-<img src="media/15388051366041/15388065002449.jpg" alt=""/></p>
-
-<h2 id="toc_1">2.使用tensorflow的slim微调模型</h2>
-
-<p>简单介绍下google的这个图像分类工具包tensorflow-slim</p>
-
-<pre><code>├── README.md
-├── datasets                    # 定义训练时候使用的数据。如果是自己的数据，必须在此文件夹下定义
-├── deployment
-├── download_and_convert_data.py
-├── export_inference_graph.py
-├── export_inference_graph_test.py
-├── nets                        # 定义了一些常用的网络，比如vgg16，vgg19，resnet等
-├── preprocessing               # 在读入图像前，对图像做的一些预处理
-├── scripts
-│   ├── finetune_inception_v1_on_flowers.sh
-│   ├── finetune_inception_v3_on_flowers.sh
-│   ├── finetune_resnet_v1_50_on_flowers.sh
-│   ├── train_cifarnet_on_cifar10.sh
-│   └── train_lenet_on_mnist.sh
-├── setup.py
-├── slim_walkthrough.ipynb
-├── eval_image_classifier.py      # 验证模型入口
-└── train_image_classifier.py     # 训练模型入口
-</code></pre>
-
-<p>(1) 定义新的dataset文件</p>
-
-<p>仿照<code>datasets/flowers.py</code> 写一个自己的数据文件<code>guangdong.py</code> 并且在<code>dataset_factory.py</code>中进行注册</p>
-
-<p>(2)准备训练文件夹</p>
-
-<p>(3)train model</p>
-
-<pre><code>python train_image_classifier.py \
-  --train_dir=guangdong/train_dir \
-  --dataset_name=guangdong \
-  --dataset_split_name=train \
-  --dataset_dir=guangdong/data \
-  --model_name=inception_v3 \
-  --checkpoint_path=guangdong/pretrained/inception_v3.ckpt \
-  --checkpoint_exclude_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
-  --trainable_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
-  --max_number_of_steps=100000 \
-  --batch_size=32 \
-  --learning_rate=0.001 \
-  --learning_rate_decay_type=fixed \
-  --save_interval_secs=300 \
-  --save_summaries_secs=2 \
-  --log_every_n_steps=10 \
-  --optimizer=rmsprop \
-  --weight_decay=0.00004
-
-</code></pre>
-
-<p>如果执行后报错<code>Cannot assign a device for operation &#39;InceptionV3/AuxLogits/Conv2d_2b_1x1/weights/RMSProp1&#39;: Could not satisfy explicit device specification &#39;/device:GPU:0&#39; because no supported kernel for GPU devices is available</code> 之类的话</p>
-
-<p>可以参看这个的解决办法<a href="https://blog.csdn.net/xd_wjc/article/details/80550862">https://blog.csdn.net/xd_wjc/article/details/80550862</a></p>
-
-<p>tensorboard 查看任务运行情况</p>
-
-<pre><code>tensorboard --logdir guangdong/train_dir
-</code></pre>
-
-<p>训练完毕之后进行模型评估</p>
-
-<pre><code>python eval_image_classifier.py \
-  --checkpoint_path=guangdong/train_dir \
-  --eval_dir=guangdong/eval_dir \
-  --dataset_name=guangdong \
-  --dataset_split_name=validation \
-  --dataset_dir=guangdong/data \
-  --model_name=inception_v3
-</code></pre>
-
-<h3 id="toc_2">案例</h3>
-
-<p><a href="https://github.com/ns2250225/python3_tf_slim_image_classify">https://github.com/ns2250225/python3_tf_slim_image_classify</a></p>
-
-<h2 id="toc_3">阿里云服务</h2>
-
-<p><a href="https://help.aliyun.com/document_detail/49571.html#OSS">https://help.aliyun.com/document_detail/49571.html#OSS</a></p>
-
+                        	
                         
                       </div>
                   </div>
@@ -367,11 +309,13 @@ pip install tffm
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2019/8/28</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html'>6 文本&视频</a></span>
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
           				   
+                    
+
                   </div>
                   <div class="more-right right">
                   <span class="comments">
@@ -384,234 +328,345 @@ pip install tffm
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037690385.html">
+                <a class="clearlink" href="15686309605233.html">
                 
-                  <h1>face_recgnization</h1>
+                  <h1>matplotlib</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>github<br/>
-<a href="https://github.com/ageitgey/face_recognition">https://github.com/ageitgey/face_recognition</a></p>
+                        	<p>matplotlib是python绘图的一个基础包，其用法和matlab语法有些相似。<br/>
+大量第三方包扩展并构建了Matplotlib功能，包括几个较高级别的绘图接口(seaborn、holoviews、ggplot 等)，以及两个投影和绘图工具包(basemap和cartopy)<br/>
+这里总结一些基本用法</p>
 
-<h2 id="toc_0">1. 安装</h2>
+<h2 id="toc_0">1.matplotlib.pylab</h2>
 
-<p>文档： <a href="https://zhuanlan.zhihu.com/p/28271869">https://zhuanlan.zhihu.com/p/28271869</a></p>
+<h2 id="toc_1">2.matplotlib.pyplot</h2>
 
-<pre><code>pip install face_recognition
+<p><img src="media/15686309605233/15686322692816.png" alt=""/></p>
+
+<pre><code class="language-text">import matplotlib.pyplot as plt
+plt.plot(x, y, 其他属性)
 </code></pre>
 
-<p>直接安装会报错，安装face_recognition这个之前需要先安装编译dlib</p>
+<p>pyplot是matplotlib中最常用的模块，</p>
 
-<pre><code>brew install boost
-brew install boost-python --with-python3
+<h3 id="toc_2">常用的图形参数设置</h3>
 
-# install dlib
-git clone https://github.com/davisking/dlib.git
-cd dlib
-mkdir build; cd build; cmake .. -DDLIB_USE_CUDA=0 -DUSE_AVX_INSTRUCTIONS=1; cmake --build 
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能</th>
+</tr>
+</thead>
 
-cd ..
-python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
+<tbody>
+<tr>
+<td>axis([xmin, xmax, ymin, ymax])</td>
+<td>设置坐标轴范围</td>
+</tr>
+<tr>
+<td>plot(x, y1,属性, y2, 属性)</td>
+<td>绘制线图</td>
+</tr>
+<tr>
+<td>title</td>
+<td></td>
+</tr>
+<tr>
+<td>xlabel, ylabel</td>
+<td>横纵坐标轴的标签</td>
+</tr>
+<tr>
+<td>text(x, y, 文字)</td>
+<td>添加文字描述</td>
+</tr>
+<tr>
+<td>annotate(&#39;注释&#39;, xy=(2, 1), xytext=(3, 1.5)</td>
+<td>添加箭头注释</td>
+</tr>
+<tr>
+<td>plt.yscale(&#39;linear’)   # linear, log, logit</td>
+<td>更换坐标轴刻度</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>subplot 绘制子图</strong></p>
+
+<pre><code class="language-text">plt.figure()
+plt.subplot(2, 3, 1)   #n行m列的子图
+plt.plot(x1, y1)
+
+plt.subplot(2, 3, 2)   #n行m列的子图
+plt.plot(x2, y2)
 </code></pre>
 
-<p>If there is no cmake on your mac, you can use  <code>brew install cmake</code>. After all these have been done, run</p>
+<pre><code class="language-text">data = np.random.randn(2, 100)
+fig, axs = plt.subplots(2, 2, figsize=(5, 5))
+axs[0, 0].hist(data[0])
+axs[1, 0].scatter(data[0], data[1])
+axs[0, 1].plot(data[0], data[1])
+axs[1, 1].hist2d(data[0], data[1])
 
-<pre><code>pip install face_recognition
+plt.show()
 </code></pre>
 
-<h2 id="toc_1">2.usage</h2>
+<p><strong>显示图像，读取图片</strong></p>
 
-<p>face_recognition有两种使用方式，命令行方式和python包方式</p>
+<p>需要先安装<code>pillow</code>包</p>
 
-<p>(1) 命令行方式</p>
+<pre><code class="language-text">im = plt.imread(&#39;cat.jpg&#39;)  #将图像读取为数组
+ax.imshow(im)                  # imshow将数组显示为图像
+</code></pre>
 
-<p>(2) python 包<br/>
-<a href="https://face-recognition.readthedocs.io/en/latest/face_recognition.html#module-face_recognition.api">https://face-recognition.readthedocs.io/en/latest/face_recognition.html#module-face_recognition.api</a></p>
+<p>plt.colorbar()      #  可以添加颜色条</p>
 
-<p></p>
+<p><strong>3d绘图</strong></p>
 
-<h2 id="toc_2">参考资料</h2>
+<p>mplot3d</p>
 
-<p><a href="https://zhuanlan.zhihu.com/p/28271869">https://zhuanlan.zhihu.com/p/28271869</a></p>
+<p><strong>多条曲线设置不同颜色</strong></p>
 
-<p><a href="https://medium.com/@ageitgey">https://medium.com/@ageitgey</a></p>
+<p>正常情况下，matplot是自动变更绘制的颜色的</p>
+
+<pre><code class="language-text">import matplotlib.pyplot as plt
+import numpy as np
+x = np.linspace(0, 1, 10)
+for i in range(1, 6):
+    plt.plot(x, i * x + i, label=&#39;$y = {i}x + {i}$&#39;.format(i=i))
+plt.legend(loc=&#39;best&#39;)
+plt.show()
+</code></pre>
+
+<p>如果需要自己指定颜色，可以通过设置color=xxx来设置。<br/>
+如果数据中有标签分组，希望分组设置相同的颜色，但是组数比较多，不太好事先指定好颜色，则可以通过如下的方法</p>
+
+<pre><code class="language-text">import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(0, 1, 10)
+number = 5
+cmap = plt.get_cmap(&#39;gnuplot&#39;)
+colors = [cmap(i) for i in np.linspace(0, 1, number)]    # 挑选number种颜色
+
+for i, color in enumerate(colors, start=1):
+    plt.plot(x, i * x + i, color=color, label=&#39;$y = {i}x + {i}$&#39;.format(i=i))
+plt.legend(loc=&#39;best&#39;)
+plt.show()
+</code></pre>
+
+<p><strong>绘制次坐标轴图</strong></p>
+
+<pre><code class="language-text">fig = plt.figure()
+ax1 = fig.add_subplot(111)
+ax1.plot(x, y1)
+ax1.set_ylabel(&#39;Y1&#39;)
+
+ax2 = ax1.twinx()  # this is the important function
+ax2.plot(x, y2, &#39;r&#39;)
+ax2.set_ylabel(&#39;Y2&#39;)
+plt.show()
+</code></pre>
+
+<h2 id="toc_3">3. 绘制案例</h2>
+
+<p>常用的图像类型  <a href="https://www.matplotlib.org.cn/tutorials/introductory/sample_plots.html">https://www.matplotlib.org.cn/tutorials/introductory/sample_plots.html</a></p>
+
+<h3 id="toc_4">1 绘制随时间动态变化的散点图</h3>
+
+<p>想要得到动画效果的图像，就是让多幅图连续播放，所以需要不断修改图中曲线的属性。首先需要了解下面像对象编程，在matplotlib中我们调用的任何函数，都会返回一个对象的实例。所以可以通过修改其相应的属性来改变曲线。比如常见的设置title，xlim等<br/>
+<code>plt.plot(x, y); plt.title(&#39;plot title&#39;)</code></p>
+
+<p>主要用到的函数<br/>
+<code>FuncAnimation(fig, func, frames=None,fargs=None)</code><br/>
+FuncAnimation的参数比较多，这里只列举出最重要的四个。</p>
+
+<ul>
+<li>fig: 指得是目前曲线所在在的figure。</li>
+<li>func: 这个函数主要是修改lines的属性，并返回。</li>
+<li>frames: 这是func参数中，跟每一帧相关的参数，靠它曲线才会发生变化。动画长度，一次循环包含的帧数</li>
+<li>fargs： 对应func中其他参数。</li>
+<li>interval 更新频率，以ms记</li>
+<li>blit: 选择更新所有点，还是仅更新产生变化的点。</li>
+<li>可选参数 repeat，指定是否循环动画</li>
+</ul>
+
+<p>官网的一个案例 <br/>
+<a href="https://matplotlib.org/gallery/animation/simple_anim.html">https://matplotlib.org/gallery/animation/simple_anim.html</a></p>
+
+<p>模仿写的一个小例子  <a href="https://www.smslit.top/2018/11/12/matplotlib-animation/">https://www.smslit.top/2018/11/12/matplotlib-animation/</a></p>
+
+<pre><code class="language-text">import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib import animation
+
+def plot_trace_animation(x, y):
+
+    fig, ax = plt.subplots()
+    plt.xlim(min(x), max(x))
+    plt.ylim(min(y), max(y))
+    line, = ax.plot(x[0], y[0])
+
+    def init():  # only required for blitting to give a clean slate.
+        line.set_ydata([np.nan] * len(x))
+        return line,
+
+    def update(i):
+        print(i)
+        line.set_xdata(x[:i])
+        line.set_ydata(y[:i])
+        #scat.set_data(x[:i], y[:i])
+        return line,
+
+    anim = animation.FuncAnimation(fig, update, init_func=init,frames=10, interval=100)
+    plt.show()
+
+    #anim.to_html5_video()
+    #anim.to_jshtml()
+    anim.save(&#39;out.mp4&#39;)   # 需要先安装ffmpeg
+
+x = range(1, 11)
+y = range(5, 15)
+
+plot_trace_animation(x, y)
+</code></pre>
+
+<p>保存</p>
+
+<p>anim.save(&#39;out.mp4&#39;)   # 需要先安装ffmpeg<br/>
+anim.save的 save 方法可以指定 writer ，这里要保存 gif 默认选择的 writer 为 pillow ，所以需要安装 pillow 库：</p>
+
+<p>$ pip3 install pillow<br/>
+按照如下调用方法即可保存动画为 gif，这里保存动画的帧数是受 animation.FuncAnimation 的 frames 和 save_count 影响的：</p>
+
+<p>ani.save(&#39;animation.gif&#39;, writer=&#39;pillow&#39;)</p>
+
+<h2 id="toc_5">4. 问题</h2>
+
+<p>Q1: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (<code>matplotlib.pyplot.figure</code>) are retained until explicitly closed and may consume too much memory.</p>
+
+<p>很多时候绘图的时候数量会比较多，一般是写个循环然后绘图。这时候定义的绘图函数就会执行很多次的<code>plt.subplot()</code> 即创建很多新的。可以在一开始或者初始化的时候就直接创建一张，然后后续的图都基于此改就好了，这样可以提升运行速度。</p>
+
+<h2 id="toc_6">参考</h2>
+
+<p><a href="https://www.matplotlib.org.cn/home.html">https://www.matplotlib.org.cn/home.html</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/9/16</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html'>3 数据可视化</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637025345613.html">
+                
+                  <h1>query文本聚类</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 是不是cache问题tf-idf</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 添加下降维的步骤</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 稀疏矩阵</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 数据切分更小li&#39;du</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Mini Batch KMeans <a href="http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/">http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/</a></li>
+</ul>
+
+<p>实验全量的<br/>
+<a href="http://yq01-tianqi-spark-yarn00.yq01.baidu.com:8388/proxy/application_1511855101950_42074/">http://yq01-tianqi-spark-yarn00.yq01.baidu.com:8388/proxy/application_1511855101950_42074/</a></p>
 
 <hr/>
 
-<p><a href="https://www.jianshu.com/p/281aa6a3823a">https://www.jianshu.com/p/281aa6a3823a</a></p>
+<p>刚哥的代码：<a href="https://github.com/honestOrg/gxdgroup/blob/master/src/main/scala/cn/com/gxdgroup/dataplatform/avm/utils/AVMUtils.scala">https://github.com/honestOrg/gxdgroup/blob/master/src/main/scala/cn/com/gxdgroup/dataplatform/avm/utils/AVMUtils.scala</a></p>
 
-<p>一个案例<br/>
-<a href="https://www.jianshu.com/p/38ca6daf6b40">https://www.jianshu.com/p/38ca6daf6b40</a><br/>
-<a href="http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html">http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html</a></p>
+<h2 id="toc_0">全量</h2>
 
-<p>tf案例<br/>
-<a href="https://blog.csdn.net/u010016927/article/details/75722416">https://blog.csdn.net/u010016927/article/details/75722416</a></p>
+<p>前期构造词频矩阵：</p>
 
-<p>knn<br/>
-<a href="https://www.leiphone.com/news/201707/gIbNsPtWk460m5vj.html">https://www.leiphone.com/news/201707/gIbNsPtWk460m5vj.html</a></p>
-
-<p><a href="https://blog.csdn.net/Mbx8X9u/article/details/79124840">https://blog.csdn.net/Mbx8X9u/article/details/79124840</a></p>
-
-<p><a href="https://www.ctolib.com/topics-101544.html">https://www.ctolib.com/topics-101544.html</a></p>
-
-<p><a href="https://www.oschina.net/code/snippet_2558914_54339">https://www.oschina.net/code/snippet_2558914_54339</a></p>
-
-<h2 id="toc_3">new</h2>
-
-<p><a href="https://www.leiphone.com/news/201704/rYdpAvh4SvgVPpRQ.html">https://www.leiphone.com/news/201704/rYdpAvh4SvgVPpRQ.html</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html'>6 文本&视频</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037691075.html">
-                
-                  <h1>4.1 回归模型</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>进入统计机器学习大门，最基础的从回归分析说起。</p>
-
-<h2 id="toc_0">1.回归分析</h2>
-
-<p>机器学习从最简单的回归分析说起，这次从最小二乘的几何意义角度去看回归分析。</p>
-
-<p>\[Y = X’B\]<br/>
-我们知道最终估计的满足 \((y-X\hat\beta)^TX=0\)。即最优估计是在空间上的正交投影</p>
-
-<p><img src="media/15350244372147/15350246581231.jpg" alt=""/><br/>
-统计中的一些基本概念：</p>
+<h2 id="toc_1">1.生成原始的词频矩阵</h2>
 
 <ul>
-<li>t 检验</li>
-<li>F 检验</li>
-<li>p value</li>
-<li>多重共线性</li>
-<li></li>
+<li><a href="http://spark.apache.org/docs/latest/ml-features.html#countvectorizer">http://spark.apache.org/docs/latest/ml-features.html#countvectorizer</a></li>
+<li><code>examples/src/main/python/sql/basic.py</code></li>
 </ul>
 
-<h2 id="toc_1">2.正则化处理</h2>
+<p>输入数据：每行是切分好的term</p>
 
-<p>训练数据是有限的时候，总可以通过增加参数的方法提高模型复杂度，降低训练误差，但是其泛化能力不好。正则化即通过调整参数的取值，来平衡<strong>偏差</strong>和<strong>方差</strong>的关系。</p>
+<pre><code class="language-text">spark = SparkSession.builder.appName(&quot;CountVectorizerExample&quot;).getOrCreate()
+sc = spark.sparkContext
+# $example on$
+# Input data: Each row is a bag of words with a ID.
 
-<p>线性回归中，最直接的方法就行在loss function中添加正则化项。一般形式如下：</p>
+lines = sc.textFile(&quot;/user/ubs/kce/zhenzhen/spark/test_data/corpus_title2&quot;)
+parts = lines.map(lambda l: l.split(&#39;#&#39;))   # convert all the term to a list
+termRDD = parts.map(lambda p: Row(tid=p[0], words=p[1].split(&#39; &#39;)))
 
-<p>\[E(w) = \sum [f(x_i, w) - y_i]^2 + \lambda g(||w||_p)\]</p>
+df = spark.createDataFrame(termRDD)
+# fit a CountVectorizerModel from the corpus.
+cv = CountVectorizer(inputCol=&quot;words&quot;, outputCol=&quot;features&quot;)
+#, vocabSize=3, minDF=2.0)
 
-<ul>
-<li>当取一范数时，即为lasso；</li>
-<li>二范数：岭回归</li>
-<li>一范数和二范数组合：弹性网络。  \(a||w||^2_2 + (1-a)||w||_1\)</li>
-</ul>
+model = cv.fit(df)
 
-<p>一范数和二范数的几何意义区别如下(这里就不解释了)：</p>
-
-<ul>
-<li>lasso会将特征衰减到0</li>
-<li>岭回归大量特征系数都比较小</li>
-<li>弹性网络结合了两种方法的优点</li>
-</ul>
-
-<p><img src="media/15350244372147/15350256600383.jpg" alt=""/></p>
-
-<blockquote>
-<p>从概率不同学派的角度来看上面的问题。<br/>
-正则化的方式，是从频率学派角度来看；而贝叶斯学派视角来看，正则化其实就是引入了关于参数的先验信息。</p>
-</blockquote>
-
-<p>贝叶斯学派是假定参数服从某种分布，然后根据其分布利用积分的方法将其消除掉。这一过程叫<strong>边际化</strong>。边际化的过程其实恰好是正则化/泛化的过程。</p>
-
-<p>可以证明，岭回归是w满足正态分布，lasso是当w满足拉普拉斯分布时候通过最大后验概率得到的估计结果。</p>
-
-<blockquote>
-<p>code</p>
-</blockquote>
-
-<pre><code>import numpy as np # 快速操作结构数组的工具
-import matplotlib.pyplot as plt  # 可视化绘制
-from sklearn.linear_model import Lasso,LassoCV,LassoLarsCV   # Lasso回归,LassoCV交叉验证实现alpha的选取，LassoLarsCV基于最小角回归交叉验证实现alpha的选取
-
-# ========Lasso回归========
-model = Lasso(alpha=0.01)  # 调节alpha可以实现对拟合的程度
-# model = LassoCV()  # LassoCV自动调节alpha可以实现选择最佳的alpha。
-# model = LassoLarsCV()  # LassoLarsCV自动调节alpha可以实现选择最佳的alpha
-model.fit(X, y)   # 线性回归建模
-print(&#39;系数矩阵:\n&#39;,model.coef_)
-print(&#39;线性回归模型:\n&#39;,model)
-# print(&#39;最佳的alpha：&#39;,model.alpha_)  # 只有在使用LassoCV、LassoLarsCV时才有效
-# 使用模型预测
-predicted = model.predict(X)
-
+result = model.transform(df)
 </code></pre>
 
-<h2 id="toc_2">3.广义线性模型</h2>
-
-<p>广义线性模型可以看做一般线性模型的推广，既然说他是推广，说明有一些问题是传统的线性模型没法解决的。</p>
-
-<p>广义线性模型中y的密度函数形式是基于指数分布族的\[p(y;\theta)=b(y)exp[\theta&#39;T(y)+a(\theta)]\]<br/>
-其中\(T(y)\)是一个充分统计量，通常可以等于\(y\)。 常见的正态分布、指数分布、二项分布、泊松分布都属于指数分布族，都可以转为这种形式。</p>
-
-<p>介绍一个常用的广义线性模型：</p>
-
-<p>xxx</p>
-
-<h2 id="toc_3">4.基函数扩展：属性的非线性化</h2>
-
-<p>线性模型的表达能力有限，前面广义线性模型的思路是将因变量y做了一个非线性映射。而从另一个角度，可以将解释变量变为非线性的，即<br/>
-\[y=\beta_0+\beta_1x_1 + ...+\beta_nx_n\]<br/>
-可以扩展为<strong>基函数扩展模型</strong><br/>
-\[y=\beta_0+\beta_1f(x_1) + ...+\beta_nf(x_n)\]</p>
-
-<p>比如常见的多项式回归\[y=\beta_0+\beta_1 x + ...+\beta_n x^n\]</p>
-
-<p>多项式回归会存在一些问题：</p>
+<h2 id="toc_2">2.tf-idf</h2>
 
 <ul>
-<li>\(x\)和\(x^k\)之间是相关的，不太好解释清楚每个变量的贡献程度</li>
-<li>会出现过拟合的情况</li>
+<li><a href="http://spark.apache.org/docs/latest/mllib-feature-extraction.html#tf-idf">http://spark.apache.org/docs/latest/mllib-feature-extraction.html#tf-idf</a></li>
+<li><a href="http://spark.apache.org/docs/latest/ml-features.html#feature-extractors">http://spark.apache.org/docs/latest/ml-features.html#feature-extractors</a>
+ml中的函数比mllib中的多<br/>
+examples/src/main/python/mllib/tf_idf_example.py</li>
 </ul>
 
-<p><strong>多元自适应回归样条MARS</strong></p>
+<pre><code class="language-text">~/zhenzhen/spark_study/spark/examples/src/main/python/mllib $  pyspark zzz_tf_idf_example.py
+</code></pre>
+
+<h2 id="toc_3">3.降维</h2>
+
+<h2 id="toc_4">4.直接聚类</h2>
+
+<pre><code class="language-text"> # pyspark这个默认是启动的集群任务，之前测试的本地数据会出错，脚本中需把输入目录改成集群路径
+  ~/zhenzhen/spark_study $  pyspark kmeans.py  &gt; log.test
+</code></pre>
+
+<h2 id="toc_5">六神合体</h2>
 
 <ul>
-<li>多项式整体是线性，局部非非线性</li>
-<li>MARS: 整体是非线性，局部是线性(分段函数)</li>
+<li>词频矩阵+tfidf</li>
 </ul>
 
-<p>样条函数，需要满足一些最基本的一些条件</p>
+<p><a href="http://www.zengyilun.com/spark-similarity/">http://www.zengyilun.com/spark-similarity/</a></p>
 
-<ul>
-<li>在knot节点处满足函数的连续性</li>
-<li>一阶导数连续，二阶导数连续，则称为三次样条</li>
-</ul>
+<p>上述所有步骤(tfidf，降维,聚类)合并在一起</p>
 
-<p>平滑样条</p>
-
-<p>\[E=\sum_{i=1}^n [y_i-g(x_i)]^2 +\lambda\int g&#39;&#39;(t)^2 \]</p>
-
-<p>code: <code>patsy</code></p>
+<pre><code class="language-text"> # pyspark这个默认是启动的集群任务，之前测试的本地数据会出错，脚本中需把输入目录改成集群路径
+  ~/zhenzhen/spark_study $  pyspark tfidf_kmeans.py  &gt; log.test
+  这个测试ok，但是中心点都是0，应该是数据问题
+</code></pre>
 
                         
                       </div>
@@ -625,6 +680,8 @@ predicted = model.predict(X)
           				  
           					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
           				   
+                    
+
                   </div>
                   <div class="more-right right">
                   <span class="comments">
@@ -709,6 +766,8 @@ predicted = model.predict(X)
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html"><strong>轨迹数据</strong></a>
+        
+            <a href="%E8%AF%BB%E4%B9%A6.html"><strong>读书</strong></a>
          
         </p>
 
@@ -725,31 +784,31 @@ predicted = model.predict(X)
 	      
 		      
 			      <li class="post">
-			        <a href="15686309605233.html">matplotlib</a>
+			        <a href="15706729896574.html"></a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">综述</a>
+			        <a href="15687050894061.html">0.综述</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15686368904229.html">基于dtw进行聚类</a>
+			        <a href="15637036455584.html">1 估计的置信度</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15636947700701.html">4.7 聚类1</a>
+			        <a href="15637025346412.html">1. conda 环境管理</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037683461.html">Jupyter notebook</a>
+			        <a href="15694859531608.html">1.trajectory preprocessing</a>
 			      </li>
 		     
 		  

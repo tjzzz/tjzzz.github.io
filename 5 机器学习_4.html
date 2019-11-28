@@ -50,7 +50,7 @@
 
         <ul class="right" id="search-wrap">
           <li>
-<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
     <input type="hidden" id="search_q" name="q" value="" />
     <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
 </form>
@@ -102,6 +102,8 @@
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html">轨迹数据</a></li>
+        
+            <li><a href="%E8%AF%BB%E4%B9%A6.html">读书</a></li>
          
 
       </ul>
@@ -124,6 +126,141 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15680210974066.html">
+                
+                  <h1>因子分析</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code class="language-text">from factor_analyzer import FactorAnalyzer
+f=FactorAnalyzer(n_factors = 10, rotation=&#39;varimax&#39;)
+f.fit(data)
+</code></pre>
+
+<p>FactorAnalyzer 主要参数</p>
+
+<ul>
+<li>n_factors: 设置因子的个数</li>
+<li>rotation： 表示旋转的个数，如果不设置的话默认不进行旋转。可旋转的旋转方法有：varimax， promax。。。</li>
+</ul>
+
+<p>输出结果属性包括：</p>
+
+<ul>
+<li>loadings_   因子载荷矩阵</li>
+<li>rotation_matrix   旋转矩阵</li>
+<li>structure：  The structure loading matrix.</li>
+<li>get_factor_variance()   计算因子的方差信息，包括方差、方差的比例，以及累计方差比重</li>
+</ul>
+
+<p>获取转换后的数据矩阵</p>
+
+<pre><code class="language-text">f.transform(data)
+</code></pre>
+
+<h2 id="toc_0">参考</h2>
+
+<p><a href="https://pypi.org/project/factor-analyzer/">https://pypi.org/project/factor-analyzer/</a><br/>
+<a href="https://blog.csdn.net/hfutxiaoguozhi/article/details/78840126">https://blog.csdn.net/hfutxiaoguozhi/article/details/78840126</a><br/>
+<a href="https://factor-analyzer.readthedocs.io/en/latest/factor_analyzer.html#module-factor_analyzer.factor_analyzer">https://factor-analyzer.readthedocs.io/en/latest/factor_analyzer.html#module-factor_analyzer.factor_analyzer</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/9/9</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037682671.html">
+                
+                  <h1>聚类Tools篇</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><a href="http://glaros.dtc.umn.edu/gkhome/cluto/cluto/download">http://glaros.dtc.umn.edu/gkhome/cluto/cluto/download</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037731727.html">
+                
+                  <h1>聚类方法-spark的bisecting和streaming</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><a href="http://blog.csdn.net/franket268/article/details/23604671">http://blog.csdn.net/franket268/article/details/23604671</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15637025344831.html">
                 
                   <h1>聚类方法Mini Batch KMeans</h1>
@@ -143,7 +280,7 @@
 
 <p>和一般的Kmeans一样</p>
 
-<pre><code>from sklearn.cluster import MiniBatchKMeans
+<pre><code class="language-text">from sklearn.cluster import MiniBatchKMeans
 
 clf = MiniBatchKMeans(n_clusters = 3)
 clf.fit(X)
@@ -165,6 +302,8 @@ pre_clu = clf.labels_
           				  
           					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
           				   
+                    
+
                   </div>
                   <div class="more-right right">
                   <span class="comments">
@@ -177,14 +316,22 @@ pre_clu = clf.labels_
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637025344879.html">
+                <a class="clearlink" href="15637025347693.html">
                 
-                  <h1>xgboost</h1>
+                  <h1>视频广告</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><a href="http://xgboost.readthedocs.io/en/latest/python/python_intro.html">http://xgboost.readthedocs.io/en/latest/python/python_intro.html</a></p>
+                        	<p><a href="http://ai.baidu.com/docs#/Begin/top">http://ai.baidu.com/docs#/Begin/top</a></p>
+
+<pre><code class="language-text">ffmpeg -i jcr_21.mp4  -vn -codec:a pcm_s16le -ar 16000 -ac 1 -f f16le   -f segment -segment_time 30  out%03d.wav      
+</code></pre>
+
+<p>任意一个视频  这么切,就可以生成访问百度语音转文字的音频了   可以改的两个地方一个是输入视频名字  另一个是按多少秒一分割   这个是30秒分割</p>
+
+<p>代码<br/>
+<a href="media/15086420955998/get_baiduimage_data.py">get_baiduimage_data.py</a></p>
 
                         
                       </div>
@@ -198,322 +345,8 @@ pre_clu = clf.labels_
           				  
           					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
           				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+                    
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025345613.html">
-                
-                  <h1>query文本聚类</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ul>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 是不是cache问题tf-idf
-</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 添加下降维的步骤
-</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 稀疏矩阵
-</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 数据切分更小li&#39;du
-</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Mini Batch KMeans <a href="http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/">http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/</a>
-</li>
-</ul>
-
-<p>实验全量的<br/>
-<a href="http://yq01-tianqi-spark-yarn00.yq01.baidu.com:8388/proxy/application_1511855101950_42074/">http://yq01-tianqi-spark-yarn00.yq01.baidu.com:8388/proxy/application_1511855101950_42074/</a></p>
-
-<hr/>
-
-<p>刚哥的代码：<a href="https://github.com/honestOrg/gxdgroup/blob/master/src/main/scala/cn/com/gxdgroup/dataplatform/avm/utils/AVMUtils.scala">https://github.com/honestOrg/gxdgroup/blob/master/src/main/scala/cn/com/gxdgroup/dataplatform/avm/utils/AVMUtils.scala</a></p>
-
-<h2 id="toc_0">全量</h2>
-
-<p>前期构造词频矩阵：</p>
-
-<h2 id="toc_1">1.生成原始的词频矩阵</h2>
-
-<ul>
-<li><a href="http://spark.apache.org/docs/latest/ml-features.html#countvectorizer">http://spark.apache.org/docs/latest/ml-features.html#countvectorizer</a></li>
-<li><code>examples/src/main/python/sql/basic.py</code></li>
-</ul>
-
-<p>输入数据：每行是切分好的term</p>
-
-<pre><code>spark = SparkSession.builder.appName(&quot;CountVectorizerExample&quot;).getOrCreate()
-sc = spark.sparkContext
-# $example on$
-# Input data: Each row is a bag of words with a ID.
-
-lines = sc.textFile(&quot;/user/ubs/kce/zhenzhen/spark/test_data/corpus_title2&quot;)
-parts = lines.map(lambda l: l.split(&#39;#&#39;))   # convert all the term to a list
-termRDD = parts.map(lambda p: Row(tid=p[0], words=p[1].split(&#39; &#39;)))
-
-df = spark.createDataFrame(termRDD)
-# fit a CountVectorizerModel from the corpus.
-cv = CountVectorizer(inputCol=&quot;words&quot;, outputCol=&quot;features&quot;)
-#, vocabSize=3, minDF=2.0)
-
-model = cv.fit(df)
-
-result = model.transform(df)
-</code></pre>
-
-<h2 id="toc_2">2.tf-idf</h2>
-
-<ul>
-<li><a href="http://spark.apache.org/docs/latest/mllib-feature-extraction.html#tf-idf">http://spark.apache.org/docs/latest/mllib-feature-extraction.html#tf-idf</a></li>
-<li><a href="http://spark.apache.org/docs/latest/ml-features.html#feature-extractors">http://spark.apache.org/docs/latest/ml-features.html#feature-extractors</a>
-ml中的函数比mllib中的多
-examples/src/main/python/mllib/tf_idf_example.py</li>
-</ul>
-
-<pre><code>~/zhenzhen/spark_study/spark/examples/src/main/python/mllib $  pyspark zzz_tf_idf_example.py
-</code></pre>
-
-<h2 id="toc_3">3.降维</h2>
-
-<h2 id="toc_4">4.直接聚类</h2>
-
-<pre><code> # pyspark这个默认是启动的集群任务，之前测试的本地数据会出错，脚本中需把输入目录改成集群路径
-  ~/zhenzhen/spark_study $  pyspark kmeans.py  &gt; log.test
-</code></pre>
-
-<h2 id="toc_5">六神合体</h2>
-
-<ul>
-<li>词频矩阵+tfidf</li>
-</ul>
-
-<p><a href="http://www.zengyilun.com/spark-similarity/">http://www.zengyilun.com/spark-similarity/</a></p>
-
-<p>上述所有步骤(tfidf，降维,聚类)合并在一起</p>
-
-<pre><code> # pyspark这个默认是启动的集群任务，之前测试的本地数据会出错，脚本中需把输入目录改成集群路径
-  ~/zhenzhen/spark_study $  pyspark tfidf_kmeans.py  &gt; log.test
-  这个测试ok，但是中心点都是0，应该是数据问题
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025346040.html">
-                
-                  <h1>二、起步篇——数据预处理[方法论]</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><img src="../media/15334844213158/15335717779664.jpg" alt=""/></p>
-
-<h2 id="toc_0">1.数据偏度</h2>
-
-<p>数据的处理，从数据特征本身的统计维度看，有尺度、偏度、</p>
-
-<p>1.数据尺度</p>
-
-<ul>
-<li>标准化 =&gt; 均值0，方差1</li>
-<li>归一化 =&gt; [0,1]</li>
-</ul>
-
-<p>2.数据偏度<br/>
-可以通过偏度来度量，数据中如果存在较大的偏度，可能是因为有异常点的存在。</p>
-
-<p>有偏数据处理，一般可以取log，或者开根号让他能近似正态</p>
-
-<h2 id="toc_1">2.异常点</h2>
-
-<p>首先什么是异常点<br/>
-异常点<br/>
-（1） 首先确认是不是错误导致，比如计算错误。取值错误<br/>
-（2）确认异常点的生成机制</p>
-
-<p>（1）异常点检测</p>
-
-<p>@@@<br/>
-sklearn中常用的包</p>
-
-<p>（2）异常点处理</p>
-
-<ul>
-<li>如果是少量可以直接删除</li>
-<li>当数据量较少，删除后造成可用信息较少时候，可以使用“空间标识”的数值处理方法</li>
-</ul>
-
-<h2 id="toc_2">3.缺失值</h2>
-
-<p>缺失机制：随机缺失，还是非随机缺失</p>
-
-<p>补充原则：</p>
-
-<ul>
-<li>如果缺失占比太大，删除</li>
-</ul>
-
-<p>补充方法：</p>
-
-<ul>
-<li>统计方法：均值</li>
-<li>机器学习方法：回归、K近邻</li>
-</ul>
-
-<h2 id="toc_3">4.特征冗余</h2>
-
-<p>一般是说特征自相关性太高，即“共线性”。另外是指一些没有区分度的变量，比如一是特征取值的总数与样本数目的比例在 10% 以下，二是出现频率最高的特征取值的出现频率应该在出现频率次高的特征的20倍以上。</p>
-
-<p>检测办法：<br/>
-解决办法：PCA</p>
-
-<h2 id="toc_4">参考文章</h2>
-
-<p>离群点</p>
-
-<p><a href="https://blog.chih.me/Outlier-mining-review.html">https://blog.chih.me/Outlier-mining-review.html</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025346988.html">
-                
-                  <h1>二、起步篇—— 数据预处理[python]</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>一方面可以多查些官方说明<br/>
-多去看些kaggle，tianchi等的比赛案例，他们数据预处理做的很全面到位<br/>
-实践一些工作中的项目，将代码规范化</p>
-</blockquote>
-
-<h2 id="toc_0">1.缺失表示</h2>
-
-<p>python中缺失是nan，如果本身数据中缺失是用其他方式表示的，可以先转换一下<br/>
-<code>df.replace(&#39;-&#39;,np.nan)</code></p>
-
-<pre><code class="language-python">
-import numpy as np
-import pandas as pd
-from io import StringIO
-import sys
-
-df = pd.read_table(&#39;zz&#39;)
-df = df.replace(&#39;-&#39;,np.nan).head()
-df.head()
-</code></pre>
-
-<h2 id="toc_1">2.缺失的简单处理办法</h2>
-
-<h3 id="toc_2">暴力删除</h3>
-
-<p><code>isnull()</code>   判断是否缺失</p>
-
-<p><code>dropna( axis = 0 /1 )</code> 参数axis表示轴选择，axis=0 代表行，axis=1 代表列</p>
-
-<p><code>dropna(subset=[&#39;&#39;])</code>   删除指定列中有空值的一行数据</p>
-
-<h3 id="toc_3">默认值填充</h3>
-
-<p><code>df.fillna(value)</code><br/>
-或者对不同列填不同的值</p>
-
-<h3 id="toc_4">统计/算法填充</h3>
-
-<pre><code class="language-python">from sklearn.preprocessing import Imputer
-# strategy 有mean,median, most_frequent 方式
-# axis 默认是0，列向， axis=1行向
-dff = df.loc[:, [&#39;comment_time&#39;]]
-imr = Imputer(missing_values = &#39;NaN&#39;, strategy = &#39;mean&#39;, axis = 0 )
-imr = imr.fit(dff.values)
-imputed_data = imr.transform(dff.values)
-</code></pre>
-
-<pre><code class="language-python">## 3.分类数据处理
-from sklearn.preprocessing import LabelEncoder
-class_le = LabelEncoder()
-y = class_le.fit_transform(df[&#39;nid&#39;].values)
-
-</code></pre>
-
-<pre><code class="language-python">## 数据标准化
-from sklearn.preprocessing import MinMaxScaler
-mms = MinMaxScaler()
-X_train_norm = mms.fit_transform(imputed_data)
-X_test_norm = mms.transform(imputed_data)
-</code></pre>
-
-<h2 id="toc_5">参考资料</h2>
-
-<p><a href="https://blog.csdn.net/Amy_mm/article/details/79799629">https://blog.csdn.net/Amy_mm/article/details/79799629</a><br/>
-<a href="https://www.cnblogs.com/charlotte77/p/5622325.html">https://www.cnblogs.com/charlotte77/p/5622325.html</a></p>
-
-<p><a href="https://www.kaggle.com/pmarcelino/comprehensive-data-exploration-with-python">https://www.kaggle.com/pmarcelino/comprehensive-data-exploration-with-python</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
                   </div>
                   <div class="more-right right">
                   <span class="comments">
@@ -536,7 +369,7 @@ X_test_norm = mms.transform(imputed_data)
 			  </div>
 			  <div class="large-6 columns">
 			<p class="text-right" style="padding-top:25px;">
-			 <a href="5 机器学习_5.html">&raquo; Next Page</a> 
+			
 			</p>
 			  </div>
 			</div>
@@ -598,6 +431,8 @@ X_test_norm = mms.transform(imputed_data)
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html"><strong>轨迹数据</strong></a>
+        
+            <a href="%E8%AF%BB%E4%B9%A6.html"><strong>读书</strong></a>
          
         </p>
 
@@ -614,31 +449,31 @@ X_test_norm = mms.transform(imputed_data)
 	      
 		      
 			      <li class="post">
-			        <a href="15686309605233.html">matplotlib</a>
+			        <a href="15706729896574.html"></a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">综述</a>
+			        <a href="15687050894061.html">0.综述</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15686368904229.html">基于dtw进行聚类</a>
+			        <a href="15637036455584.html">1 估计的置信度</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15636947700701.html">4.7 聚类1</a>
+			        <a href="15637025346412.html">1. conda 环境管理</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037683461.html">Jupyter notebook</a>
+			        <a href="15694859531608.html">1.trajectory preprocessing</a>
 			      </li>
 		     
 		  

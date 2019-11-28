@@ -50,7 +50,7 @@
 
         <ul class="right" id="search-wrap">
           <li>
-<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
     <input type="hidden" id="search_q" name="q" value="" />
     <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
 </form>
@@ -102,6 +102,8 @@
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html">轨迹数据</a></li>
+        
+            <li><a href="%E8%AF%BB%E4%B9%A6.html">读书</a></li>
          
 
       </ul>
@@ -124,53 +126,15 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637037680349.html">
+                <a class="clearlink" href="15637025346225.html">
                 
-                  <h1>jupyterLab-安装R支持</h1>
+                  <h1>2 不同设计之间有统计学差异吗</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>jupyterlab是jupyter notebook的一个升级版，界面更炫酷，而且同时支持R语言。</p>
+                        	<p>本章主要介绍对均值、比例的假设检验，来判断两组不同设计之间是否有显著差别。</p>
 
-<p>现在Rstudio已经成为R社区使用最广泛的集成编辑器，其在配合Rstudio公司开发的软件包使用上有天然的优势，如knitr、bookdown、blogdown、sparklyr、tidyverse等，让我们在数据导入、清洗、可视化、分析过程中少踩了不少坑。</p>
-
-<p>然而，有时候我们也会发现，利用Rmarkdown进行探索性数据分析时，尤其是初学者，总是不断花费时间在文档编译上，而压缩了真正数据探索的时间。很多时候，我很羡慕python用户，因为他们拥有Ipython、jupyter notebook等工具，让我们一边分析数据，一边插入markdown文本，并且还能实时看到结果，这些特性R用户也可以实现吗？当然，这就是我今天推荐的jupyterlab 编辑器。</p>
-
-<p>安装jupyterLab</p>
-
-<p>首先我们要明白，jupyterLab是一个python包，所以要使用jupyterLab首先要配置python环境。对于普通用户，包括linux、win和Mac用户，建议直接下载anaconda发行版进行安装，这样免去了既要安装python又要安装其他包的麻烦，是最简洁的方法。</p>
-
-<p>对于平时很少使用python的人来说，可能无法忍受anaconda全家桶式的安装模式，想更轻便的安装使用，那也很容易。</p>
-
-<p>1.安装</p>
-
-<p>Mac 和 Linux用户系统自带了python，可以直接使用pip install jupyterlab安装jupyterLab包。</p>
-
-<p>win用户先在python官网下载安装python，然后使用pip install jupyterlab安装jupyterLab包。</p>
-
-<p>2.运行</p>
-
-<p>在终端输入jupyter lab即可以在默认浏览器中打开编辑器界面，若不能，请检查下python路径配置是否正确。</p>
-
-<p>“咦，怎么只能选择python，R去哪了”，各位看官莫急，这是因为R端缺少必要的包，还不能和jupyter进行通信，等把这些包安装好进行配置后就可以了。</p>
-
-<p>3.配置R</p>
-
-<p>要把先前打开的jupyterLab程序全部关闭后再进行以下操作</p>
-
-<pre><code>#安装必要的依赖包
-install.packages(c(&#39;repr&#39;, &#39;IRdisplay&#39;,&#39;evaluate&#39;, &#39;crayon&#39;,&#39;pbdZMQ&#39;,&#39;devtools&#39;,&#39;uuid&#39;, &#39;digest&#39;))
-</code></pre>
-
-<pre><code>#IRkernel包没有放在CRAN上，需要通过GitHub安装
-devtools::install_github(&#39;IRkernel/IRkernel&#39;)
-IRkernel::installspec() #确保jupyterLab能找到R解释器安装位置
-</code></pre>
-
-<p>4.再次在终端运行<code>jupyter lab</code>，选择R图标打开，你就可以在jupyterLab进行数据分析啦</p>
-
-<p>jupyterLab的主要特性绘图函数自动插入图片ggplot2绘图完美支持</p>
 
                         
                       </div>
@@ -178,12 +142,14 @@ IRkernel::installspec() #确保jupyterLab能找到R解释器安装位置
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                  
+                   <a href="15637025346225.html">Read more</a>&nbsp;&nbsp; 
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
           				   
+                    
+
                   </div>
                   <div class="more-right right">
                   <span class="comments">
@@ -196,103 +162,118 @@ IRkernel::installspec() #确保jupyterLab能找到R解释器安装位置
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037713554.html">
+                <a class="clearlink" href="15694875253508.html">
                 
-                  <h1>数据可视化概述</h1>
+                  <h1>2 轨迹相似性度量</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>目标: 系统的梳理在进行数据分析的时候，如何进行数据可视化。具体操作的时候以python的seaborn包为主。</p>
-</blockquote>
+                        	<p>相似性度量方法<br/>
+<a href="https://www.jianshu.com/p/8a5755c1831a">https://www.jianshu.com/p/8a5755c1831a</a></p>
 
-<p>在进行数据分析的时候，经常需要进行数据可视化。俗话说一图胜千言，如何将从数据中发现的结论以一种简单易懂、形象化的方式展现出来，是很考验数据分析人员的能力的。</p>
+<p>基于轨迹点的相似性度量方法：</p>
 
-<h2 id="toc_0">1 方法部分</h2>
-
-<p>数据可视化，首先是要有数据，即我们的研究对象，而可视化的功能就是将数据中蕴含的关系或规律以图形的形式展示出来。 因此在进行数据可视化之前，一定要搞清楚的两件事：</p>
+<p><strong>全局匹配度量法</strong><br/>
+即两条轨迹要整体相似，每个点都要在另一条轨迹中找到对应点。常见的方法有：</p>
 
 <ul>
-<li>数据类型</li>
-<li>数据要传递的信息以及有展示的关系</li>
+<li>Euclid 欧式距离</li>
+<li>ERP 编辑距离</li>
+<li>DTW 动态时间扭曲方法。 对轨迹进行局部的拉伸或者缩放，从而可以对不同采样率和不同长度的轨迹进行比较，DWT距离就是所有最优匹配轨迹点间距离的累加和</li>
 </ul>
 
-<p>不同的数据类型适合的图形表现是不同的，随着现在数据分析应用的越来越广泛，数据类型随着其应用的场景不同也是越来越多。</p>
+<p><strong>局部匹配度量法</strong></p>
+
+<p>只要求两条轨迹部分相似，并且计算距离的时候只看匹配点之间的距离。常见的方法有</p>
 
 <ul>
-<li>分类型变量：比如性别</li>
-<li>连续型变量：比如年龄</li>
+<li>EDR 编辑距离法。 将距离量化为0，1两个值来消除噪音。方法鲁棒性好，但是不满足距离的三角不等式</li>
+<li>LCSS 最长公共子序列</li>
 </ul>
 
-<p>数据之间的关系：</p>
+<p>zzz: 对于轨迹数据，可以将(x,y,t) 做一个映射，映射到一个格子标号。即将(x,y) 对应到一个位置范围。在这个位置范围内相同出现的次数可以认为是两个轨迹的相似度度量。<br/>
+而且实际情况中，在商场的环境下。用户浏览路线的宽度其实是可以没有限制的可以进行适当的放松，这个必须得结合真实的商场布局图来设计。</p>
+
+<p>这样(x, y, t) =&gt; x_y的字符id</p>
+
+<p>python实现 <a href="https://www.jianshu.com/p/d7b8db280a01">https://www.jianshu.com/p/d7b8db280a01</a></p>
+
+<ul>
+<li>Frechet 费累歇距离。人遛狗的狗绳距离</li>
+<li>KBCT：K-BCT是一个参数free的方法，结合了DTW和LCSS</li>
+<li> LCS, </li>
+<li>CATS</li>
+</ul>
+
+<p>方法对比</p>
 
 <table>
 <thead>
 <tr>
-<th>关系</th>
-<th>示例图形</th>
+<th>方法</th>
+<th>优缺点</th>
+<th></th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td>比较大小，包括不同个体或者分组之间</td>
-<td>常用的比如将面积、尺寸进行可视化。条形图、面积图</td>
+<td>欧式距离</td>
+<td>x 采样率，轨迹点必须一致</td>
+<td></td>
 </tr>
 <tr>
-<td>数据的集中程度</td>
-<td>一般是热力图，比如地图上交通的拥挤程度</td>
+<td>DTW</td>
+<td>可以不同采样频率，不同长度；</td>
+<td></td>
 </tr>
 <tr>
-<td>地理信息</td>
-<td>地理位置数据</td>
+<td>ERP</td>
+<td>可以不同采样频率，不同长度；不是所有的匹配点都计算距离，减少噪音</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
 
-<p><a href="https://zhuanlan.zhihu.com/p/25632363">https://zhuanlan.zhihu.com/p/25632363</a></p>
+<h3 id="toc_0">code - DTW</h3>
 
-<p>python中常用的绘图pacakge是<code>matplotlib</code></p>
+<p>dtw实现</p>
 
-<p>本篇文章介绍的seaborn就是一个基于<code>matplotlib</code>的外包，其操作命令比较简单。有点类似R中的<code>ggplot</code>.</p>
+<pre><code class="language-python">from fastdtw import fastdtw
+euclidean_norm = lambda x, y: np.abs(x - y)
+fastdtw(x, y, dist=euclidean_norm)
 
-<h2 id="toc_1">2 工具部分</h2>
+</code></pre>
 
-<ul>
-<li><p>excel<br/>
-excel适合一些相对简单的数据，</p></li>
-<li><p>可视化BI </p></li>
-</ul>
+<pre><code class="language-python">import numpy as np
+from cdtw import pydtw
+r = np.array([1,2,3,4])
+q = np.array([2,3,4,5])
+d = pydtw.dtw(r,q,pydtw.Settings(step = &#39;p0sym&#39;, #Sakoe-Chiba symmetric step with slope constraint p = 0
+window = &#39;palival&#39;, #type of the window
+param = 2.0, #window parameter
+norm = False, #normalization
+compute_path = True))
 
-<p>比如tableau， power BI， FineBI等常见的一些可视化软件</p>
+d.get_dist()
 
-<ul>
-<li>编程工具-python</li>
-</ul>
+# 连接 https://pypi.org/project/cdtw/
+</code></pre>
 
-<p>seaborn<br/>
-pyecharts  <a href="https://github.com/pyecharts/pyecharts">https://github.com/pyecharts/pyecharts</a></p>
+<pre><code class="language-text">参考资料
 
-<ul>
-<li>编程工具-R语言</li>
-</ul>
+* https://blog.csdn.net/songbinxu/article/details/86660136
+* 成对数据计算效率问题: http://cn.voidcc.com/question/p-pvczjbyi-bmw.html
+* 这里踩了一个坑：安装上fastdtw后速度仍然慢。在测试机上跑n=30条数据两两组队，耗时38s，mac上才3s。后来发现是mac上采用的是Cpython， 测试机上运行的是纯python版本。
+* dtw加速计算的一些资料: https://jozeelin.github.io/2019/07/03/UCR-DTW%E5%92%8CUCR-ED%E6%A8%A1%E5%9E%8B%E8%AF%A6%E8%A7%A3/
 
-<p>ggplot </p>
-
-<h2 id="toc_2">参考资料</h2>
-
-<p><a href="https://blog.csdn.net/suzyu12345/article/details/69029106">https://blog.csdn.net/suzyu12345/article/details/69029106</a></p>
-
-<h2 id="toc_3">2.echarts接口</h2>
-
-<p>pyecharts</p>
-
-<p><a href="http://pyecharts.org/#/zh-cn/charts?id=treemap%EF%BC%88%E7%9F%A9%E5%BD%A2%E6%A0%91%E5%9B%BE%EF%BC%89">http://pyecharts.org/#/zh-cn/charts?id=treemap%EF%BC%88%E7%9F%A9%E5%BD%A2%E6%A0%91%E5%9B%BE%EF%BC%89</a></p>
-
-<h2 id="toc_4">工具平台</h2>
-
-<p><a href="https://antv.alipay.com/zh-cn/vis/chart/color-map.html">https://antv.alipay.com/zh-cn/vis/chart/color-map.html</a></p>
+</code></pre>
 
                         
                       </div>
@@ -301,11 +282,13 @@ pyecharts  <a href="https://github.com/pyecharts/pyecharts">https://github.com/p
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2019/9/26</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html'>3 数据可视化</a></span>
+          					    <span class="posted-in"><a href='%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html'>轨迹数据</a></span>
           				   
+                    
+
                   </div>
                   <div class="more-right right">
                   <span class="comments">
@@ -318,44 +301,36 @@ pyecharts  <a href="https://github.com/pyecharts/pyecharts">https://github.com/p
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15680210974066.html">
+                <a class="clearlink" href="15664761738125.html">
                 
-                  <h1>因子分析</h1>
+                  <h1>2. iterm终端配置-oh my zsh</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<pre><code>from factor_analyzer import FactorAnalyzer
-f=FactorAnalyzer(n_factors = 10, rotation=&#39;varimax&#39;)
-f.fit(data)
+                        	<h2 id="toc_0">安装</h2>
+
+<p>oh my zsh 是一款强大的虚拟终端，兼容bash，提供了各种主题配置、插件。<br/>
+官网：<a href="https://ohmyz.sh/">https://ohmyz.sh/</a></p>
+
+<pre><code class="language-text"># 安装
+git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+#备份旧.zshrc配置
+cp ~/.zshrc ~/.zshrc.orig
+cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+#修改默认shell
+chsh -s /bin/zsh
 </code></pre>
 
-<p>FactorAnalyzer 主要参数</p>
+<p>卸载 <code>uninstall_oh_my_zsh</code></p>
 
-<ul>
-<li>n_factors: 设置因子的个数</li>
-<li>rotation： 表示旋转的个数，如果不设置的话默认不进行旋转。可旋转的旋转方法有：varimax， promax。。。</li>
-</ul>
+<p>注意：如果安装oh my zsh后conda命令无法使用，这个时候需要修改一下.zshrc文件，添加一句<br/>
+<code>export PATH=/home/username/anaconda/bin:$PATH</code></p>
 
-<p>输出结果属性包括：</p>
+<h2 id="toc_1">主题</h2>
 
-<ul>
-<li>loadings_   因子载荷矩阵</li>
-<li>rotation_matrix   旋转矩阵</li>
-<li>structure：  The structure loading matrix.</li>
-<li>get_factor_variance()   计算因子的方差信息，包括方差、方差的比例，以及累计方差比重</li>
-</ul>
-
-<p>获取转换后的数据矩阵</p>
-
-<pre><code>f.transform(data)
-</code></pre>
-
-<h2 id="toc_0">参考</h2>
-
-<p><a href="https://pypi.org/project/factor-analyzer/">https://pypi.org/project/factor-analyzer/</a><br/>
-<a href="https://blog.csdn.net/hfutxiaoguozhi/article/details/78840126">https://blog.csdn.net/hfutxiaoguozhi/article/details/78840126</a><br/>
-<a href="https://factor-analyzer.readthedocs.io/en/latest/factor_analyzer.html#module-factor_analyzer.factor_analyzer">https://factor-analyzer.readthedocs.io/en/latest/factor_analyzer.html#module-factor_analyzer.factor_analyzer</a></p>
+<p><a href="https://github.com/robbyrussell/oh-my-zsh/wiki/Themes">https://github.com/robbyrussell/oh-my-zsh/wiki/Themes</a><br/>
+oh my zsh 有各种丰富的主题可供选择，可以在其github上找到对应的主题样式。其对应的配置文件在<code>vim ~/.zshrc</code>中，只需修改其中的<code>ZSH_THEME=&quot;robbyrussell&quot;</code> 即可。</p>
 
                         
                       </div>
@@ -364,124 +339,13 @@ f.fit(data)
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/9/9</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025346412.html">
-                
-                  <h1>1. conda 环境管理</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>conda的主要作用有如下两个：</p>
-
-<ul>
-<li>包管理</li>
-</ul>
-
-<p>Anaconda 安装，conda包管理器与pip类似，不同之处是可用的包以数据科学包为主，而 pip 适合一般用途。它也可以安装非 Python 的包。它是支持任何软件的包管理器。</p>
-
-<ul>
-<li>虚拟环境管理器</li>
-</ul>
-
-<p>它类似于另外两个很流行的环境管理器，即 virtualenv 和 pyenv<br/>
-脚本和程序使用的默认 Python 是 Anaconda 附带的 Python。</p>
-
-<p>可以安装完整版： <a href="https://www.anaconda.com/distribution/#download-section">https://www.anaconda.com/distribution/#download-section</a><br/>
-也可以安装精简版miniconda： <a href="https://conda.io/miniconda.html">https://conda.io/miniconda.html</a></p>
-
-<h2 id="toc_0">包管理-常用命令</h2>
-
-<pre><code>conda list  #查看安装的内容
-conda upgrade --all   #初次下载安装好后，建议更新所有包
-</code></pre>
-
-<p>安装包</p>
-
-<pre><code>conda install xxx
-conda install numpy=1.10   #指定包的版本
-
-conda remove package
-conda upgrade --all
-</code></pre>
-
-<pre><code>模糊查询相关包
-conda search search_term
-</code></pre>
-
-<h2 id="toc_1">环境管理</h2>
-
-<p>默认的环境名字叫base(我的电脑上是)</p>
-
-<p>通过<code>conda env list</code>可以列出你创建的所有环境</p>
-
-<pre><code>#创建环境
-conda create -n env_name list of packages
-eg. conda create -n my_env numpy
-
-conda create -n py3 python=3
-conda create -n py2 python=2
-
-#进入环境
-source activate my_env
-#离开环境
-source deactivate
-
-# 删除环境
-conda env remove -n env_name
-</code></pre>
-
-<h2 id="toc_2">其他</h2>
-
-<p>共享环境：将自己的工作环境保存下来给别人共享</p>
-
-<pre><code>#进入到你的环境中
-source activate base
-conda env export &gt; environment.yaml
-
-# 通过环境文件创建环境
-conda env create -f environment.yaml
-</code></pre>
-
-<h2 id="toc_3">conda install 与pip install的区别</h2>
-
-<p>，pip list和conda list列表却不一致，conda数量 &gt; pip<br/>
-conda 安装包路径是 xxxxx\Anaconda3\pkgs<br/>
-pip 安装包路径在虚拟环境下是 xxxx\Anaconda3\envs\a_conda_env\Lib\site-packages<br/>
-所以当前环境下pip list只列举出当前包list<br/>
-此处需要留意如果使用conda install 多个环境时，对于同一个包只需要安装一次。有conda集中管理。<br/>
-但是如果使用pip因为每个环境安装使用的pip在不同的路径下，故会重复安装，而包会从缓存中取。</p>
-
-<p>(2) 另外从体验上看感觉conda速度快很多</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2019/8/22</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
           				   
+                    
+
                   </div>
                   <div class="more-right right">
                   <span class="comments">
@@ -494,26 +358,108 @@ pip 安装包路径在虚拟环境下是 xxxx\Anaconda3\envs\a_conda_env\Lib\sit
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037679256.html">
+                <a class="clearlink" href="15637036605080.html">
                 
-                  <h1>Rmarkdown</h1>
+                  <h1>3 样本量的确定</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">python支持</h2>
+                        	<p>抽样中样本量的确定是一个非常重要的问题，在不考虑抽样成本的前提下，样本量越多估计的越准，然而实际情况中我们需要平衡抽样成本与估计结果的置信度——以尽可能低的样本得到尽可能高的置信结果。</p>
 
-<p>Rmarkdown对python兼容 <a href="https://github.com/rstudio/reticulate">https://github.com/rstudio/reticulate</a></p>
 
-<h2 id="toc_1">图片</h2>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15637036605080.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
+          				   
+                    
 
-<p>现在很多makdown编辑器是可以支持拖拽本地图片或者截屏就可以直接在markdown中生成图片的，非常方便，比如我现在在用的MWeb编辑器。</p>
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
-<p>但是如果同一篇内容需要在不同的平台上进行发布，那图片处理起来就比较麻烦。因为需要重新上传到不同平台。<br/>
-最方便的处理方式就是利用图床， 这里以七牛云存储为例。<br/>
-<img src="media/15378048283915/15383141468224.jpg" alt=""/></p>
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15686368904229.html">
+                
+                  <h1>3. 轨迹聚类综述</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><strong>trajectory segmentation</strong></p>
 
-<p>step1： 首先在七牛官网上申请注册账号，并且添加<strong>对象存储</strong></p>
+<p>轨迹切分按照方法来讲，大致分为三类:</p>
+
+<ul>
+<li>无监督的： 比如通过聚类的方法 TRACLUS,SMOT, CN-SM0T,</li>
+<li>有监督的L=: </li>
+<li>半监督的</li>
+<li></li>
+</ul>
+
+<p>切分效果的评估：<br/>
+(1) 基于无监督的聚类方法的评估</p>
+
+<ul>
+<li> average purity and average coverage.</li>
+</ul>
+
+<h2 id="toc_0">论文摘要</h2>
+
+<p>(0) interpolation based change detection</p>
+
+<p>OWS(Octal Window Segmentation)切分方法，作者的出发点：当一个运动的物体其运动状态发生改变时候，因为有惯性，他会超出之前的预期。通过定义的误差函数找到这些“拐点”从而将轨迹进行切分。</p>
+
+<p>(1)TRACLUS: Trajectory Clustering: A Partition-and-Group Framework</p>
+
+<p>作者出发点不是从全局出发，因为全局上不相似可能在片段是是相似的，尤其是在当只对某些片段感兴趣的时候。作者采用了先partition再group的方法。这种方法的优势:能发现common sub-trajectory。其核心思想如下.github上的一个实现： <a href="https://github.com/MillerWu2014/trajectory-cluster">https://github.com/MillerWu2014/trajectory-cluster</a><br/>
+partition-and-group framework<br/>
+<img src="media/15686368904229/15735658553309.jpg" alt=""/></p>
+
+<p>主要步骤如下</p>
+
+<p>(1) 轨迹的距离度量<br/>
+两条轨迹的距离会从三个方面进行度量：</p>
+
+<ul>
+<li>垂直距离</li>
+<li>平行距离</li>
+<li>角度距离
+<img src="media/15686368904229/15736362612288.jpg" alt=""/></li>
+</ul>
+
+<p>最终的距离是以上三种的加权<br/>
+<img src="media/15686368904229/15736424496498.jpg" alt=""/></p>
+
+<p>(2) 轨迹切分<br/>
+轨迹切分，即用尽量少的点，能尽量代表原来轨迹的信息(减少与原始轨迹的误差)。这里主要是通过MDL(最小描述长度)算法。 L(H)+L(D|H), partition后的轨迹长度 + 原始轨迹与partition后的轨迹的距离。</p>
+
+<pre><code class="language-text">MDL(麦当劳)原理:是研究通信编码的时候提出的，对于给定的一组数据D，为了要对其进行保存，一般都会采用某种模型H对其进行编码压缩。同时为了能够正确恢复这些数据，将模型也保存起来。所以需要保存的数据长度=保存模型的数据长度 + 这些数据压缩后的长度. L(H) + L(D|H)
+</code></pre>
+
+<p>(3)cluster<br/>
+对于每一个segment，相当于是一个数据点，然后采用基于密度的聚类。</p>
+
+<p>(4) representative trajectory of a cluster<br/>
+对于聚好类的一堆曲线，需要找到其有representative的曲线来表示这一类的特点。<br/>
+<img src="media/15686368904229/15737121895384.jpg" alt=""/></p>
+
+<p>(2)</p>
 
                         
                       </div>
@@ -522,11 +468,13 @@ pip 安装包路径在虚拟环境下是 xxxx\Anaconda3\envs\a_conda_env\Lib\sit
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2019/9/16</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          					    <span class="posted-in"><a href='%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html'>轨迹数据</a></span>
           				   
+                    
+
                   </div>
                   <div class="more-right right">
                   <span class="comments">
@@ -611,6 +559,8 @@ pip 安装包路径在虚拟环境下是 xxxx\Anaconda3\envs\a_conda_env\Lib\sit
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html"><strong>轨迹数据</strong></a>
+        
+            <a href="%E8%AF%BB%E4%B9%A6.html"><strong>读书</strong></a>
          
         </p>
 
@@ -627,31 +577,31 @@ pip 安装包路径在虚拟环境下是 xxxx\Anaconda3\envs\a_conda_env\Lib\sit
 	      
 		      
 			      <li class="post">
-			        <a href="15686309605233.html">matplotlib</a>
+			        <a href="15706729896574.html"></a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">综述</a>
+			        <a href="15687050894061.html">0.综述</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15686368904229.html">基于dtw进行聚类</a>
+			        <a href="15637036455584.html">1 估计的置信度</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15636947700701.html">4.7 聚类1</a>
+			        <a href="15637025346412.html">1. conda 环境管理</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037683461.html">Jupyter notebook</a>
+			        <a href="15694859531608.html">1.trajectory preprocessing</a>
 			      </li>
 		     
 		  

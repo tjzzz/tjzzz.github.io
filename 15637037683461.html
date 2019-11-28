@@ -50,7 +50,7 @@
 
         <ul class="right" id="search-wrap">
           <li>
-<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
     <input type="hidden" id="search_q" name="q" value="" />
     <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
 </form>
@@ -102,6 +102,8 @@
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html">轨迹数据</a></li>
+        
+            <li><a href="%E8%AF%BB%E4%B9%A6.html">读书</a></li>
          
 
       </ul>
@@ -157,7 +159,7 @@
 <li>通过conda环境安装 <code>conda install jupyter notebook</code>，或者<code>pip install jupyter notebook</code></li>
 </ul>
 
-<pre><code># 启动
+<pre><code class="language-text"># 启动
 jupyter notebook
 </code></pre>
 
@@ -187,7 +189,7 @@ jupyter notebook
 
 <p>转换格式的命令 <code>nbconvert</code></p>
 
-<pre><code>jupyter nbconvert --to html notebook.ipynb   #转成html
+<pre><code class="language-text">jupyter nbconvert --to html notebook.ipynb   #转成html
 jupyter nbconvert --to markdown xxx.ipynb 
 </code></pre>
 
@@ -205,7 +207,7 @@ notebook.</p>
 
 <p>在 notebook 中创建幻灯片的过程像平常一样，但需要指定作为幻灯片的单元格和单元格的幻灯片类型。在菜单栏中，点击“View”（视图）&gt;“Cell Toolbar”（单元格工具栏）&gt;“Slideshow”（幻灯片），以便在每个单元格上弹出幻灯片单元格菜单。</p>
 
-<pre><code>#转换并在浏览器中展示
+<pre><code class="language-text">#转换并在浏览器中展示
 jupyter nbconvert notebook.ipynb --to slides --post serve
 </code></pre>
 
@@ -223,12 +225,12 @@ jupyter nbconvert notebook.ipynb --to slides --post serve
 
 <p>如果启动报错</p>
 
-<pre><code>socket.gaierror: [Errno -2] Name or service not known
+<pre><code class="language-text">socket.gaierror: [Errno -2] Name or service not known
 </code></pre>
 
 <p>可以加上自己的ip</p>
 
-<pre><code> jupyter notebook --ip=xxxx
+<pre><code class="language-text"> jupyter notebook --ip=xxxx
  jupyter lab --ip=xxx
 </code></pre>
 
@@ -261,6 +263,11 @@ import some_module<br/>
 import imp<br/>
 imp.reload(some_module)</p>
 
+<p>方法2：<br/>
+auto_load</p>
+
+<p><a href="https://codeday.me/bug/20181215/447675.html">https://codeday.me/bug/20181215/447675.html</a></p>
+
 <p>Q2. <code>jupyter lab</code> 启动提示</p>
 
 <p><img src="media/15637037680349/15665439689997.jpg" alt=""/></p>
@@ -275,8 +282,12 @@ imp.reload(some_module)</p>
 很多代码都是python2写的，用pip3安装jupyter之后，想切换写内核。<br/>
 <a href="https://www.cnblogs.com/Jeffiy/p/4861528.html">https://www.cnblogs.com/Jeffiy/p/4861528.html</a></p>
 
-<pre><code>jupyter kernelspec list
+<pre><code class="language-text">jupyter kernelspec list
 </code></pre>
+
+<h2 id="toc_6">6 好用的插件</h2>
+
+<p><a href="https://blog.csdn.net/yh0vlde8vg8ep9vge/article/details/85333338">https://blog.csdn.net/yh0vlde8vg8ep9vge/article/details/85333338</a></p>
 
 
     
@@ -287,16 +298,16 @@ imp.reload(some_module)</p>
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="15636947700701.html" 
-          title="Previous Post: 4.7 聚类1">&laquo; 4.7 聚类1</a>
+          <a href="15637037688620.html" 
+          title="Previous Post: Face综述">&laquo; Face综述</a>
       
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="15637037680349.html" 
-          title="Next Post: jupyterLab-安装R支持">jupyterLab-安装R支持 &raquo;</a>
+          <a  href="15637037679256.html" 
+          title="Next Post: Rmarkdown">Rmarkdown &raquo;</a>
       
       </p>
         </div>
@@ -371,6 +382,8 @@ imp.reload(some_module)</p>
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html"><strong>轨迹数据</strong></a>
+        
+            <a href="%E8%AF%BB%E4%B9%A6.html"><strong>读书</strong></a>
          
         </p>
 
@@ -387,31 +400,31 @@ imp.reload(some_module)</p>
 	      
 		      
 			      <li class="post">
-			        <a href="15686309605233.html">matplotlib</a>
+			        <a href="15706729896574.html"></a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">综述</a>
+			        <a href="15687050894061.html">0.综述</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15686368904229.html">基于dtw进行聚类</a>
+			        <a href="15637036455584.html">1 估计的置信度</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15636947700701.html">4.7 聚类1</a>
+			        <a href="15637025346412.html">1. conda 环境管理</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037683461.html">Jupyter notebook</a>
+			        <a href="15694859531608.html">1.trajectory preprocessing</a>
 			      </li>
 		     
 		  

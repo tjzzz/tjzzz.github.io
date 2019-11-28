@@ -50,7 +50,7 @@
 
         <ul class="right" id="search-wrap">
           <li>
-<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
     <input type="hidden" id="search_q" name="q" value="" />
     <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
 </form>
@@ -102,6 +102,8 @@
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html">轨迹数据</a></li>
+        
+            <li><a href="%E8%AF%BB%E4%B9%A6.html">读书</a></li>
          
 
       </ul>
@@ -150,6 +152,15 @@
 
 <h2 id="toc_2">git</h2>
 
+<h2 id="toc_3">latex</h2>
+
+<p>安装latex<br/>
+(1) 进入 <a href="http://www.tug.org/mactex/">http://www.tug.org/mactex/</a> 下载安装MacTeX.pkg<br/>
+(2) Sublime按下“Command+Shift+P”打开命令托盘Command pallet，这一步也可以通过Tools下拉菜单完成。<br/>
+在命令托盘里输入“Install Package”，按下Enter回车建。<br/>
+完成之后，输入“LaTeX Tools”，找到这一项并回车安装。<br/>
+退出并重启Sublime Text。</p>
+
                         
                       </div>
                   </div>
@@ -162,6 +173,8 @@
           				  
           					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
           				   
+                    
+
                   </div>
                   <div class="more-right right">
                   <span class="comments">
@@ -174,36 +187,19 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15664761738125.html">
+                <a class="clearlink" href="15694711420974.html">
                 
-                  <h1>2. iterm终端配置-oh my zsh</h1>
+                  <h1>unbuntu</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">安装</h2>
+                        	<p>安装vim</p>
 
-<p>oh my zsh 是一款强大的虚拟终端，兼容bash，提供了各种主题配置、插件。<br/>
-官网：<a href="https://ohmyz.sh/">https://ohmyz.sh/</a></p>
+<pre><code class="language-text">apt update  ## 先更新下
+apt-get install vim-gtk
 
-<pre><code># 安装
-git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-#备份旧.zshrc配置
-cp ~/.zshrc ~/.zshrc.orig
-cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
-#修改默认shell
-chsh -s /bin/zsh
 </code></pre>
-
-<p>卸载 <code>uninstall_oh_my_zsh</code></p>
-
-<p>注意：如果安装oh my zsh后conda命令无法使用，这个时候需要修改一下.zshrc文件，添加一句<br/>
-<code>export PATH=/home/username/anaconda/bin:$PATH</code></p>
-
-<h2 id="toc_1">主题</h2>
-
-<p><a href="https://github.com/robbyrussell/oh-my-zsh/wiki/Themes">https://github.com/robbyrussell/oh-my-zsh/wiki/Themes</a><br/>
-oh my zsh 有各种丰富的主题可供选择，可以在其github上找到对应的主题样式。其对应的配置文件在<code>vim ~/.zshrc</code>中，只需修改其中的<code>ZSH_THEME=&quot;robbyrussell&quot;</code> 即可。</p>
 
                         
                       </div>
@@ -212,11 +208,155 @@ oh my zsh 有各种丰富的主题可供选择，可以在其github上找到对�
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/8/22</span>
+                    <span class="date">2019/9/26</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
           				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037681646.html">
+                
+                  <h1>基础工具包安装pip</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>在安装package之前，首先要安装的就是包管理器。</p>
+
+<h2 id="toc_0">1.pip</h2>
+
+<p>安装pip <code>sudo easy_install pip</code></p>
+
+<p>通过pip安装python包  <code>pip install xxx</code></p>
+
+<p><strong>常见问题</strong></p>
+
+<pre><code class="language-text"># 当前版本
+pip --version
+# 版本升级(有些包安装需要依赖高级版本)
+pip install --upgrade pip
+
+## 升级某些包
+pip install --upgrade SomePackage
+
+# 安装包时候报错`time out`
+pip --default-timeout=100 install xxx
+
+## 指定安装目录
+pip -t 目标目录 xxx
+</code></pre>
+
+<p>更新pip给出一个最简单的办法就是通过pip uninstall pip卸载pip，再用easy_install pip安装pip,这样安装的就是最新版本的pip了。</p>
+
+<blockquote>
+<p>权限</p>
+</blockquote>
+
+<p>在mac上安装包的时候，因为系统限制不让写到内容到系统目录里去。解决方法</p>
+
+<ul>
+<li>重新安装一个自己版本的python，比如可以用ancoda安装</li>
+<li>pip安装的时候加入参数<code>pip install xxx --user</code>，安装到当前用户目录下。</li>
+</ul>
+
+<p>安装完成后还需要将该目录加到环境变量里才能使用</p>
+
+<pre><code class="language-text">export export PATH=/Users/$your_name/Library/Python/2.7/bin/:$PATH
+</code></pre>
+
+<blockquote>
+<p>更新某个包时候报错</p>
+</blockquote>
+
+<p><code>Cannot uninstall &#39;six&#39;. It is a distutils installed project and thus we cannot accurately determine which files belong to it which would lead to only a partial uninstall.</code></p>
+
+<p>解决办法：</p>
+
+<p><code>pip install six --upgrade --ignore-installed six</code></p>
+
+<p>当机器上有多个版本python，安装到指定的python版本中</p>
+
+<pre><code class="language-text">pip install -t /home/work/zhenzhen/python2.7/lib/python2.7/site-packages BeautifulSoup4
+</code></pre>
+
+<h2 id="toc_1">2.brew</h2>
+
+<p>/usr/bin/ruby -e &quot;$(curl -fsSL <a href="https://raw.githubusercontent.com/Homebrew/install/master/install)%E2%80%9D">https://raw.githubusercontent.com/Homebrew/install/master/install)”</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15662808343723.html">
+                
+                  <h1>有用的网址&小工具</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ul>
+<li>论文下载，知网论文</li>
+</ul>
+
+<p><a href="https://www.cn-ki.net/">https://www.cn-ki.net/</a></p>
+
+<p>google学术   <a href="https://en.ehn3.com:92/">https://en.ehn3.com:92/</a></p>
+
+<ul>
+<li>微信公众号平台文章同步知乎、简书等平台</li>
+</ul>
+
+<p><a href="https://www.wechatsync.com/#intro">https://www.wechatsync.com/#intro</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/8/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          				   
+                    
+
                   </div>
                   <div class="more-right right">
                   <span class="comments">
@@ -301,6 +441,8 @@ oh my zsh 有各种丰富的主题可供选择，可以在其github上找到对�
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html"><strong>轨迹数据</strong></a>
+        
+            <a href="%E8%AF%BB%E4%B9%A6.html"><strong>读书</strong></a>
          
         </p>
 
@@ -317,31 +459,31 @@ oh my zsh 有各种丰富的主题可供选择，可以在其github上找到对�
 	      
 		      
 			      <li class="post">
-			        <a href="15686309605233.html">matplotlib</a>
+			        <a href="15706729896574.html"></a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">综述</a>
+			        <a href="15687050894061.html">0.综述</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15686368904229.html">基于dtw进行聚类</a>
+			        <a href="15637036455584.html">1 估计的置信度</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15636947700701.html">4.7 聚类1</a>
+			        <a href="15637025346412.html">1. conda 环境管理</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037683461.html">Jupyter notebook</a>
+			        <a href="15694859531608.html">1.trajectory preprocessing</a>
 			      </li>
 		     
 		  

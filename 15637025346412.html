@@ -50,7 +50,7 @@
 
         <ul class="right" id="search-wrap">
           <li>
-<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
     <input type="hidden" id="search_q" name="q" value="" />
     <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
 </form>
@@ -102,6 +102,8 @@
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html">轨迹数据</a></li>
+        
+            <li><a href="%E8%AF%BB%E4%B9%A6.html">读书</a></li>
          
 
       </ul>
@@ -164,20 +166,20 @@
 
 <h2 id="toc_0">包管理-常用命令</h2>
 
-<pre><code>conda list  #查看安装的内容
+<pre><code class="language-text">conda list  #查看安装的内容
 conda upgrade --all   #初次下载安装好后，建议更新所有包
 </code></pre>
 
 <p>安装包</p>
 
-<pre><code>conda install xxx
+<pre><code class="language-text">conda install xxx
 conda install numpy=1.10   #指定包的版本
 
 conda remove package
 conda upgrade --all
 </code></pre>
 
-<pre><code>模糊查询相关包
+<pre><code class="language-text">模糊查询相关包
 conda search search_term
 </code></pre>
 
@@ -187,7 +189,7 @@ conda search search_term
 
 <p>通过<code>conda env list</code>可以列出你创建的所有环境</p>
 
-<pre><code>#创建环境
+<pre><code class="language-text">#创建环境
 conda create -n env_name list of packages
 eg. conda create -n my_env numpy
 
@@ -207,7 +209,7 @@ conda env remove -n env_name
 
 <p>共享环境：将自己的工作环境保存下来给别人共享</p>
 
-<pre><code>#进入到你的环境中
+<pre><code class="language-text">#进入到你的环境中
 source activate base
 conda env export &gt; environment.yaml
 
@@ -235,16 +237,16 @@ pip 安装包路径在虚拟环境下是 xxxx\Anaconda3\envs\a_conda_env\Lib\sit
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="15680210974066.html" 
-          title="Previous Post: 因子分析">&laquo; 因子分析</a>
+          <a href="15637036455584.html" 
+          title="Previous Post: 1 估计的置信度">&laquo; 1 估计的置信度</a>
       
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="15637037679256.html" 
-          title="Next Post: Rmarkdown">Rmarkdown &raquo;</a>
+          <a  href="15694859531608.html" 
+          title="Next Post: 1.trajectory preprocessing">1.trajectory preprocessing &raquo;</a>
       
       </p>
         </div>
@@ -319,6 +321,8 @@ pip 安装包路径在虚拟环境下是 xxxx\Anaconda3\envs\a_conda_env\Lib\sit
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html"><strong>轨迹数据</strong></a>
+        
+            <a href="%E8%AF%BB%E4%B9%A6.html"><strong>读书</strong></a>
          
         </p>
 
@@ -335,31 +339,31 @@ pip 安装包路径在虚拟环境下是 xxxx\Anaconda3\envs\a_conda_env\Lib\sit
 	      
 		      
 			      <li class="post">
-			        <a href="15686309605233.html">matplotlib</a>
+			        <a href="15706729896574.html"></a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">综述</a>
+			        <a href="15687050894061.html">0.综述</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15686368904229.html">基于dtw进行聚类</a>
+			        <a href="15637036455584.html">1 估计的置信度</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15636947700701.html">4.7 聚类1</a>
+			        <a href="15637025346412.html">1. conda 环境管理</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037683461.html">Jupyter notebook</a>
+			        <a href="15694859531608.html">1.trajectory preprocessing</a>
 			      </li>
 		     
 		  

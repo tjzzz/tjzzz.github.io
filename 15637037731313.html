@@ -50,7 +50,7 @@
 
         <ul class="right" id="search-wrap">
           <li>
-<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
     <input type="hidden" id="search_q" name="q" value="" />
     <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
 </form>
@@ -102,6 +102,8 @@
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html">轨迹数据</a></li>
+        
+            <li><a href="%E8%AF%BB%E4%B9%A6.html">读书</a></li>
          
 
       </ul>
@@ -195,7 +197,7 @@
 
 <p>以地球仪的球面为例，三维空间中两个点的距离和平面中两个点的距离显然是不一样的。三维空间中如果用欧式距离去度量那么北京与纽约的距离是连接两点的直线，而在平面上他是一条曲线。</p>
 
-<pre><code># MDS
+<pre><code class="language-text"># MDS
 mds = manifold.MDS(n_components, max_iter=100, n_init=1)
 Y = mds.fit_transform(X)
 </code></pre>
@@ -217,7 +219,7 @@ Y = mds.fit_transform(X)
 (2) 最短路径搜索<br/>
 (3) 部分特征值分解</p>
 
-<pre><code>model = manifold.Isomap(n_neighbors, n_components)
+<pre><code class="language-text">model = manifold.Isomap(n_neighbors, n_components)
 Y = model.fit_transform(X)
 </code></pre>
 
@@ -231,7 +233,7 @@ Y = model.fit_transform(X)
 
 <p>详细的推导过程<a href="https://blog.csdn.net/yukgwy60648/article/details/54578141">https://blog.csdn.net/yukgwy60648/article/details/54578141</a></p>
 
-<pre><code># 其中method可选 [&#39;standard&#39;, &#39;ltsa&#39;, &#39;hessian&#39;, &#39;modified&#39;]
+<pre><code class="language-text"># 其中method可选 [&#39;standard&#39;, &#39;ltsa&#39;, &#39;hessian&#39;, &#39;modified&#39;]
 model = manifold.LocallyLinearEmbedding(n_neighbors, n_components, eigen_solver=&#39;auto&#39;, method=method)
 Y = model.fit_transform(X)
 </code></pre>
@@ -254,11 +256,14 @@ Y = model.fit_transform(X)
 <p><code>问题</code>：<br/>
 KL距离是不对称的，会导致相聚较远的点出现较大的散度差。为了是KL距离最小化，数据就会被压缩到极小的范围，产生拥挤问题。</p>
 
-<p><code>改进</code><br/>
-* 将KL散度改为对称形式 \(p_{ij}=p_{ji}=(p_{i|j}+p_{j|i})/2\)<br/>
-* 令低维空间中的条件概率服从t分布，t分布有长尾效应，从而使高维中分布较远的点降维后也能区分开</p>
+<p><code>改进</code></p>
 
-<pre><code>tsne = manifold.TSNE(n_components=n_components, init=&#39;pca&#39;, random_state=0)
+<ul>
+<li>将KL散度改为对称形式 \(p_{ij}=p_{ji}=(p_{i|j}+p_{j|i})/2\)</li>
+<li>令低维空间中的条件概率服从t分布，t分布有长尾效应，从而使高维中分布较远的点降维后也能区分开</li>
+</ul>
+
+<pre><code class="language-text">tsne = manifold.TSNE(n_components=n_components, init=&#39;pca&#39;, random_state=0)
 Y = tsne.fit_transform(X)
 </code></pre>
 
@@ -286,16 +291,16 @@ sklearn—文档 <a href="http://scikit-learn.org/stable/modules/manifold.html">
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="15637025348085.html" 
-          title="Previous Post: 4.8 自适应的基函数——神经网络">&laquo; 4.8 自适应的基函数——神经网络</a>
+          <a href="15637037691936.html" 
+          title="Previous Post: 3.1 特征处理—— 特征选择">&laquo; 3.1 特征处理—— 特征选择</a>
       
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="15637025345687.html" 
-          title="Next Post: 第六章 深度前馈网络">第六章 深度前馈网络 &raquo;</a>
+          <a  href="15665275932673.html" 
+          title="Next Post: 3.vim 配置">3.vim 配置 &raquo;</a>
       
       </p>
         </div>
@@ -370,6 +375,8 @@ sklearn—文档 <a href="http://scikit-learn.org/stable/modules/manifold.html">
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html"><strong>轨迹数据</strong></a>
+        
+            <a href="%E8%AF%BB%E4%B9%A6.html"><strong>读书</strong></a>
          
         </p>
 
@@ -386,31 +393,31 @@ sklearn—文档 <a href="http://scikit-learn.org/stable/modules/manifold.html">
 	      
 		      
 			      <li class="post">
-			        <a href="15686309605233.html">matplotlib</a>
+			        <a href="15706729896574.html"></a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">综述</a>
+			        <a href="15687050894061.html">0.综述</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15686368904229.html">基于dtw进行聚类</a>
+			        <a href="15637036455584.html">1 估计的置信度</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15636947700701.html">4.7 聚类1</a>
+			        <a href="15637025346412.html">1. conda 环境管理</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037683461.html">Jupyter notebook</a>
+			        <a href="15694859531608.html">1.trajectory preprocessing</a>
 			      </li>
 		     
 		  

@@ -50,7 +50,7 @@
 
         <ul class="right" id="search-wrap">
           <li>
-<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
     <input type="hidden" id="search_q" name="q" value="" />
     <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
 </form>
@@ -102,6 +102,8 @@
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html">轨迹数据</a></li>
+        
+            <li><a href="%E8%AF%BB%E4%B9%A6.html">读书</a></li>
          
 
       </ul>
@@ -124,60 +126,198 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637037679680.html">
+                <a class="clearlink" href="15637037708871.html">
                 
-                  <h1>第四章 数值计算</h1>
+                  <h1>图像识别模型—— 1.利用已有的进行微调</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">1.数值精度</h2>
+                        	<p>这里以VGG16网络为例，</p>
 
-<p>这部分对于了解具体的算法并没影响，但是在进行底层库开发时候经常会遇到，可能会出现<strong>上溢</strong>或者<strong>下溢</strong></p>
+<h2 id="toc_0">1.准备数据</h2>
 
-<p>（1）病态条件</p>
+<pre><code class="language-text"> python data_convert.py -t pic --train-shards 2 --validation-shards 2 --num-threads 2 --dataset-name guangdong
+</code></pre>
 
-<p>条件数：表示函数相对于输入的微小变化而变化的快慢程度。<br/>
-比如矩阵求逆运算的条件数=最大和最小特征值的模的比</p>
+<p>执行完后会在pic下生成tf格式的训练+测试数据，以及label.txt<br/>
+<img src="media/15388051366041/15388065002449.jpg" alt=""/></p>
 
-<h2 id="toc_1">2.优化算法</h2>
+<h2 id="toc_1">2.使用tensorflow的slim微调模型</h2>
+
+<p>简单介绍下google的这个图像分类工具包tensorflow-slim</p>
+
+<pre><code class="language-text">├── README.md
+├── datasets                    # 定义训练时候使用的数据。如果是自己的数据，必须在此文件夹下定义
+├── deployment
+├── download_and_convert_data.py
+├── export_inference_graph.py
+├── export_inference_graph_test.py
+├── nets                        # 定义了一些常用的网络，比如vgg16，vgg19，resnet等
+├── preprocessing               # 在读入图像前，对图像做的一些预处理
+├── scripts
+│   ├── finetune_inception_v1_on_flowers.sh
+│   ├── finetune_inception_v3_on_flowers.sh
+│   ├── finetune_resnet_v1_50_on_flowers.sh
+│   ├── train_cifarnet_on_cifar10.sh
+│   └── train_lenet_on_mnist.sh
+├── setup.py
+├── slim_walkthrough.ipynb
+├── eval_image_classifier.py      # 验证模型入口
+└── train_image_classifier.py     # 训练模型入口
+</code></pre>
+
+<p>(1) 定义新的dataset文件</p>
+
+<p>仿照<code>datasets/flowers.py</code> 写一个自己的数据文件<code>guangdong.py</code> 并且在<code>dataset_factory.py</code>中进行注册</p>
+
+<p>(2)准备训练文件夹</p>
+
+<p>(3)train model</p>
+
+<pre><code class="language-text">python train_image_classifier.py \
+  --train_dir=guangdong/train_dir \
+  --dataset_name=guangdong \
+  --dataset_split_name=train \
+  --dataset_dir=guangdong/data \
+  --model_name=inception_v3 \
+  --checkpoint_path=guangdong/pretrained/inception_v3.ckpt \
+  --checkpoint_exclude_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
+  --trainable_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
+  --max_number_of_steps=100000 \
+  --batch_size=32 \
+  --learning_rate=0.001 \
+  --learning_rate_decay_type=fixed \
+  --save_interval_secs=300 \
+  --save_summaries_secs=2 \
+  --log_every_n_steps=10 \
+  --optimizer=rmsprop \
+  --weight_decay=0.00004
+
+</code></pre>
+
+<p>如果执行后报错<code>Cannot assign a device for operation &#39;InceptionV3/AuxLogits/Conv2d_2b_1x1/weights/RMSProp1&#39;: Could not satisfy explicit device specification &#39;/device:GPU:0&#39; because no supported kernel for GPU devices is available</code> 之类的话</p>
+
+<p>可以参看这个的解决办法<a href="https://blog.csdn.net/xd_wjc/article/details/80550862">https://blog.csdn.net/xd_wjc/article/details/80550862</a></p>
+
+<p>tensorboard 查看任务运行情况</p>
+
+<pre><code class="language-text">tensorboard --logdir guangdong/train_dir
+</code></pre>
+
+<p>训练完毕之后进行模型评估</p>
+
+<pre><code class="language-text">python eval_image_classifier.py \
+  --checkpoint_path=guangdong/train_dir \
+  --eval_dir=guangdong/eval_dir \
+  --dataset_name=guangdong \
+  --dataset_split_name=validation \
+  --dataset_dir=guangdong/data \
+  --model_name=inception_v3
+</code></pre>
+
+<h3 id="toc_2">案例</h3>
+
+<p><a href="https://github.com/ns2250225/python3_tf_slim_image_classify">https://github.com/ns2250225/python3_tf_slim_image_classify</a></p>
+
+<h2 id="toc_3">阿里云服务</h2>
+
+<p><a href="https://help.aliyun.com/document_detail/49571.html#OSS">https://help.aliyun.com/document_detail/49571.html#OSS</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html'>6 文本&视频</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037681646.html">
+                
+                  <h1>基础工具包安装pip</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>在安装package之前，首先要安装的就是包管理器。</p>
+
+<h2 id="toc_0">1.pip</h2>
+
+<p>安装pip <code>sudo easy_install pip</code></p>
+
+<p>通过pip安装python包  <code>pip install xxx</code></p>
+
+<p><strong>常见问题</strong></p>
+
+<pre><code class="language-text"># 当前版本
+pip --version
+# 版本升级(有些包安装需要依赖高级版本)
+pip install --upgrade pip
+
+## 升级某些包
+pip install --upgrade SomePackage
+
+# 安装包时候报错`time out`
+pip --default-timeout=100 install xxx
+
+## 指定安装目录
+pip -t 目标目录 xxx
+</code></pre>
+
+<p>更新pip给出一个最简单的办法就是通过pip uninstall pip卸载pip，再用easy_install pip安装pip,这样安装的就是最新版本的pip了。</p>
+
+<blockquote>
+<p>权限</p>
+</blockquote>
+
+<p>在mac上安装包的时候，因为系统限制不让写到内容到系统目录里去。解决方法</p>
 
 <ul>
-<li>梯度下降</li>
-<li>牛顿法</li>
+<li>重新安装一个自己版本的python，比如可以用ancoda安装</li>
+<li>pip安装的时候加入参数<code>pip install xxx --user</code>，安装到当前用户目录下。</li>
 </ul>
 
-<p>一般把需要最优化的函数称为<strong>目标函数</strong></p>
+<p>安装完成后还需要将该目录加到环境变量里才能使用</p>
 
-<p><strong>梯度下降</strong></p>
-
-<p>对于一个多维输入函数f，梯度\(\triangledown_x f(x)\),其在u方向上的<strong>方向导数</strong>，相当于f在u方向上的斜率<br/>
-\(f(x+\alpha u)\)关于\(\alpha\)的导数(在\(\alpha =0\)时取得)</p>
-
-<p>\[\frac{\partial}{\partial \alpha}f(x+\alpha u)=u^T\triangledown_x f(x)\]</p>
-
-<p>为了是f最小，希望找到f下降最快的方向，因此有<br/>
-\[min u^T\triangledown_x f(x)\]<br/>
-u取为单位向量，很明显是在u和f夹角180时候，也就是两个完全相反的时候，下降最快。<br/>
-梯度下降： \(x&#39;=x-\epsilon \triangledown_x f(x)\)</p>
-
-<p><strong>牛顿法</strong></p>
-
-<p>Hessian矩阵，二阶导数<br/>
-<img src="media/15080580137304/15082408605128.jpg" alt=""/></p>
-
-<h2 id="toc_2">3.有限制的约束</h2>
-
-<p>对于有限制的优化，有时候可以将约束条件转化到原始的优化函数中，这里主要介绍一下通用的方法：<strong>KKT方法</strong>(拉格朗日方法的推广，可以非等式约束)</p>
-
-<pre><code>@@@
-http://blog.csdn.net/mr_kktian/article/details/53750424
+<pre><code class="language-text">export export PATH=/Users/$your_name/Library/Python/2.7/bin/:$PATH
 </code></pre>
 
-<h2 id="toc_3">参考资料</h2>
+<blockquote>
+<p>更新某个包时候报错</p>
+</blockquote>
 
-<p>梯度下降法 扩展阅读： <a href="https://www.jiqizhixin.com/articles/2016-11-21-4">https://www.jiqizhixin.com/articles/2016-11-21-4</a><br/>
-<a href="http://www.cnblogs.com/maybe2030/p/4751804.html">http://www.cnblogs.com/maybe2030/p/4751804.html</a></p>
+<p><code>Cannot uninstall &#39;six&#39;. It is a distutils installed project and thus we cannot accurately determine which files belong to it which would lead to only a partial uninstall.</code></p>
+
+<p>解决办法：</p>
+
+<p><code>pip install six --upgrade --ignore-installed six</code></p>
+
+<p>当机器上有多个版本python，安装到指定的python版本中</p>
+
+<pre><code class="language-text">pip install -t /home/work/zhenzhen/python2.7/lib/python2.7/site-packages BeautifulSoup4
+</code></pre>
+
+<h2 id="toc_1">2.brew</h2>
+
+<p>/usr/bin/ruby -e &quot;$(curl -fsSL <a href="https://raw.githubusercontent.com/Homebrew/install/master/install)%E2%80%9D">https://raw.githubusercontent.com/Homebrew/install/master/install)”</a></p>
 
                         
                       </div>
@@ -189,8 +329,10 @@ http://blog.csdn.net/mr_kktian/article/details/53750424
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
           				   
+                    
+
                   </div>
                   <div class="more-right right">
                   <span class="comments">
@@ -203,136 +345,150 @@ http://blog.csdn.net/mr_kktian/article/details/53750424
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037679781.html">
+                <a class="clearlink" href="15697555457833.html">
                 
-                  <h1>t-sne</h1>
+                  <h1>应用案例</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<pre><code>from sklearn.manifold import TSNE
-from sklearn.datasets import load_iris
-from sklearn.decomposition import PCA
-import matplotlib.pyplot as plt
-import pandas as pd
-import numpy as np
- 
- 
- 
-data=pd.read_csv(&#39;test.data&#39;, sep=&#39;,&#39;,header=None)
-dd= data[range(200)]
+                        	<h2 id="toc_0">1. indoor trajectory mining</h2>
 
-X_tsne = TSNE().fit_transform(dd)
-X_pca = PCA().fit_transform(dd)
-
-out = DataFrame(np.hstack((X_tsne, X_pca)))
-
-out2=data[200])
-
-out.to_csv(&#39;save_data.csv&#39;)
-
-
-plt.figure(figsize=(10, 5))
-plt.subplot(121)
-plt.scatter(X_tsne[:, 0], X_tsne[:, 1],c=data[200])
-plt.subplot(122)
-#plt.scatter(X_pca[:, 0], X_pca[:, 1], c=iris.target)
-plt.scatter(X_pca[:, 0], X_pca[:, 1], c=data[200])
-</code></pre>
-
-<p>R<br/>
-```</p>
-
-<pre><code>
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025344767.html">
-                
-                  <h1>【NG-DL】course2_week1 优化网络参数</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">1.基本概念</h2>
-
-<p>很多优化参数：<br/>
-网络层数，隐层数，学习率，激活函数。。。</p>
+<p>1 preprocessing</p>
 
 <ul>
-<li><p>训练集/验证集/测试集</p></li>
-<li><p>偏差， 训练集误差</p></li>
-<li><p>方差</p></li>
+<li>跳楼层问题，1-3</li>
+<li>空间异常点</li>
+<li>排除不感兴趣的点，电梯，。</li>
+<li>数据压缩，相同坐标的点</li>
 </ul>
 
-<p>若有高bias： 尝试新的网络，更大网络</p>
+<p>2 转化为semantic trajectory<br/>
+即将坐标转为店铺id</p>
 
-<p>高方差： 获取更多数据，或者正则化，更合适的网络机构</p>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/9/29</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html'>轨迹数据</a></span>
+          				   
+                    
 
-<p>bias和varaince的平衡<br/>
-一般来说更大的网络能减小偏差，更多的数据能减小方差。</p>
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
-<h2 id="toc_1">2.正则化-L2</h2>
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037713554.html">
+                
+                  <h1>数据可视化概述</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>目标: 系统的梳理在进行数据分析的时候，如何进行数据可视化。具体操作的时候以python的seaborn包为主。</p>
+</blockquote>
 
-<p>以逻辑回归为例</p>
+<p>在进行数据分析的时候，经常需要进行数据可视化。俗话说一图胜千言，如何将从数据中发现的结论以一种简单易懂、形象化的方式展现出来，是很考验数据分析人员的能力的。</p>
 
-<p>\(J(w,b)=\frac{1}{m}\sum L(\hat y_i, y_i)+\frac{\lambda}{2m}|w|^2_2\)L2惩罚，避免过拟合，导致高方差</p>
+<h2 id="toc_0">1 方法部分</h2>
 
-<p>类似的神经网络在优化函数上加上</p>
-
-<p>\(J(w^{[1]},b^{[1]},...w^{[l]},b^{[l]})=\frac{1}{m}\sum L(\hat y_i, y_i)+\frac{\lambda}{2m}\sum||w^{[l]}||^2_2\)</p>
-
-<p>其中\(|w^{[l]}|^2\)F范数</p>
+<p>数据可视化，首先是要有数据，即我们的研究对象，而可视化的功能就是将数据中蕴含的关系或规律以图形的形式展示出来。 因此在进行数据可视化之前，一定要搞清楚的两件事：</p>
 
 <ul>
-<li>Ng.当\(\lambda\)较大时候,w会较小，sigmoid接近线性，降低方差。
-<img src="media/15055593941505/15103891828021.jpg" alt=""/></li>
+<li>数据类型</li>
+<li>数据要传递的信息以及有展示的关系</li>
 </ul>
 
-<h3 id="toc_2">正则化-dropout(随机失活)</h3>
+<p>不同的数据类型适合的图形表现是不同的，随着现在数据分析应用的越来越广泛，数据类型随着其应用的场景不同也是越来越多。</p>
 
-<p>每次对网络中的节点设置一个随机消失的概率p，即每个节点可能在也可能不在网络中，不在的时候即相当于该节点的数值置为0.</p>
+<ul>
+<li>分类型变量：比如性别</li>
+<li>连续型变量：比如年龄</li>
+</ul>
 
-<p>dropout与l2类似都会shrink权重。</p>
+<p>数据之间的关系：</p>
 
-<h3 id="toc_3">early stoping</h3>
+<table>
+<thead>
+<tr>
+<th>关系</th>
+<th>示例图形</th>
+</tr>
+</thead>
 
-<h2 id="toc_4">3.优化</h2>
+<tbody>
+<tr>
+<td>比较大小，包括不同个体或者分组之间</td>
+<td>常用的比如将面积、尺寸进行可视化。条形图、面积图</td>
+</tr>
+<tr>
+<td>数据的集中程度</td>
+<td>一般是热力图，比如地图上交通的拥挤程度</td>
+</tr>
+<tr>
+<td>地理信息</td>
+<td>地理位置数据</td>
+</tr>
+</tbody>
+</table>
 
-<h3 id="toc_5">归一化</h3>
+<p><a href="https://zhuanlan.zhihu.com/p/25632363">https://zhuanlan.zhihu.com/p/25632363</a></p>
 
-<p>归一化输入=&gt; 均值0，方差1<br/>
-* 零均值化<br/>
-* 归一化方差</p>
+<p>python中常用的绘图pacakge是<code>matplotlib</code></p>
 
-<p><img src="media/15055593941505/15103915636569.jpg" alt=""/></p>
+<p>本篇文章介绍的seaborn就是一个基于<code>matplotlib</code>的外包，其操作命令比较简单。有点类似R中的<code>ggplot</code>.</p>
 
-<h3 id="toc_6">梯度消失与梯度爆炸</h3>
+<h2 id="toc_1">2 工具部分</h2>
 
-<p>当梯度增长很大或者很微弱时，会导致优化出问题或者很慢。</p>
+<ul>
+<li><p>excel<br/>
+excel适合一些相对简单的数据，</p></li>
+<li><p>可视化BI </p></li>
+</ul>
+
+<p>比如tableau， power BI， FineBI等常见的一些可视化软件</p>
+
+<ul>
+<li>编程工具-python</li>
+</ul>
+
+<p>seaborn<br/>
+pyecharts  <a href="https://github.com/pyecharts/pyecharts">https://github.com/pyecharts/pyecharts</a></p>
+
+<ul>
+<li>编程工具-R语言</li>
+</ul>
+
+<p>ggplot </p>
+
+<h2 id="toc_2">参考资料</h2>
+
+<p><a href="https://blog.csdn.net/suzyu12345/article/details/69029106">https://blog.csdn.net/suzyu12345/article/details/69029106</a></p>
+
+<h2 id="toc_3">2.echarts接口</h2>
+
+<p>pyecharts</p>
+
+<p><a href="http://pyecharts.org/#/zh-cn/charts?id=treemap%EF%BC%88%E7%9F%A9%E5%BD%A2%E6%A0%91%E5%9B%BE%EF%BC%89">http://pyecharts.org/#/zh-cn/charts?id=treemap%EF%BC%88%E7%9F%A9%E5%BD%A2%E6%A0%91%E5%9B%BE%EF%BC%89</a></p>
+
+<h2 id="toc_4">工具平台</h2>
+
+<p><a href="https://antv.alipay.com/zh-cn/vis/chart/color-map.html">https://antv.alipay.com/zh-cn/vis/chart/color-map.html</a></p>
 
                         
                       </div>
@@ -344,8 +500,10 @@ plt.scatter(X_pca[:, 0], X_pca[:, 1], c=data[200])
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
+          					    <span class="posted-in"><a href='3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html'>3 数据可视化</a></span>
           				   
+                    
+
                   </div>
                   <div class="more-right right">
                   <span class="comments">
@@ -358,34 +516,26 @@ plt.scatter(X_pca[:, 0], X_pca[:, 1], c=data[200])
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637025344831.html">
+                <a class="clearlink" href="15662808343723.html">
                 
-                  <h1>聚类方法Mini Batch KMeans</h1>
+                  <h1>有用的网址&小工具</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>kmeans在数据量大的时候聚类时间会很久。Mini Batch KMeans使用了一个种叫做Mini Batch（分批处理）的方法对数据点之间的距离进行计算。Mini Batch的好处是计算过程中不必使用所有的数据样本，而是从不同类别的样本中抽取一部分样本来代表各自类型进行计算。由于计算样本量少，所以会相应的减少运行时间，但另一方面抽样也必然会带来准确度的下降</p>
+                        	<ul>
+<li>论文下载，知网论文</li>
+</ul>
 
-<h2 id="toc_0">迭代步骤：</h2>
+<p><a href="https://www.cn-ki.net/">https://www.cn-ki.net/</a></p>
 
-<p>1：从数据集中随机抽取一些数据形成小批量，把他们分配给最近的质心<br/>
-2：更新质心<br/>
-与K均值算法相比，数据的更新是在每一个小的样本集上。对于每一个小批量，通过计算平均值得到更新质心，并把小批量里的数据分配给该质心，随着迭代次数的增加，这些质心的变化是逐渐减小的，直到质心稳定或者达到指定的迭代次数，停止计算</p>
+<p>google学术   <a href="https://en.ehn3.com:92/">https://en.ehn3.com:92/</a></p>
 
-<h2 id="toc_1">训练方法</h2>
+<ul>
+<li>微信公众号平台文章同步知乎、简书等平台</li>
+</ul>
 
-<p>和一般的Kmeans一样</p>
-
-<pre><code>from sklearn.cluster import MiniBatchKMeans
-
-clf = MiniBatchKMeans(n_clusters = 3)
-clf.fit(X)
-pre_clu = clf.labels_
-</code></pre>
-
-<p>【参考资料】<br/>
-<a href="http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/">http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/</a></p>
+<p><a href="https://www.wechatsync.com/#intro">https://www.wechatsync.com/#intro</a></p>
 
                         
                       </div>
@@ -394,44 +544,13 @@ pre_clu = clf.labels_
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2019/8/20</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
           				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+                    
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025344879.html">
-                
-                  <h1>xgboost</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><a href="http://xgboost.readthedocs.io/en/latest/python/python_intro.html">http://xgboost.readthedocs.io/en/latest/python/python_intro.html</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
                   </div>
                   <div class="more-right right">
                   <span class="comments">
@@ -516,6 +635,8 @@ pre_clu = clf.labels_
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html"><strong>轨迹数据</strong></a>
+        
+            <a href="%E8%AF%BB%E4%B9%A6.html"><strong>读书</strong></a>
          
         </p>
 
@@ -532,31 +653,31 @@ pre_clu = clf.labels_
 	      
 		      
 			      <li class="post">
-			        <a href="15686309605233.html">matplotlib</a>
+			        <a href="15706729896574.html"></a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">综述</a>
+			        <a href="15687050894061.html">0.综述</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15686368904229.html">基于dtw进行聚类</a>
+			        <a href="15637036455584.html">1 估计的置信度</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15636947700701.html">4.7 聚类1</a>
+			        <a href="15637025346412.html">1. conda 环境管理</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037683461.html">Jupyter notebook</a>
+			        <a href="15694859531608.html">1.trajectory preprocessing</a>
 			      </li>
 		     
 		  

@@ -50,7 +50,7 @@
 
         <ul class="right" id="search-wrap">
           <li>
-<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
     <input type="hidden" id="search_q" name="q" value="" />
     <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
 </form>
@@ -102,6 +102,8 @@
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html">轨迹数据</a></li>
+        
+            <li><a href="%E8%AF%BB%E4%B9%A6.html">读书</a></li>
          
 
       </ul>
@@ -145,16 +147,11 @@
 
       <div class="article-content">
       <ul>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 是不是cache问题tf-idf
-</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 添加下降维的步骤
-</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 稀疏矩阵
-</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 数据切分更小li&#39;du
-</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Mini Batch KMeans <a href="http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/">http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/</a>
-</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 是不是cache问题tf-idf</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 添加下降维的步骤</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 稀疏矩阵</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 数据切分更小li&#39;du</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Mini Batch KMeans <a href="http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/">http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/</a></li>
 </ul>
 
 <p>实验全量的<br/>
@@ -177,7 +174,7 @@
 
 <p>输入数据：每行是切分好的term</p>
 
-<pre><code>spark = SparkSession.builder.appName(&quot;CountVectorizerExample&quot;).getOrCreate()
+<pre><code class="language-text">spark = SparkSession.builder.appName(&quot;CountVectorizerExample&quot;).getOrCreate()
 sc = spark.sparkContext
 # $example on$
 # Input data: Each row is a bag of words with a ID.
@@ -201,18 +198,18 @@ result = model.transform(df)
 <ul>
 <li><a href="http://spark.apache.org/docs/latest/mllib-feature-extraction.html#tf-idf">http://spark.apache.org/docs/latest/mllib-feature-extraction.html#tf-idf</a></li>
 <li><a href="http://spark.apache.org/docs/latest/ml-features.html#feature-extractors">http://spark.apache.org/docs/latest/ml-features.html#feature-extractors</a>
-ml中的函数比mllib中的多
+ml中的函数比mllib中的多<br/>
 examples/src/main/python/mllib/tf_idf_example.py</li>
 </ul>
 
-<pre><code>~/zhenzhen/spark_study/spark/examples/src/main/python/mllib $  pyspark zzz_tf_idf_example.py
+<pre><code class="language-text">~/zhenzhen/spark_study/spark/examples/src/main/python/mllib $  pyspark zzz_tf_idf_example.py
 </code></pre>
 
 <h2 id="toc_3">3.降维</h2>
 
 <h2 id="toc_4">4.直接聚类</h2>
 
-<pre><code> # pyspark这个默认是启动的集群任务，之前测试的本地数据会出错，脚本中需把输入目录改成集群路径
+<pre><code class="language-text"> # pyspark这个默认是启动的集群任务，之前测试的本地数据会出错，脚本中需把输入目录改成集群路径
   ~/zhenzhen/spark_study $  pyspark kmeans.py  &gt; log.test
 </code></pre>
 
@@ -226,7 +223,7 @@ examples/src/main/python/mllib/tf_idf_example.py</li>
 
 <p>上述所有步骤(tfidf，降维,聚类)合并在一起</p>
 
-<pre><code> # pyspark这个默认是启动的集群任务，之前测试的本地数据会出错，脚本中需把输入目录改成集群路径
+<pre><code class="language-text"> # pyspark这个默认是启动的集群任务，之前测试的本地数据会出错，脚本中需把输入目录改成集群路径
   ~/zhenzhen/spark_study $  pyspark tfidf_kmeans.py  &gt; log.test
   这个测试ok，但是中心点都是0，应该是数据问题
 </code></pre>
@@ -240,16 +237,16 @@ examples/src/main/python/mllib/tf_idf_example.py</li>
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="15637025345079.html" 
-          title="Previous Post: 第一章 引言">&laquo; 第一章 引言</a>
+          <a href="15686309605233.html" 
+          title="Previous Post: matplotlib">&laquo; matplotlib</a>
       
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="15637025345723.html" 
-          title="Next Post: 第二章 线性代数">第二章 线性代数 &raquo;</a>
+          <a  href="15637037678380.html" 
+          title="Next Post: rCharts">rCharts &raquo;</a>
       
       </p>
         </div>
@@ -324,6 +321,8 @@ examples/src/main/python/mllib/tf_idf_example.py</li>
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html"><strong>轨迹数据</strong></a>
+        
+            <a href="%E8%AF%BB%E4%B9%A6.html"><strong>读书</strong></a>
          
         </p>
 
@@ -340,31 +339,31 @@ examples/src/main/python/mllib/tf_idf_example.py</li>
 	      
 		      
 			      <li class="post">
-			        <a href="15686309605233.html">matplotlib</a>
+			        <a href="15706729896574.html"></a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">综述</a>
+			        <a href="15687050894061.html">0.综述</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15686368904229.html">基于dtw进行聚类</a>
+			        <a href="15637036455584.html">1 估计的置信度</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15636947700701.html">4.7 聚类1</a>
+			        <a href="15637025346412.html">1. conda 环境管理</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037683461.html">Jupyter notebook</a>
+			        <a href="15694859531608.html">1.trajectory preprocessing</a>
 			      </li>
 		     
 		  

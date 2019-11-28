@@ -50,7 +50,7 @@
 
         <ul class="right" id="search-wrap">
           <li>
-<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
     <input type="hidden" id="search_q" name="q" value="" />
     <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
 </form>
@@ -102,6 +102,8 @@
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html">轨迹数据</a></li>
+        
+            <li><a href="%E8%AF%BB%E4%B9%A6.html">读书</a></li>
          
 
       </ul>
@@ -154,7 +156,7 @@
 
 <p><img src="media/15686309605233/15686322692816.png" alt=""/></p>
 
-<pre><code>import matplotlib.pyplot as plt
+<pre><code class="language-text">import matplotlib.pyplot as plt
 plt.plot(x, y, 其他属性)
 </code></pre>
 
@@ -204,7 +206,7 @@ plt.plot(x, y, 其他属性)
 
 <p><strong>subplot 绘制子图</strong></p>
 
-<pre><code>plt.figure()
+<pre><code class="language-text">plt.figure()
 plt.subplot(2, 3, 1)   #n行m列的子图
 plt.plot(x1, y1)
 
@@ -212,7 +214,7 @@ plt.subplot(2, 3, 2)   #n行m列的子图
 plt.plot(x2, y2)
 </code></pre>
 
-<pre><code>data = np.random.randn(2, 100)
+<pre><code class="language-text">data = np.random.randn(2, 100)
 fig, axs = plt.subplots(2, 2, figsize=(5, 5))
 axs[0, 0].hist(data[0])
 axs[1, 0].scatter(data[0], data[1])
@@ -224,16 +226,60 @@ plt.show()
 
 <p><strong>显示图像，读取图片</strong></p>
 
-<p>需要先安装<code>pillow</code>包<br/>
-<code><br/>
-im = plt.imread(&#39;cat.jpg&#39;)  #将图像读取为数组<br/>
-ax.imshow(im)                  # imshow将数组显示为图像<br/>
-</code><br/>
-plt.colorbar()      #  可以添加颜色条</p>
+<p>需要先安装<code>pillow</code>包</p>
+
+<pre><code class="language-text">im = plt.imread(&#39;cat.jpg&#39;)  #将图像读取为数组
+ax.imshow(im)                  # imshow将数组显示为图像
+</code></pre>
+
+<p>plt.colorbar()      #  可以添加颜色条</p>
 
 <p><strong>3d绘图</strong></p>
 
 <p>mplot3d</p>
+
+<p><strong>多条曲线设置不同颜色</strong></p>
+
+<p>正常情况下，matplot是自动变更绘制的颜色的</p>
+
+<pre><code class="language-text">import matplotlib.pyplot as plt
+import numpy as np
+x = np.linspace(0, 1, 10)
+for i in range(1, 6):
+    plt.plot(x, i * x + i, label=&#39;$y = {i}x + {i}$&#39;.format(i=i))
+plt.legend(loc=&#39;best&#39;)
+plt.show()
+</code></pre>
+
+<p>如果需要自己指定颜色，可以通过设置color=xxx来设置。<br/>
+如果数据中有标签分组，希望分组设置相同的颜色，但是组数比较多，不太好事先指定好颜色，则可以通过如下的方法</p>
+
+<pre><code class="language-text">import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(0, 1, 10)
+number = 5
+cmap = plt.get_cmap(&#39;gnuplot&#39;)
+colors = [cmap(i) for i in np.linspace(0, 1, number)]    # 挑选number种颜色
+
+for i, color in enumerate(colors, start=1):
+    plt.plot(x, i * x + i, color=color, label=&#39;$y = {i}x + {i}$&#39;.format(i=i))
+plt.legend(loc=&#39;best&#39;)
+plt.show()
+</code></pre>
+
+<p><strong>绘制次坐标轴图</strong></p>
+
+<pre><code class="language-text">fig = plt.figure()
+ax1 = fig.add_subplot(111)
+ax1.plot(x, y1)
+ax1.set_ylabel(&#39;Y1&#39;)
+
+ax2 = ax1.twinx()  # this is the important function
+ax2.plot(x, y2, &#39;r&#39;)
+ax2.set_ylabel(&#39;Y2&#39;)
+plt.show()
+</code></pre>
 
 <h2 id="toc_3">3. 绘制案例</h2>
 
@@ -263,7 +309,7 @@ FuncAnimation的参数比较多，这里只列举出最重要的四个。</p>
 
 <p>模仿写的一个小例子  <a href="https://www.smslit.top/2018/11/12/matplotlib-animation/">https://www.smslit.top/2018/11/12/matplotlib-animation/</a></p>
 
-<pre><code>import numpy as np
+<pre><code class="language-text">import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import animation
 
@@ -308,18 +354,15 @@ anim.save的 save 方法可以指定 writer ，这里要保存 gif 默认选择�
 
 <p>ani.save(&#39;animation.gif&#39;, writer=&#39;pillow&#39;)</p>
 
-<h2 id="toc_5">参考</h2>
+<h2 id="toc_5">4. 问题</h2>
+
+<p>Q1: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (<code>matplotlib.pyplot.figure</code>) are retained until explicitly closed and may consume too much memory.</p>
+
+<p>很多时候绘图的时候数量会比较多，一般是写个循环然后绘图。这时候定义的绘图函数就会执行很多次的<code>plt.subplot()</code> 即创建很多新的。可以在一开始或者初始化的时候就直接创建一张，然后后续的图都基于此改就好了，这样可以提升运行速度。</p>
+
+<h2 id="toc_6">参考</h2>
 
 <p><a href="https://www.matplotlib.org.cn/home.html">https://www.matplotlib.org.cn/home.html</a></p>
-
-<pre><code>
-
-
-
-
-
-
-</code></pre>
 
 
     
@@ -330,13 +373,16 @@ anim.save的 save 方法可以指定 writer ，这里要保存 gif 默认选择�
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
+          <a href="15669633176007.html" 
+          title="Previous Post: kafka">&laquo; kafka</a>
+      
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="15687050894061.html" 
-          title="Next Post: 综述">综述 &raquo;</a>
+          <a  href="15637025345613.html" 
+          title="Next Post: query文本聚类">query文本聚类 &raquo;</a>
       
       </p>
         </div>
@@ -411,6 +457,8 @@ anim.save的 save 方法可以指定 writer ，这里要保存 gif 默认选择�
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html"><strong>轨迹数据</strong></a>
+        
+            <a href="%E8%AF%BB%E4%B9%A6.html"><strong>读书</strong></a>
          
         </p>
 
@@ -427,31 +475,31 @@ anim.save的 save 方法可以指定 writer ，这里要保存 gif 默认选择�
 	      
 		      
 			      <li class="post">
-			        <a href="15686309605233.html">matplotlib</a>
+			        <a href="15706729896574.html"></a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">综述</a>
+			        <a href="15687050894061.html">0.综述</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15686368904229.html">基于dtw进行聚类</a>
+			        <a href="15637036455584.html">1 估计的置信度</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15636947700701.html">4.7 聚类1</a>
+			        <a href="15637025346412.html">1. conda 环境管理</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037683461.html">Jupyter notebook</a>
+			        <a href="15694859531608.html">1.trajectory preprocessing</a>
 			      </li>
 		     
 		  
