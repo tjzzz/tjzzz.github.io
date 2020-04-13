@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  zhenzhen学习笔记
+  zhenzhen数据科学笔记
   
   </title>
   
   
-  <link href="atom.xml" rel="alternate" title="zhenzhen学习笔记" type="application/atom+xml">
+  <link href="atom.xml" rel="alternate" title="zhenzhen数据科学笔记" type="application/atom+xml">
     <link rel="stylesheet" href="asset/css/foundation.min.css" />
     <link rel="stylesheet" href="asset/css/docs.css" />
     <script src="asset/js/vendor/modernizr.js"></script>
@@ -64,7 +64,7 @@
 
         <nav class="tab-bar show-for-small">
   <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-    <span> &nbsp; zhenzhen学习笔记</span>
+    <span> &nbsp; zhenzhen数据科学笔记</span>
   </a>
 </nav>
 
@@ -81,6 +81,8 @@
     <li><label>Categories</label></li>
 
         
+            <li><a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html">轨迹分析</a></li>
+        
             <li><a href="1%20Tools.html">1 Tools</a></li>
         
             <li><a href="2%20Get%20Data.html">2 Get Data</a></li>
@@ -93,17 +95,15 @@
         
             <li><a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html">6 推荐系统</a></li>
         
-            <li><a href="6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html">6 文本&视频</a></li>
+            <li><a href="6.CV.html">6.CV</a></li>
+        
+            <li><a href="6%20NLP.html">6 NLP</a></li>
         
             <li><a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">7 深度学习</a></li>
         
             <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
-        
-            <li><a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html">轨迹数据</a></li>
-        
-            <li><a href="%E8%AF%BB%E4%B9%A6.html">读书</a></li>
          
 
       </ul>
@@ -126,28 +126,18 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637025346737.html">
+                <a class="clearlink" href="15669633176007.html">
                 
-                  <h1>第五章 机器学习</h1>
+                  <h1>其他神器</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>这部分主要是补充了机器学习的一席基础知识点，这里先略过。后期再进行相应的补充。具体包括</p>
+                        	<h2 id="toc_0">yaml</h2>
 
-<ul>
-<li><p>容量/过拟合/欠拟合</p></li>
-<li><p>估计/偏差/方差</p></li>
-<li><p>最大似然估计</p></li>
-<li><p>贝叶斯统计</p></li>
-<li><p>监督学习算法</p></li>
-<li><p>无监督学习算法</p>
-<ul>
-<li>PCA</li>
-<li>聚类</li>
-</ul></li>
-<li><p>梯度下降</p></li>
-</ul>
+<p>yaml文件的的多行快速注释方法</p>
+
+<p><code>ctrl + /</code></p>
 
                         
                       </div>
@@ -156,10 +146,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2019/8/28</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
           				   
                     
 
@@ -175,322 +165,58 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037731128.html">
+                <a class="clearlink" href="15637025346262.html">
                 
-                  <h1>第八章 深度模型中的优化</h1>
+                  <h1>卡方检验</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">8.1 优化与学习</h2>
-
-<p>本章主要关注这一类特定的优化问题:寻找神经网络上的一组参数 θ，它能显 著地降低代价函数 J(θ)，该代价函数通常包括整个训练集上的性能评估和额外的正 则化项。</p>
-
-<p>通常来说极其学习的算法目标大概可以写成，降低期望泛化误差。即<strong>风险</strong><br/>
-<img src="media/15209459008411/15209462294325.jpg" alt=""/></p>
-
-<p>其中p_data是真实的分布，实际中我们只能最小化<strong>经验风险</strong><br/>
-<img src="media/15209459008411/15209463229280.jpg" alt=""/></p>
-
-<h2 id="toc_1">8.2神经网络优化中的挑战</h2>
-
-<ul>
-<li>病态： hessain矩阵病态</li>
-<li>局部最小值：对于非凸函数可能存在多个局部最小值。</li>
-<li>。。。</li>
-</ul>
-
-<h2 id="toc_2">8.3基本算法</h2>
-
-<p>梯度下降机器变种一般是机器学习中应用较多的优化算法。</p>
-
-<h3 id="toc_3">(1)随机梯度下降SGD</h3>
-
-<p><img src="media/15209459008411/15221677256921.jpg" alt=""/></p>
-
-<h3 id="toc_4">（2）动量</h3>
-
-<p>动量是比SGD速度更快的一种方法，SGD相当于只是考虑梯度的方向，而动量是在此基础上加上速度。</p>
-
-<p><img src="media/15209459008411/15221680917826.jpg" alt=""/></p>
-
-<h2 id="toc_5">8.4 参数初始化</h2>
-
-<h2 id="toc_6">参考资料</h2>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025345687.html">
-                
-                  <h1>第六章 深度前馈网络</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>前馈神经网络，也叫做<strong>多层感知机</strong>(MLP),其目标是近似某个函数\(f^*\)。前馈网络定义了一个映射函数\(y=f(x,\theta)\),然后学习参数\(\theta\)的值，从而近似函数\(f^*\)</p>
-
-<p><strong>前馈</strong></p>
-
-<p>因为在模型的输出和模型本身之间没有反馈链接。一些基本术语概念：</p>
-
-<ul>
-<li>输出层，隐藏层，</li>
-</ul>
-
-<h2 id="toc_0">6.1 例子：学习XOR</h2>
-
-<p>【例】学习异或逻辑，即当两个二进制值中恰好有一个是1时候返回1，其他都返回0.</p>
-
-<p>【解法1】可以考虑按照回归分析的思路，使用均方误差作为损失函数(实际中对于二进制数据建模时不适合用MSE)。\(f(x,w,b)=x^Tw+b\)<br/>
-可以利用矩阵求解方程得到w=0,b=0.5， 线性模型得到的结果是任意一点都为0.5<br/>
-==&gt; 主要问题，该问题其实不是一个线性问题</p>
-
-<p>【解】另一种思路：<strong>使用一个模型来学习一个不同的特征空间，在这个空间上线性模型能够表示这个问题。</strong><br/>
-<img src="media/15090214789463/15093791249803.jpg" alt=""/></p>
-
-<p>构造一个非线性函数\(h\)，一般默认的推荐是<strong>整流线性单元</strong>ReLU:<br/>
-\[g(z)=max(0, z)\]<br/>
-所以整个网络是\(f(x)=w^Tmax(0, w^Tx+c)+b\)</p>
-
-<h2 id="toc_1">6.2 基于梯度的学习</h2>
-
-<p>很多神经网络的非线性导致代价函数变得非凸，所以一般神经网络的训练一般使用迭代的方法。<br/>
-凸优化从任何一种初始参数都会收敛，而用于非凸损失函数的随机梯度下降没有这种收敛的保障，并且对参数的初始值比较敏感。</p>
-
-<h3 id="toc_2">代价函数</h3>
-
-<p>多数情况下，对于一个参数模型\(f(y|x,\theta)\)，</p>
-
-<ul>
-<li>可以简单的使用最大似然原理。即利用训练数据和模型预测之间的<strong>交叉熵</strong>作为代价函数。</li>
-<li>有时候也会出现仅预测在给定x条件下y的某些统计量。</li>
-</ul>
-
-<p><strong>最大似然学习条件分布</strong></p>
-
-<p>大多数的神经网络采用最大似然的训练方法。这意味着代价函数就是负的对数似然。它与训练数据</p>
-
-<p>\[J(\theta) = -E log p_{model}(y|x)\]</p>
-
-<p><strong>学习条件统计量</strong></p>
-
-<p>这里好像有个和高统中类似的结论。比如<br/>
-\[f^*=arg min_{f} E_{x,y~p}||y-f(x)||^2\]<br/>
-可以得到\(f^*=E_{y~p(y|x)}(y)\)</p>
-
-<h3 id="toc_3">输出单元</h3>
-
-<p>其实代价函数的选择与输出单元是有一定关系的</p>
-
-<ul>
-<li>高斯输出分布的线性单元</li>
-</ul>
-
-<p>线性输出层一般用来产生高斯分布的均值。</p>
-
-<ul>
-<li>伯努利输出分布的sigmoid单元</li>
-<li>多项分布输出的softmax单元</li>
-</ul>
-
-<p>对于想要表示具有n个离散取值的变量分布时候，一般可以用softmax函数。其是sigmoid函数在多分类问题上的推广。<br/>
-\[softmax(z_j)=\frac{exp(z_i)}{\sum_j exp(z_j)}\]</p>
-
-<h2 id="toc_4">6.3 隐藏单元</h2>
-
-<p>隐藏层单元的选择没有一个固定的指导标准，一般默认选择<strong>整流线性单元</strong></p>
-
-<p><strong>整流线性单元的一些扩展</strong></p>
-
-<p>其扩展形式主要是基于\(z_i&lt;0\)时候使用一个非零的斜率\(\alpha_i\)</p>
-
-<p>绝对值整流、渗漏整流线性单元，参数化整流线性单元。</p>
-
-<p><strong>maxout单元</strong><br/>
-maxout将单元将z划分成k个组，每个组上的取值为其最大值。</p>
-
-<p><strong>sigmoid，tanh</strong></p>
-
-<h2 id="toc_5">6.4网络结构设计</h2>
-
-<p>网络结构设计主要是设计网络的<strong>深度</strong>和每一层的<strong>宽度</strong></p>
-
-<p><strong>1. 万能近似性质</strong></p>
-
-<p>万能近似定力：一个前馈神经网络,如果具有线性输出层和至少一个具有任何一种“挤压”性质的寄货函数的隐藏层。只要给予网络足够数量的隐藏单元，它可以以任意精度来近似任何一个有限维空间到另一个有限维空间的Borel可测函数。</p>
-
-<p>万能定理从理论上说明无论我们想要学习什么函数，都有一个大的MLP可以进行这个。但是我们并不能保证算法能够学习到这个函数</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037679680.html">
-                
-                  <h1>第四章 数值计算</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">1.数值精度</h2>
-
-<p>这部分对于了解具体的算法并没影响，但是在进行底层库开发时候经常会遇到，可能会出现<strong>上溢</strong>或者<strong>下溢</strong></p>
-
-<p>（1）病态条件</p>
-
-<p>条件数：表示函数相对于输入的微小变化而变化的快慢程度。<br/>
-比如矩阵求逆运算的条件数=最大和最小特征值的模的比</p>
-
-<h2 id="toc_1">2.优化算法</h2>
-
-<ul>
-<li>梯度下降</li>
-<li>牛顿法</li>
-</ul>
-
-<p>一般把需要最优化的函数称为<strong>目标函数</strong></p>
-
-<p><strong>梯度下降</strong></p>
-
-<p>对于一个多维输入函数f，梯度\(\triangledown_x f(x)\),其在u方向上的<strong>方向导数</strong>，相当于f在u方向上的斜率<br/>
-\(f(x+\alpha u)\)关于\(\alpha\)的导数(在\(\alpha =0\)时取得)</p>
-
-<p>\[\frac{\partial}{\partial \alpha}f(x+\alpha u)=u^T\triangledown_x f(x)\]</p>
-
-<p>为了是f最小，希望找到f下降最快的方向，因此有<br/>
-\[min u^T\triangledown_x f(x)\]<br/>
-u取为单位向量，很明显是在u和f夹角180时候，也就是两个完全相反的时候，下降最快。<br/>
-梯度下降： \(x&#39;=x-\epsilon \triangledown_x f(x)\)</p>
-
-<p><strong>牛顿法</strong></p>
-
-<p>Hessian矩阵，二阶导数<br/>
-<img src="media/15080580137304/15082408605128.jpg" alt=""/></p>
-
-<h2 id="toc_2">3.有限制的约束</h2>
-
-<p>对于有限制的优化，有时候可以将约束条件转化到原始的优化函数中，这里主要介绍一下通用的方法：<strong>KKT方法</strong>(拉格朗日方法的推广，可以非等式约束)</p>
-
-<pre><code class="language-text">@@@
-http://blog.csdn.net/mr_kktian/article/details/53750424
-</code></pre>
-
-<h2 id="toc_3">参考资料</h2>
-
-<p>梯度下降法 扩展阅读： <a href="https://www.jiqizhixin.com/articles/2016-11-21-4">https://www.jiqizhixin.com/articles/2016-11-21-4</a><br/>
-<a href="http://www.cnblogs.com/maybe2030/p/4751804.html">http://www.cnblogs.com/maybe2030/p/4751804.html</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037730576.html">
-                
-                  <h1>统计阈值</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">1.dab类指标</h2>
-
-<p>newpo, po, rank, rr, f1 最终计算方式都是 \[dab_{xx} = 0.5\frac{\sum awin -\sum bwin}{\sum awin + \sum bwin + \sum tie}\]</p>
-
-<p>其中awin，bwin，tie可以按照不同的逻辑或方法进行计算。</p>
-
-<p>\[p_1 = \frac{\sum awin}{\sum awin + \sum bwin + \sum tie}\]</p>
-
-<p>\[p_2 = \frac{\sum bwin}{\sum awin + \sum bwin + \sum tie}\]</p>
-
-<p>基于有点有diff的流量：<br/>
-每次pv下，awin，bwin，tie必然出现且只出现其一。因此p1可以看做策略好的概率， p2可以看做基线好的概率。 概率本身是服从两点分布的，每次pv取0或1，样本量较大的时候(一般interleaving实验的样本量足够大了)，可以近似成正态分布，即有</p>
-
-<p>\[p_1 - N(P_1,P_1(1-P_1)/n1 )\]<br/>
-\[p_2 - N(P_2,P_2(1-P_2)/n1 )\]</p>
-
-<p>所以两者的差也是近似正态分布，有(注意P1与P2并不是相互独立的)</p>
-
-<p>\[p_1 - p_2 ~ N(P_1 - P_2, \frac{(P_1+P_2-(P_1-P_2)^2)}{n})\]</p>
-
-<p>所以dab的置信区间就是</p>
-
-<p>\[[\frac{p_1 -p_2}{2}- z_{\alpha}\sqrt \frac{p_1+p_2-(p_1-p_2)^2}{4n}, \frac{p_1 -p_2}{2}+ z_{\alpha}\sqrt \frac{p_1+p_2-(p_1-p_2)^2}{4n}]\]</p>
-
-<h3 id="toc_1">根据空转确定阈值</h3>
-
-<p>空转时候理论上两边是没diff的，但是因为随机波动，产出的指标数据肯定不可能完全等于0，大概率上也是服从一个正态分布。根据小概率原理，在5%和95%的置信点上可以认为是异常值，就策略和基线不是持平而是有显著diff。<br/>
-对应的阈值就是</p>
-
-<p>\[z_{\alpha}\sqrt \frac{p_1+p_2-(p_1-p_2)^2}{4n}= z_{\alpha}\sqrt \frac{p}{2n}\]</p>
-
-<p>所以这个阈值是与本身的p值的大小有关，与样本量也有关。</p>
+                        	<p>以2分类的列联表为例:</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>通过</th>
+<th>失败</th>
+<th>总计</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>实验A</td>
+<td>a</td>
+<td>b</td>
+<td>m</td>
+</tr>
+<tr>
+<td>实验B</td>
+<td>c</td>
+<td>d</td>
+<td>n</td>
+</tr>
+<tr>
+<td>总计</td>
+<td>r</td>
+<td>s</td>
+<td>N</td>
+</tr>
+</tbody>
+</table>
+
+<p>H0：实验A和实验B对于是否通过没有差异， H1： 实验A和实验B有显著差异</p>
+
+<p>在零假设成立的条件下，即A和B没有差异，那么对通过和失败的概率估计是r/N 和s/N。所以实验A的理论的通过人数和失败人数分别是\(rm/N\),\(sm/N\)。 同理，实验B的理论的通过人数和失败人数分别是\(rn/N\),\(sn/N\)。</p>
+
+<p>理论与现实的差异</p>
+
+<p>一般地</p>
+
+<blockquote>
+<p>卡方检验是皮尔逊1900年提出来的，这里简单回顾下其基本原理。</p>
+</blockquote>
 
                         
                       </div>
@@ -503,6 +229,269 @@ http://blog.csdn.net/mr_kktian/article/details/53750424
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15680210974066.html">
+                
+                  <h1>因子分析</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code class="language-text">from factor_analyzer import FactorAnalyzer
+f=FactorAnalyzer(n_factors = 10, rotation=&#39;varimax&#39;)
+f.fit(data)
+</code></pre>
+
+<p>FactorAnalyzer 主要参数</p>
+
+<ul>
+<li>n_factors: 设置因子的个数</li>
+<li>rotation： 表示旋转的个数，如果不设置的话默认不进行旋转。可旋转的旋转方法有：varimax， promax。。。</li>
+</ul>
+
+<p>输出结果属性包括：</p>
+
+<ul>
+<li>loadings_   因子载荷矩阵</li>
+<li>rotation_matrix   旋转矩阵</li>
+<li>structure：  The structure loading matrix.</li>
+<li>get_factor_variance()   计算因子的方差信息，包括方差、方差的比例，以及累计方差比重</li>
+</ul>
+
+<p>获取转换后的数据矩阵</p>
+
+<pre><code class="language-text">f.transform(data)
+</code></pre>
+
+<h2 id="toc_0">参考</h2>
+
+<p><a href="https://pypi.org/project/factor-analyzer/">https://pypi.org/project/factor-analyzer/</a><br/>
+<a href="https://blog.csdn.net/hfutxiaoguozhi/article/details/78840126">https://blog.csdn.net/hfutxiaoguozhi/article/details/78840126</a><br/>
+<a href="https://factor-analyzer.readthedocs.io/en/latest/factor_analyzer.html#module-factor_analyzer.factor_analyzer">https://factor-analyzer.readthedocs.io/en/latest/factor_analyzer.html#module-factor_analyzer.factor_analyzer</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/9/9</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15828738932501.html">
+                
+                  <h1>垂类工具库</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">2.标注工具 <a href="https://github.com/tzutalin/labelImg">https://github.com/tzutalin/labelImg</a></h2>
+
+<p>opencv</p>
+
+<p><a href="https://www.kancloud.cn/aollo/aolloopencv/269602">https://www.kancloud.cn/aollo/aolloopencv/269602</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/2/28</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='tools.html'>tools</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15825488509435.html">
+                
+                  <h1>工具篇</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>工欲善其事必先利其器</p>
+</blockquote>
+
+<p>主流的深度学习框架有</p>
+
+<table>
+<thead>
+<tr>
+<th>tool</th>
+<th>公司</th>
+<th>特性</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>tensorflow</td>
+<td>google</td>
+<td></td>
+</tr>
+<tr>
+<td>pytorch</td>
+<td>facebook</td>
+<td></td>
+</tr>
+<tr>
+<td>keras</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>caffe</td>
+<td>伯克利</td>
+<td></td>
+</tr>
+<tr>
+<td>paddlepaddle</td>
+<td>百度</td>
+<td></td>
+</tr>
+<tr>
+<td>mxnet</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p>Keras 是基于tensorflow或者Theano(已不维护)封装的高阶接口，tensorflow2.0中现在已经包含Keras</p>
+
+<h2 id="toc_0">1. Tensorflow</h2>
+
+<p><strong>TF-Slim、TFLearn、Keras和TensorLayer</strong></p>
+
+<p>TF-Slim、TFLearn、Keras和TensorLayer都是尝试简化TensorFlow/Theano的工具，是对TensorFlow/Theano的高层封装，API实现更加的工程化</p>
+
+<p>tensorflow2.0 已经将这些合并整理了，官方推荐的是keras的api</p>
+
+<p><a href="https://tensorflow.google.cn/tutorials/images/transfer_learning">https://tensorflow.google.cn/tutorials/images/transfer_learning</a></p>
+
+<p><a href="https://github.com/balancap/SSD-Tensorflow">https://github.com/balancap/SSD-Tensorflow</a></p>
+
+<h2 id="toc_1">2. tensorhub</h2>
+
+<p>官方地址 <a href="https://hub.tensorflow.google.cn/">https://hub.tensorflow.google.cn/</a> 类似于dockerhub，汇集了各种分享的模型，可供下载使用。<br/>
+主要包括 tezt embeddings, image classification models and more</p>
+
+<p>安装</p>
+
+<pre><code class="language-text">pip install --upgrade tensorflow-hub
+</code></pre>
+
+<p>比如图像分类相关的 <a href="https://hub.tensorflow.google.cn/google/collections/image/1">https://hub.tensorflow.google.cn/google/collections/image/1</a><br/>
+google后来提取的 EfficientNet, 调整模型的深度，宽度等参数。<a href="https://hub.tensorflow.google.cn/google/collections/efficientnet/1">https://hub.tensorflow.google.cn/google/collections/efficientnet/1</a></p>
+
+<p>1.对新样本predict</p>
+
+<pre><code class="language-python">classifier_url =&quot;https://tfhub.dev/google/tf2-preview/mobilenet_v2/classification/2&quot; #@param {type:&quot;string&quot;}
+
+IMAGE_SHAPE = (224, 224)
+classifier = tf.keras.Sequential([
+    hub.KerasLayer(classifier_url, input_shape=IMAGE_SHAPE+(3,))
+])
+
+# 新样本
+grace_hopper = tf.keras.utils.get_file(&#39;image.jpg&#39;,&#39;https://storage.googleapis.com/download.tensorflow.org/example_images/grace_hopper.jpg&#39;)
+grace_hopper = Image.open(grace_hopper).resize(IMAGE_SHAPE)
+grace_hopper = np.array(grace_hopper)/255.0
+
+result = classifier.predict(grace_hopper[np.newaxis, ...])
+result.shape
+</code></pre>
+
+<p>2.simple迁移学习</p>
+
+<pre><code class="language-python">image_generator = tf.keras.preprocessing.image.ImageDataGenerator(rescale=1/255)
+image_data = image_generator.flow_from_directory(str(data_root), target_size=IMAGE_SHAPE)
+
+## 下载不包含top classification layer的model
+feature_extractor_url = &quot;https://tfhub.dev/google/tf2-preview/mobilenet_v2/feature_vector/2&quot; #@param {type:&quot;string&quot;}
+
+feature_extractor_layer = hub.KerasLayer(feature_extractor_url,
+                                        trainable= False,
+                                        input_shape=(224,224,3))
+                                         
+model = tf.keras.Sequential([
+  feature_extractor_layer,
+  layers.Dense(image_data.num_classes)
+])
+
+model.summary()
+# 剩下的和正常的模型训练过程一样
+</code></pre>
+
+<p>其command line 工具 <a href="https://github.com/tensorflow/hub/tree/master/tensorflow_hub/tools/make_image_classifier">https://github.com/tensorflow/hub/tree/master/tensorflow_hub/tools/make_image_classifier</a></p>
+
+<pre><code class="language-python">make_image_classifier \
+  --image_dir my_image_dir \
+  --tfhub_module https://tfhub.dev/google/tf2-preview/mobilenet_v2/feature_vector/4 \
+  --image_size 224 \
+  --saved_model_dir my_dir/new_model \
+  --labels_output_file class_labels.txt \
+  --tflite_output_file new_mobile_model.tflite
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/2/24</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='tools.html'>tools</a></span>
           				   
                     
 
@@ -540,7 +529,7 @@ http://blog.csdn.net/mr_kktian/article/details/53750424
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
             
-                <h1>zhenzhen学习笔记</h1>
+                <h1>zhenzhen数据科学笔记</h1>
                 <div class="site-des"></div>
                 <div class="social">
 
@@ -569,6 +558,8 @@ http://blog.csdn.net/mr_kktian/article/details/53750424
 
       	<p class="cat-list">
         
+            <a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html"><strong>轨迹分析</strong></a>
+        
             <a href="1%20Tools.html"><strong>1 Tools</strong></a>
         
             <a href="2%20Get%20Data.html"><strong>2 Get Data</strong></a>
@@ -581,17 +572,15 @@ http://blog.csdn.net/mr_kktian/article/details/53750424
         
             <a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统</strong></a>
         
-            <a href="6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html"><strong>6 文本&视频</strong></a>
+            <a href="6.CV.html"><strong>6.CV</strong></a>
+        
+            <a href="6%20NLP.html"><strong>6 NLP</strong></a>
         
             <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习</strong></a>
         
             <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
-        
-            <a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html"><strong>轨迹数据</strong></a>
-        
-            <a href="%E8%AF%BB%E4%B9%A6.html"><strong>读书</strong></a>
          
         </p>
 
@@ -608,12 +597,6 @@ http://blog.csdn.net/mr_kktian/article/details/53750424
 	      
 		      
 			      <li class="post">
-			        <a href="15706729896574.html"></a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
 			        <a href="15687050894061.html">0.综述</a>
 			      </li>
 		     
@@ -626,13 +609,19 @@ http://blog.csdn.net/mr_kktian/article/details/53750424
 		  
 		      
 			      <li class="post">
+			        <a href="15637037681646.html">1 基础工具包安装pip</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15637025346412.html">1. conda 环境管理</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15694859531608.html">1.trajectory preprocessing</a>
+			        <a href="15637037713554.html">1. 数据可视化概述</a>
 			      </li>
 		     
 		  

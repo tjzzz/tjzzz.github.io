@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  zhenzhen学习笔记
+  zhenzhen数据科学笔记
   
   </title>
   
   
-  <link href="atom.xml" rel="alternate" title="zhenzhen学习笔记" type="application/atom+xml">
+  <link href="atom.xml" rel="alternate" title="zhenzhen数据科学笔记" type="application/atom+xml">
     <link rel="stylesheet" href="asset/css/foundation.min.css" />
     <link rel="stylesheet" href="asset/css/docs.css" />
     <script src="asset/js/vendor/modernizr.js"></script>
@@ -64,7 +64,7 @@
 
         <nav class="tab-bar show-for-small">
   <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-    <span> &nbsp; zhenzhen学习笔记</span>
+    <span> &nbsp; zhenzhen数据科学笔记</span>
   </a>
 </nav>
 
@@ -81,6 +81,8 @@
     <li><label>Categories</label></li>
 
         
+            <li><a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html">轨迹分析</a></li>
+        
             <li><a href="1%20Tools.html">1 Tools</a></li>
         
             <li><a href="2%20Get%20Data.html">2 Get Data</a></li>
@@ -93,17 +95,15 @@
         
             <li><a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html">6 推荐系统</a></li>
         
-            <li><a href="6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html">6 文本&视频</a></li>
+            <li><a href="6.CV.html">6.CV</a></li>
+        
+            <li><a href="6%20NLP.html">6 NLP</a></li>
         
             <li><a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">7 深度学习</a></li>
         
             <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
-        
-            <li><a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html">轨迹数据</a></li>
-        
-            <li><a href="%E8%AF%BB%E4%B9%A6.html">读书</a></li>
          
 
       </ul>
@@ -126,73 +126,26 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637037678160.html">
+                <a class="clearlink" href="15637037679256.html">
                 
-                  <h1>git</h1>
+                  <h1>Rmarkdown</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>git 是一个版本管理的工具，能够非常方便的对项目进行版本控制。</p>
+                        	<h2 id="toc_0">python支持</h2>
 
-<h2 id="toc_0">1建立自己的代码库</h2>
+<p>Rmarkdown对python兼容 <a href="https://github.com/rstudio/reticulate">https://github.com/rstudio/reticulate</a></p>
 
-<p>假设你的用户名是zzz<br/>
-（1）生成公钥<br/>
-ssh-keygen -t rsa -f ~/.ssh/id_rsa.zzz<br/>
-cat ~/.ssh/id_rsa.zzz.pub 保存到icode或者是自己的github上<br/>
-（2）clone</p>
+<h2 id="toc_1">图片</h2>
 
-<pre><code class="language-text">git clone  xxxxx代码库             # 将代码库克隆到本地
-## 如果机器是多个人使用的话用--local,如果是自己一个人的话可以设置成--global
-git config --local user.email zzz邮箱
-git config --local user.name zzz用户名
-git push origin master:refs/for/master
-</code></pre>
+<p>现在很多makdown编辑器是可以支持拖拽本地图片或者截屏就可以直接在markdown中生成图片的，非常方便，比如我现在在用的MWeb编辑器。</p>
 
-<h2 id="toc_1">2 基本操作</h2>
+<p>但是如果同一篇内容需要在不同的平台上进行发布，那图片处理起来就比较麻烦。因为需要重新上传到不同平台。<br/>
+最方便的处理方式就是利用图床， 这里以七牛云存储为例。<br/>
+<img src="media/15378048283915/15383141468224.jpg" alt=""/></p>
 
-<p>当我们新增或者更新了一个文件后，如何上传到代码库</p>
-
-<pre><code class="language-text">git add xxx
-git commit -m &#39;注释&#39;
-git push origin HEAD:refs/for/master
-</code></pre>
-
-<p>从代码库将新代码下载到本地，更新本地库</p>
-
-<pre><code class="language-text">git pull
-</code></pre>
-
-<h2 id="toc_2">3.常用操作</h2>
-
-<p>(1) 还原文件到之前的某个版本。</p>
-
-<p>当发现新提交的版本有问题，想回退到之前的某个版本的之后，可以进行如下操作。<code>git long</code><br/>
-比如我想修改自己写的这个<code>utils.py</code> 代码</p>
-
-<pre><code class="language-text">git log utils.py
-## 可以看到一共提交了3次，假设喔想回退到9.25提交的那个版本
-git checkout 742bf4a53e473b2536b53cb3ad56072ae236a1c3 utils.py 
-git commit -m &quot;revert to previous version&quot;
-</code></pre>
-
-<p><img src="media/15637037678160/15699932802240.jpg" alt=""/></p>
-
-<p>我不知道”undo”是什么意思。您可以删除core.excludesfile设置，如下所示：<br/>
-git config --global --unset core.excludesfile<br/>
-当然你也可以简单地编辑配置文件：<br/>
-git config --global --edit<br/>
-…然后手动删除设置。</p>
-
-<p>git config --global --edit</p>
-
-<p>git log<br/>
-git reset --hard xxxxx</p>
-
-<p>查看本地与云端的diff</p>
-
-<p>git rm —cache  删除已经提交的内容</p>
+<p>step1： 首先在七牛官网上申请注册账号，并且添加<strong>对象存储</strong></p>
 
                         
                       </div>
@@ -220,53 +173,120 @@ git reset --hard xxxxx</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037680349.html">
+                <a class="clearlink" href="15637037708871.html">
                 
-                  <h1>jupyterLab-安装R支持</h1>
+                  <h1>TF1.0-slim  图像识别模型—— 1.利用已有的进行微调</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>jupyterlab是jupyter notebook的一个升级版，界面更炫酷，而且同时支持R语言。</p>
+                        	<p><strong>模型库tensorflow-slim</strong></p>
 
-<p>现在Rstudio已经成为R社区使用最广泛的集成编辑器，其在配合Rstudio公司开发的软件包使用上有天然的优势，如knitr、bookdown、blogdown、sparklyr、tidyverse等，让我们在数据导入、清洗、可视化、分析过程中少踩了不少坑。</p>
+<p>slim 模型库是tensorflow1.0 中专门做图像分类的model库，官网说明:<br/>
+<a href="https://github.com/tensorflow/models/tree/master/research/slim">https://github.com/tensorflow/models/tree/master/research/slim</a></p>
 
-<p>然而，有时候我们也会发现，利用Rmarkdown进行探索性数据分析时，尤其是初学者，总是不断花费时间在文档编译上，而压缩了真正数据探索的时间。很多时候，我很羡慕python用户，因为他们拥有Ipython、jupyter notebook等工具，让我们一边分析数据，一边插入markdown文本，并且还能实时看到结果，这些特性R用户也可以实现吗？当然，这就是我今天推荐的jupyterlab 编辑器。</p>
+<p>该库中有些用法只适合tf1.0版本，tf2.0中已经没有了，所以安装的时候tf2.0在使用中会报错<br/>
+<code>conda install tensorflow=1.14</code></p>
 
-<p>安装jupyterLab</p>
+<p>微调(fine-tune)的基本原理</p>
 
-<p>首先我们要明白，jupyterLab是一个python包，所以要使用jupyterLab首先要配置python环境。对于普通用户，包括linux、win和Mac用户，建议直接下载anaconda发行版进行安装，这样免去了既要安装python又要安装其他包的麻烦，是最简洁的方法。</p>
+<h2 id="toc_0">1.准备数据</h2>
 
-<p>对于平时很少使用python的人来说，可能无法忍受anaconda全家桶式的安装模式，想更轻便的安装使用，那也很容易。</p>
-
-<p>1.安装</p>
-
-<p>Mac 和 Linux用户系统自带了python，可以直接使用pip install jupyterlab安装jupyterLab包。</p>
-
-<p>win用户先在python官网下载安装python，然后使用pip install jupyterlab安装jupyterLab包。</p>
-
-<p>2.运行</p>
-
-<p>在终端输入jupyter lab即可以在默认浏览器中打开编辑器界面，若不能，请检查下python路径配置是否正确。</p>
-
-<p>“咦，怎么只能选择python，R去哪了”，各位看官莫急，这是因为R端缺少必要的包，还不能和jupyter进行通信，等把这些包安装好进行配置后就可以了。</p>
-
-<p>3.配置R</p>
-
-<p>要把先前打开的jupyterLab程序全部关闭后再进行以下操作</p>
-
-<pre><code class="language-text">#安装必要的依赖包
-install.packages(c(&#39;repr&#39;, &#39;IRdisplay&#39;,&#39;evaluate&#39;, &#39;crayon&#39;,&#39;pbdZMQ&#39;,&#39;devtools&#39;,&#39;uuid&#39;, &#39;digest&#39;))
+<pre><code class="language-text">python download_and_convert_data.py \
+    --dataset_name=mnist \
+    --dataset_dir=/tmp/mnist
 </code></pre>
 
-<pre><code class="language-text">#IRkernel包没有放在CRAN上，需要通过GitHub安装
-devtools::install_github(&#39;IRkernel/IRkernel&#39;)
-IRkernel::installspec() #确保jupyterLab能找到R解释器安装位置
+<pre><code class="language-text"> python data_convert.py -t pic --train-shards 2 --validation-shards 2 --num-threads 2 --dataset-name guangdong
 </code></pre>
 
-<p>4.再次在终端运行<code>jupyter lab</code>，选择R图标打开，你就可以在jupyterLab进行数据分析啦</p>
+<p>执行完后会在pic下生成tf格式的训练+测试数据，以及label.txt<br/>
+<img src="media/15388051366041/15388065002449.jpg" alt=""/></p>
 
-<p>jupyterLab的主要特性绘图函数自动插入图片ggplot2绘图完美支持</p>
+<h2 id="toc_1">2.使用tensorflow的slim微调模型</h2>
+
+<p>简单介绍下google的这个图像分类工具包tensorflow-slim</p>
+
+<pre><code class="language-text">├── README.md
+├── datasets                    # 定义训练时候使用的数据。如果是自己的数据，必须在此文件夹下定义
+├── deployment
+├── download_and_convert_data.py
+├── export_inference_graph.py
+├── export_inference_graph_test.py
+├── nets                        # 定义了一些常用的网络，比如vgg16，vgg19，resnet等
+├── preprocessing               # 在读入图像前，对图像做的一些预处理
+├── scripts
+│   ├── finetune_inception_v1_on_flowers.sh
+│   ├── finetune_inception_v3_on_flowers.sh
+│   ├── finetune_resnet_v1_50_on_flowers.sh
+│   ├── train_cifarnet_on_cifar10.sh
+│   └── train_lenet_on_mnist.sh
+├── setup.py
+├── slim_walkthrough.ipynb
+├── eval_image_classifier.py      # 验证模型入口
+└── train_image_classifier.py     # 训练模型入口
+</code></pre>
+
+<p>(1) 定义新的dataset文件</p>
+
+<p>仿照<code>datasets/flowers.py</code> 写一个自己的数据文件<code>guangdong.py</code> 并且在<code>dataset_factory.py</code>中进行注册</p>
+
+<p>(2)准备训练文件夹</p>
+
+<p>(3)train model</p>
+
+<pre><code class="language-text">python train_image_classifier.py \
+  --train_dir=guangdong/train_dir \
+  --dataset_name=guangdong \
+  --dataset_split_name=train \
+  --dataset_dir=guangdong/data \
+  --model_name=inception_v3 \
+  --checkpoint_path=guangdong/pretrained/inception_v3.ckpt \
+  --checkpoint_exclude_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
+  --trainable_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
+  --max_number_of_steps=100000 \
+  --batch_size=32 \
+  --learning_rate=0.001 \
+  --learning_rate_decay_type=fixed \
+  --save_interval_secs=300 \
+  --save_summaries_secs=2 \
+  --log_every_n_steps=10 \
+  --optimizer=rmsprop \
+  --weight_decay=0.00004
+
+</code></pre>
+
+<p>如果执行后报错<code>Cannot assign a device for operation &#39;InceptionV3/AuxLogits/Conv2d_2b_1x1/weights/RMSProp1&#39;: Could not satisfy explicit device specification &#39;/device:GPU:0&#39; because no supported kernel for GPU devices is available</code> 之类的话</p>
+
+<p>可以参看这个的解决办法<a href="https://blog.csdn.net/xd_wjc/article/details/80550862">https://blog.csdn.net/xd_wjc/article/details/80550862</a></p>
+
+<p>tensorboard 查看任务运行情况</p>
+
+<pre><code class="language-text">tensorboard --logdir guangdong/train_dir
+</code></pre>
+
+<p>训练完毕之后进行模型评估</p>
+
+<pre><code class="language-text">python eval_image_classifier.py \
+  --checkpoint_path=guangdong/train_dir \
+  --eval_dir=guangdong/eval_dir \
+  --dataset_name=guangdong \
+  --dataset_split_name=validation \
+  --dataset_dir=guangdong/data \
+  --model_name=inception_v3
+</code></pre>
+
+<h3 id="toc_2">案例</h3>
+
+<p><a href="https://github.com/ns2250225/python3_tf_slim_image_classify">https://github.com/ns2250225/python3_tf_slim_image_classify</a></p>
+
+<p><a href="https://blog.csdn.net/qq_42556555/article/details/90237131">https://blog.csdn.net/qq_42556555/article/details/90237131</a></p>
+
+<p><a href="https://www.jianshu.com/p/1cbf9aae15b6">https://www.jianshu.com/p/1cbf9aae15b6</a></p>
+
+<h2 id="toc_3">阿里云服务</h2>
+
+<p><a href="https://help.aliyun.com/document_detail/49571.html#OSS">https://help.aliyun.com/document_detail/49571.html#OSS</a></p>
 
                         
                       </div>
@@ -278,7 +298,7 @@ IRkernel::installspec() #确保jupyterLab能找到R解释器安装位置
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          					    <span class="posted-in"><a href='%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB.html'>图像分类</a></span>
           				   
                     
 
@@ -294,264 +314,34 @@ IRkernel::installspec() #确保jupyterLab能找到R解释器安装位置
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15669633176007.html">
+                <a class="clearlink" href="15825969970925.html">
                 
-                  <h1>kafka</h1>
+                  <h1>TF2.0</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/8/28</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
-          				   
-                    
+                        	<p><a href="https://tensorflow.google.cn/tutorials/images/classification">https://tensorflow.google.cn/tutorials/images/classification</a></p>
 
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<pre><code class="language-text">一个简单的方法是创建一个新的 Model 来输出你所感兴趣的层：
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15686309605233.html">
-                
-                  <h1>matplotlib</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>matplotlib是python绘图的一个基础包，其用法和matlab语法有些相似。<br/>
-大量第三方包扩展并构建了Matplotlib功能，包括几个较高级别的绘图接口(seaborn、holoviews、ggplot 等)，以及两个投影和绘图工具包(basemap和cartopy)<br/>
-这里总结一些基本用法</p>
+from keras.models import Model
 
-<h2 id="toc_0">1.matplotlib.pylab</h2>
+model = ...  # 创建原始模型
 
-<h2 id="toc_1">2.matplotlib.pyplot</h2>
+layer_name = &#39;my_layer&#39;
+intermediate_layer_model = Model(inputs=model.input,
+                                 outputs=model.get_layer(layer_name).output)
+intermediate_output = intermediate_layer_model.predict(data)
+或者，你也可以构建一个 Keras 函数，该函数将在给定输入的情况下返回某个层的输出，例如：
 
-<p><img src="media/15686309605233/15686322692816.png" alt=""/></p>
+from keras import backend as K
 
-<pre><code class="language-text">import matplotlib.pyplot as plt
-plt.plot(x, y, 其他属性)
+get_3rd_layer_output = K.function([model.layers[0].input],
+                                  [model.layers[3].output])
+layer_output = get_3rd_layer_output([x])[0]
+
 </code></pre>
-
-<p>pyplot是matplotlib中最常用的模块，</p>
-
-<h3 id="toc_2">常用的图形参数设置</h3>
-
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>功能</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>axis([xmin, xmax, ymin, ymax])</td>
-<td>设置坐标轴范围</td>
-</tr>
-<tr>
-<td>plot(x, y1,属性, y2, 属性)</td>
-<td>绘制线图</td>
-</tr>
-<tr>
-<td>title</td>
-<td></td>
-</tr>
-<tr>
-<td>xlabel, ylabel</td>
-<td>横纵坐标轴的标签</td>
-</tr>
-<tr>
-<td>text(x, y, 文字)</td>
-<td>添加文字描述</td>
-</tr>
-<tr>
-<td>annotate(&#39;注释&#39;, xy=(2, 1), xytext=(3, 1.5)</td>
-<td>添加箭头注释</td>
-</tr>
-<tr>
-<td>plt.yscale(&#39;linear’)   # linear, log, logit</td>
-<td>更换坐标轴刻度</td>
-</tr>
-</tbody>
-</table>
-
-<p><strong>subplot 绘制子图</strong></p>
-
-<pre><code class="language-text">plt.figure()
-plt.subplot(2, 3, 1)   #n行m列的子图
-plt.plot(x1, y1)
-
-plt.subplot(2, 3, 2)   #n行m列的子图
-plt.plot(x2, y2)
-</code></pre>
-
-<pre><code class="language-text">data = np.random.randn(2, 100)
-fig, axs = plt.subplots(2, 2, figsize=(5, 5))
-axs[0, 0].hist(data[0])
-axs[1, 0].scatter(data[0], data[1])
-axs[0, 1].plot(data[0], data[1])
-axs[1, 1].hist2d(data[0], data[1])
-
-plt.show()
-</code></pre>
-
-<p><strong>显示图像，读取图片</strong></p>
-
-<p>需要先安装<code>pillow</code>包</p>
-
-<pre><code class="language-text">im = plt.imread(&#39;cat.jpg&#39;)  #将图像读取为数组
-ax.imshow(im)                  # imshow将数组显示为图像
-</code></pre>
-
-<p>plt.colorbar()      #  可以添加颜色条</p>
-
-<p><strong>3d绘图</strong></p>
-
-<p>mplot3d</p>
-
-<p><strong>多条曲线设置不同颜色</strong></p>
-
-<p>正常情况下，matplot是自动变更绘制的颜色的</p>
-
-<pre><code class="language-text">import matplotlib.pyplot as plt
-import numpy as np
-x = np.linspace(0, 1, 10)
-for i in range(1, 6):
-    plt.plot(x, i * x + i, label=&#39;$y = {i}x + {i}$&#39;.format(i=i))
-plt.legend(loc=&#39;best&#39;)
-plt.show()
-</code></pre>
-
-<p>如果需要自己指定颜色，可以通过设置color=xxx来设置。<br/>
-如果数据中有标签分组，希望分组设置相同的颜色，但是组数比较多，不太好事先指定好颜色，则可以通过如下的方法</p>
-
-<pre><code class="language-text">import matplotlib.pyplot as plt
-import numpy as np
-
-x = np.linspace(0, 1, 10)
-number = 5
-cmap = plt.get_cmap(&#39;gnuplot&#39;)
-colors = [cmap(i) for i in np.linspace(0, 1, number)]    # 挑选number种颜色
-
-for i, color in enumerate(colors, start=1):
-    plt.plot(x, i * x + i, color=color, label=&#39;$y = {i}x + {i}$&#39;.format(i=i))
-plt.legend(loc=&#39;best&#39;)
-plt.show()
-</code></pre>
-
-<p><strong>绘制次坐标轴图</strong></p>
-
-<pre><code class="language-text">fig = plt.figure()
-ax1 = fig.add_subplot(111)
-ax1.plot(x, y1)
-ax1.set_ylabel(&#39;Y1&#39;)
-
-ax2 = ax1.twinx()  # this is the important function
-ax2.plot(x, y2, &#39;r&#39;)
-ax2.set_ylabel(&#39;Y2&#39;)
-plt.show()
-</code></pre>
-
-<h2 id="toc_3">3. 绘制案例</h2>
-
-<p>常用的图像类型  <a href="https://www.matplotlib.org.cn/tutorials/introductory/sample_plots.html">https://www.matplotlib.org.cn/tutorials/introductory/sample_plots.html</a></p>
-
-<h3 id="toc_4">1 绘制随时间动态变化的散点图</h3>
-
-<p>想要得到动画效果的图像，就是让多幅图连续播放，所以需要不断修改图中曲线的属性。首先需要了解下面像对象编程，在matplotlib中我们调用的任何函数，都会返回一个对象的实例。所以可以通过修改其相应的属性来改变曲线。比如常见的设置title，xlim等<br/>
-<code>plt.plot(x, y); plt.title(&#39;plot title&#39;)</code></p>
-
-<p>主要用到的函数<br/>
-<code>FuncAnimation(fig, func, frames=None,fargs=None)</code><br/>
-FuncAnimation的参数比较多，这里只列举出最重要的四个。</p>
-
-<ul>
-<li>fig: 指得是目前曲线所在在的figure。</li>
-<li>func: 这个函数主要是修改lines的属性，并返回。</li>
-<li>frames: 这是func参数中，跟每一帧相关的参数，靠它曲线才会发生变化。动画长度，一次循环包含的帧数</li>
-<li>fargs： 对应func中其他参数。</li>
-<li>interval 更新频率，以ms记</li>
-<li>blit: 选择更新所有点，还是仅更新产生变化的点。</li>
-<li>可选参数 repeat，指定是否循环动画</li>
-</ul>
-
-<p>官网的一个案例 <br/>
-<a href="https://matplotlib.org/gallery/animation/simple_anim.html">https://matplotlib.org/gallery/animation/simple_anim.html</a></p>
-
-<p>模仿写的一个小例子  <a href="https://www.smslit.top/2018/11/12/matplotlib-animation/">https://www.smslit.top/2018/11/12/matplotlib-animation/</a></p>
-
-<pre><code class="language-text">import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib import animation
-
-def plot_trace_animation(x, y):
-
-    fig, ax = plt.subplots()
-    plt.xlim(min(x), max(x))
-    plt.ylim(min(y), max(y))
-    line, = ax.plot(x[0], y[0])
-
-    def init():  # only required for blitting to give a clean slate.
-        line.set_ydata([np.nan] * len(x))
-        return line,
-
-    def update(i):
-        print(i)
-        line.set_xdata(x[:i])
-        line.set_ydata(y[:i])
-        #scat.set_data(x[:i], y[:i])
-        return line,
-
-    anim = animation.FuncAnimation(fig, update, init_func=init,frames=10, interval=100)
-    plt.show()
-
-    #anim.to_html5_video()
-    #anim.to_jshtml()
-    anim.save(&#39;out.mp4&#39;)   # 需要先安装ffmpeg
-
-x = range(1, 11)
-y = range(5, 15)
-
-plot_trace_animation(x, y)
-</code></pre>
-
-<p>保存</p>
-
-<p>anim.save(&#39;out.mp4&#39;)   # 需要先安装ffmpeg<br/>
-anim.save的 save 方法可以指定 writer ，这里要保存 gif 默认选择的 writer 为 pillow ，所以需要安装 pillow 库：</p>
-
-<p>$ pip3 install pillow<br/>
-按照如下调用方法即可保存动画为 gif，这里保存动画的帧数是受 animation.FuncAnimation 的 frames 和 save_count 影响的：</p>
-
-<p>ani.save(&#39;animation.gif&#39;, writer=&#39;pillow&#39;)</p>
-
-<h2 id="toc_5">4. 问题</h2>
-
-<p>Q1: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (<code>matplotlib.pyplot.figure</code>) are retained until explicitly closed and may consume too much memory.</p>
-
-<p>很多时候绘图的时候数量会比较多，一般是写个循环然后绘图。这时候定义的绘图函数就会执行很多次的<code>plt.subplot()</code> 即创建很多新的。可以在一开始或者初始化的时候就直接创建一张，然后后续的图都基于此改就好了，这样可以提升运行速度。</p>
-
-<h2 id="toc_6">参考</h2>
-
-<p><a href="https://www.matplotlib.org.cn/home.html">https://www.matplotlib.org.cn/home.html</a></p>
 
                         
                       </div>
@@ -560,10 +350,10 @@ anim.save的 save 方法可以指定 writer ，这里要保存 gif 默认选择�
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/9/16</span>
+                    <span class="date">2020/2/25</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html'>3 数据可视化</a></span>
+          					    <span class="posted-in"><a href='6.CV.html'>6.CV</a></span>
           				   
                     
 
@@ -579,94 +369,14 @@ anim.save的 save 方法可以指定 writer ，这里要保存 gif 默认选择�
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637025345613.html">
+                <a class="clearlink" href="15637065259056.html">
                 
-                  <h1>query文本聚类</h1>
+                  <h1>about me</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<ul>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 是不是cache问题tf-idf</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 添加下降维的步骤</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 稀疏矩阵</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 数据切分更小li&#39;du</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Mini Batch KMeans <a href="http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/">http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/</a></li>
-</ul>
-
-<p>实验全量的<br/>
-<a href="http://yq01-tianqi-spark-yarn00.yq01.baidu.com:8388/proxy/application_1511855101950_42074/">http://yq01-tianqi-spark-yarn00.yq01.baidu.com:8388/proxy/application_1511855101950_42074/</a></p>
-
-<hr/>
-
-<p>刚哥的代码：<a href="https://github.com/honestOrg/gxdgroup/blob/master/src/main/scala/cn/com/gxdgroup/dataplatform/avm/utils/AVMUtils.scala">https://github.com/honestOrg/gxdgroup/blob/master/src/main/scala/cn/com/gxdgroup/dataplatform/avm/utils/AVMUtils.scala</a></p>
-
-<h2 id="toc_0">全量</h2>
-
-<p>前期构造词频矩阵：</p>
-
-<h2 id="toc_1">1.生成原始的词频矩阵</h2>
-
-<ul>
-<li><a href="http://spark.apache.org/docs/latest/ml-features.html#countvectorizer">http://spark.apache.org/docs/latest/ml-features.html#countvectorizer</a></li>
-<li><code>examples/src/main/python/sql/basic.py</code></li>
-</ul>
-
-<p>输入数据：每行是切分好的term</p>
-
-<pre><code class="language-text">spark = SparkSession.builder.appName(&quot;CountVectorizerExample&quot;).getOrCreate()
-sc = spark.sparkContext
-# $example on$
-# Input data: Each row is a bag of words with a ID.
-
-lines = sc.textFile(&quot;/user/ubs/kce/zhenzhen/spark/test_data/corpus_title2&quot;)
-parts = lines.map(lambda l: l.split(&#39;#&#39;))   # convert all the term to a list
-termRDD = parts.map(lambda p: Row(tid=p[0], words=p[1].split(&#39; &#39;)))
-
-df = spark.createDataFrame(termRDD)
-# fit a CountVectorizerModel from the corpus.
-cv = CountVectorizer(inputCol=&quot;words&quot;, outputCol=&quot;features&quot;)
-#, vocabSize=3, minDF=2.0)
-
-model = cv.fit(df)
-
-result = model.transform(df)
-</code></pre>
-
-<h2 id="toc_2">2.tf-idf</h2>
-
-<ul>
-<li><a href="http://spark.apache.org/docs/latest/mllib-feature-extraction.html#tf-idf">http://spark.apache.org/docs/latest/mllib-feature-extraction.html#tf-idf</a></li>
-<li><a href="http://spark.apache.org/docs/latest/ml-features.html#feature-extractors">http://spark.apache.org/docs/latest/ml-features.html#feature-extractors</a>
-ml中的函数比mllib中的多<br/>
-examples/src/main/python/mllib/tf_idf_example.py</li>
-</ul>
-
-<pre><code class="language-text">~/zhenzhen/spark_study/spark/examples/src/main/python/mllib $  pyspark zzz_tf_idf_example.py
-</code></pre>
-
-<h2 id="toc_3">3.降维</h2>
-
-<h2 id="toc_4">4.直接聚类</h2>
-
-<pre><code class="language-text"> # pyspark这个默认是启动的集群任务，之前测试的本地数据会出错，脚本中需把输入目录改成集群路径
-  ~/zhenzhen/spark_study $  pyspark kmeans.py  &gt; log.test
-</code></pre>
-
-<h2 id="toc_5">六神合体</h2>
-
-<ul>
-<li>词频矩阵+tfidf</li>
-</ul>
-
-<p><a href="http://www.zengyilun.com/spark-similarity/">http://www.zengyilun.com/spark-similarity/</a></p>
-
-<p>上述所有步骤(tfidf，降维,聚类)合并在一起</p>
-
-<pre><code class="language-text"> # pyspark这个默认是启动的集群任务，之前测试的本地数据会出错，脚本中需把输入目录改成集群路径
-  ~/zhenzhen/spark_study $  pyspark tfidf_kmeans.py  &gt; log.test
-  这个测试ok，但是中心点都是0，应该是数据问题
-</code></pre>
+                        	<p>about me  </p>
 
                         
                       </div>
@@ -676,9 +386,137 @@ examples/src/main/python/mllib/tf_idf_example.py</li>
                   <div class="more-left left">
                   
                     <span class="date">2019/7/21</span>
+                    
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15665281146000.html">
+                
+                  <h1>docker</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>docker是一个容器，可以让开发者打包他们的应用以及依赖的环境到一个容器中，然后可以移植到别的机器上。容器是使用的沙箱机制，相互之间不会有任何接口。</p>
+
+<p>docker 官网： <a href="http://www.docker.com">http://www.docker.com</a><br/>
+容器:  对象<br/>
+镜像images: 类，是用于创建docker容器的模版<br/>
+docker仓库<a href="https://hub.docker.com%EF%BC%8C">https://hub.docker.com，</a> 是用来提供各种镜像的仓库。</p>
+
+<p><strong>基本使用</strong></p>
+
+<pre><code class="language-text"># 运行方式 1： 类似于运行pyhton脚本 python xxx.py  参数
+docker run ubuntu:18.10 /bin/echo &quot;Hello world&quot;
+</code></pre>
+
+<ul>
+<li>ubuntu:18.10是指定要运行的镜像，docker会先从本机上检查是否存在，如果不存在会从docker hub下载公共镜像。</li>
+<li> /bin/echo &quot;Hello world&quot;， 在启动容器里执行命令</li>
+</ul>
+
+<pre><code class="language-text"># 运行方式2： 交互式运行
+docker run -i -t ubuntu:18.10 /bin/bash
+</code></pre>
+
+<ul>
+<li>-t 在新容器中指定一个终端</li>
+<li>-i 允许你对容器内的标准输入 (STDIN) 进行交互。</li>
+</ul>
+
+<p>后台以进程方式运行docker</p>
+
+<pre><code class="language-text">docker run -d ubuntu:18.10 /bin/sh -c &quot;while true; do echo hello world; sleep 1; done&quot;
+</code></pre>
+
+<p>这个时候发现会出现一串字符，这个就是dicker的id。</p>
+
+<ul>
+<li>-d 让容器在后台运行</li>
+</ul>
+
+<pre><code class="language-text">docker ps   # 查看当前有哪些容器在运行
+exit    #退出容器或者`ctrl +D`
+docker logs 容器id    #查看容器内的标准输出
+docker stop  容器id    # 停止正在运行的docker
+</code></pre>
+
+<p><strong>docker 镜像</strong></p>
+
+<pre><code class="language-text">docker pull   REPOSITORY:TAG    # 下载镜像
+docker search httpd                      # 查找镜像
+
+# 更新镜像，当自己在镜像内做了一些更新后，可以提交
+# commit -m &#39;更新信息&#39; -a 作者 容器id 新版本的镜像名
+docker commit -m=&quot;zzz update&quot; -a=&quot;zzz&quot; 容器的id zzz/ubuntu:v2
+</code></pre>
+
+<p>从零创建一个镜像<br/>
+从零创建镜像的命令是 <code>docker build</code>, 其依赖于一个配置文件Dockerfile，这个文件包含了一组命令来告诉docker如何创建镜像。</p>
+
+<p><code>docker build -t 镜像名 配置文件地址</code></p>
+
+<p>配置文件的一个例子：</p>
+
+<pre><code class="language-text"># 每一个指令的前缀必须是大写
+# FROM 表示使用哪个镜像源
+# RUN 表示告诉docker在镜像内执行命令
+FROM ubuntu:16.04
+RUN apt-get update
+RUN apt-get install -y unzip cmake g++ make ffmpeg libx264-dev wget
+WORKDIR /opt/
+</code></pre>
+
+<p><strong>删除</strong></p>
+
+<pre><code class="language-text">docker rm 容器
+docker rmi 镜像名
+</code></pre>
+
+<p><strong>mac安装</strong><br/>
+直接从官网下载安装即可 <a href="https://download.docker.com/mac/stable/Docker.dmg%E3%80%82">https://download.docker.com/mac/stable/Docker.dmg。</a><br/>
+由于国内网速问题，安装完docker后，后续拉取镜像可能会十分缓慢，可以配置加速器来解决，如下图所示。</p>
+
+<p>阿里云的加速器：<a href="https://help.aliyun.com/document_detail/60750.html">https://help.aliyun.com/document_detail/60750.html</a><br/>
+网易加速器：<a href="http://hub-mirror.c.163.com">http://hub-mirror.c.163.com</a><br/>
+官方中国加速器：<a href="https://registry.docker-cn.com">https://registry.docker-cn.com</a><br/>
+ustc的镜像：<a href="https://docker.mirrors.ustc.edu.cn">https://docker.mirrors.ustc.edu.cn</a><br/>
+daocloud：<a href="https://www.daocloud.io/mirror#accelerator-doc%EF%BC%88%E6%B3%A8%E5%86%8C%E5%90%8E%E4%BD%BF%E7%94%A8%EF%BC%89">https://www.daocloud.io/mirror#accelerator-doc（注册后使用）</a></p>
+
+<p><img src="media/15665281146000/15665304699914.jpg" alt=""/></p>
+
+<h2 id="toc_0">参考资料</h2>
+
+<p><a href="https://www.runoob.com/docker/macos-docker-install.html">https://www.runoob.com/docker/macos-docker-install.html</a><br/>
+docker 常用参数 <a href="https://blog.csdn.net/Hello_World_QWP/article/details/84554031">https://blog.csdn.net/Hello_World_QWP/article/details/84554031</a></p>
+
+<h2 id="toc_1">安装记录</h2>
+
+<p>sudo docker build . -t registry.aibee.cn/zzzheng/logstat:0.1</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/8/23</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
           				   
                     
 
@@ -716,7 +554,7 @@ examples/src/main/python/mllib/tf_idf_example.py</li>
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
             
-                <h1>zhenzhen学习笔记</h1>
+                <h1>zhenzhen数据科学笔记</h1>
                 <div class="site-des"></div>
                 <div class="social">
 
@@ -745,6 +583,8 @@ examples/src/main/python/mllib/tf_idf_example.py</li>
 
       	<p class="cat-list">
         
+            <a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html"><strong>轨迹分析</strong></a>
+        
             <a href="1%20Tools.html"><strong>1 Tools</strong></a>
         
             <a href="2%20Get%20Data.html"><strong>2 Get Data</strong></a>
@@ -757,17 +597,15 @@ examples/src/main/python/mllib/tf_idf_example.py</li>
         
             <a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统</strong></a>
         
-            <a href="6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html"><strong>6 文本&视频</strong></a>
+            <a href="6.CV.html"><strong>6.CV</strong></a>
+        
+            <a href="6%20NLP.html"><strong>6 NLP</strong></a>
         
             <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习</strong></a>
         
             <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
-        
-            <a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html"><strong>轨迹数据</strong></a>
-        
-            <a href="%E8%AF%BB%E4%B9%A6.html"><strong>读书</strong></a>
          
         </p>
 
@@ -784,12 +622,6 @@ examples/src/main/python/mllib/tf_idf_example.py</li>
 	      
 		      
 			      <li class="post">
-			        <a href="15706729896574.html"></a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
 			        <a href="15687050894061.html">0.综述</a>
 			      </li>
 		     
@@ -802,13 +634,19 @@ examples/src/main/python/mllib/tf_idf_example.py</li>
 		  
 		      
 			      <li class="post">
+			        <a href="15637037681646.html">1 基础工具包安装pip</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15637025346412.html">1. conda 环境管理</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15694859531608.html">1.trajectory preprocessing</a>
+			        <a href="15637037713554.html">1. 数据可视化概述</a>
 			      </li>
 		     
 		  

@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  zhenzhen学习笔记
+  zhenzhen数据科学笔记
   
   </title>
   
   
-  <link href="atom.xml" rel="alternate" title="zhenzhen学习笔记" type="application/atom+xml">
+  <link href="atom.xml" rel="alternate" title="zhenzhen数据科学笔记" type="application/atom+xml">
     <link rel="stylesheet" href="asset/css/foundation.min.css" />
     <link rel="stylesheet" href="asset/css/docs.css" />
     <script src="asset/js/vendor/modernizr.js"></script>
@@ -64,7 +64,7 @@
 
         <nav class="tab-bar show-for-small">
   <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-    <span> &nbsp; zhenzhen学习笔记</span>
+    <span> &nbsp; zhenzhen数据科学笔记</span>
   </a>
 </nav>
 
@@ -81,6 +81,8 @@
     <li><label>Categories</label></li>
 
         
+            <li><a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html">轨迹分析</a></li>
+        
             <li><a href="1%20Tools.html">1 Tools</a></li>
         
             <li><a href="2%20Get%20Data.html">2 Get Data</a></li>
@@ -93,17 +95,15 @@
         
             <li><a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html">6 推荐系统</a></li>
         
-            <li><a href="6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html">6 文本&视频</a></li>
+            <li><a href="6.CV.html">6.CV</a></li>
+        
+            <li><a href="6%20NLP.html">6 NLP</a></li>
         
             <li><a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">7 深度学习</a></li>
         
             <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
-        
-            <li><a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html">轨迹数据</a></li>
-        
-            <li><a href="%E8%AF%BB%E4%B9%A6.html">读书</a></li>
          
 
       </ul>
@@ -126,233 +126,48 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637037679256.html">
+                <a class="clearlink" href="15637037680228.html">
                 
-                  <h1>Rmarkdown</h1>
+                  <h1>FM 模型</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">python支持</h2>
+                        	<blockquote>
+<p>背景</p>
+</blockquote>
 
-<p>Rmarkdown对python兼容 <a href="https://github.com/rstudio/reticulate">https://github.com/rstudio/reticulate</a></p>
+<p>一般的线性模型 \(y=w_0 + \sum w_i x_i\)， 当考虑了特征之间的相关性即交互效应(这里以二阶为例)后模型形式是：<br/>
+\[y=w_0 + \sum w_i x_i + \sum_1^{n-1}\sum_{i+1}^n w_{ij}x_ix_j\]</p>
 
-<h2 id="toc_1">图片</h2>
+<p>这里n表示特征的个数</p>
 
-<p>现在很多makdown编辑器是可以支持拖拽本地图片或者截屏就可以直接在markdown中生成图片的，非常方便，比如我现在在用的MWeb编辑器。</p>
+<blockquote>
+<p>模型如何求解呢？</p>
+</blockquote>
 
-<p>但是如果同一篇内容需要在不同的平台上进行发布，那图片处理起来就比较麻烦。因为需要重新上传到不同平台。<br/>
-最方便的处理方式就是利用图床， 这里以七牛云存储为例。<br/>
-<img src="media/15378048283915/15383141468224.jpg" alt=""/></p>
+<p>如果把\(x_ix_j\)看做一个新的变量，相当于整体上还是一个线性回归模型，似乎可以用正常的线性回归的办法进行求解。<br/>
+但是这里未知的要求解的参数有n(+1)/2个，很多时候特征中会有一些分类型的变量，当通过哑变量的方式引入模型中的时候，特征数目k会非常大，从而导致要求解的参数个数较大，并且数据特别稀疏。另一方面，分类特征就到时候，\(x_ix_j\)是非零的比例较小，从而导致\(w\)无法计算出来。</p>
 
-<p>step1： 首先在七牛官网上申请注册账号，并且添加<strong>对象存储</strong></p>
+<blockquote>
+<p>引入其他辅助信息</p>
+</blockquote>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
-          				   
-                    
+<p>我们可以引入一个辅助向量 对于\(w_{ij}\)形成的对称矩阵W，可以进行分解\(W=V^TV\)</p>
 
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037693934.html">
-                
-                  <h1>[2018-06-25]学习1</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>参考资源list<br/>
-2018年06月25日</p>
-
-<p><a href="https://www.tensorflow.org/get_started/get_started_for_beginners">https://www.tensorflow.org/get_started/get_started_for_beginners</a></p>
-
-<p><a href="http://playground.tensorflow.org">http://playground.tensorflow.org</a></p>
-
-<p><a href="https://github.com/aymericdamien/TensorFlow-Examples">https://github.com/aymericdamien/TensorFlow-Examples</a></p>
-
-<p>中文社区<br/>
-<a href="http://www.tensorfly.cn/">http://www.tensorfly.cn/</a><br/>
-<a href="https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/1-2-install/">https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/1-2-install/</a></p>
-
-<h2 id="toc_0">1.为什么</h2>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637065259056.html">
-                
-                  <h1>about me</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>about me  </p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15665281146000.html">
-                
-                  <h1>docker</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>docker是一个容器，可以让开发者打包他们的应用以及依赖的环境到一个容器中，然后可以移植到别的机器上。容器是使用的沙箱机制，相互之间不会有任何接口。</p>
-
-<p>docker 官网： <a href="http://www.docker.com">http://www.docker.com</a><br/>
-容器:  对象<br/>
-镜像images: 类，是用于创建docker容器的模版<br/>
-docker仓库<a href="https://hub.docker.com%EF%BC%8C">https://hub.docker.com，</a> 是用来提供各种镜像的仓库。</p>
-
-<p><strong>mac安装</strong><br/>
-直接从官网下载安装即可 <a href="https://download.docker.com/mac/stable/Docker.dmg%E3%80%82">https://download.docker.com/mac/stable/Docker.dmg。</a><br/>
-由于国内网速问题，安装完docker后，后续拉取镜像可能会十分缓慢，可以配置加速器来解决，如下图所示。</p>
-
-<p>阿里云的加速器：<a href="https://help.aliyun.com/document_detail/60750.html">https://help.aliyun.com/document_detail/60750.html</a><br/>
-网易加速器：<a href="http://hub-mirror.c.163.com">http://hub-mirror.c.163.com</a><br/>
-官方中国加速器：<a href="https://registry.docker-cn.com">https://registry.docker-cn.com</a><br/>
-ustc的镜像：<a href="https://docker.mirrors.ustc.edu.cn">https://docker.mirrors.ustc.edu.cn</a><br/>
-daocloud：<a href="https://www.daocloud.io/mirror#accelerator-doc%EF%BC%88%E6%B3%A8%E5%86%8C%E5%90%8E%E4%BD%BF%E7%94%A8%EF%BC%89">https://www.daocloud.io/mirror#accelerator-doc（注册后使用）</a></p>
-
-<p><img src="media/15665281146000/15665304699914.jpg" alt=""/></p>
-
-<p><strong>基本使用</strong></p>
-
-<pre><code class="language-text"># 运行方式 1： 类似于运行pyhton脚本 python xxx.py  参数
-docker run ubuntu:18.10 /bin/echo &quot;Hello world&quot;
-</code></pre>
+<p>将模型改成如下形式<br/>
+\[y=w_0 + \sum w_i x_i + \sum_1^{n-1}\sum_{i+1}^n &lt;v_i, v_j&gt;x_ix_j\]</p>
 
 <ul>
-<li>ubuntu:18.10是指定要运行的镜像，docker会先从本机上检查是否存在，如果不存在会从docker hub下载公共镜像。</li>
-<li> /bin/echo &quot;Hello world&quot;， 在启动容器里执行命令</li>
+<li>从形式上来看，我们知道\(w_ij\)的矩阵是对称的，其形式上和协差阵\(&lt;v_i, v_j&gt;\)很类似</li>
 </ul>
 
-<pre><code class="language-text"># 运行方式2： 交互式运行
-docker run -i -t ubuntu:18.10 /bin/bash
-</code></pre>
-
-<ul>
-<li>-t 在新容器中指定一个终端</li>
-<li>-i 允许你对容器内的标准输入 (STDIN) 进行交互。</li>
-</ul>
-
-<p>后台以进程方式运行docker</p>
-
-<pre><code class="language-text">docker run -d ubuntu:18.10 /bin/sh -c &quot;while true; do echo hello world; sleep 1; done&quot;
-</code></pre>
-
-<p>这个时候发现会出现一串字符，这个就是dicker的id。</p>
-
-<ul>
-<li>-d 让容器在后台运行</li>
-</ul>
-
-<pre><code class="language-text">docker ps   # 查看当前有哪些容器在运行
-exit    #退出容器或者`ctrl +D`
-docker logs 容器id    #查看容器内的标准输出
-docker stop  容器id    # 停止正在运行的docker
-</code></pre>
-
-<p><strong>docker 镜像</strong></p>
-
-<pre><code class="language-text">docker pull   REPOSITORY:TAG    # 下载镜像
-docker search httpd                      # 查找镜像
-
-# 更新镜像，当自己在镜像内做了一些更新后，可以提交
-# commit -m &#39;更新信息&#39; -a 作者 容器id 新版本的镜像名
-docker commit -m=&quot;zzz update&quot; -a=&quot;zzz&quot; 容器的id zzz/ubuntu:v2
-</code></pre>
-
-<p>从零创建一个镜像<br/>
-从零创建镜像的命令是 <code>docker build</code>, 其依赖于一个配置文件Dockerfile，这个文件包含了一组命令来告诉docker如何创建镜像。</p>
-
-<p><code>docker build -t 镜像名 配置文件地址</code></p>
-
-<p>配置文件的一个例子：</p>
-
-<pre><code class="language-text"># 每一个指令的前缀必须是大写
-# FROM 表示使用哪个镜像源
-# RUN 表示告诉docker在镜像内执行命令
-FROM ubuntu:16.04
-RUN apt-get update
-RUN apt-get install -y unzip cmake g++ make ffmpeg libx264-dev wget
-WORKDIR /opt/
-</code></pre>
-
-<p><strong>删除</strong></p>
-
-<pre><code class="language-text">docker rm 容器
-docker rmi 镜像名
-</code></pre>
+<p>\(v_i\)相当于是第i维隐向量，假设其维度是k&lt;&lt;n, 这样模型的参数就由原来的n(n+1)/2 变为了</p>
 
 <h2 id="toc_0">参考资料</h2>
 
-<p><a href="https://www.runoob.com/docker/macos-docker-install.html">https://www.runoob.com/docker/macos-docker-install.html</a><br/>
-docker 常用参数 <a href="https://blog.csdn.net/Hello_World_QWP/article/details/84554031">https://blog.csdn.net/Hello_World_QWP/article/details/84554031</a></p>
+<p>简书-石晓文 <a href="https://www.jianshu.com/p/152ae633fb00">https://www.jianshu.com/p/152ae633fb00</a><br/>
+美团技术博客 <a href="https://tech.meituan.com/deep_understanding_of_ffm_principles_and_practices.html">https://tech.meituan.com/deep_understanding_of_ffm_principles_and_practices.html</a></p>
 
                         
                       </div>
@@ -361,7 +176,268 @@ docker 常用参数 <a href="https://blog.csdn.net/Hello_World_QWP/article/detai
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/8/23</span>
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037688620.html">
+                
+                  <h1>Face综述</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><a href="https://blog.csdn.net/chenriwei2/article/details/50631212">https://blog.csdn.net/chenriwei2/article/details/50631212</a></p>
+
+<p>这个有数据，已经训练好的模型<br/>
+<a href="https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/">https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/</a></p>
+
+<p>综述@@@@ 需要精读！！！<br/>
+<a href="https://blog.csdn.net/Mr_EvanChen/article/details/75501730">https://blog.csdn.net/Mr_EvanChen/article/details/75501730</a><br/>
+<a href="https://zhuanlan.zhihu.com/p/24816781">https://zhuanlan.zhihu.com/p/24816781</a></p>
+
+<p>知乎 狗头山人七 专栏<br/>
+<a href="https://zhuanlan.zhihu.com/p/25025596">https://zhuanlan.zhihu.com/p/25025596</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='face.html'>face</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15777601839480.html">
+                
+                  <h1>HMM</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><a href="https://www.cnblogs.com/pinard/p/6945257.html">https://www.cnblogs.com/pinard/p/6945257.html</a></p>
+
+<p>python实现 <a href="https://github.com/hmmlearn/hmmlearn">https://github.com/hmmlearn/hmmlearn</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/12/31</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037683461.html">
+                
+                  <h1>Jupyter notebook</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>类似于r的markdown</p>
+
+<p>GitHub 上也直接支持 Jupyter notebook 的渲染。借助此出色的功能，你可以轻松地共享工作。<a href="http://nbviewer.jupyter.org/">http://nbviewer.jupyter.org/</a> 也会提供 GitHub 代码库中的 notebook ，以及存储在其他地方的 notebook。</p>
+
+<p>名称 Jupyter 由 Julia、Python 和 R 组合而成，早期的两个非 Python 内核分别是 R 语言和 Julia 语言</p>
+
+<h2 id="toc_0">1.安装</h2>
+
+<ul>
+<li>如果安装anaconda 会自带</li>
+<li>通过conda环境安装 <code>conda install jupyter notebook</code>，或者<code>pip install jupyter notebook</code></li>
+</ul>
+
+<pre><code class="language-text"># 启动
+jupyter notebook
+</code></pre>
+
+<p>快捷键</p>
+
+<p>在上方插入cell：a<br/>
+在下方插入cell：b<br/>
+剪切当前cell：x<br/>
+删除当前cell：dd<br/>
+撤销删除：u<br/>
+上下：方向键 or jk (同vim)<br/>
+扩展选中上下左右：shift+jk<br/>
+当前cell转入markdown状态：m<br/>
+当前cell转入代码状态：y</p>
+
+<h2 id="toc_1">magic 关键字</h2>
+
+<p>Magic 关键字是可以在单元格中运行的特殊命令，能让你控制notebook 本身或执行系统调用（例如更改目录）</p>
+
+<p>Magic 命令的前面带有一个或两个百分号（% 或 %%），分别对应行 Magic 命令和单元格 Magic 命令。行 Magic 命令仅应用于编写 Magic 命令时所在的行，而单元格 Magic 命令应用于整个单元格。</p>
+
+<p>对于 Python 内核，可以使用 Magic 命令 %pdb 开启交互式调试器。出错时，你能检查当前命名空间中的变量。</p>
+
+<h2 id="toc_2">2.转换 notebook格式</h2>
+
+<p>Notebook 只是扩展名为 .ipynb 的大型 JSON 文件。</p>
+
+<p>转换格式的命令 <code>nbconvert</code></p>
+
+<pre><code class="language-text">jupyter nbconvert --to html notebook.ipynb   #转成html
+jupyter nbconvert --to markdown xxx.ipynb 
+</code></pre>
+
+<p>目前支持的转换格式(<a href="https://nbconvert.readthedocs.io/en/latest/usage.html">https://nbconvert.readthedocs.io/en/latest/usage.html</a>)<br/>
+HTML,<br/>
+LaTeX,<br/>
+PDF,<br/>
+Reveal.js HTML slideshow,<br/>
+Markdown,<br/>
+reStructuredText,<br/>
+executable script,<br/>
+notebook.</p>
+
+<p><strong>创建幻灯片</strong></p>
+
+<p>在 notebook 中创建幻灯片的过程像平常一样，但需要指定作为幻灯片的单元格和单元格的幻灯片类型。在菜单栏中，点击“View”（视图）&gt;“Cell Toolbar”（单元格工具栏）&gt;“Slideshow”（幻灯片），以便在每个单元格上弹出幻灯片单元格菜单。</p>
+
+<pre><code class="language-text">#转换并在浏览器中展示
+jupyter nbconvert notebook.ipynb --to slides --post serve
+</code></pre>
+
+<h2 id="toc_3">3.测试机上安装jupyter</h2>
+
+<p><a href="https://cloud.tencent.com/developer/article/1147487">https://cloud.tencent.com/developer/article/1147487</a></p>
+
+<ul>
+<li>安装jupyter</li>
+<li>生成密码 python -c &quot;import IPython;print IPython.lib.passwd()&quot;</li>
+<li>修改配置文件 </li>
+</ul>
+
+<p>/home/work/.jupyter/jupyter_notebook_config.py</p>
+
+<p>如果启动报错</p>
+
+<pre><code class="language-text">socket.gaierror: [Errno -2] Name or service not known
+</code></pre>
+
+<p>可以加上自己的ip</p>
+
+<pre><code class="language-text"> jupyter notebook --ip=xxxx
+ jupyter lab --ip=xxx
+</code></pre>
+
+<h2 id="toc_4">4.其他工具</h2>
+
+<p><strong>jupyter-lab</strong><br/>
+jupyter-lab 是jupyter-notebook的升级版，界面更加炫酷，也支持更多功能，强烈建议使用lab方式</p>
+
+<p><strong>colab</strong><br/>
+google 基于jupyter开发的存在在google driver上的网页版<br/>
+<a href="https://colab.research.google.com/">https://colab.research.google.com/</a><br/>
+本身功能上差不太多，主要是有search和share功能，查看别人分享的代码</p>
+
+<h2 id="toc_5">5.常见问题</h2>
+
+<p>Q1: 若import了自己写的外部模块，如果这个外部模块有更新，再次执行import，jupyter是不会重新导入的<br/>
+<a href="https://blog.csdn.net/ybdesire/article/details/86709727">https://blog.csdn.net/ybdesire/article/details/86709727</a></p>
+
+<p>对于 Python2.x<br/>
+import some_module<br/>
+reload(some_module)</p>
+
+<p>对于 Python 3.2 and 3.3:<br/>
+import some_module<br/>
+import importlib<br/>
+importlib.reload(some_module)</p>
+
+<p>对于 Python3.4+<br/>
+import some_module<br/>
+import imp<br/>
+imp.reload(some_module)</p>
+
+<p>方法2：<br/>
+auto_load</p>
+
+<p><a href="https://codeday.me/bug/20181215/447675.html">https://codeday.me/bug/20181215/447675.html</a></p>
+
+<p>Q2. <code>jupyter lab</code> 启动提示</p>
+
+<p><img src="media/15637037680349/15665439689997.jpg" alt=""/></p>
+
+<p>应该是编码问题，暂时的解决方案<a href="https://github.com/jupyter/notebook/issues/2789#issuecomment-338380336">https://github.com/jupyter/notebook/issues/2789#issuecomment-338380336</a></p>
+
+<p><code>LANG=zn jupyter lab</code></p>
+
+<p>这个问题后来查了下说是python2的bug，安装python3就不会出现这个问题。</p>
+
+<p>Q3. 切换内核<br/>
+很多代码都是python2写的，用pip3安装jupyter之后，想切换写内核。<br/>
+<a href="https://www.cnblogs.com/Jeffiy/p/4861528.html">https://www.cnblogs.com/Jeffiy/p/4861528.html</a></p>
+
+<pre><code class="language-text">jupyter kernelspec list
+</code></pre>
+
+<p>Q4: jupyterlab 中的内容，可以通过右键点击复制下载链接得到一个url，通过该url可以直接在网页上展示该文件。注意该url后面有个 _xsrf=xxxx的标记。<br/>
+如果重启了jupyterlab，这个标记也需要更新</p>
+
+<h2 id="toc_6">6 好用的插件</h2>
+
+<p><a href="https://blog.csdn.net/yh0vlde8vg8ep9vge/article/details/85333338">https://blog.csdn.net/yh0vlde8vg8ep9vge/article/details/85333338</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
@@ -380,82 +456,31 @@ docker 常用参数 <a href="https://blog.csdn.net/Hello_World_QWP/article/detai
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037690385.html">
+                <a class="clearlink" href="15838236096534.html">
                 
-                  <h1>face_recgnization</h1>
+                  <h1>MMLab</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>github<br/>
-<a href="https://github.com/ageitgey/face_recognition">https://github.com/ageitgey/face_recognition</a></p>
+                        	<h2 id="toc_0">1. MMLab + DeepFashion 服饰识别</h2>
 
-<h2 id="toc_0">1. 安装</h2>
+<p>项目地址: <a href="https://github.com/open-mmlab/mmfashion">https://github.com/open-mmlab/mmfashion</a></p>
 
-<p>文档： <a href="https://zhuanlan.zhihu.com/p/28271869">https://zhuanlan.zhihu.com/p/28271869</a></p>
+<p>香港中文大学多媒体实验室（Multimedia Lab）开展的MMFashion项目，是针对服饰领域提供的一个通用的toolbox(基于pytorch)</p>
 
-<pre><code class="language-text">pip install face_recognition
-</code></pre>
+<p>主要功能有:</p>
 
-<p>直接安装会报错，安装face_recognition这个之前需要先安装编译dlib</p>
+<ul>
+<li>属性归类</li>
+<li>相似服装检索</li>
+<li>服饰关键点检测</li>
+</ul>
 
-<pre><code class="language-text">brew install boost
-brew install boost-python --with-python3
-
-# install dlib
-git clone https://github.com/davisking/dlib.git
-cd dlib
-mkdir build; cd build; cmake .. -DDLIB_USE_CUDA=0 -DUSE_AVX_INSTRUCTIONS=1; cmake --build 
-
-cd ..
-python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
-</code></pre>
-
-<p>If there is no cmake on your mac, you can use  <code>brew install cmake</code>. After all these have been done, run</p>
-
-<pre><code class="language-text">pip install face_recognition
-</code></pre>
-
-<h2 id="toc_1">2.usage</h2>
-
-<p>face_recognition有两种使用方式，命令行方式和python包方式</p>
-
-<p>(1) 命令行方式</p>
-
-<p>(2) python 包<br/>
-<a href="https://face-recognition.readthedocs.io/en/latest/face_recognition.html#module-face_recognition.api">https://face-recognition.readthedocs.io/en/latest/face_recognition.html#module-face_recognition.api</a></p>
-
-<p></p>
-
-<h2 id="toc_2">参考资料</h2>
-
-<p><a href="https://zhuanlan.zhihu.com/p/28271869">https://zhuanlan.zhihu.com/p/28271869</a></p>
-
-<p><a href="https://medium.com/@ageitgey">https://medium.com/@ageitgey</a></p>
-
-<hr/>
-
-<p><a href="https://www.jianshu.com/p/281aa6a3823a">https://www.jianshu.com/p/281aa6a3823a</a></p>
-
-<p>一个案例<br/>
-<a href="https://www.jianshu.com/p/38ca6daf6b40">https://www.jianshu.com/p/38ca6daf6b40</a><br/>
-<a href="http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html">http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html</a></p>
-
-<p>tf案例<br/>
-<a href="https://blog.csdn.net/u010016927/article/details/75722416">https://blog.csdn.net/u010016927/article/details/75722416</a></p>
-
-<p>knn<br/>
-<a href="https://www.leiphone.com/news/201707/gIbNsPtWk460m5vj.html">https://www.leiphone.com/news/201707/gIbNsPtWk460m5vj.html</a></p>
-
-<p><a href="https://blog.csdn.net/Mbx8X9u/article/details/79124840">https://blog.csdn.net/Mbx8X9u/article/details/79124840</a></p>
-
-<p><a href="https://www.ctolib.com/topics-101544.html">https://www.ctolib.com/topics-101544.html</a></p>
-
-<p><a href="https://www.oschina.net/code/snippet_2558914_54339">https://www.oschina.net/code/snippet_2558914_54339</a></p>
-
-<h2 id="toc_3">new</h2>
-
-<p><a href="https://www.leiphone.com/news/201704/rYdpAvh4SvgVPpRQ.html">https://www.leiphone.com/news/201704/rYdpAvh4SvgVPpRQ.html</a></p>
+<p>使用：<br/>
+可以按照说明开始 <a href="https://github.com/open-mmlab/mmfashion/blob/master/docs/GETTING_STARTED.md">https://github.com/open-mmlab/mmfashion/blob/master/docs/GETTING_STARTED.md</a><br/>
+同时可以替换成自己的数据集 ,<br/>
+含有的基础model: <a href="https://github.com/open-mmlab/mmfashion/blob/master/docs/MODEL_ZOO.md">https://github.com/open-mmlab/mmfashion/blob/master/docs/MODEL_ZOO.md</a></p>
 
                         
                       </div>
@@ -464,10 +489,10 @@ python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2020/3/10</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html'>6 文本&视频</a></span>
+          					    <span class="posted-in"><a href='fashion.html'>fashion</a></span>
           				   
                     
 
@@ -505,7 +530,7 @@ python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
             
-                <h1>zhenzhen学习笔记</h1>
+                <h1>zhenzhen数据科学笔记</h1>
                 <div class="site-des"></div>
                 <div class="social">
 
@@ -534,6 +559,8 @@ python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
 
       	<p class="cat-list">
         
+            <a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html"><strong>轨迹分析</strong></a>
+        
             <a href="1%20Tools.html"><strong>1 Tools</strong></a>
         
             <a href="2%20Get%20Data.html"><strong>2 Get Data</strong></a>
@@ -546,17 +573,15 @@ python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
         
             <a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统</strong></a>
         
-            <a href="6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html"><strong>6 文本&视频</strong></a>
+            <a href="6.CV.html"><strong>6.CV</strong></a>
+        
+            <a href="6%20NLP.html"><strong>6 NLP</strong></a>
         
             <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习</strong></a>
         
             <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
-        
-            <a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html"><strong>轨迹数据</strong></a>
-        
-            <a href="%E8%AF%BB%E4%B9%A6.html"><strong>读书</strong></a>
          
         </p>
 
@@ -573,12 +598,6 @@ python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
 	      
 		      
 			      <li class="post">
-			        <a href="15706729896574.html"></a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
 			        <a href="15687050894061.html">0.综述</a>
 			      </li>
 		     
@@ -591,13 +610,19 @@ python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
 		  
 		      
 			      <li class="post">
+			        <a href="15637037681646.html">1 基础工具包安装pip</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15637025346412.html">1. conda 环境管理</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15694859531608.html">1.trajectory preprocessing</a>
+			        <a href="15637037713554.html">1. 数据可视化概述</a>
 			      </li>
 		     
 		  

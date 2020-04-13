@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  zhenzhen学习笔记
+  zhenzhen数据科学笔记
   
   </title>
   
   
-  <link href="atom.xml" rel="alternate" title="zhenzhen学习笔记" type="application/atom+xml">
+  <link href="atom.xml" rel="alternate" title="zhenzhen数据科学笔记" type="application/atom+xml">
     <link rel="stylesheet" href="asset/css/foundation.min.css" />
     <link rel="stylesheet" href="asset/css/docs.css" />
     <script src="asset/js/vendor/modernizr.js"></script>
@@ -64,7 +64,7 @@
 
         <nav class="tab-bar show-for-small">
   <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-    <span> &nbsp; zhenzhen学习笔记</span>
+    <span> &nbsp; zhenzhen数据科学笔记</span>
   </a>
 </nav>
 
@@ -81,6 +81,8 @@
     <li><label>Categories</label></li>
 
         
+            <li><a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html">轨迹分析</a></li>
+        
             <li><a href="1%20Tools.html">1 Tools</a></li>
         
             <li><a href="2%20Get%20Data.html">2 Get Data</a></li>
@@ -93,17 +95,15 @@
         
             <li><a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html">6 推荐系统</a></li>
         
-            <li><a href="6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html">6 文本&视频</a></li>
+            <li><a href="6.CV.html">6.CV</a></li>
+        
+            <li><a href="6%20NLP.html">6 NLP</a></li>
         
             <li><a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">7 深度学习</a></li>
         
             <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
-        
-            <li><a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html">轨迹数据</a></li>
-        
-            <li><a href="%E8%AF%BB%E4%B9%A6.html">读书</a></li>
          
 
       </ul>
@@ -126,211 +126,132 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637037682671.html">
+                <a class="clearlink" href="15697555457833.html">
                 
-                  <h1>聚类Tools篇</h1>
+                  <h1>应用案例</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><a href="http://glaros.dtc.umn.edu/gkhome/cluto/cluto/download">http://glaros.dtc.umn.edu/gkhome/cluto/cluto/download</a></p>
+                        	<h2 id="toc_0">Learning and Classification of Trajectories in Dynamic Scenes: A General Framework for Live Video Analysis</h2>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                    
+<p>作者的通用方法：topological scene 描述<br/>
+用Graph的方法，nodes表示POI，edges表示活动的path，将这个称作POI/AP方法<br/>
+(1)POI<br/>
+有两类POI，一类是进/出时候（这种可以通过轨迹数据的开始和结束点确定），一类是逗留的点(这种可以通过算法识别出来)<br/>
+这些区域可以通过混合高斯模型进行估计\(\sum w_iN(u_i,\Sigma_i)\)</p>
 
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037731727.html">
-                
-                  <h1>聚类方法-spark的bisecting和streaming</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><a href="http://blog.csdn.net/franket268/article/details/23604671">http://blog.csdn.net/franket268/article/details/23604671</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025344831.html">
-                
-                  <h1>聚类方法Mini Batch KMeans</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>kmeans在数据量大的时候聚类时间会很久。Mini Batch KMeans使用了一个种叫做Mini Batch（分批处理）的方法对数据点之间的距离进行计算。Mini Batch的好处是计算过程中不必使用所有的数据样本，而是从不同类别的样本中抽取一部分样本来代表各自类型进行计算。由于计算样本量少，所以会相应的减少运行时间，但另一方面抽样也必然会带来准确度的下降</p>
-
-<h2 id="toc_0">迭代步骤：</h2>
-
-<p>1：从数据集中随机抽取一些数据形成小批量，把他们分配给最近的质心<br/>
-2：更新质心<br/>
-与K均值算法相比，数据的更新是在每一个小的样本集上。对于每一个小批量，通过计算平均值得到更新质心，并把小批量里的数据分配给该质心，随着迭代次数的增加，这些质心的变化是逐渐减小的，直到质心稳定或者达到指定的迭代次数，停止计算</p>
-
-<h2 id="toc_1">训练方法</h2>
-
-<p>和一般的Kmeans一样</p>
-
-<pre><code class="language-text">from sklearn.cluster import MiniBatchKMeans
-
-clf = MiniBatchKMeans(n_clusters = 3)
-clf.fit(X)
-pre_clu = clf.labels_
-</code></pre>
-
-<p>【参考资料】<br/>
-<a href="http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/">http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025347693.html">
-                
-                  <h1>视频广告</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><a href="http://ai.baidu.com/docs#/Begin/top">http://ai.baidu.com/docs#/Begin/top</a></p>
-
-<pre><code class="language-text">ffmpeg -i jcr_21.mp4  -vn -codec:a pcm_s16le -ar 16000 -ac 1 -f f16le   -f segment -segment_time 30  out%03d.wav      
-</code></pre>
-
-<p>任意一个视频  这么切,就可以生成访问百度语音转文字的音频了   可以改的两个地方一个是输入视频名字  另一个是按多少秒一分割   这个是30秒分割</p>
-
-<p>代码<br/>
-<a href="media/15086420955998/get_baiduimage_data.py">get_baiduimage_data.py</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15645026184752.html">
-                
-                  <h1>调查问卷的信度、效度</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">信度</h2>
-
-<p>信度表示的是数据是否可信，是否具有一致性，他是一种稳定性的度量，并不能保证结果是准确的。</p>
-
-<p><strong>信度的评价方法</strong></p>
+<p>(2)route clustering</p>
 
 <ul>
-<li>重测信度：即相同的标准下，间隔一定时间段后再测试一次，看下前后两次结果的相关度</li>
-<li>复本信度：让同一个测试者一次填写两份平行问卷，平行问卷是指题目的表述不同其他方面一样。这种方法有个明显的缺点就是不太好执行。</li>
-<li>折半系数：将问卷的题目分为奇数题和偶数题两部分，计算这两部分的相关系数，以此来衡量问卷的信度。</li>
-<li>\(\alpha\)系数：他等于所有可能组合的折半系数的均值</li>
+<li>fuzzy C means</li>
+<li>聚完后有些类别可能会比较详细，还需要再进行一步route mergeing操作. 如果两个类之间的dtw距离均足够小，就认为是一类</li>
 </ul>
 
-<p>\[\alpha = \frac{K}{K-1}(1 - \frac{\sum S_i^2}{S_x^2})\]<br/>
-其中k表示总的题目数，\(s_i\)表示是第i题的方差，\(s_x\)是总的方差。当信度比较高的时候\(\alpha\)值也会比较大，当信度较低的时候方差比应该近似为1，导致整个\(\alpha\) 都比较小</p>
+<p>(3) path modeling</p>
 
-<h2 id="toc_1">效度</h2>
+<p>HMM model</p>
 
-<p>效度是表示数据是否有效，即其是否反映了问卷者真实的问题，效度用来衡量结果是否是准确的，但是不一定能保证稳定性。</p>
+<p>===&gt; zzz<br/>
+应用的时候一个是实时预测，可以用概率图，实时给出其到每个路径的概率。</p>
 
-<p><strong>效度的评价方法</strong></p>
+<h2 id="toc_1">1. indoor trajectory mining</h2>
+
+<p>1 preprocessing</p>
 
 <ul>
-<li>表面效度：通过专家评价的办法</li>
-<li>内容效度</li>
+<li>跳楼层问题，1-3</li>
+<li>空间异常点</li>
+<li>排除不感兴趣的点，电梯，。</li>
+<li>数据压缩，相同坐标的点</li>
 </ul>
 
-<p><a href="https://wenku.baidu.com/view/a18a33b47e21af45b207a8ac.html?re=view">https://wenku.baidu.com/view/a18a33b47e21af45b207a8ac.html?re=view</a></p>
+<p>2 转化为semantic trajectory<br/>
+即将坐标转为店铺id</p>
 
-<p><a href="https://wenku.baidu.com/view/cf19e18ca0116c175f0e48c1.html">https://wenku.baidu.com/view/cf19e18ca0116c175f0e48c1.html</a></p>
+<p><strong>trajectory segmentation</strong></p>
+
+<p>轨迹切分按照方法来讲，大致分为三类:</p>
+
+<ul>
+<li>无监督的： 比如通过聚类的方法 TRACLUS,SMOT, CN-SM0T,</li>
+<li>有监督的L=: </li>
+<li>半监督的</li>
+<li><p>切分效果的评估：<br/>
+(1) 基于无监督的聚类方法的评估</p></li>
+<li><p>average purity and average coverage.</p></li>
+</ul>
+
+<h2 id="toc_2">论文举例</h2>
+
+<p>(0) interpolation based change detection</p>
+
+<p>OWS(Octal Window Segmentation)切分方法，作者的出发点：当一个运动的物体其运动状态发生改变时候，因为有惯性，他会超出之前的预期。通过定义的误差函数找到这些“拐点”从而将轨迹进行切分。</p>
+
+<h2 id="toc_3">Poi</h2>
+
+<p><strong>semantic scene model</strong></p>
+
+<p>POI点</p>
+
+<ul>
+<li>轨迹的开始/结束</li>
+<li>逗留</li>
+<li>其他自己定义的
+<strong>learning path</strong></li>
+</ul>
+
+<p>对聚出来的每一个类学出来一个path<br/>
+HMM 【16】【22】【55】</p>
+
+<p><strong>分析应用</strong></p>
+
+<ul>
+<li>分流分析： 流量统计、闲逛人群 【21】</li>
+<li><p>速度分析</p></li>
+<li><p>后续的path分类<br/>
+<img src="media/15697555457833/15776934845470.jpg" alt=""/></p></li>
+<li><p>异常点检测<br/>
+<img src="media/15697555457833/15776934972246.jpg" alt=""/></p></li>
+<li><p>实时预测</p></li>
+<li><p>交通冲突</p></li>
+</ul>
+
+<h2 id="toc_4">Trajectory Clustering: A Partition-and-Group Framework</h2>
+
+<p>作者出发点不是从全局出发，因为全局上不相似可能在片段是是相似的，尤其是在当只对某些片段感兴趣的时候。作者采用了先partition再group的方法。这种方法的优势:能发现common sub-trajectory。其核心思想如下.github上的一个实现： <a href="https://github.com/MillerWu2014/trajectory-cluster">https://github.com/MillerWu2014/trajectory-cluster</a><br/>
+partition-and-group framework<br/>
+<img src="media/15686368904229/15735658553309.jpg" alt=""/></p>
+
+<p>主要步骤如下</p>
+
+<p>(1) 轨迹的距离度量<br/>
+两条轨迹的距离会从三个方面进行度量：</p>
+
+<ul>
+<li>垂直距离</li>
+<li>平行距离</li>
+<li>角度距离
+<img src="media/15686368904229/15736362612288.jpg" alt=""/></li>
+</ul>
+
+<p>最终的距离是以上三种的加权<br/>
+<img src="media/15686368904229/15736424496498.jpg" alt=""/></p>
+
+<p>(2) 轨迹切分<br/>
+轨迹切分，即用尽量少的点，能尽量代表原来轨迹的信息(减少与原始轨迹的误差)。这里主要是通过MDL(最小描述长度)算法。 L(H)+L(D|H), partition后的轨迹长度 + 原始轨迹与partition后的轨迹的距离。</p>
+
+<pre><code class="language-text">MDL(麦当劳)原理:是研究通信编码的时候提出的，对于给定的一组数据D，为了要对其进行保存，一般都会采用某种模型H对其进行编码压缩。同时为了能够正确恢复这些数据，将模型也保存起来。所以需要保存的数据长度=保存模型的数据长度 + 这些数据压缩后的长度. L(H) + L(D|H)
+</code></pre>
+
+<p>(3)cluster<br/>
+对于每一个segment，相当于是一个数据点，然后采用基于密度的聚类。</p>
+
+<p>(4) representative trajectory of a cluster<br/>
+对于聚好类的一堆曲线，需要找到其有representative的曲线来表示这一类的特点。<br/>
+<img src="media/15686368904229/15737121895384.jpg" alt=""/></p>
+
+<p>(2)</p>
 
                         
                       </div>
@@ -339,7 +260,159 @@ pre_clu = clf.labels_
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/31</span>
+                    <span class="date">2019/9/29</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html'>轨迹分析</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15784847557033.html">
+                
+                  <h1>异常值</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/1/8</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15662808343723.html">
+                
+                  <h1>有用的网址&小工具</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ul>
+<li>论文下载，知网论文</li>
+</ul>
+
+<p><a href="https://www.cn-ki.net/">https://www.cn-ki.net/</a></p>
+
+<p>google学术   <a href="https://en.ehn3.com:92/">https://en.ehn3.com:92/</a></p>
+
+<ul>
+<li>微信公众号平台文章同步知乎、简书等平台</li>
+</ul>
+
+<p><a href="https://www.wechatsync.com/#intro">https://www.wechatsync.com/#intro</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/8/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15839963017817.html">
+                
+                  <h1>样本不均衡</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>smote</p>
+
+<p><a href="https://github.com/scikit-learn-contrib/imbalanced-learn">https://github.com/scikit-learn-contrib/imbalanced-learn</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/3/12</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15662005967642.html">
+                
+                  <h1>正交实验设计</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/8/19</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
@@ -380,7 +453,7 @@ pre_clu = clf.labels_
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
             
-                <h1>zhenzhen学习笔记</h1>
+                <h1>zhenzhen数据科学笔记</h1>
                 <div class="site-des"></div>
                 <div class="social">
 
@@ -409,6 +482,8 @@ pre_clu = clf.labels_
 
       	<p class="cat-list">
         
+            <a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html"><strong>轨迹分析</strong></a>
+        
             <a href="1%20Tools.html"><strong>1 Tools</strong></a>
         
             <a href="2%20Get%20Data.html"><strong>2 Get Data</strong></a>
@@ -421,17 +496,15 @@ pre_clu = clf.labels_
         
             <a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统</strong></a>
         
-            <a href="6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html"><strong>6 文本&视频</strong></a>
+            <a href="6.CV.html"><strong>6.CV</strong></a>
+        
+            <a href="6%20NLP.html"><strong>6 NLP</strong></a>
         
             <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习</strong></a>
         
             <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
-        
-            <a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html"><strong>轨迹数据</strong></a>
-        
-            <a href="%E8%AF%BB%E4%B9%A6.html"><strong>读书</strong></a>
          
         </p>
 
@@ -448,12 +521,6 @@ pre_clu = clf.labels_
 	      
 		      
 			      <li class="post">
-			        <a href="15706729896574.html"></a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
 			        <a href="15687050894061.html">0.综述</a>
 			      </li>
 		     
@@ -466,13 +533,19 @@ pre_clu = clf.labels_
 		  
 		      
 			      <li class="post">
+			        <a href="15637037681646.html">1 基础工具包安装pip</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15637025346412.html">1. conda 环境管理</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15694859531608.html">1.trajectory preprocessing</a>
+			        <a href="15637037713554.html">1. 数据可视化概述</a>
 			      </li>
 		     
 		  

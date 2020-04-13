@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  数据可视化概述 - zhenzhen学习笔记
+  1. 数据可视化概述 - zhenzhen数据科学笔记
   
   </title>
   
   
-  <link href="atom.xml" rel="alternate" title="zhenzhen学习笔记" type="application/atom+xml">
+  <link href="atom.xml" rel="alternate" title="zhenzhen数据科学笔记" type="application/atom+xml">
     <link rel="stylesheet" href="asset/css/foundation.min.css" />
     <link rel="stylesheet" href="asset/css/docs.css" />
     <script src="asset/js/vendor/modernizr.js"></script>
@@ -64,7 +64,7 @@
 
         <nav class="tab-bar show-for-small">
   <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-    <span> &nbsp; zhenzhen学习笔记</span>
+    <span> &nbsp; zhenzhen数据科学笔记</span>
   </a>
 </nav>
 
@@ -81,6 +81,8 @@
     <li><label>Categories</label></li>
 
         
+            <li><a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html">轨迹分析</a></li>
+        
             <li><a href="1%20Tools.html">1 Tools</a></li>
         
             <li><a href="2%20Get%20Data.html">2 Get Data</a></li>
@@ -93,17 +95,15 @@
         
             <li><a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html">6 推荐系统</a></li>
         
-            <li><a href="6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html">6 文本&视频</a></li>
+            <li><a href="6.CV.html">6.CV</a></li>
+        
+            <li><a href="6%20NLP.html">6 NLP</a></li>
         
             <li><a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">7 深度学习</a></li>
         
             <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
-        
-            <li><a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html">轨迹数据</a></li>
-        
-            <li><a href="%E8%AF%BB%E4%B9%A6.html">读书</a></li>
          
 
       </ul>
@@ -126,7 +126,7 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>数据可视化概述</h1>
+          <h1>1. 数据可视化概述</h1>
      
         <div class="read-more clearfix">
           <span class="date">2019/7/21</span>
@@ -157,18 +157,21 @@
 <p>数据可视化，首先是要有数据，即我们的研究对象，而可视化的功能就是将数据中蕴含的关系或规律以图形的形式展示出来。 因此在进行数据可视化之前，一定要搞清楚的两件事：</p>
 
 <ul>
-<li>数据类型</li>
-<li>数据要传递的信息以及有展示的关系</li>
+<li>数据类型， 即我们要研究的实体是什么类型的</li>
+<li>数据要传递的信息以及要展示的关系</li>
 </ul>
 
-<p>不同的数据类型适合的图形表现是不同的，随着现在数据分析应用的越来越广泛，数据类型随着其应用的场景不同也是越来越多。</p>
+<p>(1) 数据类型<br/>
+不同的数据类型适合的图形表现是不同的，随着现在数据分析应用的越来越广泛，数据类型随着其应用的场景不同也是越来越多。统计学传统意义上的数据类型主要是：</p>
 
 <ul>
 <li>分类型变量：比如性别</li>
 <li>连续型变量：比如年龄</li>
 </ul>
 
-<p>数据之间的关系：</p>
+<p>除了传统的这种之外，还有比如轨迹数据，视频数据等等</p>
+
+<p>(2) 数据之间的关系</p>
 
 <table>
 <thead>
@@ -196,46 +199,51 @@
 
 <p><a href="https://zhuanlan.zhihu.com/p/25632363">https://zhuanlan.zhihu.com/p/25632363</a></p>
 
-<p>python中常用的绘图pacakge是<code>matplotlib</code></p>
-
-<p>本篇文章介绍的seaborn就是一个基于<code>matplotlib</code>的外包，其操作命令比较简单。有点类似R中的<code>ggplot</code>.</p>
-
 <h2 id="toc_1">2 工具部分</h2>
 
-<ul>
-<li><p>excel<br/>
-excel适合一些相对简单的数据，</p></li>
-<li><p>可视化BI </p></li>
-</ul>
-
-<p>比如tableau， power BI， FineBI等常见的一些可视化软件</p>
+<p>在实际操作中可能会涉及的使用工具有如下几种</p>
 
 <ul>
-<li>编程工具-python</li>
+<li>Excel<br/>
+excel作为微软office的办公软件，适合一些相对简单的数据分析，其本身包含的绘图功能基本上可以覆盖一些常用的需求。比如一些基本的绘图、数据分析功能。除此之外，excel还可以自己增加一些插件，比如功能强大的 power Map <a href="https://support.office.com/zh-cn/article/power-map-%E5%85%A5%E9%97%A8-88a28df6-8258-40aa-b5cc-577873fb0f4a">https://support.office.com/zh-cn/article/power-map-%E5%85%A5%E9%97%A8-88a28df6-8258-40aa-b5cc-577873fb0f4a</a></li>
 </ul>
 
-<p>seaborn<br/>
-pyecharts  <a href="https://github.com/pyecharts/pyecharts">https://github.com/pyecharts/pyecharts</a></p>
+<p>适合展示一些需要进行地图可视化的数据，比如分省份的销售额，<br/>
+其还可以制作随时间变化的动态小视频，比如人的轨迹变化等等。</p>
 
 <ul>
-<li>编程工具-R语言</li>
+<li>可视化BI </li>
 </ul>
 
-<p>ggplot </p>
+<p>比如Tableau， power BI， FineBI等常见的一些可视化软件</p>
+
+<ul>
+<li>编程工具-python &amp; R</li>
+</ul>
+
+<p>R的ggplot应该是多数统计学家们使用的绘图工具，python中常用的基础绘图pacakge是<code>matplotlib</code>，以及在其基础上衍生出来的比较炫酷的 <code>seaborn</code>，其操作命令比较简单。有点类似R中的<code>ggplot</code>.</p>
+
+<p>python版本的echarts包：<a href="http://pyecharts.org/#/zh-cn/intro">http://pyecharts.org/#/zh-cn/intro</a></p>
+
+<ul>
+<li>工具平台</li>
+</ul>
+
+<p>蚂蚁金服  <a href="https://antv.alipay.com/zh-cn/vis/chart/color-map.html">https://antv.alipay.com/zh-cn/vis/chart/color-map.html</a><br/>
+百度的echarts</p>
 
 <h2 id="toc_2">参考资料</h2>
 
 <p><a href="https://blog.csdn.net/suzyu12345/article/details/69029106">https://blog.csdn.net/suzyu12345/article/details/69029106</a></p>
+
+<p>seaborn<br/>
+pyecharts  <a href="https://github.com/pyecharts/pyecharts">https://github.com/pyecharts/pyecharts</a></p>
 
 <h2 id="toc_3">2.echarts接口</h2>
 
 <p>pyecharts</p>
 
 <p><a href="http://pyecharts.org/#/zh-cn/charts?id=treemap%EF%BC%88%E7%9F%A9%E5%BD%A2%E6%A0%91%E5%9B%BE%EF%BC%89">http://pyecharts.org/#/zh-cn/charts?id=treemap%EF%BC%88%E7%9F%A9%E5%BD%A2%E6%A0%91%E5%9B%BE%EF%BC%89</a></p>
-
-<h2 id="toc_4">工具平台</h2>
-
-<p><a href="https://antv.alipay.com/zh-cn/vis/chart/color-map.html">https://antv.alipay.com/zh-cn/vis/chart/color-map.html</a></p>
 
 
     
@@ -246,16 +254,16 @@ pyecharts  <a href="https://github.com/pyecharts/pyecharts">https://github.com/p
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="15697555457833.html" 
-          title="Previous Post: 应用案例">&laquo; 应用案例</a>
+          <a href="15637025346412.html" 
+          title="Previous Post: 1. conda 环境管理">&laquo; 1. conda 环境管理</a>
       
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="15662808343723.html" 
-          title="Next Post: 有用的网址&小工具">有用的网址&小工具 &raquo;</a>
+          <a  href="15694859531608.html" 
+          title="Next Post: 1.trajectory preprocessing">1.trajectory preprocessing &raquo;</a>
       
       </p>
         </div>
@@ -280,7 +288,7 @@ pyecharts  <a href="https://github.com/pyecharts/pyecharts">https://github.com/p
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
             
-                <h1>zhenzhen学习笔记</h1>
+                <h1>zhenzhen数据科学笔记</h1>
                 <div class="site-des"></div>
                 <div class="social">
 
@@ -309,6 +317,8 @@ pyecharts  <a href="https://github.com/pyecharts/pyecharts">https://github.com/p
 
       	<p class="cat-list">
         
+            <a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html"><strong>轨迹分析</strong></a>
+        
             <a href="1%20Tools.html"><strong>1 Tools</strong></a>
         
             <a href="2%20Get%20Data.html"><strong>2 Get Data</strong></a>
@@ -321,17 +331,15 @@ pyecharts  <a href="https://github.com/pyecharts/pyecharts">https://github.com/p
         
             <a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统</strong></a>
         
-            <a href="6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html"><strong>6 文本&视频</strong></a>
+            <a href="6.CV.html"><strong>6.CV</strong></a>
+        
+            <a href="6%20NLP.html"><strong>6 NLP</strong></a>
         
             <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习</strong></a>
         
             <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
-        
-            <a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html"><strong>轨迹数据</strong></a>
-        
-            <a href="%E8%AF%BB%E4%B9%A6.html"><strong>读书</strong></a>
          
         </p>
 
@@ -348,12 +356,6 @@ pyecharts  <a href="https://github.com/pyecharts/pyecharts">https://github.com/p
 	      
 		      
 			      <li class="post">
-			        <a href="15706729896574.html"></a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
 			        <a href="15687050894061.html">0.综述</a>
 			      </li>
 		     
@@ -366,13 +368,19 @@ pyecharts  <a href="https://github.com/pyecharts/pyecharts">https://github.com/p
 		  
 		      
 			      <li class="post">
+			        <a href="15637037681646.html">1 基础工具包安装pip</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15637025346412.html">1. conda 环境管理</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15694859531608.html">1.trajectory preprocessing</a>
+			        <a href="15637037713554.html">1. 数据可视化概述</a>
 			      </li>
 		     
 		  

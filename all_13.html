@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  zhenzhen学习笔记
+  zhenzhen数据科学笔记
   
   </title>
   
   
-  <link href="atom.xml" rel="alternate" title="zhenzhen学习笔记" type="application/atom+xml">
+  <link href="atom.xml" rel="alternate" title="zhenzhen数据科学笔记" type="application/atom+xml">
     <link rel="stylesheet" href="asset/css/foundation.min.css" />
     <link rel="stylesheet" href="asset/css/docs.css" />
     <script src="asset/js/vendor/modernizr.js"></script>
@@ -64,7 +64,7 @@
 
         <nav class="tab-bar show-for-small">
   <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-    <span> &nbsp; zhenzhen学习笔记</span>
+    <span> &nbsp; zhenzhen数据科学笔记</span>
   </a>
 </nav>
 
@@ -81,6 +81,8 @@
     <li><label>Categories</label></li>
 
         
+            <li><a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html">轨迹分析</a></li>
+        
             <li><a href="1%20Tools.html">1 Tools</a></li>
         
             <li><a href="2%20Get%20Data.html">2 Get Data</a></li>
@@ -93,17 +95,15 @@
         
             <li><a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html">6 推荐系统</a></li>
         
-            <li><a href="6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html">6 文本&视频</a></li>
+            <li><a href="6.CV.html">6.CV</a></li>
+        
+            <li><a href="6%20NLP.html">6 NLP</a></li>
         
             <li><a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">7 深度学习</a></li>
         
             <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
-        
-            <li><a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html">轨迹数据</a></li>
-        
-            <li><a href="%E8%AF%BB%E4%B9%A6.html">读书</a></li>
          
 
       </ul>
@@ -126,49 +126,88 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637025347286.html">
+                <a class="clearlink" href="15637037677178.html">
                 
-                  <h1>章2 利用用户行为数据</h1>
+                  <h1>一、基础篇</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h1 id="toc_0">1.用户行为数据</h1>
+                        	<h1 id="toc_0">1.计算学习理论——是否可学习</h1>
 
-<p>用户行为数据在网页上的主要存在形式就是日志，可能包含的字段有</p>
+<p>一直在说机器学习，主要是在说怎么去学。在怎么学之前，首先需要了解下能不能学，学习的机制是什么</p>
+
+<h2 id="toc_1">PAC（概率近似正确）</h2>
+
+<p><a href="https://blog.csdn.net/wangjianguobj/article/details/57413819">https://blog.csdn.net/wangjianguobj/article/details/57413819</a></p>
+
+<h2 id="toc_2">VC维度</h2>
+
+<p>这个介绍的挺详细<br/>
+<a href="http://www.flickering.cn/machine_learning/2015/04/vc%E7%BB%B4%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89/?from=singlemessage">http://www.flickering.cn/machine_learning/2015/04/vc%E7%BB%B4%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89/?from=singlemessage</a></p>
+
+<h2 id="toc_3">参考</h2>
+
+<p>台大-机器学习基石</p>
+
+<h1 id="toc_4">6.模型设计准则</h1>
+
+<ol>
+<li>模型拟合</li>
+</ol>
+
+<p>(1) 无免费午餐定理 NFL</p>
+
+<p>就是任何一个算法，针对所有问题，在平均意义上效果是一样的。</p>
+
+<p>=&gt; 所以要具体问题具体分析，针对不同问题，选择适合该问题的方法</p>
+
+<p>(2)奥卡姆剃刀原则</p>
+
+<p>即在预测效果差不多的情况下，模型越简单余越好</p>
+
+<p>误差 = bias + varaince + noise</p>
 
 <ul>
-<li>uid</li>
-<li>itemid</li>
-<li>行为类型（点击、浏览、购买）</li>
-<li>context（产生行为的时间、地点等）</li>
-<li>行为权重（比如看视频行为的时长、打分行为的分数）</li>
-<li>行为内容（比如评论行为的评论内容）<br/>
-另外，这些数据大致上可以分为显性反馈行为和隐性反馈行为。显性行为就是可以明确用户是喜好的，比如购买。而多数的数据都是隐性的，比如浏览了某个网页、听了某个歌，这些行为无法判断出用户的喜好。</li>
+<li>过拟合</li>
+<li>欠拟合</li>
 </ul>
 
-<p>物品流行度的幂率分布</p>
+<h1 id="toc_5">7.模型验证</h1>
 
-<h1 id="toc_1">算法</h1>
+<p>1.估计泛化误差</p>
 
-<p>一般把仅仅基于用户行为数据设计的推荐算法叫做协同过滤算法。主要包括：</p>
+<p>训练集，验证集</p>
+
+<p>2.对数据的重采样</p>
 
 <ul>
-<li>基于邻域的方法
-<ul>
-<li>基于用户的</li>
-<li>基于物品的</li>
-</ul></li>
-<li>隐语义模型LFM</li>
-<li>基于图的随机游走算法</li>
+<li>留出法</li>
+<li>k折交叉验证</li>
+<li>自助法(有放回)</li>
 </ul>
 
-<h2 id="toc_2">1.userCF</h2>
+<h1 id="toc_6">8.模型的评估指标</h1>
 
-<p>基本想法：对于一个用户A的推荐，可以先找到与这个人相似的那些人，然后看那些人中喜欢的，而用户A没有听过的物品推荐给A。<br/>
-step1: 找到相似用户，即需要定义相似度。</p>
+<h1 id="toc_7">9.实验设计</h1>
 
-<h2 id="toc_3">标题</h2>
+<p>设计实验是要要成的任务是对整个机器学习过程的优化。实验中因子的设计可能会包含很多，比如：算法的类别、算法的参数、数据集等。</p>
+
+<p>当因子较多的时候，如何确定单一因子的影响就需要一些技巧<br/>
+<strong>控制变量法</strong></p>
+
+<p>它暗含着一个较强的假设，就是不同因子之间相互独立，互不影响。然而这个并不总是成立的。</p>
+
+<p><strong>因子设计</strong><br/>
+他关注的是不同因子之间系统化的变化对学习效果的影响，他的一个特例就是<strong>全因子实验</strong>，也叫<strong>完全交叉设计</strong>。</p>
+
+<p>在具体操作的时候，当分析的因子的离散取值较多时候，可以通过粗调+微调的方法。</p>
+
+<p>在对因子进行精调时候，可以使用<strong>响应面方法</strong>（zzz:根据百科资料解释,就是做了一个二次函数的拟合）</p>
+
+<h2 id="toc_8">正交抽样设计</h2>
+
+<p>@@@补充下：</p>
 
                         
                       </div>
@@ -180,7 +219,7 @@ step1: 找到相似用户，即需要定义相似度。</p>
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html'>6 推荐系统</a></span>
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
           				   
                     
 
@@ -196,302 +235,81 @@ step1: 找到相似用户，即需要定义相似度。</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637025345079.html">
+                <a class="clearlink" href="15637025346988.html">
                 
-                  <h1>第一章 引言</h1>
+                  <h1>二、起步篇—— 数据预处理[python]</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>别人的读后总结，可参考「Deep Learning」读书系列分享（一） | 分享总结</p>
-
-<p><a href="https://www.leiphone.com/news/201708/LEBNjZzvm0Q3Ipp0.html">https://www.leiphone.com/news/201708/LEBNjZzvm0Q3Ipp0.html</a></p>
-
-<h3 id="toc_0">需要明确的几个概念范围</h3>
-
-<p><img src="media/15075611675547/15075613801366.jpg" alt=""/></p>
-
-<p><img src="media/15075611675547/15075614908544.jpg" alt=""/></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025346077.html">
-                
-                  <h1>第七章 正则化</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>机器学习不止要求在训练数据上有良好的表现，还希望有较好的泛化能力，即在测试数据上也能减少测试误差。这些策略被统称为<strong>正则化</strong></p>
-
-<p>常见的一些正则化方法：</p>
-
-<h2 id="toc_0">1.参数范数惩罚</h2>
-
-<p>即在原有的优化函数中，添加一个对参数的惩罚，来限制模型的学习能力<br/>
-<img src="media/15120469131645/15206725126887.jpg" alt=""/></p>
-
-<p>(1) L2参数正则化<br/>
-L2正则化/岭回归，又叫权重衰减； 可以参照岭回归<br/>
-<img src="media/15120469131645/15206732558707.jpg" alt=""/></p>
-
-<p>(X⊤X + αI)−1 这个新矩阵与原来的是一样的，不同的仅仅是在对 角加了 α。这个矩阵的对角项对应每个输入特征的方差。我们可以看到，L2正则化能 让学习算法 ‘‘感知’’ 到具有较高方差的输入 x，因此与输出目标的协方差较小(相对 增加方差)的特征的权重将会收缩。</p>
-
-<p>（2）L1正则化： 具有稀疏性，很多会衰减成0，所以有时候会用来做变量选择lasso</p>
-
-<h2 id="toc_1">2.作为约束的范数惩罚</h2>
-
-<p>从另一个角度来看这个问题，可以被看做是构造一个广义拉格朗日函数来最小化带约束的函数</p>
-
-<p><img src="media/15120469131645/15206742273357.jpg" alt=""/></p>
-
-<p><img src="media/15120469131645/15206742365336.jpg" alt=""/></p>
-
-<p>最小化约束 + 重投影的角度</p>
-
-<h2 id="toc_2">3.正则化和欠约束问题</h2>
-
-<p>正则化还有个好处可以保证X&#39;X+aI 是可逆的</p>
-
-<h2 id="toc_3">4.数据集增强</h2>
-
-<p>可以通过一些方法在不改变label的情况下自己构造一批数据集，比如图像识别时候对图像的旋转；有些时候也可以通过输入噪声的方式来进行数据集增强。</p>
-
-<h2 id="toc_4">5.噪声鲁棒性</h2>
-
-<ul>
-<li>向模型的输入或者是权重中加入噪音。</li>
-<li>向输出目标中加入噪音，即标注数据有一定的错误，不是百分百准确的时候。<strong>标签平滑</strong>方法是将0，1分类，变为e/(k-1)和1-e的k个输出的softmax函数。（e是标注的错误率）</li>
-</ul>
-
-<h2 id="toc_5">6.半监督学习</h2>
-
-<p>大概意思是说：P(x) 产生的未标记样本和P(x,y)中的标记样本都用 于估计 P(y|x)或者根据x预测y。</p>
-
-<h2 id="toc_6">7.多任务学习</h2>
-
-<p>就是通过合并几个任务中的样例（可以视为对参数施加的软约束），我感觉就是类似于group_lasso这样的，对参数加了一个别的约束，部分样本需要共享同一个参数</p>
-
-<h2 id="toc_7">8.提前终止</h2>
-
-<p><img src="media/15120469131645/15206764319925.jpg" alt=""/><br/>
-当训练的能力较强时候会发现，随着训练次数的增加，训练误差在逐步减小，但是测试误差会呈现一个U型状态。即先减小后增加。</p>
-
-<p>不是从模型的优化函数入手，相当于是一个实践的经验技巧。</p>
-
-<p>提前终止具有正则化的效果</p>
-
-<h2 id="toc_8">9.参数绑定和参数共享</h2>
-
-<h2 id="toc_9">10.稀疏表示</h2>
-
-<p>前文所述的权重衰减直接惩罚模型参数。另一种策略是惩罚神经网络中的激活 单元，稀疏化激活单元。这种策略间接地对模型参数施加了复杂惩罚。<br/>
-<img src="media/15120469131645/15207643423743.jpg" alt=""/></p>
-
-<h2 id="toc_10">11.Bagging 和其他集成方法</h2>
-
-<p>结合多个模型，进行模型平均</p>
-
-<h2 id="toc_11">12.dropout</h2>
-
-<p>@@@@</p>
-
-<h2 id="toc_12">13.对抗训练</h2>
-
-<h1 id="toc_13">14 切面距离、正切传播和流形正切分类器</h1>
-
-<p>略</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025345792.html">
-                
-                  <h1>第三章 概率与信息论</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>本章主要是介绍了一些概率论的基础以及常见的分布</p>
-
-<h2 id="toc_0">1.常用函数的有用性质</h2>
-
-<ul>
-<li>sigmoid 函数</li>
-</ul>
-
-<p>\[\delta(x) = \frac{1}{1+exp(-x)}\]</p>
-
-<ul>
-<li>softplus函数<br/>
-\[log(1+exp(x))\]
-<img src="media/15080561019055/15080571562017.jpg" alt=""/></li>
-</ul>
-
-<p>是\(y=max(0,x)\)的平滑版本</p>
-
-<h2 id="toc_1">2.信息论</h2>
-
-<p>信息论是应用数学的一个分支，主要研究的是对一个信号包含信息的多少进行量化。<br/>
-<img src="media/15080561019055/15080594230903.jpg" alt=""/></p>
-
-<p>自信息：定义一个时间X=x的自信息<br/>
-\[I(x) = -log P(x)\]</p>
-
-<p>熵：<br/>
-\[-\sum P(x_i) logP(x_i)\]</p>
-
-<h3 id="toc_2">KL散度/相对熵</h3>
-
-<p>\[KL(P||Q) = -\sum P_i ln(\frac{P_i}{Q_i})=-\sum P_i(ln(P_i)- ln(Q_i))\]</p>
-
-<p>注意：</p>
-
-<ul>
-<li>KL距离其实并不是严格的距离，不满足对称性以及三角不等式。</li>
-</ul>
-
-<p>JS距离：<br/>
-\[JS(P1||P2) = \frac{1}{2}KL(P1||(P1+P2)/2)+ \frac{1}{2}KL(P2||(P1+P2)/2)\]</p>
-
-<h3 id="toc_3">交叉熵</h3>
-
-<p>相对熵的第一部分<br/>
-\[KL(P||Q) = -\sum P_i ln(Q_i)\]</p>
-
-<h2 id="toc_4">3.结构化概率模型——图模型(graphical model)</h2>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025345723.html">
-                
-                  <h1>第二章 线性代数</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>第二章主要是介绍了线性代数的一些基础知识</p>
-
-<p>这里补充几点吧</p>
-
-<h2 id="toc_0">特征分解</h2>
-
-<p>每个矩阵可以视为多个列向量组成的一个向量空间/或者是一个线性变化(一个矩阵乘以一个向量后相当于是对向量做了一个线性变换)。而矩阵的分解，相当于去提取这个向量空间最重要的特征。</p>
-
-<p>(1)首先是特征值和特征向量<br/>
-若<strong>方阵</strong>A满足 \(Av=\lambda v\),则\(v\)称为矩阵A的特征向量，\(\lambda\)称为对应的特征值。</p>
-
-<p><strong>特征分解</strong><br/>
-\[A=V \Lambda V^{-1}\]<br/>
-V是其特征向量构成的矩阵，\(\Lambda\)是特征值构成的对角矩阵</p>
-
-<p>性质：</p>
-
-<p>(1) 实对称矩阵A都可以分解为\(A=Q\Lambda Q^{-1}\)，Q为正交矩阵</p>
-
-<p>(2)用来计算矩阵的逆。若\(A=Q \Lambda Q^{-1}\)，则\(A^{-1}=Q \Lambda^{-1}Q^{-1}\)</p>
-
-<h2 id="toc_1">奇异值分解</h2>
-
-<p>特征分解对于提取矩阵的特征根是很好的方法，但是他只能针对<strong>方阵</strong>操作。当A不是方阵时候，就需要用到SVD<br/>
-\[A_{n*m}=U_{n*n}\Sigma_{n*m} V^{T}_{m*m}\]</p>
-
-<p>其中，U称为左奇异向量，V称为右奇异向量</p>
-
-<p>\(AA^T=UDV^TVDU^T=UD^2U^T\)<br/>
-\(A^TA=VDU^T UDV^T=VD^2V^T\)<br/>
-即：<br/>
-A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)的特征向量，A的奇异值是\(AA^T\)也是\(A^TA\)的特征之爱的平方根。</p>
-
-<blockquote>
-<p>对比：<br/>
-特征分解是有限制的，比如矩阵必须是方阵</p>
+                        	<blockquote>
+<p>一方面可以多查些官方说明<br/>
+多去看些kaggle，tianchi等的比赛案例，他们数据预处理做的很全面到位<br/>
+实践一些工作中的项目，将代码规范化</p>
 </blockquote>
 
-<h3 id="toc_2">SVD与PCA的关系</h3>
+<h2 id="toc_0">1.缺失表示</h2>
 
-<ul>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 查一下之前多元的变换原理</li>
-</ul>
+<p>python中缺失是nan，如果本身数据中缺失是用其他方式表示的，可以先转换一下<br/>
+<code>df.replace(&#39;-&#39;,np.nan)</code></p>
 
-<p>PCA的全部工作简单点说，就是对原始的空间中顺序地找一组相互正交的坐标轴，第一个轴是使得方差最大的，第二个轴是在与第一个轴正交的平面中使得方差最大的，第三个轴是在与第1、2个轴正交的平面中方差最大的，这样假设在N维空间中，我们可以找到N个这样的坐标轴，我们取前r个去近似这个空间，这样就从一个N维的空间压缩到r维的空间了，但是我们选择的r个坐标轴能够使得空间的压缩使得数据的损失最小。</p>
+<pre><code class="language-python">
+import numpy as np
+import pandas as pd
+from io import StringIO
+import sys
 
-<h3 id="toc_3">SVD与潜在语义检索LSI</h3>
+df = pd.read_table(&#39;zz&#39;)
+df = df.replace(&#39;-&#39;,np.nan).head()
+df.head()
+</code></pre>
 
-<h2 id="toc_4">参考资料</h2>
+<h2 id="toc_1">2.缺失的简单处理办法</h2>
 
-<p><a href="http://www.cnblogs.com/LeftNotEasy/archive/2011/01/19/svd-and-applications.html">http://www.cnblogs.com/LeftNotEasy/archive/2011/01/19/svd-and-applications.html</a></p>
+<h3 id="toc_2">暴力删除</h3>
+
+<p><code>isnull()</code>   判断是否缺失</p>
+
+<p><code>dropna( axis = 0 /1 )</code> 参数axis表示轴选择，axis=0 代表行，axis=1 代表列</p>
+
+<p><code>dropna(subset=[&#39;&#39;])</code>   删除指定列中有空值的一行数据</p>
+
+<h3 id="toc_3">默认值填充</h3>
+
+<p><code>df.fillna(value)</code><br/>
+或者对不同列填不同的值</p>
+
+<h3 id="toc_4">统计/算法填充</h3>
+
+<pre><code class="language-python">from sklearn.preprocessing import Imputer
+# strategy 有mean,median, most_frequent 方式
+# axis 默认是0，列向， axis=1行向
+dff = df.loc[:, [&#39;comment_time&#39;]]
+imr = Imputer(missing_values = &#39;NaN&#39;, strategy = &#39;mean&#39;, axis = 0 )
+imr = imr.fit(dff.values)
+imputed_data = imr.transform(dff.values)
+</code></pre>
+
+<pre><code class="language-python">## 3.分类数据处理
+from sklearn.preprocessing import LabelEncoder
+class_le = LabelEncoder()
+y = class_le.fit_transform(df[&#39;nid&#39;].values)
+
+</code></pre>
+
+<pre><code class="language-python">## 数据标准化
+from sklearn.preprocessing import MinMaxScaler
+mms = MinMaxScaler()
+X_train_norm = mms.fit_transform(imputed_data)
+X_test_norm = mms.transform(imputed_data)
+</code></pre>
+
+<h2 id="toc_5">参考资料</h2>
+
+<p><a href="https://blog.csdn.net/Amy_mm/article/details/79799629">https://blog.csdn.net/Amy_mm/article/details/79799629</a><br/>
+<a href="https://www.cnblogs.com/charlotte77/p/5622325.html">https://www.cnblogs.com/charlotte77/p/5622325.html</a></p>
+
+<p><a href="https://www.kaggle.com/pmarcelino/comprehensive-data-exploration-with-python">https://www.kaggle.com/pmarcelino/comprehensive-data-exploration-with-python</a></p>
 
                         
                       </div>
@@ -503,7 +321,732 @@ A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)�
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637025346040.html">
+                
+                  <h1>二、起步篇——数据预处理[方法论]</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><img src="../media/15334844213158/15335717779664.jpg" alt=""/></p>
+
+<h2 id="toc_0">1.数据偏度</h2>
+
+<p>数据的处理，从数据特征本身的统计维度看，有尺度、偏度、</p>
+
+<p>1.数据尺度</p>
+
+<ul>
+<li>标准化 =&gt; 均值0，方差1</li>
+<li>归一化 =&gt; [0,1]</li>
+</ul>
+
+<p>2.数据偏度<br/>
+可以通过偏度来度量，数据中如果存在较大的偏度，可能是因为有异常点的存在。</p>
+
+<p>有偏数据处理，一般可以取log，或者开根号让他能近似正态</p>
+
+<h2 id="toc_1">2.异常点</h2>
+
+<p>首先什么是异常点<br/>
+异常点<br/>
+（1） 首先确认是不是错误导致，比如计算错误。取值错误<br/>
+（2）确认异常点的生成机制</p>
+
+<p>（1）异常点检测</p>
+
+<p>@@@<br/>
+sklearn中常用的包</p>
+
+<p>（2）异常点处理</p>
+
+<ul>
+<li>如果是少量可以直接删除</li>
+<li>当数据量较少，删除后造成可用信息较少时候，可以使用“空间标识”的数值处理方法</li>
+</ul>
+
+<h2 id="toc_2">3.缺失值</h2>
+
+<p>缺失机制：随机缺失，还是非随机缺失</p>
+
+<p>补充原则：</p>
+
+<ul>
+<li>如果缺失占比太大，删除</li>
+</ul>
+
+<p>补充方法：</p>
+
+<ul>
+<li>统计方法：均值</li>
+<li>机器学习方法：回归、K近邻</li>
+</ul>
+
+<h2 id="toc_3">4.特征冗余</h2>
+
+<p>一般是说特征自相关性太高，即“共线性”。另外是指一些没有区分度的变量，比如一是特征取值的总数与样本数目的比例在 10% 以下，二是出现频率最高的特征取值的出现频率应该在出现频率次高的特征的20倍以上。</p>
+
+<p>检测办法：<br/>
+解决办法：PCA</p>
+
+<h2 id="toc_4">参考文章</h2>
+
+<p>离群点</p>
+
+<p><a href="https://blog.chih.me/Outlier-mining-review.html">https://blog.chih.me/Outlier-mining-review.html</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637025347227.html">
+                
+                  <h1>公开微观数据库 1.0</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>由宇宙第一男神 dmzhao1整理</p>
+
+<p>美国综合社会调查数据 GSS<br/>
+执行机构丨芝加哥大学<br/>
+数据网址丨 <a href="http://gss.norc.org/">http://gss.norc.org/</a><br/>
+开放数据年份丨 1972-2016<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人<br/>
+覆盖区域丨美国全境<br/>
+核心问题丨美国社会变迁（文化、健康、家庭、劳动力、就业、消费、教育、心理、个性等）<br/>
+应用主题丨人口健康分析、劳动就业分析、消费储蓄分析、空间规划分析<br/>
+美国养老与健康调查数据<br/>
+执行机构丨美国社会保障局<br/>
+数据网址丨 <a href="http://hrsonline.isr.umich.edu/">http://hrsonline.isr.umich.edu/</a><br/>
+开放数据年份丨 2006、2010、2014、2017<br/>
+数据类型丨面板数据<br/>
+分析单位丨个人<br/>
+覆盖区域丨美国境内约 2 万居民的跟踪调查<br/>
+核心问题丨关注影响美国老年人养老与健康水平的因素<br/>
+应用主题丨人口健康分析<br/>
+欧洲社会调查数据 ESS<br/>
+执行机构丨欧洲社会调查委员会<br/>
+数据网址丨 <a href="http://www.europeansocialsurvey.org/">http://www.europeansocialsurvey.org/</a><br/>
+开放数据年份丨 2002、2004、2006、2008、2010、2012、2014<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人<br/>
+覆盖区域丨欧盟 25 国<br/>
+核心问题丨欧洲各国社会融合度、移民问题、就业水平和经济危机、社会财富不平等<br/>
+应用主题丨人口健康分析、劳动就业分析、消费储蓄分析<br/>
+印度老龄纵贯调查数据 LASI<br/>
+执行机构丨美国哈佛大学公共卫生学院、印度孟买国立人口研究所<br/>
+数据网址丨 <a href="http://iipsindia.org/research_lasi.htm">http://iipsindia.org/research_lasi.htm</a><br/>
+开放数据年份丨 2010<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人<br/>
+覆盖区域丨基于印度 2001 年人口普查花名册选择四个地区的代表样本，采用分层、多阶段、<br/>
+区域概率抽样，在每个城市随机抽取两个地区，从各地区随机抽取八个基本调查单位，以基<br/>
+本调查单位进行人口的城／乡比例配对。从基本调查单位中系统随机抽取 25 个家庭户调查</p>
+
+<p>1 <a href="mailto:dmzhao16@fudan.edu.cn">dmzhao16@fudan.edu.cn</a><br/>
+核心问题丨印度老龄人口的基本生活条件、健康水平、经济福祉等<br/>
+应用主题丨人口健康分析、消费储蓄分析<br/>
+明尼苏达人口中心<br/>
+链接：<a href="https://www.ipums.org/">https://www.ipums.org/</a><br/>
+旗下很多项目有待进一步挖掘<br/>
+中国综合社会调查数据 CGSS<br/>
+执行机构丨中国人民大学中国调查与数据中心<br/>
+数据网址丨 <a href="http://www.cnsda.org/index.php?r=site/datarecommendation">http://www.cnsda.org/index.php?r=site/datarecommendation</a><br/>
+开放数据年份丨 2003、2005、2006、2008、2010、2011、2012、2013<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人、家庭<br/>
+覆盖区域丨中国 28 个省市<br/>
+核心问题丨中国社会变迁（文化、健康、家庭、劳动力、就业、消费、教育、心理、个性等）<br/>
+应用主题丨人口健康分析、劳动就业分析、消费储蓄分析、空间规划分析<br/>
+日本综合社会调查数据 JGSS<br/>
+执行机构丨日本大阪商业大学<br/>
+数据网址丨 <a href="http://jgss.daishodai.ac.jp/surveys/sur_top.htm">http://jgss.daishodai.ac.jp/surveys/sur_top.htm</a><br/>
+开放数据年份丨 2000、2001、2002、2003、2005、2006、2008、2009、2010、2012、2013、<br/>
+2015、2016、2017<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人、家庭<br/>
+覆盖区域丨日本本州、北海道、九州、四国人口 20 万以上的市郡县<br/>
+核心问题丨日本社会变迁（文化、健康、家庭、劳动力、就业、消费、教育、心理、个性等）<br/>
+应用主题丨人口健康分析、劳动就业分析、消费储蓄分析、空间规划分析<br/>
+韩国综合社会调查数据 KGSS<br/>
+执行机构丨韩国成均馆大学<br/>
+数据网址丨 <a href="http://src.skku.edu/eng/menu03_research/research.html">http://src.skku.edu/eng/menu03_research/research.html</a><br/>
+开放数据年份丨 2003、2004、2005<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人、家庭<br/>
+覆盖区域丨韩国境内主要大都市<br/>
+核心问题丨韩国社会变迁（文化、健康、家庭、劳动力、就业、消费、教育、心理、个性等）<br/>
+应用主题丨人口健康分析、劳动就业分析、消费储蓄分析、空间规划分析<br/>
+东亚联合社会调查数据 EASS<br/>
+执行机构丨 CGSS、JGSS、KGSS、TSCS 项目组<br/>
+数据网址丨 <a href="http://www.eassda.org/modules/doc/index.php?doc=intro">http://www.eassda.org/modules/doc/index.php?doc=intro</a><br/>
+开放数据年份丨 2006、2008、2010、2012<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人、家庭<br/>
+覆盖区域丨东亚国家和地区（中国、中国台湾、日本、韩国）<br/>
+核心问题丨东亚国家和地区社会变迁（2006 年调查主题为家庭问题、2008 年调查主题为文<br/>
+化问题、2010 年调查主题为健康问题、2012 年调查主题为社会资本问题）<br/>
+应用主题丨人口健康分析、劳动就业分析、消费储蓄分析、空间规划分析<br/>
+中国教育追踪调查数据 CEPS<br/>
+执行机构丨中国人民大学中国调查与数据中心<br/>
+数据网址丨 <a href="http://ceps.ruc.edu.cn/">http://ceps.ruc.edu.cn/</a><br/>
+开放数据年份丨 2013、2014、2015<br/>
+数据类型丨面板数据<br/>
+分析单位丨个人（学生、家长、教师、校领导）<br/>
+覆盖区域丨中国 28 个县级单位（县、区、市）112 所学校、438 个班级<br/>
+核心问题丨揭示家庭、学校、社区以及宏观社会结构对于个人教育产出的影响<br/>
+应用主题丨人口分析、劳动就业分析、质量管理<br/>
+中国宗教调查数据 CRS<br/>
+执行机构丨中国人民大学中国调查与数据中心<br/>
+数据网址丨 <a href="http://crs.ruc.edu.cn/">http://crs.ruc.edu.cn/</a><br/>
+开放数据年份丨 2013、2014、2015<br/>
+数据类型丨面板数据<br/>
+分析单位丨个人、宗教团体<br/>
+覆盖区域丨中国 243 个县级单位<br/>
+核心问题丨我国宗教现状与发展趋势<br/>
+应用主题丨人口分析、空间规划分析<br/>
+中国老年社会追踪调查数据 CLASS<br/>
+执行机构丨中国人民大学中国调查与数据中心<br/>
+数据网址丨 <a href="http://class.ruc.edu.cn/">http://class.ruc.edu.cn/</a><br/>
+开放数据年份丨 2011、2012（测试调查），2014（正式调查，每两年一次追踪）<br/>
+数据类型丨面板数据<br/>
+分析单位丨个人<br/>
+覆盖区域丨中国 7 个省份<br/>
+核心问题丨掌握老年人在衰老过程中面临的各种问题和挑战<br/>
+应用主题丨人口健康分析、质量管理<br/>
+中国家庭追踪调查数据 CFPS<br/>
+执行机构丨北京大学中国社会科学调查中心<br/>
+数据网址丨 <a href="http://www.isss.edu.cn/cfps/">http://www.isss.edu.cn/cfps/</a><br/>
+开放数据年份丨 2008、2009（测试调查），2010、2011、2012、2014（正式调查）<br/>
+数据类型丨面板数据<br/>
+分析单位丨个人、家庭<br/>
+覆盖区域丨中国 25 个省市<br/>
+核心问题丨中国社会、经济、人口、教育和健康的变迁<br/>
+应用主题丨人口健康分析、劳动就业分析、消费储蓄分析、空间规划分析、质量管理<br/>
+中国健康与养老追踪调查<br/>
+数据 CHARLS<br/>
+执行机构丨北京大学中国社会科学调查中心<br/>
+数据网址丨 <a href="http://charls.pku.edu.cn/zh-CN">http://charls.pku.edu.cn/zh-CN</a><br/>
+开放数据年份丨 2008、2012（两省），2011、2013、2014（全国）<br/>
+数据类型丨面板数据<br/>
+分析单位丨个人、家庭<br/>
+覆盖区域丨浙江、甘肃两省（2008、2012），中国 28 个省市(2011、2013、2014)<br/>
+核心问题丨我国人口老龄化问题<br/>
+应用主题丨人口健康分析、消费储蓄分析<br/>
+中国劳动力动态调查数据 CLDS<br/>
+执行机构丨中山大学社会科学调查中心<br/>
+数据网址丨 <a href="http://css.sysu.edu.cn/Data">http://css.sysu.edu.cn/Data</a><br/>
+开放数据年份丨 2011、2012、2014<br/>
+数据类型丨面板数据<br/>
+分析单位丨个人、家庭<br/>
+覆盖区域丨中国 29 个省市（港澳台、西藏、海南除外）<br/>
+核心问题丨系统地监测社区社会结构和家庭、劳动力个体的变化与相互影响<br/>
+应用主题丨人口健康分析、劳动就业分析、消费储蓄分析、空间规划分析<br/>
+珠三角城市农民工调查数据<br/>
+执行机构丨中山大学社会科学调查中心<br/>
+数据网址丨 <a href="http://css.sysu.edu.cn/Data/List?type=%E5%9F%8E%E5%B8%82%E5%86%9C%E6%B0%91%E5%B7%A5%E8%B0%83%E6%9F%A5%E6%95%B0%E6%8D%AE%E5%BA%93">http://css.sysu.edu.cn/Data/List?type=城市农民工调查数据库</a><br/>
+开放数据年份丨 2006、2008、2009<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人<br/>
+覆盖区域丨珠三角<br/>
+核心问题丨农民工生存状况与劳动就业<br/>
+应用主题丨人口健康分析、劳动就业分析<br/>
+中国广东家庭追踪调查数据<br/>
+执行机构丨中山大学社会科学调查中心<br/>
+数据网址丨 <a href="http://css.sysu.edu.cn/Data/List?type=%E5%AE%B6%E5%BA%AD%E8%BF%BD%E8%B8%AA%E8%B0%83%E6%9F%A5%E6%95%B0%E6%8D%AE%E5%BA%93">http://css.sysu.edu.cn/Data/List?type=家庭追踪调查数据库</a><br/>
+开放数据年份丨 2008、2009、2010<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人<br/>
+覆盖区域丨广东省<br/>
+核心问题丨广东省经济变动、家庭生活变化及民众个体发展状况<br/>
+应用主题丨人口健康分析、劳动就业分析<br/>
+中国大城市社会网与求职调查数据<br/>
+执行机构丨中山大学社会科学调查中心<br/>
+数据网址丨 <a href="http://css.sysu.edu.cn/Data/List?type=%E7%A4%BE%E4%BC%9A%E7%BD%91%E4%B8%8E%E6%B1%82%E8%81%8C%E8%B0%83%E6%9F%A5%E6%95%B0%E6%8D%AE%E5%BA%93">http://css.sysu.edu.cn/Data/List?type=社会网与求职调查数据库</a><br/>
+开放数据年份丨 2009<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人<br/>
+覆盖区域丨中国八大城市（广州、上海、西安、天津、兰州、厦门、济南、长春）<br/>
+核心问题丨中国主要城市人际社会关系网络与求职就业状况<br/>
+应用主题丨人口健康分析、劳动就业分析<br/>
+中国台湾社会变迁调查数据 TSCS<br/>
+执行机构丨中国台湾行政院科技部人文司<br/>
+数据网址丨 <a href="http://www.ios.sinica.edu.tw/sc/">http://www.ios.sinica.edu.tw/sc/</a><br/>
+开放数据年份丨 1984-1985；1990-1994；1995-1999；2000-2004；2005-2009；2010-2014<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人、家庭<br/>
+覆盖区域丨中国台湾省<br/>
+核心问题丨家庭、教育、社会阶层与社会流动、政治文化、文化价值、宗教传播等<br/>
+应用主题丨人口健康分析、劳动就业分析、消费储蓄分析、质量管理<br/>
+中国台湾国民健康访问调查数据 NHIS<br/>
+执行机构丨中国台湾中央研究院<br/>
+数据网址丨 <a href="http://nhis.nhri.org.tw/">http://nhis.nhri.org.tw/</a><br/>
+开放数据年份丨 2001、2005、2009、2013<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人<br/>
+覆盖区域丨中国台湾省<br/>
+核心问题丨台湾一般民众的健康状况及医疗使用情形<br/>
+应用主题丨人口健康分析<br/>
+世界价值观调查数据中国台湾卷 WVS<br/>
+执行机构丨台湾中央研究院人文社会科学研究中心<br/>
+数据网址丨 <a href="https://srda.sinica.edu.tw/group/scigview/1/11">https://srda.sinica.edu.tw/group/scigview/1/11</a><br/>
+开放数据年份丨 1995、2005<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人<br/>
+覆盖区域丨中国台湾省<br/>
+核心问题丨社会价值观、社会规范、社会距离、工作问题、劳工组织、就业问题等<br/>
+应用主题丨人口健康分析、劳动就业分析、消费储蓄分析、质量管理<br/>
+中国家庭金融调查数据 CHFS<br/>
+执行机构丨西南财经大学<br/>
+数据网址丨 <a href="http://chfs.swufe.edu.cn/">http://chfs.swufe.edu.cn/</a><br/>
+开放数据年份丨 2011、2013<br/>
+数据类型丨截面数据<br/>
+分析单位丨家庭<br/>
+覆盖区域丨 25 个省市（2011），29 个省市（2013）<br/>
+核心问题丨家庭金融状况、收入支出、社会保障、商业保险等<br/>
+应用主题丨人口健康分析、劳动就业分析、消费储蓄分析、金融与投资分析<br/>
+中国小微企业调查数据 CMES<br/>
+执行机构丨西南财经大学<br/>
+数据网址丨 <a href="http://chfs.swufe.edu.cn/">http://chfs.swufe.edu.cn/</a><br/>
+开放数据年份丨 2015<br/>
+数据类型丨截面数据<br/>
+分析单位丨企业<br/>
+覆盖区域丨 29 个省市<br/>
+核心问题丨小微企业和个体工商户经营<br/>
+应用主题丨劳动就业分析、公司研究、金融与投资分析<br/>
+中国社会状况综合调查数据 CSS<br/>
+执行机构丨中国社会科学院社会学研究所<br/>
+数据网址丨 <a href="http://css.cssn.cn/zgshzkzhdc/">http://css.cssn.cn/zgshzkzhdc/</a><br/>
+开放数据年份丨 2005、2007、2009、2011、2013<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人、家庭<br/>
+覆盖区域丨 31 个省市<br/>
+核心问题丨全国公众的劳动就业、家庭及社会生活、社会态度<br/>
+应用主题丨人口健康分析、劳动就业分析、消费储蓄分析<br/>
+中国家庭收入调查数据 CHIP<br/>
+执行机构丨北京师范大学中国收入分配研究院<br/>
+数据网址丨 <a href="http://www.ciidbnu.org/chip/index.asp">http://www.ciidbnu.org/chip/index.asp</a><br/>
+开放数据年份丨 1988、1995、2002、2007、2013<br/>
+数据类型丨截面数据<br/>
+分析单位丨家庭<br/>
+覆盖区域丨 19 个省市（1988、1995），22 个省市（2002、2007、2013）<br/>
+核心问题丨中国家庭收入水平<br/>
+应用主题丨劳动就业分析、消费储蓄分析<br/>
+中国电信灯塔大数据背景调查数据<br/>
+执行机构丨中国电信股份有限公司北京研究院<br/>
+数据网址丨 <a href="http://www.ctbigdata.cn/BackgroundInvestigation/">http://www.ctbigdata.cn/BackgroundInvestigation/</a><br/>
+开放数据年份丨无<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人<br/>
+覆盖区域丨中国 31 个省市<br/>
+核心问题丨个人信用背景调查、画像分析<br/>
+应用主题丨信用风险管理、营销管理<br/>
+中国私营企业调查数据 CPES<br/>
+执行机构丨中国社会科学院私营企业主群体研究中心<br/>
+数据网址丨 <a href="mailto:rcpe_cass@126.com">rcpe_cass@126.com</a><br/>
+开放数据年份丨 1993、1995、1997、2000、2002、2004、2006、2008、2010、2012、2014<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人、企业<br/>
+覆盖区域丨中国 31 个省市 200 万私营企业和企业主<br/>
+核心问题丨针对私营企业和私营企业主的综合状况和群体特征进行调查<br/>
+应用主题丨公司研究、行业分析、金融与投资分析<br/>
+世界银行企业调查数据中国篇<br/>
+执行机构丨世界银行<br/>
+数据网址丨 <a href="http://www.enterprisesurveys.org/data">http://www.enterprisesurveys.org/data</a><br/>
+开放数据年份丨 2002、2003、2005、2012<br/>
+数据类型丨截面数据<br/>
+分析单位丨企业<br/>
+覆盖区域丨中国主要城市非农企业抽样<br/>
+核心问题丨关注商业经营环境变化和企业效率<br/>
+应用主题丨劳动就业分析、公司研究、行业分析、金融与投资分析、质量管理<br/>
+农村固定观察点调查<br/>
+执行机构丨农业部农村经济研究中心<br/>
+数据网址丨<br/>
+<a href="http://www.moa.gov.cn/sydw/ncjjzx/gcdgzdt/gzdtg/201302/t20130225_3225848.htm">http://www.moa.gov.cn/sydw/ncjjzx/gcdgzdt/gzdtg/201302/t20130225_3225848.htm</a><br/>
+开放数据年份丨不开放（需向农业部申请）<br/>
+数据类型丨面板数据<br/>
+分析单位丨农户、村庄<br/>
+覆盖区域丨中国 31 个省市 360 个村<br/>
+核心问题丨通过观察点对农村经济进行长期的连续调查，了解不同村庄和农户的动态要求<br/>
+应用主题丨宏观经济分析、劳动就业分析、行业分析、质量管理<br/>
+中国健康与营养调查 CHNS<br/>
+执行机构丨北卡罗来纳大学人口研究中心<br/>
+数据网址丨 <a href="http://www.cpc.unc.edu/projects/china">http://www.cpc.unc.edu/projects/china</a><br/>
+开放数据年份丨 1989、1991、1993、1997、2000、2004、2006<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人、家庭<br/>
+覆盖区域丨辽宁、黑龙江、江苏、山东、河南、湖北、湖南、广西和贵州 9 个省<br/>
+核心问题丨人口健康和营养状况<br/>
+应用主题丨人口健康分析、质量管理<br/>
+世界价值观调查数据中国卷 WVS<br/>
+执行机构丨世界价值观调查学会、中国统计信息咨询服务中心、盖洛普中国民意调查公司、<br/>
+北京大学中国国情研究中心<br/>
+数据网址丨 <a href="http://www.cpc.unc.edu/projects/china">http://www.cpc.unc.edu/projects/china</a><br/>
+开放数据年份丨 1990、1995、2001、2007、2012<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人<br/>
+覆盖区域丨 24 个省市<br/>
+核心问题丨社会价值观、社会规范、社会距离、工作问题、劳工组织、就业问题等<br/>
+应用主题丨人口健康分析、劳动就业分析、消费储蓄分析、质量管理<br/>
+中国老年健康影响因素跟踪调查<br/>
+数据 CLHLS<br/>
+执行机构丨北京大学中国经济研究中心<br/>
+数据网址丨 <a href="http://web5.pku.edu.cn/ageing/html/datadownload.html">http://web5.pku.edu.cn/ageing/html/datadownload.html</a><br/>
+开放数据年份丨 1998、2000、2002、2005、2008-2009、2011-2012<br/>
+数据类型丨面板数据<br/>
+分析单位丨个人<br/>
+覆盖区域丨 23 个省市<br/>
+核心问题丨影响人类健康长寿的社会、行为、环境与生物学因素，为科学研究、老龄工作与<br/>
+卫生健康政策信息依据填补空白<br/>
+应用主题丨人口健康分析、质量管理<br/>
+中国城镇住户调查数据 UHS<br/>
+执行机构丨国家统计局<br/>
+数据网址丨暂无<br/>
+开放数据年份丨不开放（需向国家统计局申请）<br/>
+数据类型丨面板数据<br/>
+分析单位丨个人、家庭<br/>
+覆盖区域丨 6 个省市（北京、广东、浙江、辽宁、陕西、四川）<br/>
+核心问题丨现有最全的全国范围微观数据，主要研究教育回报率、收入不平等、家庭消费、<br/>
+家庭金融等问题<br/>
+应用主题丨劳动就业分析、消费储蓄分析、金融与投资分析、质量管理<br/>
+中国城乡流动调查数据<br/>
+执行机构丨澳大利亚国立大学、北京师范大学<br/>
+数据网址丨 <a href="https://www.iza.org/en/research/idsc/services">https://www.iza.org/en/research/idsc/services</a><br/>
+开放数据年份丨 2008、2009<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人、家庭<br/>
+覆盖区域丨本项目主要在人口流出或流入的大省进行调查。其中，农村住户调查是在以下 9<br/>
+个省市进行：安徽，重庆，广东，河北，河南，湖北，江苏，四川，浙江；城市流动人口调<br/>
+查是在以下 15 个城市进行：蚌埠，成都，重庆，东莞，广州，合肥，杭州，洛阳，南京，<br/>
+宁波，上海，深圳，武汉，无锡，郑州。城镇住户调查是在 19 个城市进行，包括城市流动<br/>
+人口调查以外的四个城市：安阳市，建德市，乐山，绵阳。<br/>
+核心问题丨人口流动问题<br/>
+应用主题丨人口健康分析、劳动就业分析<br/>
+大学生群体状况调查数据<br/>
+执行机构丨中国人民大学社会学系<br/>
+数据网址丨<br/>
+<a href="http://www.sachina.edu.cn/modules/datacenter/viewdata.php?channelid=5&amp;projid=13&amp;dataid=">http://www.sachina.edu.cn/modules/datacenter/viewdata.php?channelid=5&amp;projid=13&amp;dataid=</a><br/>
+119<br/>
+开放数据年份丨 2001<br/>
+数据类型丨截面数据<br/>
+分析单位丨个人<br/>
+覆盖区域丨 2001 年抽样调查了北京高校在校大学生的消费支出、专业选择、择业目标等整<br/>
+体状况<br/>
+核心问题丨主要研究大学生在校行为与未来发展的关系<br/>
+应用主题丨消费储蓄分析、劳动就业分析<br/>
+中国工业企业数据库<br/>
+数据名称：中国工业企业数据库（China Industry Business Performance Data）<br/>
+执行机构：国家统计局<br/>
+开放数据年份：1998-2013<br/>
+调查方式：下级企业单位按时报送<br/>
+采用计算机辅助调查：是<br/>
+数据类型：面板数据<br/>
+抽样方式：根据国家统计局拟订的工业企业报表制度抽样<br/>
+覆盖省份：中国大陆地区销售额 500 万元/RMB 以上的大中型制造企业<br/>
+分析单位：企业<br/>
+核心问题：全国最为详细、所用最为广泛的微观数据库，主要研究工业企业的相关问题。<br/>
+具体内容：数据内容中的工业统计指标包括工业增加值、工业总产值、工业销售产值等主要<br/>
+技术经济指标以及主要财务成本指标和从业人员、工资总额等。<br/>
+代表文章：杨汝岱. 中国制造业企业全要素生产率研究[J]. 经济研究, 2015 年 02 期.<br/>
+网站链接：<a href="http://www.allmyinfo.com/data/zggyqysjk.asp">http://www.allmyinfo.com/data/zggyqysjk.asp</a><br/>
+海关数据库<br/>
+数据名称：海关数据<br/>
+执行机构：中国海关<br/>
+开放数据年份：1994-2014 年<br/>
+调查方式：企业申报<br/>
+采用计算机辅助调查：是<br/>
+数据类型：面板数据<br/>
+抽样方式：企业主动上报汇总<br/>
+覆盖省份：全国各种类型进出口企业汇报<br/>
+分析单位：企业<br/>
+核心问题：主要是海关履行进出口贸易统计职能中产生的各项进出口统计数据，专注企业进<br/>
+出口情况。<br/>
+具体内容：数据具体到各企业、各海关口岸的商品具体进出口情况。<br/>
+网站链接：<a href="http://new.ccerdata.cn/Home/Special">http://new.ccerdata.cn/Home/Special</a><br/>
+中国专利数据库<br/>
+数据名称：中国专利数据库<br/>
+执行机构：国家知识产权局和中国专利信息中心<br/>
+开放数据年份：1985-2015 年<br/>
+调查方式：企业申报<br/>
+采用计算机辅助调查：是<br/>
+数据类型：面板数据<br/>
+抽样方式：企业主动上报汇总<br/>
+覆盖省份：全国各种类型企业专利申请<br/>
+分析单位：企业<br/>
+核心问题：准确地反映中国最新的专利发明<br/>
+具体内容：该系统收录了中国自 1985 年实施专利制度以来的全部中国专利数据，具有较高<br/>
+的权威性，网上数据每周更新一次，是国内最好的专利数据库检索系统之一。<br/>
+代表文章：庄涛，吴洪，基于专利数据的我国官产学研三螺旋测度研究——兼论政府在产学<br/>
+研合作中的作用[J].管理世界，2013 年 08 期<br/>
+网站链接：<br/>
+<a href="http://new.ccerdata.cn/Home/Special#h3">http://new.ccerdata.cn/Home/Special#h3</a><br/>
+<a href="http://202.107.204.54:8080/cnipr/main.do?method=gotoMain">http://202.107.204.54:8080/cnipr/main.do?method=gotoMain</a><br/>
+中国健康退休跟踪调查 CHARLS<br/>
+负责人：北京大学中国经济研究中心赵耀辉教授<br/>
+链接：<a href="http://charls.ccer.edu.cn/charls/data.asp">http://charls.ccer.edu.cn/charls/data.asp</a><br/>
+使用该数据要求填写保密协议，获得北京大学相关授权<br/>
+质量（据说）非常好，选取的样本是年龄大于等于 45 岁，基本在劳动经济学中能用到的变<br/>
+量都包含到了，而且是面板数据<br/>
+中国农村住户调查数据 RHS<br/>
+执行机构：国家统计局农调总队<br/>
+因为涉及到的问题比较敏感，这一套数据比较难拿<br/>
+其他：<br/>
+某宝……<br/>
+论文<br/>
+人大经济论坛<br/>
+Wind<br/>
+……<br/>
+最后，宇宙第一男神 dmzhao 已经机智的发现，其实发在 top 5 和 field top 上面 idea 特别神<br/>
+奇的文章，数据大多来自大牛们动用各种手段（雇佣廉价劳动力、私人关系）四处搜刮而<br/>
+来……</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='2%20Get%20Data.html'>2 Get Data</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037730522.html">
+                
+                  <h1>关于长点击阈值划分方法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>用户停留时长一直是衡量用户在落地页满意度的一个重要度量指标。在具体业务设计的时候，可以去看时长分布的中位数、平均时长等统计级指标，亦有类似于衡量时长好坏的长点击率，长点击占比等指标。</p>
+
+<p>首先来说下长点击，简单来说长点击即停留时长比较长的一个点击时间。</p>
+
+<h3 id="toc_0">1. 长点击，满意点击，人工打分</h3>
+
+<p>我们说停留时间“比较长”，其实是一个相对概念，不同的资源类型可能划分的标准会不同。但是他们的出发点是一样的: 我们认为在特定资源类型下落地页时长越长，用户越倾向于满意。所以长点击本质上是用来刻画满意点击的。</p>
+
+<p><strong>(1) 无监督的划分</strong><br/>
+即我们不知道groundtruth，这个时候可以根据本身时长的分布，按照经验值比如60%，70%作为其长点击的分界点。这种划分方式 xxxx</p>
+
+<p><strong>(2) 有监督的</strong><br/>
+通过人工评估（比如qu相关性，qu的页面质量等维度），可以对qu结果进行人工打分，一般是0-4档。0，1代表不太好，2代表一般，3-4代表比较好。可以根据业务需求比如3-4认为是满意点击，2认为是一般点击，0-1认为是不满意点击。<br/>
+以此人工标注来决定如何选择长点击划分阈值。</p>
+
+<h3 id="toc_1">2. 如何划分长点击</h3>
+
+<p>长点击阈值划分的目标，即寻找如下决策函数的参数x</p>
+
+<p>\[<br/>
+F(t) = \left\{<br/>
+             \begin{array}{lr}<br/>
+            1，长点击 t \ge x &amp;  \\<br/>
+            0，非长点击 t&lt; x\\  <br/>
+             \end{array}<br/>
+\right.<br/>
+\]</p>
+
+<p>从统计分布的角度看，即使是时长比较长的结果，人工打分也可能很低，时长很短的结果人工打分也可能是满意的。所以不管寻找到的最优参数\(x\)是多少，它都有可能会误分。而我们的目的是让这种因为误分而犯错的可能性尽可能的小。<br/>
+<img src="media/15542962343188/15543644977641.jpg" alt=""/></p>
+
+<p>从以上的分布图来说更直观一些，我们的误判损失即是图中阴影部分，很容易证明，移动阈值划分x时候，损失最小的是当两个分布曲线相交的点的时候。这指导我们可以按照如下的方法进行长点击划分：</p>
+
+<p>执行步骤<br/>
+<strong>Step0： 摸底时长分布</strong></p>
+
+<p>首先需要了解清楚数据本身的时长分布，根据时长的分布情况，大概划分不同的区间段。比如0-5，5-10，10-15，15-20，20-25，25-30，30-35，35-40， 40-50，50-60，60-100，&gt;100这样进行划分。<br/>
+同于频次分布较高的部分可以划分的细致一些，频次分布较低的部分可以划分的宽度较宽一些。</p>
+
+<p><strong>Step1： 抽样送评qu数据</strong></p>
+
+<p>确定送评样本，因为人工评估是需要成本的，我们不可能得到整体的good或者bad的分布曲线，我们所有的只是抽取的送评样本的标注数据。这就要求我们送评的数据对于总体一定要有好的代表性：</p>
+
+<ul>
+<li>抽样分布应该和总体分布尽量一致</li>
+<li>抽样量不能太小，否则样本估计总体的误差会比较大</li>
+</ul>
+
+<blockquote>
+<p>如何确定最优送评样本量？（这个回来再写）<br/>
+统计学的研究方法是要找到我们所关注变量的统计分布，我们最终是希望通过抽取得到的good和not_good的时长分布与整体差不多。</p>
+</blockquote>
+
+<p>数据抽取：</p>
+
+<ul>
+<li>考虑到数据抽取是基于qu粒度，一个qu其实会有多次用户点击行为，也就会有多个时长，可能波动较大。所以一般是取count(qu)&gt;5的，并且时长取的是其中位数</li>
+<li><p>预送评，一般先进行少量的预送评，比如送评1000个样本。返回会用来检验数据质量和划分的精细度</p>
+<ul>
+<li>check自己送评的数据中是否有一些异常数据。比如sf的url路径不完成</li>
+<li>check人工打分的质量程度</li>
+<li>初步看下good和not_good的分布情况，大概确定长点的分布区间，从而看下送评的样本的时间段间隔精度是否需要调整</li>
+</ul></li>
+<li><p>正式送评</p></li>
+</ul>
+
+<p><strong>Step2： 返回分析</strong></p>
+
+<p>根据good和not_good的频数分布，找到曲线的交点，即满足good(x) = not_good(x)的点，即可认为是长点击的分界点。短点击的划分类似，可以认为0-1的是短点击，或者更严格的0分的是短点击。 绘制bad和not_bad的频数分布，找到曲线交点。即满足bood(x) = not_bood(x)的点</p>
+
+<ul>
+<li>实际操作：实际数据的分布图可能不如示意图那么明显，甚至有多个交点的情况。这时候可以计算图中b+c的面积，绘制(x,g(x))的曲线图，找到g(x)=0.5的点即可。 如果有多个可能是因为样本量不足够，或者本身指标数据不可信(前提假定是要研究的指标与人工打分是存在单调关系的)</li>
+</ul>
+
+<h3 id="toc_2">3 应用-关于sigmoid函数的理解</h3>
+
+<ul>
+<li><p>AB实验<br/>
+对于AB实验来说，有了长短点击时间阈值之后，可以直接计算长点击和短点击，更新指标评估即可。</p></li>
+<li><p>interleaving实验<br/>
+对于interleaving来说，实际中是将dt经过一个映射(一般是sigmoid函数)将其转化为一个0-1的打分。</p></li>
+</ul>
+
+<p>这里我们从另外一个角度来看这件事。LR或者说sigmoid函数能将一个负无穷到正无穷的数映射到0-1的一个概率值。是否是长点其实也是一个概率，当然这里时长t是取的(0, 正无穷)</p>
+
+<p>假设<br/>
+\[g(x) = \frac{good(x)}{good(x) + not\_good(x)}\]<br/>
+其中 \(good(x)= \#good(t=x)\), \(not\_good(x)=\#not\_good(t= x)\)。 <br/>
+所以\(g(x)\)其实表示的是在\(t=x\)时候是长点击的概率。为了书写方便，</p>
+
+<p>\[g(x) = \frac{1}{1+ not\_good(x)/good(x)}= \frac{1}{1+ e^{ln\frac{p}{1-p}}}\]</p>
+
+<p>这里\(p(x)\)是表示当时间等于x时是长点击的概率。</p>
+
+<p>从这个角度说，之前的sigmoid映射函数中\(\frac{1}{1+ e^{-a(x-b)}}\) 系数项即是log odds ratio。</p>
+
+<p>因此只需对送评数据中\(ln\frac{p}{1-p}\)的分布数据去拟合一条曲线 \(\hat f(t)\)即可，最终的sigmoid映射函数就是</p>
+
+<p>\[g(t) = \frac{1}{1+ e^{\hat f(t)}}\]</p>
+
+<p>并且其中\(\hat f(t)=0\)的点恰巧就是长点击的分界点。</p>
+
+<p>注意：实际送评的时候因为样本量的限制，不可能每一个分界点(在这里是每个停留时间dt)都会去送评，</p>
+
+<h3 id="toc_3">4.其他:从模型准召的角度</h3>
+
+<p>其实从分类评估角度来看，</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>not_good</th>
+<th>Good</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>F=0</td>
+<td>a</td>
+<td>b</td>
+</tr>
+<tr>
+<td>F=1</td>
+<td>c</td>
+<td>d</td>
+</tr>
+</tbody>
+</table>
+
+<p>上面说的损失即阴影部分的面积=b+c, 所以其实从分类模型评估的角度，就是不一致率最小的时候的最优解,即<br/>
+\[min b+c\]</p>
+
+<ul>
+<li>准确&amp;召回</li>
+</ul>
+
+<p>分类模型中其实用的更多的是准确和召回指标，\(accurate=\frac{d}{c+d}\),\(recall = \frac{d}{b+d}\)<br/>
+\[Max F\_score = 1-\frac{b+c}{b+c+2d}\]</p>
+
+<p>这个标准下，和之前还是略微有些不同的</p>
+
+<h3 id="toc_4">5.如何泛化</h3>
+
+<p>泛化问题主要是指：</p>
+
+<ul>
+<li>业务层面</li>
+</ul>
+
+<p>搜索，视频，以后其他的大小业务都可能面临这种问题。对于新的业务类型，人工送评应该是避免不了了。</p>
+
+<ul>
+<li>时间层面变更</li>
+</ul>
+
+<p>随着线上效果变更，当前调研的结果可能已经不再试用后续的结果。需要不断进行更新，比如视频铺量后，整体的时长分布和之前的可能变化很大。或者是需要拆解不同的维度类别</p>
+
+<p>方案1：再次人工送评一遍，<br/>
+方案2：进行时长分布映射<br/>
+这种方案有个问题，相当于是按照top百分比进行划分的，认为top百分比所代表的满意度保持一致。可能整体时长都变长了，映射完后阈值也变长了，相对的满意度并没变。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
           				   
                     
 
@@ -541,7 +1084,7 @@ A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)�
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
             
-                <h1>zhenzhen学习笔记</h1>
+                <h1>zhenzhen数据科学笔记</h1>
                 <div class="site-des"></div>
                 <div class="social">
 
@@ -570,6 +1113,8 @@ A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)�
 
       	<p class="cat-list">
         
+            <a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html"><strong>轨迹分析</strong></a>
+        
             <a href="1%20Tools.html"><strong>1 Tools</strong></a>
         
             <a href="2%20Get%20Data.html"><strong>2 Get Data</strong></a>
@@ -582,17 +1127,15 @@ A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)�
         
             <a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统</strong></a>
         
-            <a href="6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html"><strong>6 文本&视频</strong></a>
+            <a href="6.CV.html"><strong>6.CV</strong></a>
+        
+            <a href="6%20NLP.html"><strong>6 NLP</strong></a>
         
             <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习</strong></a>
         
             <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
-        
-            <a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html"><strong>轨迹数据</strong></a>
-        
-            <a href="%E8%AF%BB%E4%B9%A6.html"><strong>读书</strong></a>
          
         </p>
 
@@ -609,12 +1152,6 @@ A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)�
 	      
 		      
 			      <li class="post">
-			        <a href="15706729896574.html"></a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
 			        <a href="15687050894061.html">0.综述</a>
 			      </li>
 		     
@@ -627,13 +1164,19 @@ A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)�
 		  
 		      
 			      <li class="post">
+			        <a href="15637037681646.html">1 基础工具包安装pip</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15637025346412.html">1. conda 环境管理</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15694859531608.html">1.trajectory preprocessing</a>
+			        <a href="15637037713554.html">1. 数据可视化概述</a>
 			      </li>
 		     
 		  

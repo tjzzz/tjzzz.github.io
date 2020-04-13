@@ -1,0 +1,515 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  深度学习-开源图片数据库 - zhenzhen数据科学笔记
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="zhenzhen数据科学笔记" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li id=""><a target="_self" href="about_me.html">aboutme</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; zhenzhen数据科学笔记</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+        <li><a target="_self" href="about_me.html">aboutme</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html">轨迹分析</a></li>
+        
+            <li><a href="1%20Tools.html">1 Tools</a></li>
+        
+            <li><a href="2%20Get%20Data.html">2 Get Data</a></li>
+        
+            <li><a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html">3 数据可视化</a></li>
+        
+            <li><a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html">4 统计方法</a></li>
+        
+            <li><a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html">5 机器学习</a></li>
+        
+            <li><a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html">6 推荐系统</a></li>
+        
+            <li><a href="6.CV.html">6.CV</a></li>
+        
+            <li><a href="6%20NLP.html">6 NLP</a></li>
+        
+            <li><a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">7 深度学习</a></li>
+        
+            <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
+        
+            <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>深度学习-开源图片数据库</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2020/2/28</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <h2 id="toc_0">1. 图像</h2>
+
+<table>
+<thead>
+<tr>
+<th>图像库</th>
+<th>图片说明</th>
+<th>链接</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ImageNet</td>
+<td>按照WordNet结构整理，平均每个类别下有500张图片</td>
+<td><a href="http://www.image-net.org/">http://www.image-net.org/</a></td>
+</tr>
+<tr>
+<td>CIFAR-10</td>
+<td>6w张32x32的图片，分为10类(飞机，鸟，猫，船..)</td>
+<td><a href="http://www.cs.toronto.edu/%7Ekriz/cifar.html">http://www.cs.toronto.edu/~kriz/cifar.html</a></td>
+</tr>
+<tr>
+<td>CIFAR-100</td>
+<td>20大类，100小类</td>
+<td></td>
+</tr>
+<tr>
+<td>MNIST</td>
+<td>7w,28x28手写识别0-9</td>
+<td><a href="http://yann.lecun.com/exdb/mnist/">http://yann.lecun.com/exdb/mnist/</a></td>
+</tr>
+<tr>
+<td>LFW</td>
+<td>1.3w 人脸数据, 无分类</td>
+<td><a href="http://vis-www.cs.umass.edu/lfw/">http://vis-www.cs.umass.edu/lfw/</a></td>
+</tr>
+<tr>
+<td>Caltech 101</td>
+<td>101类objects, 300x200</td>
+<td><a href="http://www.vision.caltech.edu/Image_Datasets/Caltech101/">http://www.vision.caltech.edu/Image_Datasets/Caltech101/</a></td>
+</tr>
+<tr>
+<td>Caltech 256</td>
+<td>256类objects, 300x200</td>
+<td><a href="http://www.vision.caltech.edu/Image_Datasets/Caltech256/">http://www.vision.caltech.edu/Image_Datasets/Caltech256/</a></td>
+</tr>
+</tbody>
+</table>
+
+<p>服装类</p>
+
+<table>
+<thead>
+<tr>
+<th>图像库</th>
+<th>图片说明</th>
+<th>链接</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Fashion--MNIST</td>
+<td>服装类，类似手写识别风格，衣服鞋包</td>
+<td><a href="https://github.com/zalandoresearch/fashion-mnist">https://github.com/zalandoresearch/fashion-mnist</a></td>
+</tr>
+<tr>
+<td>DeepFashion</td>
+<td></td>
+<td><a href="http://mmlab.ie.cuhk.edu.hk/projects/DeepFashion.html">http://mmlab.ie.cuhk.edu.hk/projects/DeepFashion.html</a></td>
+</tr>
+</tbody>
+</table>
+
+<p>其他</p>
+
+<table>
+<thead>
+<tr>
+<th>图像库</th>
+<th>图片说明</th>
+<th>链接</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Quick Draw</td>
+<td>google的涂鸦数据集, 345类, 5kw张</td>
+<td><a href="https://quickdraw.withgoogle.com%EF%BC%8C">https://quickdraw.withgoogle.com，</a> <a href="https://github.com/googlecreativelab/quickdraw-dataset/data">https://github.com/googlecreativelab/quickdraw-dataset/data</a></td>
+</tr>
+<tr>
+<td>kaggle casts vs. dogs</td>
+<td>2.5w</td>
+<td><a href="https://www.kaggle.com/c/dogs-vs-cats/data">https://www.kaggle.com/c/dogs-vs-cats/data</a></td>
+</tr>
+<tr>
+<td>COCO common objects Dataset</td>
+<td>微软, 物体检测,分割</td>
+<td><a href="http://cocodataset.org/#home">http://cocodataset.org/#home</a></td>
+</tr>
+<tr>
+<td>Stanford 40 Actions</td>
+<td>斯坦福，人的40种动作(刷牙，扫地，爬山，做饭..)</td>
+<td><a href="http://vision.stanford.edu/Datasets/40actions.html">http://vision.stanford.edu/Datasets/40actions.html</a></td>
+</tr>
+</tbody>
+</table>
+
+<p>人脸数据集</p>
+
+<ul>
+<li>自然脸部检测（LFW）数据集：包含13000幅经裁剪的脸部区域图像（采用Viola-Jones检测框架），标记了图中人的姓名。数据集中的一部分人有两幅图像，人们常用它训练脸部匹配系统。</li>
+<li>UMD Faces：已标注的人脸图像数据集，包括来自8501个人的367920幅脸部图像。</li>
+<li>CASIA WebFace：包含453453幅人脸图像的数据集，经人脸检测后共识别出超过10575个身份。需要进行一些筛选来提高质量。</li>
+<li>MS-Celeb-1M：100万幅世界名人图像。需要进行一些筛选才能在深度神经网络上取得最佳结果。</li>
+<li>Olivetti：一些人的不同脸部图像。</li>
+<li>Multi-Pie：CMU的Multi-PIE人脸数据库</li>
+<li>Face-in-Action</li>
+<li>JACFEE：日本人和高加索人不同情绪的脸部表情</li>
+<li>FERET：脸部识别技术数据库</li>
+<li>mmifacedb：MMI脸部表情数据库</li>
+<li>IndianFaceDatabase  耶鲁人脸数据库和耶鲁人脸数据库B)。</li>
+</ul>
+
+<h2 id="toc_1">2.文本数据集</h2>
+
+<ul>
+<li>20个新闻组数据集：分类任务，将出现的词映射至新闻组ID。文本分类的经典数据集之一，通常可以用于纯分类算法的基准测试，或者用于验证任意一种IR/索引算法。</li>
+<li>路透社新闻数据集：（较老）纯分类用途的新闻电讯文本数据集。常用于教程。</li>
+<li>Penn Treebank：用于下一词预测或下一字预测。</li>
+<li>UCI垃圾邮件数据库Spambase：（较老）来自著名的UCI机器学习库的经典垃圾邮件数据集。该数据集经过细致的审编，因此可以作为个性化垃圾邮件筛选学习的基线。</li>
+<li>广播新闻数据集：用于下一词预测的经典大型文本数据集。</li>
+<li>文本分类数据集： 来自Zhang等人，2015；八个内容丰富的文本分类数据集，可用于新文本分类基线的基准测试。样例大小为120K至3.6M，问题所涉及的类别从两个到14个不等。数据集内容来自DBPedia、亚马逊、Yelp、雅虎和AG。</li>
+<li>WikiText：取自高质量维基百科文章的大型语言模型语料库，由Salesforce MetaMind进行审编。</li>
+<li>SQuAD：斯坦福问答数据集——用途广泛的问题回答及阅读理解数据集，每项问题的答案都是一段文本。</li>
+<li>十亿词数据集：大型通用语言模型数据集，常用于训练Word2Vec等词的分布式表示。</li>
+<li>Common Crawl： 万兆字节级的网页爬取数据集——最常用于学习词向量。可通过亚马逊S3免费获取。数据集的内容从万维网爬取获得，因此也可以用作互联网的数据集。</li>
+<li>谷歌图书Ngram数据集：取自谷歌图书的连续词数据，是探索一个词何时开始被广泛使用的简易方法。</li>
+<li>Yelp公开数据集：Yelp商户、评论及用户数据的子集，用于自然语言处理（NLP）。</li>
+</ul>
+
+<h2 id="toc_2">参考资料</h2>
+
+<p><a href="https://blog.csdn.net/chaipp0607/article/details/71403797">https://blog.csdn.net/chaipp0607/article/details/71403797</a></p>
+
+<p><a href="https://deeplearning4j.org/cn/opendata">https://deeplearning4j.org/cn/opendata</a></p>
+
+<p><a href="https://zhuanlan.zhihu.com/p/35399323">https://zhuanlan.zhihu.com/p/35399323</a></p>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15637037730631.html" 
+          title="Previous Post: 比赛学习">&laquo; 比赛学习</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15637025347820.html" 
+          title="Next Post: 目录">目录 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>zhenzhen数据科学笔记</h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+<a target="_blank" class="github" target="_blank" href="tjzzz.github.io" title="GitHub">GitHub</a>
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html"><strong>轨迹分析</strong></a>
+        
+            <a href="1%20Tools.html"><strong>1 Tools</strong></a>
+        
+            <a href="2%20Get%20Data.html"><strong>2 Get Data</strong></a>
+        
+            <a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html"><strong>3 数据可视化</strong></a>
+        
+            <a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 统计方法</strong></a>
+        
+            <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习</strong></a>
+        
+            <a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统</strong></a>
+        
+            <a href="6.CV.html"><strong>6.CV</strong></a>
+        
+            <a href="6%20NLP.html"><strong>6 NLP</strong></a>
+        
+            <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习</strong></a>
+        
+            <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
+        
+            <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15687050894061.html">0.综述</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637036455584.html">1 估计的置信度</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637037681646.html">1 基础工具包安装pip</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637025346412.html">1. conda 环境管理</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15637037713554.html">1. 数据可视化概述</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+
+  </body>
+</html>

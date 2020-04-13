@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  7 深度学习 - zhenzhen学习笔记
+  7 深度学习 - zhenzhen数据科学笔记
   
   </title>
   
   
-  <link href="atom.xml" rel="alternate" title="zhenzhen学习笔记" type="application/atom+xml">
+  <link href="atom.xml" rel="alternate" title="zhenzhen数据科学笔记" type="application/atom+xml">
     <link rel="stylesheet" href="asset/css/foundation.min.css" />
     <link rel="stylesheet" href="asset/css/docs.css" />
     <script src="asset/js/vendor/modernizr.js"></script>
@@ -64,7 +64,7 @@
 
         <nav class="tab-bar show-for-small">
   <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-    <span> &nbsp; zhenzhen学习笔记</span>
+    <span> &nbsp; zhenzhen数据科学笔记</span>
   </a>
 </nav>
 
@@ -81,6 +81,8 @@
     <li><label>Categories</label></li>
 
         
+            <li><a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html">轨迹分析</a></li>
+        
             <li><a href="1%20Tools.html">1 Tools</a></li>
         
             <li><a href="2%20Get%20Data.html">2 Get Data</a></li>
@@ -93,17 +95,15 @@
         
             <li><a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html">6 推荐系统</a></li>
         
-            <li><a href="6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html">6 文本&视频</a></li>
+            <li><a href="6.CV.html">6.CV</a></li>
+        
+            <li><a href="6%20NLP.html">6 NLP</a></li>
         
             <li><a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">7 深度学习</a></li>
         
             <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
-        
-            <li><a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html">轨迹数据</a></li>
-        
-            <li><a href="%E8%AF%BB%E4%B9%A6.html">读书</a></li>
          
 
       </ul>
@@ -125,6 +125,119 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15637037679634.html">
+                
+                  <h1>神经网络解释性问题</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><a href="https://ask.hellobi.com/blog/zlx19930503/10578">https://ask.hellobi.com/blog/zlx19930503/10578</a></p>
+
+<p>但是深度学习是一个黑箱。我第一次听说它时，就对其工作原理非常费解。几年过去了，我仍然在探索合理的答案。尝试解释现代神经网络很难，但是至关重要。如果我们打算依赖深度学习制造新的 AI、处理敏感的用户数据，或者开药，那么我们必须理解这些模型的工作原理。</p>
+
+<p>很幸运，学界人士也提出了很多对深度学习的理解。以下是几个近期论文示例：</p>
+
+<h2 id="toc_0">Grad-Cam（Selvaraju et. al. 2017）</h2>
+
+<p>使用最后卷积层的梯度生成热力图，突出显示输入图像中的重要像素用于分类。</p>
+
+<h2 id="toc_1">LIME（Ribeiro et. al. 2016）</h2>
+
+<p>使用稀疏线性模型（可轻松识别重要特征）逼近 DNN 的预测。</p>
+
+<p>论文地址：<a href="https://arxiv.org/abs/1602.04938">https://arxiv.org/abs/1602.04938</a></p>
+
+<p>一些中文解读：<a href="https://www.oreilly.com.cn/ideas/?p=563%EF%BC%9B">https://www.oreilly.com.cn/ideas/?p=563；</a><br/>
+<a href="http://geek.csdn.net/news/detail/66259">http://geek.csdn.net/news/detail/66259</a></p>
+
+<p>一个例子<br/>
+<a href="http://marcotcr.github.io/lime/tutorials/Lime%20-%20basic%20usage%2C%20two%20class%20case.html">http://marcotcr.github.io/lime/tutorials/Lime%20-%20basic%20usage%2C%20two%20class%20case.html</a></p>
+
+<p><a href="https://www.jiqizhixin.com/articles/2017-12-20-2">https://www.jiqizhixin.com/articles/2017-12-20-2</a></p>
+
+<h2 id="toc_2">特征可视化（Olah 2017）</h2>
+
+<p>对于带有随机噪声的图像，优化像素来激活训练的 DNN 中的特定神经元，进而可视化神经元学到的内容。</p>
+
+<h2 id="toc_3">Loss Landscape（Li et. al. 2017）</h2>
+
+<p>可视化 DNN 尝试最小化的非凸损失函数，查看架构／参数如何影响损失情况。</p>
+
+<h2 id="toc_4">关于xgboost</h2>
+
+<p>R: <a href="https://github.com/AppliedDataSciencePartners/xgboostExplainer">https://github.com/AppliedDataSciencePartners/xgboostExplainer</a><br/>
+python <a href="https://github.com/gameofdimension/xgboost_explainer">https://github.com/gameofdimension/xgboost_explainer</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637025345079.html">
+                
+                  <h1>第一章 引言</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>别人的读后总结，可参考「Deep Learning」读书系列分享（一） | 分享总结</p>
+
+<p><a href="https://www.leiphone.com/news/201708/LEBNjZzvm0Q3Ipp0.html">https://www.leiphone.com/news/201708/LEBNjZzvm0Q3Ipp0.html</a></p>
+
+<h3 id="toc_0">需要明确的几个概念范围</h3>
+
+<p><img src="media/15075611675547/15075613801366.jpg" alt=""/></p>
+
+<p><img src="media/15075611675547/15075614908544.jpg" alt=""/></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15637025346077.html">
                 
@@ -405,124 +518,6 @@ A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)�
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15637025346737.html">
-                
-                  <h1>第五章 机器学习</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>这部分主要是补充了机器学习的一席基础知识点，这里先略过。后期再进行相应的补充。具体包括</p>
-
-<ul>
-<li><p>容量/过拟合/欠拟合</p></li>
-<li><p>估计/偏差/方差</p></li>
-<li><p>最大似然估计</p></li>
-<li><p>贝叶斯统计</p></li>
-<li><p>监督学习算法</p></li>
-<li><p>无监督学习算法</p>
-<ul>
-<li>PCA</li>
-<li>聚类</li>
-</ul></li>
-<li><p>梯度下降</p></li>
-</ul>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037731128.html">
-                
-                  <h1>第八章 深度模型中的优化</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">8.1 优化与学习</h2>
-
-<p>本章主要关注这一类特定的优化问题:寻找神经网络上的一组参数 θ，它能显 著地降低代价函数 J(θ)，该代价函数通常包括整个训练集上的性能评估和额外的正 则化项。</p>
-
-<p>通常来说极其学习的算法目标大概可以写成，降低期望泛化误差。即<strong>风险</strong><br/>
-<img src="media/15209459008411/15209462294325.jpg" alt=""/></p>
-
-<p>其中p_data是真实的分布，实际中我们只能最小化<strong>经验风险</strong><br/>
-<img src="media/15209459008411/15209463229280.jpg" alt=""/></p>
-
-<h2 id="toc_1">8.2神经网络优化中的挑战</h2>
-
-<ul>
-<li>病态： hessain矩阵病态</li>
-<li>局部最小值：对于非凸函数可能存在多个局部最小值。</li>
-<li>。。。</li>
-</ul>
-
-<h2 id="toc_2">8.3基本算法</h2>
-
-<p>梯度下降机器变种一般是机器学习中应用较多的优化算法。</p>
-
-<h3 id="toc_3">(1)随机梯度下降SGD</h3>
-
-<p><img src="media/15209459008411/15221677256921.jpg" alt=""/></p>
-
-<h3 id="toc_4">（2）动量</h3>
-
-<p>动量是比SGD速度更快的一种方法，SGD相当于只是考虑梯度的方向，而动量是在此基础上加上速度。</p>
-
-<p><img src="media/15209459008411/15221680917826.jpg" alt=""/></p>
-
-<h2 id="toc_5">8.4 参数初始化</h2>
-
-<h2 id="toc_6">参考资料</h2>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -546,7 +541,7 @@ A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)�
     <div id="sidebar" class="sidebar">
           <div id="site-info" class="site-info">
             
-                <h1>zhenzhen学习笔记</h1>
+                <h1>zhenzhen数据科学笔记</h1>
                 <div class="site-des"></div>
                 <div class="social">
 
@@ -575,6 +570,8 @@ A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)�
 
       	<p class="cat-list">
         
+            <a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html"><strong>轨迹分析</strong></a>
+        
             <a href="1%20Tools.html"><strong>1 Tools</strong></a>
         
             <a href="2%20Get%20Data.html"><strong>2 Get Data</strong></a>
@@ -587,17 +584,15 @@ A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)�
         
             <a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统</strong></a>
         
-            <a href="6%20%E6%96%87%E6%9C%AC&%E8%A7%86%E9%A2%91.html"><strong>6 文本&视频</strong></a>
+            <a href="6.CV.html"><strong>6.CV</strong></a>
+        
+            <a href="6%20NLP.html"><strong>6 NLP</strong></a>
         
             <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习</strong></a>
         
             <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
-        
-            <a href="%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE.html"><strong>轨迹数据</strong></a>
-        
-            <a href="%E8%AF%BB%E4%B9%A6.html"><strong>读书</strong></a>
          
         </p>
 
@@ -614,12 +609,6 @@ A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)�
 	      
 		      
 			      <li class="post">
-			        <a href="15706729896574.html"></a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
 			        <a href="15687050894061.html">0.综述</a>
 			      </li>
 		     
@@ -632,13 +621,19 @@ A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)�
 		  
 		      
 			      <li class="post">
+			        <a href="15637037681646.html">1 基础工具包安装pip</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15637025346412.html">1. conda 环境管理</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15694859531608.html">1.trajectory preprocessing</a>
+			        <a href="15637037713554.html">1. 数据可视化概述</a>
 			      </li>
 		     
 		  
