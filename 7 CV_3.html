@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  6.CV - zhenzhen数据科学笔记
+  7 CV - zhenzhen数据科学笔记
   
   </title>
   
@@ -81,6 +81,8 @@
     <li><label>Categories</label></li>
 
         
+            <li><a href="kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html">kdd&异常检测</a></li>
+        
             <li><a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html">轨迹分析</a></li>
         
             <li><a href="1%20Tools.html">1 Tools</a></li>
@@ -95,15 +97,17 @@
         
             <li><a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html">6 推荐系统</a></li>
         
-            <li><a href="6.CV.html">6.CV</a></li>
-        
             <li><a href="6%20NLP.html">6 NLP</a></li>
         
-            <li><a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">7 深度学习</a></li>
+            <li><a href="7%20CV.html">7 CV</a></li>
         
-            <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
+            <li><a href="8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">8 深度学习</a></li>
+        
+            <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
+        
+            <li><a href="%E5%85%B6%E4%BB%96.html">其他</a></li>
          
 
       </ul>
@@ -126,53 +130,27 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15834004454503.html">
+                <a class="clearlink" href="15822015902121.html">
                 
-                  <h1>【数据增强】</h1>
+                  <h1>综述</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h3 id="toc_0">1.有监督的</h3>
+                        	<p>首先看下cv方面的综述，对整个技术发展过程有个大致了解</p>
 
-<p><strong>1.1 单样本的数据增强</strong><br/>
-单样本的数据增强主要是围绕一个样本图片，进行的”几何变换“、”颜色变换“等</p>
+<p><a href="https://github.com/weiaicunzai/awesome-image-classification">https://github.com/weiaicunzai/awesome-image-classification</a> (中文 <a href="https://mp.weixin.qq.com/s?__biz=MzIwOTc2MTUyMg==&amp;mid=2247487400&amp;idx=1&amp;sn=cb4dd3e95cd12c813bfcb7ae6e62d69c&amp;chksm=976faa35a01823230524bec5cb4ede73b880d42eaf2fe86b5878108df444d02ba1acd613df1b&amp;mpshare=1&amp;scene=1&amp;srcid=0221VLUJG5gsMr5QzU7VNtBZ&amp;sharer_sharetime=1582247950940&amp;sharer_shareid=39affd95034dc485004147e1f2365064%23rd">https://mp.weixin.qq.com/s?__biz=MzIwOTc2MTUyMg==&amp;mid=2247487400&amp;idx=1&amp;sn=cb4dd3e95cd12c813bfcb7ae6e62d69c&amp;chksm=976faa35a01823230524bec5cb4ede73b880d42eaf2fe86b5878108df444d02ba1acd613df1b&amp;mpshare=1&amp;scene=1&amp;srcid=0221VLUJG5gsMr5QzU7VNtBZ&amp;sharer_sharetime=1582247950940&amp;sharer_shareid=39affd95034dc485004147e1f2365064%23rd</a>)</p>
 
-<ul>
-<li>几何变换类： 旋转、翻转、剪裁、变形、缩放</li>
-<li>颜色变换类： 噪声、模糊、颜色变换、填充</li>
-</ul>
-
-<p>实用tool <code>https://github.com/aleju/imgaug</code></p>
-
-<p><strong>1.2 多样本数据增强</strong><br/>
-利用多个样本产生出新的样本</p>
+<h2 id="toc_0">预处理</h2>
 
 <ul>
-<li>SMOTE，人工合成新样本，解决类不平衡问题。映射到特征空间，在小样本的k近邻中构造新的样本点</li>
-<li>SamplePairing：主要用在医学图像上，从训练集中随机抽取两张图片，经过基础数据增强后将像素平均合并成一个新的样本。标签记为原样本标签中的一种。</li>
-<li>mixup: 使用线性插值，对于随机选取的两个数据，new = wXi + (1-w)Xj</li>
+<li>均值</li>
+<li>数据增强：缩放、旋转、随机RGB颜色、亮度变换等</li>
 </ul>
 
-<h3 id="toc_1">2.无监督的</h3>
+<h2 id="toc_1">参考资料</h2>
 
-<p><strong>2.1 学习数据的分布，随机生成新图片</strong></p>
-
-<ul>
-<li>GAN</li>
-</ul>
-
-<p><strong>2.2 通过模型学习适合当前任务的数据增强方法</strong></p>
-
-<ul>
-<li>AutoAugment<br/>
-google 提出的自动选择最优数据增强方案的研究。其基本思路是:使用增强学习从数据本身寻找最佳的图像变换策略。具体来说就是用基础数据增强策略的组合。</li>
-<li>RandAugment: AutoAugment的进化版</li>
-</ul>
-
-<h2 id="toc_2">参考</h2>
-
-<p><a href="https://www.zhihu.com/question/319291048">https://www.zhihu.com/question/319291048</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/86090591">https://zhuanlan.zhihu.com/p/86090591</a></p>
 
                         
                       </div>
@@ -181,67 +159,7 @@ google 提出的自动选择最优数据增强方案的研究。其基本思路�
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/3/5</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15838089244516.html">
-                
-                  <h1>【案例】</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>(1) 样本少容易过拟合</p>
-
-<pre><code class="language-text"> base_model,
-      tf.keras.layers.GlobalAveragePooling2D(),
-      tf.keras.layers.Dropout(0.5),
-      tf.keras.layers.Dense(256, kernel_regularizer=tf.keras.regularizers.l2(0.001),
-                           activation=&#39;relu&#39;),
-      tf.keras.layers.Dense(2, activation = &#39;softmax&#39;)]
-    )
-</code></pre>
-
-<p>加入正则化和dropout<br/>
-进行图片增强产生更多图片</p>
-
-<p>fine-tune效果</p>
-
-<p><img src="media/15838089244516/3BB989C7-F853-4391-BAE1-2CF5FE031D51.png" alt="3BB989C7-F853-4391-BAE1-2CF5FE031D51"/></p>
-
-<p>feature-效果<br/>
-<img src="media/15838089244516/7BE3E393-6503-4A17-AD04-34B8DDA9C6D3.png" alt="7BE3E393-6503-4A17-AD04-34B8DDA9C6D3"/></p>
-
-<p>(2) 调整loss中的训练权重<br/>
-class_weight = {0:0.75, 1:0.25}<br/>
-<img src="media/15838089244516/15838091710767.jpg" alt=""/></p>
-
-<p>QQ: 训练集和验证集效果都还好，但是到真实预测的时候效果却很差？？？</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/3/10</span>
+                    <span class="date">2020/2/20</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB.html'>图像分类</a></span>
@@ -260,47 +178,37 @@ class_weight = {0:0.75, 1:0.25}<br/>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15833060322285.html">
+                <a class="clearlink" href="15826898443382.html">
                 
-                  <h1>【目标检测】</h1>
+                  <h1>训练数据少-</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><img src="media/15833060322285/15833061979386.jpg" alt=""/></p>
+                        	<p>生成更多数据 <a href="https://juejin.im/post/5d887be951882509334fa199">https://juejin.im/post/5d887be951882509334fa199</a></p>
 
-<p><img src="media/15833060322285/15833089551223.jpg" alt=""/></p>
+<p>数据量少的方法 <a href="https://zhuanlan.zhihu.com/p/50547038">https://zhuanlan.zhihu.com/p/50547038</a></p>
 
-<p><strong>two stage</strong></p>
+<p>1.迁移学习</p>
 
-<h2 id="toc_0">1.R-CNN</h2>
+<p>（1）微调 <a href="https://zhuanlan.zhihu.com/p/35890660">https://zhuanlan.zhihu.com/p/35890660</a><br/>
+利用已经训练好的模型和参数作为初始参数，再训模型</p>
 
-<p>Region-CNN,基本思路如下:</p>
+<p><img src="media/15826898443382/15826938622074.jpg" alt=""/></p>
+
+<p>（2）特征提取（Feature Extraction） +特征融合（feature fusion）+ xgboost<br/>
+模型结构不变，将最后输出部分的全连接特征取出</p>
+
+<p><a href="https://github.com/cameronfabbri/Compute-Features">https://github.com/cameronfabbri/Compute-Features</a></p>
+
+<p>过拟合<br/>
+<a href="http://www.mashangxue123.com/tensorflow/tf2-tutorials-keras-overfit_and_underfit.html">http://www.mashangxue123.com/tensorflow/tf2-tutorials-keras-overfit_and_underfit.html</a></p>
 
 <ul>
-<li>候选提取框： <code>selective search</code> 启发式搜寻可能存在物体的区域</li>
-<li>对每个提取框提取特征</li>
-<li>图像分类， 用SVM</li>
-<li>非极大值抑制</li>
+<li>权重正则化L1,L2</li>
+<li>dropout</li>
 </ul>
 
-<p><strong>one-stage</strong></p>
-
-<ul>
-<li>yolo</li>
-<li> SSD</li>
-</ul>
-
-<h2 id="toc_1">参考</h2>
-
-<p><a href="https://zhuanlan.zhihu.com/p/40047760">https://zhuanlan.zhihu.com/p/40047760</a></p>
-
-<p>yolo <a href="https://www.cnblogs.com/fydeblog/p/10447875.html">https://www.cnblogs.com/fydeblog/p/10447875.html</a></p>
-
-<p>机器之心  <a href="https://www.jiqizhixin.com/articles/092301">https://www.jiqizhixin.com/articles/092301</a></p>
-
-<p>github综述 <a href="https://github.com/hoya012/deep_learning_object_detection">https://github.com/hoya012/deep_learning_object_detection</a></p>
-
                         
                       </div>
                   </div>
@@ -308,119 +216,10 @@ class_weight = {0:0.75, 1:0.25}<br/>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/3/4</span>
+                    <span class="date">2020/2/26</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15834196813408.html">
-                
-                  <h1>【迁移学习】</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<table>
-<thead>
-<tr>
-<th>分类</th>
-<th>说明</th>
-<th>特点</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>1.样本迁移</td>
-<td>在数据集（源领域）中找到与目标领域相似的数据，把这个数据放大多倍，与目标领域的数据进行匹配。</td>
-<td>需要对不同例子加权；需要用数据进行训练。</td>
-</tr>
-<tr>
-<td>2.特征迁移</td>
-<td>特征空间的迁移</td>
-<td></td>
-</tr>
-<tr>
-<td>3.模型迁移</td>
-<td>比如常用的fine-tune</td>
-<td></td>
-</tr>
-<tr>
-<td>4.关系迁移</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="toc_0">参考</h2>
-
-<p><a href="https://www.cnblogs.com/bonelee/p/8921311.html">https://www.cnblogs.com/bonelee/p/8921311.html</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/3/5</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15828738932501.html">
-                
-                  <h1>垂类工具库</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">2.标注工具 <a href="https://github.com/tzutalin/labelImg">https://github.com/tzutalin/labelImg</a></h2>
-
-<p>opencv</p>
-
-<p><a href="https://www.kancloud.cn/aollo/aolloopencv/269602">https://www.kancloud.cn/aollo/aolloopencv/269602</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/2/28</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='tools.html'>tools</a></span>
+          					    <span class="posted-in"><a href='%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB.html'>图像分类</a></span>
           				   
                     
 
@@ -441,12 +240,12 @@ class_weight = {0:0.75, 1:0.25}<br/>
 			<div class="row">
 			  <div class="large-6 columns">
 			  <p class="text-left" style="padding-top:25px;">
-			   <a href="6.CV.html">&laquo; Prev Page</a>  
+			   <a href="7 CV_2.html">&laquo; Prev Page</a>  
 			  </p>
 			  </div>
 			  <div class="large-6 columns">
 			<p class="text-right" style="padding-top:25px;">
-			 <a href="6.CV_2.html">&raquo; Next Page</a> 
+			
 			</p>
 			  </div>
 			</div>
@@ -487,6 +286,8 @@ class_weight = {0:0.75, 1:0.25}<br/>
 
       	<p class="cat-list">
         
+            <a href="kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html"><strong>kdd&异常检测</strong></a>
+        
             <a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html"><strong>轨迹分析</strong></a>
         
             <a href="1%20Tools.html"><strong>1 Tools</strong></a>
@@ -501,15 +302,17 @@ class_weight = {0:0.75, 1:0.25}<br/>
         
             <a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统</strong></a>
         
-            <a href="6.CV.html"><strong>6.CV</strong></a>
-        
             <a href="6%20NLP.html"><strong>6 NLP</strong></a>
         
-            <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习</strong></a>
+            <a href="7%20CV.html"><strong>7 CV</strong></a>
         
-            <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
+            <a href="8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>8 深度学习</strong></a>
+        
+            <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
+        
+            <a href="%E5%85%B6%E4%BB%96.html"><strong>其他</strong></a>
          
         </p>
 

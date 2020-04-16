@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  7 深度学习 - zhenzhen数据科学笔记
+  7 CV - zhenzhen数据科学笔记
   
   </title>
   
@@ -81,6 +81,8 @@
     <li><label>Categories</label></li>
 
         
+            <li><a href="kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html">kdd&异常检测</a></li>
+        
             <li><a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html">轨迹分析</a></li>
         
             <li><a href="1%20Tools.html">1 Tools</a></li>
@@ -95,15 +97,17 @@
         
             <li><a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html">6 推荐系统</a></li>
         
-            <li><a href="6.CV.html">6.CV</a></li>
-        
             <li><a href="6%20NLP.html">6 NLP</a></li>
         
-            <li><a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">7 深度学习</a></li>
+            <li><a href="7%20CV.html">7 CV</a></li>
         
-            <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
+            <li><a href="8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">8 深度学习</a></li>
+        
+            <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
+        
+            <li><a href="%E5%85%B6%E4%BB%96.html">其他</a></li>
          
 
       </ul>
@@ -126,56 +130,14 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637037677008.html">
+                <a class="clearlink" href="15834841723937.html">
                 
-                  <h1>3.【解释性】LIME</h1>
+                  <h1>【可解释性问题】</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>机器学习得到的模型有时候是一个black box不具有解释性，作者提出了一个问题，我们究竟是相信一个predict result，还是相信一个model。</p>
-
-<p>本文作者主要是利用局部近似的方法，来对any classifier进行解释<br/>
-一个大概的示意图<br/>
-<img src="media/15227606288131/15227612016423.jpg" alt=""/></p>
-
-<h2 id="toc_0">2.可解释性</h2>
-
-<ul>
-<li>可解释：首先必须是可解释的易懂的，在特征很多的时候，线性模型、梯度向量、可加模型等都不太适合。</li>
-<li>local faithfull：局部忠诚</li>
-<li>与模型无关的，可解释any classifier</li>
-</ul>
-
-<h2 id="toc_1">3 Local Interpretable Model-agnostic Explanations</h2>
-
-<p>LIME，首先区分两个东西</p>
-
-<ul>
-<li>features</li>
-<li>interpretable data representations</li>
-</ul>
-
-<p>比如文本文类时具体的features是一个vector，而可解释的representation可能是是否出现某个关键词</p>
-
-<p>基本原理示意图：<br/>
-<img src="media/15227606288131/15227631412258.jpg" alt=""/></p>
-
-<p>说明：</p>
-
-<p>抽象的数学描述<br/>
-<img src="media/15227606288131/15227633252420.jpg" alt=""/></p>
-
-<p>作者在后面主要是讲了候选集是稀疏线性模型的方法</p>
-
-<h3 id="toc_2">稀疏线性解释</h3>
-
-<p>即G为线性模型，一致性的度量\(\pi_x=exp(-D(x,z)^2/\sigma^2)\), 在x局部用一个线性函数去近似</p>
-
-<p><img src="media/15227606288131/15227718128055.jpg" alt=""/><br/>
-具体操作，先用lasso选择k个特征，然后用最小二乘学习特征的权重，K-LASSO<br/>
-<img src="media/15227606288131/15227724362604.jpg" alt=""/></p>
-
+                        	
                         
                       </div>
                   </div>
@@ -183,10 +145,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2020/3/6</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
+          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
           				   
                     
 
@@ -202,31 +164,113 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15838236096534.html">
+                <a class="clearlink" href="15834004454503.html">
                 
-                  <h1>MMLab</h1>
+                  <h1>【数据增强】</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">1. MMLab + DeepFashion 服饰识别</h2>
+                        	<h3 id="toc_0">1.有监督的</h3>
 
-<p>项目地址: <a href="https://github.com/open-mmlab/mmfashion">https://github.com/open-mmlab/mmfashion</a></p>
-
-<p>香港中文大学多媒体实验室（Multimedia Lab）开展的MMFashion项目，是针对服饰领域提供的一个通用的toolbox(基于pytorch)</p>
-
-<p>主要功能有:</p>
+<p><strong>1.1 单样本的数据增强</strong><br/>
+单样本的数据增强主要是围绕一个样本图片，进行的”几何变换“、”颜色变换“等</p>
 
 <ul>
-<li>属性归类</li>
-<li>相似服装检索</li>
-<li>服饰关键点检测</li>
+<li>几何变换类： 旋转、翻转、剪裁、变形、缩放</li>
+<li>颜色变换类： 噪声、模糊、颜色变换、填充</li>
 </ul>
 
-<p>使用：<br/>
-可以按照说明开始 <a href="https://github.com/open-mmlab/mmfashion/blob/master/docs/GETTING_STARTED.md">https://github.com/open-mmlab/mmfashion/blob/master/docs/GETTING_STARTED.md</a><br/>
-同时可以替换成自己的数据集 ,<br/>
-含有的基础model: <a href="https://github.com/open-mmlab/mmfashion/blob/master/docs/MODEL_ZOO.md">https://github.com/open-mmlab/mmfashion/blob/master/docs/MODEL_ZOO.md</a></p>
+<p>实用tool <code>https://github.com/aleju/imgaug</code></p>
+
+<p><strong>1.2 多样本数据增强</strong><br/>
+利用多个样本产生出新的样本</p>
+
+<ul>
+<li>SMOTE，人工合成新样本，解决类不平衡问题。映射到特征空间，在小样本的k近邻中构造新的样本点</li>
+<li>SamplePairing：主要用在医学图像上，从训练集中随机抽取两张图片，经过基础数据增强后将像素平均合并成一个新的样本。标签记为原样本标签中的一种。</li>
+<li>mixup: 使用线性插值，对于随机选取的两个数据，new = wXi + (1-w)Xj</li>
+</ul>
+
+<h3 id="toc_1">2.无监督的</h3>
+
+<p><strong>2.1 学习数据的分布，随机生成新图片</strong></p>
+
+<ul>
+<li>GAN</li>
+</ul>
+
+<p><strong>2.2 通过模型学习适合当前任务的数据增强方法</strong></p>
+
+<ul>
+<li>AutoAugment<br/>
+google 提出的自动选择最优数据增强方案的研究。其基本思路是:使用增强学习从数据本身寻找最佳的图像变换策略。具体来说就是用基础数据增强策略的组合。</li>
+<li>RandAugment: AutoAugment的进化版</li>
+</ul>
+
+<h2 id="toc_2">参考</h2>
+
+<p><a href="https://www.zhihu.com/question/319291048">https://www.zhihu.com/question/319291048</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/3/5</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15838089244516.html">
+                
+                  <h1>【案例】</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>(1) 样本少容易过拟合</p>
+
+<pre><code class="language-text"> base_model,
+      tf.keras.layers.GlobalAveragePooling2D(),
+      tf.keras.layers.Dropout(0.5),
+      tf.keras.layers.Dense(256, kernel_regularizer=tf.keras.regularizers.l2(0.001),
+                           activation=&#39;relu&#39;),
+      tf.keras.layers.Dense(2, activation = &#39;softmax&#39;)]
+    )
+</code></pre>
+
+<p>加入正则化和dropout<br/>
+进行图片增强产生更多图片</p>
+
+<p>fine-tune效果</p>
+
+<p><img src="media/15838089244516/3BB989C7-F853-4391-BAE1-2CF5FE031D51.png" alt="3BB989C7-F853-4391-BAE1-2CF5FE031D51"/></p>
+
+<p>feature-效果<br/>
+<img src="media/15838089244516/7BE3E393-6503-4A17-AD04-34B8DDA9C6D3.png" alt="7BE3E393-6503-4A17-AD04-34B8DDA9C6D3"/></p>
+
+<p>(2) 调整loss中的训练权重<br/>
+class_weight = {0:0.75, 1:0.25}<br/>
+<img src="media/15838089244516/15838091710767.jpg" alt=""/></p>
+
+<p>QQ: 训练集和验证集效果都还好，但是到真实预测的时候效果却很差？？？</p>
 
                         
                       </div>
@@ -238,7 +282,7 @@
                     <span class="date">2020/3/10</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='fashion.html'>fashion</a></span>
+          					    <span class="posted-in"><a href='%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB.html'>图像分类</a></span>
           				   
                     
 
@@ -254,16 +298,46 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15774239088566.html">
+                <a class="clearlink" href="15833060322285.html">
                 
-                  <h1>facebook DensePose</h1>
+                  <h1>【目标检测】</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><a href="https://zhuanlan.zhihu.com/p/38241179">https://zhuanlan.zhihu.com/p/38241179</a></p>
+                        	<p><img src="media/15833060322285/15833061979386.jpg" alt=""/></p>
 
-<p>github: <a href="https://github.com/facebookresearch/DensePose">https://github.com/facebookresearch/DensePose</a></p>
+<p><img src="media/15833060322285/15833089551223.jpg" alt=""/></p>
+
+<p><strong>two stage</strong></p>
+
+<h2 id="toc_0">1.R-CNN</h2>
+
+<p>Region-CNN,基本思路如下:</p>
+
+<ul>
+<li>候选提取框： <code>selective search</code> 启发式搜寻可能存在物体的区域</li>
+<li>对每个提取框提取特征</li>
+<li>图像分类， 用SVM</li>
+<li>非极大值抑制</li>
+</ul>
+
+<p><strong>one-stage</strong></p>
+
+<ul>
+<li>yolo</li>
+<li> SSD</li>
+</ul>
+
+<h2 id="toc_1">参考</h2>
+
+<p><a href="https://zhuanlan.zhihu.com/p/40047760">https://zhuanlan.zhihu.com/p/40047760</a></p>
+
+<p>yolo <a href="https://www.cnblogs.com/fydeblog/p/10447875.html">https://www.cnblogs.com/fydeblog/p/10447875.html</a></p>
+
+<p>机器之心  <a href="https://www.jiqizhixin.com/articles/092301">https://www.jiqizhixin.com/articles/092301</a></p>
+
+<p>github综述 <a href="https://github.com/hoya012/deep_learning_object_detection">https://github.com/hoya012/deep_learning_object_detection</a></p>
 
                         
                       </div>
@@ -272,103 +346,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/12/27</span>
+                    <span class="date">2020/3/4</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E4%BA%BA%E4%BD%93%E5%A7%BF%E6%80%81.html'>人体姿态</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025344767.html">
-                
-                  <h1>【NG-DL】course2_week1 优化网络参数</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">1.基本概念</h2>
-
-<p>很多优化参数：<br/>
-网络层数，隐层数，学习率，激活函数。。。</p>
-
-<ul>
-<li><p>训练集/验证集/测试集</p></li>
-<li><p>偏差， 训练集误差</p></li>
-<li><p>方差</p></li>
-</ul>
-
-<p>若有高bias： 尝试新的网络，更大网络</p>
-
-<p>高方差： 获取更多数据，或者正则化，更合适的网络机构</p>
-
-<p>bias和varaince的平衡<br/>
-一般来说更大的网络能减小偏差，更多的数据能减小方差。</p>
-
-<h2 id="toc_1">2.正则化-L2</h2>
-
-<p>以逻辑回归为例</p>
-
-<p>\(J(w,b)=\frac{1}{m}\sum L(\hat y_i, y_i)+\frac{\lambda}{2m}|w|^2_2\)L2惩罚，避免过拟合，导致高方差</p>
-
-<p>类似的神经网络在优化函数上加上</p>
-
-<p>\(J(w^{[1]},b^{[1]},...w^{[l]},b^{[l]})=\frac{1}{m}\sum L(\hat y_i, y_i)+\frac{\lambda}{2m}\sum||w^{[l]}||^2_2\)</p>
-
-<p>其中\(|w^{[l]}|^2\)F范数</p>
-
-<ul>
-<li>Ng.当\(\lambda\)较大时候,w会较小，sigmoid接近线性，降低方差。
-<img src="media/15055593941505/15103891828021.jpg" alt=""/></li>
-</ul>
-
-<h3 id="toc_2">正则化-dropout(随机失活)</h3>
-
-<p>每次对网络中的节点设置一个随机消失的概率p，即每个节点可能在也可能不在网络中，不在的时候即相当于该节点的数值置为0.</p>
-
-<p>dropout与l2类似都会shrink权重。</p>
-
-<h3 id="toc_3">early stoping</h3>
-
-<h2 id="toc_4">3.优化</h2>
-
-<h3 id="toc_5">归一化</h3>
-
-<p>归一化输入=&gt; 均值0，方差1</p>
-
-<ul>
-<li>零均值化</li>
-<li>归一化方差</li>
-</ul>
-
-<p><img src="media/15055593941505/15103915636569.jpg" alt=""/></p>
-
-<h3 id="toc_6">梯度消失与梯度爆炸</h3>
-
-<p>当梯度增长很大或者很微弱时，会导致优化出问题或者很慢。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
+          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
           				   
                     
 
@@ -443,12 +424,12 @@
 			<div class="row">
 			  <div class="large-6 columns">
 			  <p class="text-left" style="padding-top:25px;">
-			   
+			   <a href="7 CV.html">&laquo; Prev Page</a>  
 			  </p>
 			  </div>
 			  <div class="large-6 columns">
 			<p class="text-right" style="padding-top:25px;">
-			 <a href="7 深度学习_1.html">&raquo; Next Page</a> 
+			 <a href="7 CV_2.html">&raquo; Next Page</a> 
 			</p>
 			  </div>
 			</div>
@@ -489,6 +470,8 @@
 
       	<p class="cat-list">
         
+            <a href="kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html"><strong>kdd&异常检测</strong></a>
+        
             <a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html"><strong>轨迹分析</strong></a>
         
             <a href="1%20Tools.html"><strong>1 Tools</strong></a>
@@ -503,15 +486,17 @@
         
             <a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统</strong></a>
         
-            <a href="6.CV.html"><strong>6.CV</strong></a>
-        
             <a href="6%20NLP.html"><strong>6 NLP</strong></a>
         
-            <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习</strong></a>
+            <a href="7%20CV.html"><strong>7 CV</strong></a>
         
-            <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
+            <a href="8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>8 深度学习</strong></a>
+        
+            <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
+        
+            <a href="%E5%85%B6%E4%BB%96.html"><strong>其他</strong></a>
          
         </p>
 

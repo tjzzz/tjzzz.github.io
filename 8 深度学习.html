@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  6.CV - zhenzhen数据科学笔记
+  8 深度学习 - zhenzhen数据科学笔记
   
   </title>
   
@@ -81,6 +81,8 @@
     <li><label>Categories</label></li>
 
         
+            <li><a href="kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html">kdd&异常检测</a></li>
+        
             <li><a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html">轨迹分析</a></li>
         
             <li><a href="1%20Tools.html">1 Tools</a></li>
@@ -95,15 +97,17 @@
         
             <li><a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html">6 推荐系统</a></li>
         
-            <li><a href="6.CV.html">6.CV</a></li>
-        
             <li><a href="6%20NLP.html">6 NLP</a></li>
         
-            <li><a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">7 深度学习</a></li>
+            <li><a href="7%20CV.html">7 CV</a></li>
         
-            <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
+            <li><a href="8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">8 深度学习</a></li>
+        
+            <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
+        
+            <li><a href="%E5%85%B6%E4%BB%96.html">其他</a></li>
          
 
       </ul>
@@ -126,24 +130,55 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637037688620.html">
+                <a class="clearlink" href="15637037677008.html">
                 
-                  <h1>Face综述</h1>
+                  <h1>3.【解释性】LIME</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><a href="https://blog.csdn.net/chenriwei2/article/details/50631212">https://blog.csdn.net/chenriwei2/article/details/50631212</a></p>
+                        	<p>机器学习得到的模型有时候是一个black box不具有解释性，作者提出了一个问题，我们究竟是相信一个predict result，还是相信一个model。</p>
 
-<p>这个有数据，已经训练好的模型<br/>
-<a href="https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/">https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/</a></p>
+<p>本文作者主要是利用局部近似的方法，来对any classifier进行解释<br/>
+一个大概的示意图<br/>
+<img src="media/15227606288131/15227612016423.jpg" alt=""/></p>
 
-<p>综述@@@@ 需要精读！！！<br/>
-<a href="https://blog.csdn.net/Mr_EvanChen/article/details/75501730">https://blog.csdn.net/Mr_EvanChen/article/details/75501730</a><br/>
-<a href="https://zhuanlan.zhihu.com/p/24816781">https://zhuanlan.zhihu.com/p/24816781</a></p>
+<h2 id="toc_0">2.可解释性</h2>
 
-<p>知乎 狗头山人七 专栏<br/>
-<a href="https://zhuanlan.zhihu.com/p/25025596">https://zhuanlan.zhihu.com/p/25025596</a></p>
+<ul>
+<li>可解释：首先必须是可解释的易懂的，在特征很多的时候，线性模型、梯度向量、可加模型等都不太适合。</li>
+<li>local faithfull：局部忠诚</li>
+<li>与模型无关的，可解释any classifier</li>
+</ul>
+
+<h2 id="toc_1">3 Local Interpretable Model-agnostic Explanations</h2>
+
+<p>LIME，首先区分两个东西</p>
+
+<ul>
+<li>features</li>
+<li>interpretable data representations</li>
+</ul>
+
+<p>比如文本文类时具体的features是一个vector，而可解释的representation可能是是否出现某个关键词</p>
+
+<p>基本原理示意图：<br/>
+<img src="media/15227606288131/15227631412258.jpg" alt=""/></p>
+
+<p>说明：</p>
+
+<p>抽象的数学描述<br/>
+<img src="media/15227606288131/15227633252420.jpg" alt=""/></p>
+
+<p>作者在后面主要是讲了候选集是稀疏线性模型的方法</p>
+
+<h3 id="toc_2">稀疏线性解释</h3>
+
+<p>即G为线性模型，一致性的度量\(\pi_x=exp(-D(x,z)^2/\sigma^2)\), 在x局部用一个线性函数去近似</p>
+
+<p><img src="media/15227606288131/15227718128055.jpg" alt=""/><br/>
+具体操作，先用lasso选择k个特征，然后用最小二乘学习特征的权重，K-LASSO<br/>
+<img src="media/15227606288131/15227724362604.jpg" alt=""/></p>
 
                         
                       </div>
@@ -155,7 +190,7 @@
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='face.html'>face</a></span>
+          					    <span class="posted-in"><a href='8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>8 深度学习</a></span>
           				   
                     
 
@@ -171,120 +206,72 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037708871.html">
+                <a class="clearlink" href="15637025344767.html">
                 
-                  <h1>TF1.0-slim  图像识别模型—— 1.利用已有的进行微调</h1>
+                  <h1>【NG-DL】course2_week1 优化网络参数</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><strong>模型库tensorflow-slim</strong></p>
+                        	<h2 id="toc_0">1.基本概念</h2>
 
-<p>slim 模型库是tensorflow1.0 中专门做图像分类的model库，官网说明:<br/>
-<a href="https://github.com/tensorflow/models/tree/master/research/slim">https://github.com/tensorflow/models/tree/master/research/slim</a></p>
+<p>很多优化参数：<br/>
+网络层数，隐层数，学习率，激活函数。。。</p>
 
-<p>该库中有些用法只适合tf1.0版本，tf2.0中已经没有了，所以安装的时候tf2.0在使用中会报错<br/>
-<code>conda install tensorflow=1.14</code></p>
+<ul>
+<li><p>训练集/验证集/测试集</p></li>
+<li><p>偏差， 训练集误差</p></li>
+<li><p>方差</p></li>
+</ul>
 
-<p>微调(fine-tune)的基本原理</p>
+<p>若有高bias： 尝试新的网络，更大网络</p>
 
-<h2 id="toc_0">1.准备数据</h2>
+<p>高方差： 获取更多数据，或者正则化，更合适的网络机构</p>
 
-<pre><code class="language-text">python download_and_convert_data.py \
-    --dataset_name=mnist \
-    --dataset_dir=/tmp/mnist
-</code></pre>
+<p>bias和varaince的平衡<br/>
+一般来说更大的网络能减小偏差，更多的数据能减小方差。</p>
 
-<pre><code class="language-text"> python data_convert.py -t pic --train-shards 2 --validation-shards 2 --num-threads 2 --dataset-name guangdong
-</code></pre>
+<h2 id="toc_1">2.正则化-L2</h2>
 
-<p>执行完后会在pic下生成tf格式的训练+测试数据，以及label.txt<br/>
-<img src="media/15388051366041/15388065002449.jpg" alt=""/></p>
+<p>以逻辑回归为例</p>
 
-<h2 id="toc_1">2.使用tensorflow的slim微调模型</h2>
+<p>\(J(w,b)=\frac{1}{m}\sum L(\hat y_i, y_i)+\frac{\lambda}{2m}|w|^2_2\)L2惩罚，避免过拟合，导致高方差</p>
 
-<p>简单介绍下google的这个图像分类工具包tensorflow-slim</p>
+<p>类似的神经网络在优化函数上加上</p>
 
-<pre><code class="language-text">├── README.md
-├── datasets                    # 定义训练时候使用的数据。如果是自己的数据，必须在此文件夹下定义
-├── deployment
-├── download_and_convert_data.py
-├── export_inference_graph.py
-├── export_inference_graph_test.py
-├── nets                        # 定义了一些常用的网络，比如vgg16，vgg19，resnet等
-├── preprocessing               # 在读入图像前，对图像做的一些预处理
-├── scripts
-│   ├── finetune_inception_v1_on_flowers.sh
-│   ├── finetune_inception_v3_on_flowers.sh
-│   ├── finetune_resnet_v1_50_on_flowers.sh
-│   ├── train_cifarnet_on_cifar10.sh
-│   └── train_lenet_on_mnist.sh
-├── setup.py
-├── slim_walkthrough.ipynb
-├── eval_image_classifier.py      # 验证模型入口
-└── train_image_classifier.py     # 训练模型入口
-</code></pre>
+<p>\(J(w^{[1]},b^{[1]},...w^{[l]},b^{[l]})=\frac{1}{m}\sum L(\hat y_i, y_i)+\frac{\lambda}{2m}\sum||w^{[l]}||^2_2\)</p>
 
-<p>(1) 定义新的dataset文件</p>
+<p>其中\(|w^{[l]}|^2\)F范数</p>
 
-<p>仿照<code>datasets/flowers.py</code> 写一个自己的数据文件<code>guangdong.py</code> 并且在<code>dataset_factory.py</code>中进行注册</p>
+<ul>
+<li>Ng.当\(\lambda\)较大时候,w会较小，sigmoid接近线性，降低方差。
+<img src="media/15055593941505/15103891828021.jpg" alt=""/></li>
+</ul>
 
-<p>(2)准备训练文件夹</p>
+<h3 id="toc_2">正则化-dropout(随机失活)</h3>
 
-<p>(3)train model</p>
+<p>每次对网络中的节点设置一个随机消失的概率p，即每个节点可能在也可能不在网络中，不在的时候即相当于该节点的数值置为0.</p>
 
-<pre><code class="language-text">python train_image_classifier.py \
-  --train_dir=guangdong/train_dir \
-  --dataset_name=guangdong \
-  --dataset_split_name=train \
-  --dataset_dir=guangdong/data \
-  --model_name=inception_v3 \
-  --checkpoint_path=guangdong/pretrained/inception_v3.ckpt \
-  --checkpoint_exclude_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
-  --trainable_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
-  --max_number_of_steps=100000 \
-  --batch_size=32 \
-  --learning_rate=0.001 \
-  --learning_rate_decay_type=fixed \
-  --save_interval_secs=300 \
-  --save_summaries_secs=2 \
-  --log_every_n_steps=10 \
-  --optimizer=rmsprop \
-  --weight_decay=0.00004
+<p>dropout与l2类似都会shrink权重。</p>
 
-</code></pre>
+<h3 id="toc_3">early stoping</h3>
 
-<p>如果执行后报错<code>Cannot assign a device for operation &#39;InceptionV3/AuxLogits/Conv2d_2b_1x1/weights/RMSProp1&#39;: Could not satisfy explicit device specification &#39;/device:GPU:0&#39; because no supported kernel for GPU devices is available</code> 之类的话</p>
+<h2 id="toc_4">3.优化</h2>
 
-<p>可以参看这个的解决办法<a href="https://blog.csdn.net/xd_wjc/article/details/80550862">https://blog.csdn.net/xd_wjc/article/details/80550862</a></p>
+<h3 id="toc_5">归一化</h3>
 
-<p>tensorboard 查看任务运行情况</p>
+<p>归一化输入=&gt; 均值0，方差1</p>
 
-<pre><code class="language-text">tensorboard --logdir guangdong/train_dir
-</code></pre>
+<ul>
+<li>零均值化</li>
+<li>归一化方差</li>
+</ul>
 
-<p>训练完毕之后进行模型评估</p>
+<p><img src="media/15055593941505/15103915636569.jpg" alt=""/></p>
 
-<pre><code class="language-text">python eval_image_classifier.py \
-  --checkpoint_path=guangdong/train_dir \
-  --eval_dir=guangdong/eval_dir \
-  --dataset_name=guangdong \
-  --dataset_split_name=validation \
-  --dataset_dir=guangdong/data \
-  --model_name=inception_v3
-</code></pre>
+<h3 id="toc_6">梯度消失与梯度爆炸</h3>
 
-<h3 id="toc_2">案例</h3>
-
-<p><a href="https://github.com/ns2250225/python3_tf_slim_image_classify">https://github.com/ns2250225/python3_tf_slim_image_classify</a></p>
-
-<p><a href="https://blog.csdn.net/qq_42556555/article/details/90237131">https://blog.csdn.net/qq_42556555/article/details/90237131</a></p>
-
-<p><a href="https://www.jianshu.com/p/1cbf9aae15b6">https://www.jianshu.com/p/1cbf9aae15b6</a></p>
-
-<h2 id="toc_3">阿里云服务</h2>
-
-<p><a href="https://help.aliyun.com/document_detail/49571.html#OSS">https://help.aliyun.com/document_detail/49571.html#OSS</a></p>
+<p>当梯度增长很大或者很微弱时，会导致优化出问题或者很慢。</p>
 
                         
                       </div>
@@ -296,7 +283,7 @@
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB.html'>图像分类</a></span>
+          					    <span class="posted-in"><a href='8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>8 深度学习</a></span>
           				   
                     
 
@@ -312,137 +299,49 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15825969970925.html">
+                <a class="clearlink" href="15637037679634.html">
                 
-                  <h1>TF2.0</h1>
+                  <h1>神经网络解释性问题</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><a href="https://tensorflow.google.cn/tutorials/images/classification">https://tensorflow.google.cn/tutorials/images/classification</a></p>
+                        	<p><a href="https://ask.hellobi.com/blog/zlx19930503/10578">https://ask.hellobi.com/blog/zlx19930503/10578</a></p>
 
-<pre><code class="language-text">一个简单的方法是创建一个新的 Model 来输出你所感兴趣的层：
+<p>但是深度学习是一个黑箱。我第一次听说它时，就对其工作原理非常费解。几年过去了，我仍然在探索合理的答案。尝试解释现代神经网络很难，但是至关重要。如果我们打算依赖深度学习制造新的 AI、处理敏感的用户数据，或者开药，那么我们必须理解这些模型的工作原理。</p>
 
-from keras.models import Model
+<p>很幸运，学界人士也提出了很多对深度学习的理解。以下是几个近期论文示例：</p>
 
-model = ...  # 创建原始模型
+<h2 id="toc_0">Grad-Cam（Selvaraju et. al. 2017）</h2>
 
-layer_name = &#39;my_layer&#39;
-intermediate_layer_model = Model(inputs=model.input,
-                                 outputs=model.get_layer(layer_name).output)
-intermediate_output = intermediate_layer_model.predict(data)
-或者，你也可以构建一个 Keras 函数，该函数将在给定输入的情况下返回某个层的输出，例如：
+<p>使用最后卷积层的梯度生成热力图，突出显示输入图像中的重要像素用于分类。</p>
 
-from keras import backend as K
+<h2 id="toc_1">LIME（Ribeiro et. al. 2016）</h2>
 
-get_3rd_layer_output = K.function([model.layers[0].input],
-                                  [model.layers[3].output])
-layer_output = get_3rd_layer_output([x])[0]
+<p>使用稀疏线性模型（可轻松识别重要特征）逼近 DNN 的预测。</p>
 
-</code></pre>
+<p>论文地址：<a href="https://arxiv.org/abs/1602.04938">https://arxiv.org/abs/1602.04938</a></p>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/2/25</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='6.CV.html'>6.CV</a></span>
-          				   
-                    
+<p>一些中文解读：<a href="https://www.oreilly.com.cn/ideas/?p=563%EF%BC%9B">https://www.oreilly.com.cn/ideas/?p=563；</a><br/>
+<a href="http://geek.csdn.net/news/detail/66259">http://geek.csdn.net/news/detail/66259</a></p>
 
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<p>一个例子<br/>
+<a href="http://marcotcr.github.io/lime/tutorials/Lime%20-%20basic%20usage%2C%20two%20class%20case.html">http://marcotcr.github.io/lime/tutorials/Lime%20-%20basic%20usage%2C%20two%20class%20case.html</a></p>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037690385.html">
-                
-                  <h1>face_recgnization</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>github<br/>
-<a href="https://github.com/ageitgey/face_recognition">https://github.com/ageitgey/face_recognition</a></p>
+<p><a href="https://www.jiqizhixin.com/articles/2017-12-20-2">https://www.jiqizhixin.com/articles/2017-12-20-2</a></p>
 
-<h2 id="toc_0">1. 安装</h2>
+<h2 id="toc_2">特征可视化（Olah 2017）</h2>
 
-<p>文档： <a href="https://zhuanlan.zhihu.com/p/28271869">https://zhuanlan.zhihu.com/p/28271869</a></p>
+<p>对于带有随机噪声的图像，优化像素来激活训练的 DNN 中的特定神经元，进而可视化神经元学到的内容。</p>
 
-<pre><code class="language-text">pip install face_recognition
-</code></pre>
+<h2 id="toc_3">Loss Landscape（Li et. al. 2017）</h2>
 
-<p>直接安装会报错，安装face_recognition这个之前需要先安装编译dlib</p>
+<p>可视化 DNN 尝试最小化的非凸损失函数，查看架构／参数如何影响损失情况。</p>
 
-<pre><code class="language-text">brew install boost
-brew install boost-python --with-python3
+<h2 id="toc_4">关于xgboost</h2>
 
-# install dlib
-git clone https://github.com/davisking/dlib.git
-cd dlib
-mkdir build; cd build; cmake .. -DDLIB_USE_CUDA=0 -DUSE_AVX_INSTRUCTIONS=1; cmake --build 
-
-cd ..
-python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
-</code></pre>
-
-<p>If there is no cmake on your mac, you can use  <code>brew install cmake</code>. After all these have been done, run</p>
-
-<pre><code class="language-text">pip install face_recognition
-</code></pre>
-
-<h2 id="toc_1">2.usage</h2>
-
-<p>face_recognition有两种使用方式，命令行方式和python包方式</p>
-
-<p>(1) 命令行方式</p>
-
-<p>(2) python 包<br/>
-<a href="https://face-recognition.readthedocs.io/en/latest/face_recognition.html#module-face_recognition.api">https://face-recognition.readthedocs.io/en/latest/face_recognition.html#module-face_recognition.api</a></p>
-
-<p></p>
-
-<h2 id="toc_2">参考资料</h2>
-
-<p><a href="https://zhuanlan.zhihu.com/p/28271869">https://zhuanlan.zhihu.com/p/28271869</a></p>
-
-<p><a href="https://medium.com/@ageitgey">https://medium.com/@ageitgey</a></p>
-
-<hr/>
-
-<p><a href="https://www.jianshu.com/p/281aa6a3823a">https://www.jianshu.com/p/281aa6a3823a</a></p>
-
-<p>一个案例<br/>
-<a href="https://www.jianshu.com/p/38ca6daf6b40">https://www.jianshu.com/p/38ca6daf6b40</a><br/>
-<a href="http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html">http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html</a></p>
-
-<p>tf案例<br/>
-<a href="https://blog.csdn.net/u010016927/article/details/75722416">https://blog.csdn.net/u010016927/article/details/75722416</a></p>
-
-<p>knn<br/>
-<a href="https://www.leiphone.com/news/201707/gIbNsPtWk460m5vj.html">https://www.leiphone.com/news/201707/gIbNsPtWk460m5vj.html</a></p>
-
-<p><a href="https://blog.csdn.net/Mbx8X9u/article/details/79124840">https://blog.csdn.net/Mbx8X9u/article/details/79124840</a></p>
-
-<p><a href="https://www.ctolib.com/topics-101544.html">https://www.ctolib.com/topics-101544.html</a></p>
-
-<p><a href="https://www.oschina.net/code/snippet_2558914_54339">https://www.oschina.net/code/snippet_2558914_54339</a></p>
-
-<h2 id="toc_3">new</h2>
-
-<p><a href="https://www.leiphone.com/news/201704/rYdpAvh4SvgVPpRQ.html">https://www.leiphone.com/news/201704/rYdpAvh4SvgVPpRQ.html</a></p>
+<p>R: <a href="https://github.com/AppliedDataSciencePartners/xgboostExplainer">https://github.com/AppliedDataSciencePartners/xgboostExplainer</a><br/>
+python <a href="https://github.com/gameofdimension/xgboost_explainer">https://github.com/gameofdimension/xgboost_explainer</a></p>
 
                         
                       </div>
@@ -454,7 +353,7 @@ python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='face.html'>face</a></span>
+          					    <span class="posted-in"><a href='8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>8 深度学习</a></span>
           				   
                     
 
@@ -470,14 +369,23 @@ python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15834841723937.html">
+                <a class="clearlink" href="15637025345079.html">
                 
-                  <h1>【可解释性问题】</h1>
+                  <h1>第一章 引言</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	
+                        	<p>别人的读后总结，可参考「Deep Learning」读书系列分享（一） | 分享总结</p>
+
+<p><a href="https://www.leiphone.com/news/201708/LEBNjZzvm0Q3Ipp0.html">https://www.leiphone.com/news/201708/LEBNjZzvm0Q3Ipp0.html</a></p>
+
+<h3 id="toc_0">需要明确的几个概念范围</h3>
+
+<p><img src="media/15075611675547/15075613801366.jpg" alt=""/></p>
+
+<p><img src="media/15075611675547/15075614908544.jpg" alt=""/></p>
+
                         
                       </div>
                   </div>
@@ -485,10 +393,123 @@ python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/3/6</span>
+                    <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
+          					    <span class="posted-in"><a href='8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>8 深度学习</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637025346077.html">
+                
+                  <h1>第七章 正则化</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>机器学习不止要求在训练数据上有良好的表现，还希望有较好的泛化能力，即在测试数据上也能减少测试误差。这些策略被统称为<strong>正则化</strong></p>
+
+<p>常见的一些正则化方法：</p>
+
+<h2 id="toc_0">1.参数范数惩罚</h2>
+
+<p>即在原有的优化函数中，添加一个对参数的惩罚，来限制模型的学习能力<br/>
+<img src="media/15120469131645/15206725126887.jpg" alt=""/></p>
+
+<p>(1) L2参数正则化<br/>
+L2正则化/岭回归，又叫权重衰减； 可以参照岭回归<br/>
+<img src="media/15120469131645/15206732558707.jpg" alt=""/></p>
+
+<p>(X⊤X + αI)−1 这个新矩阵与原来的是一样的，不同的仅仅是在对 角加了 α。这个矩阵的对角项对应每个输入特征的方差。我们可以看到，L2正则化能 让学习算法 ‘‘感知’’ 到具有较高方差的输入 x，因此与输出目标的协方差较小(相对 增加方差)的特征的权重将会收缩。</p>
+
+<p>（2）L1正则化： 具有稀疏性，很多会衰减成0，所以有时候会用来做变量选择lasso</p>
+
+<h2 id="toc_1">2.作为约束的范数惩罚</h2>
+
+<p>从另一个角度来看这个问题，可以被看做是构造一个广义拉格朗日函数来最小化带约束的函数</p>
+
+<p><img src="media/15120469131645/15206742273357.jpg" alt=""/></p>
+
+<p><img src="media/15120469131645/15206742365336.jpg" alt=""/></p>
+
+<p>最小化约束 + 重投影的角度</p>
+
+<h2 id="toc_2">3.正则化和欠约束问题</h2>
+
+<p>正则化还有个好处可以保证X&#39;X+aI 是可逆的</p>
+
+<h2 id="toc_3">4.数据集增强</h2>
+
+<p>可以通过一些方法在不改变label的情况下自己构造一批数据集，比如图像识别时候对图像的旋转；有些时候也可以通过输入噪声的方式来进行数据集增强。</p>
+
+<h2 id="toc_4">5.噪声鲁棒性</h2>
+
+<ul>
+<li>向模型的输入或者是权重中加入噪音。</li>
+<li>向输出目标中加入噪音，即标注数据有一定的错误，不是百分百准确的时候。<strong>标签平滑</strong>方法是将0，1分类，变为e/(k-1)和1-e的k个输出的softmax函数。（e是标注的错误率）</li>
+</ul>
+
+<h2 id="toc_5">6.半监督学习</h2>
+
+<p>大概意思是说：P(x) 产生的未标记样本和P(x,y)中的标记样本都用 于估计 P(y|x)或者根据x预测y。</p>
+
+<h2 id="toc_6">7.多任务学习</h2>
+
+<p>就是通过合并几个任务中的样例（可以视为对参数施加的软约束），我感觉就是类似于group_lasso这样的，对参数加了一个别的约束，部分样本需要共享同一个参数</p>
+
+<h2 id="toc_7">8.提前终止</h2>
+
+<p><img src="media/15120469131645/15206764319925.jpg" alt=""/><br/>
+当训练的能力较强时候会发现，随着训练次数的增加，训练误差在逐步减小，但是测试误差会呈现一个U型状态。即先减小后增加。</p>
+
+<p>不是从模型的优化函数入手，相当于是一个实践的经验技巧。</p>
+
+<p>提前终止具有正则化的效果</p>
+
+<h2 id="toc_8">9.参数绑定和参数共享</h2>
+
+<h2 id="toc_9">10.稀疏表示</h2>
+
+<p>前文所述的权重衰减直接惩罚模型参数。另一种策略是惩罚神经网络中的激活 单元，稀疏化激活单元。这种策略间接地对模型参数施加了复杂惩罚。<br/>
+<img src="media/15120469131645/15207643423743.jpg" alt=""/></p>
+
+<h2 id="toc_10">11.Bagging 和其他集成方法</h2>
+
+<p>结合多个模型，进行模型平均</p>
+
+<h2 id="toc_11">12.dropout</h2>
+
+<p>@@@@</p>
+
+<h2 id="toc_12">13.对抗训练</h2>
+
+<h1 id="toc_13">14 切面距离、正切传播和流形正切分类器</h1>
+
+<p>略</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>8 深度学习</a></span>
           				   
                     
 
@@ -514,7 +535,7 @@ python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
 			  </div>
 			  <div class="large-6 columns">
 			<p class="text-right" style="padding-top:25px;">
-			 <a href="6.CV_1.html">&raquo; Next Page</a> 
+			 <a href="8 深度学习_1.html">&raquo; Next Page</a> 
 			</p>
 			  </div>
 			</div>
@@ -555,6 +576,8 @@ python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
 
       	<p class="cat-list">
         
+            <a href="kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html"><strong>kdd&异常检测</strong></a>
+        
             <a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html"><strong>轨迹分析</strong></a>
         
             <a href="1%20Tools.html"><strong>1 Tools</strong></a>
@@ -569,15 +592,17 @@ python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
         
             <a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统</strong></a>
         
-            <a href="6.CV.html"><strong>6.CV</strong></a>
-        
             <a href="6%20NLP.html"><strong>6 NLP</strong></a>
         
-            <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习</strong></a>
+            <a href="7%20CV.html"><strong>7 CV</strong></a>
         
-            <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
+            <a href="8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>8 深度学习</strong></a>
+        
+            <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
+        
+            <a href="%E5%85%B6%E4%BB%96.html"><strong>其他</strong></a>
          
         </p>
 

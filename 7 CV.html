@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  7 深度学习 - zhenzhen数据科学笔记
+  7 CV - zhenzhen数据科学笔记
   
   </title>
   
@@ -81,6 +81,8 @@
     <li><label>Categories</label></li>
 
         
+            <li><a href="kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html">kdd&异常检测</a></li>
+        
             <li><a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html">轨迹分析</a></li>
         
             <li><a href="1%20Tools.html">1 Tools</a></li>
@@ -95,15 +97,17 @@
         
             <li><a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html">6 推荐系统</a></li>
         
-            <li><a href="6.CV.html">6.CV</a></li>
-        
             <li><a href="6%20NLP.html">6 NLP</a></li>
         
-            <li><a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">7 深度学习</a></li>
+            <li><a href="7%20CV.html">7 CV</a></li>
         
-            <li><a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">8 比赛学习</a></li>
+            <li><a href="8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">8 深度学习</a></li>
+        
+            <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
+        
+            <li><a href="%E5%85%B6%E4%BB%96.html">其他</a></li>
          
 
       </ul>
@@ -126,49 +130,24 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637037679634.html">
+                <a class="clearlink" href="15637037688620.html">
                 
-                  <h1>神经网络解释性问题</h1>
+                  <h1>Face综述</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><a href="https://ask.hellobi.com/blog/zlx19930503/10578">https://ask.hellobi.com/blog/zlx19930503/10578</a></p>
+                        	<p><a href="https://blog.csdn.net/chenriwei2/article/details/50631212">https://blog.csdn.net/chenriwei2/article/details/50631212</a></p>
 
-<p>但是深度学习是一个黑箱。我第一次听说它时，就对其工作原理非常费解。几年过去了，我仍然在探索合理的答案。尝试解释现代神经网络很难，但是至关重要。如果我们打算依赖深度学习制造新的 AI、处理敏感的用户数据，或者开药，那么我们必须理解这些模型的工作原理。</p>
+<p>这个有数据，已经训练好的模型<br/>
+<a href="https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/">https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/</a></p>
 
-<p>很幸运，学界人士也提出了很多对深度学习的理解。以下是几个近期论文示例：</p>
+<p>综述@@@@ 需要精读！！！<br/>
+<a href="https://blog.csdn.net/Mr_EvanChen/article/details/75501730">https://blog.csdn.net/Mr_EvanChen/article/details/75501730</a><br/>
+<a href="https://zhuanlan.zhihu.com/p/24816781">https://zhuanlan.zhihu.com/p/24816781</a></p>
 
-<h2 id="toc_0">Grad-Cam（Selvaraju et. al. 2017）</h2>
-
-<p>使用最后卷积层的梯度生成热力图，突出显示输入图像中的重要像素用于分类。</p>
-
-<h2 id="toc_1">LIME（Ribeiro et. al. 2016）</h2>
-
-<p>使用稀疏线性模型（可轻松识别重要特征）逼近 DNN 的预测。</p>
-
-<p>论文地址：<a href="https://arxiv.org/abs/1602.04938">https://arxiv.org/abs/1602.04938</a></p>
-
-<p>一些中文解读：<a href="https://www.oreilly.com.cn/ideas/?p=563%EF%BC%9B">https://www.oreilly.com.cn/ideas/?p=563；</a><br/>
-<a href="http://geek.csdn.net/news/detail/66259">http://geek.csdn.net/news/detail/66259</a></p>
-
-<p>一个例子<br/>
-<a href="http://marcotcr.github.io/lime/tutorials/Lime%20-%20basic%20usage%2C%20two%20class%20case.html">http://marcotcr.github.io/lime/tutorials/Lime%20-%20basic%20usage%2C%20two%20class%20case.html</a></p>
-
-<p><a href="https://www.jiqizhixin.com/articles/2017-12-20-2">https://www.jiqizhixin.com/articles/2017-12-20-2</a></p>
-
-<h2 id="toc_2">特征可视化（Olah 2017）</h2>
-
-<p>对于带有随机噪声的图像，优化像素来激活训练的 DNN 中的特定神经元，进而可视化神经元学到的内容。</p>
-
-<h2 id="toc_3">Loss Landscape（Li et. al. 2017）</h2>
-
-<p>可视化 DNN 尝试最小化的非凸损失函数，查看架构／参数如何影响损失情况。</p>
-
-<h2 id="toc_4">关于xgboost</h2>
-
-<p>R: <a href="https://github.com/AppliedDataSciencePartners/xgboostExplainer">https://github.com/AppliedDataSciencePartners/xgboostExplainer</a><br/>
-python <a href="https://github.com/gameofdimension/xgboost_explainer">https://github.com/gameofdimension/xgboost_explainer</a></p>
+<p>知乎 狗头山人七 专栏<br/>
+<a href="https://zhuanlan.zhihu.com/p/25025596">https://zhuanlan.zhihu.com/p/25025596</a></p>
 
                         
                       </div>
@@ -180,7 +159,7 @@ python <a href="https://github.com/gameofdimension/xgboost_explainer">https://gi
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
+          					    <span class="posted-in"><a href='face.html'>face</a></span>
           				   
                     
 
@@ -196,22 +175,31 @@ python <a href="https://github.com/gameofdimension/xgboost_explainer">https://gi
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637025345079.html">
+                <a class="clearlink" href="15838236096534.html">
                 
-                  <h1>第一章 引言</h1>
+                  <h1>MMLab</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>别人的读后总结，可参考「Deep Learning」读书系列分享（一） | 分享总结</p>
+                        	<h2 id="toc_0">1. MMLab + DeepFashion 服饰识别</h2>
 
-<p><a href="https://www.leiphone.com/news/201708/LEBNjZzvm0Q3Ipp0.html">https://www.leiphone.com/news/201708/LEBNjZzvm0Q3Ipp0.html</a></p>
+<p>项目地址: <a href="https://github.com/open-mmlab/mmfashion">https://github.com/open-mmlab/mmfashion</a></p>
 
-<h3 id="toc_0">需要明确的几个概念范围</h3>
+<p>香港中文大学多媒体实验室（Multimedia Lab）开展的MMFashion项目，是针对服饰领域提供的一个通用的toolbox(基于pytorch)</p>
 
-<p><img src="media/15075611675547/15075613801366.jpg" alt=""/></p>
+<p>主要功能有:</p>
 
-<p><img src="media/15075611675547/15075614908544.jpg" alt=""/></p>
+<ul>
+<li>属性归类</li>
+<li>相似服装检索</li>
+<li>服饰关键点检测</li>
+</ul>
+
+<p>使用：<br/>
+可以按照说明开始 <a href="https://github.com/open-mmlab/mmfashion/blob/master/docs/GETTING_STARTED.md">https://github.com/open-mmlab/mmfashion/blob/master/docs/GETTING_STARTED.md</a><br/>
+同时可以替换成自己的数据集 ,<br/>
+含有的基础model: <a href="https://github.com/open-mmlab/mmfashion/blob/master/docs/MODEL_ZOO.md">https://github.com/open-mmlab/mmfashion/blob/master/docs/MODEL_ZOO.md</a></p>
 
                         
                       </div>
@@ -220,10 +208,10 @@ python <a href="https://github.com/gameofdimension/xgboost_explainer">https://gi
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2020/3/10</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
+          					    <span class="posted-in"><a href='tools.html'>tools</a></span>
           				   
                     
 
@@ -239,92 +227,120 @@ python <a href="https://github.com/gameofdimension/xgboost_explainer">https://gi
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637025346077.html">
+                <a class="clearlink" href="15637037708871.html">
                 
-                  <h1>第七章 正则化</h1>
+                  <h1>TF1.0-slim  图像识别模型—— 1.利用已有的进行微调</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>机器学习不止要求在训练数据上有良好的表现，还希望有较好的泛化能力，即在测试数据上也能减少测试误差。这些策略被统称为<strong>正则化</strong></p>
+                        	<p><strong>模型库tensorflow-slim</strong></p>
 
-<p>常见的一些正则化方法：</p>
+<p>slim 模型库是tensorflow1.0 中专门做图像分类的model库，官网说明:<br/>
+<a href="https://github.com/tensorflow/models/tree/master/research/slim">https://github.com/tensorflow/models/tree/master/research/slim</a></p>
 
-<h2 id="toc_0">1.参数范数惩罚</h2>
+<p>该库中有些用法只适合tf1.0版本，tf2.0中已经没有了，所以安装的时候tf2.0在使用中会报错<br/>
+<code>conda install tensorflow=1.14</code></p>
 
-<p>即在原有的优化函数中，添加一个对参数的惩罚，来限制模型的学习能力<br/>
-<img src="media/15120469131645/15206725126887.jpg" alt=""/></p>
+<p>微调(fine-tune)的基本原理</p>
 
-<p>(1) L2参数正则化<br/>
-L2正则化/岭回归，又叫权重衰减； 可以参照岭回归<br/>
-<img src="media/15120469131645/15206732558707.jpg" alt=""/></p>
+<h2 id="toc_0">1.准备数据</h2>
 
-<p>(X⊤X + αI)−1 这个新矩阵与原来的是一样的，不同的仅仅是在对 角加了 α。这个矩阵的对角项对应每个输入特征的方差。我们可以看到，L2正则化能 让学习算法 ‘‘感知’’ 到具有较高方差的输入 x，因此与输出目标的协方差较小(相对 增加方差)的特征的权重将会收缩。</p>
+<pre><code class="language-text">python download_and_convert_data.py \
+    --dataset_name=mnist \
+    --dataset_dir=/tmp/mnist
+</code></pre>
 
-<p>（2）L1正则化： 具有稀疏性，很多会衰减成0，所以有时候会用来做变量选择lasso</p>
+<pre><code class="language-text"> python data_convert.py -t pic --train-shards 2 --validation-shards 2 --num-threads 2 --dataset-name guangdong
+</code></pre>
 
-<h2 id="toc_1">2.作为约束的范数惩罚</h2>
+<p>执行完后会在pic下生成tf格式的训练+测试数据，以及label.txt<br/>
+<img src="media/15388051366041/15388065002449.jpg" alt=""/></p>
 
-<p>从另一个角度来看这个问题，可以被看做是构造一个广义拉格朗日函数来最小化带约束的函数</p>
+<h2 id="toc_1">2.使用tensorflow的slim微调模型</h2>
 
-<p><img src="media/15120469131645/15206742273357.jpg" alt=""/></p>
+<p>简单介绍下google的这个图像分类工具包tensorflow-slim</p>
 
-<p><img src="media/15120469131645/15206742365336.jpg" alt=""/></p>
+<pre><code class="language-text">├── README.md
+├── datasets                    # 定义训练时候使用的数据。如果是自己的数据，必须在此文件夹下定义
+├── deployment
+├── download_and_convert_data.py
+├── export_inference_graph.py
+├── export_inference_graph_test.py
+├── nets                        # 定义了一些常用的网络，比如vgg16，vgg19，resnet等
+├── preprocessing               # 在读入图像前，对图像做的一些预处理
+├── scripts
+│   ├── finetune_inception_v1_on_flowers.sh
+│   ├── finetune_inception_v3_on_flowers.sh
+│   ├── finetune_resnet_v1_50_on_flowers.sh
+│   ├── train_cifarnet_on_cifar10.sh
+│   └── train_lenet_on_mnist.sh
+├── setup.py
+├── slim_walkthrough.ipynb
+├── eval_image_classifier.py      # 验证模型入口
+└── train_image_classifier.py     # 训练模型入口
+</code></pre>
 
-<p>最小化约束 + 重投影的角度</p>
+<p>(1) 定义新的dataset文件</p>
 
-<h2 id="toc_2">3.正则化和欠约束问题</h2>
+<p>仿照<code>datasets/flowers.py</code> 写一个自己的数据文件<code>guangdong.py</code> 并且在<code>dataset_factory.py</code>中进行注册</p>
 
-<p>正则化还有个好处可以保证X&#39;X+aI 是可逆的</p>
+<p>(2)准备训练文件夹</p>
 
-<h2 id="toc_3">4.数据集增强</h2>
+<p>(3)train model</p>
 
-<p>可以通过一些方法在不改变label的情况下自己构造一批数据集，比如图像识别时候对图像的旋转；有些时候也可以通过输入噪声的方式来进行数据集增强。</p>
+<pre><code class="language-text">python train_image_classifier.py \
+  --train_dir=guangdong/train_dir \
+  --dataset_name=guangdong \
+  --dataset_split_name=train \
+  --dataset_dir=guangdong/data \
+  --model_name=inception_v3 \
+  --checkpoint_path=guangdong/pretrained/inception_v3.ckpt \
+  --checkpoint_exclude_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
+  --trainable_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
+  --max_number_of_steps=100000 \
+  --batch_size=32 \
+  --learning_rate=0.001 \
+  --learning_rate_decay_type=fixed \
+  --save_interval_secs=300 \
+  --save_summaries_secs=2 \
+  --log_every_n_steps=10 \
+  --optimizer=rmsprop \
+  --weight_decay=0.00004
 
-<h2 id="toc_4">5.噪声鲁棒性</h2>
+</code></pre>
 
-<ul>
-<li>向模型的输入或者是权重中加入噪音。</li>
-<li>向输出目标中加入噪音，即标注数据有一定的错误，不是百分百准确的时候。<strong>标签平滑</strong>方法是将0，1分类，变为e/(k-1)和1-e的k个输出的softmax函数。（e是标注的错误率）</li>
-</ul>
+<p>如果执行后报错<code>Cannot assign a device for operation &#39;InceptionV3/AuxLogits/Conv2d_2b_1x1/weights/RMSProp1&#39;: Could not satisfy explicit device specification &#39;/device:GPU:0&#39; because no supported kernel for GPU devices is available</code> 之类的话</p>
 
-<h2 id="toc_5">6.半监督学习</h2>
+<p>可以参看这个的解决办法<a href="https://blog.csdn.net/xd_wjc/article/details/80550862">https://blog.csdn.net/xd_wjc/article/details/80550862</a></p>
 
-<p>大概意思是说：P(x) 产生的未标记样本和P(x,y)中的标记样本都用 于估计 P(y|x)或者根据x预测y。</p>
+<p>tensorboard 查看任务运行情况</p>
 
-<h2 id="toc_6">7.多任务学习</h2>
+<pre><code class="language-text">tensorboard --logdir guangdong/train_dir
+</code></pre>
 
-<p>就是通过合并几个任务中的样例（可以视为对参数施加的软约束），我感觉就是类似于group_lasso这样的，对参数加了一个别的约束，部分样本需要共享同一个参数</p>
+<p>训练完毕之后进行模型评估</p>
 
-<h2 id="toc_7">8.提前终止</h2>
+<pre><code class="language-text">python eval_image_classifier.py \
+  --checkpoint_path=guangdong/train_dir \
+  --eval_dir=guangdong/eval_dir \
+  --dataset_name=guangdong \
+  --dataset_split_name=validation \
+  --dataset_dir=guangdong/data \
+  --model_name=inception_v3
+</code></pre>
 
-<p><img src="media/15120469131645/15206764319925.jpg" alt=""/><br/>
-当训练的能力较强时候会发现，随着训练次数的增加，训练误差在逐步减小，但是测试误差会呈现一个U型状态。即先减小后增加。</p>
+<h3 id="toc_2">案例</h3>
 
-<p>不是从模型的优化函数入手，相当于是一个实践的经验技巧。</p>
+<p><a href="https://github.com/ns2250225/python3_tf_slim_image_classify">https://github.com/ns2250225/python3_tf_slim_image_classify</a></p>
 
-<p>提前终止具有正则化的效果</p>
+<p><a href="https://blog.csdn.net/qq_42556555/article/details/90237131">https://blog.csdn.net/qq_42556555/article/details/90237131</a></p>
 
-<h2 id="toc_8">9.参数绑定和参数共享</h2>
+<p><a href="https://www.jianshu.com/p/1cbf9aae15b6">https://www.jianshu.com/p/1cbf9aae15b6</a></p>
 
-<h2 id="toc_9">10.稀疏表示</h2>
+<h2 id="toc_3">阿里云服务</h2>
 
-<p>前文所述的权重衰减直接惩罚模型参数。另一种策略是惩罚神经网络中的激活 单元，稀疏化激活单元。这种策略间接地对模型参数施加了复杂惩罚。<br/>
-<img src="media/15120469131645/15207643423743.jpg" alt=""/></p>
-
-<h2 id="toc_10">11.Bagging 和其他集成方法</h2>
-
-<p>结合多个模型，进行模型平均</p>
-
-<h2 id="toc_11">12.dropout</h2>
-
-<p>@@@@</p>
-
-<h2 id="toc_12">13.对抗训练</h2>
-
-<h1 id="toc_13">14 切面距离、正切传播和流形正切分类器</h1>
-
-<p>略</p>
+<p><a href="https://help.aliyun.com/document_detail/49571.html#OSS">https://help.aliyun.com/document_detail/49571.html#OSS</a></p>
 
                         
                       </div>
@@ -336,7 +352,7 @@ L2正则化/岭回归，又叫权重衰减； 可以参照岭回归<br/>
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
+          					    <span class="posted-in"><a href='%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB.html'>图像分类</a></span>
           				   
                     
 
@@ -352,61 +368,34 @@ L2正则化/岭回归，又叫权重衰减； 可以参照岭回归<br/>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637025345792.html">
+                <a class="clearlink" href="15825969970925.html">
                 
-                  <h1>第三章 概率与信息论</h1>
+                  <h1>TF2.0</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>本章主要是介绍了一些概率论的基础以及常见的分布</p>
+                        	<p><a href="https://tensorflow.google.cn/tutorials/images/classification">https://tensorflow.google.cn/tutorials/images/classification</a></p>
 
-<h2 id="toc_0">1.常用函数的有用性质</h2>
+<pre><code class="language-text">一个简单的方法是创建一个新的 Model 来输出你所感兴趣的层：
 
-<ul>
-<li>sigmoid 函数</li>
-</ul>
+from keras.models import Model
 
-<p>\[\delta(x) = \frac{1}{1+exp(-x)}\]</p>
+model = ...  # 创建原始模型
 
-<ul>
-<li>softplus函数<br/>
-\[log(1+exp(x))\]
-<img src="media/15080561019055/15080571562017.jpg" alt=""/></li>
-</ul>
+layer_name = &#39;my_layer&#39;
+intermediate_layer_model = Model(inputs=model.input,
+                                 outputs=model.get_layer(layer_name).output)
+intermediate_output = intermediate_layer_model.predict(data)
+或者，你也可以构建一个 Keras 函数，该函数将在给定输入的情况下返回某个层的输出，例如：
 
-<p>是\(y=max(0,x)\)的平滑版本</p>
+from keras import backend as K
 
-<h2 id="toc_1">2.信息论</h2>
+get_3rd_layer_output = K.function([model.layers[0].input],
+                                  [model.layers[3].output])
+layer_output = get_3rd_layer_output([x])[0]
 
-<p>信息论是应用数学的一个分支，主要研究的是对一个信号包含信息的多少进行量化。<br/>
-<img src="media/15080561019055/15080594230903.jpg" alt=""/></p>
-
-<p>自信息：定义一个时间X=x的自信息<br/>
-\[I(x) = -log P(x)\]</p>
-
-<p>熵：<br/>
-\[-\sum P(x_i) logP(x_i)\]</p>
-
-<h3 id="toc_2">KL散度/相对熵</h3>
-
-<p>\[KL(P||Q) = -\sum P_i ln(\frac{P_i}{Q_i})=-\sum P_i(ln(P_i)- ln(Q_i))\]</p>
-
-<p>注意：</p>
-
-<ul>
-<li>KL距离其实并不是严格的距离，不满足对称性以及三角不等式。</li>
-</ul>
-
-<p>JS距离：<br/>
-\[JS(P1||P2) = \frac{1}{2}KL(P1||(P1+P2)/2)+ \frac{1}{2}KL(P2||(P1+P2)/2)\]</p>
-
-<h3 id="toc_3">交叉熵</h3>
-
-<p>相对熵的第一部分<br/>
-\[KL(P||Q) = -\sum P_i ln(Q_i)\]</p>
-
-<h2 id="toc_4">3.结构化概率模型——图模型(graphical model)</h2>
+</code></pre>
 
                         
                       </div>
@@ -415,10 +404,10 @@ L2正则化/岭回归，又叫权重衰减； 可以参照岭回归<br/>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2020/2/25</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
+          					    <span class="posted-in"><a href='7%20CV.html'>7 CV</a></span>
           				   
                     
 
@@ -434,64 +423,82 @@ L2正则化/岭回归，又叫权重衰减； 可以参照岭回归<br/>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637025345723.html">
+                <a class="clearlink" href="15637037690385.html">
                 
-                  <h1>第二章 线性代数</h1>
+                  <h1>face_recgnization</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>第二章主要是介绍了线性代数的一些基础知识</p>
+                        	<p>github<br/>
+<a href="https://github.com/ageitgey/face_recognition">https://github.com/ageitgey/face_recognition</a></p>
 
-<p>这里补充几点吧</p>
+<h2 id="toc_0">1. 安装</h2>
 
-<h2 id="toc_0">特征分解</h2>
+<p>文档： <a href="https://zhuanlan.zhihu.com/p/28271869">https://zhuanlan.zhihu.com/p/28271869</a></p>
 
-<p>每个矩阵可以视为多个列向量组成的一个向量空间/或者是一个线性变化(一个矩阵乘以一个向量后相当于是对向量做了一个线性变换)。而矩阵的分解，相当于去提取这个向量空间最重要的特征。</p>
+<pre><code class="language-text">pip install face_recognition
+</code></pre>
 
-<p>(1)首先是特征值和特征向量<br/>
-若<strong>方阵</strong>A满足 \(Av=\lambda v\),则\(v\)称为矩阵A的特征向量，\(\lambda\)称为对应的特征值。</p>
+<p>直接安装会报错，安装face_recognition这个之前需要先安装编译dlib</p>
 
-<p><strong>特征分解</strong><br/>
-\[A=V \Lambda V^{-1}\]<br/>
-V是其特征向量构成的矩阵，\(\Lambda\)是特征值构成的对角矩阵</p>
+<pre><code class="language-text">brew install boost
+brew install boost-python --with-python3
 
-<p>性质：</p>
+# install dlib
+git clone https://github.com/davisking/dlib.git
+cd dlib
+mkdir build; cd build; cmake .. -DDLIB_USE_CUDA=0 -DUSE_AVX_INSTRUCTIONS=1; cmake --build 
 
-<p>(1) 实对称矩阵A都可以分解为\(A=Q\Lambda Q^{-1}\)，Q为正交矩阵</p>
+cd ..
+python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
+</code></pre>
 
-<p>(2)用来计算矩阵的逆。若\(A=Q \Lambda Q^{-1}\)，则\(A^{-1}=Q \Lambda^{-1}Q^{-1}\)</p>
+<p>If there is no cmake on your mac, you can use  <code>brew install cmake</code>. After all these have been done, run</p>
 
-<h2 id="toc_1">奇异值分解</h2>
+<pre><code class="language-text">pip install face_recognition
+</code></pre>
 
-<p>特征分解对于提取矩阵的特征根是很好的方法，但是他只能针对<strong>方阵</strong>操作。当A不是方阵时候，就需要用到SVD<br/>
-\[A_{n*m}=U_{n*n}\Sigma_{n*m} V^{T}_{m*m}\]</p>
+<h2 id="toc_1">2.usage</h2>
 
-<p>其中，U称为左奇异向量，V称为右奇异向量</p>
+<p>face_recognition有两种使用方式，命令行方式和python包方式</p>
 
-<p>\(AA^T=UDV^TVDU^T=UD^2U^T\)<br/>
-\(A^TA=VDU^T UDV^T=VD^2V^T\)<br/>
-即：<br/>
-A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)的特征向量，A的奇异值是\(AA^T\)也是\(A^TA\)的特征之爱的平方根。</p>
+<p>(1) 命令行方式</p>
 
-<blockquote>
-<p>对比：<br/>
-特征分解是有限制的，比如矩阵必须是方阵</p>
-</blockquote>
+<p>(2) python 包<br/>
+<a href="https://face-recognition.readthedocs.io/en/latest/face_recognition.html#module-face_recognition.api">https://face-recognition.readthedocs.io/en/latest/face_recognition.html#module-face_recognition.api</a></p>
 
-<h3 id="toc_2">SVD与PCA的关系</h3>
+<p></p>
 
-<ul>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 查一下之前多元的变换原理</li>
-</ul>
+<h2 id="toc_2">参考资料</h2>
 
-<p>PCA的全部工作简单点说，就是对原始的空间中顺序地找一组相互正交的坐标轴，第一个轴是使得方差最大的，第二个轴是在与第一个轴正交的平面中使得方差最大的，第三个轴是在与第1、2个轴正交的平面中方差最大的，这样假设在N维空间中，我们可以找到N个这样的坐标轴，我们取前r个去近似这个空间，这样就从一个N维的空间压缩到r维的空间了，但是我们选择的r个坐标轴能够使得空间的压缩使得数据的损失最小。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/28271869">https://zhuanlan.zhihu.com/p/28271869</a></p>
 
-<h3 id="toc_3">SVD与潜在语义检索LSI</h3>
+<p><a href="https://medium.com/@ageitgey">https://medium.com/@ageitgey</a></p>
 
-<h2 id="toc_4">参考资料</h2>
+<hr/>
 
-<p><a href="http://www.cnblogs.com/LeftNotEasy/archive/2011/01/19/svd-and-applications.html">http://www.cnblogs.com/LeftNotEasy/archive/2011/01/19/svd-and-applications.html</a></p>
+<p><a href="https://www.jianshu.com/p/281aa6a3823a">https://www.jianshu.com/p/281aa6a3823a</a></p>
+
+<p>一个案例<br/>
+<a href="https://www.jianshu.com/p/38ca6daf6b40">https://www.jianshu.com/p/38ca6daf6b40</a><br/>
+<a href="http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html">http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html</a></p>
+
+<p>tf案例<br/>
+<a href="https://blog.csdn.net/u010016927/article/details/75722416">https://blog.csdn.net/u010016927/article/details/75722416</a></p>
+
+<p>knn<br/>
+<a href="https://www.leiphone.com/news/201707/gIbNsPtWk460m5vj.html">https://www.leiphone.com/news/201707/gIbNsPtWk460m5vj.html</a></p>
+
+<p><a href="https://blog.csdn.net/Mbx8X9u/article/details/79124840">https://blog.csdn.net/Mbx8X9u/article/details/79124840</a></p>
+
+<p><a href="https://www.ctolib.com/topics-101544.html">https://www.ctolib.com/topics-101544.html</a></p>
+
+<p><a href="https://www.oschina.net/code/snippet_2558914_54339">https://www.oschina.net/code/snippet_2558914_54339</a></p>
+
+<h2 id="toc_3">new</h2>
+
+<p><a href="https://www.leiphone.com/news/201704/rYdpAvh4SvgVPpRQ.html">https://www.leiphone.com/news/201704/rYdpAvh4SvgVPpRQ.html</a></p>
 
                         
                       </div>
@@ -503,7 +510,7 @@ A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)�
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>7 深度学习</a></span>
+          					    <span class="posted-in"><a href='face.html'>face</a></span>
           				   
                     
 
@@ -524,12 +531,12 @@ A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)�
 			<div class="row">
 			  <div class="large-6 columns">
 			  <p class="text-left" style="padding-top:25px;">
-			   <a href="7 深度学习.html">&laquo; Prev Page</a>  
+			   
 			  </p>
 			  </div>
 			  <div class="large-6 columns">
 			<p class="text-right" style="padding-top:25px;">
-			 <a href="7 深度学习_2.html">&raquo; Next Page</a> 
+			 <a href="7 CV_1.html">&raquo; Next Page</a> 
 			</p>
 			  </div>
 			</div>
@@ -570,6 +577,8 @@ A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)�
 
       	<p class="cat-list">
         
+            <a href="kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html"><strong>kdd&异常检测</strong></a>
+        
             <a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html"><strong>轨迹分析</strong></a>
         
             <a href="1%20Tools.html"><strong>1 Tools</strong></a>
@@ -584,15 +593,17 @@ A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)�
         
             <a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统</strong></a>
         
-            <a href="6.CV.html"><strong>6.CV</strong></a>
-        
             <a href="6%20NLP.html"><strong>6 NLP</strong></a>
         
-            <a href="7%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>7 深度学习</strong></a>
+            <a href="7%20CV.html"><strong>7 CV</strong></a>
         
-            <a href="8%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>8 比赛学习</strong></a>
+            <a href="8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>8 深度学习</strong></a>
+        
+            <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
+        
+            <a href="%E5%85%B6%E4%BB%96.html"><strong>其他</strong></a>
          
         </p>
 
