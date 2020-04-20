@@ -95,8 +95,6 @@
         
             <li><a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html">5 机器学习</a></li>
         
-            <li><a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html">6 推荐系统</a></li>
-        
             <li><a href="6%20NLP.html">6 NLP</a></li>
         
             <li><a href="7%20CV.html">7 CV</a></li>
@@ -130,234 +128,14 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15869348134936.html">
+                <a class="clearlink" href="15867780125381.html">
                 
-                  <h1>tool-时间序列-banpei</h1>
+                  <h1>tool-多元数据-Pyod</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>时间序列工具 <br/>
-<a href="https://github.com/chickenbestlover/RNN-Time-series-Anomaly-Detection">https://github.com/chickenbestlover/RNN-Time-series-Anomaly-Detection</a><br/>
-<a href="https://github.com/rob-med/awesome-TS-anomaly-detection">https://github.com/rob-med/awesome-TS-anomaly-detection</a></p>
-
-<p>工具汇总</p>
-
-<table>
-<thead>
-<tr>
-<th>工具</th>
-<th>方法</th>
-<th>备注</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>banpei</td>
-<td>Outlier detection (Hotelling&#39;s theory) 均值+方差 Change point detection （sst奇异谱转换）</td>
-<td>主要就是这两种方法</td>
-</tr>
-<tr>
-<td>adtk</td>
-<td>rule based</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="toc_0">ADTK</h2>
-
-<p><a href="https://github.com/arundo/adtk">https://github.com/arundo/adtk</a>. adtk主要是 unsupervised / rule-based time series anomaly detection.</p>
-
-<p>教程 <a href="https://arundo-adtk.readthedocs-hosted.com/en/stable/userguide.html%E3%80%82">https://arundo-adtk.readthedocs-hosted.com/en/stable/userguide.html。</a></p>
-
-<p>adtk提供了很多检测的方法，但是不会自动选择，得需要指定那个。具体的</p>
-
-<p>(1) 数据徒增</p>
-
-<h2 id="toc_1">banpei SSA: 奇异谱分析</h2>
-
-<p>python package <code>fastsst</code><br/>
-<a href="https://github.com/statefb/singular-spectrum-transformation">https://github.com/statefb/singular-spectrum-transformation</a></p>
-
-<p>SSA是一种研究非线性时间拿序列的方法，他根据观测到的序列构造出一个轨迹矩阵，然后通过对轨迹矩阵分解、重构，从而提取出能代表原始时间序列不同成分的信号。具体地，主要包括如下几步:<br/>
-（1）嵌入<br/>
-假设原始的时间序列是 \(Y(T) = (y_1, y_2,... y_T)\),选择一个窗口m，根据原始序列构造如下的轨迹矩阵。m的选择不宜过大，可以是本身数据周期的整数倍。<br/>
-<img src="media/15869348134936/15869444913257.jpg" alt=""/></p>
-
-<p>(2)svd分解</p>
-
-<p>\[X = U\Sigma V^T\]</p>
-
-<p>(3)分组<br/>
-选择贡献率达到一定阈值的top r个<br/>
-(4)重构<br/>
-矩阵重构 \[X_{mxn}  \approx U_{m*r}\Sigma_{r*r} V^T_{r*n}\]<br/>
-原序列重构, 通过对角平均法的方式<br/>
-<img src="media/15869348134936/15869481299057.jpg" alt=""/><br/>
-<img src="media/15869348134936/15869481699594.jpg" alt=""/></p>
-
-<p>m 窗口的选择，较小m反应短期趋势，较大的就是长期趋势。<br/>
-变点发现</p>
-
-<pre><code class="language-text"></code></pre>
-
-<p><img src="media/15869348134936/15869498566967.jpg" alt=""/></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/4/15</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html'>kdd&异常检测</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15846836766049.html">
-                
-                  <h1>【异常检测1】无监督-多元数据</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>☆☆☆<a href="https://github.com/yzhao062/anomaly-detection-resources">https://github.com/yzhao062/anomaly-detection-resources</a>  资料综述，包括相关工具与论文</p>
-
-<p>总述：<br/>
-从异常检测要检测的目的数据的不同，大致可以分为如下几类，后续会分别对这几类进行综述学习。</p>
-
-<ol>
-<li>多元特征数据，传统的n_sample x n_features形式</li>
-<li>高维数据</li>
-<li>时间序列，行为序列</li>
-<li>graph, network</li>
-</ol>
-
-<h2 id="toc_0">1.多元特征数据的检测方法</h2>
-
-<p>基于(样本x特征)的数据</p>
-
-<p><img src="media/15846836766049/15851028311312.jpg" alt="" style="width:685px;"/><br/>
-<a href="https://zhuanlan.zhihu.com/p/49072315">https://zhuanlan.zhihu.com/p/49072315</a></p>
-
-<p>(1) 统计与概率模型<br/>
-依据数据的分布做假定</p>
-
-<ul>
-<li>3sigma</li>
-<li>四分位点</li>
-</ul>
-
-<p>箱线图中的四分位点以及异常值, Tukey’s Test: 根据四分位点对最小值和最大值的估计分别是<br/>
-\[min_value = Q1 - k(Q3-Q1)\]<br/>
-\[max_value = Q3 + k(Q3-Q1)\]</p>
-
-<p>其中k=1.5 时候可认为是中度异常，k=3时是极度异常。该方法应该假定了数据正态分布(或者是对称分布吧)</p>
-
-<ul>
-<li>检测异常值Grubbs的检验（Grubbs 1969和Stefansky 1972）用于检测单变量数据集中的单个异常值，该单变量数据集遵循近似正态分布。如果您怀疑可能存在多个异常值，建议您使用Tietjen-Moore测试或广义极端学生化偏差测试而不是Grubbs测试</li>
-</ul>
-
-<p>(2) 线性模型</p>
-
-<ul>
-<li>PCA 大部分正常样本服从相似的分布映射的过程中在高低维的位置接近</li>
-<li>协方差矩阵</li>
-</ul>
-
-<p>(3)基于相似度/距离衡量的模型</p>
-
-<ul>
-<li>k近邻</li>
-<li>基于密度的 LOF, COF, Isolation Forest</li>
-<li>OneClassSVM</li>
-</ul>
-
-<p>(4) 聚类的方法， BIRCH，DBSCAN<br/>
-(5) 其他</p>
-
-<ul>
-<li>auto encoder<br/>
-思路类似PCA，数据进行压缩然后再还原，只是是非线性的。异常数据还原后的误差应该较大
-<img src="media/15846836766049/15850559643103.jpg" alt=""/></li>
-</ul>
-
-<h2 id="toc_1">其他</h2>
-
-<p>3.video中异常行为检测</p>
-
-<ol>
-<li>行为序列的异常？</li>
-</ol>
-
-<p>(1) sequence based</p>
-
-<ul>
-<li>相似性： 假设所有数据都是normal的，然后找到normal sequence， 最后计算与normal sequence的距离(比如LCS)</li>
-<li>window based。traing：所有sequence 分成多个windows，windows的score：frequence；classifier：随机生成数据作为anomaly标签。 testing：instance的各个windows的anomaly socre组合：取平均；取大于阈值的个数；LFC（计算anomaly window前n个window中anomaly 的个数）</li>
-<li>HMM：</li>
-</ul>
-
-<p><strong>参照论文：</strong><br/>
-<a href="https://blog.csdn.net/liuxiao214/article/details/78281160?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task">https://blog.csdn.net/liuxiao214/article/details/78281160?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task</a></p>
-
-<p>【Soft + Hardwired Attention: An LSTM Framework for Human Trajectory<br/>
-Prediction and Abnormal Event Detection】</p>
-
-<p>本文主要提出了一种基于LSTM的行为预测和异常检测方法</p>
-
-<ul>
-<li>文献回溯
-<ul>
-<li>轨迹聚类</li>
-<li>预测人类行为，一个常用的方法是social force model</li>
-<li>attention models</li>
-</ul></li>
-</ul>
-
-<p><img src="media/15846836766049/15851206602866.jpg" alt=""/></p>
-
-<p>mall场景：</p>
-
-<ul>
-<li>统计粒度的： 速度、stay长时间、</li>
-<li>轨迹路径的异常(x,y,t), walk变向、折返、speed突变等。 局部的变动</li>
-<li>基于act sequence，整体序列的</li>
-</ul>
-
-<h2 id="toc_2">工具-Pyod</h2>
-
-<ul>
-<li>Python异常检测工具库<code>Pyod</code>， 包含大概20多种方法，其中包含深度学习以及outlier ensembles</li>
-<li>SUOD(<a href="https://github.com/yzhao062/suod),Pyod%E4%BD%9C%E8%80%85%E7%9A%84%E4%B8%80%E4%B8%AA%E5%8A%A0%E9%80%9F%E9%80%82%E7%94%A8large-scale%E7%9A%84%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E5%B7%A5%E5%85%B7">https://github.com/yzhao062/suod),Pyod作者的一个加速适用large-scale的异常检测工具</a></li>
-<li>sklearn <a href="https://scikit-learn.org/stable/modules/outlier_detection.html">https://scikit-learn.org/stable/modules/outlier_detection.html</a><br/>
-常用的几个方法<br/>
-ensemble.IsolationForest<br/>
-LOF: neighbors.LocalOutlierFactor <br/>
-Pyod是一款专门做异常检测的python工具箱</li>
-</ul>
+                        	<p>Pyod是一款专门做异常检测的python工具箱</p>
 
 <p>github:   <a href="https://github.com/yzhao062/pyod">https://github.com/yzhao062/pyod</a><br/>
 文档说明: <a href="https://pyod.readthedocs.io/en/latest/index.html">https://pyod.readthedocs.io/en/latest/index.html</a></p>
@@ -438,20 +216,324 @@ comb_by_aom = aom(scores_norm, 5) # 5 groups
 comb_by_moa = moa(scores_norm, 5) # 5 groups
 </code></pre>
 
-<h2 id="toc_3">参考</h2>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/4/13</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html'>kdd&异常检测</a></span>
+          				   
+                    
 
-<p><a href="https://blog.csdn.net/weixin_38730719/article/details/88026338">https://blog.csdn.net/weixin_38730719/article/details/88026338</a></p>
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
-<p><a href="https://zhuanlan.zhihu.com/p/93779599">https://zhuanlan.zhihu.com/p/93779599</a></p>
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15869348134936.html">
+                
+                  <h1>tool-时间序列-工具使用</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>时间序列工具 <br/>
+<a href="https://github.com/chickenbestlover/RNN-Time-series-Anomaly-Detection">https://github.com/chickenbestlover/RNN-Time-series-Anomaly-Detection</a><br/>
+<a href="https://github.com/rob-med/awesome-TS-anomaly-detection">https://github.com/rob-med/awesome-TS-anomaly-detection</a></p>
 
-<p><a href="https://www.zhihu.com/question/280696035/answer/417091151">https://www.zhihu.com/question/280696035/answer/417091151</a><br/>
-<a href="https://blog.csdn.net/g2v13ah/article/details/78474370">https://blog.csdn.net/g2v13ah/article/details/78474370</a></p>
+<h2 id="toc_0">2. ADTK</h2>
 
-<p><a href="https://www.zhihu.com/question/280696035">https://www.zhihu.com/question/280696035</a></p>
+<p>github: <a href="https://github.com/arundo/adtk">https://github.com/arundo/adtk</a>. <br/>
+adtk主要是 unsupervised / rule-based time series anomaly detection.</p>
+
+<p>教程 <a href="https://arundo-adtk.readthedocs-hosted.com/en/stable/userguide.html%E3%80%82">https://arundo-adtk.readthedocs-hosted.com/en/stable/userguide.html。</a></p>
+
+<p>adtk提供了很多检测的方法，但是不会自动选择，得需要自己指定具体用哪个。</p>
+
+<pre><code class="language-text">&quot;ThresholdAD&quot;,
+&quot;QuantileAD&quot;,
+&quot;InterQuartileRangeAD&quot;,
+&quot;GeneralizedESDTestAD&quot;,
+&quot;PersistAD&quot;,
+&quot;LevelShiftAD&quot;,
+&quot;VolatilityShiftAD&quot;,
+&quot;AutoregressionAD&quot;,
+&quot;SeasonalAD&quot;,
+&quot;CustomizedDetector1D&quot;,
+&quot;MinClusterDetector&quot;,
+&quot;OutlierDetector&quot;,
+&quot;RegressionAD&quot;,
+&quot;PcaAD&quot;,
+</code></pre>
+
+<p>其中季节性，趋势性分解，用的是<code>statsmodels.tsa.seasonal</code><br/>
+<img src="media/15869348134936/15871046874575.jpg" alt="" style="width:533px;"/></p>
+
+<p>例子  <a href="https://arundo-adtk.readthedocs-hosted.com/en/latest/notebooks/demo.html#PersistAD">https://arundo-adtk.readthedocs-hosted.com/en/latest/notebooks/demo.html#PersistAD</a></p>
+
+<pre><code class="language-python">
+</code></pre>
+
+<h2 id="toc_1">1. banpei SSA: 奇异谱分析</h2>
+
+<p>banpei 是进行异常检测的一个python 包。其<code>banpei/banpei/</code>中主要包含了两种模型</p>
+
+<ul>
+<li>Outlier detection (Hotelling&#39;s theory) 均值+方差</li>
+<li> Change point detection （sst奇异谱转换）</li>
+</ul>
+
+<p>python package <code>fastsst</code><br/>
+<a href="https://github.com/statefb/singular-spectrum-transformation">https://github.com/statefb/singular-spectrum-transformation</a><br/>
+这里详细介绍下sst，SSA是一种研究非线性时间拿序列的方法，他根据观测到的序列构造出一个轨迹矩阵，然后通过对轨迹矩阵分解、重构，从而提取出能代表原始时间序列不同成分的信号。具体地，主要包括如下几步:<br/>
+（1）嵌入<br/>
+假设原始的时间序列是 \(Y(T) = (y_1, y_2,... y_T)\),选择一个窗口m，根据原始序列构造如下的轨迹矩阵。m的选择不宜过大，可以是本身数据周期的整数倍。<br/>
+<img src="media/15869348134936/15869444913257.jpg" alt=""/></p>
+
+<p>(2)svd分解</p>
+
+<p>\[X = U\Sigma V^T\]</p>
+
+<p>(3)分组<br/>
+选择贡献率达到一定阈值的top r个<br/>
+(4)重构<br/>
+矩阵重构 \[X_{mxn}  \approx U_{m*r}\Sigma_{r*r} V^T_{r*n}\]<br/>
+原序列重构, 通过对角平均法的方式<br/>
+<img src="media/15869348134936/15869481299057.jpg" alt=""/><br/>
+<img src="media/15869348134936/15869481699594.jpg" alt=""/></p>
+
+<p>m 窗口的选择，较小m反应短期趋势，较大的就是长期趋势。<br/>
+变点发现</p>
+
+<p><img src="media/15869348134936/15869498566967.jpg" alt=""/></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/4/15</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html'>kdd&异常检测</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15846836766049.html">
+                
+                  <h1>【异常检测1】无监督-多元数据</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>☆☆☆<a href="https://github.com/yzhao062/anomaly-detection-resources">https://github.com/yzhao062/anomaly-detection-resources</a>  资料综述，包括相关工具与论文</p>
+
+<p>总述：<br/>
+从异常检测要检测的目的数据的不同，大致可以分为如下几类，后续会分别对这几类进行综述学习。</p>
+
+<ol>
+<li>多元特征数据，传统的n_sample x n_features形式</li>
+<li>高维数据</li>
+<li>时间序列，行为序列</li>
+<li>graph, network</li>
+</ol>
+
+<p>这里主要是介绍基于(样本x特征)的<strong>多元特征数据的检测方法</strong></p>
+
+<p><img src="media/15846836766049/15851028311312.jpg" alt="" style="width:685px;"/><br/>
+<a href="https://zhuanlan.zhihu.com/p/49072315">https://zhuanlan.zhihu.com/p/49072315</a></p>
+
+<p>特点汇总</p>
+
+<table>
+<thead>
+<tr>
+<th>大分类</th>
+<th>常用方法距离</th>
+<th>特点/适用范围</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>统计分布类</td>
+<td>3sigma，四分位点， HBOS</td>
+<td>基于分布假定，对于分布比较极端的不太适用</td>
+</tr>
+<tr>
+<td>基于距离的近邻类</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>聚类类</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>分类类</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="toc_0">1.统计与概率方法</h2>
+
+<p>依据数据的分布做假定，假设大部分数据follow一个正常分布，只有很少的点不follow.</p>
+
+<ul>
+<li>3sigma原则</li>
+<li>四分位点</li>
+</ul>
+
+<p>箱线图中的四分位点以及异常值, Tukey’s Test: 根据四分位点对最小值和最大值的估计分别是<br/>
+\[min_value = Q1 - k(Q3-Q1)\]<br/>
+\[max_value = Q3 + k(Q3-Q1)\]</p>
+
+<p>其中k=1.5 时候可认为是中度异常，k=3时是极度异常。该方法应该假定了数据正态分布(或者是对称分布吧)</p>
+
+<ul>
+<li><p>检测异常值Grubbs的检验（Grubbs 1969和Stefansky 1972）用于检测单变量数据集中的单个异常值，该单变量数据集遵循近似正态分布。\((x_i-\bar x)/s\) 与临界值比较。如果您怀疑可能存在多个异常值，建议您使用Tietjen-Moore测试或广义极端学生化偏差测试而不是Grubbs测试</p></li>
+<li><p>HBOS- 基于直方图的检测方法<br/>
+其实就是将直观看histogram的方法数量化，正常分布的直方图是比较集中的，而有异常值的分布相对来说两边会比较分散，基于此，设计的异常打分。<br/>
+\[\]</p></li>
+</ul>
+
+<p>注意:<br/>
+基于统计分布的方法，其背后都是基于小概率的原理，认为超过正常分布的点就是异常值。其前提其实是认为大部分的分布都是正常的，波动只存在在小范围内。 但是如下的例子，波动其实体现在整体上，这种用统计相关的方法就不好检测了。</p>
+
+<p><img src="media/15846836766049/15873805529745.jpg" alt=""/></p>
+
+<h2 id="toc_1">2. 线性模型</h2>
+
+<ul>
+<li>PCA 大部分正常样本服从相似的分布映射的过程中在高低维的位置接近</li>
+<li>协方差矩阵</li>
+</ul>
+
+<h2 id="toc_2">3.基于相似度/距离衡量的模型</h2>
+
+<ul>
+<li>k近邻</li>
+<li>基于密度的 LOF, COF, Isolation Forest</li>
+<li>OneClassSVM</li>
+</ul>
+
+<h2 id="toc_3">4.聚类的方法， BIRCH，DBSCAN</h2>
+
+<h2 id="toc_4">5.其他</h2>
+
+<ul>
+<li>auto encoder<br/>
+思路类似PCA，数据进行压缩然后再还原，只是是非线性的。异常数据还原后的误差应该较大
+<img src="media/15846836766049/15850559643103.jpg" alt=""/></li>
+</ul>
+
+<h2 id="toc_5">6.不同方法比较与如何选择问题</h2>
+
+<p><a href="https://www.zhihu.com/question/280696035/answer/438788495">https://www.zhihu.com/question/280696035/answer/438788495</a></p>
+
+<h2 id="toc_6">其他</h2>
+
+<p>3.video中异常行为检测</p>
+
+<ol>
+<li>行为序列的异常？</li>
+</ol>
+
+<p>(1) sequence based</p>
+
+<ul>
+<li>相似性： 假设所有数据都是normal的，然后找到normal sequence， 最后计算与normal sequence的距离(比如LCS)</li>
+<li>window based。traing：所有sequence 分成多个windows，windows的score：frequence；classifier：随机生成数据作为anomaly标签。 testing：instance的各个windows的anomaly socre组合：取平均；取大于阈值的个数；LFC（计算anomaly window前n个window中anomaly 的个数）</li>
+<li>HMM：</li>
+</ul>
+
+<p><strong>参照论文：</strong><br/>
+<a href="https://blog.csdn.net/liuxiao214/article/details/78281160?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task">https://blog.csdn.net/liuxiao214/article/details/78281160?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task</a></p>
+
+<p>【Soft + Hardwired Attention: An LSTM Framework for Human Trajectory<br/>
+Prediction and Abnormal Event Detection】</p>
+
+<p>本文主要提出了一种基于LSTM的行为预测和异常检测方法</p>
+
+<ul>
+<li>文献回溯
+<ul>
+<li>轨迹聚类</li>
+<li>预测人类行为，一个常用的方法是social force model</li>
+<li>attention models</li>
+</ul></li>
+</ul>
+
+<p><img src="media/15846836766049/15851206602866.jpg" alt=""/></p>
+
+<p>mall场景：</p>
+
+<ul>
+<li>统计粒度的： 速度、stay长时间、</li>
+<li>轨迹路径的异常(x,y,t), walk变向、折返、speed突变等。 局部的变动</li>
+<li>基于act sequence，整体序列的</li>
+</ul>
+
+<h2 id="toc_7">工具-Pyod</h2>
+
+<ul>
+<li>Python异常检测工具库<code>Pyod</code>， 包含大概20多种方法，其中包含深度学习以及outlier ensembles</li>
+<li>SUOD(<a href="https://github.com/yzhao062/suod),Pyod%E4%BD%9C%E8%80%85%E7%9A%84%E4%B8%80%E4%B8%AA%E5%8A%A0%E9%80%9F%E9%80%82%E7%94%A8large-scale%E7%9A%84%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E5%B7%A5%E5%85%B7">https://github.com/yzhao062/suod),Pyod作者的一个加速适用large-scale的异常检测工具</a></li>
+<li>sklearn <a href="https://scikit-learn.org/stable/modules/outlier_detection.html">https://scikit-learn.org/stable/modules/outlier_detection.html</a><br/>
+常用的几个方法<br/>
+ensemble.IsolationForest<br/>
+LOF: neighbors.LocalOutlierFactor <br/>
+Pyod是一款专门做异常检测的python工具箱</li>
+</ul>
+
+<p>github:   <a href="https://github.com/yzhao062/pyod">https://github.com/yzhao062/pyod</a><br/>
+文档说明: <a href="https://pyod.readthedocs.io/en/latest/index.html">https://pyod.readthedocs.io/en/latest/index.html</a></p>
+
+<h2 id="toc_8">参考</h2>
+
+<ol>
+<li><a href="https://blog.csdn.net/weixin_38730719/article/details/88026338">https://blog.csdn.net/weixin_38730719/article/details/88026338</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/93779599">https://zhuanlan.zhihu.com/p/93779599</a></li>
+<li><a href="https://www.zhihu.com/question/280696035/answer/417091151">https://www.zhihu.com/question/280696035/answer/417091151</a></li>
+<li><a href="https://blog.csdn.net/g2v13ah/article/details/78474370">https://blog.csdn.net/g2v13ah/article/details/78474370</a></li>
+<li><a href="https://www.zhihu.com/question/280696035">https://www.zhihu.com/question/280696035</a></li>
+</ol>
 
 <p><a href="https://blog.csdn.net/Jasminexjf/article/details/88527966">https://blog.csdn.net/Jasminexjf/article/details/88527966</a></p>
 
 <p>ppt材料 <a href="https://zhuanlan.zhihu.com/p/30169110">https://zhuanlan.zhihu.com/p/30169110</a></p>
+
+<p>《A comparative evaluation of outlier detection algorithms: Experiments and<br/>
+analyses》</p>
 
                         
                       </div>
@@ -504,8 +586,8 @@ comb_by_moa = moa(scores_norm, 5) # 5 groups
 <td></td>
 </tr>
 <tr>
-<td></td>
-<td></td>
+<td>Time-Series Anomaly Detection Service at Microsoft</td>
+<td>2019</td>
 <td></td>
 <td></td>
 </tr>
@@ -518,13 +600,9 @@ comb_by_moa = moa(scores_norm, 5) # 5 groups
 </tbody>
 </table>
 
-<p>问题分类</p>
+<h2 id="toc_0">一 问题分类</h2>
 
 <p><img src="media/15869363773517/15869376232283.jpg" alt="" style="width:1054px;"/></p>
-
-<h2 id="toc_0">一 参数模型-时间序列model</h2>
-
-<p>通过建模的方式去拟合原有的时间序列曲线，然后计算模型值与实际值的偏差找到异常值。比如ARMA,ARIMA,VARMA等等</p>
 
 <table>
 <thead>
@@ -590,12 +668,12 @@ comb_by_moa = moa(scores_norm, 5) # 5 groups
 </tbody>
 </table>
 
-<ol>
-<li>时间序列检测<br/>
-(1) 检测points</li>
-</ol>
+<h2 id="toc_1">二 具体方法</h2>
 
-<p><strong>prediction model</strong></p>
+<h3 id="toc_2">1. 时间序列检测</h3>
+
+<p><strong>(1) 检测points</strong><br/>
+方案1：prediction model</p>
 
 <ul>
 <li>以[t-k, t+k]的近邻区间的median，其他自定义规则</li>
@@ -603,17 +681,28 @@ comb_by_moa = moa(scores_norm, 5) # 5 groups
 <li>ARIMA等其他</li>
 </ul>
 
-<p><strong>Profile Similarity based Approaches</strong><br/>
-根据历史的均值 和变异来判断当前的</p>
+<p>场景1: 是否超出某个阈值， 看一段窗口内的均值是否超过THRESHOLD。<br/>
+一个比较平滑的处理方式是采用累积恒定阈值的方法 \(s(t) =\frac{x_t + ...+x_{t-w+1}}{w}\)<br/>
+<img src="media/15846836766049/15850438434419.jpg" alt=""/></p>
 
-<p><strong>Deviants</strong><br/>
-从MDL最小描述长度的角度，如果从原始的序列中移除一个点P，</p>
+<p>场景2：数据突变<br/>
+正常情况应该是光滑的曲线，不应该出现突然的上涨或下跌。=&gt; 检测环比附近的数据<br/>
+<img src="media/15846836766049/15850445321930.jpg" alt=""/></p>
 
-<p>(2)检测subsequence<br/>
+<p>前后窗口均值比值 \(r(t)=\frac{x_t + ...x_{t-w+1}}{x_{t-w}+..+x_{t-2w+1}}\)</p>
+
+<p>场景3：数据有规律的周期波动: 检测同比，看有无异常。 统计历史上相同时期的数据的均值、标准差，假设正态分布，计算z-score</p>
+
+<p>方案2：Profile Similarity based Approaches<br/>
+根据历史的均值 和变异来判断当前的<br/>
+方案3：从MDL最小描述长度的角度，如果从原始的序列中移除一个点P，</p>
+
+<p><strong>(2)检测subsequence</strong><br/>
 给定一个时间序列T，检测出是否存在异常子序列。 todo xxxx</p>
 
-<p>2 stream data 检测<br/>
-(1) 多元data stream—— 进化的prediction model<br/>
+<h3 id="toc_3">2 stream data 检测</h3>
+
+<p>(1) 多元data stream—— 进化的prediction model<br/>
 方法1： online discounting learning 算法<br/>
 在原有的多元数据检测的基础上，加上动态更新逻辑<br/>
 <img src="media/15869363773517/15870043119362.jpg" alt="" style="width:302px;"/></p>
@@ -624,17 +713,17 @@ comb_by_moa = moa(scores_norm, 5) # 5 groups
 (2) 基于滑动窗口计算距离的方式<br/>
 可以分为global的outlier和local的outlier (LOF)</p>
 
-<p>3, high-dimensional data streams</p>
+<h3 id="toc_4">3.high-dimensional data streams</h3>
 
-<ul>
-<li>Stream Projected Outlier deTector (SPOT)</li>
-</ul>
+<p>Stream Projected Outlier deTector (SPOT)</p>
 
-<p>4.分布式场景下的stream data的检测<br/>
-详见论文</p>
+<h3 id="toc_5">4.分布式场景下的stream data的检测</h3>
 
-<p>5， 基于时空的异常检测<br/>
-除了时间角度、还有空间角度。<br/>
+<p>详见论文</p>
+
+<h3 id="toc_6">5.基于时空的异常检测</h3>
+
+<p>除了时间角度、还有空间角度。<br/>
 (1)场景：输入一个时空数据集，找到 ST-Outliers, i.e., spatio-temporal objects whose behavioral (non-spatial and non-temporal) attributes are significantly different from those of the other objects in its spatial and temporal neighborhoods</p>
 
 <p>一般的思路过程：首先找到空间异常，然后再去验证时间粒度的neighborhood<br/>
@@ -650,39 +739,110 @@ comb_by_moa = moa(scores_norm, 5) # 5 groups
 方案2：direction and density<br/>
 方案3：Historical Similarity, 和前面的方法稍微不同，这个是在每个time step上，计算当前轨迹与其他所有轨迹的相似值。然后不断扩充这个相似向量。对于某个pair，当发现这个相似值出现突变的时候(之前不相似突然想你死，或者之前相似变得突然你不相似)说明出现了异常</p>
 
-<p>6，temporal network 异常检测</p>
+<h3 id="toc_7">6.temporal network 异常检测</h3>
 
-<h2 id="toc_1">其他</h2>
+<p>graph outlier detection 输入是一组网络，检测方法类似，定义不同网络之前的相似度<br/>
+具体方法详见论文</p>
+
+<h2 id="toc_8">其他</h2>
 
 <p><img src="media/15869363773517/15869493965051.jpg" alt=""/></p>
 
-<p>场景1: 是否超出某个阈值<br/>
-<img src="media/15846836766049/15850438434419.jpg" alt=""/></p>
+<h2 id="toc_9">三 公司应用</h2>
 
-<p>看一段窗口内的均值是否超过THRESHOLD</p>
+<p>汇总</p>
 
-<p>场景2：数据突变<br/>
-正常情况应该是光滑的曲线，不应该出现突然的上涨或下跌。=&gt; 检测环比附近的数据<br/>
-<img src="media/15846836766049/15850445321930.jpg" alt=""/></p>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>研发团队</th>
+<th>链接</th>
+<th>备注</th>
+</tr>
+</thead>
 
-<p>前后窗口均值比值 \(r(t)=\frac{x_t + ...x_{t-w+1}}{x_{t-w}+..+x_{t-2w+1}}\)</p>
+<tbody>
+<tr>
+<td>egads</td>
+<td>yahoo</td>
+<td>Java: <a href="https://github.com/yahoo/egads">https://github.com/yahoo/egads</a></td>
+<td>《Generic and Scalable Framework for Automated Time-series Anomaly Detection》  检测+报警等功能</td>
+</tr>
+<tr>
+<td>Luminol</td>
+<td>LinkedIn</td>
+<td><a href="https://github.com/linkedin/luminol">https://github.com/linkedin/luminol</a></td>
+<td></td>
+</tr>
+<tr>
+<td>微软-AD</td>
+<td>微软</td>
+<td><a href="https://docs.microsoft.com/zh-cn/azure/cognitive-services/anomaly-detector/">https://docs.microsoft.com/zh-cn/azure/cognitive-services/anomaly-detector/</a></td>
+<td>《Time-Series Anomaly Detection Service at Microsoft》</td>
+</tr>
+<tr>
+<td>Twitter-AD</td>
+<td>Twitter</td>
+<td>R语言 <a href="https://github.com/twitter/AnomalyDetection">https://github.com/twitter/AnomalyDetection</a></td>
+<td>A Novel Technique for Long-Term Anomaly Detection in the Cloud</td>
+</tr>
+<tr>
+<td>Opprentice</td>
+<td>清华-裴丹+百度</td>
+<td>《Opprentice: Towards Practical and Automatic Anomaly Detection Through Machine Learning》</td>
+<td></td>
+</tr>
+<tr>
+<td>Metis</td>
+<td>清华+腾讯</td>
+<td><a href="https://github.com/Tencent/Metis">https://github.com/Tencent/Metis</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Donut</td>
+<td>清华+阿里</td>
+<td><a href="https://github.com/haowen-xu/donut">https://github.com/haowen-xu/donut</a></td>
+<td>Variational Auto-Encoder for Seasonal KPIs，基于tf</td>
+</tr>
+</tbody>
+</table>
 
-<p>场景3：数据有规律的周期波动<br/>
-检测同比，看有无异常。 统计历史上相同侍寝的数据的均值、标准差，假设正态分布，计算z-score</p>
+<ul>
+<li>微软 </li>
+</ul>
 
-<p><a href="https://juejin.im/post/5c88a2e95188257e914052e4">https://juejin.im/post/5c88a2e95188257e914052e4</a><br/>
-<a href="https://github.com/Tencent/Metis">https://github.com/Tencent/Metis</a></p>
+<p>采用的主要思路: SR + CNN. SR(Spectral Residual)是一种无监督的算法，在视觉显著性检测中表现很好。作者将时间序列的异常检测类比到图像的显著性视觉检测。CNN是有监督的，作者通过人为构造合成曲线将 SR的输出结果进行CNN训练，最后得到检测模型。</p>
+
+<p>(1) 谱残差算法<br/>
+大致来说是对原始序列做傅里叶变换，取log，计算SR. (zzz通过傅里叶变换将主要的不显著的区域去除掉，然后再反向转回去，得到显著的区域)<br/>
+<img src="media/15869363773517/15870224916178.jpg" alt="" style="width:426px;"/></p>
+
+<p>微软的论文中比较了FFT, twitter-AD， Luminol和自己的效果。</p>
+
+<ul>
+<li><p>Opprentice<br/>
+本文通过运维人员的业务经验来进行异常数据的标注工作，使用时间序列的各种算法来提取特征，并且使用有监督学习模型（例如 Random Forest，GBDT，XgBoost 等）模型来实现离线训练和上线预测的功能。</p></li>
+<li><p>yahoo—— EGADS<br/>
+《Generic and Scalable Framework for Automated Time-series Anomaly Detection》<br/>
+<a href="https://juejin.im/post/5c88a2e95188257e914052e4">https://juejin.im/post/5c88a2e95188257e914052e4</a><br/>
+主要也是先建立时间序列模型，然后通过期望和误差判断异常。</p></li>
+<li><p>skyline<br/>
+skyline: Skyline is a near real time anomaly detection system. 看其github上code <code>skyline/skyline/analyzer/algorithms.py</code>所包含的模型，主要是一些基于统计/时间序列的方法， 每种方法其实都是有适用条件的。<br/>
+<code>skyline,median_absolute_deviation</code></p></li>
+<li><p>DeepADoTS <br/>
+Implementation and evaluation of 7 deep learning-based techniques for Anomaly Detection on Time-Series data.</p></li>
+</ul>
+
+<p><strong>其他的开源工具</strong></p>
+
+<p><a href="https://github.com/chenryn/aiops-handbook/blob/master/README.md">https://github.com/chenryn/aiops-handbook/blob/master/README.md</a></p>
 
 <p>工具 <a href="https://github.com/chickenbestlover/RNN-Time-series-Anomaly-Detection">https://github.com/chickenbestlover/RNN-Time-series-Anomaly-Detection</a></p>
 
-<p>（2）时间序列数据</p>
+<p>工具包 <a href="https://github.com/rob-med/awesome-TS-anomaly-detection">https://github.com/rob-med/awesome-TS-anomaly-detection</a></p>
 
-<ul>
-<li>关于时间序列的检测 工具包 <a href="https://github.com/rob-med/awesome-TS-anomaly-detection">https://github.com/rob-med/awesome-TS-anomaly-detection</a></li>
-</ul>
-
-<p>[Python] skyline: Skyline is a near real time anomaly detection system.<br/>
-[Python] banpei: Banpei is a Python package of the anomaly detection.</p>
+<p>[Python] banpei: Banpei is a Python package of the anomaly detection.</p>
 
 <p>[Python] telemanom: A framework for using LSTMs to detect anomalies in multivariate time series data.</p>
 
@@ -690,13 +850,25 @@ comb_by_moa = moa(scores_norm, 5) # 5 groups
 
 <p>[Python] NAB: The Numenta Anomaly Benchmark: NAB is a novel benchmark for evaluating algorithms for anomaly detection in streaming, real-time applications.</p>
 
-<h2 id="toc_2">自动化检测问题</h2>
+<h2 id="toc_10">参考</h2>
 
-<p><a href="https://www.infoq.cn/article/e7kgB9EVJXkQdRVSsDSo">https://www.infoq.cn/article/e7kgB9EVJXkQdRVSsDSo</a></p>
+<p><a href="https://www.zhihu.com/question/337230484/answer/803136648">https://www.zhihu.com/question/337230484/answer/803136648</a><br/>
+<a href="https://github.com/chenryn/aiops-handbook/blob/master/README.md">https://github.com/chenryn/aiops-handbook/blob/master/README.md</a></p>
 
-<h2 id="toc_3">公司应用</h2>
+<h2 id="toc_11">自动化检测问题</h2>
 
-<h2 id="toc_4">how to use for us</h2>
+<p>问题：大部分工具或者算法实现了不同的方案，但是却没法自动判断选择哪个检测方法，均需要用户指定。<br/>
+<a href="https://www.infoq.cn/article/e7kgB9EVJXkQdRVSsDSo">https://www.infoq.cn/article/e7kgB9EVJXkQdRVSsDSo</a><br/>
+<img src="media/15869363773517/15870297798892.jpg" alt="" style="width:691px;"/></p>
+
+<p>(1) 判断周期性 —— 基于差分的方法<br/>
+<img src="media/15869363773517/15870300046533.jpg" alt="" style="width:461px;"/></p>
+
+<p>(2)前面的方法能够分离出周期性数据，接下来要度量数据的全局波动和局部波动的相对大小。数据方差可以直接表达全局波动范围。对数据施加小尺度的小波变换可以得到局部波动，局部波动的方差反应了局部波动的大小</p>
+
+<p>(3)自动配置参数</p>
+
+<h2 id="toc_12">how to use for us</h2>
 
 <ol>
 <li>特征值异常</li>
@@ -763,197 +935,6 @@ comb_by_moa = moa(scores_norm, 5) # 5 groups
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15867647063491.html">
-                
-                  <h1>知识发现</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>关于DM的process model一般有如下几种：</p>
-
-<p>1.CRISP-DM 跨行业数据挖掘标准流程，将一个KDD工程分为6个不同的阶段。这种方式只定义了要做什么没有说how to do</p>
-
-<ul>
-<li>商业理解：确定商业的目标，发现影响结果的重要因素。</li>
-<li>数据理解</li>
-<li>数据准备</li>
-<li>建模</li>
-<li>评估</li>
-<li>部署</li>
-</ul>
-
-<h2 id="toc_0">一. Association Rules</h2>
-
-<p>传统的，根据支持度和置信度，挖掘出频繁项集。但是很显然的会面临很多问题。<br/>
-1) 低频次的并不代表不重要，他们可能能产生出重要的negative association rules (NARs)。 低频购买换个角度就是高频不购买<br/>
-2) 个人感觉频繁项集不一定是有价值信息的</p>
-
-<h3 id="toc_1">1 经典AR</h3>
-
-<p>先说下基本定义，</p>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>B</th>
-<th>not B</th>
-<th>合计</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>A</td>
-<td>a</td>
-<td>b</td>
-<td>a+b</td>
-</tr>
-<tr>
-<td>not A</td>
-<td>C</td>
-<td>d</td>
-<td>c+d</td>
-</tr>
-<tr>
-<td>合计</td>
-<td>a+c</td>
-<td>b+d</td>
-<td>a+b+c+d</td>
-</tr>
-</tbody>
-</table>
-
-<p>支持度sup(A=&gt;B) = P(A&amp;B) = a/n<br/>
-置信度 conf(A=&gt;B) = P(B|A) = a/(a+b)<br/>
-提升度 lift(A=&gt;B)= p(A&amp;B)/P(A)/P(B)       # 是否独立 &gt; 1表明正相关， &lt;1 表示负相关。 可以看做相关系数</p>
-
-<p>一般是设置最低的支持度和置信度，一旦满足这两个就认为是一条rule.</p>
-
-<p>用这种方式得到的结果很可能是不可信的，或者说不全面的，比如如下的一个具体例子。可知sup(A=&gt;B)= 0.45, conf(A=&gt;B)=0.9. 看似较高，但是没法得出 买了A就买B的结论，因为不买A=&gt;买B也是一样，或者说买B本身就很高，与是否买A无关。</p>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>B</th>
-<th>not B</th>
-<th>合计</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>A</td>
-<td>450</td>
-<td>50</td>
-<td>a+b</td>
-</tr>
-<tr>
-<td>not A</td>
-<td>450</td>
-<td>50</td>
-<td>c+d</td>
-</tr>
-<tr>
-<td>合计</td>
-<td>a+c</td>
-<td>b+d</td>
-<td>a+b+c+d</td>
-</tr>
-</tbody>
-</table>
-
-<p>相关系数 \(corr_ = \frac{sup(A交B) - sup(A)sup(B)}{\sqrt{supA(1-supA)supB(1-supB)}} \)<br/>
-通过卡方检验，可以推倒出卡方检验的统计量与corr是一致的。<br/>
-常用的算法 Apriori， FP-Growth</p>
-
-<h3 id="toc_2">2 NAR</h3>
-
-<p>比如A=&gt; not B<br/>
-参考【4】中作者方案包括2步：1)首先找到frequent和infrequent的itemset   2)判断是positive还是negative association</p>
-
-<p>具体的<br/>
-(1) infrequent: 通过IDF加权，过滤掉出现次数非常少的，或者是在不同人之间分布比较均匀的term<br/>
-<img src="media/15867647063491/15868573761250.jpg" alt="" style="width:960px;"/></p>
-
-<p>(2) 有了这些候选的itemset后，根据定义计算positive或者negative的rule<br/>
-<img src="media/15867647063491/15868574713672.jpg" alt="" style="width:586px;"/></p>
-
-<p>注意：<br/>
- A =&gt; B 不一定能推出 not B =&gt; not A</p>
-
-<h3 id="toc_3">3 infrequent itemset</h3>
-
-<p>high utility infrequent itemsets. 频次不高，但是有更高的价值。UPRI算法(utility pattern rare itemset algorithm)<br/>
-简单的说，传统的AR是 \(I_1,...I_m =&gt; I_{m+1}(sup, conf)\)，而基于utility的是\(I_1,...I_m =&gt; Obj(sup, conf, u)\)。 传统的AR其实相当于将频次作为效用的度量。实际中不同的商品所带来的效用是不同，比如当关注cost，profit时候，对零售商来说，高售价的商品就比低售价的商品重要。</p>
-
-<p>区别于传统的基于itemset的ICOA (itemset-correlation-oriented association)，基于目标效用的OOA (objective-oriented utility-based association)mining</p>
-
-<p>related work:</p>
-
-<ul>
-<li>由min_sup, min_conf的方式改为 topK的方式</li>
-<li>Sese and Morishita 度量usefulness的方式：利用规则相关系数的显著性</li>
-<li>Han 通过min_l()的方式挖掘topK的closed patterns<br/>
-参考【5】中挖</li>
-</ul>
-
-<h2 id="toc_4">2. case</h2>
-
-<p>参考【4】中处理 <br/>
-(1)IDF加权,考虑到term不同权重</p>
-
-<h2 id="toc_5">3.工具</h2>
-
-<p>(1) positive association rules—— apriori<br/>
-python的sklearn中貌似没有直接的apriori工具,在<code>pypi</code>上找到这个<code>efficient-apriori</code> <a href="https://pypi.org/search/?q=apriori%E3%80%82">https://pypi.org/search/?q=apriori。</a> 或者在github上搜索 <a href="https://github.com/topics/association-rules?l=python">https://github.com/topics/association-rules?l=python</a></p>
-
-<p>(2) negative association rules ------</p>
-
-<p>可以用一种比较tricky的方法，即对于我们所关心的item，在数据集中添加 not_item项即可。比如基于R的实现 <a href="https://subscription.packtpub.com/book/big_data_and_business_intelligence/9781788621878/1/ch01lvl1sec14/negative-association-rules">https://subscription.packtpub.com/book/big_data_and_business_intelligence/9781788621878/1/ch01lvl1sec14/negative-association-rules</a></p>
-
-<h2 id="toc_6">4.统计显著性</h2>
-
-<p><a href="https://github.com/BorgwardtLab/significant-subgraph-mining">https://github.com/BorgwardtLab/significant-subgraph-mining</a></p>
-
-<p>参考资料</p>
-
-<ol>
-<li>A survey of data mining and knowledge discovery process models and methodologies</li>
-<li>A review and analysis on knowledge discovery and data mining techniques(回溯了各种关联规则相关的)</li>
-<li><a href="https://www.ixueshu.com/document/2a80aefb26b9e3e9318947a18e7f9386.html">https://www.ixueshu.com/document/2a80aefb26b9e3e9318947a18e7f9386.html</a></li>
-<li>Negative and Positive Association Rules Mining from Text Using Frequent and Infrequent Itemsets</li>
-<li>mining high utility itemsets</li>
-</ol>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/4/13</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html'>kdd&异常检测</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -965,7 +946,7 @@ python的sklearn中貌似没有直接的apriori工具,在<code>pypi</code>上找
 			  </div>
 			  <div class="large-6 columns">
 			<p class="text-right" style="padding-top:25px;">
-			
+			 <a href="kdd&异常检测_1.html">&raquo; Next Page</a> 
 			</p>
 			  </div>
 			</div>
@@ -1019,8 +1000,6 @@ python的sklearn中貌似没有直接的apriori工具,在<code>pypi</code>上找
             <a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 统计方法</strong></a>
         
             <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习</strong></a>
-        
-            <a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统</strong></a>
         
             <a href="6%20NLP.html"><strong>6 NLP</strong></a>
         

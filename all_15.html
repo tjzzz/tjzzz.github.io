@@ -95,8 +95,6 @@
         
             <li><a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html">5 机器学习</a></li>
         
-            <li><a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html">6 推荐系统</a></li>
-        
             <li><a href="6%20NLP.html">6 NLP</a></li>
         
             <li><a href="7%20CV.html">7 CV</a></li>
@@ -129,6 +127,281 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15870064824475.html">
+                
+                  <h1>关于综述</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ul>
+<li>理论</li>
+<li>实践</li>
+<li>企业应用</li>
+<li>how to use for us</li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/4/16</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html'>数据科学-清单</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037730522.html">
+                
+                  <h1>关于长点击阈值划分方法</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>用户停留时长一直是衡量用户在落地页满意度的一个重要度量指标。在具体业务设计的时候，可以去看时长分布的中位数、平均时长等统计级指标，亦有类似于衡量时长好坏的长点击率，长点击占比等指标。</p>
+
+<p>首先来说下长点击，简单来说长点击即停留时长比较长的一个点击时间。</p>
+
+<h3 id="toc_0">1. 长点击，满意点击，人工打分</h3>
+
+<p>我们说停留时间“比较长”，其实是一个相对概念，不同的资源类型可能划分的标准会不同。但是他们的出发点是一样的: 我们认为在特定资源类型下落地页时长越长，用户越倾向于满意。所以长点击本质上是用来刻画满意点击的。</p>
+
+<p><strong>(1) 无监督的划分</strong><br/>
+即我们不知道groundtruth，这个时候可以根据本身时长的分布，按照经验值比如60%，70%作为其长点击的分界点。这种划分方式 xxxx</p>
+
+<p><strong>(2) 有监督的</strong><br/>
+通过人工评估（比如qu相关性，qu的页面质量等维度），可以对qu结果进行人工打分，一般是0-4档。0，1代表不太好，2代表一般，3-4代表比较好。可以根据业务需求比如3-4认为是满意点击，2认为是一般点击，0-1认为是不满意点击。<br/>
+以此人工标注来决定如何选择长点击划分阈值。</p>
+
+<h3 id="toc_1">2. 如何划分长点击</h3>
+
+<p>长点击阈值划分的目标，即寻找如下决策函数的参数x</p>
+
+<p>\[<br/>
+F(t) = \left\{<br/>
+             \begin{array}{lr}<br/>
+            1，长点击 t \ge x &amp;  \\<br/>
+            0，非长点击 t&lt; x\\  <br/>
+             \end{array}<br/>
+\right.<br/>
+\]</p>
+
+<p>从统计分布的角度看，即使是时长比较长的结果，人工打分也可能很低，时长很短的结果人工打分也可能是满意的。所以不管寻找到的最优参数\(x\)是多少，它都有可能会误分。而我们的目的是让这种因为误分而犯错的可能性尽可能的小。<br/>
+<img src="media/15542962343188/15543644977641.jpg" alt=""/></p>
+
+<p>从以上的分布图来说更直观一些，我们的误判损失即是图中阴影部分，很容易证明，移动阈值划分x时候，损失最小的是当两个分布曲线相交的点的时候。这指导我们可以按照如下的方法进行长点击划分：</p>
+
+<p>执行步骤<br/>
+<strong>Step0： 摸底时长分布</strong></p>
+
+<p>首先需要了解清楚数据本身的时长分布，根据时长的分布情况，大概划分不同的区间段。比如0-5，5-10，10-15，15-20，20-25，25-30，30-35，35-40， 40-50，50-60，60-100，&gt;100这样进行划分。<br/>
+同于频次分布较高的部分可以划分的细致一些，频次分布较低的部分可以划分的宽度较宽一些。</p>
+
+<p><strong>Step1： 抽样送评qu数据</strong></p>
+
+<p>确定送评样本，因为人工评估是需要成本的，我们不可能得到整体的good或者bad的分布曲线，我们所有的只是抽取的送评样本的标注数据。这就要求我们送评的数据对于总体一定要有好的代表性：</p>
+
+<ul>
+<li>抽样分布应该和总体分布尽量一致</li>
+<li>抽样量不能太小，否则样本估计总体的误差会比较大</li>
+</ul>
+
+<blockquote>
+<p>如何确定最优送评样本量？（这个回来再写）<br/>
+统计学的研究方法是要找到我们所关注变量的统计分布，我们最终是希望通过抽取得到的good和not_good的时长分布与整体差不多。</p>
+</blockquote>
+
+<p>数据抽取：</p>
+
+<ul>
+<li>考虑到数据抽取是基于qu粒度，一个qu其实会有多次用户点击行为，也就会有多个时长，可能波动较大。所以一般是取count(qu)&gt;5的，并且时长取的是其中位数</li>
+<li><p>预送评，一般先进行少量的预送评，比如送评1000个样本。返回会用来检验数据质量和划分的精细度</p>
+<ul>
+<li>check自己送评的数据中是否有一些异常数据。比如sf的url路径不完成</li>
+<li>check人工打分的质量程度</li>
+<li>初步看下good和not_good的分布情况，大概确定长点的分布区间，从而看下送评的样本的时间段间隔精度是否需要调整</li>
+</ul></li>
+<li><p>正式送评</p></li>
+</ul>
+
+<p><strong>Step2： 返回分析</strong></p>
+
+<p>根据good和not_good的频数分布，找到曲线的交点，即满足good(x) = not_good(x)的点，即可认为是长点击的分界点。短点击的划分类似，可以认为0-1的是短点击，或者更严格的0分的是短点击。 绘制bad和not_bad的频数分布，找到曲线交点。即满足bood(x) = not_bood(x)的点</p>
+
+<ul>
+<li>实际操作：实际数据的分布图可能不如示意图那么明显，甚至有多个交点的情况。这时候可以计算图中b+c的面积，绘制(x,g(x))的曲线图，找到g(x)=0.5的点即可。 如果有多个可能是因为样本量不足够，或者本身指标数据不可信(前提假定是要研究的指标与人工打分是存在单调关系的)</li>
+</ul>
+
+<h3 id="toc_2">3 应用-关于sigmoid函数的理解</h3>
+
+<ul>
+<li><p>AB实验<br/>
+对于AB实验来说，有了长短点击时间阈值之后，可以直接计算长点击和短点击，更新指标评估即可。</p></li>
+<li><p>interleaving实验<br/>
+对于interleaving来说，实际中是将dt经过一个映射(一般是sigmoid函数)将其转化为一个0-1的打分。</p></li>
+</ul>
+
+<p>这里我们从另外一个角度来看这件事。LR或者说sigmoid函数能将一个负无穷到正无穷的数映射到0-1的一个概率值。是否是长点其实也是一个概率，当然这里时长t是取的(0, 正无穷)</p>
+
+<p>假设<br/>
+\[g(x) = \frac{good(x)}{good(x) + not\_good(x)}\]<br/>
+其中 \(good(x)= \#good(t=x)\), \(not\_good(x)=\#not\_good(t= x)\)。 <br/>
+所以\(g(x)\)其实表示的是在\(t=x\)时候是长点击的概率。为了书写方便，</p>
+
+<p>\[g(x) = \frac{1}{1+ not\_good(x)/good(x)}= \frac{1}{1+ e^{ln\frac{p}{1-p}}}\]</p>
+
+<p>这里\(p(x)\)是表示当时间等于x时是长点击的概率。</p>
+
+<p>从这个角度说，之前的sigmoid映射函数中\(\frac{1}{1+ e^{-a(x-b)}}\) 系数项即是log odds ratio。</p>
+
+<p>因此只需对送评数据中\(ln\frac{p}{1-p}\)的分布数据去拟合一条曲线 \(\hat f(t)\)即可，最终的sigmoid映射函数就是</p>
+
+<p>\[g(t) = \frac{1}{1+ e^{\hat f(t)}}\]</p>
+
+<p>并且其中\(\hat f(t)=0\)的点恰巧就是长点击的分界点。</p>
+
+<p>注意：实际送评的时候因为样本量的限制，不可能每一个分界点(在这里是每个停留时间dt)都会去送评，</p>
+
+<h3 id="toc_3">4.其他:从模型准召的角度</h3>
+
+<p>其实从分类评估角度来看，</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>not_good</th>
+<th>Good</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>F=0</td>
+<td>a</td>
+<td>b</td>
+</tr>
+<tr>
+<td>F=1</td>
+<td>c</td>
+<td>d</td>
+</tr>
+</tbody>
+</table>
+
+<p>上面说的损失即阴影部分的面积=b+c, 所以其实从分类模型评估的角度，就是不一致率最小的时候的最优解,即<br/>
+\[min b+c\]</p>
+
+<ul>
+<li>准确&amp;召回</li>
+</ul>
+
+<p>分类模型中其实用的更多的是准确和召回指标，\(accurate=\frac{d}{c+d}\),\(recall = \frac{d}{b+d}\)<br/>
+\[Max F\_score = 1-\frac{b+c}{b+c+2d}\]</p>
+
+<p>这个标准下，和之前还是略微有些不同的</p>
+
+<h3 id="toc_4">5.如何泛化</h3>
+
+<p>泛化问题主要是指：</p>
+
+<ul>
+<li>业务层面</li>
+</ul>
+
+<p>搜索，视频，以后其他的大小业务都可能面临这种问题。对于新的业务类型，人工送评应该是避免不了了。</p>
+
+<ul>
+<li>时间层面变更</li>
+</ul>
+
+<p>随着线上效果变更，当前调研的结果可能已经不再试用后续的结果。需要不断进行更新，比如视频铺量后，整体的时长分布和之前的可能变化很大。或者是需要拆解不同的维度类别</p>
+
+<p>方案1：再次人工送评一遍，<br/>
+方案2：进行时长分布映射<br/>
+这种方案有个问题，相当于是按照top百分比进行划分的，认为top百分比所代表的满意度保持一致。可能整体时长都变长了，映射完后阈值也变长了，相对的满意度并没变。</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15669633176007.html">
+                
+                  <h1>其他神器</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">yaml</h2>
+
+<p>yaml文件的的多行快速注释方法</p>
+
+<p><code>ctrl + /</code></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/8/28</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15637025346262.html">
                 
@@ -273,357 +546,6 @@ f.fit(data)
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15828738932501.html">
-                
-                  <h1>垂类工具库</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">2.标注工具 <a href="https://github.com/tzutalin/labelImg">https://github.com/tzutalin/labelImg</a></h2>
-
-<p>opencv</p>
-
-<p><a href="https://www.kancloud.cn/aollo/aolloopencv/269602">https://www.kancloud.cn/aollo/aolloopencv/269602</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/2/28</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='tools.html'>tools</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15825488509435.html">
-                
-                  <h1>工具篇</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>工欲善其事必先利其器</p>
-</blockquote>
-
-<p>主流的深度学习框架有</p>
-
-<table>
-<thead>
-<tr>
-<th>tool</th>
-<th>公司</th>
-<th>特性</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>tensorflow</td>
-<td>google</td>
-<td></td>
-</tr>
-<tr>
-<td>pytorch</td>
-<td>facebook</td>
-<td></td>
-</tr>
-<tr>
-<td>keras</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>caffe</td>
-<td>伯克利</td>
-<td></td>
-</tr>
-<tr>
-<td>paddlepaddle</td>
-<td>百度</td>
-<td></td>
-</tr>
-<tr>
-<td>mxnet</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-<p>Keras 是基于tensorflow或者Theano(已不维护)封装的高阶接口，tensorflow2.0中现在已经包含Keras</p>
-
-<h2 id="toc_0">1. Tensorflow</h2>
-
-<p><strong>TF-Slim、TFLearn、Keras和TensorLayer</strong></p>
-
-<p>TF-Slim、TFLearn、Keras和TensorLayer都是尝试简化TensorFlow/Theano的工具，是对TensorFlow/Theano的高层封装，API实现更加的工程化</p>
-
-<p>tensorflow2.0 已经将这些合并整理了，官方推荐的是keras的api</p>
-
-<p><a href="https://tensorflow.google.cn/tutorials/images/transfer_learning">https://tensorflow.google.cn/tutorials/images/transfer_learning</a></p>
-
-<p><a href="https://github.com/balancap/SSD-Tensorflow">https://github.com/balancap/SSD-Tensorflow</a></p>
-
-<h2 id="toc_1">2. tensorhub</h2>
-
-<p>官方地址 <a href="https://hub.tensorflow.google.cn/">https://hub.tensorflow.google.cn/</a> 类似于dockerhub，汇集了各种分享的模型，可供下载使用。<br/>
-主要包括 tezt embeddings, image classification models and more</p>
-
-<p>安装</p>
-
-<pre><code class="language-text">pip install --upgrade tensorflow-hub
-</code></pre>
-
-<p>比如图像分类相关的 <a href="https://hub.tensorflow.google.cn/google/collections/image/1">https://hub.tensorflow.google.cn/google/collections/image/1</a><br/>
-google后来提取的 EfficientNet, 调整模型的深度，宽度等参数。<a href="https://hub.tensorflow.google.cn/google/collections/efficientnet/1">https://hub.tensorflow.google.cn/google/collections/efficientnet/1</a></p>
-
-<p>1.对新样本predict</p>
-
-<pre><code class="language-python">classifier_url =&quot;https://tfhub.dev/google/tf2-preview/mobilenet_v2/classification/2&quot; #@param {type:&quot;string&quot;}
-
-IMAGE_SHAPE = (224, 224)
-classifier = tf.keras.Sequential([
-    hub.KerasLayer(classifier_url, input_shape=IMAGE_SHAPE+(3,))
-])
-
-# 新样本
-grace_hopper = tf.keras.utils.get_file(&#39;image.jpg&#39;,&#39;https://storage.googleapis.com/download.tensorflow.org/example_images/grace_hopper.jpg&#39;)
-grace_hopper = Image.open(grace_hopper).resize(IMAGE_SHAPE)
-grace_hopper = np.array(grace_hopper)/255.0
-
-result = classifier.predict(grace_hopper[np.newaxis, ...])
-result.shape
-</code></pre>
-
-<p>2.simple迁移学习</p>
-
-<pre><code class="language-python">image_generator = tf.keras.preprocessing.image.ImageDataGenerator(rescale=1/255)
-image_data = image_generator.flow_from_directory(str(data_root), target_size=IMAGE_SHAPE)
-
-## 下载不包含top classification layer的model
-feature_extractor_url = &quot;https://tfhub.dev/google/tf2-preview/mobilenet_v2/feature_vector/2&quot; #@param {type:&quot;string&quot;}
-
-feature_extractor_layer = hub.KerasLayer(feature_extractor_url,
-                                        trainable= False,
-                                        input_shape=(224,224,3))
-                                         
-model = tf.keras.Sequential([
-  feature_extractor_layer,
-  layers.Dense(image_data.num_classes)
-])
-
-model.summary()
-# 剩下的和正常的模型训练过程一样
-</code></pre>
-
-<p>其command line 工具 <a href="https://github.com/tensorflow/hub/tree/master/tensorflow_hub/tools/make_image_classifier">https://github.com/tensorflow/hub/tree/master/tensorflow_hub/tools/make_image_classifier</a></p>
-
-<pre><code class="language-python">make_image_classifier \
-  --image_dir my_image_dir \
-  --tfhub_module https://tfhub.dev/google/tf2-preview/mobilenet_v2/feature_vector/4 \
-  --image_size 224 \
-  --saved_model_dir my_dir/new_model \
-  --labels_output_file class_labels.txt \
-  --tflite_output_file new_mobile_model.tflite
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/2/24</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='tools.html'>tools</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15697555457833.html">
-                
-                  <h1>应用案例</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">Learning and Classification of Trajectories in Dynamic Scenes: A General Framework for Live Video Analysis</h2>
-
-<p>作者的通用方法：topological scene 描述<br/>
-用Graph的方法，nodes表示POI，edges表示活动的path，将这个称作POI/AP方法<br/>
-(1)POI<br/>
-有两类POI，一类是进/出时候（这种可以通过轨迹数据的开始和结束点确定），一类是逗留的点(这种可以通过算法识别出来)<br/>
-这些区域可以通过混合高斯模型进行估计\(\sum w_iN(u_i,\Sigma_i)\)</p>
-
-<p>(2)route clustering</p>
-
-<ul>
-<li>fuzzy C means</li>
-<li>聚完后有些类别可能会比较详细，还需要再进行一步route mergeing操作. 如果两个类之间的dtw距离均足够小，就认为是一类</li>
-</ul>
-
-<p>(3) path modeling</p>
-
-<p>HMM model</p>
-
-<p>===&gt; zzz<br/>
-应用的时候一个是实时预测，可以用概率图，实时给出其到每个路径的概率。</p>
-
-<h2 id="toc_1">1. indoor trajectory mining</h2>
-
-<p>1 preprocessing</p>
-
-<ul>
-<li>跳楼层问题，1-3</li>
-<li>空间异常点</li>
-<li>排除不感兴趣的点，电梯，。</li>
-<li>数据压缩，相同坐标的点</li>
-</ul>
-
-<p>2 转化为semantic trajectory<br/>
-即将坐标转为店铺id</p>
-
-<p><strong>trajectory segmentation</strong></p>
-
-<p>轨迹切分按照方法来讲，大致分为三类:</p>
-
-<ul>
-<li>无监督的： 比如通过聚类的方法 TRACLUS,SMOT, CN-SM0T,</li>
-<li>有监督的L=: </li>
-<li>半监督的</li>
-<li><p>切分效果的评估：<br/>
-(1) 基于无监督的聚类方法的评估</p></li>
-<li><p>average purity and average coverage.</p></li>
-</ul>
-
-<h2 id="toc_2">论文举例</h2>
-
-<p>(0) interpolation based change detection</p>
-
-<p>OWS(Octal Window Segmentation)切分方法，作者的出发点：当一个运动的物体其运动状态发生改变时候，因为有惯性，他会超出之前的预期。通过定义的误差函数找到这些“拐点”从而将轨迹进行切分。</p>
-
-<h2 id="toc_3">Poi</h2>
-
-<p><strong>semantic scene model</strong></p>
-
-<p>POI点</p>
-
-<ul>
-<li>轨迹的开始/结束</li>
-<li>逗留</li>
-<li>其他自己定义的
-<strong>learning path</strong></li>
-</ul>
-
-<p>对聚出来的每一个类学出来一个path<br/>
-HMM 【16】【22】【55】</p>
-
-<p><strong>分析应用</strong></p>
-
-<ul>
-<li>分流分析： 流量统计、闲逛人群 【21】</li>
-<li><p>速度分析</p></li>
-<li><p>后续的path分类<br/>
-<img src="media/15697555457833/15776934845470.jpg" alt=""/></p></li>
-<li><p>异常点检测<br/>
-<img src="media/15697555457833/15776934972246.jpg" alt=""/></p></li>
-<li><p>实时预测</p></li>
-<li><p>交通冲突</p></li>
-</ul>
-
-<h2 id="toc_4">Trajectory Clustering: A Partition-and-Group Framework</h2>
-
-<p>作者出发点不是从全局出发，因为全局上不相似可能在片段是是相似的，尤其是在当只对某些片段感兴趣的时候。作者采用了先partition再group的方法。这种方法的优势:能发现common sub-trajectory。其核心思想如下.github上的一个实现： <a href="https://github.com/MillerWu2014/trajectory-cluster">https://github.com/MillerWu2014/trajectory-cluster</a><br/>
-partition-and-group framework<br/>
-<img src="media/15686368904229/15735658553309.jpg" alt=""/></p>
-
-<p>主要步骤如下</p>
-
-<p>(1) 轨迹的距离度量<br/>
-两条轨迹的距离会从三个方面进行度量：</p>
-
-<ul>
-<li>垂直距离</li>
-<li>平行距离</li>
-<li>角度距离
-<img src="media/15686368904229/15736362612288.jpg" alt=""/></li>
-</ul>
-
-<p>最终的距离是以上三种的加权<br/>
-<img src="media/15686368904229/15736424496498.jpg" alt=""/></p>
-
-<p>(2) 轨迹切分<br/>
-轨迹切分，即用尽量少的点，能尽量代表原来轨迹的信息(减少与原始轨迹的误差)。这里主要是通过MDL(最小描述长度)算法。 L(H)+L(D|H), partition后的轨迹长度 + 原始轨迹与partition后的轨迹的距离。</p>
-
-<pre><code class="language-text">MDL(麦当劳)原理:是研究通信编码的时候提出的，对于给定的一组数据D，为了要对其进行保存，一般都会采用某种模型H对其进行编码压缩。同时为了能够正确恢复这些数据，将模型也保存起来。所以需要保存的数据长度=保存模型的数据长度 + 这些数据压缩后的长度. L(H) + L(D|H)
-</code></pre>
-
-<p>(3)cluster<br/>
-对于每一个segment，相当于是一个数据点，然后采用基于密度的聚类。</p>
-
-<p>(4) representative trajectory of a cluster<br/>
-对于聚好类的一堆曲线，需要找到其有representative的曲线来表示这一类的特点。<br/>
-<img src="media/15686368904229/15737121895384.jpg" alt=""/></p>
-
-<p>(2)</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/9/29</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html'>轨迹分析</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -689,8 +611,6 @@ partition-and-group framework<br/>
             <a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 统计方法</strong></a>
         
             <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习</strong></a>
-        
-            <a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统</strong></a>
         
             <a href="6%20NLP.html"><strong>6 NLP</strong></a>
         

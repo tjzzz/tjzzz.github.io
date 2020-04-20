@@ -95,8 +95,6 @@
         
             <li><a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html">5 机器学习</a></li>
         
-            <li><a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html">6 推荐系统</a></li>
-        
             <li><a href="6%20NLP.html">6 NLP</a></li>
         
             <li><a href="7%20CV.html">7 CV</a></li>
@@ -348,88 +346,61 @@ plt.scatter(X_pca[:, 0], X_pca[:, 1], c=data[200])
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037677178.html">
+                <a class="clearlink" href="15637025348511.html">
                 
-                  <h1>一、基础篇</h1>
+                  <h1>【推荐系统】章1 基本介绍</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h1 id="toc_0">1.计算学习理论——是否可学习</h1>
+                        	<p>标签（空格分隔）： 推荐系统</p>
 
-<p>一直在说机器学习，主要是在说怎么去学。在怎么学之前，首先需要了解下能不能学，学习的机制是什么</p>
+<hr/>
 
-<h2 id="toc_1">PAC（概率近似正确）</h2>
+<h1 id="toc_0">推荐系统评测</h1>
 
-<p><a href="https://blog.csdn.net/wangjianguobj/article/details/57413819">https://blog.csdn.net/wangjianguobj/article/details/57413819</a></p>
+<h2 id="toc_1">1.推荐系统实验方法</h2>
 
-<h2 id="toc_2">VC维度</h2>
-
-<p>这个介绍的挺详细<br/>
-<a href="http://www.flickering.cn/machine_learning/2015/04/vc%E7%BB%B4%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89/?from=singlemessage">http://www.flickering.cn/machine_learning/2015/04/vc%E7%BB%B4%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89/?from=singlemessage</a></p>
-
-<h2 id="toc_3">参考</h2>
-
-<p>台大-机器学习基石</p>
-
-<h1 id="toc_4">6.模型设计准则</h1>
-
-<ol>
-<li>模型拟合</li>
-</ol>
-
-<p>(1) 无免费午餐定理 NFL</p>
-
-<p>就是任何一个算法，针对所有问题，在平均意义上效果是一样的。</p>
-
-<p>=&gt; 所以要具体问题具体分析，针对不同问题，选择适合该问题的方法</p>
-
-<p>(2)奥卡姆剃刀原则</p>
-
-<p>即在预测效果差不多的情况下，模型越简单余越好</p>
-
-<p>误差 = bias + varaince + noise</p>
+<p>在进行推荐之前，先从数据获得方法入手。数据的获得方法主要有 </p>
 
 <ul>
-<li>过拟合</li>
-<li>欠拟合</li>
+<li><p>离线实验<br/>
+这个应该是最常见的那种，即数据使用的是离线的数据，提取数据-&gt;训练集和测试集——&gt; 建立模型 ——&gt; 测试集上进行实验——&gt;效果评价</p></li>
+<li><p>用户调查<br/>
+可以获得一些推荐效果的主观指标</p></li>
+<li><p>在线实验<br/>
+即切分流量，进行AB test</p></li>
 </ul>
 
-<h1 id="toc_5">7.模型验证</h1>
+<h2 id="toc_2">2.指标评测</h2>
 
-<p>1.估计泛化误差</p>
-
-<p>训练集，验证集</p>
-
-<p>2.对数据的重采样</p>
+<p>不同的实验方法可能会对应着不同的衡量指标，简单的介绍如下：</p>
 
 <ul>
-<li>留出法</li>
-<li>k折交叉验证</li>
-<li>自助法(有放回)</li>
+<li>用户满意度<br/>
+这个指标相对来说是一个主观的指标，可以通过用户调查，或者是对用户客观行为进行分析（比如：点击率、停留时间等）</li>
+<li>预测准确率
+<ul>
+<li>评分预测<br/>
+评分预测类主要是让用户对商品进行打分，比如1-5级的打分。其主要的计算指标是均方根误差RMSE或者平均绝对误差MAE</li>
+<li>TopN推荐<br/>
+topN推荐，即给用户推荐一个其可能感兴趣的item列表，也是我们主要要讨论的。其主要的评价指标即PR（precision recall）</li>
+</ul></li>
+<li>覆盖率<br/>
+覆盖率主要是刻画了推荐系统对<strong>长尾物品</strong>的发掘能力。我们希望推荐系统不止推荐出一些热门的，这样只能覆盖很少的一部分items。
+<ul>
+<li>最简单的计算方法：推荐系统推荐出来的物品占所有物品的比重。但是没有考虑到分布情况</li>
+<li>统计推荐列表中不同物品的出现次数的分布<br/>
+信息熵 \(H=-\sum p_i\log p_i\)<br/>
+基尼系数 \(G=\frac{1}{n-1}\sum (2j-n-1)p(i_j)\) </li>
+</ul></li>
+<li>多样性<br/>
+即希望推荐给用户的东西类型是多样的，比如对于电影，用户可能喜欢看爱情类、科幻类，那么推荐系统在进行推荐的时候，只推荐爱情类的效果显然不如既有爱情类又有科幻类的效果好。</li>
+<li>新颖性</li>
+<li>惊喜度</li>
+<li>信任度</li>
+<li>。。。</li>
 </ul>
-
-<h1 id="toc_6">8.模型的评估指标</h1>
-
-<h1 id="toc_7">9.实验设计</h1>
-
-<p>设计实验是要要成的任务是对整个机器学习过程的优化。实验中因子的设计可能会包含很多，比如：算法的类别、算法的参数、数据集等。</p>
-
-<p>当因子较多的时候，如何确定单一因子的影响就需要一些技巧<br/>
-<strong>控制变量法</strong></p>
-
-<p>它暗含着一个较强的假设，就是不同因子之间相互独立，互不影响。然而这个并不总是成立的。</p>
-
-<p><strong>因子设计</strong><br/>
-他关注的是不同因子之间系统化的变化对学习效果的影响，他的一个特例就是<strong>全因子实验</strong>，也叫<strong>完全交叉设计</strong>。</p>
-
-<p>在具体操作的时候，当分析的因子的离散取值较多时候，可以通过粗调+微调的方法。</p>
-
-<p>在对因子进行精调时候，可以使用<strong>响应面方法</strong>（zzz:根据百科资料解释,就是做了一个二次函数的拟合）</p>
-
-<h2 id="toc_8">正交抽样设计</h2>
-
-<p>@@@补充下：</p>
 
                         
                       </div>
@@ -457,81 +428,49 @@ plt.scatter(X_pca[:, 0], X_pca[:, 1], c=data[200])
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637025346988.html">
+                <a class="clearlink" href="15637025347286.html">
                 
-                  <h1>二、起步篇—— 数据预处理[python]</h1>
+                  <h1>【推荐系统】章2 利用用户行为数据</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>一方面可以多查些官方说明<br/>
-多去看些kaggle，tianchi等的比赛案例，他们数据预处理做的很全面到位<br/>
-实践一些工作中的项目，将代码规范化</p>
-</blockquote>
+                        	<h1 id="toc_0">1.用户行为数据</h1>
 
-<h2 id="toc_0">1.缺失表示</h2>
+<p>用户行为数据在网页上的主要存在形式就是日志，可能包含的字段有</p>
 
-<p>python中缺失是nan，如果本身数据中缺失是用其他方式表示的，可以先转换一下<br/>
-<code>df.replace(&#39;-&#39;,np.nan)</code></p>
+<ul>
+<li>uid</li>
+<li>itemid</li>
+<li>行为类型（点击、浏览、购买）</li>
+<li>context（产生行为的时间、地点等）</li>
+<li>行为权重（比如看视频行为的时长、打分行为的分数）</li>
+<li>行为内容（比如评论行为的评论内容）<br/>
+另外，这些数据大致上可以分为显性反馈行为和隐性反馈行为。显性行为就是可以明确用户是喜好的，比如购买。而多数的数据都是隐性的，比如浏览了某个网页、听了某个歌，这些行为无法判断出用户的喜好。</li>
+</ul>
 
-<pre><code class="language-python">
-import numpy as np
-import pandas as pd
-from io import StringIO
-import sys
+<p>物品流行度的幂率分布</p>
 
-df = pd.read_table(&#39;zz&#39;)
-df = df.replace(&#39;-&#39;,np.nan).head()
-df.head()
-</code></pre>
+<h1 id="toc_1">算法</h1>
 
-<h2 id="toc_1">2.缺失的简单处理办法</h2>
+<p>一般把仅仅基于用户行为数据设计的推荐算法叫做协同过滤算法。主要包括：</p>
 
-<h3 id="toc_2">暴力删除</h3>
+<ul>
+<li>基于邻域的方法
+<ul>
+<li>基于用户的</li>
+<li>基于物品的</li>
+</ul></li>
+<li>隐语义模型LFM</li>
+<li>基于图的随机游走算法</li>
+</ul>
 
-<p><code>isnull()</code>   判断是否缺失</p>
+<h2 id="toc_2">1.userCF</h2>
 
-<p><code>dropna( axis = 0 /1 )</code> 参数axis表示轴选择，axis=0 代表行，axis=1 代表列</p>
+<p>基本想法：对于一个用户A的推荐，可以先找到与这个人相似的那些人，然后看那些人中喜欢的，而用户A没有听过的物品推荐给A。<br/>
+step1: 找到相似用户，即需要定义相似度。</p>
 
-<p><code>dropna(subset=[&#39;&#39;])</code>   删除指定列中有空值的一行数据</p>
-
-<h3 id="toc_3">默认值填充</h3>
-
-<p><code>df.fillna(value)</code><br/>
-或者对不同列填不同的值</p>
-
-<h3 id="toc_4">统计/算法填充</h3>
-
-<pre><code class="language-python">from sklearn.preprocessing import Imputer
-# strategy 有mean,median, most_frequent 方式
-# axis 默认是0，列向， axis=1行向
-dff = df.loc[:, [&#39;comment_time&#39;]]
-imr = Imputer(missing_values = &#39;NaN&#39;, strategy = &#39;mean&#39;, axis = 0 )
-imr = imr.fit(dff.values)
-imputed_data = imr.transform(dff.values)
-</code></pre>
-
-<pre><code class="language-python">## 3.分类数据处理
-from sklearn.preprocessing import LabelEncoder
-class_le = LabelEncoder()
-y = class_le.fit_transform(df[&#39;nid&#39;].values)
-
-</code></pre>
-
-<pre><code class="language-python">## 数据标准化
-from sklearn.preprocessing import MinMaxScaler
-mms = MinMaxScaler()
-X_train_norm = mms.fit_transform(imputed_data)
-X_test_norm = mms.transform(imputed_data)
-</code></pre>
-
-<h2 id="toc_5">参考资料</h2>
-
-<p><a href="https://blog.csdn.net/Amy_mm/article/details/79799629">https://blog.csdn.net/Amy_mm/article/details/79799629</a><br/>
-<a href="https://www.cnblogs.com/charlotte77/p/5622325.html">https://www.cnblogs.com/charlotte77/p/5622325.html</a></p>
-
-<p><a href="https://www.kaggle.com/pmarcelino/comprehensive-data-exploration-with-python">https://www.kaggle.com/pmarcelino/comprehensive-data-exploration-with-python</a></p>
+<h2 id="toc_3">标题</h2>
 
                         
                       </div>
@@ -623,8 +562,6 @@ X_test_norm = mms.transform(imputed_data)
             <a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 统计方法</strong></a>
         
             <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习</strong></a>
-        
-            <a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统</strong></a>
         
             <a href="6%20NLP.html"><strong>6 NLP</strong></a>
         

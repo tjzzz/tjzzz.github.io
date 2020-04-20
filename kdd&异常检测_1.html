@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  6 推荐系统 - zhenzhen数据科学笔记
+  kdd&异常检测 - zhenzhen数据科学笔记
   
   </title>
   
@@ -95,8 +95,6 @@
         
             <li><a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html">5 机器学习</a></li>
         
-            <li><a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html">6 推荐系统</a></li>
-        
             <li><a href="6%20NLP.html">6 NLP</a></li>
         
             <li><a href="7%20CV.html">7 CV</a></li>
@@ -130,61 +128,170 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637025348511.html">
+                <a class="clearlink" href="15867647063491.html">
                 
-                  <h1>章1 基本介绍</h1>
+                  <h1>知识发现</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>标签（空格分隔）： 推荐系统</p>
+                        	<p>关于DM的process model一般有如下几种：</p>
 
-<hr/>
-
-<h1 id="toc_0">推荐系统评测</h1>
-
-<h2 id="toc_1">1.推荐系统实验方法</h2>
-
-<p>在进行推荐之前，先从数据获得方法入手。数据的获得方法主要有 </p>
+<p>1.CRISP-DM 跨行业数据挖掘标准流程，将一个KDD工程分为6个不同的阶段。这种方式只定义了要做什么没有说how to do</p>
 
 <ul>
-<li><p>离线实验<br/>
-这个应该是最常见的那种，即数据使用的是离线的数据，提取数据-&gt;训练集和测试集——&gt; 建立模型 ——&gt; 测试集上进行实验——&gt;效果评价</p></li>
-<li><p>用户调查<br/>
-可以获得一些推荐效果的主观指标</p></li>
-<li><p>在线实验<br/>
-即切分流量，进行AB test</p></li>
+<li>商业理解：确定商业的目标，发现影响结果的重要因素。</li>
+<li>数据理解</li>
+<li>数据准备</li>
+<li>建模</li>
+<li>评估</li>
+<li>部署</li>
 </ul>
 
-<h2 id="toc_2">2.指标评测</h2>
+<h2 id="toc_0">一. Association Rules</h2>
 
-<p>不同的实验方法可能会对应着不同的衡量指标，简单的介绍如下：</p>
+<p>传统的，根据支持度和置信度，挖掘出频繁项集。但是很显然的会面临很多问题。<br/>
+1) 低频次的并不代表不重要，他们可能能产生出重要的negative association rules (NARs)。 低频购买换个角度就是高频不购买<br/>
+2) 个人感觉频繁项集不一定是有价值信息的</p>
+
+<h3 id="toc_1">1 经典AR</h3>
+
+<p>先说下基本定义，</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>B</th>
+<th>not B</th>
+<th>合计</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>A</td>
+<td>a</td>
+<td>b</td>
+<td>a+b</td>
+</tr>
+<tr>
+<td>not A</td>
+<td>C</td>
+<td>d</td>
+<td>c+d</td>
+</tr>
+<tr>
+<td>合计</td>
+<td>a+c</td>
+<td>b+d</td>
+<td>a+b+c+d</td>
+</tr>
+</tbody>
+</table>
+
+<p>支持度sup(A=&gt;B) = P(A&amp;B) = a/n<br/>
+置信度 conf(A=&gt;B) = P(B|A) = a/(a+b)<br/>
+提升度 lift(A=&gt;B)= p(A&amp;B)/P(A)/P(B)       # 是否独立 &gt; 1表明正相关， &lt;1 表示负相关。 可以看做相关系数</p>
+
+<p>一般是设置最低的支持度和置信度，一旦满足这两个就认为是一条rule.</p>
+
+<p>用这种方式得到的结果很可能是不可信的，或者说不全面的，比如如下的一个具体例子。可知sup(A=&gt;B)= 0.45, conf(A=&gt;B)=0.9. 看似较高，但是没法得出 买了A就买B的结论，因为不买A=&gt;买B也是一样，或者说买B本身就很高，与是否买A无关。</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>B</th>
+<th>not B</th>
+<th>合计</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>A</td>
+<td>450</td>
+<td>50</td>
+<td>a+b</td>
+</tr>
+<tr>
+<td>not A</td>
+<td>450</td>
+<td>50</td>
+<td>c+d</td>
+</tr>
+<tr>
+<td>合计</td>
+<td>a+c</td>
+<td>b+d</td>
+<td>a+b+c+d</td>
+</tr>
+</tbody>
+</table>
+
+<p>相关系数 \(corr_ = \frac{sup(A交B) - sup(A)sup(B)}{\sqrt{supA(1-supA)supB(1-supB)}} \)<br/>
+通过卡方检验，可以推倒出卡方检验的统计量与corr是一致的。<br/>
+常用的算法 Apriori， FP-Growth</p>
+
+<h3 id="toc_2">2 NAR</h3>
+
+<p>比如A=&gt; not B<br/>
+参考【4】中作者方案包括2步：1)首先找到frequent和infrequent的itemset   2)判断是positive还是negative association</p>
+
+<p>具体的<br/>
+(1) infrequent: 通过IDF加权，过滤掉出现次数非常少的，或者是在不同人之间分布比较均匀的term<br/>
+<img src="media/15867647063491/15868573761250.jpg" alt="" style="width:960px;"/></p>
+
+<p>(2) 有了这些候选的itemset后，根据定义计算positive或者negative的rule<br/>
+<img src="media/15867647063491/15868574713672.jpg" alt="" style="width:586px;"/></p>
+
+<p>注意：<br/>
+ A =&gt; B 不一定能推出 not B =&gt; not A</p>
+
+<h3 id="toc_3">3 infrequent itemset</h3>
+
+<p>high utility infrequent itemsets. 频次不高，但是有更高的价值。UPRI算法(utility pattern rare itemset algorithm)<br/>
+简单的说，传统的AR是 \(I_1,...I_m =&gt; I_{m+1}(sup, conf)\)，而基于utility的是\(I_1,...I_m =&gt; Obj(sup, conf, u)\)。 传统的AR其实相当于将频次作为效用的度量。实际中不同的商品所带来的效用是不同，比如当关注cost，profit时候，对零售商来说，高售价的商品就比低售价的商品重要。</p>
+
+<p>区别于传统的基于itemset的ICOA (itemset-correlation-oriented association)，基于目标效用的OOA (objective-oriented utility-based association)mining</p>
+
+<p>related work:</p>
 
 <ul>
-<li>用户满意度<br/>
-这个指标相对来说是一个主观的指标，可以通过用户调查，或者是对用户客观行为进行分析（比如：点击率、停留时间等）</li>
-<li>预测准确率
-<ul>
-<li>评分预测<br/>
-评分预测类主要是让用户对商品进行打分，比如1-5级的打分。其主要的计算指标是均方根误差RMSE或者平均绝对误差MAE</li>
-<li>TopN推荐<br/>
-topN推荐，即给用户推荐一个其可能感兴趣的item列表，也是我们主要要讨论的。其主要的评价指标即PR（precision recall）</li>
-</ul></li>
-<li>覆盖率<br/>
-覆盖率主要是刻画了推荐系统对<strong>长尾物品</strong>的发掘能力。我们希望推荐系统不止推荐出一些热门的，这样只能覆盖很少的一部分items。
-<ul>
-<li>最简单的计算方法：推荐系统推荐出来的物品占所有物品的比重。但是没有考虑到分布情况</li>
-<li>统计推荐列表中不同物品的出现次数的分布<br/>
-信息熵 \(H=-\sum p_i\log p_i\)<br/>
-基尼系数 \(G=\frac{1}{n-1}\sum (2j-n-1)p(i_j)\) </li>
-</ul></li>
-<li>多样性<br/>
-即希望推荐给用户的东西类型是多样的，比如对于电影，用户可能喜欢看爱情类、科幻类，那么推荐系统在进行推荐的时候，只推荐爱情类的效果显然不如既有爱情类又有科幻类的效果好。</li>
-<li>新颖性</li>
-<li>惊喜度</li>
-<li>信任度</li>
-<li>。。。</li>
+<li>由min_sup, min_conf的方式改为 topK的方式</li>
+<li>Sese and Morishita 度量usefulness的方式：利用规则相关系数的显著性</li>
+<li>Han 通过min_l()的方式挖掘topK的closed patterns<br/>
+参考【5】中挖</li>
 </ul>
+
+<h2 id="toc_4">2. case</h2>
+
+<p>参考【4】中处理 <br/>
+(1)IDF加权,考虑到term不同权重</p>
+
+<h2 id="toc_5">3.工具</h2>
+
+<p>(1) positive association rules—— apriori<br/>
+python的sklearn中貌似没有直接的apriori工具,在<code>pypi</code>上找到这个<code>efficient-apriori</code> <a href="https://pypi.org/search/?q=apriori%E3%80%82">https://pypi.org/search/?q=apriori。</a> 或者在github上搜索 <a href="https://github.com/topics/association-rules?l=python">https://github.com/topics/association-rules?l=python</a></p>
+
+<p>(2) negative association rules ------</p>
+
+<p>可以用一种比较tricky的方法，即对于我们所关心的item，在数据集中添加 not_item项即可。比如基于R的实现 <a href="https://subscription.packtpub.com/book/big_data_and_business_intelligence/9781788621878/1/ch01lvl1sec14/negative-association-rules">https://subscription.packtpub.com/book/big_data_and_business_intelligence/9781788621878/1/ch01lvl1sec14/negative-association-rules</a></p>
+
+<h2 id="toc_6">4.统计显著性</h2>
+
+<p><a href="https://github.com/BorgwardtLab/significant-subgraph-mining">https://github.com/BorgwardtLab/significant-subgraph-mining</a></p>
+
+<p>参考资料</p>
+
+<ol>
+<li>A survey of data mining and knowledge discovery process models and methodologies</li>
+<li>A review and analysis on knowledge discovery and data mining techniques(回溯了各种关联规则相关的)</li>
+<li><a href="https://www.ixueshu.com/document/2a80aefb26b9e3e9318947a18e7f9386.html">https://www.ixueshu.com/document/2a80aefb26b9e3e9318947a18e7f9386.html</a></li>
+<li>Negative and Positive Association Rules Mining from Text Using Frequent and Infrequent Itemsets</li>
+<li>mining high utility itemsets</li>
+</ol>
 
                         
                       </div>
@@ -193,80 +300,10 @@ topN推荐，即给用户推荐一个其可能感兴趣的item列表，也是我
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2020/4/13</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html'>6 推荐系统</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025347286.html">
-                
-                  <h1>章2 利用用户行为数据</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h1 id="toc_0">1.用户行为数据</h1>
-
-<p>用户行为数据在网页上的主要存在形式就是日志，可能包含的字段有</p>
-
-<ul>
-<li>uid</li>
-<li>itemid</li>
-<li>行为类型（点击、浏览、购买）</li>
-<li>context（产生行为的时间、地点等）</li>
-<li>行为权重（比如看视频行为的时长、打分行为的分数）</li>
-<li>行为内容（比如评论行为的评论内容）<br/>
-另外，这些数据大致上可以分为显性反馈行为和隐性反馈行为。显性行为就是可以明确用户是喜好的，比如购买。而多数的数据都是隐性的，比如浏览了某个网页、听了某个歌，这些行为无法判断出用户的喜好。</li>
-</ul>
-
-<p>物品流行度的幂率分布</p>
-
-<h1 id="toc_1">算法</h1>
-
-<p>一般把仅仅基于用户行为数据设计的推荐算法叫做协同过滤算法。主要包括：</p>
-
-<ul>
-<li>基于邻域的方法
-<ul>
-<li>基于用户的</li>
-<li>基于物品的</li>
-</ul></li>
-<li>隐语义模型LFM</li>
-<li>基于图的随机游走算法</li>
-</ul>
-
-<h2 id="toc_2">1.userCF</h2>
-
-<p>基本想法：对于一个用户A的推荐，可以先找到与这个人相似的那些人，然后看那些人中喜欢的，而用户A没有听过的物品推荐给A。<br/>
-step1: 找到相似用户，即需要定义相似度。</p>
-
-<h2 id="toc_3">标题</h2>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html'>6 推荐系统</a></span>
+          					    <span class="posted-in"><a href='kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html'>kdd&异常检测</a></span>
           				   
                     
 
@@ -287,7 +324,7 @@ step1: 找到相似用户，即需要定义相似度。</p>
 			<div class="row">
 			  <div class="large-6 columns">
 			  <p class="text-left" style="padding-top:25px;">
-			   
+			   <a href="kdd&异常检测.html">&laquo; Prev Page</a>  
 			  </p>
 			  </div>
 			  <div class="large-6 columns">
@@ -346,8 +383,6 @@ step1: 找到相似用户，即需要定义相似度。</p>
             <a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 统计方法</strong></a>
         
             <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习</strong></a>
-        
-            <a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统</strong></a>
         
             <a href="6%20NLP.html"><strong>6 NLP</strong></a>
         

@@ -95,8 +95,6 @@
         
             <li><a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html">5 机器学习</a></li>
         
-            <li><a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html">6 推荐系统</a></li>
-        
             <li><a href="6%20NLP.html">6 NLP</a></li>
         
             <li><a href="7%20CV.html">7 CV</a></li>
@@ -129,6 +127,210 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15637025347286.html">
+                
+                  <h1>【推荐系统】章2 利用用户行为数据</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h1 id="toc_0">1.用户行为数据</h1>
+
+<p>用户行为数据在网页上的主要存在形式就是日志，可能包含的字段有</p>
+
+<ul>
+<li>uid</li>
+<li>itemid</li>
+<li>行为类型（点击、浏览、购买）</li>
+<li>context（产生行为的时间、地点等）</li>
+<li>行为权重（比如看视频行为的时长、打分行为的分数）</li>
+<li>行为内容（比如评论行为的评论内容）<br/>
+另外，这些数据大致上可以分为显性反馈行为和隐性反馈行为。显性行为就是可以明确用户是喜好的，比如购买。而多数的数据都是隐性的，比如浏览了某个网页、听了某个歌，这些行为无法判断出用户的喜好。</li>
+</ul>
+
+<p>物品流行度的幂率分布</p>
+
+<h1 id="toc_1">算法</h1>
+
+<p>一般把仅仅基于用户行为数据设计的推荐算法叫做协同过滤算法。主要包括：</p>
+
+<ul>
+<li>基于邻域的方法
+<ul>
+<li>基于用户的</li>
+<li>基于物品的</li>
+</ul></li>
+<li>隐语义模型LFM</li>
+<li>基于图的随机游走算法</li>
+</ul>
+
+<h2 id="toc_2">1.userCF</h2>
+
+<p>基本想法：对于一个用户A的推荐，可以先找到与这个人相似的那些人，然后看那些人中喜欢的，而用户A没有听过的物品推荐给A。<br/>
+step1: 找到相似用户，即需要定义相似度。</p>
+
+<h2 id="toc_3">标题</h2>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15834004454503.html">
+                
+                  <h1>【数据增强】</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">1.有监督的</h3>
+
+<p><strong>1.1 单样本的数据增强</strong><br/>
+单样本的数据增强主要是围绕一个样本图片，进行的”几何变换“、”颜色变换“等</p>
+
+<ul>
+<li>几何变换类： 旋转、翻转、剪裁、变形、缩放</li>
+<li>颜色变换类： 噪声、模糊、颜色变换、填充</li>
+</ul>
+
+<p>实用tool <code>https://github.com/aleju/imgaug</code></p>
+
+<p><strong>1.2 多样本数据增强</strong><br/>
+利用多个样本产生出新的样本</p>
+
+<ul>
+<li>SMOTE，人工合成新样本，解决类不平衡问题。映射到特征空间，在小样本的k近邻中构造新的样本点</li>
+<li>SamplePairing：主要用在医学图像上，从训练集中随机抽取两张图片，经过基础数据增强后将像素平均合并成一个新的样本。标签记为原样本标签中的一种。</li>
+<li>mixup: 使用线性插值，对于随机选取的两个数据，new = wXi + (1-w)Xj</li>
+</ul>
+
+<h3 id="toc_1">2.无监督的</h3>
+
+<p><strong>2.1 学习数据的分布，随机生成新图片</strong></p>
+
+<ul>
+<li>GAN</li>
+</ul>
+
+<p><strong>2.2 通过模型学习适合当前任务的数据增强方法</strong></p>
+
+<ul>
+<li>AutoAugment<br/>
+google 提出的自动选择最优数据增强方案的研究。其基本思路是:使用增强学习从数据本身寻找最佳的图像变换策略。具体来说就是用基础数据增强策略的组合。</li>
+<li>RandAugment: AutoAugment的进化版</li>
+</ul>
+
+<h2 id="toc_2">参考</h2>
+
+<p><a href="https://www.zhihu.com/question/319291048">https://www.zhihu.com/question/319291048</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/3/5</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15838089244516.html">
+                
+                  <h1>【案例】</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>(1) 样本少容易过拟合</p>
+
+<pre><code class="language-text"> base_model,
+      tf.keras.layers.GlobalAveragePooling2D(),
+      tf.keras.layers.Dropout(0.5),
+      tf.keras.layers.Dense(256, kernel_regularizer=tf.keras.regularizers.l2(0.001),
+                           activation=&#39;relu&#39;),
+      tf.keras.layers.Dense(2, activation = &#39;softmax&#39;)]
+    )
+</code></pre>
+
+<p>加入正则化和dropout<br/>
+进行图片增强产生更多图片</p>
+
+<p>fine-tune效果</p>
+
+<p><img src="media/15838089244516/3BB989C7-F853-4391-BAE1-2CF5FE031D51.png" alt="3BB989C7-F853-4391-BAE1-2CF5FE031D51"/></p>
+
+<p>feature-效果<br/>
+<img src="media/15838089244516/7BE3E393-6503-4A17-AD04-34B8DDA9C6D3.png" alt="7BE3E393-6503-4A17-AD04-34B8DDA9C6D3"/></p>
+
+<p>(2) 调整loss中的训练权重<br/>
+class_weight = {0:0.75, 1:0.25}<br/>
+<img src="media/15838089244516/15838091710767.jpg" alt=""/></p>
+
+<p>QQ: 训练集和验证集效果都还好，但是到真实预测的时候效果却很差？？？</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/3/10</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB.html'>图像分类</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15833060322285.html">
                 
@@ -250,287 +452,6 @@
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15834196813408.html">
-                
-                  <h1>【迁移学习】</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<table>
-<thead>
-<tr>
-<th>分类</th>
-<th>说明</th>
-<th>特点</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>1.样本迁移</td>
-<td>在数据集（源领域）中找到与目标领域相似的数据，把这个数据放大多倍，与目标领域的数据进行匹配。</td>
-<td>需要对不同例子加权；需要用数据进行训练。</td>
-</tr>
-<tr>
-<td>2.特征迁移</td>
-<td>特征空间的迁移</td>
-<td></td>
-</tr>
-<tr>
-<td>3.模型迁移</td>
-<td>比如常用的fine-tune</td>
-<td></td>
-</tr>
-<tr>
-<td>4.关系迁移</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="toc_0">参考</h2>
-
-<p><a href="https://www.cnblogs.com/bonelee/p/8921311.html">https://www.cnblogs.com/bonelee/p/8921311.html</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/3/5</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037677178.html">
-                
-                  <h1>一、基础篇</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h1 id="toc_0">1.计算学习理论——是否可学习</h1>
-
-<p>一直在说机器学习，主要是在说怎么去学。在怎么学之前，首先需要了解下能不能学，学习的机制是什么</p>
-
-<h2 id="toc_1">PAC（概率近似正确）</h2>
-
-<p><a href="https://blog.csdn.net/wangjianguobj/article/details/57413819">https://blog.csdn.net/wangjianguobj/article/details/57413819</a></p>
-
-<h2 id="toc_2">VC维度</h2>
-
-<p>这个介绍的挺详细<br/>
-<a href="http://www.flickering.cn/machine_learning/2015/04/vc%E7%BB%B4%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89/?from=singlemessage">http://www.flickering.cn/machine_learning/2015/04/vc%E7%BB%B4%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89/?from=singlemessage</a></p>
-
-<h2 id="toc_3">参考</h2>
-
-<p>台大-机器学习基石</p>
-
-<h1 id="toc_4">6.模型设计准则</h1>
-
-<ol>
-<li>模型拟合</li>
-</ol>
-
-<p>(1) 无免费午餐定理 NFL</p>
-
-<p>就是任何一个算法，针对所有问题，在平均意义上效果是一样的。</p>
-
-<p>=&gt; 所以要具体问题具体分析，针对不同问题，选择适合该问题的方法</p>
-
-<p>(2)奥卡姆剃刀原则</p>
-
-<p>即在预测效果差不多的情况下，模型越简单余越好</p>
-
-<p>误差 = bias + varaince + noise</p>
-
-<ul>
-<li>过拟合</li>
-<li>欠拟合</li>
-</ul>
-
-<h1 id="toc_5">7.模型验证</h1>
-
-<p>1.估计泛化误差</p>
-
-<p>训练集，验证集</p>
-
-<p>2.对数据的重采样</p>
-
-<ul>
-<li>留出法</li>
-<li>k折交叉验证</li>
-<li>自助法(有放回)</li>
-</ul>
-
-<h1 id="toc_6">8.模型的评估指标</h1>
-
-<h1 id="toc_7">9.实验设计</h1>
-
-<p>设计实验是要要成的任务是对整个机器学习过程的优化。实验中因子的设计可能会包含很多，比如：算法的类别、算法的参数、数据集等。</p>
-
-<p>当因子较多的时候，如何确定单一因子的影响就需要一些技巧<br/>
-<strong>控制变量法</strong></p>
-
-<p>它暗含着一个较强的假设，就是不同因子之间相互独立，互不影响。然而这个并不总是成立的。</p>
-
-<p><strong>因子设计</strong><br/>
-他关注的是不同因子之间系统化的变化对学习效果的影响，他的一个特例就是<strong>全因子实验</strong>，也叫<strong>完全交叉设计</strong>。</p>
-
-<p>在具体操作的时候，当分析的因子的离散取值较多时候，可以通过粗调+微调的方法。</p>
-
-<p>在对因子进行精调时候，可以使用<strong>响应面方法</strong>（zzz:根据百科资料解释,就是做了一个二次函数的拟合）</p>
-
-<h2 id="toc_8">正交抽样设计</h2>
-
-<p>@@@补充下：</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025346988.html">
-                
-                  <h1>二、起步篇—— 数据预处理[python]</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>一方面可以多查些官方说明<br/>
-多去看些kaggle，tianchi等的比赛案例，他们数据预处理做的很全面到位<br/>
-实践一些工作中的项目，将代码规范化</p>
-</blockquote>
-
-<h2 id="toc_0">1.缺失表示</h2>
-
-<p>python中缺失是nan，如果本身数据中缺失是用其他方式表示的，可以先转换一下<br/>
-<code>df.replace(&#39;-&#39;,np.nan)</code></p>
-
-<pre><code class="language-python">
-import numpy as np
-import pandas as pd
-from io import StringIO
-import sys
-
-df = pd.read_table(&#39;zz&#39;)
-df = df.replace(&#39;-&#39;,np.nan).head()
-df.head()
-</code></pre>
-
-<h2 id="toc_1">2.缺失的简单处理办法</h2>
-
-<h3 id="toc_2">暴力删除</h3>
-
-<p><code>isnull()</code>   判断是否缺失</p>
-
-<p><code>dropna( axis = 0 /1 )</code> 参数axis表示轴选择，axis=0 代表行，axis=1 代表列</p>
-
-<p><code>dropna(subset=[&#39;&#39;])</code>   删除指定列中有空值的一行数据</p>
-
-<h3 id="toc_3">默认值填充</h3>
-
-<p><code>df.fillna(value)</code><br/>
-或者对不同列填不同的值</p>
-
-<h3 id="toc_4">统计/算法填充</h3>
-
-<pre><code class="language-python">from sklearn.preprocessing import Imputer
-# strategy 有mean,median, most_frequent 方式
-# axis 默认是0，列向， axis=1行向
-dff = df.loc[:, [&#39;comment_time&#39;]]
-imr = Imputer(missing_values = &#39;NaN&#39;, strategy = &#39;mean&#39;, axis = 0 )
-imr = imr.fit(dff.values)
-imputed_data = imr.transform(dff.values)
-</code></pre>
-
-<pre><code class="language-python">## 3.分类数据处理
-from sklearn.preprocessing import LabelEncoder
-class_le = LabelEncoder()
-y = class_le.fit_transform(df[&#39;nid&#39;].values)
-
-</code></pre>
-
-<pre><code class="language-python">## 数据标准化
-from sklearn.preprocessing import MinMaxScaler
-mms = MinMaxScaler()
-X_train_norm = mms.fit_transform(imputed_data)
-X_test_norm = mms.transform(imputed_data)
-</code></pre>
-
-<h2 id="toc_5">参考资料</h2>
-
-<p><a href="https://blog.csdn.net/Amy_mm/article/details/79799629">https://blog.csdn.net/Amy_mm/article/details/79799629</a><br/>
-<a href="https://www.cnblogs.com/charlotte77/p/5622325.html">https://www.cnblogs.com/charlotte77/p/5622325.html</a></p>
-
-<p><a href="https://www.kaggle.com/pmarcelino/comprehensive-data-exploration-with-python">https://www.kaggle.com/pmarcelino/comprehensive-data-exploration-with-python</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -596,8 +517,6 @@ X_test_norm = mms.transform(imputed_data)
             <a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 统计方法</strong></a>
         
             <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习</strong></a>
-        
-            <a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统</strong></a>
         
             <a href="6%20NLP.html"><strong>6 NLP</strong></a>
         

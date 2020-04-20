@@ -95,8 +95,6 @@
         
             <li><a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html">5 机器学习</a></li>
         
-            <li><a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html">6 推荐系统</a></li>
-        
             <li><a href="6%20NLP.html">6 NLP</a></li>
         
             <li><a href="7%20CV.html">7 CV</a></li>
@@ -130,6 +128,40 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15834841723937.html">
+                
+                  <h1>【可解释性问题】</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/3/6</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15846836766049.html">
                 
                   <h1>【异常检测1】无监督-多元数据</h1>
@@ -149,18 +181,52 @@
 <li>graph, network</li>
 </ol>
 
-<h2 id="toc_0">1.多元特征数据的检测方法</h2>
-
-<p>基于(样本x特征)的数据</p>
+<p>这里主要是介绍基于(样本x特征)的<strong>多元特征数据的检测方法</strong></p>
 
 <p><img src="media/15846836766049/15851028311312.jpg" alt="" style="width:685px;"/><br/>
 <a href="https://zhuanlan.zhihu.com/p/49072315">https://zhuanlan.zhihu.com/p/49072315</a></p>
 
-<p>(1) 统计与概率模型<br/>
-依据数据的分布做假定</p>
+<p>特点汇总</p>
+
+<table>
+<thead>
+<tr>
+<th>大分类</th>
+<th>常用方法距离</th>
+<th>特点/适用范围</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>统计分布类</td>
+<td>3sigma，四分位点， HBOS</td>
+<td>基于分布假定，对于分布比较极端的不太适用</td>
+</tr>
+<tr>
+<td>基于距离的近邻类</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>聚类类</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>分类类</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="toc_0">1.统计与概率方法</h2>
+
+<p>依据数据的分布做假定，假设大部分数据follow一个正常分布，只有很少的点不follow.</p>
 
 <ul>
-<li>3sigma</li>
+<li>3sigma原则</li>
 <li>四分位点</li>
 </ul>
 
@@ -171,17 +237,25 @@
 <p>其中k=1.5 时候可认为是中度异常，k=3时是极度异常。该方法应该假定了数据正态分布(或者是对称分布吧)</p>
 
 <ul>
-<li>检测异常值Grubbs的检验（Grubbs 1969和Stefansky 1972）用于检测单变量数据集中的单个异常值，该单变量数据集遵循近似正态分布。如果您怀疑可能存在多个异常值，建议您使用Tietjen-Moore测试或广义极端学生化偏差测试而不是Grubbs测试</li>
+<li><p>检测异常值Grubbs的检验（Grubbs 1969和Stefansky 1972）用于检测单变量数据集中的单个异常值，该单变量数据集遵循近似正态分布。\((x_i-\bar x)/s\) 与临界值比较。如果您怀疑可能存在多个异常值，建议您使用Tietjen-Moore测试或广义极端学生化偏差测试而不是Grubbs测试</p></li>
+<li><p>HBOS- 基于直方图的检测方法<br/>
+其实就是将直观看histogram的方法数量化，正常分布的直方图是比较集中的，而有异常值的分布相对来说两边会比较分散，基于此，设计的异常打分。<br/>
+\[\]</p></li>
 </ul>
 
-<p>(2) 线性模型</p>
+<p>注意:<br/>
+基于统计分布的方法，其背后都是基于小概率的原理，认为超过正常分布的点就是异常值。其前提其实是认为大部分的分布都是正常的，波动只存在在小范围内。 但是如下的例子，波动其实体现在整体上，这种用统计相关的方法就不好检测了。</p>
+
+<p><img src="media/15846836766049/15873805529745.jpg" alt=""/></p>
+
+<h2 id="toc_1">2. 线性模型</h2>
 
 <ul>
 <li>PCA 大部分正常样本服从相似的分布映射的过程中在高低维的位置接近</li>
 <li>协方差矩阵</li>
 </ul>
 
-<p>(3)基于相似度/距离衡量的模型</p>
+<h2 id="toc_2">3.基于相似度/距离衡量的模型</h2>
 
 <ul>
 <li>k近邻</li>
@@ -189,8 +263,9 @@
 <li>OneClassSVM</li>
 </ul>
 
-<p>(4) 聚类的方法， BIRCH，DBSCAN<br/>
-(5) 其他</p>
+<h2 id="toc_3">4.聚类的方法， BIRCH，DBSCAN</h2>
+
+<h2 id="toc_4">5.其他</h2>
 
 <ul>
 <li>auto encoder<br/>
@@ -198,7 +273,11 @@
 <img src="media/15846836766049/15850559643103.jpg" alt=""/></li>
 </ul>
 
-<h2 id="toc_1">其他</h2>
+<h2 id="toc_5">6.不同方法比较与如何选择问题</h2>
+
+<p><a href="https://www.zhihu.com/question/280696035/answer/438788495">https://www.zhihu.com/question/280696035/answer/438788495</a></p>
+
+<h2 id="toc_6">其他</h2>
 
 <p>3.video中异常行为检测</p>
 
@@ -241,7 +320,7 @@ Prediction and Abnormal Event Detection】</p>
 <li>基于act sequence，整体序列的</li>
 </ul>
 
-<h2 id="toc_2">工具-Pyod</h2>
+<h2 id="toc_7">工具-Pyod</h2>
 
 <ul>
 <li>Python异常检测工具库<code>Pyod</code>， 包含大概20多种方法，其中包含深度学习以及outlier ensembles</li>
@@ -256,96 +335,22 @@ Pyod是一款专门做异常检测的python工具箱</li>
 <p>github:   <a href="https://github.com/yzhao062/pyod">https://github.com/yzhao062/pyod</a><br/>
 文档说明: <a href="https://pyod.readthedocs.io/en/latest/index.html">https://pyod.readthedocs.io/en/latest/index.html</a></p>
 
-<p><strong>基本API：</strong></p>
+<h2 id="toc_8">参考</h2>
 
-<pre><code class="language-python">BaseDetector.fit(X, y)    # y可有可无
-BaseDetector.decision_function()    # 原始的异常得分
-BaseDetector.predict()
-BaseDetector.predict_proba()    # 给出是异常点的概率
-</code></pre>
-
-<p>其属性</p>
-
-<pre><code class="language-text">BaseDetector.decision_scores_      # 异常得分，score越大越异常
-BaseDetector.labels_               # 1 代表异常
-</code></pre>
-
-<p><strong>与sklearn区分</strong><br/>
-借鉴了sklearn的API形式，但是注意两者不通用</p>
-
-<p><strong>例子</strong></p>
-
-<p>（1） one model</p>
-
-<pre><code class="language-python"># train the KNN detector
-from pyod.models.knn import KNN
-from pyod.utils.data import generate_data
-from pyod.models.combination import aom, moa, average, maximization
-
-## ! 输入的X必须是array [n_samples, n_features]
-X, y = generate_data(train_only=True)  # load data
-X.shape
-
-clf = KNN()
-clf.fit(X)
-
-# get the prediction labels and outlier scores of the training data
-y_train_pred = clf.labels_  # binary labels (0: inliers, 1: outliers)
-y_train_scores = clf.decision_scores_  # raw outlier scores
-
-# get the prediction on the test data
-y_pred = clf.predict(X)  # outlier labels (0 or 1)
-y_scores = clf.decision_function(X) 
-</code></pre>
-
-<p>(2) 有时候单个model结果不一定可信，可以将多个model的结果进行combine<br/>
-合并的方式主要有：</p>
-
-<ul>
-<li>average</li>
-<li>maximization</li>
-<li>average of maximization (AOM), 将所有的detector分成不同的组，每组先max， 然后对不同组再就mean</li>
-<li>maximization of average(MOA), 将所有的detector分成不同的组，每组先average， 然后对不同组取max</li>
-</ul>
-
-<pre><code class="language-python"># initialize 20 base detectors for combination
-import numpy as np
-k_list = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140,
-            150, 160, 170, 180, 190, 200]
-n_clf = 10
-
-train_scores = np.zeros([X.shape[0], n_clf])
-
-for i in range(n_clf):
-    k = k_list[i]
-    clf = KNN(n_neighbors=k, method=&#39;largest&#39;)
-    clf.fit(X)
-    train_scores[:, i] = clf.decision_scores_
-#
-from pyod.utils.utility import standardizer
-# scores have to be normalized before combination, 0均值，1 standard error
-scores_norm = standardizer(train_scores)
-## 不同的组合方法
-comb_by_average = average(scores_norm)
-comb_by_maximization = maximization(scores_norm)
-comb_by_aom = aom(scores_norm, 5) # 5 groups
-comb_by_moa = moa(scores_norm, 5) # 5 groups
-</code></pre>
-
-<h2 id="toc_3">参考</h2>
-
-<p><a href="https://blog.csdn.net/weixin_38730719/article/details/88026338">https://blog.csdn.net/weixin_38730719/article/details/88026338</a></p>
-
-<p><a href="https://zhuanlan.zhihu.com/p/93779599">https://zhuanlan.zhihu.com/p/93779599</a></p>
-
-<p><a href="https://www.zhihu.com/question/280696035/answer/417091151">https://www.zhihu.com/question/280696035/answer/417091151</a><br/>
-<a href="https://blog.csdn.net/g2v13ah/article/details/78474370">https://blog.csdn.net/g2v13ah/article/details/78474370</a></p>
-
-<p><a href="https://www.zhihu.com/question/280696035">https://www.zhihu.com/question/280696035</a></p>
+<ol>
+<li><a href="https://blog.csdn.net/weixin_38730719/article/details/88026338">https://blog.csdn.net/weixin_38730719/article/details/88026338</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/93779599">https://zhuanlan.zhihu.com/p/93779599</a></li>
+<li><a href="https://www.zhihu.com/question/280696035/answer/417091151">https://www.zhihu.com/question/280696035/answer/417091151</a></li>
+<li><a href="https://blog.csdn.net/g2v13ah/article/details/78474370">https://blog.csdn.net/g2v13ah/article/details/78474370</a></li>
+<li><a href="https://www.zhihu.com/question/280696035">https://www.zhihu.com/question/280696035</a></li>
+</ol>
 
 <p><a href="https://blog.csdn.net/Jasminexjf/article/details/88527966">https://blog.csdn.net/Jasminexjf/article/details/88527966</a></p>
 
 <p>ppt材料 <a href="https://zhuanlan.zhihu.com/p/30169110">https://zhuanlan.zhihu.com/p/30169110</a></p>
+
+<p>《A comparative evaluation of outlier detection algorithms: Experiments and<br/>
+analyses》</p>
 
                         
                       </div>
@@ -398,8 +403,8 @@ comb_by_moa = moa(scores_norm, 5) # 5 groups
 <td></td>
 </tr>
 <tr>
-<td></td>
-<td></td>
+<td>Time-Series Anomaly Detection Service at Microsoft</td>
+<td>2019</td>
 <td></td>
 <td></td>
 </tr>
@@ -412,13 +417,9 @@ comb_by_moa = moa(scores_norm, 5) # 5 groups
 </tbody>
 </table>
 
-<p>问题分类</p>
+<h2 id="toc_0">一 问题分类</h2>
 
 <p><img src="media/15869363773517/15869376232283.jpg" alt="" style="width:1054px;"/></p>
-
-<h2 id="toc_0">一 参数模型-时间序列model</h2>
-
-<p>通过建模的方式去拟合原有的时间序列曲线，然后计算模型值与实际值的偏差找到异常值。比如ARMA,ARIMA,VARMA等等</p>
 
 <table>
 <thead>
@@ -484,12 +485,12 @@ comb_by_moa = moa(scores_norm, 5) # 5 groups
 </tbody>
 </table>
 
-<ol>
-<li>时间序列检测<br/>
-(1) 检测points</li>
-</ol>
+<h2 id="toc_1">二 具体方法</h2>
 
-<p><strong>prediction model</strong></p>
+<h3 id="toc_2">1. 时间序列检测</h3>
+
+<p><strong>(1) 检测points</strong><br/>
+方案1：prediction model</p>
 
 <ul>
 <li>以[t-k, t+k]的近邻区间的median，其他自定义规则</li>
@@ -497,17 +498,28 @@ comb_by_moa = moa(scores_norm, 5) # 5 groups
 <li>ARIMA等其他</li>
 </ul>
 
-<p><strong>Profile Similarity based Approaches</strong><br/>
-根据历史的均值 和变异来判断当前的</p>
+<p>场景1: 是否超出某个阈值， 看一段窗口内的均值是否超过THRESHOLD。<br/>
+一个比较平滑的处理方式是采用累积恒定阈值的方法 \(s(t) =\frac{x_t + ...+x_{t-w+1}}{w}\)<br/>
+<img src="media/15846836766049/15850438434419.jpg" alt=""/></p>
 
-<p><strong>Deviants</strong><br/>
-从MDL最小描述长度的角度，如果从原始的序列中移除一个点P，</p>
+<p>场景2：数据突变<br/>
+正常情况应该是光滑的曲线，不应该出现突然的上涨或下跌。=&gt; 检测环比附近的数据<br/>
+<img src="media/15846836766049/15850445321930.jpg" alt=""/></p>
 
-<p>(2)检测subsequence<br/>
+<p>前后窗口均值比值 \(r(t)=\frac{x_t + ...x_{t-w+1}}{x_{t-w}+..+x_{t-2w+1}}\)</p>
+
+<p>场景3：数据有规律的周期波动: 检测同比，看有无异常。 统计历史上相同时期的数据的均值、标准差，假设正态分布，计算z-score</p>
+
+<p>方案2：Profile Similarity based Approaches<br/>
+根据历史的均值 和变异来判断当前的<br/>
+方案3：从MDL最小描述长度的角度，如果从原始的序列中移除一个点P，</p>
+
+<p><strong>(2)检测subsequence</strong><br/>
 给定一个时间序列T，检测出是否存在异常子序列。 todo xxxx</p>
 
-<p>2 stream data 检测<br/>
-(1) 多元data stream—— 进化的prediction model<br/>
+<h3 id="toc_3">2 stream data 检测</h3>
+
+<p>(1) 多元data stream—— 进化的prediction model<br/>
 方法1： online discounting learning 算法<br/>
 在原有的多元数据检测的基础上，加上动态更新逻辑<br/>
 <img src="media/15869363773517/15870043119362.jpg" alt="" style="width:302px;"/></p>
@@ -518,17 +530,17 @@ comb_by_moa = moa(scores_norm, 5) # 5 groups
 (2) 基于滑动窗口计算距离的方式<br/>
 可以分为global的outlier和local的outlier (LOF)</p>
 
-<p>3, high-dimensional data streams</p>
+<h3 id="toc_4">3.high-dimensional data streams</h3>
 
-<ul>
-<li>Stream Projected Outlier deTector (SPOT)</li>
-</ul>
+<p>Stream Projected Outlier deTector (SPOT)</p>
 
-<p>4.分布式场景下的stream data的检测<br/>
-详见论文</p>
+<h3 id="toc_5">4.分布式场景下的stream data的检测</h3>
 
-<p>5， 基于时空的异常检测<br/>
-除了时间角度、还有空间角度。<br/>
+<p>详见论文</p>
+
+<h3 id="toc_6">5.基于时空的异常检测</h3>
+
+<p>除了时间角度、还有空间角度。<br/>
 (1)场景：输入一个时空数据集，找到 ST-Outliers, i.e., spatio-temporal objects whose behavioral (non-spatial and non-temporal) attributes are significantly different from those of the other objects in its spatial and temporal neighborhoods</p>
 
 <p>一般的思路过程：首先找到空间异常，然后再去验证时间粒度的neighborhood<br/>
@@ -544,39 +556,110 @@ comb_by_moa = moa(scores_norm, 5) # 5 groups
 方案2：direction and density<br/>
 方案3：Historical Similarity, 和前面的方法稍微不同，这个是在每个time step上，计算当前轨迹与其他所有轨迹的相似值。然后不断扩充这个相似向量。对于某个pair，当发现这个相似值出现突变的时候(之前不相似突然想你死，或者之前相似变得突然你不相似)说明出现了异常</p>
 
-<p>6，temporal network 异常检测</p>
+<h3 id="toc_7">6.temporal network 异常检测</h3>
 
-<h2 id="toc_1">其他</h2>
+<p>graph outlier detection 输入是一组网络，检测方法类似，定义不同网络之前的相似度<br/>
+具体方法详见论文</p>
+
+<h2 id="toc_8">其他</h2>
 
 <p><img src="media/15869363773517/15869493965051.jpg" alt=""/></p>
 
-<p>场景1: 是否超出某个阈值<br/>
-<img src="media/15846836766049/15850438434419.jpg" alt=""/></p>
+<h2 id="toc_9">三 公司应用</h2>
 
-<p>看一段窗口内的均值是否超过THRESHOLD</p>
+<p>汇总</p>
 
-<p>场景2：数据突变<br/>
-正常情况应该是光滑的曲线，不应该出现突然的上涨或下跌。=&gt; 检测环比附近的数据<br/>
-<img src="media/15846836766049/15850445321930.jpg" alt=""/></p>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>研发团队</th>
+<th>链接</th>
+<th>备注</th>
+</tr>
+</thead>
 
-<p>前后窗口均值比值 \(r(t)=\frac{x_t + ...x_{t-w+1}}{x_{t-w}+..+x_{t-2w+1}}\)</p>
+<tbody>
+<tr>
+<td>egads</td>
+<td>yahoo</td>
+<td>Java: <a href="https://github.com/yahoo/egads">https://github.com/yahoo/egads</a></td>
+<td>《Generic and Scalable Framework for Automated Time-series Anomaly Detection》  检测+报警等功能</td>
+</tr>
+<tr>
+<td>Luminol</td>
+<td>LinkedIn</td>
+<td><a href="https://github.com/linkedin/luminol">https://github.com/linkedin/luminol</a></td>
+<td></td>
+</tr>
+<tr>
+<td>微软-AD</td>
+<td>微软</td>
+<td><a href="https://docs.microsoft.com/zh-cn/azure/cognitive-services/anomaly-detector/">https://docs.microsoft.com/zh-cn/azure/cognitive-services/anomaly-detector/</a></td>
+<td>《Time-Series Anomaly Detection Service at Microsoft》</td>
+</tr>
+<tr>
+<td>Twitter-AD</td>
+<td>Twitter</td>
+<td>R语言 <a href="https://github.com/twitter/AnomalyDetection">https://github.com/twitter/AnomalyDetection</a></td>
+<td>A Novel Technique for Long-Term Anomaly Detection in the Cloud</td>
+</tr>
+<tr>
+<td>Opprentice</td>
+<td>清华-裴丹+百度</td>
+<td>《Opprentice: Towards Practical and Automatic Anomaly Detection Through Machine Learning》</td>
+<td></td>
+</tr>
+<tr>
+<td>Metis</td>
+<td>清华+腾讯</td>
+<td><a href="https://github.com/Tencent/Metis">https://github.com/Tencent/Metis</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Donut</td>
+<td>清华+阿里</td>
+<td><a href="https://github.com/haowen-xu/donut">https://github.com/haowen-xu/donut</a></td>
+<td>Variational Auto-Encoder for Seasonal KPIs，基于tf</td>
+</tr>
+</tbody>
+</table>
 
-<p>场景3：数据有规律的周期波动<br/>
-检测同比，看有无异常。 统计历史上相同侍寝的数据的均值、标准差，假设正态分布，计算z-score</p>
+<ul>
+<li>微软 </li>
+</ul>
 
-<p><a href="https://juejin.im/post/5c88a2e95188257e914052e4">https://juejin.im/post/5c88a2e95188257e914052e4</a><br/>
-<a href="https://github.com/Tencent/Metis">https://github.com/Tencent/Metis</a></p>
+<p>采用的主要思路: SR + CNN. SR(Spectral Residual)是一种无监督的算法，在视觉显著性检测中表现很好。作者将时间序列的异常检测类比到图像的显著性视觉检测。CNN是有监督的，作者通过人为构造合成曲线将 SR的输出结果进行CNN训练，最后得到检测模型。</p>
+
+<p>(1) 谱残差算法<br/>
+大致来说是对原始序列做傅里叶变换，取log，计算SR. (zzz通过傅里叶变换将主要的不显著的区域去除掉，然后再反向转回去，得到显著的区域)<br/>
+<img src="media/15869363773517/15870224916178.jpg" alt="" style="width:426px;"/></p>
+
+<p>微软的论文中比较了FFT, twitter-AD， Luminol和自己的效果。</p>
+
+<ul>
+<li><p>Opprentice<br/>
+本文通过运维人员的业务经验来进行异常数据的标注工作，使用时间序列的各种算法来提取特征，并且使用有监督学习模型（例如 Random Forest，GBDT，XgBoost 等）模型来实现离线训练和上线预测的功能。</p></li>
+<li><p>yahoo—— EGADS<br/>
+《Generic and Scalable Framework for Automated Time-series Anomaly Detection》<br/>
+<a href="https://juejin.im/post/5c88a2e95188257e914052e4">https://juejin.im/post/5c88a2e95188257e914052e4</a><br/>
+主要也是先建立时间序列模型，然后通过期望和误差判断异常。</p></li>
+<li><p>skyline<br/>
+skyline: Skyline is a near real time anomaly detection system. 看其github上code <code>skyline/skyline/analyzer/algorithms.py</code>所包含的模型，主要是一些基于统计/时间序列的方法， 每种方法其实都是有适用条件的。<br/>
+<code>skyline,median_absolute_deviation</code></p></li>
+<li><p>DeepADoTS <br/>
+Implementation and evaluation of 7 deep learning-based techniques for Anomaly Detection on Time-Series data.</p></li>
+</ul>
+
+<p><strong>其他的开源工具</strong></p>
+
+<p><a href="https://github.com/chenryn/aiops-handbook/blob/master/README.md">https://github.com/chenryn/aiops-handbook/blob/master/README.md</a></p>
 
 <p>工具 <a href="https://github.com/chickenbestlover/RNN-Time-series-Anomaly-Detection">https://github.com/chickenbestlover/RNN-Time-series-Anomaly-Detection</a></p>
 
-<p>（2）时间序列数据</p>
+<p>工具包 <a href="https://github.com/rob-med/awesome-TS-anomaly-detection">https://github.com/rob-med/awesome-TS-anomaly-detection</a></p>
 
-<ul>
-<li>关于时间序列的检测 工具包 <a href="https://github.com/rob-med/awesome-TS-anomaly-detection">https://github.com/rob-med/awesome-TS-anomaly-detection</a></li>
-</ul>
-
-<p>[Python] skyline: Skyline is a near real time anomaly detection system.<br/>
-[Python] banpei: Banpei is a Python package of the anomaly detection.</p>
+<p>[Python] banpei: Banpei is a Python package of the anomaly detection.</p>
 
 <p>[Python] telemanom: A framework for using LSTMs to detect anomalies in multivariate time series data.</p>
 
@@ -584,13 +667,25 @@ comb_by_moa = moa(scores_norm, 5) # 5 groups
 
 <p>[Python] NAB: The Numenta Anomaly Benchmark: NAB is a novel benchmark for evaluating algorithms for anomaly detection in streaming, real-time applications.</p>
 
-<h2 id="toc_2">自动化检测问题</h2>
+<h2 id="toc_10">参考</h2>
 
-<p><a href="https://www.infoq.cn/article/e7kgB9EVJXkQdRVSsDSo">https://www.infoq.cn/article/e7kgB9EVJXkQdRVSsDSo</a></p>
+<p><a href="https://www.zhihu.com/question/337230484/answer/803136648">https://www.zhihu.com/question/337230484/answer/803136648</a><br/>
+<a href="https://github.com/chenryn/aiops-handbook/blob/master/README.md">https://github.com/chenryn/aiops-handbook/blob/master/README.md</a></p>
 
-<h2 id="toc_3">公司应用</h2>
+<h2 id="toc_11">自动化检测问题</h2>
 
-<h2 id="toc_4">how to use for us</h2>
+<p>问题：大部分工具或者算法实现了不同的方案，但是却没法自动判断选择哪个检测方法，均需要用户指定。<br/>
+<a href="https://www.infoq.cn/article/e7kgB9EVJXkQdRVSsDSo">https://www.infoq.cn/article/e7kgB9EVJXkQdRVSsDSo</a><br/>
+<img src="media/15869363773517/15870297798892.jpg" alt="" style="width:691px;"/></p>
+
+<p>(1) 判断周期性 —— 基于差分的方法<br/>
+<img src="media/15869363773517/15870300046533.jpg" alt="" style="width:461px;"/></p>
+
+<p>(2)前面的方法能够分离出周期性数据，接下来要度量数据的全局波动和局部波动的相对大小。数据方差可以直接表达全局波动范围。对数据施加小尺度的小波变换可以得到局部波动，局部波动的方差反应了局部波动的大小</p>
+
+<p>(3)自动配置参数</p>
+
+<h2 id="toc_12">how to use for us</h2>
 
 <ol>
 <li>特征值异常</li>
@@ -658,53 +753,61 @@ comb_by_moa = moa(scores_norm, 5) # 5 groups
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15834004454503.html">
+                <a class="clearlink" href="15637025348511.html">
                 
-                  <h1>【数据增强】</h1>
+                  <h1>【推荐系统】章1 基本介绍</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h3 id="toc_0">1.有监督的</h3>
+                        	<p>标签（空格分隔）： 推荐系统</p>
 
-<p><strong>1.1 单样本的数据增强</strong><br/>
-单样本的数据增强主要是围绕一个样本图片，进行的”几何变换“、”颜色变换“等</p>
+<hr/>
 
-<ul>
-<li>几何变换类： 旋转、翻转、剪裁、变形、缩放</li>
-<li>颜色变换类： 噪声、模糊、颜色变换、填充</li>
-</ul>
+<h1 id="toc_0">推荐系统评测</h1>
 
-<p>实用tool <code>https://github.com/aleju/imgaug</code></p>
+<h2 id="toc_1">1.推荐系统实验方法</h2>
 
-<p><strong>1.2 多样本数据增强</strong><br/>
-利用多个样本产生出新的样本</p>
+<p>在进行推荐之前，先从数据获得方法入手。数据的获得方法主要有 </p>
 
 <ul>
-<li>SMOTE，人工合成新样本，解决类不平衡问题。映射到特征空间，在小样本的k近邻中构造新的样本点</li>
-<li>SamplePairing：主要用在医学图像上，从训练集中随机抽取两张图片，经过基础数据增强后将像素平均合并成一个新的样本。标签记为原样本标签中的一种。</li>
-<li>mixup: 使用线性插值，对于随机选取的两个数据，new = wXi + (1-w)Xj</li>
+<li><p>离线实验<br/>
+这个应该是最常见的那种，即数据使用的是离线的数据，提取数据-&gt;训练集和测试集——&gt; 建立模型 ——&gt; 测试集上进行实验——&gt;效果评价</p></li>
+<li><p>用户调查<br/>
+可以获得一些推荐效果的主观指标</p></li>
+<li><p>在线实验<br/>
+即切分流量，进行AB test</p></li>
 </ul>
 
-<h3 id="toc_1">2.无监督的</h3>
+<h2 id="toc_2">2.指标评测</h2>
 
-<p><strong>2.1 学习数据的分布，随机生成新图片</strong></p>
+<p>不同的实验方法可能会对应着不同的衡量指标，简单的介绍如下：</p>
 
 <ul>
-<li>GAN</li>
-</ul>
-
-<p><strong>2.2 通过模型学习适合当前任务的数据增强方法</strong></p>
-
+<li>用户满意度<br/>
+这个指标相对来说是一个主观的指标，可以通过用户调查，或者是对用户客观行为进行分析（比如：点击率、停留时间等）</li>
+<li>预测准确率
 <ul>
-<li>AutoAugment<br/>
-google 提出的自动选择最优数据增强方案的研究。其基本思路是:使用增强学习从数据本身寻找最佳的图像变换策略。具体来说就是用基础数据增强策略的组合。</li>
-<li>RandAugment: AutoAugment的进化版</li>
+<li>评分预测<br/>
+评分预测类主要是让用户对商品进行打分，比如1-5级的打分。其主要的计算指标是均方根误差RMSE或者平均绝对误差MAE</li>
+<li>TopN推荐<br/>
+topN推荐，即给用户推荐一个其可能感兴趣的item列表，也是我们主要要讨论的。其主要的评价指标即PR（precision recall）</li>
+</ul></li>
+<li>覆盖率<br/>
+覆盖率主要是刻画了推荐系统对<strong>长尾物品</strong>的发掘能力。我们希望推荐系统不止推荐出一些热门的，这样只能覆盖很少的一部分items。
+<ul>
+<li>最简单的计算方法：推荐系统推荐出来的物品占所有物品的比重。但是没有考虑到分布情况</li>
+<li>统计推荐列表中不同物品的出现次数的分布<br/>
+信息熵 \(H=-\sum p_i\log p_i\)<br/>
+基尼系数 \(G=\frac{1}{n-1}\sum (2j-n-1)p(i_j)\) </li>
+</ul></li>
+<li>多样性<br/>
+即希望推荐给用户的东西类型是多样的，比如对于电影，用户可能喜欢看爱情类、科幻类，那么推荐系统在进行推荐的时候，只推荐爱情类的效果显然不如既有爱情类又有科幻类的效果好。</li>
+<li>新颖性</li>
+<li>惊喜度</li>
+<li>信任度</li>
+<li>。。。</li>
 </ul>
-
-<h2 id="toc_2">参考</h2>
-
-<p><a href="https://www.zhihu.com/question/319291048">https://www.zhihu.com/question/319291048</a></p>
 
                         
                       </div>
@@ -713,70 +816,10 @@ google 提出的自动选择最优数据增强方案的研究。其基本思路�
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/3/5</span>
+                    <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15838089244516.html">
-                
-                  <h1>【案例】</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>(1) 样本少容易过拟合</p>
-
-<pre><code class="language-text"> base_model,
-      tf.keras.layers.GlobalAveragePooling2D(),
-      tf.keras.layers.Dropout(0.5),
-      tf.keras.layers.Dense(256, kernel_regularizer=tf.keras.regularizers.l2(0.001),
-                           activation=&#39;relu&#39;),
-      tf.keras.layers.Dense(2, activation = &#39;softmax&#39;)]
-    )
-</code></pre>
-
-<p>加入正则化和dropout<br/>
-进行图片增强产生更多图片</p>
-
-<p>fine-tune效果</p>
-
-<p><img src="media/15838089244516/3BB989C7-F853-4391-BAE1-2CF5FE031D51.png" alt="3BB989C7-F853-4391-BAE1-2CF5FE031D51"/></p>
-
-<p>feature-效果<br/>
-<img src="media/15838089244516/7BE3E393-6503-4A17-AD04-34B8DDA9C6D3.png" alt="7BE3E393-6503-4A17-AD04-34B8DDA9C6D3"/></p>
-
-<p>(2) 调整loss中的训练权重<br/>
-class_weight = {0:0.75, 1:0.25}<br/>
-<img src="media/15838089244516/15838091710767.jpg" alt=""/></p>
-
-<p>QQ: 训练集和验证集效果都还好，但是到真实预测的时候效果却很差？？？</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/3/10</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB.html'>图像分类</a></span>
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
           				   
                     
 
@@ -856,8 +899,6 @@ class_weight = {0:0.75, 1:0.25}<br/>
             <a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 统计方法</strong></a>
         
             <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习</strong></a>
-        
-            <a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统</strong></a>
         
             <a href="6%20NLP.html"><strong>6 NLP</strong></a>
         

@@ -95,8 +95,6 @@
         
             <li><a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html">5 机器学习</a></li>
         
-            <li><a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html">6 推荐系统</a></li>
-        
             <li><a href="6%20NLP.html">6 NLP</a></li>
         
             <li><a href="7%20CV.html">7 CV</a></li>
@@ -162,18 +160,52 @@
 <li>graph, network</li>
 </ol>
 
-<h2 id="toc_0">1.多元特征数据的检测方法</h2>
-
-<p>基于(样本x特征)的数据</p>
+<p>这里主要是介绍基于(样本x特征)的<strong>多元特征数据的检测方法</strong></p>
 
 <p><img src="media/15846836766049/15851028311312.jpg" alt="" style="width:685px;"/><br/>
 <a href="https://zhuanlan.zhihu.com/p/49072315">https://zhuanlan.zhihu.com/p/49072315</a></p>
 
-<p>(1) 统计与概率模型<br/>
-依据数据的分布做假定</p>
+<p>特点汇总</p>
+
+<table>
+<thead>
+<tr>
+<th>大分类</th>
+<th>常用方法距离</th>
+<th>特点/适用范围</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>统计分布类</td>
+<td>3sigma，四分位点， HBOS</td>
+<td>基于分布假定，对于分布比较极端的不太适用</td>
+</tr>
+<tr>
+<td>基于距离的近邻类</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>聚类类</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>分类类</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="toc_0">1.统计与概率方法</h2>
+
+<p>依据数据的分布做假定，假设大部分数据follow一个正常分布，只有很少的点不follow.</p>
 
 <ul>
-<li>3sigma</li>
+<li>3sigma原则</li>
 <li>四分位点</li>
 </ul>
 
@@ -184,17 +216,25 @@
 <p>其中k=1.5 时候可认为是中度异常，k=3时是极度异常。该方法应该假定了数据正态分布(或者是对称分布吧)</p>
 
 <ul>
-<li>检测异常值Grubbs的检验（Grubbs 1969和Stefansky 1972）用于检测单变量数据集中的单个异常值，该单变量数据集遵循近似正态分布。如果您怀疑可能存在多个异常值，建议您使用Tietjen-Moore测试或广义极端学生化偏差测试而不是Grubbs测试</li>
+<li><p>检测异常值Grubbs的检验（Grubbs 1969和Stefansky 1972）用于检测单变量数据集中的单个异常值，该单变量数据集遵循近似正态分布。\((x_i-\bar x)/s\) 与临界值比较。如果您怀疑可能存在多个异常值，建议您使用Tietjen-Moore测试或广义极端学生化偏差测试而不是Grubbs测试</p></li>
+<li><p>HBOS- 基于直方图的检测方法<br/>
+其实就是将直观看histogram的方法数量化，正常分布的直方图是比较集中的，而有异常值的分布相对来说两边会比较分散，基于此，设计的异常打分。<br/>
+\[\]</p></li>
 </ul>
 
-<p>(2) 线性模型</p>
+<p>注意:<br/>
+基于统计分布的方法，其背后都是基于小概率的原理，认为超过正常分布的点就是异常值。其前提其实是认为大部分的分布都是正常的，波动只存在在小范围内。 但是如下的例子，波动其实体现在整体上，这种用统计相关的方法就不好检测了。</p>
+
+<p><img src="media/15846836766049/15873805529745.jpg" alt=""/></p>
+
+<h2 id="toc_1">2. 线性模型</h2>
 
 <ul>
 <li>PCA 大部分正常样本服从相似的分布映射的过程中在高低维的位置接近</li>
 <li>协方差矩阵</li>
 </ul>
 
-<p>(3)基于相似度/距离衡量的模型</p>
+<h2 id="toc_2">3.基于相似度/距离衡量的模型</h2>
 
 <ul>
 <li>k近邻</li>
@@ -202,8 +242,9 @@
 <li>OneClassSVM</li>
 </ul>
 
-<p>(4) 聚类的方法， BIRCH，DBSCAN<br/>
-(5) 其他</p>
+<h2 id="toc_3">4.聚类的方法， BIRCH，DBSCAN</h2>
+
+<h2 id="toc_4">5.其他</h2>
 
 <ul>
 <li>auto encoder<br/>
@@ -211,7 +252,11 @@
 <img src="media/15846836766049/15850559643103.jpg" alt=""/></li>
 </ul>
 
-<h2 id="toc_1">其他</h2>
+<h2 id="toc_5">6.不同方法比较与如何选择问题</h2>
+
+<p><a href="https://www.zhihu.com/question/280696035/answer/438788495">https://www.zhihu.com/question/280696035/answer/438788495</a></p>
+
+<h2 id="toc_6">其他</h2>
 
 <p>3.video中异常行为检测</p>
 
@@ -254,7 +299,7 @@ Prediction and Abnormal Event Detection】</p>
 <li>基于act sequence，整体序列的</li>
 </ul>
 
-<h2 id="toc_2">工具-Pyod</h2>
+<h2 id="toc_7">工具-Pyod</h2>
 
 <ul>
 <li>Python异常检测工具库<code>Pyod</code>， 包含大概20多种方法，其中包含深度学习以及outlier ensembles</li>
@@ -269,96 +314,22 @@ Pyod是一款专门做异常检测的python工具箱</li>
 <p>github:   <a href="https://github.com/yzhao062/pyod">https://github.com/yzhao062/pyod</a><br/>
 文档说明: <a href="https://pyod.readthedocs.io/en/latest/index.html">https://pyod.readthedocs.io/en/latest/index.html</a></p>
 
-<p><strong>基本API：</strong></p>
+<h2 id="toc_8">参考</h2>
 
-<pre><code class="language-python">BaseDetector.fit(X, y)    # y可有可无
-BaseDetector.decision_function()    # 原始的异常得分
-BaseDetector.predict()
-BaseDetector.predict_proba()    # 给出是异常点的概率
-</code></pre>
-
-<p>其属性</p>
-
-<pre><code class="language-text">BaseDetector.decision_scores_      # 异常得分，score越大越异常
-BaseDetector.labels_               # 1 代表异常
-</code></pre>
-
-<p><strong>与sklearn区分</strong><br/>
-借鉴了sklearn的API形式，但是注意两者不通用</p>
-
-<p><strong>例子</strong></p>
-
-<p>（1） one model</p>
-
-<pre><code class="language-python"># train the KNN detector
-from pyod.models.knn import KNN
-from pyod.utils.data import generate_data
-from pyod.models.combination import aom, moa, average, maximization
-
-## ! 输入的X必须是array [n_samples, n_features]
-X, y = generate_data(train_only=True)  # load data
-X.shape
-
-clf = KNN()
-clf.fit(X)
-
-# get the prediction labels and outlier scores of the training data
-y_train_pred = clf.labels_  # binary labels (0: inliers, 1: outliers)
-y_train_scores = clf.decision_scores_  # raw outlier scores
-
-# get the prediction on the test data
-y_pred = clf.predict(X)  # outlier labels (0 or 1)
-y_scores = clf.decision_function(X) 
-</code></pre>
-
-<p>(2) 有时候单个model结果不一定可信，可以将多个model的结果进行combine<br/>
-合并的方式主要有：</p>
-
-<ul>
-<li>average</li>
-<li>maximization</li>
-<li>average of maximization (AOM), 将所有的detector分成不同的组，每组先max， 然后对不同组再就mean</li>
-<li>maximization of average(MOA), 将所有的detector分成不同的组，每组先average， 然后对不同组取max</li>
-</ul>
-
-<pre><code class="language-python"># initialize 20 base detectors for combination
-import numpy as np
-k_list = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140,
-            150, 160, 170, 180, 190, 200]
-n_clf = 10
-
-train_scores = np.zeros([X.shape[0], n_clf])
-
-for i in range(n_clf):
-    k = k_list[i]
-    clf = KNN(n_neighbors=k, method=&#39;largest&#39;)
-    clf.fit(X)
-    train_scores[:, i] = clf.decision_scores_
-#
-from pyod.utils.utility import standardizer
-# scores have to be normalized before combination, 0均值，1 standard error
-scores_norm = standardizer(train_scores)
-## 不同的组合方法
-comb_by_average = average(scores_norm)
-comb_by_maximization = maximization(scores_norm)
-comb_by_aom = aom(scores_norm, 5) # 5 groups
-comb_by_moa = moa(scores_norm, 5) # 5 groups
-</code></pre>
-
-<h2 id="toc_3">参考</h2>
-
-<p><a href="https://blog.csdn.net/weixin_38730719/article/details/88026338">https://blog.csdn.net/weixin_38730719/article/details/88026338</a></p>
-
-<p><a href="https://zhuanlan.zhihu.com/p/93779599">https://zhuanlan.zhihu.com/p/93779599</a></p>
-
-<p><a href="https://www.zhihu.com/question/280696035/answer/417091151">https://www.zhihu.com/question/280696035/answer/417091151</a><br/>
-<a href="https://blog.csdn.net/g2v13ah/article/details/78474370">https://blog.csdn.net/g2v13ah/article/details/78474370</a></p>
-
-<p><a href="https://www.zhihu.com/question/280696035">https://www.zhihu.com/question/280696035</a></p>
+<ol>
+<li><a href="https://blog.csdn.net/weixin_38730719/article/details/88026338">https://blog.csdn.net/weixin_38730719/article/details/88026338</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/93779599">https://zhuanlan.zhihu.com/p/93779599</a></li>
+<li><a href="https://www.zhihu.com/question/280696035/answer/417091151">https://www.zhihu.com/question/280696035/answer/417091151</a></li>
+<li><a href="https://blog.csdn.net/g2v13ah/article/details/78474370">https://blog.csdn.net/g2v13ah/article/details/78474370</a></li>
+<li><a href="https://www.zhihu.com/question/280696035">https://www.zhihu.com/question/280696035</a></li>
+</ol>
 
 <p><a href="https://blog.csdn.net/Jasminexjf/article/details/88527966">https://blog.csdn.net/Jasminexjf/article/details/88527966</a></p>
 
 <p>ppt材料 <a href="https://zhuanlan.zhihu.com/p/30169110">https://zhuanlan.zhihu.com/p/30169110</a></p>
+
+<p>《A comparative evaluation of outlier detection algorithms: Experiments and<br/>
+analyses》</p>
 
 
     
@@ -445,8 +416,6 @@ comb_by_moa = moa(scores_norm, 5) # 5 groups
             <a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 统计方法</strong></a>
         
             <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习</strong></a>
-        
-            <a href="6%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F.html"><strong>6 推荐系统</strong></a>
         
             <a href="6%20NLP.html"><strong>6 NLP</strong></a>
         
