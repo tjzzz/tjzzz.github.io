@@ -140,81 +140,6 @@
 <p>github:   <a href="https://github.com/yzhao062/pyod">https://github.com/yzhao062/pyod</a><br/>
 文档说明: <a href="https://pyod.readthedocs.io/en/latest/index.html">https://pyod.readthedocs.io/en/latest/index.html</a></p>
 
-<p><strong>基本API：</strong></p>
-
-<pre><code class="language-python">BaseDetector.fit(X, y)    # y可有可无
-BaseDetector.decision_function()    # 原始的异常得分
-BaseDetector.predict()
-BaseDetector.predict_proba()    # 给出是异常点的概率
-</code></pre>
-
-<p>其属性</p>
-
-<pre><code class="language-text">BaseDetector.decision_scores_      # 异常得分，score越大越异常
-BaseDetector.labels_               # 1 代表异常
-</code></pre>
-
-<p><strong>与sklearn区分</strong><br/>
-借鉴了sklearn的API形式，但是注意两者不通用</p>
-
-<p><strong>例子</strong></p>
-
-<p>（1） one model</p>
-
-<pre><code class="language-python"># train the KNN detector
-from pyod.models.knn import KNN
-from pyod.utils.data import generate_data
-from pyod.models.combination import aom, moa, average, maximization
-
-## ! 输入的X必须是array [n_samples, n_features]
-X, y = generate_data(train_only=True)  # load data
-X.shape
-
-clf = KNN()
-clf.fit(X)
-
-# get the prediction labels and outlier scores of the training data
-y_train_pred = clf.labels_  # binary labels (0: inliers, 1: outliers)
-y_train_scores = clf.decision_scores_  # raw outlier scores
-
-# get the prediction on the test data
-y_pred = clf.predict(X)  # outlier labels (0 or 1)
-y_scores = clf.decision_function(X) 
-</code></pre>
-
-<p>(2) 有时候单个model结果不一定可信，可以将多个model的结果进行combine<br/>
-合并的方式主要有：</p>
-
-<ul>
-<li>average</li>
-<li>maximization</li>
-<li>average of maximization (AOM), 将所有的detector分成不同的组，每组先max， 然后对不同组再就mean</li>
-<li>maximization of average(MOA), 将所有的detector分成不同的组，每组先average， 然后对不同组取max</li>
-</ul>
-
-<pre><code class="language-python"># initialize 20 base detectors for combination
-import numpy as np
-k_list = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140,
-            150, 160, 170, 180, 190, 200]
-n_clf = 10
-
-train_scores = np.zeros([X.shape[0], n_clf])
-
-for i in range(n_clf):
-    k = k_list[i]
-    clf = KNN(n_neighbors=k, method=&#39;largest&#39;)
-    clf.fit(X)
-    train_scores[:, i] = clf.decision_scores_
-#
-from pyod.utils.utility import standardizer
-# scores have to be normalized before combination, 0均值，1 standard error
-scores_norm = standardizer(train_scores)
-## 不同的组合方法
-comb_by_average = average(scores_norm)
-comb_by_maximization = maximization(scores_norm)
-comb_by_aom = aom(scores_norm, 5) # 5 groups
-comb_by_moa = moa(scores_norm, 5) # 5 groups
-</code></pre>
 
                         
                       </div>
@@ -222,7 +147,7 @@ comb_by_moa = moa(scores_norm, 5) # 5 groups
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                  
+                   <a href="15867780125381.html">Read more</a>&nbsp;&nbsp; 
                     <span class="date">2020/4/13</span>
                     <span>posted in&nbsp;</span> 
           				  
@@ -253,71 +178,6 @@ comb_by_moa = moa(scores_norm, 5) # 5 groups
 <a href="https://github.com/chickenbestlover/RNN-Time-series-Anomaly-Detection">https://github.com/chickenbestlover/RNN-Time-series-Anomaly-Detection</a><br/>
 <a href="https://github.com/rob-med/awesome-TS-anomaly-detection">https://github.com/rob-med/awesome-TS-anomaly-detection</a></p>
 
-<h2 id="toc_0">2. ADTK</h2>
-
-<p>github: <a href="https://github.com/arundo/adtk">https://github.com/arundo/adtk</a>. <br/>
-adtk主要是 unsupervised / rule-based time series anomaly detection.</p>
-
-<p>教程 <a href="https://arundo-adtk.readthedocs-hosted.com/en/stable/userguide.html%E3%80%82">https://arundo-adtk.readthedocs-hosted.com/en/stable/userguide.html。</a></p>
-
-<p>adtk提供了很多检测的方法，但是不会自动选择，得需要自己指定具体用哪个。</p>
-
-<pre><code class="language-text">&quot;ThresholdAD&quot;,
-&quot;QuantileAD&quot;,
-&quot;InterQuartileRangeAD&quot;,
-&quot;GeneralizedESDTestAD&quot;,
-&quot;PersistAD&quot;,
-&quot;LevelShiftAD&quot;,
-&quot;VolatilityShiftAD&quot;,
-&quot;AutoregressionAD&quot;,
-&quot;SeasonalAD&quot;,
-&quot;CustomizedDetector1D&quot;,
-&quot;MinClusterDetector&quot;,
-&quot;OutlierDetector&quot;,
-&quot;RegressionAD&quot;,
-&quot;PcaAD&quot;,
-</code></pre>
-
-<p>其中季节性，趋势性分解，用的是<code>statsmodels.tsa.seasonal</code><br/>
-<img src="media/15869348134936/15871046874575.jpg" alt="" style="width:533px;"/></p>
-
-<p>例子  <a href="https://arundo-adtk.readthedocs-hosted.com/en/latest/notebooks/demo.html#PersistAD">https://arundo-adtk.readthedocs-hosted.com/en/latest/notebooks/demo.html#PersistAD</a></p>
-
-<pre><code class="language-python">
-</code></pre>
-
-<h2 id="toc_1">1. banpei SSA: 奇异谱分析</h2>
-
-<p>banpei 是进行异常检测的一个python 包。其<code>banpei/banpei/</code>中主要包含了两种模型</p>
-
-<ul>
-<li>Outlier detection (Hotelling&#39;s theory) 均值+方差</li>
-<li> Change point detection （sst奇异谱转换）</li>
-</ul>
-
-<p>python package <code>fastsst</code><br/>
-<a href="https://github.com/statefb/singular-spectrum-transformation">https://github.com/statefb/singular-spectrum-transformation</a><br/>
-这里详细介绍下sst，SSA是一种研究非线性时间拿序列的方法，他根据观测到的序列构造出一个轨迹矩阵，然后通过对轨迹矩阵分解、重构，从而提取出能代表原始时间序列不同成分的信号。具体地，主要包括如下几步:<br/>
-（1）嵌入<br/>
-假设原始的时间序列是 \(Y(T) = (y_1, y_2,... y_T)\),选择一个窗口m，根据原始序列构造如下的轨迹矩阵。m的选择不宜过大，可以是本身数据周期的整数倍。<br/>
-<img src="media/15869348134936/15869444913257.jpg" alt=""/></p>
-
-<p>(2)svd分解</p>
-
-<p>\[X = U\Sigma V^T\]</p>
-
-<p>(3)分组<br/>
-选择贡献率达到一定阈值的top r个<br/>
-(4)重构<br/>
-矩阵重构 \[X_{mxn}  \approx U_{m*r}\Sigma_{r*r} V^T_{r*n}\]<br/>
-原序列重构, 通过对角平均法的方式<br/>
-<img src="media/15869348134936/15869481299057.jpg" alt=""/><br/>
-<img src="media/15869348134936/15869481699594.jpg" alt=""/></p>
-
-<p>m 窗口的选择，较小m反应短期趋势，较大的就是长期趋势。<br/>
-变点发现</p>
-
-<p><img src="media/15869348134936/15869498566967.jpg" alt=""/></p>
 
                         
                       </div>
@@ -325,7 +185,7 @@ adtk主要是 unsupervised / rule-based time series anomaly detection.</p>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                  
+                   <a href="15869348134936.html">Read more</a>&nbsp;&nbsp; 
                     <span class="date">2020/4/15</span>
                     <span>posted in&nbsp;</span> 
           				  
