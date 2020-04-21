@@ -197,7 +197,7 @@
 <tr>
 <td>基于相似度-密度，角度等</td>
 <td>knn，LOF, COF, Isolation Forest</td>
-<td></td>
+<td>相对较稳定，但是需要设置经验参数</td>
 </tr>
 <tr>
 <td>集成方法</td>
@@ -257,11 +257,27 @@
 <li>基于密度的 LOF, COF, Isolation Forest</li>
 </ul>
 
+<p>LOF: 看一个点与周围点的密度<br/>
+k近邻距离:k_distance(p),距离点p第k个最近的点的距离<br/>
+可达距离:数据点p到点o的可达距离.给定参数k时候，k近邻与两点距离的最大值<br/>
+\(reah\_dist_k(p,o)= max(k_distance(o), d(p,o))\)<br/>
+局部可达密度：<br/>
+<img src="media/15846836766049/15874462955499.jpg" alt="" style="width:564px;"/></p>
+
+<p>Isolation Forest(集成的一种方法)<br/>
+算法思想：异常数据相对于整个数据往往容易分开，拿平面去切的时候往往所需要的次数较少。<br/>
+<img src="media/15846836766049/15874450284627.jpg" alt="" style="width:690px;"/><br/>
+具体过程：</p>
+
+<ul>
+<li>构建多个isolation tree，将数据切开。记录每个点的切开次数/树的高度</li>
+<li>定义一个数据点的异常得分 \(s(x)=2^{-E(h(x))}\)，\(E(h(x))\)表示多次随机切分的平均高度。高度越小越容易切分，异常可能性就越高。</li>
+<li>考虑点的数量进行归一化， \(s(x)=2^{-\frac{E(h(x))}{c(n}}\), 其中\(c(n)\)表示归一化部分。</li>
+</ul>
+
 <h2 id="toc_3">4. 集成方法 feature bagging</h2>
 
-<p>Isolation Forest</p>
-
-<h2 id="toc_4">5.其他</h2>
+<h2 id="toc_4">5.其他-深度学习</h2>
 
 <ul>
 <li>auto encoder<br/>
@@ -286,8 +302,10 @@
 <ul>
 <li>统计粒度的： 速度、stay长时间、</li>
 <li>轨迹路径的异常(x,y,t), walk变向、折返、speed突变等。 局部的变动</li>
-<li>基于act sequence，整体序列的</li>
+<li>基于act sequence，整体序列的。找到一些“异常”的行为</li>
 </ul>
+
+<p>数据层面的： 发现脏数据</p>
 
 <h2 id="toc_7">工具-Pyod</h2>
 

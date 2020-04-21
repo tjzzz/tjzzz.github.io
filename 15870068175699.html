@@ -148,11 +148,7 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <p>3.video中异常行为检测</p>
-
-<ol>
-<li>行为序列的异常？</li>
-</ol>
+      <p>行为序列的异常？ video中异常行为检测？</p>
 
 <p>(1) sequence based</p>
 
@@ -165,21 +161,32 @@
 <p><strong>参照论文：</strong><br/>
 <a href="https://blog.csdn.net/liuxiao214/article/details/78281160?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task">https://blog.csdn.net/liuxiao214/article/details/78281160?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task</a></p>
 
-<p>【Soft + Hardwired Attention: An LSTM Framework for Human Trajectory<br/>
-Prediction and Abnormal Event Detection】</p>
+<h2 id="toc_0">论文1【Soft + Hardwired Attention: An LSTM Framework for Human Trajectory</h2>
+
+<p>Prediction and Abnormal Event Detection】</p>
 
 <p>本文主要提出了一种基于LSTM的行为预测和异常检测方法</p>
 
-<ul>
-<li>文献回溯
-<ul>
-<li>轨迹聚类</li>
-<li>预测人类行为，一个常用的方法是social force model</li>
-<li>attention models</li>
-</ul></li>
-</ul>
+<p>related work：human behaviour prediction 文献回溯<br/>
+    - 轨迹聚类<br/>
+    - 预测人类行为，一个常用的方法是social force model，可以详见 <a href="https://wenku.baidu.com/view/c6359d0452ea551810a68733.html">https://wenku.baidu.com/view/c6359d0452ea551810a68733.html</a><br/>
+    - attention models</p>
 
 <p><img src="media/15846836766049/15851206602866.jpg" alt=""/></p>
+
+<h2 id="toc_1">论文2 Detecting-Spacecraf-Anomalies-Using-LSTMs-and-Nonparametric-Dynamic-Thresholding</h2>
+
+<p><a href="http://blog.rexking6.top/2019/03/03/%E3%80%8ADetecting-Spacecraf-Anomalies-Using-LSTMs-and-Nonparametric-Dynamic-Thresholding%E3%80%8B%E7%AC%94%E8%AE%B0/">http://blog.rexking6.top/2019/03/03/%E3%80%8ADetecting-Spacecraf-Anomalies-Using-LSTMs-and-Nonparametric-Dynamic-Thresholding%E3%80%8B%E7%AC%94%E8%AE%B0/</a></p>
+
+<p>有几点可以学习的地方：</p>
+
+<p>动态误差阈值：对于模型产生的预测误差，将其进行平滑处理(比如指数加权),然后针对平滑后的设置阈值。</p>
+
+<p>阈值计算：</p>
+
+<h2 id="toc_2">工具</h2>
+
+<p><a href="https://github.com/khundman/telemanom">https://github.com/khundman/telemanom</a></p>
 
 
     
