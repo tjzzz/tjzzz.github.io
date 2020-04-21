@@ -327,7 +327,39 @@
                       
                       <div class="a-content-text">
                         
-                        	
+                        	<p>3.video中异常行为检测</p>
+
+<ol>
+<li>行为序列的异常？</li>
+</ol>
+
+<p>(1) sequence based</p>
+
+<ul>
+<li>相似性： 假设所有数据都是normal的，然后找到normal sequence， 最后计算与normal sequence的距离(比如LCS)</li>
+<li>window based。traing：所有sequence 分成多个windows，windows的score：frequence；classifier：随机生成数据作为anomaly标签。 testing：instance的各个windows的anomaly socre组合：取平均；取大于阈值的个数；LFC（计算anomaly window前n个window中anomaly 的个数）</li>
+<li>HMM：</li>
+</ul>
+
+<p><strong>参照论文：</strong><br/>
+<a href="https://blog.csdn.net/liuxiao214/article/details/78281160?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task">https://blog.csdn.net/liuxiao214/article/details/78281160?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task</a></p>
+
+<p>【Soft + Hardwired Attention: An LSTM Framework for Human Trajectory<br/>
+Prediction and Abnormal Event Detection】</p>
+
+<p>本文主要提出了一种基于LSTM的行为预测和异常检测方法</p>
+
+<ul>
+<li>文献回溯
+<ul>
+<li>轨迹聚类</li>
+<li>预测人类行为，一个常用的方法是social force model</li>
+<li>attention models</li>
+</ul></li>
+</ul>
+
+<p><img src="media/15846836766049/15851206602866.jpg" alt=""/></p>
+
                         
                       </div>
                   </div>

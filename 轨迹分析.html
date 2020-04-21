@@ -135,125 +135,8 @@
                       
                       <div class="a-content-text">
                         
-                        	<p><img src="media/15687050894061/15694883044237.jpg" alt=""/></p>
+                        	<p>首先是关于整个轨迹数据涉及的存储、数据清洗、分析、挖掘的一个整体模块。</p>
 
-<p>首先是关于整个轨迹数据涉及的存储、数据清洗、分析、挖掘的一个整体模块。</p>
-
-<h2 id="toc_0">1 trajectory preprocessing</h2>
-
-<p>详见 <a href="15694859531608.html"> trajectory preprocessing</a></p>
-
-<p>GPS点漂移问题<br/>
-<a href="http://www.xml-data.org/CHDLXX/html/62356297-1a5a-4b3f-bb57-547e9a401da0.htm">http://www.xml-data.org/CHDLXX/html/62356297-1a5a-4b3f-bb57-547e9a401da0.htm</a></p>
-
-<h2 id="toc_1">2 trajectory data management</h2>
-
-<h3 id="toc_2">2.1 trajectory indexing和retrieval</h3>
-
-<p>常见的检索类型有：<br/>
-(1) range 检索： 检索在指定空间或时间内的轨迹<br/>
-(2) KNN 检索：找到和指定轨迹或者点最近的k条轨迹<br/>
-检索涉及到数据存储形式，可以看下原文，这里不细说了。</p>
-
-<p>一般都是采用专门的GIS数据库进行存储和管理。</p>
-
-<h3 id="toc_3">2.2 trajectory的距离/相似性</h3>
-
-<p>详见 <a href="15694875253508.html">2 轨迹相似性度量</a></p>
-
-<h2 id="toc_4">3.uncertainty in a trajectory</h2>
-
-<p>(1) 减少不确定性<br/>
-多条不确定性的路线合并=&gt; 相对确定性的路线<br/>
-(2) 将空间进行grids划分，将原本的轨迹点重新归属到新的单元格中，简化轨迹</p>
-
-<h2 id="toc_5">4. trajectory pattern mining</h2>
-
-<h3 id="toc_6">(1) moving together patterns</h3>
-
-<p>move together pattern 主要是找到一组在一定时间内共同移动的物体。一般都是通过基于密度聚类的方法。<br/>
-Jensen[2007] Continuous clustering of moving objects扩展了这种方法，使得在原来的距离的基础上增加了移动的方向、角度等因素。</p>
-
-<h3 id="toc_7">(2) trajectory clustering</h3>
-
-<p>根据前面的关于轨迹距离/相似度的定义，可以对轨迹进行聚类。在这之前一般都需要对轨迹数据进行一步的处理，比如切分segment。</p>
-
-<h3 id="toc_8">（3）mining sequential patterns</h3>
-
-<p>进行子序列模式挖掘，首先要定义序列中的location，即将(x,y)转为一个有标识性的概念，比如一个地点。方法：</p>
-
-<ul>
-<li>line simplification based 方法：比如先用DP方法识别出来key points。然后对每个轨迹的segment为一个item进行模式挖掘</li>
-<li>cluster based： 先把轨迹上的点，聚类到regions of interest，然后每条轨迹就可以用这些“关键点”来表示。</li>
-</ul>
-
-<h3 id="toc_9">(4) periodical patterns</h3>
-
-<h2 id="toc_10">5. trajectory classification</h2>
-
-<p>一般来说，一个轨迹分类的过程大概是<br/>
-(1)将轨迹切分成segment<br/>
-(2) 提取特征<br/>
-(3) 建立模型： As a trajectory is essentially a sequence, we can leverage existing sequence inference models, such as Dynamic Bayesian Network (DBN), HMM, and Conditional Random Field (CRF)</p>
-
-<p>==&gt; 可以看看相关论文</p>
-
-<h2 id="toc_11">6. 轨迹异常检测</h2>
-
-<h2 id="toc_12">7.把轨迹转成其他的形式</h2>
-
-<p>(1) graph</p>
-
-<ul>
-<li>travel recommendation, 旅游的stay points, 然后研究图的联通，最大流之类的问题</li>
-<li>计算user similarity。 通过更细粒度的停留点，以停留点为单位，每个人的轨迹就可以用停留点来刻画，即user1= (place1, place2, place3), user2 = (place1&#39;, place2&#39;, place3&#39;, place4&#39;)。然后可以进行user之间的相似度度量。</li>
-<li><br/>
-(2) matrix<br/>
-可以做travel recommendation。  比如 user-location矩阵，zheng[2010b]提出了一个coupled-MF的方法。构造了一个location-activity矩阵。</li>
-</ul>
-
-<p>(3) tensor<br/>
-user-location-activity。作者介绍了一种分解方法</p>
-
-<h2 id="toc_13">8.常用的轨迹数据集</h2>
-
-<p>public trajectory dataset<br/>
-—GeoLife Trajectory Dataset [GeoLife Data]<br/>
-—T-Drive Taxi Trajectories [T-Drive Data]<br/>
-—GPS Trajectory with Transportation Labels<br/>
-—Check-in Data from Location-based Social Networks [User check-in data]<br/>
-—Hurricane Trajectories [Hurricane trajectory (HURDAT)]<br/>
-—The Greek Truck Trajectories [The Greek Trucks Dataset]<br/>
-—Movebank Animal Tracking Data [Movebank data]</p>
-
-<hr/>
-
-<h2 id="toc_14">基于轨迹特征的挖掘应用</h2>
-
-<p>轨迹数据应用案例<br/>
-<a href="https://www.jianshu.com/p/e78016feda12">https://www.jianshu.com/p/e78016feda12</a></p>
-
-<p>一个挖掘案例<br/>
-<a href="https://github.com/haicg/datamining-geolife-with-python">https://github.com/haicg/datamining-geolife-with-python</a></p>
-
-<p><a href="https://github.com/jbremz/Beijing-Trajectories-Project">https://github.com/jbremz/Beijing-Trajectories-Project</a><br/>
-这个项目本身是个分类的项目，通过各种轨迹特征来判断交通方式。其中有很多关于轨迹特征指标的设计可以借鉴(比如角度、面积。。。)</p>
-
-<p>数据来源，微软GeoLife GPS Trajectories项目，<a href="https://www.microsoft.com/en-us/research/publication/geolife-gps-trajectory-dataset-user-guide/">https://www.microsoft.com/en-us/research/publication/geolife-gps-trajectory-dataset-user-guide/</a></p>
-
-<p><a href="https://chuansongme.com/n/1884212353776">https://chuansongme.com/n/1884212353776</a></p>
-
-<p>研究paper：<br/>
-Trajectory Clustering: A Partition-and-Group Framework，Jae-Gil Lee, Jiawei Han，Kyu-Young Whang</p>
-
-<p>很好的综述，有部分code<br/>
-<a href="http://www.idataskys.com/2019/07/20/%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E7%9B%B8%E5%85%B3%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/">http://www.idataskys.com/2019/07/20/%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E7%9B%B8%E5%85%B3%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/</a></p>
-
-<h2 id="toc_15">参考资料</h2>
-
-<p>郑宇 <a href="https://www.microsoft.com/en-us/research/publication/trajectory-data-mining-an-overview/">https://www.microsoft.com/en-us/research/publication/trajectory-data-mining-an-overview/</a></p>
-
-<p>其他综述类资料：<a href="http://www.idataskys.com/2019/07/20/%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E7%9B%B8%E5%85%B3%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/">http://www.idataskys.com/2019/07/20/%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E7%9B%B8%E5%85%B3%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/</a></p>
 
                         
                       </div>
@@ -261,7 +144,7 @@ Trajectory Clustering: A Partition-and-Group Framework，Jae-Gil Lee, Jiawei Han
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                  
+                   <a href="15687050894061.html">Read more</a>&nbsp;&nbsp; 
                     <span class="date">2019/9/17</span>
                     <span>posted in&nbsp;</span> 
           				  
@@ -441,117 +324,6 @@ online-compression，即数据会源源不断过来，无法提前预知轨迹�
                         	<p>相似性度量方法<br/>
 <a href="https://www.jianshu.com/p/8a5755c1831a">https://www.jianshu.com/p/8a5755c1831a</a></p>
 
-<p>基于轨迹点的相似性度量方法：</p>
-
-<p><strong>全局匹配度量法</strong><br/>
-即两条轨迹要整体相似，每个点都要在另一条轨迹中找到对应点。常见的方法有：</p>
-
-<ul>
-<li>Euclid 欧式距离</li>
-<li>ERP 编辑距离</li>
-<li>DTW 动态时间扭曲方法。 对轨迹进行局部的拉伸或者缩放，从而可以对不同采样率和不同长度的轨迹进行比较，DWT距离就是所有最优匹配轨迹点间距离的累加和</li>
-</ul>
-
-<p><strong>局部匹配度量法</strong></p>
-
-<p>只要求两条轨迹部分相似，并且计算距离的时候只看匹配点之间的距离。常见的方法有</p>
-
-<ul>
-<li>EDR 编辑距离法。 将距离量化为0，1两个值来消除噪音。方法鲁棒性好，但是不满足距离的三角不等式</li>
-<li>LCSS 最长公共子序列  <a href="https://www.cnblogs.com/CheeseZH/p/8830482.html">https://www.cnblogs.com/CheeseZH/p/8830482.html</a></li>
-</ul>
-
-<p>zzz: 对于轨迹数据，可以将(x,y,t) 做一个映射，映射到一个格子标号。即将(x,y) 对应到一个位置范围。在这个位置范围内相同出现的次数可以认为是两个轨迹的相似度度量。<br/>
-而且实际情况中，在商场的环境下。用户浏览路线的宽度其实是可以没有限制的可以进行适当的放松，这个必须得结合真实的商场布局图来设计。</p>
-
-<p>这样(x, y, t) =&gt; x_y的字符id</p>
-
-<p>python实现 <a href="https://www.jianshu.com/p/d7b8db280a01">https://www.jianshu.com/p/d7b8db280a01</a></p>
-
-<p>Levenshtein实现<br/>
-<a href="https://github.com/ztane/python-Levenshtein/#documentation">https://github.com/ztane/python-Levenshtein/#documentation</a></p>
-
-<ul>
-<li>Frechet 费累歇距离。人遛狗的狗绳距离</li>
-<li>KBCT：K-BCT是一个参数free的方法，结合了DTW和LCSS</li>
-<li> LCS, </li>
-<li>CATS</li>
-</ul>
-
-<p>方法对比</p>
-
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>优缺点</th>
-<th></th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>欧式距离</td>
-<td>x 采样率，轨迹点必须一致</td>
-<td></td>
-</tr>
-<tr>
-<td>DTW</td>
-<td>可以不同采样频率，不同长度；</td>
-<td></td>
-</tr>
-<tr>
-<td>ERP</td>
-<td>可以不同采样频率，不同长度；不是所有的匹配点都计算距离，减少噪音</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="toc_0">code - DTW</h3>
-
-<p>dtw实现</p>
-
-<pre><code class="language-python">from fastdtw import fastdtw
-euclidean_norm = lambda x, y: np.abs(x - y)
-fastdtw(x, y, dist=euclidean_norm)
-
-</code></pre>
-
-<pre><code class="language-python">import numpy as np
-from cdtw import pydtw
-r = np.array([1,2,3,4])
-q = np.array([2,3,4,5])
-d = pydtw.dtw(r,q,pydtw.Settings(step = &#39;p0sym&#39;, #Sakoe-Chiba symmetric step with slope constraint p = 0
-window = &#39;palival&#39;, #type of the window
-param = 2.0, #window parameter
-norm = False, #normalization
-compute_path = True))
-
-d.get_dist()
-
-# 连接 https://pypi.org/project/cdtw/
-</code></pre>
-
-<pre><code class="language-text">参考资料
-
-* https://blog.csdn.net/songbinxu/article/details/86660136
-* 成对数据计算效率问题: http://cn.voidcc.com/question/p-pvczjbyi-bmw.html
-* 这里踩了一个坑：安装上fastdtw后速度仍然慢。在测试机上跑n=30条数据两两组队，耗时38s，mac上才3s。后来发现是mac上采用的是Cpython， 测试机上运行的是纯python版本。
-* dtw加速计算的一些资料: https://jozeelin.github.io/2019/07/03/UCR-DTW%E5%92%8CUCR-ED%E6%A8%A1%E5%9E%8B%E8%AF%A6%E8%A7%A3/
-
-</code></pre>
-
-<h2 id="toc_1">效率问题</h2>
-
-<p>假设有n个用户，如果采用计算相似矩阵/距离矩阵的方法，需要两两之间，即\(n^2\)的运算量。实际操作时候，如果n太大，可以先建立item-＞users的倒排，只针对有共同item的user进行计算。 将每个iterm下的user两两组成pair后再uniq即可。</p>
-
-<p>facebook的一个开源工具 <a href="https://github.com/facebookresearch/faiss">https://github.com/facebookresearch/faiss</a></p>
 
                         
                       </div>
@@ -559,7 +331,7 @@ d.get_dist()
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                  
+                   <a href="15694875253508.html">Read more</a>&nbsp;&nbsp; 
                     <span class="date">2019/9/26</span>
                     <span>posted in&nbsp;</span> 
           				  
@@ -588,148 +360,6 @@ d.get_dist()
                         
                         	<p>轨迹聚类的方式总的来说有三大类：无监督的、有监督的、半监督的。轨迹聚类能够探知时空数据的潜在信息，并且能有很多的实际应用场景。比如：物体移动预测、交通监控、活动理解、异常检测、三维重建等。</p>
 
-<p>一条轨迹数据的基本构成可以看做是<br/>
-\[Trajectory = (Tr_1, Tr_2, ....Tr_n)\]<br/>
-其中每个\(Tr_i=(x_i,y_i,t_i, 其他信息)\), 其他信息可能包括速度、方向、加速度等等。<br/>
-为了进行聚类，必须要衡量轨迹之间的相似性，而不同轨迹数据面临采样不一致、长短不同等问题。所以在聚类开始之前会有很多的前期预处理工作。</p>
-
-<h2 id="toc_0">3.1 相似性预处理</h2>
-
-<p>对轨迹聚类前期的准备工作主要是对数据进行变换。主要有如下步骤:</p>
-
-<p><strong>要求轨迹长度相同的-轨迹transformation</strong><br/>
-对于要求轨迹长度相同的才能计算相似性的方法，比如欧式距离，就需要首先将两条轨迹进行变换，或者是投影到另一个子空间。</p>
-
-<p>(1) transformation 方法</p>
-
-<ul>
-<li>linear transformation. 将轨迹表示成basic trajectory的线性组合</li>
-<li>curve fitting，转到参数空间， e.g B-spline curve.</li>
-<li>vector fields </li>
-<li>PCA</li>
-<li>DFT 离散傅里叶变换</li>
-</ul>
-
-<p>(2)重抽样方法<br/>
-但是会有信息损失，需要加稀疏正则</p>
-
-<p>(3)sub-trajectory.<br/>
-需要提前对轨迹进行segmentation，比如根据changing point或者是速度、方向等。 这里有一些常用的轨迹切分方法：MDL最小描述长度，DP算法，MBR(minimum bounding rectangles)。 此外还有基于region进行切分的</p>
-
-<p>(4) 根据poi点。 比如  <code>A survey of vision-based trajectory learning and analysis for surveillance</code>。包括进出门、逗留等。还可以对points设置不同的重要性<code>Dense scene reconstruction with points of interest</code></p>
-
-<p>(5) Scale-invariant Features？？<br/>
-一些刻画曲线的统计指标信息吧。 HOG(histograms of oriented gradients), HOF(histograms of optical flow)</p>
-
-<p>（6） 其他<br/>
-&#39;String-based feature representation for trajectory clustering&#39;中采样了网格化的方法，将轨迹映射到了网格上，将数字字符化。<br/>
-首先利用DP算法将每条轨迹都搞成一样长度的</p>
-
-<p><img src="media/15686368904229/15777734932601.jpg" alt=""/></p>
-
-<p>基于字符的距离度量方式有：编辑距离、q-grame based距离、</p>
-
-<h2 id="toc_1">3.2距离/相似性度量</h2>
-
-<p>数据相同长度：</p>
-
-<ul>
-<li>欧式距离</li>
-</ul>
-
-<p>可以不同长度：</p>
-
-<ul>
-<li><p>hausdorff distance 每个点到另一条轨迹的最短距离的最大值<br/>
-<img src="media/15686368904229/15772782653996.jpg" alt=""/></p></li>
-<li><p>Bhattacharyya distance 是用来衡量两个概率分布是否相同的<br/>
-\[D(p,q)=-ln(\sum \sqrt{p_iq_i})\]</p></li>
-<li><p>Fréchet distance(弗雷歇距离） 狗绳距离</p></li>
-<li><p>DTW</p></li>
-<li><p>LCSS 最长公共子序列</p></li>
-</ul>
-
-<p>其他：</p>
-
-<ul>
-<li>SSPD
-<img src="media/15686368904229/15776864958726.jpg" alt=""/></li>
-</ul>
-
-<p>T1上的点p到T2 的距离定义为：min(d(p,q)), q属于T2.而\(D_{SPD}(T_1, T2)= mean(D(p, T2))\)</p>
-
-<p>从数据类型上来看主要包括：数值型和string型，数值型的主要是location的(x,y)坐标，string型的主要是根据(x,y)映射后的loc信息，比如poi点等</p>
-
-<p>对距离的汇总比较<br/>
-<img src="media/15686368904229/15776769741230.jpg" alt=""/></p>
-
-<h2 id="toc_2">3.3 聚类-无监督</h2>
-
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>算法举例</th>
-<th>参考</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>partition based</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-<p>(1) densely based <br/>
-DBSCAN ,比如对于sub-trajectory<br/>
-KMEANS ,FCM(fuzzy C-MEANS)</p>
-
-<p>(2)层次聚类</p>
-
-<ul>
-<li>agglomerative clustering  自下而上，以及在此基础上出现的HITS</li>
-<li>divisive clustering  自上而下，以及在此基础上出现的Test-and-Divide (TAD)</li>
-</ul>
-
-<p>(3) 谱聚类<br/>
-计算效率快，但是只适合同长度的。是一种基于图论的方法。对于一个图G=G(V,E),其中V={v1,v2...vn}即是顶点的集合，E是边的集合，即E={w_ij}表示顶点i与顶点j之前的权重。</p>
-
-<p>谱聚类的基本想法就是把所有的数据看做空间中的点，通过定义边之前的权重，然后进行切图，将距离较近的点切在一起，距离较远的点分开。所以说是一种基于图的聚类。</p>
-
-<p>对于邻接矩阵W的构建，一般是根据相似矩阵𝑆来获得邻接矩阵𝑊。<img src="media/15686368904229/15776815135405.jpg" alt="" style="width:231px;"/></p>
-
-<p>聚类步骤：</p>
-
-<ul>
-<li>计算图的Laplacian矩阵L=D-W  （D为度的对角矩阵，W为边的权重矩阵）</li>
-<li>对Laplacian矩阵进行特征值分解，取其前个特征值对应的特征向量，构成的特征向量矩阵；</li>
-<li>利用K-Means聚类算法对上述的的特征向量矩阵进行聚类，每一行代表一个样本点。</li>
-</ul>
-
-<p>（4）神经网络<br/>
-基于SOM（自组织映射网络）</p>
-
-<p>(5) Co-Occurrence Decomposition</p>
-
-<p>Trajectories are viewed as a bags of words where similar bags contain similar words。该方法需要提前定义a set of vocabulary。<br/>
-<a href="https://iksinc.online/tag/co-occurrence-matrix/">https://iksinc.online/tag/co-occurrence-matrix/</a></p>
-
-<h2 id="toc_3">参考资料</h2>
-
-<p>相关学者 Brendan Tran Morris <a href="https://ieeexplore.ieee.org/author/37391430100">https://ieeexplore.ieee.org/author/37391430100</a></p>
-
-<ol>
-<li>A survey on trajectory clustering analysis</li>
-<li>Review &amp; Perspective for Distance Based Trajectory Clustering</li>
-</ol>
 
                         
                       </div>
@@ -737,7 +367,7 @@ KMEANS ,FCM(fuzzy C-MEANS)</p>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                  
+                   <a href="15686368904229.html">Read more</a>&nbsp;&nbsp; 
                     <span class="date">2019/9/16</span>
                     <span>posted in&nbsp;</span> 
           				  

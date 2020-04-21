@@ -135,125 +135,8 @@
                       
                       <div class="a-content-text">
                         
-                        	<p><img src="media/15687050894061/15694883044237.jpg" alt=""/></p>
+                        	<p>首先是关于整个轨迹数据涉及的存储、数据清洗、分析、挖掘的一个整体模块。</p>
 
-<p>首先是关于整个轨迹数据涉及的存储、数据清洗、分析、挖掘的一个整体模块。</p>
-
-<h2 id="toc_0">1 trajectory preprocessing</h2>
-
-<p>详见 <a href="15694859531608.html"> trajectory preprocessing</a></p>
-
-<p>GPS点漂移问题<br/>
-<a href="http://www.xml-data.org/CHDLXX/html/62356297-1a5a-4b3f-bb57-547e9a401da0.htm">http://www.xml-data.org/CHDLXX/html/62356297-1a5a-4b3f-bb57-547e9a401da0.htm</a></p>
-
-<h2 id="toc_1">2 trajectory data management</h2>
-
-<h3 id="toc_2">2.1 trajectory indexing和retrieval</h3>
-
-<p>常见的检索类型有：<br/>
-(1) range 检索： 检索在指定空间或时间内的轨迹<br/>
-(2) KNN 检索：找到和指定轨迹或者点最近的k条轨迹<br/>
-检索涉及到数据存储形式，可以看下原文，这里不细说了。</p>
-
-<p>一般都是采用专门的GIS数据库进行存储和管理。</p>
-
-<h3 id="toc_3">2.2 trajectory的距离/相似性</h3>
-
-<p>详见 <a href="15694875253508.html">2 轨迹相似性度量</a></p>
-
-<h2 id="toc_4">3.uncertainty in a trajectory</h2>
-
-<p>(1) 减少不确定性<br/>
-多条不确定性的路线合并=&gt; 相对确定性的路线<br/>
-(2) 将空间进行grids划分，将原本的轨迹点重新归属到新的单元格中，简化轨迹</p>
-
-<h2 id="toc_5">4. trajectory pattern mining</h2>
-
-<h3 id="toc_6">(1) moving together patterns</h3>
-
-<p>move together pattern 主要是找到一组在一定时间内共同移动的物体。一般都是通过基于密度聚类的方法。<br/>
-Jensen[2007] Continuous clustering of moving objects扩展了这种方法，使得在原来的距离的基础上增加了移动的方向、角度等因素。</p>
-
-<h3 id="toc_7">(2) trajectory clustering</h3>
-
-<p>根据前面的关于轨迹距离/相似度的定义，可以对轨迹进行聚类。在这之前一般都需要对轨迹数据进行一步的处理，比如切分segment。</p>
-
-<h3 id="toc_8">（3）mining sequential patterns</h3>
-
-<p>进行子序列模式挖掘，首先要定义序列中的location，即将(x,y)转为一个有标识性的概念，比如一个地点。方法：</p>
-
-<ul>
-<li>line simplification based 方法：比如先用DP方法识别出来key points。然后对每个轨迹的segment为一个item进行模式挖掘</li>
-<li>cluster based： 先把轨迹上的点，聚类到regions of interest，然后每条轨迹就可以用这些“关键点”来表示。</li>
-</ul>
-
-<h3 id="toc_9">(4) periodical patterns</h3>
-
-<h2 id="toc_10">5. trajectory classification</h2>
-
-<p>一般来说，一个轨迹分类的过程大概是<br/>
-(1)将轨迹切分成segment<br/>
-(2) 提取特征<br/>
-(3) 建立模型： As a trajectory is essentially a sequence, we can leverage existing sequence inference models, such as Dynamic Bayesian Network (DBN), HMM, and Conditional Random Field (CRF)</p>
-
-<p>==&gt; 可以看看相关论文</p>
-
-<h2 id="toc_11">6. 轨迹异常检测</h2>
-
-<h2 id="toc_12">7.把轨迹转成其他的形式</h2>
-
-<p>(1) graph</p>
-
-<ul>
-<li>travel recommendation, 旅游的stay points, 然后研究图的联通，最大流之类的问题</li>
-<li>计算user similarity。 通过更细粒度的停留点，以停留点为单位，每个人的轨迹就可以用停留点来刻画，即user1= (place1, place2, place3), user2 = (place1&#39;, place2&#39;, place3&#39;, place4&#39;)。然后可以进行user之间的相似度度量。</li>
-<li><br/>
-(2) matrix<br/>
-可以做travel recommendation。  比如 user-location矩阵，zheng[2010b]提出了一个coupled-MF的方法。构造了一个location-activity矩阵。</li>
-</ul>
-
-<p>(3) tensor<br/>
-user-location-activity。作者介绍了一种分解方法</p>
-
-<h2 id="toc_13">8.常用的轨迹数据集</h2>
-
-<p>public trajectory dataset<br/>
-—GeoLife Trajectory Dataset [GeoLife Data]<br/>
-—T-Drive Taxi Trajectories [T-Drive Data]<br/>
-—GPS Trajectory with Transportation Labels<br/>
-—Check-in Data from Location-based Social Networks [User check-in data]<br/>
-—Hurricane Trajectories [Hurricane trajectory (HURDAT)]<br/>
-—The Greek Truck Trajectories [The Greek Trucks Dataset]<br/>
-—Movebank Animal Tracking Data [Movebank data]</p>
-
-<hr/>
-
-<h2 id="toc_14">基于轨迹特征的挖掘应用</h2>
-
-<p>轨迹数据应用案例<br/>
-<a href="https://www.jianshu.com/p/e78016feda12">https://www.jianshu.com/p/e78016feda12</a></p>
-
-<p>一个挖掘案例<br/>
-<a href="https://github.com/haicg/datamining-geolife-with-python">https://github.com/haicg/datamining-geolife-with-python</a></p>
-
-<p><a href="https://github.com/jbremz/Beijing-Trajectories-Project">https://github.com/jbremz/Beijing-Trajectories-Project</a><br/>
-这个项目本身是个分类的项目，通过各种轨迹特征来判断交通方式。其中有很多关于轨迹特征指标的设计可以借鉴(比如角度、面积。。。)</p>
-
-<p>数据来源，微软GeoLife GPS Trajectories项目，<a href="https://www.microsoft.com/en-us/research/publication/geolife-gps-trajectory-dataset-user-guide/">https://www.microsoft.com/en-us/research/publication/geolife-gps-trajectory-dataset-user-guide/</a></p>
-
-<p><a href="https://chuansongme.com/n/1884212353776">https://chuansongme.com/n/1884212353776</a></p>
-
-<p>研究paper：<br/>
-Trajectory Clustering: A Partition-and-Group Framework，Jae-Gil Lee, Jiawei Han，Kyu-Young Whang</p>
-
-<p>很好的综述，有部分code<br/>
-<a href="http://www.idataskys.com/2019/07/20/%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E7%9B%B8%E5%85%B3%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/">http://www.idataskys.com/2019/07/20/%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E7%9B%B8%E5%85%B3%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/</a></p>
-
-<h2 id="toc_15">参考资料</h2>
-
-<p>郑宇 <a href="https://www.microsoft.com/en-us/research/publication/trajectory-data-mining-an-overview/">https://www.microsoft.com/en-us/research/publication/trajectory-data-mining-an-overview/</a></p>
-
-<p>其他综述类资料：<a href="http://www.idataskys.com/2019/07/20/%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E7%9B%B8%E5%85%B3%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/">http://www.idataskys.com/2019/07/20/%E8%BD%A8%E8%BF%B9%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E7%9B%B8%E5%85%B3%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/</a></p>
 
                         
                       </div>
@@ -261,7 +144,7 @@ Trajectory Clustering: A Partition-and-Group Framework，Jae-Gil Lee, Jiawei Han
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                  
+                   <a href="15687050894061.html">Read more</a>&nbsp;&nbsp; 
                     <span class="date">2019/9/17</span>
                     <span>posted in&nbsp;</span> 
           				  

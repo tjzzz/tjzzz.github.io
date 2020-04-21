@@ -174,7 +174,7 @@
 <tr>
 <th>大分类</th>
 <th>常用方法距离</th>
-<th>特点/适用范围</th>
+<th>特点/问题/适用范围</th>
 </tr>
 </thead>
 
@@ -185,19 +185,24 @@
 <td>基于分布假定，对于分布比较极端的不太适用</td>
 </tr>
 <tr>
-<td>基于距离的近邻类</td>
-<td></td>
+<td>低空间映射</td>
+<td>PCA, 协差阵</td>
+<td>协差阵分布假定</td>
+</tr>
+<tr>
+<td>基于相似度-距离</td>
+<td>聚类</td>
+<td>类别大小，可能会分散在很多杂类上</td>
+</tr>
+<tr>
+<td>基于相似度-密度，角度等</td>
+<td>knn，LOF, COF, Isolation Forest</td>
 <td></td>
 </tr>
 <tr>
-<td>聚类类</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>分类类</td>
-<td></td>
-<td></td>
+<td>集成方法</td>
+<td>feature bagging框架</td>
+<td>稳定性好，效率低一些</td>
 </tr>
 </tbody>
 </table>
@@ -218,11 +223,16 @@
 <p>其中k=1.5 时候可认为是中度异常，k=3时是极度异常。该方法应该假定了数据正态分布(或者是对称分布吧)</p>
 
 <ul>
-<li><p>检测异常值Grubbs的检验（Grubbs 1969和Stefansky 1972）用于检测单变量数据集中的单个异常值，该单变量数据集遵循近似正态分布。\((x_i-\bar x)/s\) 与临界值比较。如果您怀疑可能存在多个异常值，建议您使用Tietjen-Moore测试或广义极端学生化偏差测试而不是Grubbs测试</p></li>
+<li><p>检测异常值Grubbs的检验（Grubbs 1969和Stefansky 1972）用于检测单变量数据集中的单个异常值，该单变量数据集遵循近似正态分布。\(G=max|x_i-\bar x|/s\) 与临界值比较。如果您怀疑可能存在多个异常值，建议您使用Tietjen-Moore测试或广义极端学生化偏差测试而不是Grubbs测试</p></li>
 <li><p>HBOS- 基于直方图的检测方法<br/>
 其实就是将直观看histogram的方法数量化，正常分布的直方图是比较集中的，而有异常值的分布相对来说两边会比较分散，基于此，设计的异常打分。<br/>
-\[\]</p></li>
+前提假设:多个维度中各个维度是相互独立的 这样整体分布\(P(x_1,...x_d)=P_1(x_1)P_2(x_2)..P_d(x_d)\)<br/>
+对单一一个维度来说，先做出数据分布直方图</p></li>
+<li><p>k个等宽的bins</p></li>
+<li><p>动态宽度柱状图，宽度可能不同，每个柱子里的样本数是一样的；跨度大的桶高度低，密度就小</p></li>
 </ul>
+
+<p>\[HBOS(p)=\sum log(\frac{1}{hist_i(p)})\]</p>
 
 <p>注意:<br/>
 基于统计分布的方法，其背后都是基于小概率的原理，认为超过正常分布的点就是异常值。其前提其实是认为大部分的分布都是正常的，波动只存在在小范围内。 但是如下的例子，波动其实体现在整体上，这种用统计相关的方法就不好检测了。</p>
@@ -231,20 +241,25 @@
 
 <h2 id="toc_1">2. 线性模型</h2>
 
+<p>假设数据在低维空间有嵌入，在低维空间投射后表现不好的即是异常点。</p>
+
 <ul>
-<li>PCA 大部分正常样本服从相似的分布映射的过程中在高低维的位置接近</li>
-<li>协方差矩阵</li>
+<li>PCA 大部分正常样本服从相似的分布，映射的过程中在低维的位置接近；再还原回去后计算误差，误差大的异常性高。 类似的还有非线性的auto-encoder</li>
+<li>协方差矩阵：类似标准化，使用马氏距离</li>
+<li>OneClassSVM 无监督的SVM，划分结果是正常点和非正常点。算法的关键是寻找最优化的划分边界。正常在训练的时候是不能拿包含异常样本的，不然可能会影响boundary的选择，但是在高维的时候应该还好。</li>
 </ul>
 
-<h2 id="toc_2">3.基于相似度/距离衡量的模型</h2>
+<h2 id="toc_2">3.基于相似度(距离,密度，角度等)衡量的模型</h2>
 
 <ul>
+<li>聚类</li>
 <li>k近邻</li>
 <li>基于密度的 LOF, COF, Isolation Forest</li>
-<li>OneClassSVM</li>
 </ul>
 
-<h2 id="toc_3">4.聚类的方法， BIRCH，DBSCAN</h2>
+<h2 id="toc_3">4. 集成方法 feature bagging</h2>
+
+<p>Isolation Forest</p>
 
 <h2 id="toc_4">5.其他</h2>
 
@@ -258,40 +273,13 @@
 
 <p><a href="https://www.zhihu.com/question/280696035/answer/438788495">https://www.zhihu.com/question/280696035/answer/438788495</a></p>
 
-<h2 id="toc_6">其他</h2>
-
-<p>3.video中异常行为检测</p>
-
-<ol>
-<li>行为序列的异常？</li>
-</ol>
-
-<p>(1) sequence based</p>
-
 <ul>
-<li>相似性： 假设所有数据都是normal的，然后找到normal sequence， 最后计算与normal sequence的距离(比如LCS)</li>
-<li>window based。traing：所有sequence 分成多个windows，windows的score：frequence；classifier：随机生成数据作为anomaly标签。 testing：instance的各个windows的anomaly socre组合：取平均；取大于阈值的个数；LFC（计算anomaly window前n个window中anomaly 的个数）</li>
-<li>HMM：</li>
+<li>总的看没有任何模型持续表现好。isolation forest和knn表现比较稳定</li>
+<li>knn模型等基于距离度量，收到数据维度影响较大，维度较低时候表现较好。数据维度较高时可以用isolation forest</li>
+<li>HBOS 结果不太稳定，有些表现很好，有些表现很差；主要是数据假定问题</li>
 </ul>
 
-<p><strong>参照论文：</strong><br/>
-<a href="https://blog.csdn.net/liuxiao214/article/details/78281160?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task">https://blog.csdn.net/liuxiao214/article/details/78281160?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task</a></p>
-
-<p>【Soft + Hardwired Attention: An LSTM Framework for Human Trajectory<br/>
-Prediction and Abnormal Event Detection】</p>
-
-<p>本文主要提出了一种基于LSTM的行为预测和异常检测方法</p>
-
-<ul>
-<li>文献回溯
-<ul>
-<li>轨迹聚类</li>
-<li>预测人类行为，一个常用的方法是social force model</li>
-<li>attention models</li>
-</ul></li>
-</ul>
-
-<p><img src="media/15846836766049/15851206602866.jpg" alt=""/></p>
+<h2 id="toc_6">我们如何应用</h2>
 
 <p>mall场景：</p>
 
@@ -304,17 +292,13 @@ Prediction and Abnormal Event Detection】</p>
 <h2 id="toc_7">工具-Pyod</h2>
 
 <ul>
-<li>Python异常检测工具库<code>Pyod</code>， 包含大概20多种方法，其中包含深度学习以及outlier ensembles</li>
+<li>Python异常检测工具库<code>Pyod</code>，是一款专门做异常检测的python工具箱。包含大概20多种方法，其中包含深度学习以及outlier ensembles</li>
 <li>SUOD(<a href="https://github.com/yzhao062/suod),Pyod%E4%BD%9C%E8%80%85%E7%9A%84%E4%B8%80%E4%B8%AA%E5%8A%A0%E9%80%9F%E9%80%82%E7%94%A8large-scale%E7%9A%84%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E5%B7%A5%E5%85%B7">https://github.com/yzhao062/suod),Pyod作者的一个加速适用large-scale的异常检测工具</a></li>
 <li>sklearn <a href="https://scikit-learn.org/stable/modules/outlier_detection.html">https://scikit-learn.org/stable/modules/outlier_detection.html</a><br/>
 常用的几个方法<br/>
 ensemble.IsolationForest<br/>
-LOF: neighbors.LocalOutlierFactor <br/>
-Pyod是一款专门做异常检测的python工具箱</li>
+LOF: neighbors.LocalOutlierFactor </li>
 </ul>
-
-<p>github:   <a href="https://github.com/yzhao062/pyod">https://github.com/yzhao062/pyod</a><br/>
-文档说明: <a href="https://pyod.readthedocs.io/en/latest/index.html">https://pyod.readthedocs.io/en/latest/index.html</a></p>
 
 <h2 id="toc_8">参考</h2>
 
@@ -324,14 +308,11 @@ Pyod是一款专门做异常检测的python工具箱</li>
 <li><a href="https://www.zhihu.com/question/280696035/answer/417091151">https://www.zhihu.com/question/280696035/answer/417091151</a></li>
 <li><a href="https://blog.csdn.net/g2v13ah/article/details/78474370">https://blog.csdn.net/g2v13ah/article/details/78474370</a></li>
 <li><a href="https://www.zhihu.com/question/280696035">https://www.zhihu.com/question/280696035</a></li>
+<li><a href="https://blog.csdn.net/Jasminexjf/article/details/88527966">https://blog.csdn.net/Jasminexjf/article/details/88527966</a></li>
+<li>ppt材料 <a href="https://zhuanlan.zhihu.com/p/30169110">https://zhuanlan.zhihu.com/p/30169110</a></li>
+<li>《A comparative evaluation of outlier detection algorithms: Experiments and<br/>
+analyses》</li>
 </ol>
-
-<p><a href="https://blog.csdn.net/Jasminexjf/article/details/88527966">https://blog.csdn.net/Jasminexjf/article/details/88527966</a></p>
-
-<p>ppt材料 <a href="https://zhuanlan.zhihu.com/p/30169110">https://zhuanlan.zhihu.com/p/30169110</a></p>
-
-<p>《A comparative evaluation of outlier detection algorithms: Experiments and<br/>
-analyses》</p>
 
 
     
