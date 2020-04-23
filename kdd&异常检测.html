@@ -322,14 +322,14 @@
 			<div class="article">
                 <a class="clearlink" href="15870068175699.html">
                 
-                  <h1>【异常检测3】行为序列 / 视频</h1>
+                  <h1>【异常检测3】Abnormal behavior detection （行为/视频）</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<p>行为序列的异常？ video中异常行为检测？</p>
 
-<p>(1) sequence based</p>
+<p>sequence based</p>
 
 <ul>
 <li>相似性： 假设所有数据都是normal的，然后找到normal sequence， 最后计算与normal sequence的距离(比如LCS)</li>
@@ -361,11 +361,31 @@
 
 <p>动态误差阈值：对于模型产生的预测误差，将其进行平滑处理(比如指数加权),然后针对平滑后的设置阈值。</p>
 
-<p>阈值计算：</p>
+<p><strong>阈值计算</strong>：<br/>
+<img src="media/15870068175699/15874697100613.jpg" alt=""/><br/>
+简单地说，就是找到这样一个阈值，如果去掉超过他的所有值后，平滑误差\(e_s\)的均值和标准差会下降最大的百分比。另外还考虑到了正则化惩罚，惩罚具有大量与长治\(|e_s|\)和序列\(|E_{seq}|\)以防止过度贪心的行为。</p>
 
-<h2 id="toc_2">工具</h2>
+<p><strong>减少误报-假阳性</strong></p>
+
+<h2 id="toc_2">论文3 abnormal behavior detection in crowd scenes</h2>
+
+<p>光流法(optical flow)（简介<a href="https://zhuanlan.zhihu.com/p/44859953%EF%BC%89%EF%BC%8C%E4%B8%80%E8%88%AC%E7%94%A8HOF%E6%88%96%E8%80%85MHOF%EF%BC%88histogram">https://zhuanlan.zhihu.com/p/44859953），一般用HOF或者MHOF（histogram</a> of optical flow）作为速度、方向的统计信息特征</p>
+
+<h2 id="toc_3">工具</h2>
 
 <p><a href="https://github.com/khundman/telemanom">https://github.com/khundman/telemanom</a></p>
+
+<p>使用报错 <code>OMP: Error #15: Initializing libiomp5.dylib, but found libiomp5.dylib already initialized.</code><br/>
+解决方案:在执行的example.py脚本中加入 </p>
+
+<pre><code class="language-python">import os
+os.environ[&#39;KMP_DUPLICATE_LIB_OK&#39;]=&#39;True&#39;
+</code></pre>
+
+<p>一个简化版讲解 <a href="https://www.cdxy.me/?p=812">https://www.cdxy.me/?p=812</a></p>
+
+<p><code>telemanom.modeling</code>:   model 加载或者创建新的<br/>
+<code>telemanom.errors</code>: 对应论文中自动确定阈值部分</p>
 
                         
                       </div>
