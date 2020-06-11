@@ -103,6 +103,8 @@
         
             <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
+            <li><a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html">11 平台架构</a></li>
+        
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E5%85%B6%E4%BB%96.html">其他</a></li>
@@ -128,14 +130,17 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15834841723937.html">
+                <a class="clearlink" href="15913232206040.html">
                 
-                  <h1>【可解释性问题】</h1>
+                  <h1>tools</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	
+                        	<p><a href="https://github.com/facebookresearch/detr">https://github.com/facebookresearch/detr</a></p>
+
+<p>mmlab-mmdetection</p>
+
                         
                       </div>
                   </div>
@@ -143,10 +148,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/3/6</span>
+                    <span class="date">2020/6/5</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
+          					    <span class="posted-in"><a href='%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B.html'>目标检测</a></span>
           				   
                     
 
@@ -162,114 +167,26 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15834004454503.html">
+                <a class="clearlink" href="15910646289765.html">
                 
-                  <h1>【数据增强】</h1>
+                  <h1>ActivityNet</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h3 id="toc_0">1.有监督的</h3>
+                        	<p>ActivityNet是一个类似ImageyNet的关于行为识别的比赛</p>
 
-<p><strong>1.1 单样本的数据增强</strong><br/>
-单样本的数据增强主要是围绕一个样本图片，进行的”几何变换“、”颜色变换“等</p>
+<p><a href="https://github.com/activitynet/ActivityNet">https://github.com/activitynet/ActivityNet</a>  其官网提供了一些</p>
 
-<ul>
-<li>几何变换类： 旋转、翻转、剪裁、变形、缩放</li>
-<li>颜色变换类： 噪声、模糊、颜色变换、填充</li>
-</ul>
+<p>其他方法<br/>
+<a href="https://github.com/facebookresearch/SlowFast/blob/master/INSTALL.md">https://github.com/facebookresearch/SlowFast/blob/master/INSTALL.md</a></p>
 
-<p>实用tool <code>https://github.com/aleju/imgaug</code></p>
+<p><a href="https://github.com/search?q=activity-recognition">https://github.com/search?q=activity-recognition</a></p>
 
-<p><strong>1.2 多样本数据增强</strong><br/>
-利用多个样本产生出新的样本</p>
-
-<ul>
-<li>SMOTE，人工合成新样本，解决类不平衡问题。映射到特征空间，在小样本的k近邻中构造新的样本点</li>
-<li>SamplePairing：主要用在医学图像上，从训练集中随机抽取两张图片，经过基础数据增强后将像素平均合并成一个新的样本。标签记为原样本标签中的一种。</li>
-<li>mixup: 使用线性插值，对于随机选取的两个数据，new = wXi + (1-w)Xj</li>
-</ul>
-
-<h3 id="toc_1">2.无监督的</h3>
-
-<p><strong>2.1 学习数据的分布，随机生成新图片</strong></p>
-
-<ul>
-<li>GAN</li>
-</ul>
-
-<p><strong>2.2 通过模型学习适合当前任务的数据增强方法</strong></p>
-
-<ul>
-<li>AutoAugment<br/>
-google 提出的自动选择最优数据增强方案的研究。其基本思路是:使用增强学习从数据本身寻找最佳的图像变换策略。具体来说就是用基础数据增强策略的组合。</li>
-<li>RandAugment: AutoAugment的进化版</li>
-</ul>
-
-<h2 id="toc_2">参考</h2>
-
-<p><a href="https://www.zhihu.com/question/319291048">https://www.zhihu.com/question/319291048</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/3/5</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15838089244516.html">
-                
-                  <h1>【案例】</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>(1) 样本少容易过拟合</p>
-
-<pre><code class="language-text"> base_model,
-      tf.keras.layers.GlobalAveragePooling2D(),
-      tf.keras.layers.Dropout(0.5),
-      tf.keras.layers.Dense(256, kernel_regularizer=tf.keras.regularizers.l2(0.001),
-                           activation=&#39;relu&#39;),
-      tf.keras.layers.Dense(2, activation = &#39;softmax&#39;)]
-    )
+<pre><code class="language-text">#环境
+conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
 </code></pre>
 
-<p>加入正则化和dropout<br/>
-进行图片增强产生更多图片</p>
-
-<p>fine-tune效果</p>
-
-<p><img src="media/15838089244516/3BB989C7-F853-4391-BAE1-2CF5FE031D51.png" alt="3BB989C7-F853-4391-BAE1-2CF5FE031D51"/></p>
-
-<p>feature-效果<br/>
-<img src="media/15838089244516/7BE3E393-6503-4A17-AD04-34B8DDA9C6D3.png" alt="7BE3E393-6503-4A17-AD04-34B8DDA9C6D3"/></p>
-
-<p>(2) 调整loss中的训练权重<br/>
-class_weight = {0:0.75, 1:0.25}<br/>
-<img src="media/15838089244516/15838091710767.jpg" alt=""/></p>
-
-<p>QQ: 训练集和验证集效果都还好，但是到真实预测的时候效果却很差？？？</p>
-
                         
                       </div>
                   </div>
@@ -277,10 +194,10 @@ class_weight = {0:0.75, 1:0.25}<br/>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/3/10</span>
+                    <span class="date">2020/6/2</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB.html'>图像分类</a></span>
+          					    <span class="posted-in"><a href='%E5%A7%BF%E6%80%81%E8%AF%86%E5%88%AB.html'>姿态识别</a></span>
           				   
                     
 
@@ -296,46 +213,88 @@ class_weight = {0:0.75, 1:0.25}<br/>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15833060322285.html">
+                <a class="clearlink" href="15906325298474.html">
                 
-                  <h1>【目标检测】</h1>
+                  <h1>【工具】MMlab—mmdetection</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><img src="media/15833060322285/15833061979386.jpg" alt=""/></p>
+                        	<p>本来主要是看 mmskelton的，后来发现其依赖mmdetection，于是将这几个都看了下。</p>
 
-<p><img src="media/15833060322285/15833089551223.jpg" alt=""/></p>
+<h3 id="toc_0">1. mmdetection</h3>
 
-<p><strong>two stage</strong></p>
+<p><strong>1 安装</strong><br/>
+进行目标检测:<br/>
+配置要求<br/>
+Linux or macOS (Windows is not currently officially supported)<br/>
+Python 3.6+<br/>
+PyTorch 1.3+<br/>
+CUDA 9.2+ (If you build PyTorch from source, CUDA 9.0 is also compatible)<br/>
+GCC 5+<br/>
+mmcv</p>
 
-<h2 id="toc_0">1.R-CNN</h2>
+<p>安装步骤：</p>
 
-<p>Region-CNN,基本思路如下:</p>
+<pre><code class="language-text"># 进入自己的conda环境
+conda install pytorch torchvision -c pytorch   # 注意版本
+git clone https://github.com/open-mmlab/mmdetection.git
+cd mmdetection
+#
+pip install -r requirements/build.txt
+pip install &quot;git+https://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI&quot;
+pip install -v -e .  # or &quot;python setup.py develop&quot;
+</code></pre>
 
-<ul>
-<li>候选提取框： <code>selective search</code> 启发式搜寻可能存在物体的区域</li>
-<li>对每个提取框提取特征</li>
-<li>图像分类， 用SVM</li>
-<li>非极大值抑制</li>
-</ul>
+<p>注意：git commit id将在步骤d中写入版本号，例如0.6.0 + 2e7045c。该版本还将保存在经过训练的模型中。建议您每次从github提取一些更新时都运行步骤d。如果修改了C ++ / CUDA代码，则此步骤为强制性的。<br/>
+按照上述说明，mmdetection将安装在dev模式下，对代码进行的任何本地修改都将生效，而无需重新安装它（除非您提交了一些提交并希望更新版本号）。<br/>
+如果要使用opencv-python-headless而不是opencv-python，可以在安装MMCV之前先安装它。</p>
 
-<p><strong>one-stage</strong></p>
+<p>方法二:docker</p>
 
-<ul>
-<li>yolo</li>
-<li> SSD</li>
-</ul>
+<pre><code class="language-text">git clone https://github.com/open-mmlab/mmdetection.git
+cd mmdetection
+sudo docker build -t mmdetection docker/
+</code></pre>
 
-<h2 id="toc_1">参考</h2>
+<p>注意:如果没有gpu，需要将Dockerfile中的 Force_cuda改为0</p>
 
-<p><a href="https://zhuanlan.zhihu.com/p/40047760">https://zhuanlan.zhihu.com/p/40047760</a></p>
+<p><strong>2.测试demo</strong></p>
 
-<p>yolo <a href="https://www.cnblogs.com/fydeblog/p/10447875.html">https://www.cnblogs.com/fydeblog/p/10447875.html</a></p>
+<pre><code class="language-text">- demo/inference_demo.ipynb
+</code></pre>
 
-<p>机器之心  <a href="https://www.jiqizhixin.com/articles/092301">https://www.jiqizhixin.com/articles/092301</a></p>
+<pre><code class="language-python">from mmdet.apis import init_detector, inference_detector, show_result_pyplot
+config_file = &#39;configs/faster_rcnn/faster_rcnn_r50_fpn_1x_coco.py&#39;
+checkpoint_file = &#39;checkpoints/faster_rcnn_r50_fpn_1x_coco_20200130-047c8118.pth&#39;
+## checkpoint_file = &#39;https://open-mmlab.s3.ap-northeast-2.amazonaws.com/mmdetection/v2.0/faster_rcnn/faster_rcnn_r50_fpn_1x_coco/faster_rcnn_r50_fpn_1x_coco_20200130-047c8118.pth&#39;
+# 这里要注意config_file 和checkpoint_file的匹配
+# test a single image
+img = &#39;demo/demo.jpg&#39;
+model = init_detector(config_file, checkpoint_file, device=&#39;cpu&#39;)
+result = inference_detector(model, img)
+show_result_pyplot(model, img, result)
+</code></pre>
 
-<p>github综述 <a href="https://github.com/hoya012/deep_learning_object_detection">https://github.com/hoya012/deep_learning_object_detection</a></p>
+<p>解释：</p>
+
+<ol>
+<li>基本上主要分为这三步吧，init_detector， inference_detector， show_result_pyplot 可以再细看下show_result_pyplot中model的属性，怎么把结果和位置提取出来<code>mmdet/models/detectors/base.py</code></li>
+<li>如果本机的环境不好用的话，可以在colab上测试，<a href="https://colab.research.google.com/github/open-mmlab/mmdetection/blob/master/demo/mmdet_inference_colab.ipynb#scrollTo=CSDS0SJBWa2l">https://colab.research.google.com/github/open-mmlab/mmdetection/blob/master/demo/mmdet_inference_colab.ipynb#scrollTo=CSDS0SJBWa2l</a></li>
+<li>多数时候运行不成功，应该都是环境或者版本不匹配问题</li>
+</ol>
+
+<p><strong>3.应用</strong><br/>
+code详解<br/>
+(1) demo里用的是coco的分类<br/>
+mmdet.models.detectors # 是基础的各种检测方法<br/>
+mmdet.models.detectors.base.show_result中可以看到三步骤中二的返回结果是怎么解析的</p>
+
+<p>result格式: list[array([xmin, ymax, xmax, ymin, 置信度])]</p>
+
+<p>mmdet.core.evaluation.class_names 中包含不同数据集定义的get_classes具体的类别</p>
+
+<p>(2)替换自己的数据分类</p>
 
                         
                       </div>
@@ -344,7 +303,141 @@ class_weight = {0:0.75, 1:0.25}<br/>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/3/4</span>
+                    <span class="date">2020/5/28</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%A7%BF%E6%80%81%E8%AF%86%E5%88%AB.html'>姿态识别</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15905910529327.html">
+                
+                  <h1>基础概念</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">1.GPU</h2>
+
+<blockquote>
+<p><a href="https://www.cnblogs.com/marsggbo/p/11838823.html">https://www.cnblogs.com/marsggbo/p/11838823.html</a></p>
+</blockquote>
+
+<ul>
+<li><p>显卡： 简单理解这个就是我们前面说的GPU，尤其指NVIDIA公司生产的GPU系列，因为后面介绍的cuda,cudnn都是NVIDIA公司针对自身的GPU独家设计的。</p></li>
+<li><p>显卡驱动：很明显就是字面意思，通常指NVIDIA Driver，其实它就是一个驱动软件，而前面的显卡就是硬件。</p></li>
+<li><p>gpu架构：指的是硬件的设计方式，比如流处理器中有多少core，是否有双精度计算单元等。常见的有Tesla、Fermi、Kepler、Maxwell、Pascal</p></li>
+<li><p>芯片型号：芯片就是对上述gpu架构思想的实现。 其第二个字母代表是哪种架构。比如GT200、GK210、GM104、GF104等</p></li>
+</ul>
+
+<p>其他:<br/>
+显卡系列：本质上没什么区别，知识NVIDIA希望区分的三种选择，GeForce家庭娱乐、Quadro用于工作站、Tesla用户服务器</p>
+
+<ul>
+<li>GeForce显卡型号：G/GS、GT、GTS、GTX</li>
+</ul>
+
+<h2 id="toc_1">2.CUDA</h2>
+
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能</th>
+<th></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>cuda</td>
+<td><strong>NVIDIA推出的并行计算架构</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>cudn</td>
+<td>专门为深度学习计算设计的软件库，提供很多计算函数，是cuda架构中的一小部分</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p>CUDA英文全称是Compute Unified Device Architecture，是显卡厂商NVIDIA推出的运算平台。 CUDA™是一种由NVIDIA推出的通用并行计算架构，该架构使GPU能够解决复杂的计算问题。按照官方的说法是，CUDA是一个并行计算平台和编程模型，能够使得使用GPU进行通用计算变得简单和优雅。<br/>
+<img src="media/15905910529327/15916813286590.jpg" alt="" style="width:804px;"/></p>
+
+<h2 id="toc_2">cudatoolkit</h2>
+
+<p>cudatoolkit主要由一下组件组成</p>
+
+<ul>
+<li>compiler: cuda-c和cuda-c++编译器<code>nvcc</code></li>
+<li>tools</li>
+<li>libraries 部分科学库和实用程序</li>
+<li>cuda samples</li>
+<li>cuda driver。驱动程序</li>
+</ul>
+
+<h2 id="toc_3">nvcc和nvidia-smi</h2>
+
+<p>nvcc就是cuda的编译器，可以从cudatoolkit的<code>/bin</code>目录获取，类似gcc就是c语言的编译器。<br/>
+cuda程序有两种代码，一种是运行在cpu上的host代码，一种是在gpu上的device代码</p>
+
+<p>nvidia-smi是一个命令行工具，可以监控nvidia GPU设备</p>
+
+<pre><code class="language-text">#显示当前GPU使用情况
+nvidia-smi
+</code></pre>
+
+<p>QQ: <code>nvcc --version</code> 和<code>nvidia-smi</code>出来的cuda版本不同？<br/>
+原因: CUDA有两个主要的API：runtime(运行时) API和driver API。这两个API都有对应的CUDA版本（如9.2和10.0等）。</p>
+
+<ul>
+<li>用于支持driver API的必要文件(如libcuda.so)是由GPU driver installer安装的。nvidia-smi就属于这一类API。</li>
+<li>用于支持runtime API的必要文件(如libcudart.so以及nvcc)是由CUDA Toolkit installer安装的。（CUDA Toolkit Installer有时可能会集成了GPU driver Installer）。nvcc是与CUDA Toolkit一起安装的CUDA compiler-driver tool，它只知道它自身构建时的CUDA runtime版本。它不知道安装了什么版本的GPU driver，甚至不知道是否安装了GPU driver。<br/>
+综上，如果driver API和runtime API的CUDA版本不一致可能是因为你使用的是单独的GPU driver installer，而不是CUDA Toolkit installer里的GPU driver installer。</li>
+</ul>
+
+<p>一般自己电脑上都是没有GPU的，公司的部分电脑上可能会有，如果你想使用免费的GPU资源，推荐如下两个地方</p>
+
+<ul>
+<li>google的colab</li>
+<li>kaggle</li>
+</ul>
+
+<h2 id="toc_4">pytorch安装版本问题</h2>
+
+<p>以pytorch为例，在安装环境的时候经常因为torch, cuda, torchvision等版本问题，导致无法成功运行。</p>
+
+<p>通过采坑后总结下安装步骤：</p>
+
+<pre><code class="language-shell"># 1.查看机器的nvcc版本
+nvcc --version     #Cuda compilation tools, release 9.1, V9.1.85
+# 2.安装对应的cuda
+
+</code></pre>
+
+<p>lspci | grep -i nvidia</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/5/27</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
@@ -363,33 +456,226 @@ class_weight = {0:0.75, 1:0.25}<br/>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15837577303219.html">
+                <a class="clearlink" href="15899772943822.html">
                 
-                  <h1>【综述】</h1>
+                  <h1>数据集 & 工具</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>为了处理序列数据，rnn引入了隐藏状态hidden state的概念。如下图所示</p>
+                        	<h2 id="toc_0">1.数据集-动态视频</h2>
 
-<p><img src="media/15837577303219/15837580278747.jpg" alt="" style="width:705px;"/></p>
+<table>
+<thead>
+<tr>
+<th>数据</th>
+<th>基本情况</th>
+<th>链接</th>
+</tr>
+</thead>
 
-<p>说明: x1,x2,...代表时间序列上不同时刻的向量，在x1时刻，当前的隐状态h0和当前的输入x1，进行叠加得到了新的隐状态h1.以此类推。</p>
+<tbody>
+<tr>
+<td>HMDB-51</td>
+<td>51个类别，6766个视频</td>
+<td><a href="https://serre-lab.clps.brown.edu/resource/hmdb-a-large-human-motion-database/#dataset">https://serre-lab.clps.brown.edu/resource/hmdb-a-large-human-motion-database/#dataset</a></td>
+</tr>
+<tr>
+<td>UCF-101</td>
+<td>101类别，13320个短视频</td>
+<td><a href="https://www.crcv.ucf.edu/research/data-sets/ucf101/">https://www.crcv.ucf.edu/research/data-sets/ucf101/</a></td>
+</tr>
+<tr>
+<td>Kinetics-700</td>
+<td>650000个，用于ActivityNet比赛</td>
+<td><a href="https://deepmind.com/research/open-source/open-source-datasets/kinetics/">https://deepmind.com/research/open-source/open-source-datasets/kinetics/</a></td>
+</tr>
+<tr>
+<td>ava</td>
+<td>google。多人不同动作数据集</td>
+<td><a href="https://research.google.com/ava/explore.html">https://research.google.com/ava/explore.html</a></td>
+</tr>
+<tr>
+<td>ActivityNet</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
-<p>而最终输出就是在隐状态h的基础上再进行一次计算。最终输出如下。这样就完成了序列输入(x1,x2,....xn),输出(y1, y2 ....yn)的过程</p>
-
-<p><img src="media/15837577303219/15837582220421.jpg" alt="" style="width:722px;"/></p>
-
-<p>实际中按照输入和输出的变量个数可以有如下的一些情形：</p>
+<p>HMDB-51: 压缩包大概6G，主要包含类别</p>
 
 <ul>
-<li>N vs 1</li>
-<li></li>
+<li>常见面部动作（smile，laugh，chew，talk）</li>
+<li>复杂面部动作</li>
+<li>直梯动作</li>
+<li>多人交互</li>
 </ul>
 
-<h2 id="toc_0">参考</h2>
+<p><img src="media/15899772943822/15913243160558.jpg" alt="" style="width:971px;"/><br/>
+<img src="media/15899772943822/15913243437161.jpg" alt="" style="width:1001px;"/></p>
 
-<p><a href="https://zhuanlan.zhihu.com/p/28054589">https://zhuanlan.zhihu.com/p/28054589</a></p>
+<p>UCF-101: 包含的数据类型</p>
+
+<ul>
+<li>人物交互</li>
+<li>人体动作</li>
+<li>人人交互</li>
+<li>乐器演奏</li>
+<li>体育运动</li>
+</ul>
+
+<p><strong>ava-action：</strong><br/>
+包含了80个原子动作(比如走路，握手。。) 数据包含三部分:</p>
+
+<ul>
+<li>person pose：</li>
+<li>人-物交互</li>
+<li>人人交互
+<a href="https://research.google.com/ava/explore.html">https://research.google.com/ava/explore.html</a>
+一共430个video，其中235个train， 64个validation，131 test。 每个视频是15min，每1s钟进行以此标注。<br/>
+有一个机遇faster-rcnn的预训练模型。 tensorflow的目标检测api <a href="https://github.com/tensorflow/models/tree/master/research/object_detection#tensorflow-object-detection-api">https://github.com/tensorflow/models/tree/master/research/object_detection#tensorflow-object-detection-api</a></li>
+</ul>
+
+<p>数据格式 ava_train_v2.2.csv<br/>
+video_id, middle_frame_timestamp, person_box, action_id, person_id</p>
+
+<p>toread<br/>
+<a href="https://www.jianshu.com/p/a4cc71126796">https://www.jianshu.com/p/a4cc71126796</a></p>
+
+<h2 id="toc_1">2.数据集-静态图像</h2>
+
+<p><a href="https://blog.csdn.net/lgk1996/article/details/79814888">https://blog.csdn.net/lgk1996/article/details/79814888</a></p>
+
+<table>
+<thead>
+<tr>
+<th>data</th>
+<th>basic description</th>
+<th>link</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Stanford40 Dataset</td>
+<td>斯坦福-李飞飞团队穿件，包括40中不同的行为类别，9532张图片</td>
+<td><a href="http://vision.stanford.edu/Datasets/40actions.html">http://vision.stanford.edu/Datasets/40actions.html</a></td>
+</tr>
+<tr>
+<td>MPII Pose Dataset</td>
+<td>主要是human pose estimation</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Stanford40 Dataset</strong>: runing, phoning, play,drinking等, taking photos<br/>
+B. Yao, X. Jiang, A. Khosla, A.L. Lin, L.J. Guibas, and L. Fei-Fei. Human Action Recognition by Learning Bases of Action Attributes and Parts. Internation Conference on Computer Vision (ICCV), Barcelona, Spain. November 6-13, 2011. </p>
+
+<p><strong>MPII Pose Dataset</strong><br/>
+<img src="media/15899772943822/15917594608821.jpg" alt=""/></p>
+
+<h2 id="toc_2">3.工具</h2>
+
+<p>常用的工具：<br/>
+<a href="https://zhuanlan.zhihu.com/p/38597956">https://zhuanlan.zhihu.com/p/38597956</a></p>
+
+<table>
+<thead>
+<tr>
+<th>tool</th>
+<th>说明</th>
+<th>语言</th>
+<th>链接</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>openpose</td>
+<td>多人，2D，实时</td>
+<td>python-API</td>
+<td><a href="https://github.com/CMU-Perceptual-Computing-Lab/openpose">https://github.com/CMU-Perceptual-Computing-Lab/openpose</a></td>
+</tr>
+<tr>
+<td>facebook-densePose</td>
+<td>mask-RCNN的变体</td>
+<td></td>
+<td>github.com/facebookresearch/Densepose</td>
+</tr>
+<tr>
+<td>alphaPose</td>
+<td></td>
+<td>tf, pytorch</td>
+<td></td>
+</tr>
+<tr>
+<td>Human Body Pose Estimation</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Deeppose(2014)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_3">(1)Open-mmlab家族</h3>
+
+<p><strong>MMSkeleton</strong><br/>
+原理的名字叫 st-gcn，后来改为 MMSkeleton<br/>
+st-gcn: 比较老了 <a href="https://hub.docker.com/r/jaehwankimneo/st-gcn">https://hub.docker.com/r/jaehwankimneo/st-gcn</a><br/>
+mmskelton: <a href="https://hub.docker.com/r/ioir123ju/mmskeleton/tags">https://hub.docker.com/r/ioir123ju/mmskeleton/tags</a></p>
+
+<pre><code class="language-text">python setup.py develop
+</code></pre>
+
+<p>中间可能会报很多错，需要一步步的改<br/>
+环境配置<a href="http://blog.sina.com.cn/s/blog_679f93560102wpyf.html">http://blog.sina.com.cn/s/blog_679f93560102wpyf.html</a></p>
+
+<p>安装好mmskelton后，可以选安装mmdetection，这个参照其github上的说明来就行</p>
+
+<p><strong>mmcv</strong></p>
+
+<p>mmcv是一个MMLAB开发的cv的基础工具库，用来支持mmdetection，mmaction等</p>
+
+<h3 id="toc_4">(2)openpose</h3>
+
+<p>运行方式:</p>
+
+<ol>
+<li>命令行: ./build/examples/openpose/openpose.bin xxx</li>
+<li>c++接口</li>
+<li>Python接口</li>
+</ol>
+
+<p>docker: <code>docker pull exsidius/openpose</code></p>
+
+<p>还有在google colab上进行尝试<a href="https://github.com/CMU-Perceptual-Computing-Lab/openpose/issues/949#issue-387855863">https://github.com/CMU-Perceptual-Computing-Lab/openpose/issues/949#issue-387855863</a></p>
+
+<pre><code class="language-text">! apt update
+! apt install -y cmake sudo libopencv-dev
+! git clone https://github.com/CMU-Perceptual-Computing-Lab/openpose.git
+! cd openpose/ubuntu &amp;&amp; ./install_cmake.sh &amp;&amp; ./install_cuda.sh &amp;&amp; ./install_cudnn.sh
+! cd openpose &amp;&amp; git pull origin master &amp;&amp; rm -r build || true &amp;&amp; mkdir build &amp;&amp; cd build &amp;&amp; cmake .. &amp;&amp; make -j`nproc`
+
+# example demo usage
+!cd openpose &amp;&amp; ./build/examples/openpose/openpose.bin --video examples/media/video.avi --write_json output/ --display 0 --render_pose 0
+</code></pre>
+
+<p>cpu-only的版本：要求8G内存</p>
+
+<p>安装</p>
+
+<pre><code class="language-text">git clone https://github.com/CMU-Perceptual-Computing-Lab/openpose
+cd build/
+make -j`nproc`
+</code></pre>
 
                         
                       </div>
@@ -398,10 +684,10 @@ class_weight = {0:0.75, 1:0.25}<br/>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/3/9</span>
+                    <span class="date">2020/5/20</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='rnn.html'>rnn</a></span>
+          					    <span class="posted-in"><a href='%E5%A7%BF%E6%80%81%E8%AF%86%E5%88%AB.html'>姿态识别</a></span>
           				   
                     
 
@@ -490,6 +776,8 @@ class_weight = {0:0.75, 1:0.25}<br/>
         
             <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
+            <a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html"><strong>11 平台架构</strong></a>
+        
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E5%85%B6%E4%BB%96.html"><strong>其他</strong></a>
@@ -509,31 +797,31 @@ class_weight = {0:0.75, 1:0.25}<br/>
 	      
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">0.综述</a>
+			        <a href="15917706614562.html">optical flow 光流</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637036455584.html">1 估计的置信度</a>
+			        <a href="15917693533998.html">process</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037681646.html">1 基础工具包安装pip</a>
+			        <a href="15917597006543.html">业务</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637025346412.html">1. conda 环境管理</a>
+			        <a href="15917572981552.html">综述_关键点检测</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037713554.html">1. 数据可视化概述</a>
+			        <a href="15916704949564.html">【工具】MMlab——mmaction</a>
 			      </li>
 		     
 		  

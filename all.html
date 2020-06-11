@@ -103,6 +103,8 @@
         
             <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
+            <li><a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html">11 平台架构</a></li>
+        
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E5%85%B6%E4%BB%96.html">其他</a></li>
@@ -128,147 +130,34 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15687050894061.html">
+                <a class="clearlink" href="15917706614562.html">
                 
-                  <h1>0.综述</h1>
+                  <h1>optical flow 光流</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>首先是关于整个轨迹数据涉及的存储、数据清洗、分析、挖掘的一个整体模块。</p>
+                        	<p><a href="https://zhuanlan.zhihu.com/p/44859953">概念</a><br/>
+光流的概念是Gibson在1950年首先提出来的。它是空间运动物体在观察成像平面上的像素运动的<strong>瞬时速度</strong>，是利用图像序列中像素在时间域上的变化以及相邻帧之间的相关性来找到上一帧跟当前帧之间存在的对应关系，从而计算出相邻帧之间物体的运动信息的一种方法。一般而言，光流是由于场景中前景目标本身的移动、相机的运动，或者两者的共同运动所产生的。<br/>
+简言之：就是有相对运动带来的空间物体在成像平面的瞬时速度。</p>
 
+<p>对于一个图片序列，每张图像中每个像素的运动速度和运动方向找出来就是<strong>光流场</strong>。</p>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15687050894061.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2019/9/17</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html'>轨迹分析</a></span>
-          				   
-                    
+<p><strong>光流的测定方法</strong></p>
 
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<p>基本原理就是找到时间间隔△t内，物体的移动坐标(x1, y1), (x2, y2). 假设位于(x,y,t)的体素的亮度是I(x,y,t), 则有:<br/>
+I(x,y,t) = I(x+△x, y+△y, t+△t)<br/>
+根据泰勒定理展开即有\(\partial I/\partial x△x +\partial I/\partial y△y + \partial I/\partial t△t = 0\)</p>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637036455584.html">
-                
-                  <h1>1 估计的置信度</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>在大多数的研究中，我们无法获取研究对象的总体数据，或者能获取但是成本非常大。实际情况中，我们往往是通过抽样的方法，在总体中进行随机抽样。根据获取的这部分样本数据去推动总体的一些属性。比如通过抽样人群的平均身高去估计所有人群的平均身高，通过抽样人群中的男女比例，去估计我国当前的男女比例状况。<br/>
-抽样样本量是直接影响到最终的估计准确度，所以这一章节，先来介绍下如何判断一种估计方法准确与否。</p>
-
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15637036455584.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037681646.html">
-                
-                  <h1>1 基础工具包安装pip</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>在安装package之前，首先要安装的就是包管理器。</p>
-
-<h2 id="toc_0">1.pip</h2>
-
-<p>安装pip <code>sudo easy_install pip</code></p>
-
-<p>通过pip安装python包  <code>pip install xxx</code></p>
-
-<p><strong>常见问题</strong></p>
-
-<pre><code class="language-text"># 当前版本
-pip --version
-# 版本升级(有些包安装需要依赖高级版本)
-pip install --upgrade pip
-
-## 升级某些包
-pip install --upgrade SomePackage
-
-# 安装包时候报错`time out`
-pip --default-timeout=100 install xxx
-
-## 指定安装目录
-pip -t 目标目录 xxx
-</code></pre>
-
-<p>更新pip给出一个最简单的办法就是通过pip uninstall pip卸载pip，再用easy_install pip安装pip,这样安装的就是最新版本的pip了。</p>
-
-<blockquote>
-<p>权限</p>
-</blockquote>
-
-<p>在mac上安装包的时候，因为系统限制不让写到内容到系统目录里去。解决方法</p>
+<p>具体实现方法: opencv的API中有几种不同的实现方案</p>
 
 <ul>
-<li>重新安装一个自己版本的python，比如可以用ancoda安装</li>
-<li>pip安装的时候加入参数<code>pip install xxx --user</code>，安装到当前用户目录下。</li>
+<li>Lucas–Kanade method: calcOpticalFlowPyrLK</li>
+<li>The Gunnar-Farneback optical flow: calcOpticalFlowFarneback</li>
+<li>block matching method: CalcOpticalFlowBM</li>
 </ul>
 
-<p>安装完成后还需要将该目录加到环境变量里才能使用</p>
-
-<pre><code class="language-text">export export PATH=/Users/$your_name/Library/Python/2.7/bin/:$PATH
-</code></pre>
-
-<blockquote>
-<p>更新某个包时候报错</p>
-</blockquote>
-
-<p><code>Cannot uninstall &#39;six&#39;. It is a distutils installed project and thus we cannot accurately determine which files belong to it which would lead to only a partial uninstall.</code></p>
-
-<p>解决办法：</p>
-
-<p><code>pip install six --upgrade --ignore-installed six</code></p>
-
-<p>当机器上有多个版本python，安装到指定的python版本中</p>
-
-<pre><code class="language-text">pip install -t /home/work/zhenzhen/python2.7/lib/python2.7/site-packages BeautifulSoup4
-</code></pre>
-
-<h2 id="toc_1">2.brew</h2>
-
-<p>/usr/bin/ruby -e &quot;$(curl -fsSL <a href="https://raw.githubusercontent.com/Homebrew/install/master/install)%E2%80%9D">https://raw.githubusercontent.com/Homebrew/install/master/install)”</a></p>
+<p><a href="https://github.com/yjxiong/dense_flow">https://github.com/yjxiong/dense_flow</a></p>
 
                         
                       </div>
@@ -277,10 +166,10 @@ pip -t 目标目录 xxx
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2020/6/10</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
           				   
                     
 
@@ -296,95 +185,14 @@ pip -t 目标目录 xxx
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637025346412.html">
+                <a class="clearlink" href="15917693533998.html">
                 
-                  <h1>1. conda 环境管理</h1>
+                  <h1>process</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>conda的主要作用有如下两个：</p>
-
-<ul>
-<li>包管理</li>
-</ul>
-
-<p>Anaconda 安装，conda包管理器与pip类似，不同之处是可用的包以数据科学包为主，而 pip 适合一般用途。它也可以安装非 Python 的包。它是支持任何软件的包管理器。</p>
-
-<ul>
-<li>虚拟环境管理器</li>
-</ul>
-
-<p>它类似于另外两个很流行的环境管理器，即 virtualenv 和 pyenv<br/>
-脚本和程序使用的默认 Python 是 Anaconda 附带的 Python。</p>
-
-<p>可以安装完整版： <a href="https://www.anaconda.com/distribution/#download-section">https://www.anaconda.com/distribution/#download-section</a><br/>
-也可以安装精简版miniconda： <a href="https://conda.io/miniconda.html">https://conda.io/miniconda.html</a></p>
-
-<h2 id="toc_0">包管理-常用命令</h2>
-
-<pre><code class="language-text">conda list  #查看安装的内容
-conda upgrade --all   #初次下载安装好后，建议更新所有包
-</code></pre>
-
-<p>安装包</p>
-
-<pre><code class="language-text">conda install xxx
-conda install numpy=1.10   #指定包的版本
-
-conda remove package
-conda upgrade --all
-</code></pre>
-
-<pre><code class="language-text">模糊查询相关包
-conda search search_term
-</code></pre>
-
-<h2 id="toc_1">环境管理</h2>
-
-<p>默认的环境名字叫base(我的电脑上是)</p>
-
-<p>通过<code>conda env list</code>可以列出你创建的所有环境</p>
-
-<pre><code class="language-text">#创建环境
-conda create -n env_name list of packages
-eg. conda create -n my_env numpy
-
-conda create -n py3 python=3
-conda create -n py2 python=2
-
-#进入环境
-source activate my_env
-#离开环境
-source deactivate
-
-# 删除环境
-conda env remove -n env_name
-</code></pre>
-
-<h2 id="toc_2">其他</h2>
-
-<p>共享环境：将自己的工作环境保存下来给别人共享</p>
-
-<pre><code class="language-text">#进入到你的环境中
-source activate base
-conda env export &gt; environment.yaml
-
-# 通过环境文件创建环境
-conda env create -f environment.yaml
-</code></pre>
-
-<h2 id="toc_3">conda install 与pip install的区别</h2>
-
-<p>，pip list和conda list列表却不一致，conda数量 &gt; pip<br/>
-conda 安装包路径是 xxxxx\Anaconda3\pkgs<br/>
-pip 安装包路径在虚拟环境下是 xxxx\Anaconda3\envs\a_conda_env\Lib\site-packages<br/>
-所以当前环境下pip list只列举出当前包list<br/>
-此处需要留意如果使用conda install 多个环境时，对于同一个包只需要安装一次。有conda集中管理。<br/>
-但是如果使用pip因为每个环境安装使用的pip在不同的路径下，故会重复安装，而包会从缓存中取。</p>
-
-<p>(2) 另外从体验上看感觉conda速度快很多</p>
-
+                        	
                         
                       </div>
                   </div>
@@ -392,10 +200,10 @@ pip 安装包路径在虚拟环境下是 xxxx\Anaconda3\envs\a_conda_env\Lib\sit
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2020/6/10</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          					    <span class="posted-in"><a href='%E5%A7%BF%E6%80%81%E8%AF%86%E5%88%AB.html'>姿态识别</a></span>
           				   
                     
 
@@ -411,111 +219,21 @@ pip 安装包路径在虚拟环境下是 xxxx\Anaconda3\envs\a_conda_env\Lib\sit
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037713554.html">
+                <a class="clearlink" href="15917597006543.html">
                 
-                  <h1>1. 数据可视化概述</h1>
+                  <h1>业务</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>目标: 系统的梳理在进行数据分析的时候，如何进行数据可视化。具体操作的时候以python的seaborn包为主。</p>
-</blockquote>
+                        	<p>为确定要识别哪些行为，可以根据特征，将最后一层的输出做聚类？？ 看下都有哪些行为？？</p>
 
-<p>在进行数据分析的时候，经常需要进行数据可视化。俗话说一图胜千言，如何将从数据中发现的结论以一种简单易懂、形象化的方式展现出来，是很考验数据分析人员的能力的。</p>
-
-<h2 id="toc_0">1 方法部分</h2>
-
-<p>数据可视化，首先是要有数据，即我们的研究对象，而可视化的功能就是将数据中蕴含的关系或规律以图形的形式展示出来。 因此在进行数据可视化之前，一定要搞清楚的两件事：</p>
+<p>行为分类：</p>
 
 <ul>
-<li>数据类型， 即我们要研究的实体是什么类型的</li>
-<li>数据要传递的信息以及要展示的关系</li>
+<li>图像分类</li>
+<li>视频理解</li>
 </ul>
-
-<p>(1) 数据类型<br/>
-不同的数据类型适合的图形表现是不同的，随着现在数据分析应用的越来越广泛，数据类型随着其应用的场景不同也是越来越多。统计学传统意义上的数据类型主要是：</p>
-
-<ul>
-<li>分类型变量：比如性别</li>
-<li>连续型变量：比如年龄</li>
-</ul>
-
-<p>除了传统的这种之外，还有比如轨迹数据，视频数据等等</p>
-
-<p>(2) 数据之间的关系</p>
-
-<table>
-<thead>
-<tr>
-<th>关系</th>
-<th>示例图形</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>比较大小，包括不同个体或者分组之间</td>
-<td>常用的比如将面积、尺寸进行可视化。条形图、面积图</td>
-</tr>
-<tr>
-<td>数据的集中程度</td>
-<td>一般是热力图，比如地图上交通的拥挤程度</td>
-</tr>
-<tr>
-<td>地理信息</td>
-<td>地理位置数据</td>
-</tr>
-</tbody>
-</table>
-
-<p><a href="https://zhuanlan.zhihu.com/p/25632363">https://zhuanlan.zhihu.com/p/25632363</a></p>
-
-<h2 id="toc_1">2 工具部分</h2>
-
-<p>在实际操作中可能会涉及的使用工具有如下几种</p>
-
-<ul>
-<li>Excel<br/>
-excel作为微软office的办公软件，适合一些相对简单的数据分析，其本身包含的绘图功能基本上可以覆盖一些常用的需求。比如一些基本的绘图、数据分析功能。除此之外，excel还可以自己增加一些插件，比如功能强大的 power Map <a href="https://support.office.com/zh-cn/article/power-map-%E5%85%A5%E9%97%A8-88a28df6-8258-40aa-b5cc-577873fb0f4a">https://support.office.com/zh-cn/article/power-map-%E5%85%A5%E9%97%A8-88a28df6-8258-40aa-b5cc-577873fb0f4a</a></li>
-</ul>
-
-<p>适合展示一些需要进行地图可视化的数据，比如分省份的销售额，<br/>
-其还可以制作随时间变化的动态小视频，比如人的轨迹变化等等。</p>
-
-<ul>
-<li>可视化BI </li>
-</ul>
-
-<p>比如Tableau， power BI， FineBI等常见的一些可视化软件</p>
-
-<ul>
-<li>编程工具-python &amp; R</li>
-</ul>
-
-<p>R的ggplot应该是多数统计学家们使用的绘图工具，python中常用的基础绘图pacakge是<code>matplotlib</code>，以及在其基础上衍生出来的比较炫酷的 <code>seaborn</code>，其操作命令比较简单。有点类似R中的<code>ggplot</code>.</p>
-
-<p>python版本的echarts包：<a href="http://pyecharts.org/#/zh-cn/intro">http://pyecharts.org/#/zh-cn/intro</a></p>
-
-<ul>
-<li>工具平台</li>
-</ul>
-
-<p>蚂蚁金服  <a href="https://antv.alipay.com/zh-cn/vis/chart/color-map.html">https://antv.alipay.com/zh-cn/vis/chart/color-map.html</a><br/>
-百度的echarts</p>
-
-<h2 id="toc_2">参考资料</h2>
-
-<p><a href="https://blog.csdn.net/suzyu12345/article/details/69029106">https://blog.csdn.net/suzyu12345/article/details/69029106</a></p>
-
-<p>seaborn<br/>
-pyecharts  <a href="https://github.com/pyecharts/pyecharts">https://github.com/pyecharts/pyecharts</a></p>
-
-<h2 id="toc_3">2.echarts接口</h2>
-
-<p>pyecharts</p>
-
-<p><a href="http://pyecharts.org/#/zh-cn/charts?id=treemap%EF%BC%88%E7%9F%A9%E5%BD%A2%E6%A0%91%E5%9B%BE%EF%BC%89">http://pyecharts.org/#/zh-cn/charts?id=treemap%EF%BC%88%E7%9F%A9%E5%BD%A2%E6%A0%91%E5%9B%BE%EF%BC%89</a></p>
 
                         
                       </div>
@@ -524,10 +242,188 @@ pyecharts  <a href="https://github.com/pyecharts/pyecharts">https://github.com/p
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2020/6/10</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html'>3 数据可视化</a></span>
+          					    <span class="posted-in"><a href='%E5%A7%BF%E6%80%81%E8%AF%86%E5%88%AB.html'>姿态识别</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15917572981552.html">
+                
+                  <h1>综述_关键点检测</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">3.关键点检测</h2>
+
+<p>总结：<a href="https://zhuanlan.zhihu.com/p/102457223">https://zhuanlan.zhihu.com/p/102457223</a></p>
+
+<p>人体关键点检测按照是否包含3维深度信息可以分为2D和3D检测</p>
+
+<p><img src="media/15895350398690/15904079979954.jpg" alt="" style="width:971px;"/></p>
+
+<ul>
+<li><p>openpose<br/>
+用的是bottom-up的方式，先检测所有关键点，然后对关键点进行分组关联。以CPM（卷积pose Machine）为基础。</p></li>
+<li><p>CPM（top-down）<br/>
+详细介绍：<a href="https://zhuanlan.zhihu.com/p/102468356">https://zhuanlan.zhihu.com/p/102468356</a></p></li>
+</ul>
+
+<p>基于深度学习的检测方法可以简单的划分为skeleton-based 和 video-based<br/>
+<strong>(1)skeleton-based</strong><br/>
+需要先将基本骨架识别出来然后再做检测<br/>
+ST-NBNN: Spatio-Temporal Naive-Bayes Nearest-Neighbor (ST-NBNN) for Skeleton-Based Action Recognition 2017cvpr</p>
+
+<p>☆☆图卷积方法 ST-GCN:Spatial Temporal Graph Convolutional Networks for Skeleton Based Action Recognition AAAI2018（开源）</p>
+
+<p><strong>(2)video-based</strong><br/>
+常用的方法有3D卷积<br/>
+RNN/LSTM<br/>
+双流法: 一个分支计算空间特征，一个分支用光流计算运动特征，最后整合进行行为识别</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/6/10</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%A7%BF%E6%80%81%E8%AF%86%E5%88%AB.html'>姿态识别</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15916704949564.html">
+                
+                  <h1>【工具】MMlab——mmaction</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">mmaction</h3>
+
+<p>MMAction is capable of dealing with all of the tasks below.</p>
+
+<ul>
+<li>action recognition from trimmed videos</li>
+<li>temporal action detection (also known as action localization) in untrimmed videos</li>
+<li>spatial-temporal action detection in untrimmed videos.</li>
+</ul>
+
+<p><strong>modelzoo</strong><br/>
+mmaction中自带的model默认都是用Kinetics-400 这个数据训练的。<br/>
+<a href="https://github.com/open-mmlab/mmaction/blob/master/MODEL_ZOO.md">https://github.com/open-mmlab/mmaction/blob/master/MODEL_ZOO.md</a></p>
+
+<p><strong>数据格式</strong><br/>
+<a href="https://github.com/open-mmlab/mmaction/blob/master/DATASET.md">https://github.com/open-mmlab/mmaction/blob/master/DATASET.md</a><br/>
+mmaction支持两种数据格式: raw frames 和video. raw frame较快，占用空间多。video的占用空间少，相对慢一些(可以使用decord进行加速)</p>
+
+<p><strong>代码结构</strong></p>
+
+<pre><code class="language-text">|── data_tool   # 数据准备，包含不同数据集的预处理
+|── data
+|── tools      # train, test
+|── configs   # train 构造每个模型的配置文件
+|── test_configs   # test 构造每个模型的配置文件
+|── modelzoo/   # model
+</code></pre>
+
+<p>数据准备</p>
+
+<pre><code class="language-shell"># 1. 准备数据
+cd data_tools/ucf101/
+bash download_annotations.sh
+bash download_videos.sh   # 一共6G多，可以中间终端，只取部分
+# 提取frames，这里是调用的dense_flow工具
+bash extract_frames.sh   
+# Run the follow script to generate filelist in the format of rawframes and videos.
+bash generate_filelist.sh
+</code></pre>
+
+<pre><code class="language-shell"># 下载模型
+wget -c https://open-mmlab.s3.ap-northeast-2.amazonaws.com/mmaction/models/ucf101/tsn_2d_rgb_bninception_seg3_f1s1_b32_g8-98160339.pth -P ./modelzoo/
+
+bash tools/dist_test_recognizer.sh test_configs/TSN/ucf101/tsn_rgb_bninception.py modelzoo/tsn_2d_rgb_bninception_seg3_f1s1_b32_g8-98160339.pth 8
+</code></pre>
+
+<pre><code class="language-shell"># 模型训练
+./tools/dist_train_xxx.sh $config_file $GPU_Num
+# 模型评估
+python tools/test_${ARCH}.py ${CONFIG_FILE} ${CHECKPOINT_FILE} [--out ${RESULT_FILE}] 
+</code></pre>
+
+<p>test_recognizer:</p>
+
+<ul>
+<li>code里面最后默认输出到default.pkl中，每个二级目录都有一个长度101的向量(ucf101数据),向量的每个值就是在各个类别上的得分。最终取np.argmax()就可以认为是对应的类别了.</li>
+<li>具体每个类别编号的含义可以在<code>data/ucf101/annotations/clasInd.txt</code>看到</li>
+</ul>
+
+<pre><code class="language-python">import pickle
+outputs = pickle.load(open(&#39;xxx&#39;, &#39;rb&#39;), encoding=&#39;utf-8&#39;)
+</code></pre>
+
+<p>采坑：</p>
+
+<ul>
+<li>其中有很多CUDA, gpu的编译，设置，如果在自己电脑上的话，需要将相关的code注释掉</li>
+<li>安装的mmcv，在运行mmaction tools/test_recognizer.py的时候总报错，是python版本问题，不支持f语法</li>
+<li>docker hub上有人提供 mlouieunm/mmaction:latest。 实验了下环境还是有问题</li>
+</ul>
+
+<p>使用colab的GPU资源.<br/>
+下载数据啥的速度是真快。。。<br/>
+问题：<br/>
+Q1: RuntimeError: CUDA out of memory<br/>
+batch_size</p>
+
+<p>mmaction docker:</p>
+
+<p>（1）测试使用 <code>mlouieunm/mmaction:latest</code><br/>
+注意：这个docker环境中的mmaction并不是最新的，需要git pull下，才会更行到新版，支持其他的数据。。好像还是环境有问题，放弃<br/>
+（2）docker pull apulistech/mmaction:0.1</p>
+
+<p>NVIDIA-DOCKER   <a href="https://github.com/NVIDIA/nvidia-docker">https://github.com/NVIDIA/nvidia-docker</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/6/9</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%A7%BF%E6%80%81%E8%AF%86%E5%88%AB.html'>姿态识别</a></span>
           				   
                     
 
@@ -616,6 +512,8 @@ pyecharts  <a href="https://github.com/pyecharts/pyecharts">https://github.com/p
         
             <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
+            <a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html"><strong>11 平台架构</strong></a>
+        
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E5%85%B6%E4%BB%96.html"><strong>其他</strong></a>
@@ -635,31 +533,31 @@ pyecharts  <a href="https://github.com/pyecharts/pyecharts">https://github.com/p
 	      
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">0.综述</a>
+			        <a href="15917706614562.html">optical flow 光流</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637036455584.html">1 估计的置信度</a>
+			        <a href="15917693533998.html">process</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037681646.html">1 基础工具包安装pip</a>
+			        <a href="15917597006543.html">业务</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637025346412.html">1. conda 环境管理</a>
+			        <a href="15917572981552.html">综述_关键点检测</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037713554.html">1. 数据可视化概述</a>
+			        <a href="15916704949564.html">【工具】MMlab——mmaction</a>
 			      </li>
 		     
 		  

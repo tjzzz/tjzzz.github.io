@@ -103,6 +103,8 @@
         
             <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
+            <li><a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html">11 平台架构</a></li>
+        
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E5%85%B6%E4%BB%96.html">其他</a></li>
@@ -128,42 +130,78 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637037730631.html">
+                <a class="clearlink" href="15637037681646.html">
                 
-                  <h1>比赛学习</h1>
+                  <h1>1 基础工具包安装pip</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">天池</h2>
+                        	<p>在安装package之前，首先要安装的就是包管理器。</p>
+
+<h2 id="toc_0">1.pip</h2>
+
+<p>安装pip <code>sudo easy_install pip</code></p>
+
+<p>通过pip安装python包  <code>pip install xxx</code></p>
+
+<p><strong>常见问题</strong></p>
+
+<pre><code class="language-text"># 当前版本
+pip --version
+# 版本升级(有些包安装需要依赖高级版本)
+pip install --upgrade pip
+
+## 升级某些包
+pip install --upgrade SomePackage
+
+# 安装包时候报错`time out`
+pip --default-timeout=100 install xxx
+
+## 指定安装目录
+pip -t 目标目录 xxx
+</code></pre>
+
+<p>更新pip给出一个最简单的办法就是通过pip uninstall pip卸载pip，再用easy_install pip安装pip,这样安装的就是最新版本的pip了。</p>
+
+<blockquote>
+<p>权限</p>
+</blockquote>
+
+<p>在mac上安装包的时候，因为系统限制不让写到内容到系统目录里去。解决方法</p>
 
 <ul>
-<li>o2o优惠券</li>
+<li>重新安装一个自己版本的python，比如可以用ancoda安装</li>
+<li>pip安装的时候加入参数<code>pip install xxx --user</code>，安装到当前用户目录下。</li>
 </ul>
 
-<p><a href="https://tianchi.aliyun.com/getStart/information.htm?raceId=231593">https://tianchi.aliyun.com/getStart/information.htm?raceId=231593</a></p>
+<p>安装完成后还需要将该目录加到环境变量里才能使用</p>
 
-<p><a href="https://github.com/wepe/O2O-Coupon-Usage-Forecast/tree/master/code">https://github.com/wepe/O2O-Coupon-Usage-Forecast/tree/master/code</a></p>
+<pre><code class="language-text">export export PATH=/Users/$your_name/Library/Python/2.7/bin/:$PATH
+</code></pre>
 
-<ul>
-<li>fashion_tag</li>
-</ul>
+<blockquote>
+<p>更新某个包时候报错</p>
+</blockquote>
 
-<p><a href="https://github.com/DavexPro/fashion-tag">https://github.com/DavexPro/fashion-tag</a></p>
+<p><code>Cannot uninstall &#39;six&#39;. It is a distutils installed project and thus we cannot accurately determine which files belong to it which would lead to only a partial uninstall.</code></p>
 
-<p><a href="https://github.com/tworuler/tensorcv">https://github.com/tworuler/tensorcv</a></p>
+<p>解决办法：</p>
 
-<h2 id="toc_1">kaggle</h2>
+<p><code>pip install six --upgrade --ignore-installed six</code></p>
 
-<p>kaggle-ctr预估<br/>
-<a href="https://www.kaggle.com/c/avazu-ctr-prediction/discussion/12608">https://www.kaggle.com/c/avazu-ctr-prediction/discussion/12608</a><br/>
-<a href="https://github.com/guestwalk/kaggle-avazu">https://github.com/guestwalk/kaggle-avazu</a></p>
+<p>当机器上有多个版本python，安装到指定的python版本中</p>
 
-<p>FM学习<a href="https://www.jianshu.com/p/152ae633fb00">https://www.jianshu.com/p/152ae633fb00</a></p>
+<pre><code class="language-text">pip install -t /home/work/zhenzhen/python2.7/lib/python2.7/site-packages BeautifulSoup4
+</code></pre>
 
-<h2 id="toc_2">kesci</h2>
+<h2 id="toc_1">2.brew</h2>
 
-<p><a href="https://www.kesci.com/home/competition">https://www.kesci.com/home/competition</a></p>
+<p>/usr/bin/ruby -e &quot;$(curl -fsSL <a href="https://raw.githubusercontent.com/Homebrew/install/master/install)%E2%80%9D">https://raw.githubusercontent.com/Homebrew/install/master/install)”</a></p>
+
+<h2 id="toc_2">加速</h2>
+
+<p>pip install xxx -i <a href="https://pypi.tuna.tsinghua.edu.cn/simple/">https://pypi.tuna.tsinghua.edu.cn/simple/</a></p>
 
                         
                       </div>
@@ -175,7 +213,7 @@
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html'>9 比赛学习</a></span>
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
           				   
                     
 
@@ -191,229 +229,14 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15828802415716.html">
+                <a class="clearlink" href="15637037682671.html">
                 
-                  <h1>深度学习-开源图片数据库</h1>
+                  <h1>聚类Tools篇</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">1. 图像</h2>
-
-<table>
-<thead>
-<tr>
-<th>图像库</th>
-<th>图片说明</th>
-<th>链接</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>ImageNet</td>
-<td>按照WordNet结构整理，平均每个类别下有500张图片</td>
-<td><a href="http://www.image-net.org/">http://www.image-net.org/</a></td>
-</tr>
-<tr>
-<td>CIFAR-10</td>
-<td>6w张32x32的图片，分为10类(飞机，鸟，猫，船..)</td>
-<td><a href="http://www.cs.toronto.edu/%7Ekriz/cifar.html">http://www.cs.toronto.edu/~kriz/cifar.html</a></td>
-</tr>
-<tr>
-<td>CIFAR-100</td>
-<td>20大类，100小类</td>
-<td></td>
-</tr>
-<tr>
-<td>MNIST</td>
-<td>7w,28x28手写识别0-9</td>
-<td><a href="http://yann.lecun.com/exdb/mnist/">http://yann.lecun.com/exdb/mnist/</a></td>
-</tr>
-<tr>
-<td>LFW</td>
-<td>1.3w 人脸数据, 无分类</td>
-<td><a href="http://vis-www.cs.umass.edu/lfw/">http://vis-www.cs.umass.edu/lfw/</a></td>
-</tr>
-<tr>
-<td>Caltech 101</td>
-<td>101类objects, 300x200</td>
-<td><a href="http://www.vision.caltech.edu/Image_Datasets/Caltech101/">http://www.vision.caltech.edu/Image_Datasets/Caltech101/</a></td>
-</tr>
-<tr>
-<td>Caltech 256</td>
-<td>256类objects, 300x200</td>
-<td><a href="http://www.vision.caltech.edu/Image_Datasets/Caltech256/">http://www.vision.caltech.edu/Image_Datasets/Caltech256/</a></td>
-</tr>
-</tbody>
-</table>
-
-<p>服装类</p>
-
-<table>
-<thead>
-<tr>
-<th>图像库</th>
-<th>图片说明</th>
-<th>链接</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>Fashion--MNIST</td>
-<td>服装类，类似手写识别风格，衣服鞋包</td>
-<td><a href="https://github.com/zalandoresearch/fashion-mnist">https://github.com/zalandoresearch/fashion-mnist</a></td>
-</tr>
-<tr>
-<td>DeepFashion</td>
-<td></td>
-<td><a href="http://mmlab.ie.cuhk.edu.hk/projects/DeepFashion.html">http://mmlab.ie.cuhk.edu.hk/projects/DeepFashion.html</a></td>
-</tr>
-</tbody>
-</table>
-
-<p>其他</p>
-
-<table>
-<thead>
-<tr>
-<th>图像库</th>
-<th>图片说明</th>
-<th>链接</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>Quick Draw</td>
-<td>google的涂鸦数据集, 345类, 5kw张</td>
-<td><a href="https://quickdraw.withgoogle.com%EF%BC%8C">https://quickdraw.withgoogle.com，</a> <a href="https://github.com/googlecreativelab/quickdraw-dataset/data">https://github.com/googlecreativelab/quickdraw-dataset/data</a></td>
-</tr>
-<tr>
-<td>kaggle casts vs. dogs</td>
-<td>2.5w</td>
-<td><a href="https://www.kaggle.com/c/dogs-vs-cats/data">https://www.kaggle.com/c/dogs-vs-cats/data</a></td>
-</tr>
-<tr>
-<td>COCO common objects Dataset</td>
-<td>微软, 物体检测,分割</td>
-<td><a href="http://cocodataset.org/#home">http://cocodataset.org/#home</a></td>
-</tr>
-<tr>
-<td>Stanford 40 Actions</td>
-<td>斯坦福，人的40种动作(刷牙，扫地，爬山，做饭..)</td>
-<td><a href="http://vision.stanford.edu/Datasets/40actions.html">http://vision.stanford.edu/Datasets/40actions.html</a></td>
-</tr>
-</tbody>
-</table>
-
-<p>人脸数据集</p>
-
-<ul>
-<li>自然脸部检测（LFW）数据集：包含13000幅经裁剪的脸部区域图像（采用Viola-Jones检测框架），标记了图中人的姓名。数据集中的一部分人有两幅图像，人们常用它训练脸部匹配系统。</li>
-<li>UMD Faces：已标注的人脸图像数据集，包括来自8501个人的367920幅脸部图像。</li>
-<li>CASIA WebFace：包含453453幅人脸图像的数据集，经人脸检测后共识别出超过10575个身份。需要进行一些筛选来提高质量。</li>
-<li>MS-Celeb-1M：100万幅世界名人图像。需要进行一些筛选才能在深度神经网络上取得最佳结果。</li>
-<li>Olivetti：一些人的不同脸部图像。</li>
-<li>Multi-Pie：CMU的Multi-PIE人脸数据库</li>
-<li>Face-in-Action</li>
-<li>JACFEE：日本人和高加索人不同情绪的脸部表情</li>
-<li>FERET：脸部识别技术数据库</li>
-<li>mmifacedb：MMI脸部表情数据库</li>
-<li>IndianFaceDatabase  耶鲁人脸数据库和耶鲁人脸数据库B)。</li>
-</ul>
-
-<h2 id="toc_1">2.文本数据集</h2>
-
-<ul>
-<li>20个新闻组数据集：分类任务，将出现的词映射至新闻组ID。文本分类的经典数据集之一，通常可以用于纯分类算法的基准测试，或者用于验证任意一种IR/索引算法。</li>
-<li>路透社新闻数据集：（较老）纯分类用途的新闻电讯文本数据集。常用于教程。</li>
-<li>Penn Treebank：用于下一词预测或下一字预测。</li>
-<li>UCI垃圾邮件数据库Spambase：（较老）来自著名的UCI机器学习库的经典垃圾邮件数据集。该数据集经过细致的审编，因此可以作为个性化垃圾邮件筛选学习的基线。</li>
-<li>广播新闻数据集：用于下一词预测的经典大型文本数据集。</li>
-<li>文本分类数据集： 来自Zhang等人，2015；八个内容丰富的文本分类数据集，可用于新文本分类基线的基准测试。样例大小为120K至3.6M，问题所涉及的类别从两个到14个不等。数据集内容来自DBPedia、亚马逊、Yelp、雅虎和AG。</li>
-<li>WikiText：取自高质量维基百科文章的大型语言模型语料库，由Salesforce MetaMind进行审编。</li>
-<li>SQuAD：斯坦福问答数据集——用途广泛的问题回答及阅读理解数据集，每项问题的答案都是一段文本。</li>
-<li>十亿词数据集：大型通用语言模型数据集，常用于训练Word2Vec等词的分布式表示。</li>
-<li>Common Crawl： 万兆字节级的网页爬取数据集——最常用于学习词向量。可通过亚马逊S3免费获取。数据集的内容从万维网爬取获得，因此也可以用作互联网的数据集。</li>
-<li>谷歌图书Ngram数据集：取自谷歌图书的连续词数据，是探索一个词何时开始被广泛使用的简易方法。</li>
-<li>Yelp公开数据集：Yelp商户、评论及用户数据的子集，用于自然语言处理（NLP）。</li>
-</ul>
-
-<h2 id="toc_2">参考资料</h2>
-
-<p><a href="https://blog.csdn.net/chaipp0607/article/details/71403797">https://blog.csdn.net/chaipp0607/article/details/71403797</a></p>
-
-<p><a href="https://deeplearning4j.org/cn/opendata">https://deeplearning4j.org/cn/opendata</a></p>
-
-<p><a href="https://zhuanlan.zhihu.com/p/35399323">https://zhuanlan.zhihu.com/p/35399323</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/2/28</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025347820.html">
-                
-                  <h1>目录</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>Github:</p>
-
-<ul>
-<li>统计学 cheet-sheet整理</li>
-</ul>
-
-<hr/>
-
-<ol>
-<li><p>基础工具</p>
-<ul>
-<li>markdown，git，R/python，MR,SQL</li>
-<li>linux</li>
-</ul></li>
-<li><p>获取数据</p></li>
-<li><p>数据清洗+ 探索性分析</p>
-<ul>
-<li>数据可视化</li>
-</ul></li>
-<li><p>统计推断</p></li>
-<li><p>机器学习</p></li>
-<li><p>深度学习</p></li>
-<li><p>数据产品开发</p></li>
-<li><p>平台架构</p></li>
-</ol>
-
-<h1 id="toc_0">study list</h1>
-
-<p><a href="https://tracholar.github.io/wiki/#tools">https://tracholar.github.io/wiki/#tools</a></p>
-
-<p>pyspark RDD<br/>
-  <a href="http://www.jianshu.com/p/4cd22eda363f">http://www.jianshu.com/p/4cd22eda363f</a></p>
+                        	<p><a href="http://glaros.dtc.umn.edu/gkhome/cluto/cluto/download">http://glaros.dtc.umn.edu/gkhome/cluto/cluto/download</a></p>
 
                         
                       </div>
@@ -425,7 +248,7 @@
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html'>数据科学-清单</a></span>
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
           				   
                     
 
@@ -441,240 +264,429 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15867647063491.html">
+                <a class="clearlink" href="15637037683065.html">
                 
-                  <h1>知识发现</h1>
+                  <h1>Data product</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>关于DM的process model一般有如下几种：</p>
+                        	<p>We describe our methods in this chapter.</p>
 
-<p>1.CRISP-DM 跨行业数据挖掘标准流程，将一个KDD工程分为6个不同的阶段。这种方式只定义了要做什么没有说how to do</p>
+<p>bookdown</p>
+
+<p>bookdown是基于markdown，knitr用来进行write book的一个package。<br/>
+其主要功能和markdown差不多，参考gitbook的方式，能基于Rmd或者md进行书写。</p>
+
+<p>加载一些html widgets</p>
+
+<p>首先安装相应的支持包</p>
+
+<pre><code class="language-text">install.packages(&quot;webshot&quot;)
+webshot::install_phantomjs()
+</code></pre>
+
+<h2 id="toc_0">输出格式</h2>
+
+<p>在<code>_output.yaml</code>中进行设置<br/>
+(1)html格式</p>
 
 <ul>
-<li>商业理解：确定商业的目标，发现影响结果的重要因素。</li>
-<li>数据理解</li>
-<li>数据准备</li>
-<li>建模</li>
-<li>评估</li>
-<li>部署</li>
+<li>gtbook style</li>
 </ul>
 
-<h2 id="toc_0">一. Association Rules</h2>
+<p>*</p>
 
-<p>传统的，根据支持度和置信度，挖掘出频繁项集。但是很显然的会面临很多问题。<br/>
-1) 低频次的并不代表不重要，他们可能能产生出重要的negative association rules (NARs)。 低频购买换个角度就是高频不购买<br/>
-2) 个人感觉频繁项集不一定是有价值信息的</p>
+<h2 id="toc_1">生成</h2>
 
-<h3 id="toc_1">1 经典AR</h3>
+<p>实时预览</p>
 
-<p>先说下基本定义，</p>
+<p>serve_book(dir=&#39;.&#39;, output_dir=&quot;_book&quot;,preview=TRUE, in_session=TRUE)</p>
+
+<h1 id="toc_2">flexdashbaord</h1>
+
+<p><a href="http://rmarkdown.rstudio.com/flexdashboard/">http://rmarkdown.rstudio.com/flexdashboard/</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html'>3 数据可视化</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037683461.html">
+                
+                  <h1>Jupyter notebook</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>类似于r的markdown</p>
+
+<p>GitHub 上也直接支持 Jupyter notebook 的渲染。借助此出色的功能，你可以轻松地共享工作。<a href="http://nbviewer.jupyter.org/">http://nbviewer.jupyter.org/</a> 也会提供 GitHub 代码库中的 notebook ，以及存储在其他地方的 notebook。</p>
+
+<p>名称 Jupyter 由 Julia、Python 和 R 组合而成，早期的两个非 Python 内核分别是 R 语言和 Julia 语言</p>
+
+<h2 id="toc_0">1.安装</h2>
+
+<ul>
+<li>如果安装anaconda 会自带</li>
+<li>通过conda环境安装 <code>conda install jupyter notebook</code>，或者<code>pip install jupyter notebook</code></li>
+</ul>
+
+<pre><code class="language-text"># 启动
+jupyter notebook
+</code></pre>
+
+<p>快捷键</p>
+
+<p>在上方插入cell：a<br/>
+在下方插入cell：b<br/>
+剪切当前cell：x<br/>
+删除当前cell：dd<br/>
+撤销删除：u<br/>
+上下：方向键 or jk (同vim)<br/>
+扩展选中上下左右：shift+jk<br/>
+当前cell转入markdown状态：m<br/>
+当前cell转入代码状态：y</p>
+
+<h2 id="toc_1">magic 关键字</h2>
+
+<p>Magic 关键字是可以在单元格中运行的特殊命令，能让你控制notebook 本身或执行系统调用（例如更改目录）</p>
+
+<p>Magic 命令的前面带有一个或两个百分号（% 或 %%），分别对应行 Magic 命令和单元格 Magic 命令。行 Magic 命令仅应用于编写 Magic 命令时所在的行，而单元格 Magic 命令应用于整个单元格。</p>
+
+<p>对于 Python 内核，可以使用 Magic 命令 %pdb 开启交互式调试器。出错时，你能检查当前命名空间中的变量。</p>
+
+<h2 id="toc_2">2.转换 notebook格式</h2>
+
+<p>Notebook 只是扩展名为 .ipynb 的大型 JSON 文件。</p>
+
+<p>转换格式的命令 <code>nbconvert</code></p>
+
+<pre><code class="language-text">jupyter nbconvert --to html notebook.ipynb   #转成html
+jupyter nbconvert --to markdown xxx.ipynb 
+</code></pre>
+
+<p>目前支持的转换格式(<a href="https://nbconvert.readthedocs.io/en/latest/usage.html">https://nbconvert.readthedocs.io/en/latest/usage.html</a>)<br/>
+HTML,<br/>
+LaTeX,<br/>
+PDF,<br/>
+Reveal.js HTML slideshow,<br/>
+Markdown,<br/>
+reStructuredText,<br/>
+executable script,<br/>
+notebook.</p>
+
+<p><strong>创建幻灯片</strong></p>
+
+<p>在 notebook 中创建幻灯片的过程像平常一样，但需要指定作为幻灯片的单元格和单元格的幻灯片类型。在菜单栏中，点击“View”（视图）&gt;“Cell Toolbar”（单元格工具栏）&gt;“Slideshow”（幻灯片），以便在每个单元格上弹出幻灯片单元格菜单。</p>
+
+<pre><code class="language-text">#转换并在浏览器中展示
+jupyter nbconvert notebook.ipynb --to slides --post serve
+</code></pre>
+
+<h2 id="toc_3">3.测试机上安装jupyter</h2>
+
+<p><a href="https://cloud.tencent.com/developer/article/1147487">https://cloud.tencent.com/developer/article/1147487</a></p>
+
+<ul>
+<li>安装jupyter</li>
+<li>生成密码 python -c &quot;import IPython;print IPython.lib.passwd()&quot;</li>
+<li>修改配置文件 </li>
+</ul>
+
+<p>/home/work/.jupyter/jupyter_notebook_config.py</p>
+
+<p>如果启动报错</p>
+
+<pre><code class="language-text">socket.gaierror: [Errno -2] Name or service not known
+</code></pre>
+
+<p>可以加上自己的ip</p>
+
+<pre><code class="language-text"> jupyter notebook --ip=xxxx
+ jupyter lab --ip=xxx
+</code></pre>
+
+<h2 id="toc_4">4.其他工具</h2>
+
+<p><strong>jupyter-lab</strong><br/>
+jupyter-lab 是jupyter-notebook的升级版，界面更加炫酷，也支持更多功能，强烈建议使用lab方式</p>
+
+<p><strong>colab</strong><br/>
+google 基于jupyter开发的存在在google driver上的网页版<br/>
+<a href="https://colab.research.google.com/">https://colab.research.google.com/</a><br/>
+本身功能上差不太多，主要是有search和share功能，查看别人分享的代码</p>
+
+<p>一个简单的入门教程,在colab上你可以体验免费的GPU<br/>
+<a href="https://github.com/xitu/gold-miner/blob/master/TODO1/google-colab-free-gpu-tutorial.md">https://github.com/xitu/gold-miner/blob/master/TODO1/google-colab-free-gpu-tutorial.md</a></p>
+
+<p>Q: 将大文件发送的google drive</p>
+
+<pre><code class="language-python"># 需要发送哪个文件？
+file_name = &quot;REPO.tar&quot;
+
+from googleapiclient.http import MediaFileUpload
+from googleapiclient.discovery import build
+
+auth.authenticate_user()
+drive_service = build(&#39;drive&#39;, &#39;v3&#39;)
+
+def save_file_to_drive(name, path):
+  file_metadata = {&#39;name&#39;: name, &#39;mimeType&#39;: &#39;application/octet-stream&#39;}
+  media = MediaFileUpload(path, mimetype=&#39;application/octet-stream&#39;, resumable=True)
+  created = drive_service.files().create(body=file_metadata, media_body=media, fields=&#39;id&#39;).execute()
+  
+  return created
+
+save_file_to_drive(file_name, file_name)
+</code></pre>
+
+<h2 id="toc_5">5.常见问题</h2>
+
+<p>Q1: 若import了自己写的外部模块，如果这个外部模块有更新，再次执行import，jupyter是不会重新导入的<br/>
+<a href="https://blog.csdn.net/ybdesire/article/details/86709727">https://blog.csdn.net/ybdesire/article/details/86709727</a></p>
+
+<p>对于 Python2.x<br/>
+import some_module<br/>
+reload(some_module)</p>
+
+<p>对于 Python 3.2 and 3.3:<br/>
+import some_module<br/>
+import importlib<br/>
+importlib.reload(some_module)</p>
+
+<p>对于 Python3.4+<br/>
+import some_module<br/>
+import imp<br/>
+imp.reload(some_module)</p>
+
+<p>方法2：<br/>
+auto_load</p>
+
+<p><a href="https://codeday.me/bug/20181215/447675.html">https://codeday.me/bug/20181215/447675.html</a></p>
+
+<p>Q2. <code>jupyter lab</code> 启动提示</p>
+
+<p><img src="media/15637037680349/15665439689997.jpg" alt=""/></p>
+
+<p>应该是编码问题，暂时的解决方案<a href="https://github.com/jupyter/notebook/issues/2789#issuecomment-338380336">https://github.com/jupyter/notebook/issues/2789#issuecomment-338380336</a></p>
+
+<p><code>LANG=zn jupyter lab</code></p>
+
+<p>这个问题后来查了下说是python2的bug，安装python3就不会出现这个问题。</p>
+
+<p>Q3. 切换内核<br/>
+很多代码都是python2写的，用pip3安装jupyter之后，想切换写内核。<br/>
+<a href="https://www.cnblogs.com/Jeffiy/p/4861528.html">https://www.cnblogs.com/Jeffiy/p/4861528.html</a></p>
+
+<pre><code class="language-text">jupyter kernelspec list
+</code></pre>
+
+<p>Q4: jupyterlab 中的内容，可以通过右键点击复制下载链接得到一个url，通过该url可以直接在网页上展示该文件。注意该url后面有个 _xsrf=xxxx的标记。<br/>
+如果重启了jupyterlab，这个标记也需要更新</p>
+
+<p>Q5: 如果安装了不同的conda环境，想切换不同的环境运行</p>
+
+<pre><code class="language-text">conda install nb_conda_kernels
+</code></pre>
+
+<p>Q6:在自己的docker环境下想运行jupyter</p>
+
+<pre><code class="language-text"># 在docker环境中安装
+pip install jupyterlab
+# 配置
+jupyter notebook --generate-config
+</code></pre>
+
+<h2 id="toc_6">6 好用的插件</h2>
+
+<p><a href="https://blog.csdn.net/yh0vlde8vg8ep9vge/article/details/85333338">https://blog.csdn.net/yh0vlde8vg8ep9vge/article/details/85333338</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037683688.html">
+                
+                  <h1>4.7 聚类2——-效果评价</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>从整体上来看，根据真实标签是否已知，聚类效果评估可以分为两大类：</p>
+
+<ul>
+<li>外部标准：即基于人工的判断，需要有个标注集合</li>
+<li>内部标准：基于类内和类间聚类的目标函数的判断</li>
+</ul>
+
+<h2 id="toc_0">内部标准clustering-performance-evaluation</h2>
+
+<p>官方文档 <a href="https://scikit-learn.org/stable/modules/clustering.html#clustering-performance-evaluation">https://scikit-learn.org/stable/modules/clustering.html#clustering-performance-evaluation</a></p>
+
+<ul>
+<li>轮廓系数</li>
+</ul>
+
+<p>轮廓系数的计算方法: \(\frac{b-a}{max(a,b)}\)<br/>
+对每个样本来说：a=与他同类别样本的平均距离, b=与他距离最近的不同类别中样本的平均距离。</p>
+
+<p>属性： 范围[-1,1]， 越大越好</p>
+
+<pre><code class="language-python">import numpy as np
+from sklearn.cluster import KMeans
+kmeans_model = KMeans(n_clusters=3, random_state=1).fit(X)
+labels = kmeans_model.labels_
+metrics.silhouette_score(X, labels, metric=&#39;euclidean&#39;)            
+</code></pre>
+
+<ul>
+<li>CH准则(计算速度要比轮廓系数快)</li>
+</ul>
+
+<p>\[s(k) = \frac{tr(Bk)/(k-1)}{tr(W_k)/(n-k)}\]<br/>
+其中Bk是类别间的协方差矩阵，Wk是类别内部的协方差矩阵。最后是希望类别间越大，类内越小越好。<br/>
+即CH值越大越好</p>
+
+<pre><code class="language-python">metrics.calinski_harabaz_score(X, labels) 
+</code></pre>
+
+<p>在选择最优的k时候，因为每个k都要再计算一次，当样本量比较大的时候比较费时间，这个时候可以选用<code>MiniBatchKMeans</code></p>
+
+<pre><code class="language-python">ch_list = []
+lunkuo_list = []
+for i in num_list:
+    # model = KMeans(n_clusters = i,random_state=123).fit(df)
+    model = MiniBatchKMeans(n_clusters = i,random_state=123).fit(df)
+    ch = calinski_harabasz_score(df, model.labels_)     # CH 准则
+    ch_list.append(ch)
+
+    lunkuo = silhouette_score(df, model.labels_)        # 轮廓系数
+    lunkuo_list.append(lunkuo)    
+print(ch_list,lunkuo_list ) 
+</code></pre>
+
+<h2 id="toc_1">已知类别标注</h2>
+
+<p>假设：<br/>
+机器判断的类别集合是：\(C=\{C_1,C_2,...C_m\}\)<br/>
+人工判断的类别集合是：\(P=\{P_1,P_2,...P_s\}\)</p>
+
+<h3 id="toc_2">1.1混淆矩阵</h3>
+
+<p>基于数据样本点的角度：<br/>
+对于任意两个数据pair，\((x_i,x_j)\)按照其在C和P中是否属于同一个簇，可以构造出混淆矩阵</p>
 
 <table>
 <thead>
 <tr>
 <th></th>
-<th>B</th>
-<th>not B</th>
-<th>合计</th>
+<th>P_1</th>
+<th>p_0</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td>A</td>
+<td>C_1</td>
 <td>a</td>
 <td>b</td>
-<td>a+b</td>
 </tr>
 <tr>
-<td>not A</td>
-<td>C</td>
+<td>C_0</td>
+<td>c</td>
 <td>d</td>
-<td>c+d</td>
-</tr>
-<tr>
-<td>合计</td>
-<td>a+c</td>
-<td>b+d</td>
-<td>a+b+c+d</td>
 </tr>
 </tbody>
 </table>
 
-<p>支持度sup(A=&gt;B) = P(A&amp;B) = a/n<br/>
-置信度 conf(A=&gt;B) = P(B|A) = a/(a+b)<br/>
-提升度 lift(A=&gt;B)= p(A&amp;B)/P(A)/P(B)       # 是否独立 &gt; 1表明正相关， &lt;1 表示负相关。 可以看做相关系数</p>
+<p><img src="media/15078603543147/15078631739679.jpg" alt=""/></p>
 
-<p>一般是设置最低的支持度和置信度，一旦满足这两个就认为是一条rule.</p>
+<h3 id="toc_3">1.2簇的准确率/召回率</h3>
 
-<p>用这种方式得到的结果很可能是不可信的，或者说不全面的，比如如下的一个具体例子。可知sup(A=&gt;B)= 0.45, conf(A=&gt;B)=0.9. 看似较高，但是没法得出 买了A就买B的结论，因为不买A=&gt;买B也是一样，或者说买B本身就很高，与是否买A无关。</p>
+<p>基于簇pair的，考虑对任意一个人工与机器的.\(P_j,C_i\)。对于每一个人工标注的\(P_j\),在机器标注中应该都会对应一个&quot;最相关的&quot;。可以遍历C中所有的cluster，分别计算准确率，召回率，F_score。<br/>
+<img src="media/15078603543147/15078720767171.jpg" alt=""/></p>
 
-<table>
-<thead>
-<tr>
-<th></th>
-<th>B</th>
-<th>not B</th>
-<th>合计</th>
-</tr>
-</thead>
+<p>然后对于所有簇的F值做加权平均<br/>
+\[ClassF=\sum w_j F(p_j), w_i=n_j/n\]</p>
 
-<tbody>
-<tr>
-<td>A</td>
-<td>450</td>
-<td>50</td>
-<td>a+b</td>
-</tr>
-<tr>
-<td>not A</td>
-<td>450</td>
-<td>50</td>
-<td>c+d</td>
-</tr>
-<tr>
-<td>合计</td>
-<td>a+c</td>
-<td>b+d</td>
-<td>a+b+c+d</td>
-</tr>
-</tbody>
-</table>
+<p>classF指标，相当于是以人工标注的簇为基准，将聚类的簇尽量逼近这个标注的结果。</p>
 
-<p>相关系数 \(corr_ = \frac{sup(A交B) - sup(A)sup(B)}{\sqrt{supA(1-supA)supB(1-supB)}} \)<br/>
-通过卡方检验，可以推倒出卡方检验的统计量与corr是一致的。<br/>
-常用的算法 Apriori， FP-Growth</p>
+<h2 id="toc_4">1.3</h2>
 
-<h3 id="toc_2">2 NAR</h3>
+<p>1.2中的方法相当于要求的比较严格，即以人工标注的集合簇为准。</p>
 
-<p>比如A=&gt; not B<br/>
-参考【4】中作者方案包括2步：1)首先找到frequent和infrequent的itemset   2)判断是positive还是negative association</p>
+<p>实际中其实只要保证我们聚的每一个类\(C_i\)是有意义的就可以，即以C为主</p>
 
-<p>具体的<br/>
-(1) infrequent: 通过IDF加权，过滤掉出现次数非常少的，或者是在不同人之间分布比较均匀的term<br/>
-<img src="media/15867647063491/15868573761250.jpg" alt="" style="width:960px;"/></p>
-
-<p>(2) 有了这些候选的itemset后，根据定义计算positive或者negative的rule<br/>
-<img src="media/15867647063491/15868574713672.jpg" alt="" style="width:586px;"/></p>
-
-<p>注意：<br/>
- A =&gt; B 不一定能推出 not B =&gt; not A</p>
-
-<h3 id="toc_3">3 infrequent itemset</h3>
-
-<p>high utility infrequent itemsets. 频次不高，但是有更高的价值。UPRI算法(utility pattern rare itemset algorithm)<br/>
-简单的说，传统的AR是 \(I_1,...I_m =&gt; I_{m+1}(sup, conf)\)，而基于utility的是\(I_1,...I_m =&gt; Obj(sup, conf, u)\)。 传统的AR其实相当于将频次作为效用的度量。实际中不同的商品所带来的效用是不同，比如当关注cost，profit时候，对零售商来说，高售价的商品就比低售价的商品重要。</p>
-
-<p>区别于传统的基于itemset的ICOA (itemset-correlation-oriented association)，基于目标效用的OOA (objective-oriented utility-based association)mining</p>
-
-<p>related work:</p>
+<p>类似的定义 \(F(C_i)=\max_{1\lt j \lt s}F(P_j, C_i)\)<br/>
+\[F=\sum w_i F(C_i), w_i=|C_i|/n\]</p>
 
 <ul>
-<li>由min_sup, min_conf的方式改为 topK的方式</li>
-<li>Sese and Morishita 度量usefulness的方式：利用规则相关系数的显著性</li>
-<li>Han 通过min_l()的方式挖掘topK的closed patterns<br/>
-参考【5】中挖</li>
+<li>问题： 这个指标可能变化不是非常明显</li>
 </ul>
 
-<h2 id="toc_4">2. case</h2>
+<h2 id="toc_5">1.4基于数据对象的准召F</h2>
 
-<p>参考【4】中处理 <br/>
-(1)IDF加权,考虑到term不同权重</p>
+<p><img src="media/15078603543147/15078731022919.jpg" alt=""/></p>
 
-<h2 id="toc_5">3.工具</h2>
-
-<p>(1) positive association rules—— apriori<br/>
-python的sklearn中貌似没有直接的apriori工具,在<code>pypi</code>上找到这个<code>efficient-apriori</code> <a href="https://pypi.org/search/?q=apriori%E3%80%82">https://pypi.org/search/?q=apriori。</a> 或者在github上搜索 <a href="https://github.com/topics/association-rules?l=python">https://github.com/topics/association-rules?l=python</a></p>
-
-<p>(2) negative association rules ------</p>
-
-<p>可以用一种比较tricky的方法，即对于我们所关心的item，在数据集中添加 not_item项即可。比如基于R的实现 <a href="https://subscription.packtpub.com/book/big_data_and_business_intelligence/9781788621878/1/ch01lvl1sec14/negative-association-rules">https://subscription.packtpub.com/book/big_data_and_business_intelligence/9781788621878/1/ch01lvl1sec14/negative-association-rules</a></p>
-
-<h2 id="toc_6">4.统计显著性</h2>
-
-<p><a href="https://github.com/BorgwardtLab/significant-subgraph-mining">https://github.com/BorgwardtLab/significant-subgraph-mining</a></p>
-
-<p>参考资料</p>
+<h2 id="toc_6">思考</h2>
 
 <ol>
-<li>A survey of data mining and knowledge discovery process models and methodologies</li>
-<li>A review and analysis on knowledge discovery and data mining techniques(回溯了各种关联规则相关的)</li>
-<li><a href="https://www.ixueshu.com/document/2a80aefb26b9e3e9318947a18e7f9386.html">https://www.ixueshu.com/document/2a80aefb26b9e3e9318947a18e7f9386.html</a></li>
-<li>Negative and Positive Association Rules Mining from Text Using Frequent and Infrequent Itemsets</li>
-<li>mining high utility itemsets</li>
+<li>基于人工标注的方法中，认为人工标注的是准确的或者说结果是唯一的。实际上一堆sample可以有不同的分类方法，而且每种方法可能都是对的。
+<code>
+e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大学
+</code>
+如何进行标注，或者标注结果是非固定时候怎么衡量聚类效果的好坏？？</li>
 </ol>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/4/13</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html'>kdd&异常检测</a></span>
-          				   
-                    
+<h2 id="toc_7">参考资料</h2>
 
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<p><a href="http://blog.csdn.net/itplus/article/details/10322361">http://blog.csdn.net/itplus/article/details/10322361</a></p>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037679634.html">
-                
-                  <h1>神经网络解释性问题</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><a href="https://ask.hellobi.com/blog/zlx19930503/10578">https://ask.hellobi.com/blog/zlx19930503/10578</a></p>
-
-<p>但是深度学习是一个黑箱。我第一次听说它时，就对其工作原理非常费解。几年过去了，我仍然在探索合理的答案。尝试解释现代神经网络很难，但是至关重要。如果我们打算依赖深度学习制造新的 AI、处理敏感的用户数据，或者开药，那么我们必须理解这些模型的工作原理。</p>
-
-<p>很幸运，学界人士也提出了很多对深度学习的理解。以下是几个近期论文示例：</p>
-
-<h2 id="toc_0">Grad-Cam（Selvaraju et. al. 2017）</h2>
-
-<p>使用最后卷积层的梯度生成热力图，突出显示输入图像中的重要像素用于分类。</p>
-
-<h2 id="toc_1">LIME（Ribeiro et. al. 2016）</h2>
-
-<p>使用稀疏线性模型（可轻松识别重要特征）逼近 DNN 的预测。</p>
-
-<p>论文地址：<a href="https://arxiv.org/abs/1602.04938">https://arxiv.org/abs/1602.04938</a></p>
-
-<p>一些中文解读：<a href="https://www.oreilly.com.cn/ideas/?p=563%EF%BC%9B">https://www.oreilly.com.cn/ideas/?p=563；</a><br/>
-<a href="http://geek.csdn.net/news/detail/66259">http://geek.csdn.net/news/detail/66259</a></p>
-
-<p>一个例子<br/>
-<a href="http://marcotcr.github.io/lime/tutorials/Lime%20-%20basic%20usage%2C%20two%20class%20case.html">http://marcotcr.github.io/lime/tutorials/Lime%20-%20basic%20usage%2C%20two%20class%20case.html</a></p>
-
-<p><a href="https://www.jiqizhixin.com/articles/2017-12-20-2">https://www.jiqizhixin.com/articles/2017-12-20-2</a></p>
-
-<h2 id="toc_2">特征可视化（Olah 2017）</h2>
-
-<p>对于带有随机噪声的图像，优化像素来激活训练的 DNN 中的特定神经元，进而可视化神经元学到的内容。</p>
-
-<h2 id="toc_3">Loss Landscape（Li et. al. 2017）</h2>
-
-<p>可视化 DNN 尝试最小化的非凸损失函数，查看架构／参数如何影响损失情况。</p>
-
-<h2 id="toc_4">关于xgboost</h2>
-
-<p>R: <a href="https://github.com/AppliedDataSciencePartners/xgboostExplainer">https://github.com/AppliedDataSciencePartners/xgboostExplainer</a><br/>
-python <a href="https://github.com/gameofdimension/xgboost_explainer">https://github.com/gameofdimension/xgboost_explainer</a></p>
+<p><a href="https://blog.csdn.net/qq_27825451/article/details/94436488">https://blog.csdn.net/qq_27825451/article/details/94436488</a></p>
 
                         
                       </div>
@@ -686,7 +698,7 @@ python <a href="https://github.com/gameofdimension/xgboost_explainer">https://gi
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>8 深度学习</a></span>
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
           				   
                     
 
@@ -775,6 +787,8 @@ python <a href="https://github.com/gameofdimension/xgboost_explainer">https://gi
         
             <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
+            <a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html"><strong>11 平台架构</strong></a>
+        
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E5%85%B6%E4%BB%96.html"><strong>其他</strong></a>
@@ -794,31 +808,31 @@ python <a href="https://github.com/gameofdimension/xgboost_explainer">https://gi
 	      
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">0.综述</a>
+			        <a href="15917706614562.html">optical flow 光流</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637036455584.html">1 估计的置信度</a>
+			        <a href="15917693533998.html">process</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037681646.html">1 基础工具包安装pip</a>
+			        <a href="15917597006543.html">业务</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637025346412.html">1. conda 环境管理</a>
+			        <a href="15917572981552.html">综述_关键点检测</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037713554.html">1. 数据可视化概述</a>
+			        <a href="15916704949564.html">【工具】MMlab——mmaction</a>
 			      </li>
 		     
 		  

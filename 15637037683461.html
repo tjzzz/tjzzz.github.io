@@ -103,6 +103,8 @@
         
             <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
+            <li><a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html">11 平台架构</a></li>
+        
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E5%85%B6%E4%BB%96.html">其他</a></li>
@@ -246,6 +248,30 @@ google 基于jupyter开发的存在在google driver上的网页版<br/>
 <a href="https://colab.research.google.com/">https://colab.research.google.com/</a><br/>
 本身功能上差不太多，主要是有search和share功能，查看别人分享的代码</p>
 
+<p>一个简单的入门教程,在colab上你可以体验免费的GPU<br/>
+<a href="https://github.com/xitu/gold-miner/blob/master/TODO1/google-colab-free-gpu-tutorial.md">https://github.com/xitu/gold-miner/blob/master/TODO1/google-colab-free-gpu-tutorial.md</a></p>
+
+<p>Q: 将大文件发送的google drive</p>
+
+<pre><code class="language-python"># 需要发送哪个文件？
+file_name = &quot;REPO.tar&quot;
+
+from googleapiclient.http import MediaFileUpload
+from googleapiclient.discovery import build
+
+auth.authenticate_user()
+drive_service = build(&#39;drive&#39;, &#39;v3&#39;)
+
+def save_file_to_drive(name, path):
+  file_metadata = {&#39;name&#39;: name, &#39;mimeType&#39;: &#39;application/octet-stream&#39;}
+  media = MediaFileUpload(path, mimetype=&#39;application/octet-stream&#39;, resumable=True)
+  created = drive_service.files().create(body=file_metadata, media_body=media, fields=&#39;id&#39;).execute()
+  
+  return created
+
+save_file_to_drive(file_name, file_name)
+</code></pre>
+
 <h2 id="toc_5">5.常见问题</h2>
 
 <p>Q1: 若import了自己写的外部模块，如果这个外部模块有更新，再次执行import，jupyter是不会重新导入的<br/>
@@ -290,6 +316,19 @@ auto_load</p>
 <p>Q4: jupyterlab 中的内容，可以通过右键点击复制下载链接得到一个url，通过该url可以直接在网页上展示该文件。注意该url后面有个 _xsrf=xxxx的标记。<br/>
 如果重启了jupyterlab，这个标记也需要更新</p>
 
+<p>Q5: 如果安装了不同的conda环境，想切换不同的环境运行</p>
+
+<pre><code class="language-text">conda install nb_conda_kernels
+</code></pre>
+
+<p>Q6:在自己的docker环境下想运行jupyter</p>
+
+<pre><code class="language-text"># 在docker环境中安装
+pip install jupyterlab
+# 配置
+jupyter notebook --generate-config
+</code></pre>
+
 <h2 id="toc_6">6 好用的插件</h2>
 
 <p><a href="https://blog.csdn.net/yh0vlde8vg8ep9vge/article/details/85333338">https://blog.csdn.net/yh0vlde8vg8ep9vge/article/details/85333338</a></p>
@@ -303,16 +342,16 @@ auto_load</p>
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="15777601839480.html" 
-          title="Previous Post: HMM">&laquo; HMM</a>
+          <a href="15637037683065.html" 
+          title="Previous Post: Data product">&laquo; Data product</a>
       
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="15838236096534.html" 
-          title="Next Post: MMLab">MMLab &raquo;</a>
+          <a  href="15637037683688.html" 
+          title="Next Post: 4.7 聚类2——-效果评价">4.7 聚类2——-效果评价 &raquo;</a>
       
       </p>
         </div>
@@ -388,6 +427,8 @@ auto_load</p>
         
             <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
+            <a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html"><strong>11 平台架构</strong></a>
+        
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E5%85%B6%E4%BB%96.html"><strong>其他</strong></a>
@@ -407,31 +448,31 @@ auto_load</p>
 	      
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">0.综述</a>
+			        <a href="15917706614562.html">optical flow 光流</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637036455584.html">1 估计的置信度</a>
+			        <a href="15917693533998.html">process</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037681646.html">1 基础工具包安装pip</a>
+			        <a href="15917597006543.html">业务</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637025346412.html">1. conda 环境管理</a>
+			        <a href="15917572981552.html">综述_关键点检测</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037713554.html">1. 数据可视化概述</a>
+			        <a href="15916704949564.html">【工具】MMlab——mmaction</a>
 			      </li>
 		     
 		  

@@ -103,6 +103,8 @@
         
             <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
+            <li><a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html">11 平台架构</a></li>
+        
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E5%85%B6%E4%BB%96.html">其他</a></li>
@@ -128,164 +130,56 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637037679256.html">
+                <a class="clearlink" href="15665275932673.html">
                 
-                  <h1>Rmarkdown</h1>
+                  <h1>3.vim 配置</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">python支持</h2>
+                        	<p><strong>1 简单版，直接配置好的</strong><br/>
+mac vim 配置<br/>
+<a href="https://github.com/barretlee/autoconfig-mac-vimrc">https://github.com/barretlee/autoconfig-mac-vimrc</a></p>
 
-<p>Rmarkdown对python兼容 <a href="https://github.com/rstudio/reticulate">https://github.com/rstudio/reticulate</a></p>
-
-<h2 id="toc_1">图片</h2>
-
-<p>现在很多makdown编辑器是可以支持拖拽本地图片或者截屏就可以直接在markdown中生成图片的，非常方便，比如我现在在用的MWeb编辑器。</p>
-
-<p>但是如果同一篇内容需要在不同的平台上进行发布，那图片处理起来就比较麻烦。因为需要重新上传到不同平台。<br/>
-最方便的处理方式就是利用图床， 这里以七牛云存储为例。<br/>
-<img src="media/15378048283915/15383141468224.jpg" alt=""/></p>
-
-<p>step1： 首先在七牛官网上申请注册账号，并且添加<strong>对象存储</strong></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15665281146000.html">
-                
-                  <h1>docker</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>docker是一个容器，可以让开发者打包他们的应用以及依赖的环境到一个容器中，然后可以移植到别的机器上。容器是使用的沙箱机制，相互之间不会有任何接口。</p>
-
-<p>docker 官网： <a href="http://www.docker.com">http://www.docker.com</a><br/>
-容器:  对象<br/>
-镜像images: 类，是用于创建docker容器的模版<br/>
-docker仓库<a href="https://hub.docker.com%EF%BC%8C">https://hub.docker.com，</a> 是用来提供各种镜像的仓库。</p>
-
-<p><strong>基本使用</strong></p>
-
-<pre><code class="language-text"># 运行方式 1： 类似于运行pyhton脚本 python xxx.py  参数
-docker run ubuntu:18.10 /bin/echo &quot;Hello world&quot;
+<pre><code class="language-text">git clone https://github.com/barretlee/autoconfig-mac-vimrc.git;
+cd autoconfig-mac-vimrc;
+chmod +x install;
+./install;
 </code></pre>
 
-<ul>
-<li>ubuntu:18.10是指定要运行的镜像，docker会先从本机上检查是否存在，如果不存在会从docker hub下载公共镜像。</li>
-<li> /bin/echo &quot;Hello world&quot;， 在启动容器里执行命令</li>
-</ul>
+<p>调整终端配色： <a href="https://github.com/mitsuhide1992/vim-colors-solarized">https://github.com/mitsuhide1992/vim-colors-solarized</a></p>
 
-<pre><code class="language-text"># 运行方式2： 交互式运行
-docker run -i -t ubuntu:18.10 /bin/bash
+<p>macvim:  <a href="https://www.jianshu.com/p/923aec861af3">https://www.jianshu.com/p/923aec861af3</a></p>
+
+<p><strong>2 vimrc配置中一些常用命令说明</strong></p>
+
+<pre><code class="language-text">colorscheme desert  &quot;设置主题 
+set number   &quot;显示行号 
+set autoindent   &quot;自动缩进 
+set cursorcolumn  &quot;光垂直平方向高亮显示
+set cursorline  &quot;光标水平方向高亮显示
+set mouse=a   &quot;激活鼠标可用 
+set tabstop=4  &quot;设置tab和缩进为4个空格
+syntax enable   &quot;开启语法 
 </code></pre>
 
-<ul>
-<li>-t 在新容器中指定一个终端</li>
-<li>-i 允许你对容器内的标准输入 (STDIN) 进行交互。</li>
-</ul>
+<p><strong>3 vim 操作快捷键</strong></p>
 
-<p>后台以进程方式运行docker</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
 
-<pre><code class="language-text">docker run -d ubuntu:18.10 /bin/sh -c &quot;while true; do echo hello world; sleep 1; done&quot;
-</code></pre>
-
-<p>这个时候发现会出现一串字符，这个就是dicker的id。</p>
-
-<ul>
-<li>-d 让容器在后台运行</li>
-</ul>
-
-<pre><code class="language-text">docker ps   # 查看当前有哪些容器在运行
-exit    #退出容器或者`ctrl +D`
-docker logs 容器id    #查看容器内的标准输出
-docker stop  容器id    # 停止正在运行的docker
-</code></pre>
-
-<p><strong>docker 镜像</strong></p>
-
-<pre><code class="language-text">docker pull   REPOSITORY:TAG    # 下载镜像
-docker search httpd                      # 查找镜像
-
-# 更新镜像，当自己在镜像内做了一些更新后，可以提交
-# commit -m &#39;更新信息&#39; -a 作者 容器id 新版本的镜像名
-docker commit -m=&quot;zzz update&quot; -a=&quot;zzz&quot; 容器的id zzz/ubuntu:v2
-</code></pre>
-
-<p>从零创建一个镜像<br/>
-从零创建镜像的命令是 <code>docker build</code>, 其依赖于一个配置文件Dockerfile，这个文件包含了一组命令来告诉docker如何创建镜像。</p>
-
-<p><code>docker build -t 镜像名 配置文件地址</code></p>
-
-<p>配置文件的一个例子：</p>
-
-<pre><code class="language-text"># 每一个指令的前缀必须是大写
-# FROM 表示使用哪个镜像源
-# RUN 表示告诉docker在镜像内执行命令
-FROM ubuntu:16.04
-RUN apt-get update
-RUN apt-get install -y unzip cmake g++ make ffmpeg libx264-dev wget
-WORKDIR /opt/
-</code></pre>
-
-<p><strong>删除</strong></p>
-
-<pre><code class="language-text">docker rm 容器
-docker rmi 镜像名
-</code></pre>
-
-<p>清理空间</p>
-
-<p>docker system df</p>
-
-<p>docker system prune -a</p>
-
-<p><strong>mac安装</strong><br/>
-直接从官网下载安装即可 <a href="https://download.docker.com/mac/stable/Docker.dmg%E3%80%82">https://download.docker.com/mac/stable/Docker.dmg。</a><br/>
-由于国内网速问题，安装完docker后，后续拉取镜像可能会十分缓慢，可以配置加速器来解决，如下图所示。</p>
-
-<p>阿里云的加速器：<a href="https://help.aliyun.com/document_detail/60750.html">https://help.aliyun.com/document_detail/60750.html</a><br/>
-网易加速器：<a href="http://hub-mirror.c.163.com">http://hub-mirror.c.163.com</a><br/>
-官方中国加速器：<a href="https://registry.docker-cn.com">https://registry.docker-cn.com</a><br/>
-ustc的镜像：<a href="https://docker.mirrors.ustc.edu.cn">https://docker.mirrors.ustc.edu.cn</a><br/>
-daocloud：<a href="https://www.daocloud.io/mirror#accelerator-doc%EF%BC%88%E6%B3%A8%E5%86%8C%E5%90%8E%E4%BD%BF%E7%94%A8%EF%BC%89">https://www.daocloud.io/mirror#accelerator-doc（注册后使用）</a></p>
-
-<p><img src="media/15665281146000/15665304699914.jpg" alt=""/></p>
-
-<h2 id="toc_0">参考资料</h2>
-
-<p><a href="https://www.runoob.com/docker/macos-docker-install.html">https://www.runoob.com/docker/macos-docker-install.html</a><br/>
-docker 常用参数 <a href="https://blog.csdn.net/Hello_World_QWP/article/details/84554031">https://blog.csdn.net/Hello_World_QWP/article/details/84554031</a></p>
-
-<h2 id="toc_1">安装记录</h2>
-
-<p>sudo docker build . -t registry.aibee.cn/zzzheng/logstat:0.1</p>
-
-<p>docker commit 修改镜像 <a href="https://blog.csdn.net/jiankunking/article/details/62056392">https://blog.csdn.net/jiankunking/article/details/62056392</a></p>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
                         
                       </div>
@@ -313,73 +207,36 @@ docker 常用参数 <a href="https://blog.csdn.net/Hello_World_QWP/article/detai
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037678160.html">
+                <a class="clearlink" href="15664761738125.html">
                 
-                  <h1>git</h1>
+                  <h1>2. iterm终端配置-oh my zsh</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>git 是一个版本管理的工具，能够非常方便的对项目进行版本控制。</p>
+                        	<h2 id="toc_0">安装</h2>
 
-<h2 id="toc_0">1建立自己的代码库</h2>
+<p>oh my zsh 是一款强大的虚拟终端，兼容bash，提供了各种主题配置、插件。<br/>
+官网：<a href="https://ohmyz.sh/">https://ohmyz.sh/</a></p>
 
-<p>假设你的用户名是zzz<br/>
-（1）生成公钥<br/>
-ssh-keygen -t rsa -f ~/.ssh/id_rsa.zzz<br/>
-cat ~/.ssh/id_rsa.zzz.pub 保存到icode或者是自己的github上<br/>
-（2）clone</p>
-
-<pre><code class="language-text">git clone  xxxxx代码库             # 将代码库克隆到本地
-## 如果机器是多个人使用的话用--local,如果是自己一个人的话可以设置成--global
-git config --local user.email zzz邮箱
-git config --local user.name zzz用户名
-git push origin master:refs/for/master
+<pre><code class="language-text"># 安装
+git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+#备份旧.zshrc配置
+cp ~/.zshrc ~/.zshrc.orig
+cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+#修改默认shell
+chsh -s /bin/zsh
 </code></pre>
 
-<h2 id="toc_1">2 基本操作</h2>
+<p>卸载 <code>uninstall_oh_my_zsh</code></p>
 
-<p>当我们新增或者更新了一个文件后，如何上传到代码库</p>
+<p>注意：如果安装oh my zsh后conda命令无法使用，这个时候需要修改一下.zshrc文件，添加一句<br/>
+<code>export PATH=/home/username/anaconda/bin:$PATH</code></p>
 
-<pre><code class="language-text">git add xxx
-git commit -m &#39;注释&#39;
-git push origin HEAD:refs/for/master
-</code></pre>
+<h2 id="toc_1">主题</h2>
 
-<p>从代码库将新代码下载到本地，更新本地库</p>
-
-<pre><code class="language-text">git pull
-</code></pre>
-
-<h2 id="toc_2">3.常用操作</h2>
-
-<p>(1) 还原文件到之前的某个版本。</p>
-
-<p>当发现新提交的版本有问题，想回退到之前的某个版本的之后，可以进行如下操作。<code>git long</code><br/>
-比如我想修改自己写的这个<code>utils.py</code> 代码</p>
-
-<pre><code class="language-text">git log utils.py
-## 可以看到一共提交了3次，假设喔想回退到9.25提交的那个版本
-git checkout 742bf4a53e473b2536b53cb3ad56072ae236a1c3 utils.py 
-git commit -m &quot;revert to previous version&quot;
-</code></pre>
-
-<p><img src="media/15637037678160/15699932802240.jpg" alt=""/></p>
-
-<p>我不知道”undo”是什么意思。您可以删除core.excludesfile设置，如下所示：<br/>
-git config --global --unset core.excludesfile<br/>
-当然你也可以简单地编辑配置文件：<br/>
-git config --global --edit<br/>
-…然后手动删除设置。</p>
-
-<p>git config --global --edit</p>
-
-<p>git log<br/>
-git reset --hard xxxxx</p>
-
-<p>查看本地与云端的diff</p>
-
-<p>git rm —cache  删除已经提交的内容</p>
+<p><a href="https://github.com/robbyrussell/oh-my-zsh/wiki/Themes">https://github.com/robbyrussell/oh-my-zsh/wiki/Themes</a><br/>
+oh my zsh 有各种丰富的主题可供选择，可以在其github上找到对应的主题样式。其对应的配置文件在<code>vim ~/.zshrc</code>中，只需修改其中的<code>ZSH_THEME=&quot;robbyrussell&quot;</code> 即可。</p>
 
                         
                       </div>
@@ -388,7 +245,7 @@ git reset --hard xxxxx</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2019/8/22</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
@@ -407,31 +264,26 @@ git reset --hard xxxxx</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15834202930395.html">
+                <a class="clearlink" href="15662808343723.html">
                 
-                  <h1>github 相关</h1>
+                  <h1>有用的网址&小工具</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>github展示 ppt<br/>
-<a href="https://github.com/ksky521/nodeppt">https://github.com/ksky521/nodeppt</a></p>
+                        	<ul>
+<li>论文下载，知网论文</li>
+</ul>
 
-<p>在线的 <a href="https://slides.com/">https://slides.com/</a></p>
+<p><a href="https://www.cn-ki.net/">https://www.cn-ki.net/</a></p>
 
-<h2 id="toc_0">githubPages 博客</h2>
+<p>google学术   <a href="https://en.ehn3.com:92/">https://en.ehn3.com:92/</a></p>
 
-<p>官网 <a href="https://pages.github.com/">https://pages.github.com/</a></p>
+<ul>
+<li>微信公众号平台文章同步知乎、简书等平台</li>
+</ul>
 
-<p><a href="https://github.com/timelessg/timelessg.github.io">https://github.com/timelessg/timelessg.github.io</a></p>
-
-<p>教程 <a href="https://zhuanlan.zhihu.com/p/35668237">https://zhuanlan.zhihu.com/p/35668237</a></p>
-
-<p>参考博客 <a href="https://tsinghua-gongjing.github.io/posts/EpiNano.html">https://tsinghua-gongjing.github.io/posts/EpiNano.html</a></p>
-
-<p><a href="http://jekyllthemes.org/themes/documentation-theme-jekyll/">http://jekyllthemes.org/themes/documentation-theme-jekyll/</a></p>
-
-<p><a href="https://biopython-cn.readthedocs.io/zh_CN/latest/index.html">https://biopython-cn.readthedocs.io/zh_CN/latest/index.html</a></p>
+<p><a href="https://www.wechatsync.com/#intro">https://www.wechatsync.com/#intro</a></p>
 
                         
                       </div>
@@ -440,7 +292,7 @@ git reset --hard xxxxx</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/3/5</span>
+                    <span class="date">2019/8/20</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
@@ -564,6 +416,71 @@ chmod +x coursier
                 </div>
               </div><!-- article -->
         
+			<div class="article">
+                <a class="clearlink" href="15637037680741.html">
+                
+                  <h1>IDE-sublime,vscode</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">1.sublime</h2>
+
+<p>sublime除了具有基本的文本编辑功能之外，还可以安装很多package来扩展其强大的功能。这里罗列出一些工作中经常能用到的</p>
+
+<p><strong>安装install package</strong></p>
+
+<p>点击菜单中的 “View”–“Show Console”，调出console面板，然后到<a href="https://packagecontrol.io/installation#st3">https://packagecontrol.io/installation#st3</a></p>
+
+<p>官网上的，复制出代码黏贴执行。执行完毕即可。</p>
+
+<h3 id="toc_1">格式化json</h3>
+
+<p>打开 Sublime，command + shift + p -&gt; Install package<br/>
+搜索 Pretty JSON，安装</p>
+
+<p>之后mac上用： <code>command + ctrl + j</code> 即可直接格式化显示。</p>
+
+<h3 id="toc_2">比较diff</h3>
+
+<h3 id="toc_3">git</h3>
+
+<h3 id="toc_4">latex</h3>
+
+<p>安装latex<br/>
+(1) 进入 <a href="http://www.tug.org/mactex/">http://www.tug.org/mactex/</a> 下载安装MacTeX.pkg<br/>
+(2) Sublime按下“Command+Shift+P”打开命令托盘Command pallet，这一步也可以通过Tools下拉菜单完成。<br/>
+在命令托盘里输入“Install Package”，按下Enter回车建。<br/>
+完成之后，输入“LaTeX Tools”，找到这一项并回车安装。<br/>
+退出并重启Sublime Text。</p>
+
+<h2 id="toc_5">2.vs code</h2>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
               
 
 
@@ -638,6 +555,8 @@ chmod +x coursier
         
             <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
+            <a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html"><strong>11 平台架构</strong></a>
+        
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E5%85%B6%E4%BB%96.html"><strong>其他</strong></a>
@@ -657,31 +576,31 @@ chmod +x coursier
 	      
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">0.综述</a>
+			        <a href="15917706614562.html">optical flow 光流</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637036455584.html">1 估计的置信度</a>
+			        <a href="15917693533998.html">process</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037681646.html">1 基础工具包安装pip</a>
+			        <a href="15917597006543.html">业务</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637025346412.html">1. conda 环境管理</a>
+			        <a href="15917572981552.html">综述_关键点检测</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037713554.html">1. 数据可视化概述</a>
+			        <a href="15916704949564.html">【工具】MMlab——mmaction</a>
 			      </li>
 		     
 		  

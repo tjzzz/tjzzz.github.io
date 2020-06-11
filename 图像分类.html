@@ -103,6 +103,8 @@
         
             <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
+            <li><a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html">11 平台架构</a></li>
+        
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E5%85%B6%E4%BB%96.html">其他</a></li>
@@ -127,6 +129,205 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15838089244516.html">
+                
+                  <h1>【案例】</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>(1) 样本少容易过拟合</p>
+
+<pre><code class="language-text"> base_model,
+      tf.keras.layers.GlobalAveragePooling2D(),
+      tf.keras.layers.Dropout(0.5),
+      tf.keras.layers.Dense(256, kernel_regularizer=tf.keras.regularizers.l2(0.001),
+                           activation=&#39;relu&#39;),
+      tf.keras.layers.Dense(2, activation = &#39;softmax&#39;)]
+    )
+</code></pre>
+
+<p>加入正则化和dropout<br/>
+进行图片增强产生更多图片</p>
+
+<p>fine-tune效果</p>
+
+<p><img src="media/15838089244516/3BB989C7-F853-4391-BAE1-2CF5FE031D51.png" alt="3BB989C7-F853-4391-BAE1-2CF5FE031D51"/></p>
+
+<p>feature-效果<br/>
+<img src="media/15838089244516/7BE3E393-6503-4A17-AD04-34B8DDA9C6D3.png" alt="7BE3E393-6503-4A17-AD04-34B8DDA9C6D3"/></p>
+
+<p>(2) 调整loss中的训练权重<br/>
+class_weight = {0:0.75, 1:0.25}<br/>
+<img src="media/15838089244516/15838091710767.jpg" alt=""/></p>
+
+<p>QQ: 训练集和验证集效果都还好，但是到真实预测的时候效果却很差？？？</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/3/10</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB.html'>图像分类</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15838081033290.html">
+                
+                  <h1>类别不平衡</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/3/10</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB.html'>图像分类</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15826898443382.html">
+                
+                  <h1>训练数据少-</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>生成更多数据 <a href="https://juejin.im/post/5d887be951882509334fa199">https://juejin.im/post/5d887be951882509334fa199</a></p>
+
+<p>数据量少的方法 <a href="https://zhuanlan.zhihu.com/p/50547038">https://zhuanlan.zhihu.com/p/50547038</a></p>
+
+<p>1.迁移学习</p>
+
+<p>（1）微调 <a href="https://zhuanlan.zhihu.com/p/35890660">https://zhuanlan.zhihu.com/p/35890660</a><br/>
+利用已经训练好的模型和参数作为初始参数，再训模型</p>
+
+<p><img src="media/15826898443382/15826938622074.jpg" alt=""/></p>
+
+<p>（2）特征提取（Feature Extraction） +特征融合（feature fusion）+ xgboost<br/>
+模型结构不变，将最后输出部分的全连接特征取出</p>
+
+<p><a href="https://github.com/cameronfabbri/Compute-Features">https://github.com/cameronfabbri/Compute-Features</a></p>
+
+<p>过拟合<br/>
+<a href="http://www.mashangxue123.com/tensorflow/tf2-tutorials-keras-overfit_and_underfit.html">http://www.mashangxue123.com/tensorflow/tf2-tutorials-keras-overfit_and_underfit.html</a></p>
+
+<ul>
+<li>权重正则化L1,L2</li>
+<li>dropout</li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/2/26</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB.html'>图像分类</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15822015902121.html">
+                
+                  <h1>综述</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>首先看下cv方面的综述，对整个技术发展过程有个大致了解</p>
+
+<p><a href="https://github.com/weiaicunzai/awesome-image-classification">https://github.com/weiaicunzai/awesome-image-classification</a> (中文 <a href="https://mp.weixin.qq.com/s?__biz=MzIwOTc2MTUyMg==&amp;mid=2247487400&amp;idx=1&amp;sn=cb4dd3e95cd12c813bfcb7ae6e62d69c&amp;chksm=976faa35a01823230524bec5cb4ede73b880d42eaf2fe86b5878108df444d02ba1acd613df1b&amp;mpshare=1&amp;scene=1&amp;srcid=0221VLUJG5gsMr5QzU7VNtBZ&amp;sharer_sharetime=1582247950940&amp;sharer_shareid=39affd95034dc485004147e1f2365064%23rd">https://mp.weixin.qq.com/s?__biz=MzIwOTc2MTUyMg==&amp;mid=2247487400&amp;idx=1&amp;sn=cb4dd3e95cd12c813bfcb7ae6e62d69c&amp;chksm=976faa35a01823230524bec5cb4ede73b880d42eaf2fe86b5878108df444d02ba1acd613df1b&amp;mpshare=1&amp;scene=1&amp;srcid=0221VLUJG5gsMr5QzU7VNtBZ&amp;sharer_sharetime=1582247950940&amp;sharer_shareid=39affd95034dc485004147e1f2365064%23rd</a>)</p>
+
+<h2 id="toc_0">预处理</h2>
+
+<ul>
+<li>均值</li>
+<li>数据增强：缩放、旋转、随机RGB颜色、亮度变换等</li>
+</ul>
+
+<h2 id="toc_1">参考资料</h2>
+
+<p><a href="https://zhuanlan.zhihu.com/p/86090591">https://zhuanlan.zhihu.com/p/86090591</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/2/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB.html'>图像分类</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15637037708871.html">
                 
@@ -268,205 +469,6 @@
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15838089244516.html">
-                
-                  <h1>【案例】</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>(1) 样本少容易过拟合</p>
-
-<pre><code class="language-text"> base_model,
-      tf.keras.layers.GlobalAveragePooling2D(),
-      tf.keras.layers.Dropout(0.5),
-      tf.keras.layers.Dense(256, kernel_regularizer=tf.keras.regularizers.l2(0.001),
-                           activation=&#39;relu&#39;),
-      tf.keras.layers.Dense(2, activation = &#39;softmax&#39;)]
-    )
-</code></pre>
-
-<p>加入正则化和dropout<br/>
-进行图片增强产生更多图片</p>
-
-<p>fine-tune效果</p>
-
-<p><img src="media/15838089244516/3BB989C7-F853-4391-BAE1-2CF5FE031D51.png" alt="3BB989C7-F853-4391-BAE1-2CF5FE031D51"/></p>
-
-<p>feature-效果<br/>
-<img src="media/15838089244516/7BE3E393-6503-4A17-AD04-34B8DDA9C6D3.png" alt="7BE3E393-6503-4A17-AD04-34B8DDA9C6D3"/></p>
-
-<p>(2) 调整loss中的训练权重<br/>
-class_weight = {0:0.75, 1:0.25}<br/>
-<img src="media/15838089244516/15838091710767.jpg" alt=""/></p>
-
-<p>QQ: 训练集和验证集效果都还好，但是到真实预测的时候效果却很差？？？</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/3/10</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB.html'>图像分类</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15838081033290.html">
-                
-                  <h1>类别不平衡</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/3/10</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB.html'>图像分类</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15822015902121.html">
-                
-                  <h1>综述</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>首先看下cv方面的综述，对整个技术发展过程有个大致了解</p>
-
-<p><a href="https://github.com/weiaicunzai/awesome-image-classification">https://github.com/weiaicunzai/awesome-image-classification</a> (中文 <a href="https://mp.weixin.qq.com/s?__biz=MzIwOTc2MTUyMg==&amp;mid=2247487400&amp;idx=1&amp;sn=cb4dd3e95cd12c813bfcb7ae6e62d69c&amp;chksm=976faa35a01823230524bec5cb4ede73b880d42eaf2fe86b5878108df444d02ba1acd613df1b&amp;mpshare=1&amp;scene=1&amp;srcid=0221VLUJG5gsMr5QzU7VNtBZ&amp;sharer_sharetime=1582247950940&amp;sharer_shareid=39affd95034dc485004147e1f2365064%23rd">https://mp.weixin.qq.com/s?__biz=MzIwOTc2MTUyMg==&amp;mid=2247487400&amp;idx=1&amp;sn=cb4dd3e95cd12c813bfcb7ae6e62d69c&amp;chksm=976faa35a01823230524bec5cb4ede73b880d42eaf2fe86b5878108df444d02ba1acd613df1b&amp;mpshare=1&amp;scene=1&amp;srcid=0221VLUJG5gsMr5QzU7VNtBZ&amp;sharer_sharetime=1582247950940&amp;sharer_shareid=39affd95034dc485004147e1f2365064%23rd</a>)</p>
-
-<h2 id="toc_0">预处理</h2>
-
-<ul>
-<li>均值</li>
-<li>数据增强：缩放、旋转、随机RGB颜色、亮度变换等</li>
-</ul>
-
-<h2 id="toc_1">参考资料</h2>
-
-<p><a href="https://zhuanlan.zhihu.com/p/86090591">https://zhuanlan.zhihu.com/p/86090591</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/2/20</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB.html'>图像分类</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15826898443382.html">
-                
-                  <h1>训练数据少-</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>生成更多数据 <a href="https://juejin.im/post/5d887be951882509334fa199">https://juejin.im/post/5d887be951882509334fa199</a></p>
-
-<p>数据量少的方法 <a href="https://zhuanlan.zhihu.com/p/50547038">https://zhuanlan.zhihu.com/p/50547038</a></p>
-
-<p>1.迁移学习</p>
-
-<p>（1）微调 <a href="https://zhuanlan.zhihu.com/p/35890660">https://zhuanlan.zhihu.com/p/35890660</a><br/>
-利用已经训练好的模型和参数作为初始参数，再训模型</p>
-
-<p><img src="media/15826898443382/15826938622074.jpg" alt=""/></p>
-
-<p>（2）特征提取（Feature Extraction） +特征融合（feature fusion）+ xgboost<br/>
-模型结构不变，将最后输出部分的全连接特征取出</p>
-
-<p><a href="https://github.com/cameronfabbri/Compute-Features">https://github.com/cameronfabbri/Compute-Features</a></p>
-
-<p>过拟合<br/>
-<a href="http://www.mashangxue123.com/tensorflow/tf2-tutorials-keras-overfit_and_underfit.html">http://www.mashangxue123.com/tensorflow/tf2-tutorials-keras-overfit_and_underfit.html</a></p>
-
-<ul>
-<li>权重正则化L1,L2</li>
-<li>dropout</li>
-</ul>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/2/26</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB.html'>图像分类</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -541,6 +543,8 @@ class_weight = {0:0.75, 1:0.25}<br/>
         
             <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
+            <a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html"><strong>11 平台架构</strong></a>
+        
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E5%85%B6%E4%BB%96.html"><strong>其他</strong></a>
@@ -560,31 +564,31 @@ class_weight = {0:0.75, 1:0.25}<br/>
 	      
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">0.综述</a>
+			        <a href="15917706614562.html">optical flow 光流</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637036455584.html">1 估计的置信度</a>
+			        <a href="15917693533998.html">process</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037681646.html">1 基础工具包安装pip</a>
+			        <a href="15917597006543.html">业务</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637025346412.html">1. conda 环境管理</a>
+			        <a href="15917572981552.html">综述_关键点检测</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037713554.html">1. 数据可视化概述</a>
+			        <a href="15916704949564.html">【工具】MMlab——mmaction</a>
 			      </li>
 		     
 		  

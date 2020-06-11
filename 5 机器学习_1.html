@@ -103,6 +103,8 @@
         
             <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
+            <li><a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html">11 平台架构</a></li>
+        
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E5%85%B6%E4%BB%96.html">其他</a></li>
@@ -128,96 +130,85 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637037731266.html">
+                <a class="clearlink" href="15637037720747.html">
                 
-                  <h1>4.4 k近邻 —— 非参模型</h1>
+                  <h1>FM</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>基于实例的学习，其学习的不是明确的泛化模型，而是样本之间的关系。</p>
+                        	<p>学习地址 <a href="https://github.com/babakx/fm_tensorflow">https://github.com/babakx/fm_tensorflow</a></p>
 
-<p>k近邻方法：先找到与未知样本最接近的k个实例，再根据少数服从多数的准则，给未知样本打上标签。</p>
+<h2 id="toc_0">1. 环境包安装</h2>
 
-<ul>
-<li>超参数k</li>
-<li>距离度量</li>
-<li>高维灾难</li>
-</ul>
+<p>安装tensorflow</p>
 
-<p>k近邻方法和传统的参数方法不同，参数模型在求得参数后，任务就完成了。新来了一个样本后直接拿训练好的参数进行预测即可；而k近邻不同，它需要将数据存储下来，每来了一个新样本后，要计算离他最近的k个实例。</p>
+<h2 id="toc_1">2.试运行</h2>
 
-<p>sklearn中<code>sklearn.neighbors</code>模块</p>
-
-<p>应用</p>
+<p>这个是用tf实现的FM<br/>
+<a href="https://www.jianshu.com/p/152ae633fb00">https://www.jianshu.com/p/152ae633fb00</a></p>
 
 <ul>
-<li>无监督的<code>NearestNeighbors</code></li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked /> 试运行成功</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 了解原理</li>
 </ul>
 
-<p>具体计算的时候可以选择不同的计算方法，&#39;algorithm&#39; =[&#39;auto&#39;, &#39;ball_tree&#39;, </p>
+<p>小数据集版本（进入tf的仍然是dense矩阵，只适合小数据）<br/>
+ <a href="https://github.com/babakx/fm_tensorflow">https://github.com/babakx/fm_tensorflow</a></p>
+
+<p>大数据量版本</p>
+
+<h2 id="toc_2">3.原理</h2>
+
+<h2 id="toc_3">PYTHON版本的包实现方式</h2>
 
 <ul>
-<li>有监督的</li>
+<li>LibFM</li>
+<li>libFFM</li>
+<li>xLearn</li>
+<li>tffm</li>
 </ul>
 
-<p>KNeighborsClassifier: 可以指定参数k<br/>
-RadiusNeighborsClassifier: 可以指定查询的固定半径r</p>
+<p>目前在python中的支持FM相关的包主要有</p>
 
-<pre><code class="language-python">## 官网的示例demo
-import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib.colors import ListedColormap
-from sklearn import neighbors, datasets
+<p>__</p>
 
-n_neighbors = 15
+<h3 id="toc_4">1.libFM</h3>
 
-# import some data to play with
-iris = datasets.load_iris()
+<p>官网 <a href="http://www.libfm.org/">http://www.libfm.org/</a><br/>
+github <a href="https://github.com/srendle/libfm">https://github.com/srendle/libfm</a></p>
 
-# we only take the first two features. We could avoid this ugly
-# slicing by using a two-dim dataset
-X = iris.data[:, :2]
-y = iris.target
+<p>从官网下载安装包</p>
 
-h = .02  # step size in the mesh
+<h3 id="toc_5">tffm</h3>
 
-# Create color maps
-cmap_light = ListedColormap([&#39;#FFAAAA&#39;, &#39;#AAFFAA&#39;, &#39;#AAAAFF&#39;])
-cmap_bold = ListedColormap([&#39;#FF0000&#39;, &#39;#00FF00&#39;, &#39;#0000FF&#39;])
+<p><a href="https://github.com/geffy/tffm">https://github.com/geffy/tffm</a></p>
 
-for weights in [&#39;uniform&#39;, &#39;distance&#39;]:
-    # we create an instance of Neighbours Classifier and fit the data.
-    clf = neighbors.KNeighborsClassifier(n_neighbors, weights=weights)
-    clf.fit(X, y)
+<p>tffm是FM方法的tensorflow版本，他支持：</p>
 
-    # Plot the decision boundary. For that, we will assign a color to each
-    # point in the mesh [x_min, x_max]x[y_min, y_max].
-    x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
-    y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
-    xx, yy = np.meshgrid(np.arange(x_min, x_max, h),
-                         np.arange(y_min, y_max, h))
-    Z = clf.predict(np.c_[xx.ravel(), yy.ravel()])
+<ul>
+<li>dense or sparse输出</li>
+<li>order &gt;= 2</li>
+</ul>
 
-    # Put the result into a color plot
-    Z = Z.reshape(xx.shape)
-    plt.figure()
-    plt.pcolormesh(xx, yy, Z, cmap=cmap_light)
-
-    # Plot also the training points
-    plt.scatter(X[:, 0], X[:, 1], c=y, cmap=cmap_bold,
-                edgecolor=&#39;k&#39;, s=20)
-    plt.xlim(xx.min(), xx.max())
-    plt.ylim(yy.min(), yy.max())
-    plt.title(&quot;3-Class classification (k = %i, weights = &#39;%s&#39;)&quot;
-              % (n_neighbors, weights))
-
-plt.show()
+<pre><code class="language-text"># 安装 
+pip install tffm
 </code></pre>
 
-<p>最近邻回归<br/>
-KNeighborsRegressor<br/>
-RadiusNeighborsRegressor</p>
+<p>按照github上的example</p>
+
+<p>log</p>
+
+<p>todo:</p>
+
+<ul>
+<li>调整参数k， int_std, red</li>
+<li>统一 content_len的量纲</li>
+<li>文章添加关键字</li>
+<li>tffm，添加field</li>
+</ul>
+
+<hr/>
 
                         
                       </div>
@@ -245,14 +236,450 @@ RadiusNeighborsRegressor</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037678245.html">
+                <a class="clearlink" href="15637037728199.html">
                 
-                  <h1>4.5 树模型</h1>
+                  <h1>4.3 支持向量机</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	
+                        	<p>支持向量机属于上一节中说的硬输出的方法，是从几何角度出发考虑的。</p>
+
+<p>在介绍SVM之前，先解释一下几个基本概念。<br/>
+<img src="media/15384698920685/15386228139164.jpg" alt="" style="width:400px;"/></p>
+
+<blockquote>
+<p>函数间隔与几何间隔</p>
+</blockquote>
+
+<p>一般的，一个点距离分离超平面的远近可以标识分类预测的确信程度。当超平面\(wx+b=0\)确定后，\(|wx+b|\)的大小能够相对的表示远近，而\(wx+b\)的符号与\(y\)类别是否一致则可以表示是否分类正确。 <br/>
+\[d_i = y_i(wx_i+b)\]  定义函数间隔\(d = \min d_i\)</p>
+
+<p>但是很明显的会发现这个间隔与\(w\)的量纲是有关系的，\(kw+kb\)与之前超平面是一样的，但是间隔却差了k倍。因此需要<strong>几何间隔</strong></p>
+
+<p>\[d_i = y_i(\frac{w}{||w||}x_i+\frac{b}{||w||}), d = \min d_i\]  </p>
+
+<blockquote>
+<p>间隔最大化</p>
+</blockquote>
+
+<p>有了前面关于间隔的定义，或者是关于分类距离的定义，就有了目标。SVM的目标就是: 求解能够将数据集正确划分并且几何间隔最大的分离超平面。</p>
+
+<p>注：对于线性可分的数据，超平面有无数个(等价于感知机)，但是间隔最大的只有一个。间隔最大其实是两个要求:</p>
+
+<ul>
+<li>能尽可能的将正负例区分开</li>
+<li>对于难分的点(距离平面较近的点)也有很好的置信把握，即泛化能力会好一些</li>
+</ul>
+
+<blockquote>
+<p>SVM对应的三种问题类型</p>
+</blockquote>
+
+<p>根据分类问题，可分为以下三种</p>
+
+<ul>
+<li>线性可分与硬间隔最大化</li>
+<li>线性支持向量机与软间隔最大化</li>
+<li>非线性支持向量机与核函数</li>
+</ul>
+
+<p>这些会在下面中进行详细介绍</p>
+
+<blockquote>
+<p>支持向量</p>
+</blockquote>
+
+<p>这个需要看完下面关于三部分的介绍之后，再来了解这个概念。</p>
+
+<ul>
+<li>在线性可分的情况下，样本中与超平面距离最近的样本点称为<strong>支持向量</strong>. 支持向量是满足\(y_i(wx_i+b)-1=0\)的点。</li>
+<li>分隔边界最终只是由支持向量的点决定的，其他距离比较远的点并没有影响。</li>
+</ul>
+
+<h2 id="toc_0">1.线性可分与硬间隔最大化</h2>
+
+<p>先讨论一种最简单的情况，当数据集本身可以线性可分时候(实际数据中可能并没有这么好的性质)，我们只要找到对应的超平面即可。从前面的集合图形上我们的目标：希望每个点到超平面的间隔的最小值达到最大，即\(max min d_i\)</p>
+
+<p>数学模型：\[max_{w,b} d(几何间隔)\]<br/>
+\[s.t \quad d_i = y_i(wx_i+b)&gt;= d, i=1,..n\]</p>
+
+<p>因为几何间隔\(d=d&#39;/||w||\)，所以原问题等价于<br/>
+\[max_{w,b} \frac{d&#39;}{||w||}\]<br/>
+\[s.t \quad d_i = y_i(wx_i+b)&gt;= d&#39;, i=1,..n\]</p>
+
+<p>注意到</p>
+
+<ul>
+<li>函数间隔的取值\(d&#39;\)并不影响最优解\(w,b\)的求解。(如果w,b是最优解，则\(kw,kb\)也是，函数距离就是\(d&#39;\)和\(kd&#39;\))。所以这里可以取\(d&#39;=1\)。</li>
+<li>\(1/||w||\)与\(\frac{1}{2}||w||^2\)是等价的</li>
+</ul>
+
+<p>因此最终优化的问题等价于如下的凸二次规划问题：<br/>
+\[min_{w,b} \frac{1}{2}||w||^2\]<br/>
+\[s.t \quad d_i = y_i(wx_i+b) -1 &gt;=0, i=1,..n\]</p>
+
+<p>解法：关于这个优化问题的解法，在后面会详细给出。可以证明这个解是存在且唯一的。</p>
+
+<p><strong>几何角度</strong></p>
+
+<ul>
+<li>过两个类的边界的点的平行线(\(wx-b=1, wx-b=-1\))，有点类似于楚河汉界</li>
+<li>将两条平行线进行旋转，保证同类划分不变。两者距离就会改变</li>
+<li>落在两个平行线上的异类点就是<strong>支持向量</strong></li>
+</ul>
+
+<p><img src="media/15384698920685/15387096705813.jpg" alt="线性可分示意图"/></p>
+
+<h2 id="toc_1">2.线性支持向量机与软间隔最大化</h2>
+
+<p>上一节说的是对线性可分数据的，如果数据本身不可分该怎么办呢，此时线性分割必然存在误分类的点？对于线性不可分我们不可能要求其严格满足上面说的不等式约束。这时我们只能退而求其次：</p>
+
+<p>思路：使得之前的几何间隔尽量大，同时使误分类的个数尽可能少</p>
+
+<p>数学表示：对于每个样本，类似运筹学中的方法我们可以引入一个松弛变量\(\xi_i\ge 0\),满足\(y_i(wx_i+b)\ge 1-\xi_i\) 之前是要求一定要大于等于1，现在因为并不完全可分，所以不一定要大于等于1。</p>
+
+<p><strong>数学模型：</strong></p>
+
+<p>\[min_{w,b} \frac{1}{2}||w||^2 + C\sum_1^n \xi_i\]<br/>
+\[s.t \quad y_i(wx_i+b)&gt;=1-\xi_i, i=1,..n\]<br/>
+\[\xi_i &gt;= 0\]</p>
+
+<p>这时候其实可以发现线性可分的相当于是这里的一种特殊情况，即\(\xi_i=0\)</p>
+
+<p><strong>求解：</strong><br/>
+该优化问题的拉格朗日函数是<br/>
+\[L(w,b,\xi,\alpha,u)=\frac{1}{2}||w||^2+C\sum\xi_i-\sum\alpha_i(y_i(wx_i+b)-1+\xi_i)-\sum u_i\xi_i\]<br/>
+因此原问题等价于 \[\max_{\alpha,u}\min_{w,b,\xi}L\]</p>
+
+<p>（1）首先求L对\(w,b,\xi\)的极小<br/>
+<img src="media/15384698920685/15387191773648.jpg" alt=""/></p>
+
+<p>可得\[\min_{w,b\xi}L=-\frac{1}{2}\sum_{i=1}^n\sum_{j=1}^n \alpha_i\alpha_jy_iy_j(x_i*x_j)+\sum_{i=1}^n\alpha_i\]</p>
+
+<p>(2) 再对\(\min L\)求最大，即有<br/>
+\[\max_{\alpha}-\frac{1}{2}\sum_{i=1}^n\sum_{j=1}^n \alpha_i\alpha_jy_iy_j(x_i*x_j)+\sum_{i=1}^n\alpha_i\]<br/>
+\[s.t.\quad \sum\alpha_iy_i=0\]<br/>
+\[C-\alpha_i-u_i&gt;=0;\alpha_i&gt;=0;u_i&gt;=0\]</p>
+
+<p>最后一个条件其实等价于\(0\le\alpha_i\le C\)</p>
+
+<p>对于线性可分问题其max函数是一样的，只是约束条件是\(0\le\alpha_i\)</p>
+
+<p>【定理】若\(\alpha^*=(\alpha_1^*,...\alpha_n)\)是上述优化问题的一个解，若存在一个分量\(0&lt;\alpha_j^*&lt;C\)，则原始问题的解可按如下形式求得 <br/>
+\[w^* = \sum\alpha_i^*y_ix_i\]<br/>
+\[b^*=y_j-\sum_{i=1}^n y_i\alpha_i^*(x_i*x_j)\]</p>
+
+<p>从中可以发现b的解并不唯一。</p>
+
+<p>最终的分离超平面是\[\sum\alpha_i^*y_i(x_i*x_j)+b^*=0\]<br/>
+分类的决策函数是\[f(x)=sign(\alpha_i^*y_i(x_i*x_j)+b^*)\]</p>
+
+<p><strong>几何解释</strong></p>
+
+<ul>
+<li>如果在分解边界上，则\(\xi_i=0\),距离是1</li>
+<li>如果是在两个分界边界中间，\(0&lt;\xi_i&lt;1\)</li>
+<li>越过分界边界，到了另外一边，\(\xi_i &gt;1\) 这个时候\(y_i(wx_i+b)\ge 1-\xi_i\)是小于0的，属于误分类，在优化的时候会考虑</li>
+</ul>
+
+<p><img src="media/15384698920685/15387133378663.jpg" alt=""/></p>
+
+<p><strong>合页损失函数</strong>：与原优化问题等价的一种损失函数形式<br/>
+\[\min_{w,b} \sum[1-y_i(wx_i+b)]_{+}+\lambda||w||^2\]</p>
+
+<h2 id="toc_2">3.非线性支持向量机与核函数</h2>
+
+<p>当数据的分布呈现的是一种非线性的时候，用之前的线性分割的方法肯定就会出现问题。比如数据是在一个椭圆内外分布，这个时候就需要先对原始数据做一个映射，\(x_1^2,x_2^2\)然后变成线性可分的。而这里主要用到了核技巧。</p>
+
+<p>【核函数】如果存在一个映射\(\phi(x):X-&gt; H\),使得对于所有\(x,z\in X\),函数\(K(x,z)\)满足<br/>
+\[K(x,z)=\phi(x)*\phi(z)\]<br/>
+则\(K(x,z)\)为核函数，\(\phi(x)\)为映射函数。</p>
+
+<p>核函数的想法是：在学习中值定义核函数，而不显示的定义映射函数，通常映射函数不太好找且不唯一。<br/>
+在支持向量机中的应用：<br/>
+如前所述，在支持向量机的对偶问题中，只涉及样本之间的内积运算。\[W(\alpha)=\max_{\alpha}-\frac{1}{2}\sum_{i=1}^n\sum_{j=1}^n \alpha_i\alpha_jy_iy_j(x_i*x_j)+\sum_{i=1}^n\alpha_i\]<br/>
+因此可以用核函数代替<br/>
+\[W(\alpha)=\max_{\alpha}-\frac{1}{2}\sum_{i=1}^n\sum_{j=1}^n \alpha_i\alpha_jy_iy_jK(x_i,x_j)+\sum_{i=1}^n\alpha_i\]</p>
+
+<p><strong>常用的核函数</strong></p>
+
+<ul>
+<li>多项式核函数 \(K(x,z)=(x*z+1)^p\)</li>
+<li>高斯核函数 \(K(x,z)=exp(\frac{-||x-z||^z}{2\sigma^2})\)</li>
+<li>字符串核函数</li>
+</ul>
+
+<h2 id="toc_3">优化算法SMO</h2>
+
+<p>前面介绍了SVM中的三类问题，最终都是通过一个凸二次规划进行求解。当样本量较大的时候，SMO是一种相对求解较快的方法。简言之，是采用了启发式算法，每次只更新两个\(\alpha_i,\alpha_j\)</p>
+
+<p><a href="https://www.cnblogs.com/nolonely/p/6541527.html">https://www.cnblogs.com/nolonely/p/6541527.html</a></p>
+
+<p>Sequential Minimal Optimization A Fast Algorithm for Training Support Vector Machines</p>
+
+<h2 id="toc_4">代码</h2>
+
+<p><code>sklearn.svc</code>模块 <a href="http://scikit-learn.org/stable/modules/svm.html#svm">http://scikit-learn.org/stable/modules/svm.html#svm</a></p>
+
+<p>主要包含</p>
+
+<ul>
+<li>SVC 标准的</li>
+</ul>
+
+<pre><code class="language-text">from sklearn import svm
+X = [[0, 0], [1, 1]]
+y = [0, 1]
+clf = svm.SVC()
+clf.fit(X, y)  
+</code></pre>
+
+<p>以iris数据为例</p>
+
+<pre><code class="language-python">### iris数据
+from sklearn import datasets, svm
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+iris = datasets.load_iris()
+X = iris.data[:, :2]
+y = iris.target
+
+
+# model
+C = 1.0
+model = svm.SVC(kernel=&#39;linear&#39;, C=C)
+model.fit(X, y)
+
+
+
+## 绘制可视化图
+x1 = X[:,0]
+x2 = X[:,1]
+h=0.1
+x_min, x_max = x1.min()-1, x1.max()+1
+y_min, y_max = x2.min()-1, x2.max()+1
+xx,yy = np.meshgrid(np.arange(x_min, x_max, h),
+                    np.arange(y_min, y_max, h))  #生成对应的坐标矩阵
+
+Z = model.predict(np.c_[xx.ravel(), yy.ravel()])    # 在新的坐标点上预测分类
+Z = Z.reshape(xx.shape)
+plt.contourf(xx, yy, Z, cmap=plt.cm.coolwarm, alpha=0.8)
+
+
+plt.scatter(x1, x2, c=y, cmap=plt.cm.coolwarm, s=20, edgecolors=&#39;k&#39;)
+
+plt.xlabel(&#39;Sepal length&#39;)
+plt.ylabel(&#39;Sepal width&#39;)
+</code></pre>
+
+<p><img src="media/15384698920685/15387991752806.jpg" alt=""/></p>
+
+<ul>
+<li>NuSVC 与SVC的优化目标函数略微不同</li>
+<li>LinearSVC： 只针对linear kernel</li>
+</ul>
+
+<p>在进行多分类的时候SVC中参数<code>decision_function_shape</code>可以选择是<code>ovo</code>还是<code>ovr</code><br/>
+LinearSVC是通过参数<code>multi_class</code>进行选择，</p>
+
+<h2 id="toc_5">小结</h2>
+
+<p><img src="media/15384698920685/15388009994951.jpg" alt=""/></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037691075.html">
+                
+                  <h1>4.1 回归模型</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>进入统计机器学习大门，最基础的从回归分析说起。</p>
+
+<h2 id="toc_0">1.回归分析</h2>
+
+<p>机器学习从最简单的回归分析说起，这次从最小二乘的几何意义角度去看回归分析。</p>
+
+<p>\[Y = X’B\]<br/>
+我们知道最终估计的满足 \((y-X\hat\beta)^TX=0\)。即最优估计是在空间上的正交投影</p>
+
+<p><img src="media/15350244372147/15350246581231.jpg" alt=""/><br/>
+统计中的一些基本概念：</p>
+
+<ul>
+<li>t 检验</li>
+<li>F 检验</li>
+<li>p value</li>
+<li>多重共线性</li>
+<li></li>
+</ul>
+
+<h2 id="toc_1">2.正则化处理</h2>
+
+<p>训练数据是有限的时候，总可以通过增加参数的方法提高模型复杂度，降低训练误差，但是其泛化能力不好。正则化即通过调整参数的取值，来平衡<strong>偏差</strong>和<strong>方差</strong>的关系。</p>
+
+<p>线性回归中，最直接的方法就行在loss function中添加正则化项。一般形式如下：</p>
+
+<p>\[E(w) = \sum [f(x_i, w) - y_i]^2 + \lambda g(||w||_p)\]</p>
+
+<ul>
+<li>当取一范数时，即为lasso；</li>
+<li>二范数：岭回归</li>
+<li>一范数和二范数组合：弹性网络。  \(a||w||^2_2 + (1-a)||w||_1\)</li>
+</ul>
+
+<p>一范数和二范数的几何意义区别如下(这里就不解释了)：</p>
+
+<ul>
+<li>lasso会将特征衰减到0</li>
+<li>岭回归大量特征系数都比较小</li>
+<li>弹性网络结合了两种方法的优点</li>
+</ul>
+
+<p><img src="media/15350244372147/15350256600383.jpg" alt=""/></p>
+
+<blockquote>
+<p>从概率不同学派的角度来看上面的问题。<br/>
+正则化的方式，是从频率学派角度来看；而贝叶斯学派视角来看，正则化其实就是引入了关于参数的先验信息。</p>
+</blockquote>
+
+<p>贝叶斯学派是假定参数服从某种分布，然后根据其分布利用积分的方法将其消除掉。这一过程叫<strong>边际化</strong>。边际化的过程其实恰好是正则化/泛化的过程。</p>
+
+<p>可以证明，岭回归是w满足正态分布，lasso是当w满足拉普拉斯分布时候通过最大后验概率得到的估计结果。</p>
+
+<blockquote>
+<p>code</p>
+</blockquote>
+
+<pre><code class="language-text">import numpy as np # 快速操作结构数组的工具
+import matplotlib.pyplot as plt  # 可视化绘制
+from sklearn.linear_model import Lasso,LassoCV,LassoLarsCV   # Lasso回归,LassoCV交叉验证实现alpha的选取，LassoLarsCV基于最小角回归交叉验证实现alpha的选取
+
+# ========Lasso回归========
+model = Lasso(alpha=0.01)  # 调节alpha可以实现对拟合的程度
+# model = LassoCV()  # LassoCV自动调节alpha可以实现选择最佳的alpha。
+# model = LassoLarsCV()  # LassoLarsCV自动调节alpha可以实现选择最佳的alpha
+model.fit(X, y)   # 线性回归建模
+print(&#39;系数矩阵:\n&#39;,model.coef_)
+print(&#39;线性回归模型:\n&#39;,model)
+# print(&#39;最佳的alpha：&#39;,model.alpha_)  # 只有在使用LassoCV、LassoLarsCV时才有效
+# 使用模型预测
+predicted = model.predict(X)
+
+</code></pre>
+
+<h2 id="toc_2">3.广义线性模型</h2>
+
+<p>广义线性模型可以看做一般线性模型的推广，既然说他是推广，说明有一些问题是传统的线性模型没法解决的。</p>
+
+<p>广义线性模型中y的密度函数形式是基于指数分布族的\[p(y;\theta)=b(y)exp[\theta&#39;T(y)+a(\theta)]\]<br/>
+其中\(T(y)\)是一个充分统计量，通常可以等于\(y\)。 常见的正态分布、指数分布、二项分布、泊松分布都属于指数分布族，都可以转为这种形式。</p>
+
+<p>介绍一个常用的广义线性模型：</p>
+
+<p>xxx</p>
+
+<h2 id="toc_3">4.基函数扩展：属性的非线性化</h2>
+
+<p>线性模型的表达能力有限，前面广义线性模型的思路是将因变量y做了一个非线性映射。而从另一个角度，可以将解释变量变为非线性的，即<br/>
+\[y=\beta_0+\beta_1x_1 + ...+\beta_nx_n\]<br/>
+可以扩展为<strong>基函数扩展模型</strong><br/>
+\[y=\beta_0+\beta_1f(x_1) + ...+\beta_nf(x_n)\]</p>
+
+<p>比如常见的多项式回归\[y=\beta_0+\beta_1 x + ...+\beta_n x^n\]</p>
+
+<p>多项式回归会存在一些问题：</p>
+
+<ul>
+<li>\(x\)和\(x^k\)之间是相关的，不太好解释清楚每个变量的贡献程度</li>
+<li>会出现过拟合的情况</li>
+</ul>
+
+<p><strong>多元自适应回归样条MARS</strong></p>
+
+<ul>
+<li>多项式整体是线性，局部非非线性</li>
+<li>MARS: 整体是非线性，局部是线性(分段函数)</li>
+</ul>
+
+<p>样条函数，需要满足一些最基本的一些条件</p>
+
+<ul>
+<li>在knot节点处满足函数的连续性</li>
+<li>一阶导数连续，二阶导数连续，则称为三次样条</li>
+</ul>
+
+<p>平滑样条</p>
+
+<p>\[E=\sum_{i=1}^n [y_i-g(x_i)]^2 +\lambda\int g&#39;&#39;(t)^2 \]</p>
+
+<p>code: <code>patsy</code></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037691936.html">
+                
+                  <h1>3.1 特征处理—— 特征选择</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">参考</h2>
+
+<p><a href="https://blog.csdn.net/kebu12345678/article/details/78437118">https://blog.csdn.net/kebu12345678/article/details/78437118</a></p>
+
                         
                       </div>
                   </div>
@@ -291,245 +718,6 @@ RadiusNeighborsRegressor</p>
 <p><img src="media/15275150216357/15275150424366.jpg" alt=""/></p>
 
 <p><a href="http://www.cnblogs.com/gasongjian/p/7648633.html">http://www.cnblogs.com/gasongjian/p/7648633.html</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15636947700701.html">
-                
-                  <h1>4.7 聚类1</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>聚类分析（cluster analysis）是属于无监督学习，他的目的是去探索数据隐含的规律。其基本思想是基于相似度/距离远近来将样本进行聚类。</p>
-
-<h2 id="toc_0">1.距离的度量方法</h2>
-
-<p>常见的聚类方法：</p>
-
-<table>
-<thead>
-<tr>
-<th>方法类别</th>
-<th>聚类方法</th>
-<th>优缺点</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>基于距离</td>
-<td>Kmeans</td>
-<td></td>
-</tr>
-<tr>
-<td>基于密度</td>
-<td>Dbscan</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-<ul>
-<li>kmeans</li>
-</ul>
-
-<p>选择初始种子</p>
-
-<p>从概率角度看，k均值算法是高斯混合模型的一种特例</p>
-
-<ul>
-<li>基于密度的聚类 DBSCAN</li>
-</ul>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037683688.html">
-                
-                  <h1>4.7 聚类2——-效果评价</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>从整体上来看，根据真实标签是否已知，聚类效果评估可以分为两大类：</p>
-
-<ul>
-<li>外部标准：即基于人工的判断，需要有个标注集合</li>
-<li>内部标准：基于类内和类间聚类的目标函数的判断</li>
-</ul>
-
-<h2 id="toc_0">内部标准clustering-performance-evaluation</h2>
-
-<p>官方文档 <a href="https://scikit-learn.org/stable/modules/clustering.html#clustering-performance-evaluation">https://scikit-learn.org/stable/modules/clustering.html#clustering-performance-evaluation</a></p>
-
-<ul>
-<li>轮廓系数</li>
-</ul>
-
-<p>轮廓系数的计算方法: \(\frac{b-a}{max(a,b)}\)<br/>
-对每个样本来说：a=与他同类别样本的平均距离, b=与他距离最近的不同类别中样本的平均距离。</p>
-
-<p>属性： 范围[-1,1]， 越大越好</p>
-
-<pre><code class="language-python">import numpy as np
-from sklearn.cluster import KMeans
-kmeans_model = KMeans(n_clusters=3, random_state=1).fit(X)
-labels = kmeans_model.labels_
-metrics.silhouette_score(X, labels, metric=&#39;euclidean&#39;)            
-</code></pre>
-
-<ul>
-<li>CH准则(计算速度要比轮廓系数快)</li>
-</ul>
-
-<p>\[s(k) = \frac{tr(Bk)/(k-1)}{tr(W_k)/(n-k)}\]<br/>
-其中Bk是类别间的协方差矩阵，Wk是类别内部的协方差矩阵。最后是希望类别间越大，类内越小越好。<br/>
-即CH值越大越好</p>
-
-<pre><code class="language-python">metrics.calinski_harabaz_score(X, labels) 
-</code></pre>
-
-<p>在选择最优的k时候，因为每个k都要再计算一次，当样本量比较大的时候比较费时间，这个时候可以选用<code>MiniBatchKMeans</code></p>
-
-<pre><code class="language-python">ch_list = []
-lunkuo_list = []
-for i in num_list:
-    # model = KMeans(n_clusters = i,random_state=123).fit(df)
-    model = MiniBatchKMeans(n_clusters = i,random_state=123).fit(df)
-    ch = calinski_harabasz_score(df, model.labels_)     # CH 准则
-    ch_list.append(ch)
-
-    lunkuo = silhouette_score(df, model.labels_)        # 轮廓系数
-    lunkuo_list.append(lunkuo)    
-print(ch_list,lunkuo_list ) 
-</code></pre>
-
-<h2 id="toc_1">已知类别标注</h2>
-
-<p>假设：<br/>
-机器判断的类别集合是：\(C=\{C_1,C_2,...C_m\}\)<br/>
-人工判断的类别集合是：\(P=\{P_1,P_2,...P_s\}\)</p>
-
-<h3 id="toc_2">1.1混淆矩阵</h3>
-
-<p>基于数据样本点的角度：<br/>
-对于任意两个数据pair，\((x_i,x_j)\)按照其在C和P中是否属于同一个簇，可以构造出混淆矩阵</p>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>P_1</th>
-<th>p_0</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>C_1</td>
-<td>a</td>
-<td>b</td>
-</tr>
-<tr>
-<td>C_0</td>
-<td>c</td>
-<td>d</td>
-</tr>
-</tbody>
-</table>
-
-<p><img src="media/15078603543147/15078631739679.jpg" alt=""/></p>
-
-<h3 id="toc_3">1.2簇的准确率/召回率</h3>
-
-<p>基于簇pair的，考虑对任意一个人工与机器的.\(P_j,C_i\)。对于每一个人工标注的\(P_j\),在机器标注中应该都会对应一个&quot;最相关的&quot;。可以遍历C中所有的cluster，分别计算准确率，召回率，F_score。<br/>
-<img src="media/15078603543147/15078720767171.jpg" alt=""/></p>
-
-<p>然后对于所有簇的F值做加权平均<br/>
-\[ClassF=\sum w_j F(p_j), w_i=n_j/n\]</p>
-
-<p>classF指标，相当于是以人工标注的簇为基准，将聚类的簇尽量逼近这个标注的结果。</p>
-
-<h2 id="toc_4">1.3</h2>
-
-<p>1.2中的方法相当于要求的比较严格，即以人工标注的集合簇为准。</p>
-
-<p>实际中其实只要保证我们聚的每一个类\(C_i\)是有意义的就可以，即以C为主</p>
-
-<p>类似的定义 \(F(C_i)=\max_{1\lt j \lt s}F(P_j, C_i)\)<br/>
-\[F=\sum w_i F(C_i), w_i=|C_i|/n\]</p>
-
-<ul>
-<li>问题： 这个指标可能变化不是非常明显</li>
-</ul>
-
-<h2 id="toc_5">1.4基于数据对象的准召F</h2>
-
-<p><img src="media/15078603543147/15078731022919.jpg" alt=""/></p>
-
-<h2 id="toc_6">思考</h2>
-
-<ol>
-<li>基于人工标注的方法中，认为人工标注的是准确的或者说结果是唯一的。实际上一堆sample可以有不同的分类方法，而且每种方法可能都是对的。
-<code>
-e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大学
-</code>
-如何进行标注，或者标注结果是非固定时候怎么衡量聚类效果的好坏？？</li>
-</ol>
-
-<h2 id="toc_7">参考资料</h2>
-
-<p><a href="http://blog.csdn.net/itplus/article/details/10322361">http://blog.csdn.net/itplus/article/details/10322361</a></p>
-
-<p><a href="https://blog.csdn.net/qq_27825451/article/details/94436488">https://blog.csdn.net/qq_27825451/article/details/94436488</a></p>
 
                         
                       </div>
@@ -630,6 +818,8 @@ e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大
         
             <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
+            <a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html"><strong>11 平台架构</strong></a>
+        
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E5%85%B6%E4%BB%96.html"><strong>其他</strong></a>
@@ -649,31 +839,31 @@ e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大
 	      
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">0.综述</a>
+			        <a href="15917706614562.html">optical flow 光流</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637036455584.html">1 估计的置信度</a>
+			        <a href="15917693533998.html">process</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037681646.html">1 基础工具包安装pip</a>
+			        <a href="15917597006543.html">业务</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637025346412.html">1. conda 环境管理</a>
+			        <a href="15917572981552.html">综述_关键点检测</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037713554.html">1. 数据可视化概述</a>
+			        <a href="15916704949564.html">【工具】MMlab——mmaction</a>
 			      </li>
 		     
 		  

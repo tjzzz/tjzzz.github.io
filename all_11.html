@@ -103,6 +103,8 @@
         
             <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
+            <li><a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html">11 平台架构</a></li>
+        
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E5%85%B6%E4%BB%96.html">其他</a></li>
@@ -128,17 +130,15 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15867780125381.html">
+                <a class="clearlink" href="15694875253508.html">
                 
-                  <h1>tool-多元数据-Pyod</h1>
+                  <h1>2 轨迹相似性度量</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>Pyod是一款专门做异常检测的python工具箱</p>
-
-<p>github:   <a href="https://github.com/yzhao062/pyod">https://github.com/yzhao062/pyod</a><br/>
-文档说明: <a href="https://pyod.readthedocs.io/en/latest/index.html">https://pyod.readthedocs.io/en/latest/index.html</a></p>
+                        	<p>相似性度量方法<br/>
+<a href="https://www.jianshu.com/p/8a5755c1831a">https://www.jianshu.com/p/8a5755c1831a</a></p>
 
 
                         
@@ -147,11 +147,11 @@
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15867780125381.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2020/4/13</span>
+                   <a href="15694875253508.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2019/9/26</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html'>kdd&异常检测</a></span>
+          					    <span class="posted-in"><a href='%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html'>轨迹分析</a></span>
           				   
                     
 
@@ -167,17 +167,129 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15869348134936.html">
+                <a class="clearlink" href="15694859531608.html">
                 
-                  <h1>tool-时间序列-工具使用</h1>
+                  <h1>1.trajectory preprocessing</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>时间序列工具 <br/>
-<a href="https://github.com/chickenbestlover/RNN-Time-series-Anomaly-Detection">https://github.com/chickenbestlover/RNN-Time-series-Anomaly-Detection</a><br/>
-<a href="https://github.com/rob-med/awesome-TS-anomaly-detection">https://github.com/rob-med/awesome-TS-anomaly-detection</a></p>
+                        	<ul>
+<li>noise filtering</li>
+<li>stay point detect</li>
+<li>trajectory compression</li>
+<li>trajectory segmentation</li>
+</ul>
 
+<h2 id="toc_0">1. nosie filtering</h2>
+
+<p>(1) 均值/ 中位数 平滑<br/>
+一种简单的方法是使用一个均值滤波器来平滑噪声。对于测量到的点𝑧𝑖,对真正的点的估计是𝑧𝑖及其n-1个前驱的平均值.均值滤波器可以看作是一个滑动窗口,覆盖了𝑧𝑖 的时间相邻值.</p>
+
+<p>(2) 卡尔曼滤波，粒子滤波</p>
+
+<p>不光考虑轨迹(x,y), 还考虑了在x，y方向上的速度vx，vy。不考虑速度的相当于是<br/>
+<img src="media/15694859531608/15697504854923.jpg" alt=""/></p>
+
+<p>考虑速度的相当于是：<br/>
+<img src="media/15694859531608/15697505518925.jpg" alt=""/></p>
+
+<p>也就是<br/>
+<img src="media/15694859531608/15697507024669.jpg" alt=""/></p>
+
+<p>(3) 删除法<br/>
+上面两种是对点进行估计，删除法是用异常点检查的方法找到异常点，然后直接删除。<br/>
+一种方式就是计算从pi -&gt; pj点的速度，超过一定阈值的认为是异常值。</p>
+
+<h2 id="toc_1">2. stay point detect</h2>
+
+<p>停留点一般有两种情况：</p>
+
+<ul>
+<li>单一点。一个人长时间驻足在一个点，这种情况相对较少</li>
+<li>驻留区域，一个人长时间在一个小范围内活动</li>
+</ul>
+
+<p><img src="media/15694859531608/15694905917851.jpg" alt=""/></p>
+
+<p>驻留点发掘后，可以将原来的轨迹(x,y,t) 数据 转为地点 (place, delta_t) 数据</p>
+
+<p>停留点检测算法：</p>
+
+<h2 id="toc_2">3. trajectory compression</h2>
+
+<p>轨迹压缩主要是为了在保证一定精度的条件下，减少数据的存储成本。</p>
+
+<p>为了衡量压缩的损失，需要测度压缩后的轨迹与原始轨迹的距离度量。距离的度量有两种方式：<br/>
+(1) 垂直距离<br/>
+(2) 时间同步距离<br/>
+比如下面的例子，将一条有12个点的轨迹压缩到3个点p1，p7，p12。 垂直距离就是直接做点到直线的垂线，而时间同步距离就是假设这个人在p1p7上是匀速行驶的，按照时间间隔为权重划分其他点对应的距离。</p>
+
+<p><img src="media/15694859531608/15695045972823.jpg" alt=""/></p>
+
+<p>压缩方法大致分为两大类别：<br/>
+(1) offline compression<br/>
+即给定一条轨迹，需要生成一个一定误差范围内的近似轨迹。这个问题类似于line simplification问题。一个经典的算法就是 Douglas-Peucker</p>
+
+<pre><code class="language-text">算法描述如下:
+（1）在曲线首尾两点A，B之间连接一条直线AB，该直线为曲线的弦；
+（2）得到曲线上离该直线段距离最大的点C，计算其与AB的距离d；
+（3）比较该距离与预先给定的阈值threshold的大小，如果小于threshold，则该直线段作为曲线的近似，该段曲线处理完毕。
+（4）如果距离大于阈值，则用C将曲线分为两段AC和BC，并分别对两段曲线进行1~3的处理。
+（5）当所有曲线都处理完毕时，依次连接各个分割点形成的折线，即可以作为曲线的近似。
+</code></pre>
+
+<p>注意DP算法中需要计算点到直线的垂直距离，这里可以使用海伦公式。假设一个三角形三边长度分别是a,b,c，则其面积计算公式可写成<br/>
+\(s=\sqrt{p(p-a)(p-b)(p-c)}\)， 其中\(p\)是半周长\(p=(a+b+c)/2\)</p>
+
+<p>除了DP方法之外，还有</p>
+
+<ul>
+<li>TD-TR（Top-Down Time-Ratio）算法<br/>
+DP是考虑的垂直距离，TDTR是考虑的时间同步距离，</li>
+<li>Bellman算法<br/>
+动态规划的方法</li>
+</ul>
+
+<p>(2) online compression<br/>
+online-compression，即数据会源源不断过来，无法提前预知轨迹点数。来了个新点之后决定是否保留的过程。方法大致有两大类</p>
+
+<ul>
+<li>window-based algorithm： sliding window algorithm，open window algorithm</li>
+</ul>
+
+<p>滑动窗口：从p0开始，依次看p0pi的长度，如果没超过阈值则舍弃，否则将其纳入。比如下面例子中的p5是第一个超过阈值的，p5纳入后，再以p5为开始点继续进行。<br/>
+<img src="media/15694859531608/15697244621130.jpg" alt=""/><br/>
+开放窗口：滑动窗口是选择最后一个带来超过阈值的点作为新的起点，而开放窗口是选择线段内误差最大的点。<br/>
+比如p5超过阈值后，看p2-p4这些点中到p1-p5直线的误差哪个最大，因此p3会被选上。</p>
+
+<ul>
+<li>依赖物体移动的速度和方向</li>
+</ul>
+
+<p>依据给定的一个阈值，以及上两次的位置，定义一个safe area，如果后续来的点在该safe area之内则认为是多余的被忽略。</p>
+
+<p>compression with semantic meaning. <br/>
+有些轨迹上是包含了用户的驻足点信息的，比如游览景区。这些点的信息量要比一般走路的信息量大。针对这种情况的压缩，chen[2009] 提出了一个TS(trajectory simplification)算法。既考虑整体的轨迹形状也考虑这些import points。</p>
+
+<h2 id="toc_3">4. trajectory segmentation</h2>
+
+<p>轨迹切分主要是为了研究的方便。比如可以按照如下的方法进行切分：<br/>
+<img src="media/15694859531608/15697265750574.jpg" alt=""/><br/>
+这些切分需要结合实际的研究目的和场景。可以按照时间切分，转折点切分、驻留点切分。还有一些研究室研究人们乘坐交通工具的，可以按照乘坐方式分。<br/>
+除此之外，还有基于轨迹点密度进行的轨迹分割：一般都基于密度聚类算法的改进算法来进行检测，如：K-中值算法，DJ-Cluster算法，cb_swot算法，MSN(Move-Stop-Noise)算法等。</p>
+
+<h2 id="toc_4">5. map matching</h2>
+
+<p>这里也有很多研究，简单的说下，就是讲坐标点构成的路径和地图上的路线进行match。方法有geometric，概率建模的，以及其他的一些方法。<br/>
+根据考虑的抽样点数，可以分为local/incremental 和global的方法。</p>
+
+<h2 id="toc_5">参考</h2>
+
+<p>paper：郑宇2015. trajectory data mining: an overview<br/>
+<a href="https://www.cnblogs.com/xueqiuqiu/p/7635516.html?utm_source=debugrun&amp;utm_medium=referral">https://www.cnblogs.com/xueqiuqiu/p/7635516.html?utm_source=debugrun&amp;utm_medium=referral</a><br/>
+均值，中位数平滑，滤波器<br/>
+知乎：<a href="https://zhuanlan.zhihu.com/p/51976835">https://zhuanlan.zhihu.com/p/51976835</a>  应该是翻译的ppt</p>
 
                         
                       </div>
@@ -185,11 +297,11 @@
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15869348134936.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2020/4/15</span>
+                  
+                    <span class="date">2019/9/26</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html'>kdd&异常检测</a></span>
+          					    <span class="posted-in"><a href='%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html'>轨迹分析</a></span>
           				   
                     
 
@@ -245,14 +357,20 @@ apt-get install vim-gtk
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637025344879.html">
+                <a class="clearlink" href="15688875616388.html">
                 
-                  <h1>xgboost</h1>
+                  <h1>CATS</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><a href="http://xgboost.readthedocs.io/en/latest/python/python_intro.html">http://xgboost.readthedocs.io/en/latest/python/python_intro.html</a></p>
+                        	<p>首先定义两条曲线，各自上面两点之间的一个空间衰减函数。</p>
+
+<p><img src="media/15688875616388/15688982260506.jpg" alt=""/></p>
+
+<p>简单地说就是，当两个的距离大于某个阈值e时候是0，当小于e时候。距离越近值越大，最终是个0-1上的值。</p>
+
+<p><a href="http://www.opticsjournal.net/richHtml/lop/2019/56/15/151002.html">http://www.opticsjournal.net/richHtml/lop/2019/56/15/151002.html</a></p>
 
                         
                       </div>
@@ -261,10 +379,10 @@ apt-get install vim-gtk
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2019/9/19</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          					    <span class="posted-in"><a href='%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html'>轨迹分析</a></span>
           				   
                     
 
@@ -280,72 +398,15 @@ apt-get install vim-gtk
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637025344767.html">
+                <a class="clearlink" href="15687050894061.html">
                 
-                  <h1>【NG-DL】course2_week1 优化网络参数</h1>
+                  <h1>0.综述</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">1.基本概念</h2>
+                        	<p>首先是关于整个轨迹数据涉及的存储、数据清洗、分析、挖掘的一个整体模块。</p>
 
-<p>很多优化参数：<br/>
-网络层数，隐层数，学习率，激活函数。。。</p>
-
-<ul>
-<li><p>训练集/验证集/测试集</p></li>
-<li><p>偏差， 训练集误差</p></li>
-<li><p>方差</p></li>
-</ul>
-
-<p>若有高bias： 尝试新的网络，更大网络</p>
-
-<p>高方差： 获取更多数据，或者正则化，更合适的网络机构</p>
-
-<p>bias和varaince的平衡<br/>
-一般来说更大的网络能减小偏差，更多的数据能减小方差。</p>
-
-<h2 id="toc_1">2.正则化-L2</h2>
-
-<p>以逻辑回归为例</p>
-
-<p>\(J(w,b)=\frac{1}{m}\sum L(\hat y_i, y_i)+\frac{\lambda}{2m}|w|^2_2\)L2惩罚，避免过拟合，导致高方差</p>
-
-<p>类似的神经网络在优化函数上加上</p>
-
-<p>\(J(w^{[1]},b^{[1]},...w^{[l]},b^{[l]})=\frac{1}{m}\sum L(\hat y_i, y_i)+\frac{\lambda}{2m}\sum||w^{[l]}||^2_2\)</p>
-
-<p>其中\(|w^{[l]}|^2\)F范数</p>
-
-<ul>
-<li>Ng.当\(\lambda\)较大时候,w会较小，sigmoid接近线性，降低方差。
-<img src="media/15055593941505/15103891828021.jpg" alt=""/></li>
-</ul>
-
-<h3 id="toc_2">正则化-dropout(随机失活)</h3>
-
-<p>每次对网络中的节点设置一个随机消失的概率p，即每个节点可能在也可能不在网络中，不在的时候即相当于该节点的数值置为0.</p>
-
-<p>dropout与l2类似都会shrink权重。</p>
-
-<h3 id="toc_3">early stoping</h3>
-
-<h2 id="toc_4">3.优化</h2>
-
-<h3 id="toc_5">归一化</h3>
-
-<p>归一化输入=&gt; 均值0，方差1</p>
-
-<ul>
-<li>零均值化</li>
-<li>归一化方差</li>
-</ul>
-
-<p><img src="media/15055593941505/15103915636569.jpg" alt=""/></p>
-
-<h3 id="toc_6">梯度消失与梯度爆炸</h3>
-
-<p>当梯度增长很大或者很微弱时，会导致优化出问题或者很慢。</p>
 
                         
                       </div>
@@ -353,11 +414,11 @@ apt-get install vim-gtk
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
+                   <a href="15687050894061.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2019/9/17</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>8 深度学习</a></span>
+          					    <span class="posted-in"><a href='%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html'>轨迹分析</a></span>
           				   
                     
 
@@ -446,6 +507,8 @@ apt-get install vim-gtk
         
             <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
+            <a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html"><strong>11 平台架构</strong></a>
+        
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E5%85%B6%E4%BB%96.html"><strong>其他</strong></a>
@@ -465,31 +528,31 @@ apt-get install vim-gtk
 	      
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">0.综述</a>
+			        <a href="15917706614562.html">optical flow 光流</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637036455584.html">1 估计的置信度</a>
+			        <a href="15917693533998.html">process</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037681646.html">1 基础工具包安装pip</a>
+			        <a href="15917597006543.html">业务</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637025346412.html">1. conda 环境管理</a>
+			        <a href="15917572981552.html">综述_关键点检测</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037713554.html">1. 数据可视化概述</a>
+			        <a href="15916704949564.html">【工具】MMlab——mmaction</a>
 			      </li>
 		     
 		  

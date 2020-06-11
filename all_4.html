@@ -103,6 +103,8 @@
         
             <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
+            <li><a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html">11 平台架构</a></li>
+        
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E5%85%B6%E4%BB%96.html">其他</a></li>
@@ -128,257 +130,51 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637037692016.html">
+                <a class="clearlink" href="15870155876982.html">
                 
-                  <h1>4.6 集成</h1>
+                  <h1>博客</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><a href="http://www.52caml.com/head_first_ml/ml-chapter6-boosting-family/">http://www.52caml.com/head_first_ml/ml-chapter6-boosting-family/</a></p>
-
-<p><img src="media/15275150216357/15275150424366.jpg" alt=""/></p>
-
-<p><a href="http://www.cnblogs.com/gasongjian/p/7648633.html">http://www.cnblogs.com/gasongjian/p/7648633.html</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15636947700701.html">
-                
-                  <h1>4.7 聚类1</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>聚类分析（cluster analysis）是属于无监督学习，他的目的是去探索数据隐含的规律。其基本思想是基于相似度/距离远近来将样本进行聚类。</p>
-
-<h2 id="toc_0">1.距离的度量方法</h2>
-
-<p>常见的聚类方法：</p>
-
-<table>
-<thead>
-<tr>
-<th>方法类别</th>
-<th>聚类方法</th>
-<th>优缺点</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>基于距离</td>
-<td>Kmeans</td>
-<td></td>
-</tr>
-<tr>
-<td>基于密度</td>
-<td>Dbscan</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-<ul>
-<li>kmeans</li>
-</ul>
-
-<p>选择初始种子</p>
-
-<p>从概率角度看，k均值算法是高斯混合模型的一种特例</p>
-
-<ul>
-<li>基于密度的聚类 DBSCAN</li>
-</ul>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037683688.html">
-                
-                  <h1>4.7 聚类2——-效果评价</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>从整体上来看，根据真实标签是否已知，聚类效果评估可以分为两大类：</p>
-
-<ul>
-<li>外部标准：即基于人工的判断，需要有个标注集合</li>
-<li>内部标准：基于类内和类间聚类的目标函数的判断</li>
-</ul>
-
-<h2 id="toc_0">内部标准clustering-performance-evaluation</h2>
-
-<p>官方文档 <a href="https://scikit-learn.org/stable/modules/clustering.html#clustering-performance-evaluation">https://scikit-learn.org/stable/modules/clustering.html#clustering-performance-evaluation</a></p>
-
-<ul>
-<li>轮廓系数</li>
-</ul>
-
-<p>轮廓系数的计算方法: \(\frac{b-a}{max(a,b)}\)<br/>
-对每个样本来说：a=与他同类别样本的平均距离, b=与他距离最近的不同类别中样本的平均距离。</p>
-
-<p>属性： 范围[-1,1]， 越大越好</p>
-
-<pre><code class="language-python">import numpy as np
-from sklearn.cluster import KMeans
-kmeans_model = KMeans(n_clusters=3, random_state=1).fit(X)
-labels = kmeans_model.labels_
-metrics.silhouette_score(X, labels, metric=&#39;euclidean&#39;)            
-</code></pre>
-
-<ul>
-<li>CH准则(计算速度要比轮廓系数快)</li>
-</ul>
-
-<p>\[s(k) = \frac{tr(Bk)/(k-1)}{tr(W_k)/(n-k)}\]<br/>
-其中Bk是类别间的协方差矩阵，Wk是类别内部的协方差矩阵。最后是希望类别间越大，类内越小越好。<br/>
-即CH值越大越好</p>
-
-<pre><code class="language-python">metrics.calinski_harabaz_score(X, labels) 
-</code></pre>
-
-<p>在选择最优的k时候，因为每个k都要再计算一次，当样本量比较大的时候比较费时间，这个时候可以选用<code>MiniBatchKMeans</code></p>
-
-<pre><code class="language-python">ch_list = []
-lunkuo_list = []
-for i in num_list:
-    # model = KMeans(n_clusters = i,random_state=123).fit(df)
-    model = MiniBatchKMeans(n_clusters = i,random_state=123).fit(df)
-    ch = calinski_harabasz_score(df, model.labels_)     # CH 准则
-    ch_list.append(ch)
-
-    lunkuo = silhouette_score(df, model.labels_)        # 轮廓系数
-    lunkuo_list.append(lunkuo)    
-print(ch_list,lunkuo_list ) 
-</code></pre>
-
-<h2 id="toc_1">已知类别标注</h2>
-
-<p>假设：<br/>
-机器判断的类别集合是：\(C=\{C_1,C_2,...C_m\}\)<br/>
-人工判断的类别集合是：\(P=\{P_1,P_2,...P_s\}\)</p>
-
-<h3 id="toc_2">1.1混淆矩阵</h3>
-
-<p>基于数据样本点的角度：<br/>
-对于任意两个数据pair，\((x_i,x_j)\)按照其在C和P中是否属于同一个簇，可以构造出混淆矩阵</p>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>P_1</th>
-<th>p_0</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>C_1</td>
-<td>a</td>
-<td>b</td>
-</tr>
-<tr>
-<td>C_0</td>
-<td>c</td>
-<td>d</td>
-</tr>
-</tbody>
-</table>
-
-<p><img src="media/15078603543147/15078631739679.jpg" alt=""/></p>
-
-<h3 id="toc_3">1.2簇的准确率/召回率</h3>
-
-<p>基于簇pair的，考虑对任意一个人工与机器的.\(P_j,C_i\)。对于每一个人工标注的\(P_j\),在机器标注中应该都会对应一个&quot;最相关的&quot;。可以遍历C中所有的cluster，分别计算准确率，召回率，F_score。<br/>
-<img src="media/15078603543147/15078720767171.jpg" alt=""/></p>
-
-<p>然后对于所有簇的F值做加权平均<br/>
-\[ClassF=\sum w_j F(p_j), w_i=n_j/n\]</p>
-
-<p>classF指标，相当于是以人工标注的簇为基准，将聚类的簇尽量逼近这个标注的结果。</p>
-
-<h2 id="toc_4">1.3</h2>
-
-<p>1.2中的方法相当于要求的比较严格，即以人工标注的集合簇为准。</p>
-
-<p>实际中其实只要保证我们聚的每一个类\(C_i\)是有意义的就可以，即以C为主</p>
-
-<p>类似的定义 \(F(C_i)=\max_{1\lt j \lt s}F(P_j, C_i)\)<br/>
-\[F=\sum w_i F(C_i), w_i=|C_i|/n\]</p>
-
-<ul>
-<li>问题： 这个指标可能变化不是非常明显</li>
-</ul>
-
-<h2 id="toc_5">1.4基于数据对象的准召F</h2>
-
-<p><img src="media/15078603543147/15078731022919.jpg" alt=""/></p>
-
-<h2 id="toc_6">思考</h2>
+                        	<p>如何打造自己喜欢的博客</p>
 
 <ol>
-<li>基于人工标注的方法中，认为人工标注的是准确的或者说结果是唯一的。实际上一堆sample可以有不同的分类方法，而且每种方法可能都是对的。
-<code>
-e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大学
-</code>
-如何进行标注，或者标注结果是非固定时候怎么衡量聚类效果的好坏？？</li>
+<li>以md方式书写，比较方便统一所有书写博客方式</li>
+<li>能push到github.io 作为自己的博客一直积累。而不用担心以后像网易博客似的停了</li>
+<li>Mweb用的比较好，最终是生成html。push到的github.io</li>
 </ol>
 
-<h2 id="toc_7">参考资料</h2>
+<p>所以找个以md方式生成html格式的ppt即可。</p>
 
-<p><a href="http://blog.csdn.net/itplus/article/details/10322361">http://blog.csdn.net/itplus/article/details/10322361</a></p>
+<p>方式1：<br/>
+之前在学习coursera的课程时候，用R制作的ppt比较炫酷，可以在线预览，试了下可以生成单独的html文件。但是常见的是Rpres文件,需要转化</p>
 
-<p><a href="https://blog.csdn.net/qq_27825451/article/details/94436488">https://blog.csdn.net/qq_27825451/article/details/94436488</a></p>
+<p>方法2:<br/>
+md书写=&gt; 转换html<br/>
+<a href="https://sspai.com/post/52589">https://sspai.com/post/52589</a><br/>
+<a href="https://www.jianshu.com/p/e063303317cb">https://www.jianshu.com/p/e063303317cb</a></p>
+
+<h1 id="toc_0">github 相关</h1>
+
+<p>github展示 ppt<br/>
+<a href="https://github.com/ksky521/nodeppt">https://github.com/ksky521/nodeppt</a></p>
+
+<p>在线的 <a href="https://slides.com/">https://slides.com/</a></p>
+
+<h2 id="toc_1">githubPages 博客</h2>
+
+<p>官网 <a href="https://pages.github.com/">https://pages.github.com/</a></p>
+
+<p><a href="https://github.com/timelessg/timelessg.github.io">https://github.com/timelessg/timelessg.github.io</a></p>
+
+<p>教程 <a href="https://zhuanlan.zhihu.com/p/35668237">https://zhuanlan.zhihu.com/p/35668237</a></p>
+
+<p>参考博客 <a href="https://tsinghua-gongjing.github.io/posts/EpiNano.html">https://tsinghua-gongjing.github.io/posts/EpiNano.html</a></p>
+
+<p><a href="http://jekyllthemes.org/themes/documentation-theme-jekyll/">http://jekyllthemes.org/themes/documentation-theme-jekyll/</a></p>
+
+<p><a href="https://biopython-cn.readthedocs.io/zh_CN/latest/index.html">https://biopython-cn.readthedocs.io/zh_CN/latest/index.html</a></p>
 
                         
                       </div>
@@ -387,10 +183,10 @@ e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2020/4/16</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
           				   
                     
 
@@ -406,28 +202,74 @@ e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637025348085.html">
+                <a class="clearlink" href="15870068175699.html">
                 
-                  <h1>4.8 自适应的基函数——神经网络</h1>
+                  <h1>【异常检测3】Abnormal behavior detection （行为/视频）</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>人工神经网络的鼻祖是<strong>感知器</strong></p>
+                        	<p>行为序列的异常？ video中异常行为检测？</p>
 
-<p><img src="media/15394428762655/15394429750357.jpg" alt=""/></p>
+<p>sequence based</p>
 
-<p>感知器的激活函数是符号函数。<br/>
-\[w_1x_1 + w_2x_2+...+w_nx_n\]</p>
+<ul>
+<li>相似性： 假设所有数据都是normal的，然后找到normal sequence， 最后计算与normal sequence的距离(比如LCS)</li>
+<li>window based。traing：所有sequence 分成多个windows，windows的score：frequence；classifier：随机生成数据作为anomaly标签。 testing：instance的各个windows的anomaly socre组合：取平均；取大于阈值的个数；LFC（计算anomaly window前n个window中anomaly 的个数）</li>
+<li>HMM：</li>
+</ul>
 
-<p><strong>学习策略</strong><br/>
-感知机形式上也是对原始特征x在权重\(W\)条件下进行映射，然后根据输出值进行判断，相当于是一种判别式的分类模型。但是和之前的判别分析略有不同，之前的判别分析其实是依赖于数据X的一些统计量进行最优参数的求解。而感知机是一个不断试错，不断优化自己学习最优参数的过程。</p>
+<p><strong>参照论文：</strong><br/>
+<a href="https://blog.csdn.net/liuxiao214/article/details/78281160?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task">https://blog.csdn.net/liuxiao214/article/details/78281160?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task</a></p>
 
-<blockquote>
-<p>感觉这也是统计学习和机器学习的一个很显著的区别，基于统计的学习是利用一些关于数据分布的假定，然后基于统计的方法寻找到最优的问题参数。而机器学习是有个目标，里面一段参数，然后让机器去不断迭代优化，在这个不断的“学习”过程中寻找到”最优的参数“</p>
-</blockquote>
+<h2 id="toc_0">论文1【Soft + Hardwired Attention: An LSTM Framework for Human Trajectory</h2>
 
-<p>目标：</p>
+<p>Prediction and Abnormal Event Detection】</p>
+
+<p>本文主要提出了一种基于LSTM的行为预测和异常检测方法</p>
+
+<p>related work：human behaviour prediction 文献回溯<br/>
+    - 轨迹聚类<br/>
+    - 预测人类行为，一个常用的方法是social force model，可以详见 <a href="https://wenku.baidu.com/view/c6359d0452ea551810a68733.html">https://wenku.baidu.com/view/c6359d0452ea551810a68733.html</a><br/>
+    - attention models</p>
+
+<p><img src="media/15846836766049/15851206602866.jpg" alt=""/></p>
+
+<h2 id="toc_1">论文2 Detecting-Spacecraf-Anomalies-Using-LSTMs-and-Nonparametric-Dynamic-Thresholding</h2>
+
+<p><a href="http://blog.rexking6.top/2019/03/03/%E3%80%8ADetecting-Spacecraf-Anomalies-Using-LSTMs-and-Nonparametric-Dynamic-Thresholding%E3%80%8B%E7%AC%94%E8%AE%B0/">http://blog.rexking6.top/2019/03/03/%E3%80%8ADetecting-Spacecraf-Anomalies-Using-LSTMs-and-Nonparametric-Dynamic-Thresholding%E3%80%8B%E7%AC%94%E8%AE%B0/</a></p>
+
+<p>有几点可以学习的地方：</p>
+
+<p>动态误差阈值：对于模型产生的预测误差，将其进行平滑处理(比如指数加权),然后针对平滑后的设置阈值。</p>
+
+<p><strong>阈值计算</strong>：<br/>
+<img src="media/15870068175699/15874697100613.jpg" alt=""/><br/>
+简单地说，就是找到这样一个阈值，如果去掉超过他的所有值后，平滑误差\(e_s\)的均值和标准差会下降最大的百分比。另外还考虑到了正则化惩罚，惩罚具有大量与长治\(|e_s|\)和序列\(|E_{seq}|\)以防止过度贪心的行为。</p>
+
+<p><strong>减少误报-假阳性</strong></p>
+
+<h2 id="toc_2">论文3 abnormal behavior detection in crowd scenes</h2>
+
+<p>光流法(optical flow)（简介<a href="https://zhuanlan.zhihu.com/p/44859953%EF%BC%89%EF%BC%8C%E4%B8%80%E8%88%AC%E7%94%A8HOF%E6%88%96%E8%80%85MHOF%EF%BC%88histogram">https://zhuanlan.zhihu.com/p/44859953），一般用HOF或者MHOF（histogram</a> of optical flow）作为速度、方向的统计信息特征</p>
+
+<h2 id="toc_3">论文4 序列特征解释Sequence Feature Explanations</h2>
+
+<h2 id="toc_4">工具</h2>
+
+<p><a href="https://github.com/khundman/telemanom">https://github.com/khundman/telemanom</a></p>
+
+<p>使用报错 <code>OMP: Error #15: Initializing libiomp5.dylib, but found libiomp5.dylib already initialized.</code><br/>
+解决方案:在执行的example.py脚本中加入 </p>
+
+<pre><code class="language-python">import os
+os.environ[&#39;KMP_DUPLICATE_LIB_OK&#39;]=&#39;True&#39;
+</code></pre>
+
+<p>一个简化版讲解 <a href="https://www.cdxy.me/?p=812">https://www.cdxy.me/?p=812</a></p>
+
+<p><code>telemanom.modeling</code>:   model 加载或者创建新的<br/>
+<code>telemanom.errors</code>: 对应论文中自动确定阈值部分</p>
 
                         
                       </div>
@@ -436,10 +278,10 @@ e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2020/4/16</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          					    <span class="posted-in"><a href='kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html'>kdd&异常检测</a></span>
           				   
                     
 
@@ -455,24 +297,21 @@ e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037686386.html">
+                <a class="clearlink" href="15870064824475.html">
                 
-                  <h1>4.9 深度学习综述</h1>
+                  <h1>【方法梳理】关于综述</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>这里只是简单介绍，后续会在深度学习章节中进行详细说明</p>
+                        	<p>做综述需要包括以下几个部分:</p>
 
-<p><strong>通用逼近定理</strong></p>
-
-<p><img src="media/15394437873112/15394453932519.jpg" alt=""/></p>
-
-<h2 id="toc_0">参考资料</h2>
-
-<p><a href="https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2650739143&amp;idx=1&amp;sn=f51551128021e7747205f87971f4762e&amp;chksm=871ad5b9b06d5caf0a5b4601863adc213eb42573bbdc2773e54ff1c585b3954a8644df024015&amp;mpshare=1&amp;scene=1&amp;srcid=0313P1tfCgE3zTBXJuNIHaBl%23rd">https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2650739143&amp;idx=1&amp;sn=f51551128021e7747205f87971f4762e&amp;chksm=871ad5b9b06d5caf0a5b4601863adc213eb42573bbdc2773e54ff1c585b3954a8644df024015&amp;mpshare=1&amp;scene=1&amp;srcid=0313P1tfCgE3zTBXJuNIHaBl%23rd</a></p>
-
-<p><a href="https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2650739820&amp;idx=1&amp;sn=260173be8cecc3a10d7b455922c10e0c&amp;chksm=871ad012b06d5904e65e96d0cfa236d0b6c7ce5683dd8d29514e4cbe420dc5b1ccd2786eea2c&amp;mpshare=1&amp;scene=1&amp;srcid=0324xGIxttOochJWNMPaDibb%23rd">https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2650739820&amp;idx=1&amp;sn=260173be8cecc3a10d7b455922c10e0c&amp;chksm=871ad012b06d5904e65e96d0cfa236d0b6c7ce5683dd8d29514e4cbe420dc5b1ccd2786eea2c&amp;mpshare=1&amp;scene=1&amp;srcid=0324xGIxttOochJWNMPaDibb%23rd</a></p>
+<ul>
+<li>理论（算法 + 数据集）</li>
+<li>实践</li>
+<li>企业应用</li>
+<li>how to use for us</li>
+</ul>
 
                         
                       </div>
@@ -481,10 +320,117 @@ e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2020/4/16</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          					    <span class="posted-in"><a href='%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html'>数据科学-清单</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15869363773517.html">
+                
+                  <h1>【异常检测2】时间序列</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<table>
+<thead>
+<tr>
+<th>paper</th>
+<th>year</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Outlier Detection for Temporal Data: A Survey</td>
+<td>2014</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Time-Series Anomaly Detection Service at Microsoft</td>
+<td>2019</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="toc_0">一 问题分类</h2>
+
+<p><img src="media/15869363773517/15869376232283.jpg" alt="" style="width:1054px;"/><br/>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15869363773517.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2020/4/15</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html'>kdd&异常检测</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15869348134936.html">
+                
+                  <h1>tool-时间序列-工具使用</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>时间序列工具 <br/>
+<a href="https://github.com/chickenbestlover/RNN-Time-series-Anomaly-Detection">https://github.com/chickenbestlover/RNN-Time-series-Anomaly-Detection</a><br/>
+<a href="https://github.com/rob-med/awesome-TS-anomaly-detection">https://github.com/rob-med/awesome-TS-anomaly-detection</a></p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15869348134936.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2020/4/15</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html'>kdd&异常检测</a></span>
           				   
                     
 
@@ -573,6 +519,8 @@ e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大
         
             <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
+            <a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html"><strong>11 平台架构</strong></a>
+        
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E5%85%B6%E4%BB%96.html"><strong>其他</strong></a>
@@ -592,31 +540,31 @@ e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大
 	      
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">0.综述</a>
+			        <a href="15917706614562.html">optical flow 光流</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637036455584.html">1 估计的置信度</a>
+			        <a href="15917693533998.html">process</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037681646.html">1 基础工具包安装pip</a>
+			        <a href="15917597006543.html">业务</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637025346412.html">1. conda 环境管理</a>
+			        <a href="15917572981552.html">综述_关键点检测</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037713554.html">1. 数据可视化概述</a>
+			        <a href="15916704949564.html">【工具】MMlab——mmaction</a>
 			      </li>
 		     
 		  

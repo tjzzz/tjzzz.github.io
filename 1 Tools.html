@@ -103,6 +103,8 @@
         
             <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
+            <li><a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html">11 平台架构</a></li>
+        
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E5%85%B6%E4%BB%96.html">其他</a></li>
@@ -128,74 +130,51 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637037681646.html">
+                <a class="clearlink" href="15870155876982.html">
                 
-                  <h1>1 基础工具包安装pip</h1>
+                  <h1>博客</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>在安装package之前，首先要安装的就是包管理器。</p>
+                        	<p>如何打造自己喜欢的博客</p>
 
-<h2 id="toc_0">1.pip</h2>
+<ol>
+<li>以md方式书写，比较方便统一所有书写博客方式</li>
+<li>能push到github.io 作为自己的博客一直积累。而不用担心以后像网易博客似的停了</li>
+<li>Mweb用的比较好，最终是生成html。push到的github.io</li>
+</ol>
 
-<p>安装pip <code>sudo easy_install pip</code></p>
+<p>所以找个以md方式生成html格式的ppt即可。</p>
 
-<p>通过pip安装python包  <code>pip install xxx</code></p>
+<p>方式1：<br/>
+之前在学习coursera的课程时候，用R制作的ppt比较炫酷，可以在线预览，试了下可以生成单独的html文件。但是常见的是Rpres文件,需要转化</p>
 
-<p><strong>常见问题</strong></p>
+<p>方法2:<br/>
+md书写=&gt; 转换html<br/>
+<a href="https://sspai.com/post/52589">https://sspai.com/post/52589</a><br/>
+<a href="https://www.jianshu.com/p/e063303317cb">https://www.jianshu.com/p/e063303317cb</a></p>
 
-<pre><code class="language-text"># 当前版本
-pip --version
-# 版本升级(有些包安装需要依赖高级版本)
-pip install --upgrade pip
+<h1 id="toc_0">github 相关</h1>
 
-## 升级某些包
-pip install --upgrade SomePackage
+<p>github展示 ppt<br/>
+<a href="https://github.com/ksky521/nodeppt">https://github.com/ksky521/nodeppt</a></p>
 
-# 安装包时候报错`time out`
-pip --default-timeout=100 install xxx
+<p>在线的 <a href="https://slides.com/">https://slides.com/</a></p>
 
-## 指定安装目录
-pip -t 目标目录 xxx
-</code></pre>
+<h2 id="toc_1">githubPages 博客</h2>
 
-<p>更新pip给出一个最简单的办法就是通过pip uninstall pip卸载pip，再用easy_install pip安装pip,这样安装的就是最新版本的pip了。</p>
+<p>官网 <a href="https://pages.github.com/">https://pages.github.com/</a></p>
 
-<blockquote>
-<p>权限</p>
-</blockquote>
+<p><a href="https://github.com/timelessg/timelessg.github.io">https://github.com/timelessg/timelessg.github.io</a></p>
 
-<p>在mac上安装包的时候，因为系统限制不让写到内容到系统目录里去。解决方法</p>
+<p>教程 <a href="https://zhuanlan.zhihu.com/p/35668237">https://zhuanlan.zhihu.com/p/35668237</a></p>
 
-<ul>
-<li>重新安装一个自己版本的python，比如可以用ancoda安装</li>
-<li>pip安装的时候加入参数<code>pip install xxx --user</code>，安装到当前用户目录下。</li>
-</ul>
+<p>参考博客 <a href="https://tsinghua-gongjing.github.io/posts/EpiNano.html">https://tsinghua-gongjing.github.io/posts/EpiNano.html</a></p>
 
-<p>安装完成后还需要将该目录加到环境变量里才能使用</p>
+<p><a href="http://jekyllthemes.org/themes/documentation-theme-jekyll/">http://jekyllthemes.org/themes/documentation-theme-jekyll/</a></p>
 
-<pre><code class="language-text">export export PATH=/Users/$your_name/Library/Python/2.7/bin/:$PATH
-</code></pre>
-
-<blockquote>
-<p>更新某个包时候报错</p>
-</blockquote>
-
-<p><code>Cannot uninstall &#39;six&#39;. It is a distutils installed project and thus we cannot accurately determine which files belong to it which would lead to only a partial uninstall.</code></p>
-
-<p>解决办法：</p>
-
-<p><code>pip install six --upgrade --ignore-installed six</code></p>
-
-<p>当机器上有多个版本python，安装到指定的python版本中</p>
-
-<pre><code class="language-text">pip install -t /home/work/zhenzhen/python2.7/lib/python2.7/site-packages BeautifulSoup4
-</code></pre>
-
-<h2 id="toc_1">2.brew</h2>
-
-<p>/usr/bin/ruby -e &quot;$(curl -fsSL <a href="https://raw.githubusercontent.com/Homebrew/install/master/install)%E2%80%9D">https://raw.githubusercontent.com/Homebrew/install/master/install)”</a></p>
+<p><a href="https://biopython-cn.readthedocs.io/zh_CN/latest/index.html">https://biopython-cn.readthedocs.io/zh_CN/latest/index.html</a></p>
 
                         
                       </div>
@@ -204,7 +183,7 @@ pip -t 目标目录 xxx
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2020/4/16</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
@@ -223,94 +202,19 @@ pip -t 目标目录 xxx
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637025346412.html">
+                <a class="clearlink" href="15694711420974.html">
                 
-                  <h1>1. conda 环境管理</h1>
+                  <h1>unbuntu</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>conda的主要作用有如下两个：</p>
+                        	<p>安装vim</p>
 
-<ul>
-<li>包管理</li>
-</ul>
+<pre><code class="language-text">apt update  ## 先更新下
+apt-get install vim-gtk
 
-<p>Anaconda 安装，conda包管理器与pip类似，不同之处是可用的包以数据科学包为主，而 pip 适合一般用途。它也可以安装非 Python 的包。它是支持任何软件的包管理器。</p>
-
-<ul>
-<li>虚拟环境管理器</li>
-</ul>
-
-<p>它类似于另外两个很流行的环境管理器，即 virtualenv 和 pyenv<br/>
-脚本和程序使用的默认 Python 是 Anaconda 附带的 Python。</p>
-
-<p>可以安装完整版： <a href="https://www.anaconda.com/distribution/#download-section">https://www.anaconda.com/distribution/#download-section</a><br/>
-也可以安装精简版miniconda： <a href="https://conda.io/miniconda.html">https://conda.io/miniconda.html</a></p>
-
-<h2 id="toc_0">包管理-常用命令</h2>
-
-<pre><code class="language-text">conda list  #查看安装的内容
-conda upgrade --all   #初次下载安装好后，建议更新所有包
 </code></pre>
-
-<p>安装包</p>
-
-<pre><code class="language-text">conda install xxx
-conda install numpy=1.10   #指定包的版本
-
-conda remove package
-conda upgrade --all
-</code></pre>
-
-<pre><code class="language-text">模糊查询相关包
-conda search search_term
-</code></pre>
-
-<h2 id="toc_1">环境管理</h2>
-
-<p>默认的环境名字叫base(我的电脑上是)</p>
-
-<p>通过<code>conda env list</code>可以列出你创建的所有环境</p>
-
-<pre><code class="language-text">#创建环境
-conda create -n env_name list of packages
-eg. conda create -n my_env numpy
-
-conda create -n py3 python=3
-conda create -n py2 python=2
-
-#进入环境
-source activate my_env
-#离开环境
-source deactivate
-
-# 删除环境
-conda env remove -n env_name
-</code></pre>
-
-<h2 id="toc_2">其他</h2>
-
-<p>共享环境：将自己的工作环境保存下来给别人共享</p>
-
-<pre><code class="language-text">#进入到你的环境中
-source activate base
-conda env export &gt; environment.yaml
-
-# 通过环境文件创建环境
-conda env create -f environment.yaml
-</code></pre>
-
-<h2 id="toc_3">conda install 与pip install的区别</h2>
-
-<p>，pip list和conda list列表却不一致，conda数量 &gt; pip<br/>
-conda 安装包路径是 xxxxx\Anaconda3\pkgs<br/>
-pip 安装包路径在虚拟环境下是 xxxx\Anaconda3\envs\a_conda_env\Lib\site-packages<br/>
-所以当前环境下pip list只列举出当前包list<br/>
-此处需要留意如果使用conda install 多个环境时，对于同一个包只需要安装一次。有conda集中管理。<br/>
-但是如果使用pip因为每个环境安装使用的pip在不同的路径下，故会重复安装，而包会从缓存中取。</p>
-
-<p>(2) 另外从体验上看感觉conda速度快很多</p>
 
                         
                       </div>
@@ -319,7 +223,7 @@ pip 安装包路径在虚拟环境下是 xxxx\Anaconda3\envs\a_conda_env\Lib\sit
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2019/9/26</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
@@ -338,36 +242,20 @@ pip 安装包路径在虚拟环境下是 xxxx\Anaconda3\envs\a_conda_env\Lib\sit
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15664761738125.html">
+                <a class="clearlink" href="15669633176007.html">
                 
-                  <h1>2. iterm终端配置-oh my zsh</h1>
+                  <h1>其他神器</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">安装</h2>
+                        	<h2 id="toc_0">yaml</h2>
 
-<p>oh my zsh 是一款强大的虚拟终端，兼容bash，提供了各种主题配置、插件。<br/>
-官网：<a href="https://ohmyz.sh/">https://ohmyz.sh/</a></p>
+<p>yaml文件的的多行快速注释方法</p>
 
-<pre><code class="language-text"># 安装
-git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-#备份旧.zshrc配置
-cp ~/.zshrc ~/.zshrc.orig
-cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
-#修改默认shell
-chsh -s /bin/zsh
-</code></pre>
+<p><code>ctrl + /</code></p>
 
-<p>卸载 <code>uninstall_oh_my_zsh</code></p>
-
-<p>注意：如果安装oh my zsh后conda命令无法使用，这个时候需要修改一下.zshrc文件，添加一句<br/>
-<code>export PATH=/home/username/anaconda/bin:$PATH</code></p>
-
-<h2 id="toc_1">主题</h2>
-
-<p><a href="https://github.com/robbyrussell/oh-my-zsh/wiki/Themes">https://github.com/robbyrussell/oh-my-zsh/wiki/Themes</a><br/>
-oh my zsh 有各种丰富的主题可供选择，可以在其github上找到对应的主题样式。其对应的配置文件在<code>vim ~/.zshrc</code>中，只需修改其中的<code>ZSH_THEME=&quot;robbyrussell&quot;</code> 即可。</p>
+<h2 id="toc_1">flask</h2>
 
                         
                       </div>
@@ -376,7 +264,7 @@ oh my zsh 有各种丰富的主题可供选择，可以在其github上找到对�
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/8/22</span>
+                    <span class="date">2019/8/28</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
@@ -395,57 +283,14 @@ oh my zsh 有各种丰富的主题可供选择，可以在其github上找到对�
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15665275932673.html">
+                <a class="clearlink" href="15665545372148.html">
                 
-                  <h1>3.vim 配置</h1>
+                  <h1>shell</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><strong>1 简单版，直接配置好的</strong><br/>
-mac vim 配置<br/>
-<a href="https://github.com/barretlee/autoconfig-mac-vimrc">https://github.com/barretlee/autoconfig-mac-vimrc</a></p>
-
-<pre><code class="language-text">git clone https://github.com/barretlee/autoconfig-mac-vimrc.git;
-cd autoconfig-mac-vimrc;
-chmod +x install;
-./install;
-</code></pre>
-
-<p>调整终端配色： <a href="https://github.com/mitsuhide1992/vim-colors-solarized">https://github.com/mitsuhide1992/vim-colors-solarized</a></p>
-
-<p>macvim:  <a href="https://www.jianshu.com/p/923aec861af3">https://www.jianshu.com/p/923aec861af3</a></p>
-
-<p><strong>2 vimrc配置中一些常用命令说明</strong></p>
-
-<pre><code class="language-text">colorscheme desert  &quot;设置主题 
-set number   &quot;显示行号 
-set autoindent   &quot;自动缩进 
-set cursorcolumn  &quot;光垂直平方向高亮显示
-set cursorline  &quot;光标水平方向高亮显示
-set mouse=a   &quot;激活鼠标可用 
-set tabstop=4  &quot;设置tab和缩进为4个空格
-syntax enable   &quot;开启语法 
-</code></pre>
-
-<p><strong>3 vim 操作快捷键</strong></p>
-
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
+                        	
                         
                       </div>
                   </div>
@@ -472,158 +317,117 @@ syntax enable   &quot;开启语法
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037683461.html">
+                <a class="clearlink" href="15665281146000.html">
                 
-                  <h1>Jupyter notebook</h1>
+                  <h1>docker</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>类似于r的markdown</p>
+                        	<p>docker是一个容器，可以让开发者打包他们的应用以及依赖的环境到一个容器中，然后可以移植到别的机器上。容器是使用的沙箱机制，相互之间不会有任何接口。</p>
 
-<p>GitHub 上也直接支持 Jupyter notebook 的渲染。借助此出色的功能，你可以轻松地共享工作。<a href="http://nbviewer.jupyter.org/">http://nbviewer.jupyter.org/</a> 也会提供 GitHub 代码库中的 notebook ，以及存储在其他地方的 notebook。</p>
+<p>docker 官网： <a href="http://www.docker.com">http://www.docker.com</a><br/>
+容器:  对象<br/>
+镜像images: 类，是用于创建docker容器的模版<br/>
+docker仓库<a href="https://hub.docker.com%EF%BC%8C">https://hub.docker.com，</a> 是用来提供各种镜像的仓库。</p>
 
-<p>名称 Jupyter 由 Julia、Python 和 R 组合而成，早期的两个非 Python 内核分别是 R 语言和 Julia 语言</p>
+<p><strong>基本使用</strong></p>
 
-<h2 id="toc_0">1.安装</h2>
+<pre><code class="language-text"># 运行方式 1： 类似于运行pyhton脚本 python xxx.py  参数
+docker run ubuntu:18.10 /bin/echo &quot;Hello world&quot;
+</code></pre>
 
 <ul>
-<li>如果安装anaconda 会自带</li>
-<li>通过conda环境安装 <code>conda install jupyter notebook</code>，或者<code>pip install jupyter notebook</code></li>
+<li>ubuntu:18.10是指定要运行的镜像，docker会先从本机上检查是否存在，如果不存在会从docker hub下载公共镜像。</li>
+<li> /bin/echo &quot;Hello world&quot;， 在启动容器里执行命令</li>
 </ul>
 
-<pre><code class="language-text"># 启动
-jupyter notebook
+<pre><code class="language-text"># 运行方式2： 交互式运行
+docker run -i -t ubuntu:18.10 /bin/bash
 </code></pre>
-
-<p>快捷键</p>
-
-<p>在上方插入cell：a<br/>
-在下方插入cell：b<br/>
-剪切当前cell：x<br/>
-删除当前cell：dd<br/>
-撤销删除：u<br/>
-上下：方向键 or jk (同vim)<br/>
-扩展选中上下左右：shift+jk<br/>
-当前cell转入markdown状态：m<br/>
-当前cell转入代码状态：y</p>
-
-<h2 id="toc_1">magic 关键字</h2>
-
-<p>Magic 关键字是可以在单元格中运行的特殊命令，能让你控制notebook 本身或执行系统调用（例如更改目录）</p>
-
-<p>Magic 命令的前面带有一个或两个百分号（% 或 %%），分别对应行 Magic 命令和单元格 Magic 命令。行 Magic 命令仅应用于编写 Magic 命令时所在的行，而单元格 Magic 命令应用于整个单元格。</p>
-
-<p>对于 Python 内核，可以使用 Magic 命令 %pdb 开启交互式调试器。出错时，你能检查当前命名空间中的变量。</p>
-
-<h2 id="toc_2">2.转换 notebook格式</h2>
-
-<p>Notebook 只是扩展名为 .ipynb 的大型 JSON 文件。</p>
-
-<p>转换格式的命令 <code>nbconvert</code></p>
-
-<pre><code class="language-text">jupyter nbconvert --to html notebook.ipynb   #转成html
-jupyter nbconvert --to markdown xxx.ipynb 
-</code></pre>
-
-<p>目前支持的转换格式(<a href="https://nbconvert.readthedocs.io/en/latest/usage.html">https://nbconvert.readthedocs.io/en/latest/usage.html</a>)<br/>
-HTML,<br/>
-LaTeX,<br/>
-PDF,<br/>
-Reveal.js HTML slideshow,<br/>
-Markdown,<br/>
-reStructuredText,<br/>
-executable script,<br/>
-notebook.</p>
-
-<p><strong>创建幻灯片</strong></p>
-
-<p>在 notebook 中创建幻灯片的过程像平常一样，但需要指定作为幻灯片的单元格和单元格的幻灯片类型。在菜单栏中，点击“View”（视图）&gt;“Cell Toolbar”（单元格工具栏）&gt;“Slideshow”（幻灯片），以便在每个单元格上弹出幻灯片单元格菜单。</p>
-
-<pre><code class="language-text">#转换并在浏览器中展示
-jupyter nbconvert notebook.ipynb --to slides --post serve
-</code></pre>
-
-<h2 id="toc_3">3.测试机上安装jupyter</h2>
-
-<p><a href="https://cloud.tencent.com/developer/article/1147487">https://cloud.tencent.com/developer/article/1147487</a></p>
 
 <ul>
-<li>安装jupyter</li>
-<li>生成密码 python -c &quot;import IPython;print IPython.lib.passwd()&quot;</li>
-<li>修改配置文件 </li>
+<li>-t 在新容器中指定一个终端</li>
+<li>-i 允许你对容器内的标准输入 (STDIN) 进行交互。</li>
 </ul>
 
-<p>/home/work/.jupyter/jupyter_notebook_config.py</p>
+<p>后台以进程方式运行docker</p>
 
-<p>如果启动报错</p>
-
-<pre><code class="language-text">socket.gaierror: [Errno -2] Name or service not known
+<pre><code class="language-text">docker run -d ubuntu:18.10 /bin/sh -c &quot;while true; do echo hello world; sleep 1; done&quot;
 </code></pre>
 
-<p>可以加上自己的ip</p>
+<p>这个时候发现会出现一串字符，这个就是dicker的id。</p>
 
-<pre><code class="language-text"> jupyter notebook --ip=xxxx
- jupyter lab --ip=xxx
+<ul>
+<li>-d 让容器在后台运行</li>
+</ul>
+
+<pre><code class="language-text">docker ps   # 查看当前有哪些容器在运行
+exit    #退出容器或者`ctrl +D`
+docker logs 容器id    #查看容器内的标准输出
+docker stop  容器id    # 停止正在运行的docker
 </code></pre>
 
-<h2 id="toc_4">4.其他工具</h2>
+<p><strong>docker 镜像</strong></p>
 
-<p><strong>jupyter-lab</strong><br/>
-jupyter-lab 是jupyter-notebook的升级版，界面更加炫酷，也支持更多功能，强烈建议使用lab方式</p>
+<pre><code class="language-text">docker pull   REPOSITORY:TAG    # 下载镜像
+docker search httpd                      # 查找镜像
 
-<p><strong>colab</strong><br/>
-google 基于jupyter开发的存在在google driver上的网页版<br/>
-<a href="https://colab.research.google.com/">https://colab.research.google.com/</a><br/>
-本身功能上差不太多，主要是有search和share功能，查看别人分享的代码</p>
-
-<h2 id="toc_5">5.常见问题</h2>
-
-<p>Q1: 若import了自己写的外部模块，如果这个外部模块有更新，再次执行import，jupyter是不会重新导入的<br/>
-<a href="https://blog.csdn.net/ybdesire/article/details/86709727">https://blog.csdn.net/ybdesire/article/details/86709727</a></p>
-
-<p>对于 Python2.x<br/>
-import some_module<br/>
-reload(some_module)</p>
-
-<p>对于 Python 3.2 and 3.3:<br/>
-import some_module<br/>
-import importlib<br/>
-importlib.reload(some_module)</p>
-
-<p>对于 Python3.4+<br/>
-import some_module<br/>
-import imp<br/>
-imp.reload(some_module)</p>
-
-<p>方法2：<br/>
-auto_load</p>
-
-<p><a href="https://codeday.me/bug/20181215/447675.html">https://codeday.me/bug/20181215/447675.html</a></p>
-
-<p>Q2. <code>jupyter lab</code> 启动提示</p>
-
-<p><img src="media/15637037680349/15665439689997.jpg" alt=""/></p>
-
-<p>应该是编码问题，暂时的解决方案<a href="https://github.com/jupyter/notebook/issues/2789#issuecomment-338380336">https://github.com/jupyter/notebook/issues/2789#issuecomment-338380336</a></p>
-
-<p><code>LANG=zn jupyter lab</code></p>
-
-<p>这个问题后来查了下说是python2的bug，安装python3就不会出现这个问题。</p>
-
-<p>Q3. 切换内核<br/>
-很多代码都是python2写的，用pip3安装jupyter之后，想切换写内核。<br/>
-<a href="https://www.cnblogs.com/Jeffiy/p/4861528.html">https://www.cnblogs.com/Jeffiy/p/4861528.html</a></p>
-
-<pre><code class="language-text">jupyter kernelspec list
+# 更新镜像，当自己在镜像内做了一些更新后，可以提交
+# commit -m &#39;更新信息&#39; -a 作者 容器id 新版本的镜像名
+docker commit -m=&quot;zzz update&quot; -a=&quot;zzz&quot; 容器的id zzz/ubuntu:v2
 </code></pre>
 
-<p>Q4: jupyterlab 中的内容，可以通过右键点击复制下载链接得到一个url，通过该url可以直接在网页上展示该文件。注意该url后面有个 _xsrf=xxxx的标记。<br/>
-如果重启了jupyterlab，这个标记也需要更新</p>
+<p>从零创建一个镜像<br/>
+从零创建镜像的命令是 <code>docker build</code>, 其依赖于一个配置文件Dockerfile，这个文件包含了一组命令来告诉docker如何创建镜像。</p>
 
-<h2 id="toc_6">6 好用的插件</h2>
+<p><code>docker build -t 镜像名 配置文件地址</code></p>
 
-<p><a href="https://blog.csdn.net/yh0vlde8vg8ep9vge/article/details/85333338">https://blog.csdn.net/yh0vlde8vg8ep9vge/article/details/85333338</a></p>
+<p>配置文件的一个例子：</p>
+
+<pre><code class="language-text"># 每一个指令的前缀必须是大写
+# FROM 表示使用哪个镜像源
+# RUN 表示告诉docker在镜像内执行命令
+FROM ubuntu:16.04
+RUN apt-get update
+RUN apt-get install -y unzip cmake g++ make ffmpeg libx264-dev wget
+WORKDIR /opt/
+</code></pre>
+
+<p><strong>删除</strong></p>
+
+<pre><code class="language-text">docker rm 容器
+docker rmi 镜像名
+</code></pre>
+
+<p>清理空间</p>
+
+<p>docker system df</p>
+
+<p>docker system prune -a</p>
+
+<p><strong>mac安装</strong><br/>
+直接从官网下载安装即可 <a href="https://download.docker.com/mac/stable/Docker.dmg%E3%80%82">https://download.docker.com/mac/stable/Docker.dmg。</a><br/>
+由于国内网速问题，安装完docker后，后续拉取镜像可能会十分缓慢，可以配置加速器来解决，如下图所示。</p>
+
+<p>阿里云的加速器：<a href="https://help.aliyun.com/document_detail/60750.html">https://help.aliyun.com/document_detail/60750.html</a><br/>
+网易加速器：<a href="http://hub-mirror.c.163.com">http://hub-mirror.c.163.com</a><br/>
+官方中国加速器：<a href="https://registry.docker-cn.com">https://registry.docker-cn.com</a><br/>
+ustc的镜像：<a href="https://docker.mirrors.ustc.edu.cn">https://docker.mirrors.ustc.edu.cn</a><br/>
+daocloud：<a href="https://www.daocloud.io/mirror#accelerator-doc%EF%BC%88%E6%B3%A8%E5%86%8C%E5%90%8E%E4%BD%BF%E7%94%A8%EF%BC%89">https://www.daocloud.io/mirror#accelerator-doc（注册后使用）</a></p>
+
+<p><img src="media/15665281146000/15665304699914.jpg" alt=""/></p>
+
+<h2 id="toc_0">参考资料</h2>
+
+<p><a href="https://www.runoob.com/docker/macos-docker-install.html">https://www.runoob.com/docker/macos-docker-install.html</a><br/>
+docker 常用参数 <a href="https://blog.csdn.net/Hello_World_QWP/article/details/84554031">https://blog.csdn.net/Hello_World_QWP/article/details/84554031</a></p>
+
+<h2 id="toc_1">安装记录</h2>
+
+<p>sudo docker build . -t registry.aibee.cn/zzzheng/logstat:0.1</p>
+
+<p>docker commit 修改镜像 <a href="https://blog.csdn.net/jiankunking/article/details/62056392">https://blog.csdn.net/jiankunking/article/details/62056392</a></p>
 
                         
                       </div>
@@ -632,7 +436,7 @@ auto_load</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2019/8/23</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
@@ -724,6 +528,8 @@ auto_load</p>
         
             <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
+            <a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html"><strong>11 平台架构</strong></a>
+        
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E5%85%B6%E4%BB%96.html"><strong>其他</strong></a>
@@ -743,31 +549,31 @@ auto_load</p>
 	      
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">0.综述</a>
+			        <a href="15917706614562.html">optical flow 光流</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637036455584.html">1 估计的置信度</a>
+			        <a href="15917693533998.html">process</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037681646.html">1 基础工具包安装pip</a>
+			        <a href="15917597006543.html">业务</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637025346412.html">1. conda 环境管理</a>
+			        <a href="15917572981552.html">综述_关键点检测</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037713554.html">1. 数据可视化概述</a>
+			        <a href="15916704949564.html">【工具】MMlab——mmaction</a>
 			      </li>
 		     
 		  

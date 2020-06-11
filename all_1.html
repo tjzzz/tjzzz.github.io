@@ -103,6 +103,8 @@
         
             <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
+            <li><a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html">11 平台架构</a></li>
+        
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E5%85%B6%E4%BB%96.html">其他</a></li>
@@ -128,129 +130,48 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15694859531608.html">
+                <a class="clearlink" href="15914461638403.html">
                 
-                  <h1>1.trajectory preprocessing</h1>
+                  <h1>RoadMap</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<ul>
-<li>noise filtering</li>
-<li>stay point detect</li>
-<li>trajectory compression</li>
-<li>trajectory segmentation</li>
-</ul>
-
-<h2 id="toc_0">1. nosie filtering</h2>
-
-<p>(1) 均值/ 中位数 平滑<br/>
-一种简单的方法是使用一个均值滤波器来平滑噪声。对于测量到的点𝑧𝑖,对真正的点的估计是𝑧𝑖及其n-1个前驱的平均值.均值滤波器可以看作是一个滑动窗口,覆盖了𝑧𝑖 的时间相邻值.</p>
-
-<p>(2) 卡尔曼滤波，粒子滤波</p>
-
-<p>不光考虑轨迹(x,y), 还考虑了在x，y方向上的速度vx，vy。不考虑速度的相当于是<br/>
-<img src="media/15694859531608/15697504854923.jpg" alt=""/></p>
-
-<p>考虑速度的相当于是：<br/>
-<img src="media/15694859531608/15697505518925.jpg" alt=""/></p>
-
-<p>也就是<br/>
-<img src="media/15694859531608/15697507024669.jpg" alt=""/></p>
-
-<p>(3) 删除法<br/>
-上面两种是对点进行估计，删除法是用异常点检查的方法找到异常点，然后直接删除。<br/>
-一种方式就是计算从pi -&gt; pj点的速度，超过一定阈值的认为是异常值。</p>
-
-<h2 id="toc_1">2. stay point detect</h2>
-
-<p>停留点一般有两种情况：</p>
+                        	<p>Github:</p>
 
 <ul>
-<li>单一点。一个人长时间驻足在一个点，这种情况相对较少</li>
-<li>驻留区域，一个人长时间在一个小范围内活动</li>
+<li>统计学 cheet-sheet整理</li>
 </ul>
 
-<p><img src="media/15694859531608/15694905917851.jpg" alt=""/></p>
+<hr/>
 
-<p>驻留点发掘后，可以将原来的轨迹(x,y,t) 数据 转为地点 (place, delta_t) 数据</p>
-
-<p>停留点检测算法：</p>
-
-<h2 id="toc_2">3. trajectory compression</h2>
-
-<p>轨迹压缩主要是为了在保证一定精度的条件下，减少数据的存储成本。</p>
-
-<p>为了衡量压缩的损失，需要测度压缩后的轨迹与原始轨迹的距离度量。距离的度量有两种方式：<br/>
-(1) 垂直距离<br/>
-(2) 时间同步距离<br/>
-比如下面的例子，将一条有12个点的轨迹压缩到3个点p1，p7，p12。 垂直距离就是直接做点到直线的垂线，而时间同步距离就是假设这个人在p1p7上是匀速行驶的，按照时间间隔为权重划分其他点对应的距离。</p>
-
-<p><img src="media/15694859531608/15695045972823.jpg" alt=""/></p>
-
-<p>压缩方法大致分为两大类别：<br/>
-(1) offline compression<br/>
-即给定一条轨迹，需要生成一个一定误差范围内的近似轨迹。这个问题类似于line simplification问题。一个经典的算法就是 Douglas-Peucker</p>
-
-<pre><code class="language-text">算法描述如下:
-（1）在曲线首尾两点A，B之间连接一条直线AB，该直线为曲线的弦；
-（2）得到曲线上离该直线段距离最大的点C，计算其与AB的距离d；
-（3）比较该距离与预先给定的阈值threshold的大小，如果小于threshold，则该直线段作为曲线的近似，该段曲线处理完毕。
-（4）如果距离大于阈值，则用C将曲线分为两段AC和BC，并分别对两段曲线进行1~3的处理。
-（5）当所有曲线都处理完毕时，依次连接各个分割点形成的折线，即可以作为曲线的近似。
-</code></pre>
-
-<p>注意DP算法中需要计算点到直线的垂直距离，这里可以使用海伦公式。假设一个三角形三边长度分别是a,b,c，则其面积计算公式可写成<br/>
-\(s=\sqrt{p(p-a)(p-b)(p-c)}\)， 其中\(p\)是半周长\(p=(a+b+c)/2\)</p>
-
-<p>除了DP方法之外，还有</p>
-
+<ol>
+<li><p>基础工具</p>
 <ul>
-<li>TD-TR（Top-Down Time-Ratio）算法<br/>
-DP是考虑的垂直距离，TDTR是考虑的时间同步距离，</li>
-<li>Bellman算法<br/>
-动态规划的方法</li>
-</ul>
-
-<p>(2) online compression<br/>
-online-compression，即数据会源源不断过来，无法提前预知轨迹点数。来了个新点之后决定是否保留的过程。方法大致有两大类</p>
-
+<li>markdown，git，R/python，MR,SQL</li>
+<li>linux</li>
+</ul></li>
+<li><p>获取数据</p></li>
+<li><p>数据清洗+ 探索性分析</p>
 <ul>
-<li>window-based algorithm： sliding window algorithm，open window algorithm</li>
-</ul>
+<li>数据可视化</li>
+</ul></li>
+<li><p>统计推断</p></li>
+<li><p>机器学习</p></li>
+<li><p>深度学习<br/>
+NLP<br/>
+CV</p></li>
+<li><p>数据产品开发</p></li>
+<li><p>平台架构</p></li>
+<li><p>产品 &amp; 用户</p></li>
+</ol>
 
-<p>滑动窗口：从p0开始，依次看p0pi的长度，如果没超过阈值则舍弃，否则将其纳入。比如下面例子中的p5是第一个超过阈值的，p5纳入后，再以p5为开始点继续进行。<br/>
-<img src="media/15694859531608/15697244621130.jpg" alt=""/><br/>
-开放窗口：滑动窗口是选择最后一个带来超过阈值的点作为新的起点，而开放窗口是选择线段内误差最大的点。<br/>
-比如p5超过阈值后，看p2-p4这些点中到p1-p5直线的误差哪个最大，因此p3会被选上。</p>
+<h1 id="toc_0">study list</h1>
 
-<ul>
-<li>依赖物体移动的速度和方向</li>
-</ul>
+<p><a href="https://tracholar.github.io/wiki/#tools">https://tracholar.github.io/wiki/#tools</a></p>
 
-<p>依据给定的一个阈值，以及上两次的位置，定义一个safe area，如果后续来的点在该safe area之内则认为是多余的被忽略。</p>
-
-<p>compression with semantic meaning. <br/>
-有些轨迹上是包含了用户的驻足点信息的，比如游览景区。这些点的信息量要比一般走路的信息量大。针对这种情况的压缩，chen[2009] 提出了一个TS(trajectory simplification)算法。既考虑整体的轨迹形状也考虑这些import points。</p>
-
-<h2 id="toc_3">4. trajectory segmentation</h2>
-
-<p>轨迹切分主要是为了研究的方便。比如可以按照如下的方法进行切分：<br/>
-<img src="media/15694859531608/15697265750574.jpg" alt=""/><br/>
-这些切分需要结合实际的研究目的和场景。可以按照时间切分，转折点切分、驻留点切分。还有一些研究室研究人们乘坐交通工具的，可以按照乘坐方式分。<br/>
-除此之外，还有基于轨迹点密度进行的轨迹分割：一般都基于密度聚类算法的改进算法来进行检测，如：K-中值算法，DJ-Cluster算法，cb_swot算法，MSN(Move-Stop-Noise)算法等。</p>
-
-<h2 id="toc_4">5. map matching</h2>
-
-<p>这里也有很多研究，简单的说下，就是讲坐标点构成的路径和地图上的路线进行match。方法有geometric，概率建模的，以及其他的一些方法。<br/>
-根据考虑的抽样点数，可以分为local/incremental 和global的方法。</p>
-
-<h2 id="toc_5">参考</h2>
-
-<p>paper：郑宇2015. trajectory data mining: an overview<br/>
-<a href="https://www.cnblogs.com/xueqiuqiu/p/7635516.html?utm_source=debugrun&amp;utm_medium=referral">https://www.cnblogs.com/xueqiuqiu/p/7635516.html?utm_source=debugrun&amp;utm_medium=referral</a><br/>
-均值，中位数平滑，滤波器<br/>
-知乎：<a href="https://zhuanlan.zhihu.com/p/51976835">https://zhuanlan.zhihu.com/p/51976835</a>  应该是翻译的ppt</p>
+<p>pyspark RDD<br/>
+  <a href="http://www.jianshu.com/p/4cd22eda363f">http://www.jianshu.com/p/4cd22eda363f</a></p>
 
                         
                       </div>
@@ -259,10 +180,10 @@ online-compression，即数据会源源不断过来，无法提前预知轨迹�
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/9/26</span>
+                    <span class="date">2020/6/6</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html'>轨迹分析</a></span>
+          					    <span class="posted-in"><a href='%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html'>数据科学-清单</a></span>
           				   
                     
 
@@ -278,27 +199,25 @@ online-compression，即数据会源源不断过来，无法提前预知轨迹�
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637025346225.html">
+                <a class="clearlink" href="15914458737737.html">
                 
-                  <h1>2 不同设计之间有统计学差异吗</h1>
+                  <h1>一.基础平台篇</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>本章主要介绍对均值、比例的假设检验，来判断两组不同设计之间是否有显著差别。</p>
-
-
+                        	
                         
                       </div>
                   </div>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15637025346225.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2019/7/21</span>
+                  
+                    <span class="date">2020/6/6</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
+          					    <span class="posted-in"><a href='11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html'>11 平台架构</a></span>
           				   
                     
 
@@ -314,73 +233,17 @@ online-compression，即数据会源源不断过来，无法提前预知轨迹�
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15694875253508.html">
+                <a class="clearlink" href="15914453043232.html">
                 
-                  <h1>2 轨迹相似性度量</h1>
+                  <h1>许式伟的架构课</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>相似性度量方法<br/>
-<a href="https://www.jianshu.com/p/8a5755c1831a">https://www.jianshu.com/p/8a5755c1831a</a></p>
+                        	<p>老师简介:<br/>
+许式伟，七牛云CEO</p>
 
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15694875253508.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2019/9/26</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html'>轨迹分析</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15664761738125.html">
-                
-                  <h1>2. iterm终端配置-oh my zsh</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">安装</h2>
-
-<p>oh my zsh 是一款强大的虚拟终端，兼容bash，提供了各种主题配置、插件。<br/>
-官网：<a href="https://ohmyz.sh/">https://ohmyz.sh/</a></p>
-
-<pre><code class="language-text"># 安装
-git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-#备份旧.zshrc配置
-cp ~/.zshrc ~/.zshrc.orig
-cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
-#修改默认shell
-chsh -s /bin/zsh
-</code></pre>
-
-<p>卸载 <code>uninstall_oh_my_zsh</code></p>
-
-<p>注意：如果安装oh my zsh后conda命令无法使用，这个时候需要修改一下.zshrc文件，添加一句<br/>
-<code>export PATH=/home/username/anaconda/bin:$PATH</code></p>
-
-<h2 id="toc_1">主题</h2>
-
-<p><a href="https://github.com/robbyrussell/oh-my-zsh/wiki/Themes">https://github.com/robbyrussell/oh-my-zsh/wiki/Themes</a><br/>
-oh my zsh 有各种丰富的主题可供选择，可以在其github上找到对应的主题样式。其对应的配置文件在<code>vim ~/.zshrc</code>中，只需修改其中的<code>ZSH_THEME=&quot;robbyrussell&quot;</code> 即可。</p>
+<p><img src="media/15914453043232/15914458702744.jpg" alt="" style="width:701px;"/></p>
 
                         
                       </div>
@@ -389,10 +252,10 @@ oh my zsh 有各种丰富的主题可供选择，可以在其github上找到对�
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/8/22</span>
+                    <span class="date">2020/6/6</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          					    <span class="posted-in"><a href='11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html'>11 平台架构</a></span>
           				   
                     
 
@@ -408,15 +271,16 @@ oh my zsh 有各种丰富的主题可供选择，可以在其github上找到对�
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637036605080.html">
+                <a class="clearlink" href="15913232206040.html">
                 
-                  <h1>3 样本量的确定</h1>
+                  <h1>tools</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>抽样中样本量的确定是一个非常重要的问题，在不考虑抽样成本的前提下，样本量越多估计的越准，然而实际情况中我们需要平衡抽样成本与估计结果的置信度——以尽可能低的样本得到尽可能高的置信结果。</p>
+                        	<p><a href="https://github.com/facebookresearch/detr">https://github.com/facebookresearch/detr</a></p>
 
+<p>mmlab-mmdetection</p>
 
                         
                       </div>
@@ -424,11 +288,57 @@ oh my zsh 有各种丰富的主题可供选择，可以在其github上找到对�
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15637036605080.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2019/7/21</span>
+                  
+                    <span class="date">2020/6/5</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
+          					    <span class="posted-in"><a href='%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B.html'>目标检测</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15910646289765.html">
+                
+                  <h1>ActivityNet</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>ActivityNet是一个类似ImageyNet的关于行为识别的比赛</p>
+
+<p><a href="https://github.com/activitynet/ActivityNet">https://github.com/activitynet/ActivityNet</a>  其官网提供了一些</p>
+
+<p>其他方法<br/>
+<a href="https://github.com/facebookresearch/SlowFast/blob/master/INSTALL.md">https://github.com/facebookresearch/SlowFast/blob/master/INSTALL.md</a></p>
+
+<p><a href="https://github.com/search?q=activity-recognition">https://github.com/search?q=activity-recognition</a></p>
+
+<pre><code class="language-text">#环境
+conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/6/2</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%A7%BF%E6%80%81%E8%AF%86%E5%88%AB.html'>姿态识别</a></span>
           				   
                     
 
@@ -517,6 +427,8 @@ oh my zsh 有各种丰富的主题可供选择，可以在其github上找到对�
         
             <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
+            <a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html"><strong>11 平台架构</strong></a>
+        
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E5%85%B6%E4%BB%96.html"><strong>其他</strong></a>
@@ -536,31 +448,31 @@ oh my zsh 有各种丰富的主题可供选择，可以在其github上找到对�
 	      
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">0.综述</a>
+			        <a href="15917706614562.html">optical flow 光流</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637036455584.html">1 估计的置信度</a>
+			        <a href="15917693533998.html">process</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037681646.html">1 基础工具包安装pip</a>
+			        <a href="15917597006543.html">业务</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637025346412.html">1. conda 环境管理</a>
+			        <a href="15917572981552.html">综述_关键点检测</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037713554.html">1. 数据可视化概述</a>
+			        <a href="15916704949564.html">【工具】MMlab——mmaction</a>
 			      </li>
 		     
 		  

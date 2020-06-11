@@ -103,6 +103,8 @@
         
             <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
+            <li><a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html">11 平台架构</a></li>
+        
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E5%85%B6%E4%BB%96.html">其他</a></li>
@@ -128,94 +130,18 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15777038940485.html">
+                <a class="clearlink" href="15867780125381.html">
                 
-                  <h1>4.轨迹学习and activity understanding</h1>
+                  <h1>tool-多元数据-Pyod</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><img src="media/15777038940485/15777039239123.jpg" alt=""/></p>
+                        	<p>Pyod是一款专门做异常检测的python工具箱</p>
 
-<p>Trajectory Learning for Activity Understanding: Unsupervised, Multilevel, and Long-Term<br/>
-Adaptive Approach<br/>
-Brendan Tran Morris, Member, IEEE, and Mohan Manubhai Trived</p>
+<p>github:   <a href="https://github.com/yzhao062/pyod">https://github.com/yzhao062/pyod</a><br/>
+文档说明: <a href="https://pyod.readthedocs.io/en/latest/index.html">https://pyod.readthedocs.io/en/latest/index.html</a></p>
 
-<p>其整个的分析框架主要包含以下三个部分：</p>
-
-<p><img src="media/15777038940485/15777065365378.jpg" alt=""/></p>
-
-<p>\[Trajectory = (Tr_1, Tr_2, ....Tr_n)\]</p>
-
-<h2 id="toc_0">4.1 node level modeling</h2>
-
-<p>poi<br/>
-一般POI点包括：轨迹的开始和结束，轨迹逗留的地点，用户自己定义的一些点。</p>
-
-<ul>
-<li>轨迹的开始和结尾一般是entry/exit的地点，通过数据中的tr1和trn即可得到样本点</li>
-<li>逗留点，需要用算法识别出来，一般采用\(\epsilon\)半径内最少逗留\(T\)时间来识别</li>
-<li>其他重要点(原作者只列了前2项，不依赖先验可以直接挖掘出来)，可以自己人为定义</li>
-</ul>
-
-<p>根据数据点，建立2维高斯混合模型(假设每个POI点的分布都服从正态分布)。<br/>
-\[Z=\sum w_i N(u_i,\Sigma_I)\]</p>
-
-<p>因为真实有多少POI点是未知的，需要估计。可以认为\(d_i=\frac{w_i}{\pi\sqrt|\Sigma_i|}\)为第i个点的重要程度，可以将重要程度较小的舍弃。</p>
-
-<h2 id="toc_1">4.2 spatial level learning</h2>
-
-<p>为了发现node与node之间的轨迹，需要进行聚类，而聚类首先需要解决衡量不同长度轨迹相似性问题。这里以LCSS为例(作者说是根据一些文献表现相对最好的，但实际上应该是在一定条件下)</p>
-
-<p>\[D_{LCSS}(T_i, T_j) = 1 - \frac{LCSS(T_i, T_j)}{min(T_i, T_j)}\]</p>
-
-<p><strong>谱聚类</strong><br/>
-根据距离矩阵可以得到相似性矩阵S进行聚类<br/>
-<img src="media/15777038940485/15777106902507.jpg" alt=""/></p>
-
-<p>作者在最后没有使用k-means而是使用的C-means，主要是为了能输出最后的一个隶属度。</p>
-
-<pre><code class="language-python"># 图聚类
-# https://sklearn.apachecn.org/docs/0.21.3/22.html#spectral-clustering
-from sklearn.cluster import SpectralClustering
-sc = SpectralClustering(3, affinity=&#39;precomputed&#39;, n_init=100, assign_labels=&#39;discretize&#39;)
-sc.fit_predict(adjacency_matrix)
-</code></pre>
-
-<p><strong>创建轨迹</strong><br/>
-聚类完之后，对于每一类需要提取其center来表征这个类所代表的轨迹。但是轨迹的长度有可能是不同的，</p>
-
-<p>轨迹合并<br/>
-谱聚类一开始的时候会选择一个大一些的聚类数目k，然后再将相似类别进行合并，收缩到真实的类别数。<br/>
-这里是使用的DTW距离，计算两个类之间的dtw距离，如果小于一定的阈值就认为这两类相似然后进行合并。</p>
-
-<h2 id="toc_2">4.3 Dynamic-temportal level learning</h2>
-
-<p>聚类只能提供空间的轨迹形态，没办法反应出人们的行为层面信息。作者这里针对每一个聚好的类，使用的HMM模型，学习出其pattern。 这部分学习中，使用的是原始的轨迹信息\(F_i={f_t}\), \(f_t = [x_t, y_t, u_t, v_t]\)</p>
-
-<p>详细的过程在作者的另一篇论文中写的比较详细。每一个HMM模型可以记做是\(\lambda = (A, B, \pi)\).</p>
-
-<p>内在的HMM state \(\{q_j\}_{j=1}^Q\)假定符合高斯混合模型</p>
-
-<h2 id="toc_3">4.4 activity 分析</h2>
-
-<p>有了前面的path 模型之后，可以对activity进行分析。</p>
-
-<p>(1) 轨迹整体分析</p>
-
-<ul>
-<li>轨迹分类</li>
-<li>异常轨迹检测<br/>
-(2) online分析<br/>
-轨迹预测</li>
-</ul>
-
-<h2 id="toc_4">备注</h2>
-
-<p>关于各种方法的比较 <br/>
-Comparison of similarity measures for trajectory clustering in outdoor surveillance scenes</p>
-
-<p>Learning trajectory patterns by clus- tering:experimental studies and comparative evaluation</p>
 
                         
                       </div>
@@ -223,11 +149,11 @@ Comparison of similarity measures for trajectory clustering in outdoor surveilla
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                  
-                    <span class="date">2019/12/30</span>
+                   <a href="15867780125381.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2020/4/13</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html'>轨迹分析</a></span>
+          					    <span class="posted-in"><a href='kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html'>kdd&异常检测</a></span>
           				   
                     
 
@@ -243,51 +169,170 @@ Comparison of similarity measures for trajectory clustering in outdoor surveilla
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15794012608721.html">
+                <a class="clearlink" href="15867647063491.html">
                 
-                  <h1>Attention Mechanism</h1>
+                  <h1>知识发现</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>attention是一种基于提升RNN的encoder + decoder效果的机制。 attention机制可以对输入X的每个部分赋予不同的权重，抽取出更加重要的信息和特征。</p>
+                        	<p>关于DM的process model一般有如下几种：</p>
 
-<p>(1)attention机制解决的主要问题</p>
-
-<p>以rnn机器翻译为例</p>
+<p>1.CRISP-DM 跨行业数据挖掘标准流程，将一个KDD工程分为6个不同的阶段。这种方式只定义了要做什么没有说how to do</p>
 
 <ul>
-<li>不管多长的句子，都会最终被压缩到一个固定长度的隐向量，这样会有信息损失、</li>
-<li>序列场景下，每个item的权重都是一样的；类似的，图像场景下，每个像素的权重也是一样的。注意力机制其实和人识别东西有些类似，人会先看到物体的关键部分特征，然后整合成整体。</li>
+<li>商业理解：确定商业的目标，发现影响结果的重要因素。</li>
+<li>数据理解</li>
+<li>数据准备</li>
+<li>建模</li>
+<li>评估</li>
+<li>部署</li>
 </ul>
 
-<p>seq2seq结构</p>
+<h2 id="toc_0">一. Association Rules</h2>
 
-<h2 id="toc_0">常见的一些attention模型</h2>
+<p>传统的，根据支持度和置信度，挖掘出频繁项集。但是很显然的会面临很多问题。<br/>
+1) 低频次的并不代表不重要，他们可能能产生出重要的negative association rules (NARs)。 低频购买换个角度就是高频不购买<br/>
+2) 个人感觉频繁项集不一定是有价值信息的</p>
 
-<p>按照涉及的序列个数分类：<br/>
-(1) self-attention</p>
+<h3 id="toc_1">1 经典AR</h3>
 
-<p>序列=&gt; 类别，文本分类</p>
+<p>先说下基本定义，</p>
 
-<p>(2) distinctive attention</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>B</th>
+<th>not B</th>
+<th>合计</th>
+</tr>
+</thead>
 
-<p>序列 =&gt; 序列， 机器翻译</p>
+<tbody>
+<tr>
+<td>A</td>
+<td>a</td>
+<td>b</td>
+<td>a+b</td>
+</tr>
+<tr>
+<td>not A</td>
+<td>C</td>
+<td>d</td>
+<td>c+d</td>
+</tr>
+<tr>
+<td>合计</td>
+<td>a+c</td>
+<td>b+d</td>
+<td>a+b+c+d</td>
+</tr>
+</tbody>
+</table>
 
-<p>(3) co-attention<br/>
-多于2个序列，比如给定一张图片和一个问题，需要生成响应的答案</p>
+<p>支持度sup(A=&gt;B) = P(A&amp;B) = a/n<br/>
+置信度 conf(A=&gt;B) = P(B|A) = a/(a+b)<br/>
+提升度 lift(A=&gt;B)= p(A&amp;B)/P(A)/P(B)       # 是否独立 &gt; 1表明正相关， &lt;1 表示负相关。 可以看做相关系数</p>
 
-<p>按encoder序列参与计算attention的位置分<br/>
-(1) soft attention<br/>
-(2) hard attention</p>
+<p>一般是设置最低的支持度和置信度，一旦满足这两个就认为是一条rule.</p>
 
-<p>参考资料：</p>
+<p>用这种方式得到的结果很可能是不可信的，或者说不全面的，比如如下的一个具体例子。可知sup(A=&gt;B)= 0.45, conf(A=&gt;B)=0.9. 看似较高，但是没法得出 买了A就买B的结论，因为不买A=&gt;买B也是一样，或者说买B本身就很高，与是否买A无关。</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>B</th>
+<th>not B</th>
+<th>合计</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>A</td>
+<td>450</td>
+<td>50</td>
+<td>a+b</td>
+</tr>
+<tr>
+<td>not A</td>
+<td>450</td>
+<td>50</td>
+<td>c+d</td>
+</tr>
+<tr>
+<td>合计</td>
+<td>a+c</td>
+<td>b+d</td>
+<td>a+b+c+d</td>
+</tr>
+</tbody>
+</table>
+
+<p>相关系数 \(corr_ = \frac{sup(A交B) - sup(A)sup(B)}{\sqrt{supA(1-supA)supB(1-supB)}} \)<br/>
+通过卡方检验，可以推倒出卡方检验的统计量与corr是一致的。<br/>
+常用的算法 Apriori， FP-Growth</p>
+
+<h3 id="toc_2">2 NAR</h3>
+
+<p>比如A=&gt; not B<br/>
+参考【4】中作者方案包括2步：1)首先找到frequent和infrequent的itemset   2)判断是positive还是negative association</p>
+
+<p>具体的<br/>
+(1) infrequent: 通过IDF加权，过滤掉出现次数非常少的，或者是在不同人之间分布比较均匀的term<br/>
+<img src="media/15867647063491/15868573761250.jpg" alt="" style="width:960px;"/></p>
+
+<p>(2) 有了这些候选的itemset后，根据定义计算positive或者negative的rule<br/>
+<img src="media/15867647063491/15868574713672.jpg" alt="" style="width:586px;"/></p>
+
+<p>注意：<br/>
+ A =&gt; B 不一定能推出 not B =&gt; not A</p>
+
+<h3 id="toc_3">3 infrequent itemset</h3>
+
+<p>high utility infrequent itemsets. 频次不高，但是有更高的价值。UPRI算法(utility pattern rare itemset algorithm)<br/>
+简单的说，传统的AR是 \(I_1,...I_m =&gt; I_{m+1}(sup, conf)\)，而基于utility的是\(I_1,...I_m =&gt; Obj(sup, conf, u)\)。 传统的AR其实相当于将频次作为效用的度量。实际中不同的商品所带来的效用是不同，比如当关注cost，profit时候，对零售商来说，高售价的商品就比低售价的商品重要。</p>
+
+<p>区别于传统的基于itemset的ICOA (itemset-correlation-oriented association)，基于目标效用的OOA (objective-oriented utility-based association)mining</p>
+
+<p>related work:</p>
 
 <ul>
-<li><a href="https://zhuanlan.zhihu.com/p/73357761">https://zhuanlan.zhihu.com/p/73357761</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/31547842">https://zhuanlan.zhihu.com/p/31547842</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/43493999">https://zhuanlan.zhihu.com/p/43493999</a></li>
+<li>由min_sup, min_conf的方式改为 topK的方式</li>
+<li>Sese and Morishita 度量usefulness的方式：利用规则相关系数的显著性</li>
+<li>Han 通过min_l()的方式挖掘topK的closed patterns<br/>
+参考【5】中挖</li>
 </ul>
+
+<h2 id="toc_4">2. case</h2>
+
+<p>参考【4】中处理 <br/>
+(1)IDF加权,考虑到term不同权重</p>
+
+<h2 id="toc_5">3.工具</h2>
+
+<p>(1) positive association rules—— apriori<br/>
+python的sklearn中貌似没有直接的apriori工具,在<code>pypi</code>上找到这个<code>efficient-apriori</code> <a href="https://pypi.org/search/?q=apriori%E3%80%82">https://pypi.org/search/?q=apriori。</a> 或者在github上搜索 <a href="https://github.com/topics/association-rules?l=python">https://github.com/topics/association-rules?l=python</a></p>
+
+<p>(2) negative association rules ------</p>
+
+<p>可以用一种比较tricky的方法，即对于我们所关心的item，在数据集中添加 not_item项即可。比如基于R的实现 <a href="https://subscription.packtpub.com/book/big_data_and_business_intelligence/9781788621878/1/ch01lvl1sec14/negative-association-rules">https://subscription.packtpub.com/book/big_data_and_business_intelligence/9781788621878/1/ch01lvl1sec14/negative-association-rules</a></p>
+
+<h2 id="toc_6">4.统计显著性</h2>
+
+<p><a href="https://github.com/BorgwardtLab/significant-subgraph-mining">https://github.com/BorgwardtLab/significant-subgraph-mining</a></p>
+
+<p>参考资料</p>
+
+<ol>
+<li>A survey of data mining and knowledge discovery process models and methodologies</li>
+<li>A review and analysis on knowledge discovery and data mining techniques(回溯了各种关联规则相关的)</li>
+<li><a href="https://www.ixueshu.com/document/2a80aefb26b9e3e9318947a18e7f9386.html">https://www.ixueshu.com/document/2a80aefb26b9e3e9318947a18e7f9386.html</a></li>
+<li>Negative and Positive Association Rules Mining from Text Using Frequent and Infrequent Itemsets</li>
+<li>mining high utility itemsets</li>
+</ol>
 
                         
                       </div>
@@ -296,10 +341,10 @@ Comparison of similarity measures for trajectory clustering in outdoor surveilla
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/1/19</span>
+                    <span class="date">2020/4/13</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='6%20NLP.html'>6 NLP</a></span>
+          					    <span class="posted-in"><a href='kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html'>kdd&异常检测</a></span>
           				   
                     
 
@@ -315,20 +360,25 @@ Comparison of similarity measures for trajectory clustering in outdoor surveilla
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15688875616388.html">
+                <a class="clearlink" href="15846836766049.html">
                 
-                  <h1>CATS</h1>
+                  <h1>【异常检测1】无监督-多元数据</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>首先定义两条曲线，各自上面两点之间的一个空间衰减函数。</p>
+                        	<p>☆☆☆<a href="https://github.com/yzhao062/anomaly-detection-resources">https://github.com/yzhao062/anomaly-detection-resources</a>  资料综述，包括相关工具与论文</p>
 
-<p><img src="media/15688875616388/15688982260506.jpg" alt=""/></p>
+<p>总述：<br/>
+从异常检测要检测的目的数据的不同，大致可以分为如下几类，后续会分别对这几类进行综述学习。</p>
 
-<p>简单地说就是，当两个的距离大于某个阈值e时候是0，当小于e时候。距离越近值越大，最终是个0-1上的值。</p>
+<ol>
+<li>多元特征数据，传统的n_sample x n_features形式</li>
+<li>高维数据</li>
+<li>时间序列，行为序列</li>
+<li>graph, network</li>
+</ol>
 
-<p><a href="http://www.opticsjournal.net/richHtml/lop/2019/56/15/151002.html">http://www.opticsjournal.net/richHtml/lop/2019/56/15/151002.html</a></p>
 
                         
                       </div>
@@ -336,11 +386,11 @@ Comparison of similarity measures for trajectory clustering in outdoor surveilla
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                  
-                    <span class="date">2019/9/19</span>
+                   <a href="15846836766049.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2020/3/20</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html'>轨迹分析</a></span>
+          					    <span class="posted-in"><a href='kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html'>kdd&异常检测</a></span>
           				   
                     
 
@@ -356,48 +406,16 @@ Comparison of similarity measures for trajectory clustering in outdoor surveilla
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037683065.html">
+                <a class="clearlink" href="15839963017817.html">
                 
-                  <h1>Data product</h1>
+                  <h1>样本不均衡</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>We describe our methods in this chapter.</p>
+                        	<p>smote</p>
 
-<p>bookdown</p>
-
-<p>bookdown是基于markdown，knitr用来进行write book的一个package。<br/>
-其主要功能和markdown差不多，参考gitbook的方式，能基于Rmd或者md进行书写。</p>
-
-<p>加载一些html widgets</p>
-
-<p>首先安装相应的支持包</p>
-
-<pre><code class="language-text">install.packages(&quot;webshot&quot;)
-webshot::install_phantomjs()
-</code></pre>
-
-<h2 id="toc_0">输出格式</h2>
-
-<p>在<code>_output.yaml</code>中进行设置<br/>
-(1)html格式</p>
-
-<ul>
-<li>gtbook style</li>
-</ul>
-
-<p>*</p>
-
-<h2 id="toc_1">生成</h2>
-
-<p>实时预览</p>
-
-<p>serve_book(dir=&#39;.&#39;, output_dir=&quot;_book&quot;,preview=TRUE, in_session=TRUE)</p>
-
-<h1 id="toc_2">flexdashbaord</h1>
-
-<p><a href="http://rmarkdown.rstudio.com/flexdashboard/">http://rmarkdown.rstudio.com/flexdashboard/</a></p>
+<p><a href="https://github.com/scikit-learn-contrib/imbalanced-learn">https://github.com/scikit-learn-contrib/imbalanced-learn</a></p>
 
                         
                       </div>
@@ -406,10 +424,10 @@ webshot::install_phantomjs()
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2020/3/12</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html'>3 数据可视化</a></span>
+          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
           				   
                     
 
@@ -425,85 +443,31 @@ webshot::install_phantomjs()
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037720747.html">
+                <a class="clearlink" href="15838236096534.html">
                 
-                  <h1>FM</h1>
+                  <h1>MMLab</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>学习地址 <a href="https://github.com/babakx/fm_tensorflow">https://github.com/babakx/fm_tensorflow</a></p>
+                        	<h2 id="toc_0">1. MMLab + DeepFashion 服饰识别</h2>
 
-<h2 id="toc_0">1. 环境包安装</h2>
+<p>项目地址: <a href="https://github.com/open-mmlab/mmfashion">https://github.com/open-mmlab/mmfashion</a></p>
 
-<p>安装tensorflow</p>
+<p>香港中文大学多媒体实验室（Multimedia Lab）开展的MMFashion项目，是针对服饰领域提供的一个通用的toolbox(基于pytorch)</p>
 
-<h2 id="toc_1">2.试运行</h2>
-
-<p>这个是用tf实现的FM<br/>
-<a href="https://www.jianshu.com/p/152ae633fb00">https://www.jianshu.com/p/152ae633fb00</a></p>
+<p>主要功能有:</p>
 
 <ul>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked /> 试运行成功</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 了解原理</li>
+<li>属性归类</li>
+<li>相似服装检索</li>
+<li>服饰关键点检测</li>
 </ul>
 
-<p>小数据集版本（进入tf的仍然是dense矩阵，只适合小数据）<br/>
- <a href="https://github.com/babakx/fm_tensorflow">https://github.com/babakx/fm_tensorflow</a></p>
-
-<p>大数据量版本</p>
-
-<h2 id="toc_2">3.原理</h2>
-
-<h2 id="toc_3">PYTHON版本的包实现方式</h2>
-
-<ul>
-<li>LibFM</li>
-<li>libFFM</li>
-<li>xLearn</li>
-<li>tffm</li>
-</ul>
-
-<p>目前在python中的支持FM相关的包主要有</p>
-
-<p>__</p>
-
-<h3 id="toc_4">1.libFM</h3>
-
-<p>官网 <a href="http://www.libfm.org/">http://www.libfm.org/</a><br/>
-github <a href="https://github.com/srendle/libfm">https://github.com/srendle/libfm</a></p>
-
-<p>从官网下载安装包</p>
-
-<h3 id="toc_5">tffm</h3>
-
-<p><a href="https://github.com/geffy/tffm">https://github.com/geffy/tffm</a></p>
-
-<p>tffm是FM方法的tensorflow版本，他支持：</p>
-
-<ul>
-<li>dense or sparse输出</li>
-<li>order &gt;= 2</li>
-</ul>
-
-<pre><code class="language-text"># 安装 
-pip install tffm
-</code></pre>
-
-<p>按照github上的example</p>
-
-<p>log</p>
-
-<p>todo:</p>
-
-<ul>
-<li>调整参数k， int_std, red</li>
-<li>统一 content_len的量纲</li>
-<li>文章添加关键字</li>
-<li>tffm，添加field</li>
-</ul>
-
-<hr/>
+<p>使用：<br/>
+可以按照说明开始 <a href="https://github.com/open-mmlab/mmfashion/blob/master/docs/GETTING_STARTED.md">https://github.com/open-mmlab/mmfashion/blob/master/docs/GETTING_STARTED.md</a><br/>
+同时可以替换成自己的数据集 ,<br/>
+含有的基础model: <a href="https://github.com/open-mmlab/mmfashion/blob/master/docs/MODEL_ZOO.md">https://github.com/open-mmlab/mmfashion/blob/master/docs/MODEL_ZOO.md</a></p>
 
                         
                       </div>
@@ -512,10 +476,10 @@ pip install tffm
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2020/3/10</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          					    <span class="posted-in"><a href='tools.html'>tools</a></span>
           				   
                     
 
@@ -604,6 +568,8 @@ pip install tffm
         
             <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
+            <a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html"><strong>11 平台架构</strong></a>
+        
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E5%85%B6%E4%BB%96.html"><strong>其他</strong></a>
@@ -623,31 +589,31 @@ pip install tffm
 	      
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">0.综述</a>
+			        <a href="15917706614562.html">optical flow 光流</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637036455584.html">1 估计的置信度</a>
+			        <a href="15917693533998.html">process</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037681646.html">1 基础工具包安装pip</a>
+			        <a href="15917597006543.html">业务</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637025346412.html">1. conda 环境管理</a>
+			        <a href="15917572981552.html">综述_关键点检测</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037713554.html">1. 数据可视化概述</a>
+			        <a href="15916704949564.html">【工具】MMlab——mmaction</a>
 			      </li>
 		     
 		  

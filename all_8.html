@@ -103,6 +103,8 @@
         
             <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
+            <li><a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html">11 平台架构</a></li>
+        
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E5%85%B6%E4%BB%96.html">其他</a></li>
@@ -128,82 +130,36 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637037690385.html">
+                <a class="clearlink" href="15826898443382.html">
                 
-                  <h1>face_recgnization</h1>
+                  <h1>训练数据少-</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>github<br/>
-<a href="https://github.com/ageitgey/face_recognition">https://github.com/ageitgey/face_recognition</a></p>
+                        	<p>生成更多数据 <a href="https://juejin.im/post/5d887be951882509334fa199">https://juejin.im/post/5d887be951882509334fa199</a></p>
 
-<h2 id="toc_0">1. 安装</h2>
+<p>数据量少的方法 <a href="https://zhuanlan.zhihu.com/p/50547038">https://zhuanlan.zhihu.com/p/50547038</a></p>
 
-<p>文档： <a href="https://zhuanlan.zhihu.com/p/28271869">https://zhuanlan.zhihu.com/p/28271869</a></p>
+<p>1.迁移学习</p>
 
-<pre><code class="language-text">pip install face_recognition
-</code></pre>
+<p>（1）微调 <a href="https://zhuanlan.zhihu.com/p/35890660">https://zhuanlan.zhihu.com/p/35890660</a><br/>
+利用已经训练好的模型和参数作为初始参数，再训模型</p>
 
-<p>直接安装会报错，安装face_recognition这个之前需要先安装编译dlib</p>
+<p><img src="media/15826898443382/15826938622074.jpg" alt=""/></p>
 
-<pre><code class="language-text">brew install boost
-brew install boost-python --with-python3
+<p>（2）特征提取（Feature Extraction） +特征融合（feature fusion）+ xgboost<br/>
+模型结构不变，将最后输出部分的全连接特征取出</p>
 
-# install dlib
-git clone https://github.com/davisking/dlib.git
-cd dlib
-mkdir build; cd build; cmake .. -DDLIB_USE_CUDA=0 -DUSE_AVX_INSTRUCTIONS=1; cmake --build 
+<p><a href="https://github.com/cameronfabbri/Compute-Features">https://github.com/cameronfabbri/Compute-Features</a></p>
 
-cd ..
-python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
-</code></pre>
+<p>过拟合<br/>
+<a href="http://www.mashangxue123.com/tensorflow/tf2-tutorials-keras-overfit_and_underfit.html">http://www.mashangxue123.com/tensorflow/tf2-tutorials-keras-overfit_and_underfit.html</a></p>
 
-<p>If there is no cmake on your mac, you can use  <code>brew install cmake</code>. After all these have been done, run</p>
-
-<pre><code class="language-text">pip install face_recognition
-</code></pre>
-
-<h2 id="toc_1">2.usage</h2>
-
-<p>face_recognition有两种使用方式，命令行方式和python包方式</p>
-
-<p>(1) 命令行方式</p>
-
-<p>(2) python 包<br/>
-<a href="https://face-recognition.readthedocs.io/en/latest/face_recognition.html#module-face_recognition.api">https://face-recognition.readthedocs.io/en/latest/face_recognition.html#module-face_recognition.api</a></p>
-
-<p></p>
-
-<h2 id="toc_2">参考资料</h2>
-
-<p><a href="https://zhuanlan.zhihu.com/p/28271869">https://zhuanlan.zhihu.com/p/28271869</a></p>
-
-<p><a href="https://medium.com/@ageitgey">https://medium.com/@ageitgey</a></p>
-
-<hr/>
-
-<p><a href="https://www.jianshu.com/p/281aa6a3823a">https://www.jianshu.com/p/281aa6a3823a</a></p>
-
-<p>一个案例<br/>
-<a href="https://www.jianshu.com/p/38ca6daf6b40">https://www.jianshu.com/p/38ca6daf6b40</a><br/>
-<a href="http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html">http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html</a></p>
-
-<p>tf案例<br/>
-<a href="https://blog.csdn.net/u010016927/article/details/75722416">https://blog.csdn.net/u010016927/article/details/75722416</a></p>
-
-<p>knn<br/>
-<a href="https://www.leiphone.com/news/201707/gIbNsPtWk460m5vj.html">https://www.leiphone.com/news/201707/gIbNsPtWk460m5vj.html</a></p>
-
-<p><a href="https://blog.csdn.net/Mbx8X9u/article/details/79124840">https://blog.csdn.net/Mbx8X9u/article/details/79124840</a></p>
-
-<p><a href="https://www.ctolib.com/topics-101544.html">https://www.ctolib.com/topics-101544.html</a></p>
-
-<p><a href="https://www.oschina.net/code/snippet_2558914_54339">https://www.oschina.net/code/snippet_2558914_54339</a></p>
-
-<h2 id="toc_3">new</h2>
-
-<p><a href="https://www.leiphone.com/news/201704/rYdpAvh4SvgVPpRQ.html">https://www.leiphone.com/news/201704/rYdpAvh4SvgVPpRQ.html</a></p>
+<ul>
+<li>权重正则化L1,L2</li>
+<li>dropout</li>
+</ul>
 
                         
                       </div>
@@ -212,10 +168,10 @@ python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2020/2/26</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='face.html'>face</a></span>
+          					    <span class="posted-in"><a href='%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB.html'>图像分类</a></span>
           				   
                     
 
@@ -231,16 +187,34 @@ python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15774239088566.html">
+                <a class="clearlink" href="15825969970925.html">
                 
-                  <h1>facebook DensePose</h1>
+                  <h1>TF2.0</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><a href="https://zhuanlan.zhihu.com/p/38241179">https://zhuanlan.zhihu.com/p/38241179</a></p>
+                        	<p><a href="https://tensorflow.google.cn/tutorials/images/classification">https://tensorflow.google.cn/tutorials/images/classification</a></p>
 
-<p>github: <a href="https://github.com/facebookresearch/DensePose">https://github.com/facebookresearch/DensePose</a></p>
+<pre><code class="language-text">一个简单的方法是创建一个新的 Model 来输出你所感兴趣的层：
+
+from keras.models import Model
+
+model = ...  # 创建原始模型
+
+layer_name = &#39;my_layer&#39;
+intermediate_layer_model = Model(inputs=model.input,
+                                 outputs=model.get_layer(layer_name).output)
+intermediate_output = intermediate_layer_model.predict(data)
+或者，你也可以构建一个 Keras 函数，该函数将在给定输入的情况下返回某个层的输出，例如：
+
+from keras import backend as K
+
+get_3rd_layer_output = K.function([model.layers[0].input],
+                                  [model.layers[3].output])
+layer_output = get_3rd_layer_output([x])[0]
+
+</code></pre>
 
                         
                       </div>
@@ -249,10 +223,10 @@ python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/12/27</span>
+                    <span class="date">2020/2/25</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%85%B6%E4%BB%96.html'>其他</a></span>
+          					    <span class="posted-in"><a href='7%20CV.html'>7 CV</a></span>
           				   
                     
 
@@ -268,73 +242,138 @@ python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037678160.html">
+                <a class="clearlink" href="15825488509435.html">
                 
-                  <h1>git</h1>
+                  <h1>工具篇</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>git 是一个版本管理的工具，能够非常方便的对项目进行版本控制。</p>
+                        	<blockquote>
+<p>工欲善其事必先利其器</p>
+</blockquote>
 
-<h2 id="toc_0">1建立自己的代码库</h2>
+<p>主流的深度学习框架有</p>
 
-<p>假设你的用户名是zzz<br/>
-（1）生成公钥<br/>
-ssh-keygen -t rsa -f ~/.ssh/id_rsa.zzz<br/>
-cat ~/.ssh/id_rsa.zzz.pub 保存到icode或者是自己的github上<br/>
-（2）clone</p>
+<table>
+<thead>
+<tr>
+<th>tool</th>
+<th>公司</th>
+<th>特性</th>
+</tr>
+</thead>
 
-<pre><code class="language-text">git clone  xxxxx代码库             # 将代码库克隆到本地
-## 如果机器是多个人使用的话用--local,如果是自己一个人的话可以设置成--global
-git config --local user.email zzz邮箱
-git config --local user.name zzz用户名
-git push origin master:refs/for/master
+<tbody>
+<tr>
+<td>tensorflow</td>
+<td>google</td>
+<td></td>
+</tr>
+<tr>
+<td>pytorch</td>
+<td>facebook</td>
+<td></td>
+</tr>
+<tr>
+<td>keras</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>caffe</td>
+<td>伯克利</td>
+<td></td>
+</tr>
+<tr>
+<td>paddlepaddle</td>
+<td>百度</td>
+<td></td>
+</tr>
+<tr>
+<td>mxnet</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p>Keras 是基于tensorflow或者Theano(已不维护)封装的高阶接口，tensorflow2.0中现在已经包含Keras</p>
+
+<h2 id="toc_0">1. Tensorflow</h2>
+
+<p><strong>TF-Slim、TFLearn、Keras和TensorLayer</strong></p>
+
+<p>TF-Slim、TFLearn、Keras和TensorLayer都是尝试简化TensorFlow/Theano的工具，是对TensorFlow/Theano的高层封装，API实现更加的工程化</p>
+
+<p>tensorflow2.0 已经将这些合并整理了，官方推荐的是keras的api</p>
+
+<p><a href="https://tensorflow.google.cn/tutorials/images/transfer_learning">https://tensorflow.google.cn/tutorials/images/transfer_learning</a></p>
+
+<p><a href="https://github.com/balancap/SSD-Tensorflow">https://github.com/balancap/SSD-Tensorflow</a></p>
+
+<h2 id="toc_1">2. tensorhub</h2>
+
+<p>官方地址 <a href="https://hub.tensorflow.google.cn/">https://hub.tensorflow.google.cn/</a> 类似于dockerhub，汇集了各种分享的模型，可供下载使用。<br/>
+主要包括 tezt embeddings, image classification models and more</p>
+
+<p>安装</p>
+
+<pre><code class="language-text">pip install --upgrade tensorflow-hub
 </code></pre>
 
-<h2 id="toc_1">2 基本操作</h2>
+<p>比如图像分类相关的 <a href="https://hub.tensorflow.google.cn/google/collections/image/1">https://hub.tensorflow.google.cn/google/collections/image/1</a><br/>
+google后来提取的 EfficientNet, 调整模型的深度，宽度等参数。<a href="https://hub.tensorflow.google.cn/google/collections/efficientnet/1">https://hub.tensorflow.google.cn/google/collections/efficientnet/1</a></p>
 
-<p>当我们新增或者更新了一个文件后，如何上传到代码库</p>
+<p>1.对新样本predict</p>
 
-<pre><code class="language-text">git add xxx
-git commit -m &#39;注释&#39;
-git push origin HEAD:refs/for/master
+<pre><code class="language-python">classifier_url =&quot;https://tfhub.dev/google/tf2-preview/mobilenet_v2/classification/2&quot; #@param {type:&quot;string&quot;}
+
+IMAGE_SHAPE = (224, 224)
+classifier = tf.keras.Sequential([
+    hub.KerasLayer(classifier_url, input_shape=IMAGE_SHAPE+(3,))
+])
+
+# 新样本
+grace_hopper = tf.keras.utils.get_file(&#39;image.jpg&#39;,&#39;https://storage.googleapis.com/download.tensorflow.org/example_images/grace_hopper.jpg&#39;)
+grace_hopper = Image.open(grace_hopper).resize(IMAGE_SHAPE)
+grace_hopper = np.array(grace_hopper)/255.0
+
+result = classifier.predict(grace_hopper[np.newaxis, ...])
+result.shape
 </code></pre>
 
-<p>从代码库将新代码下载到本地，更新本地库</p>
+<p>2.simple迁移学习</p>
 
-<pre><code class="language-text">git pull
+<pre><code class="language-python">image_generator = tf.keras.preprocessing.image.ImageDataGenerator(rescale=1/255)
+image_data = image_generator.flow_from_directory(str(data_root), target_size=IMAGE_SHAPE)
+
+## 下载不包含top classification layer的model
+feature_extractor_url = &quot;https://tfhub.dev/google/tf2-preview/mobilenet_v2/feature_vector/2&quot; #@param {type:&quot;string&quot;}
+
+feature_extractor_layer = hub.KerasLayer(feature_extractor_url,
+                                        trainable= False,
+                                        input_shape=(224,224,3))
+                                         
+model = tf.keras.Sequential([
+  feature_extractor_layer,
+  layers.Dense(image_data.num_classes)
+])
+
+model.summary()
+# 剩下的和正常的模型训练过程一样
 </code></pre>
 
-<h2 id="toc_2">3.常用操作</h2>
+<p>其command line 工具 <a href="https://github.com/tensorflow/hub/tree/master/tensorflow_hub/tools/make_image_classifier">https://github.com/tensorflow/hub/tree/master/tensorflow_hub/tools/make_image_classifier</a></p>
 
-<p>(1) 还原文件到之前的某个版本。</p>
-
-<p>当发现新提交的版本有问题，想回退到之前的某个版本的之后，可以进行如下操作。<code>git long</code><br/>
-比如我想修改自己写的这个<code>utils.py</code> 代码</p>
-
-<pre><code class="language-text">git log utils.py
-## 可以看到一共提交了3次，假设喔想回退到9.25提交的那个版本
-git checkout 742bf4a53e473b2536b53cb3ad56072ae236a1c3 utils.py 
-git commit -m &quot;revert to previous version&quot;
+<pre><code class="language-python">make_image_classifier \
+  --image_dir my_image_dir \
+  --tfhub_module https://tfhub.dev/google/tf2-preview/mobilenet_v2/feature_vector/4 \
+  --image_size 224 \
+  --saved_model_dir my_dir/new_model \
+  --labels_output_file class_labels.txt \
+  --tflite_output_file new_mobile_model.tflite
 </code></pre>
-
-<p><img src="media/15637037678160/15699932802240.jpg" alt=""/></p>
-
-<p>我不知道”undo”是什么意思。您可以删除core.excludesfile设置，如下所示：<br/>
-git config --global --unset core.excludesfile<br/>
-当然你也可以简单地编辑配置文件：<br/>
-git config --global --edit<br/>
-…然后手动删除设置。</p>
-
-<p>git config --global --edit</p>
-
-<p>git log<br/>
-git reset --hard xxxxx</p>
-
-<p>查看本地与云端的diff</p>
-
-<p>git rm —cache  删除已经提交的内容</p>
 
                         
                       </div>
@@ -343,10 +382,10 @@ git reset --hard xxxxx</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2020/2/24</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          					    <span class="posted-in"><a href='tools.html'>tools</a></span>
           				   
                     
 
@@ -362,31 +401,27 @@ git reset --hard xxxxx</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15834202930395.html">
+                <a class="clearlink" href="15822015902121.html">
                 
-                  <h1>github 相关</h1>
+                  <h1>综述</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>github展示 ppt<br/>
-<a href="https://github.com/ksky521/nodeppt">https://github.com/ksky521/nodeppt</a></p>
+                        	<p>首先看下cv方面的综述，对整个技术发展过程有个大致了解</p>
 
-<p>在线的 <a href="https://slides.com/">https://slides.com/</a></p>
+<p><a href="https://github.com/weiaicunzai/awesome-image-classification">https://github.com/weiaicunzai/awesome-image-classification</a> (中文 <a href="https://mp.weixin.qq.com/s?__biz=MzIwOTc2MTUyMg==&amp;mid=2247487400&amp;idx=1&amp;sn=cb4dd3e95cd12c813bfcb7ae6e62d69c&amp;chksm=976faa35a01823230524bec5cb4ede73b880d42eaf2fe86b5878108df444d02ba1acd613df1b&amp;mpshare=1&amp;scene=1&amp;srcid=0221VLUJG5gsMr5QzU7VNtBZ&amp;sharer_sharetime=1582247950940&amp;sharer_shareid=39affd95034dc485004147e1f2365064%23rd">https://mp.weixin.qq.com/s?__biz=MzIwOTc2MTUyMg==&amp;mid=2247487400&amp;idx=1&amp;sn=cb4dd3e95cd12c813bfcb7ae6e62d69c&amp;chksm=976faa35a01823230524bec5cb4ede73b880d42eaf2fe86b5878108df444d02ba1acd613df1b&amp;mpshare=1&amp;scene=1&amp;srcid=0221VLUJG5gsMr5QzU7VNtBZ&amp;sharer_sharetime=1582247950940&amp;sharer_shareid=39affd95034dc485004147e1f2365064%23rd</a>)</p>
 
-<h2 id="toc_0">githubPages 博客</h2>
+<h2 id="toc_0">预处理</h2>
 
-<p>官网 <a href="https://pages.github.com/">https://pages.github.com/</a></p>
+<ul>
+<li>均值</li>
+<li>数据增强：缩放、旋转、随机RGB颜色、亮度变换等</li>
+</ul>
 
-<p><a href="https://github.com/timelessg/timelessg.github.io">https://github.com/timelessg/timelessg.github.io</a></p>
+<h2 id="toc_1">参考资料</h2>
 
-<p>教程 <a href="https://zhuanlan.zhihu.com/p/35668237">https://zhuanlan.zhihu.com/p/35668237</a></p>
-
-<p>参考博客 <a href="https://tsinghua-gongjing.github.io/posts/EpiNano.html">https://tsinghua-gongjing.github.io/posts/EpiNano.html</a></p>
-
-<p><a href="http://jekyllthemes.org/themes/documentation-theme-jekyll/">http://jekyllthemes.org/themes/documentation-theme-jekyll/</a></p>
-
-<p><a href="https://biopython-cn.readthedocs.io/zh_CN/latest/index.html">https://biopython-cn.readthedocs.io/zh_CN/latest/index.html</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/86090591">https://zhuanlan.zhihu.com/p/86090591</a></p>
 
                         
                       </div>
@@ -395,10 +430,10 @@ git reset --hard xxxxx</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/3/5</span>
+                    <span class="date">2020/2/20</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          					    <span class="posted-in"><a href='%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB.html'>图像分类</a></span>
           				   
                     
 
@@ -414,86 +449,14 @@ git reset --hard xxxxx</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037680349.html">
+                <a class="clearlink" href="15815953769796.html">
                 
-                  <h1>jupyterLab-安装其他内核支持</h1>
+                  <h1>贪心学院-nlp课程</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>jupyterlab是jupyter notebook的一个升级版，界面更炫酷，而且同时支持R语言。</p>
-
-<p>现在Rstudio已经成为R社区使用最广泛的集成编辑器，其在配合Rstudio公司开发的软件包使用上有天然的优势，如knitr、bookdown、blogdown、sparklyr、tidyverse等，让我们在数据导入、清洗、可视化、分析过程中少踩了不少坑。</p>
-
-<p>然而，有时候我们也会发现，利用Rmarkdown进行探索性数据分析时，尤其是初学者，总是不断花费时间在文档编译上，而压缩了真正数据探索的时间。很多时候，我很羡慕python用户，因为他们拥有Ipython、jupyter notebook等工具，让我们一边分析数据，一边插入markdown文本，并且还能实时看到结果，这些特性R用户也可以实现吗？当然，这就是我今天推荐的jupyterlab 编辑器。</p>
-
-<p>安装jupyterLab</p>
-
-<p>首先我们要明白，jupyterLab是一个python包，所以要使用jupyterLab首先要配置python环境。对于普通用户，包括linux、win和Mac用户，建议直接下载anaconda发行版进行安装，这样免去了既要安装python又要安装其他包的麻烦，是最简洁的方法。</p>
-
-<p>对于平时很少使用python的人来说，可能无法忍受anaconda全家桶式的安装模式，想更轻便的安装使用，那也很容易。</p>
-
-<p>1.安装</p>
-
-<p>Mac 和 Linux用户系统自带了python，可以直接使用pip install jupyterlab安装jupyterLab包。</p>
-
-<p>win用户先在python官网下载安装python，然后使用pip install jupyterlab安装jupyterLab包。</p>
-
-<p>2.运行</p>
-
-<p>在终端输入jupyter lab即可以在默认浏览器中打开编辑器界面，若不能，请检查下python路径配置是否正确。</p>
-
-<p>“咦，怎么只能选择python，R去哪了”，各位看官莫急，这是因为R端缺少必要的包，还不能和jupyter进行通信，等把这些包安装好进行配置后就可以了。</p>
-
-<p>3.配置R</p>
-
-<p>要把先前打开的jupyterLab程序全部关闭后再进行以下操作</p>
-
-<pre><code class="language-text">#安装必要的依赖包
-install.packages(c(&#39;repr&#39;, &#39;IRdisplay&#39;,&#39;evaluate&#39;, &#39;crayon&#39;,&#39;pbdZMQ&#39;,&#39;devtools&#39;,&#39;uuid&#39;, &#39;digest&#39;))
-</code></pre>
-
-<pre><code class="language-text">#IRkernel包没有放在CRAN上，需要通过GitHub安装
-devtools::install_github(&#39;IRkernel/IRkernel&#39;)
-IRkernel::installspec() #确保jupyterLab能找到R解释器安装位置
-</code></pre>
-
-<p>4.再次在终端运行<code>jupyter lab</code>，选择R图标打开，你就可以在jupyterLab进行数据分析啦</p>
-
-<p>jupyterLab的主要特性绘图函数自动插入图片ggplot2绘图完美支持</p>
-
-<h2 id="toc_0">安装spark</h2>
-
-<p>以下主要是安装scala版本的notebook spark<br/>
-(1)安装sbt（simple build tools）<br/>
-下载sbt</p>
-
-<p>wget <a href="https://dl.bintray.com/sbt/native-packages/sbt/0.13.11/sbt-0.13.11.tgz">https://dl.bintray.com/sbt/native-packages/sbt/0.13.11/sbt-0.13.11.tgz</a></p>
-
-<p>下载完成后，配置相关PATH路径，命令<code>sbt sbt-version</code>验证。执行这个命令后，，就耐心等待吧，很久很久。。。。。。。因为要下载很多jar包。</p>
-
-<h3 id="toc_1">新方案</h3>
-
-<p><a href="https://toree.incubator.apache.org/docs/current/user/quick-start/">https://toree.incubator.apache.org/docs/current/user/quick-start/</a></p>
-
-<h2 id="toc_2">安装scala内核</h2>
-
-<p>安装说明<br/>
-<a href="https://almond.sh/docs/quick-start-install">https://almond.sh/docs/quick-start-install</a></p>
-
-<pre><code class="language-text">SCALA_VERSION=2.12.8 ALMOND_VERSION=0.9.1   #版本需要根据自己情况设置
-#
-curl -Lo coursier https://git.io/coursier-cli
-chmod +x coursier
-./coursier bootstrap \
-    -r jitpack \
-    -i user -I user:sh.almond:scala-kernel-api_$SCALA_VERSION:$ALMOND_VERSION \
-    sh.almond:scala-kernel_$SCALA_VERSION:$ALMOND_VERSION \
-    -o almond
-#
-./almond --install
-</code></pre>
-
+                        	
                         
                       </div>
                   </div>
@@ -501,10 +464,10 @@ chmod +x coursier
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2020/2/13</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          					    <span class="posted-in"><a href='6%20NLP.html'>6 NLP</a></span>
           				   
                     
 
@@ -593,6 +556,8 @@ chmod +x coursier
         
             <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
+            <a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html"><strong>11 平台架构</strong></a>
+        
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E5%85%B6%E4%BB%96.html"><strong>其他</strong></a>
@@ -612,31 +577,31 @@ chmod +x coursier
 	      
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">0.综述</a>
+			        <a href="15917706614562.html">optical flow 光流</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637036455584.html">1 估计的置信度</a>
+			        <a href="15917693533998.html">process</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037681646.html">1 基础工具包安装pip</a>
+			        <a href="15917597006543.html">业务</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637025346412.html">1. conda 环境管理</a>
+			        <a href="15917572981552.html">综述_关键点检测</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037713554.html">1. 数据可视化概述</a>
+			        <a href="15916704949564.html">【工具】MMlab——mmaction</a>
 			      </li>
 		     
 		  

@@ -103,6 +103,8 @@
         
             <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
+            <li><a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html">11 平台架构</a></li>
+        
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E5%85%B6%E4%BB%96.html">其他</a></li>
@@ -128,393 +130,53 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637037679256.html">
+                <a class="clearlink" href="15834004454503.html">
                 
-                  <h1>Rmarkdown</h1>
+                  <h1>【数据增强】</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">python支持</h2>
+                        	<h3 id="toc_0">1.有监督的</h3>
 
-<p>Rmarkdown对python兼容 <a href="https://github.com/rstudio/reticulate">https://github.com/rstudio/reticulate</a></p>
-
-<h2 id="toc_1">图片</h2>
-
-<p>现在很多makdown编辑器是可以支持拖拽本地图片或者截屏就可以直接在markdown中生成图片的，非常方便，比如我现在在用的MWeb编辑器。</p>
-
-<p>但是如果同一篇内容需要在不同的平台上进行发布，那图片处理起来就比较麻烦。因为需要重新上传到不同平台。<br/>
-最方便的处理方式就是利用图床， 这里以七牛云存储为例。<br/>
-<img src="media/15378048283915/15383141468224.jpg" alt=""/></p>
-
-<p>step1： 首先在七牛官网上申请注册账号，并且添加<strong>对象存储</strong></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037708871.html">
-                
-                  <h1>TF1.0-slim  图像识别模型—— 1.利用已有的进行微调</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><strong>模型库tensorflow-slim</strong></p>
-
-<p>slim 模型库是tensorflow1.0 中专门做图像分类的model库，官网说明:<br/>
-<a href="https://github.com/tensorflow/models/tree/master/research/slim">https://github.com/tensorflow/models/tree/master/research/slim</a></p>
-
-<p>该库中有些用法只适合tf1.0版本，tf2.0中已经没有了，所以安装的时候tf2.0在使用中会报错<br/>
-<code>conda install tensorflow=1.14</code></p>
-
-<p>微调(fine-tune)的基本原理</p>
-
-<h2 id="toc_0">1.准备数据</h2>
-
-<pre><code class="language-text">python download_and_convert_data.py \
-    --dataset_name=mnist \
-    --dataset_dir=/tmp/mnist
-</code></pre>
-
-<pre><code class="language-text"> python data_convert.py -t pic --train-shards 2 --validation-shards 2 --num-threads 2 --dataset-name guangdong
-</code></pre>
-
-<p>执行完后会在pic下生成tf格式的训练+测试数据，以及label.txt<br/>
-<img src="media/15388051366041/15388065002449.jpg" alt=""/></p>
-
-<h2 id="toc_1">2.使用tensorflow的slim微调模型</h2>
-
-<p>简单介绍下google的这个图像分类工具包tensorflow-slim</p>
-
-<pre><code class="language-text">├── README.md
-├── datasets                    # 定义训练时候使用的数据。如果是自己的数据，必须在此文件夹下定义
-├── deployment
-├── download_and_convert_data.py
-├── export_inference_graph.py
-├── export_inference_graph_test.py
-├── nets                        # 定义了一些常用的网络，比如vgg16，vgg19，resnet等
-├── preprocessing               # 在读入图像前，对图像做的一些预处理
-├── scripts
-│   ├── finetune_inception_v1_on_flowers.sh
-│   ├── finetune_inception_v3_on_flowers.sh
-│   ├── finetune_resnet_v1_50_on_flowers.sh
-│   ├── train_cifarnet_on_cifar10.sh
-│   └── train_lenet_on_mnist.sh
-├── setup.py
-├── slim_walkthrough.ipynb
-├── eval_image_classifier.py      # 验证模型入口
-└── train_image_classifier.py     # 训练模型入口
-</code></pre>
-
-<p>(1) 定义新的dataset文件</p>
-
-<p>仿照<code>datasets/flowers.py</code> 写一个自己的数据文件<code>guangdong.py</code> 并且在<code>dataset_factory.py</code>中进行注册</p>
-
-<p>(2)准备训练文件夹</p>
-
-<p>(3)train model</p>
-
-<pre><code class="language-text">python train_image_classifier.py \
-  --train_dir=guangdong/train_dir \
-  --dataset_name=guangdong \
-  --dataset_split_name=train \
-  --dataset_dir=guangdong/data \
-  --model_name=inception_v3 \
-  --checkpoint_path=guangdong/pretrained/inception_v3.ckpt \
-  --checkpoint_exclude_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
-  --trainable_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
-  --max_number_of_steps=100000 \
-  --batch_size=32 \
-  --learning_rate=0.001 \
-  --learning_rate_decay_type=fixed \
-  --save_interval_secs=300 \
-  --save_summaries_secs=2 \
-  --log_every_n_steps=10 \
-  --optimizer=rmsprop \
-  --weight_decay=0.00004
-
-</code></pre>
-
-<p>如果执行后报错<code>Cannot assign a device for operation &#39;InceptionV3/AuxLogits/Conv2d_2b_1x1/weights/RMSProp1&#39;: Could not satisfy explicit device specification &#39;/device:GPU:0&#39; because no supported kernel for GPU devices is available</code> 之类的话</p>
-
-<p>可以参看这个的解决办法<a href="https://blog.csdn.net/xd_wjc/article/details/80550862">https://blog.csdn.net/xd_wjc/article/details/80550862</a></p>
-
-<p>tensorboard 查看任务运行情况</p>
-
-<pre><code class="language-text">tensorboard --logdir guangdong/train_dir
-</code></pre>
-
-<p>训练完毕之后进行模型评估</p>
-
-<pre><code class="language-text">python eval_image_classifier.py \
-  --checkpoint_path=guangdong/train_dir \
-  --eval_dir=guangdong/eval_dir \
-  --dataset_name=guangdong \
-  --dataset_split_name=validation \
-  --dataset_dir=guangdong/data \
-  --model_name=inception_v3
-</code></pre>
-
-<h3 id="toc_2">案例</h3>
-
-<p><a href="https://github.com/ns2250225/python3_tf_slim_image_classify">https://github.com/ns2250225/python3_tf_slim_image_classify</a></p>
-
-<p><a href="https://blog.csdn.net/qq_42556555/article/details/90237131">https://blog.csdn.net/qq_42556555/article/details/90237131</a></p>
-
-<p><a href="https://www.jianshu.com/p/1cbf9aae15b6">https://www.jianshu.com/p/1cbf9aae15b6</a></p>
-
-<h2 id="toc_3">阿里云服务</h2>
-
-<p><a href="https://help.aliyun.com/document_detail/49571.html#OSS">https://help.aliyun.com/document_detail/49571.html#OSS</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB.html'>图像分类</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15825969970925.html">
-                
-                  <h1>TF2.0</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><a href="https://tensorflow.google.cn/tutorials/images/classification">https://tensorflow.google.cn/tutorials/images/classification</a></p>
-
-<pre><code class="language-text">一个简单的方法是创建一个新的 Model 来输出你所感兴趣的层：
-
-from keras.models import Model
-
-model = ...  # 创建原始模型
-
-layer_name = &#39;my_layer&#39;
-intermediate_layer_model = Model(inputs=model.input,
-                                 outputs=model.get_layer(layer_name).output)
-intermediate_output = intermediate_layer_model.predict(data)
-或者，你也可以构建一个 Keras 函数，该函数将在给定输入的情况下返回某个层的输出，例如：
-
-from keras import backend as K
-
-get_3rd_layer_output = K.function([model.layers[0].input],
-                                  [model.layers[3].output])
-layer_output = get_3rd_layer_output([x])[0]
-
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/2/25</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='7%20CV.html'>7 CV</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637065259056.html">
-                
-                  <h1>about me</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>about me  </p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15665281146000.html">
-                
-                  <h1>docker</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>docker是一个容器，可以让开发者打包他们的应用以及依赖的环境到一个容器中，然后可以移植到别的机器上。容器是使用的沙箱机制，相互之间不会有任何接口。</p>
-
-<p>docker 官网： <a href="http://www.docker.com">http://www.docker.com</a><br/>
-容器:  对象<br/>
-镜像images: 类，是用于创建docker容器的模版<br/>
-docker仓库<a href="https://hub.docker.com%EF%BC%8C">https://hub.docker.com，</a> 是用来提供各种镜像的仓库。</p>
-
-<p><strong>基本使用</strong></p>
-
-<pre><code class="language-text"># 运行方式 1： 类似于运行pyhton脚本 python xxx.py  参数
-docker run ubuntu:18.10 /bin/echo &quot;Hello world&quot;
-</code></pre>
+<p><strong>1.1 单样本的数据增强</strong><br/>
+单样本的数据增强主要是围绕一个样本图片，进行的”几何变换“、”颜色变换“等</p>
 
 <ul>
-<li>ubuntu:18.10是指定要运行的镜像，docker会先从本机上检查是否存在，如果不存在会从docker hub下载公共镜像。</li>
-<li> /bin/echo &quot;Hello world&quot;， 在启动容器里执行命令</li>
+<li>几何变换类： 旋转、翻转、剪裁、变形、缩放</li>
+<li>颜色变换类： 噪声、模糊、颜色变换、填充</li>
 </ul>
 
-<pre><code class="language-text"># 运行方式2： 交互式运行
-docker run -i -t ubuntu:18.10 /bin/bash
-</code></pre>
+<p>实用tool <code>https://github.com/aleju/imgaug</code></p>
+
+<p><strong>1.2 多样本数据增强</strong><br/>
+利用多个样本产生出新的样本</p>
 
 <ul>
-<li>-t 在新容器中指定一个终端</li>
-<li>-i 允许你对容器内的标准输入 (STDIN) 进行交互。</li>
+<li>SMOTE，人工合成新样本，解决类不平衡问题。映射到特征空间，在小样本的k近邻中构造新的样本点</li>
+<li>SamplePairing：主要用在医学图像上，从训练集中随机抽取两张图片，经过基础数据增强后将像素平均合并成一个新的样本。标签记为原样本标签中的一种。</li>
+<li>mixup: 使用线性插值，对于随机选取的两个数据，new = wXi + (1-w)Xj</li>
 </ul>
 
-<p>后台以进程方式运行docker</p>
+<h3 id="toc_1">2.无监督的</h3>
 
-<pre><code class="language-text">docker run -d ubuntu:18.10 /bin/sh -c &quot;while true; do echo hello world; sleep 1; done&quot;
-</code></pre>
-
-<p>这个时候发现会出现一串字符，这个就是dicker的id。</p>
+<p><strong>2.1 学习数据的分布，随机生成新图片</strong></p>
 
 <ul>
-<li>-d 让容器在后台运行</li>
+<li>GAN</li>
 </ul>
 
-<pre><code class="language-text">docker ps   # 查看当前有哪些容器在运行
-exit    #退出容器或者`ctrl +D`
-docker logs 容器id    #查看容器内的标准输出
-docker stop  容器id    # 停止正在运行的docker
-</code></pre>
+<p><strong>2.2 通过模型学习适合当前任务的数据增强方法</strong></p>
 
-<p><strong>docker 镜像</strong></p>
+<ul>
+<li>AutoAugment<br/>
+google 提出的自动选择最优数据增强方案的研究。其基本思路是:使用增强学习从数据本身寻找最佳的图像变换策略。具体来说就是用基础数据增强策略的组合。</li>
+<li>RandAugment: AutoAugment的进化版</li>
+</ul>
 
-<pre><code class="language-text">docker pull   REPOSITORY:TAG    # 下载镜像
-docker search httpd                      # 查找镜像
+<h2 id="toc_2">参考</h2>
 
-# 更新镜像，当自己在镜像内做了一些更新后，可以提交
-# commit -m &#39;更新信息&#39; -a 作者 容器id 新版本的镜像名
-docker commit -m=&quot;zzz update&quot; -a=&quot;zzz&quot; 容器的id zzz/ubuntu:v2
-</code></pre>
-
-<p>从零创建一个镜像<br/>
-从零创建镜像的命令是 <code>docker build</code>, 其依赖于一个配置文件Dockerfile，这个文件包含了一组命令来告诉docker如何创建镜像。</p>
-
-<p><code>docker build -t 镜像名 配置文件地址</code></p>
-
-<p>配置文件的一个例子：</p>
-
-<pre><code class="language-text"># 每一个指令的前缀必须是大写
-# FROM 表示使用哪个镜像源
-# RUN 表示告诉docker在镜像内执行命令
-FROM ubuntu:16.04
-RUN apt-get update
-RUN apt-get install -y unzip cmake g++ make ffmpeg libx264-dev wget
-WORKDIR /opt/
-</code></pre>
-
-<p><strong>删除</strong></p>
-
-<pre><code class="language-text">docker rm 容器
-docker rmi 镜像名
-</code></pre>
-
-<p>清理空间</p>
-
-<p>docker system df</p>
-
-<p>docker system prune -a</p>
-
-<p><strong>mac安装</strong><br/>
-直接从官网下载安装即可 <a href="https://download.docker.com/mac/stable/Docker.dmg%E3%80%82">https://download.docker.com/mac/stable/Docker.dmg。</a><br/>
-由于国内网速问题，安装完docker后，后续拉取镜像可能会十分缓慢，可以配置加速器来解决，如下图所示。</p>
-
-<p>阿里云的加速器：<a href="https://help.aliyun.com/document_detail/60750.html">https://help.aliyun.com/document_detail/60750.html</a><br/>
-网易加速器：<a href="http://hub-mirror.c.163.com">http://hub-mirror.c.163.com</a><br/>
-官方中国加速器：<a href="https://registry.docker-cn.com">https://registry.docker-cn.com</a><br/>
-ustc的镜像：<a href="https://docker.mirrors.ustc.edu.cn">https://docker.mirrors.ustc.edu.cn</a><br/>
-daocloud：<a href="https://www.daocloud.io/mirror#accelerator-doc%EF%BC%88%E6%B3%A8%E5%86%8C%E5%90%8E%E4%BD%BF%E7%94%A8%EF%BC%89">https://www.daocloud.io/mirror#accelerator-doc（注册后使用）</a></p>
-
-<p><img src="media/15665281146000/15665304699914.jpg" alt=""/></p>
-
-<h2 id="toc_0">参考资料</h2>
-
-<p><a href="https://www.runoob.com/docker/macos-docker-install.html">https://www.runoob.com/docker/macos-docker-install.html</a><br/>
-docker 常用参数 <a href="https://blog.csdn.net/Hello_World_QWP/article/details/84554031">https://blog.csdn.net/Hello_World_QWP/article/details/84554031</a></p>
-
-<h2 id="toc_1">安装记录</h2>
-
-<p>sudo docker build . -t registry.aibee.cn/zzzheng/logstat:0.1</p>
-
-<p>docker commit 修改镜像 <a href="https://blog.csdn.net/jiankunking/article/details/62056392">https://blog.csdn.net/jiankunking/article/details/62056392</a></p>
+<p><a href="https://www.zhihu.com/question/319291048">https://www.zhihu.com/question/319291048</a></p>
 
                         
                       </div>
@@ -523,10 +185,359 @@ docker 常用参数 <a href="https://blog.csdn.net/Hello_World_QWP/article/detai
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/8/23</span>
+                    <span class="date">2020/3/5</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15833060322285.html">
+                
+                  <h1>【目标检测】</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><img src="media/15833060322285/15833061979386.jpg" alt=""/></p>
+
+<p><img src="media/15833060322285/15833089551223.jpg" alt=""/></p>
+
+<p><strong>two stage</strong></p>
+
+<h2 id="toc_0">1.R-CNN</h2>
+
+<p>Region-CNN,基本思路如下:</p>
+
+<ul>
+<li>候选提取框： <code>selective search</code> 启发式搜寻可能存在物体的区域</li>
+<li>对每个提取框提取特征</li>
+<li>图像分类， 用SVM</li>
+<li>非极大值抑制</li>
+</ul>
+
+<p><strong>one-stage</strong></p>
+
+<ul>
+<li>yolo</li>
+<li> SSD</li>
+</ul>
+
+<h2 id="toc_1">参考</h2>
+
+<p><a href="https://zhuanlan.zhihu.com/p/40047760">https://zhuanlan.zhihu.com/p/40047760</a></p>
+
+<p>yolo <a href="https://www.cnblogs.com/fydeblog/p/10447875.html">https://www.cnblogs.com/fydeblog/p/10447875.html</a></p>
+
+<p>机器之心  <a href="https://www.jiqizhixin.com/articles/092301">https://www.jiqizhixin.com/articles/092301</a></p>
+
+<p>github综述 <a href="https://github.com/hoya012/deep_learning_object_detection">https://github.com/hoya012/deep_learning_object_detection</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/3/4</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B.html'>目标检测</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15828802415716.html">
+                
+                  <h1>深度学习-开源图片数据库</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">1. 图像</h2>
+
+<table>
+<thead>
+<tr>
+<th>图像库</th>
+<th>图片说明</th>
+<th>链接</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ImageNet</td>
+<td>按照WordNet结构整理，平均每个类别下有500张图片</td>
+<td><a href="http://www.image-net.org/">http://www.image-net.org/</a></td>
+</tr>
+<tr>
+<td>CIFAR-10</td>
+<td>6w张32x32的图片，分为10类(飞机，鸟，猫，船..)</td>
+<td><a href="http://www.cs.toronto.edu/%7Ekriz/cifar.html">http://www.cs.toronto.edu/~kriz/cifar.html</a></td>
+</tr>
+<tr>
+<td>CIFAR-100</td>
+<td>20大类，100小类</td>
+<td></td>
+</tr>
+<tr>
+<td>MNIST</td>
+<td>7w,28x28手写识别0-9</td>
+<td><a href="http://yann.lecun.com/exdb/mnist/">http://yann.lecun.com/exdb/mnist/</a></td>
+</tr>
+<tr>
+<td>LFW</td>
+<td>1.3w 人脸数据, 无分类</td>
+<td><a href="http://vis-www.cs.umass.edu/lfw/">http://vis-www.cs.umass.edu/lfw/</a></td>
+</tr>
+<tr>
+<td>Caltech 101</td>
+<td>101类objects, 300x200</td>
+<td><a href="http://www.vision.caltech.edu/Image_Datasets/Caltech101/">http://www.vision.caltech.edu/Image_Datasets/Caltech101/</a></td>
+</tr>
+<tr>
+<td>Caltech 256</td>
+<td>256类objects, 300x200</td>
+<td><a href="http://www.vision.caltech.edu/Image_Datasets/Caltech256/">http://www.vision.caltech.edu/Image_Datasets/Caltech256/</a></td>
+</tr>
+</tbody>
+</table>
+
+<p>服装类</p>
+
+<table>
+<thead>
+<tr>
+<th>图像库</th>
+<th>图片说明</th>
+<th>链接</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Fashion--MNIST</td>
+<td>服装类，类似手写识别风格，衣服鞋包</td>
+<td><a href="https://github.com/zalandoresearch/fashion-mnist">https://github.com/zalandoresearch/fashion-mnist</a></td>
+</tr>
+<tr>
+<td>DeepFashion</td>
+<td></td>
+<td><a href="http://mmlab.ie.cuhk.edu.hk/projects/DeepFashion.html">http://mmlab.ie.cuhk.edu.hk/projects/DeepFashion.html</a></td>
+</tr>
+</tbody>
+</table>
+
+<p>其他</p>
+
+<table>
+<thead>
+<tr>
+<th>图像库</th>
+<th>图片说明</th>
+<th>链接</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Quick Draw</td>
+<td>google的涂鸦数据集, 345类, 5kw张</td>
+<td><a href="https://quickdraw.withgoogle.com%EF%BC%8C">https://quickdraw.withgoogle.com，</a> <a href="https://github.com/googlecreativelab/quickdraw-dataset/data">https://github.com/googlecreativelab/quickdraw-dataset/data</a></td>
+</tr>
+<tr>
+<td>kaggle casts vs. dogs</td>
+<td>2.5w</td>
+<td><a href="https://www.kaggle.com/c/dogs-vs-cats/data">https://www.kaggle.com/c/dogs-vs-cats/data</a></td>
+</tr>
+<tr>
+<td>COCO common objects Dataset</td>
+<td>微软, 物体检测,分割</td>
+<td><a href="http://cocodataset.org/#home">http://cocodataset.org/#home</a></td>
+</tr>
+<tr>
+<td>Stanford 40 Actions</td>
+<td>斯坦福，人的40种动作(刷牙，扫地，爬山，做饭..)</td>
+<td><a href="http://vision.stanford.edu/Datasets/40actions.html">http://vision.stanford.edu/Datasets/40actions.html</a></td>
+</tr>
+</tbody>
+</table>
+
+<p>人脸数据集</p>
+
+<ul>
+<li>自然脸部检测（LFW）数据集：包含13000幅经裁剪的脸部区域图像（采用Viola-Jones检测框架），标记了图中人的姓名。数据集中的一部分人有两幅图像，人们常用它训练脸部匹配系统。</li>
+<li>UMD Faces：已标注的人脸图像数据集，包括来自8501个人的367920幅脸部图像。</li>
+<li>CASIA WebFace：包含453453幅人脸图像的数据集，经人脸检测后共识别出超过10575个身份。需要进行一些筛选来提高质量。</li>
+<li>MS-Celeb-1M：100万幅世界名人图像。需要进行一些筛选才能在深度神经网络上取得最佳结果。</li>
+<li>Olivetti：一些人的不同脸部图像。</li>
+<li>Multi-Pie：CMU的Multi-PIE人脸数据库</li>
+<li>Face-in-Action</li>
+<li>JACFEE：日本人和高加索人不同情绪的脸部表情</li>
+<li>FERET：脸部识别技术数据库</li>
+<li>mmifacedb：MMI脸部表情数据库</li>
+<li>IndianFaceDatabase  耶鲁人脸数据库和耶鲁人脸数据库B)。</li>
+</ul>
+
+<h2 id="toc_1">2.文本数据集</h2>
+
+<ul>
+<li>20个新闻组数据集：分类任务，将出现的词映射至新闻组ID。文本分类的经典数据集之一，通常可以用于纯分类算法的基准测试，或者用于验证任意一种IR/索引算法。</li>
+<li>路透社新闻数据集：（较老）纯分类用途的新闻电讯文本数据集。常用于教程。</li>
+<li>Penn Treebank：用于下一词预测或下一字预测。</li>
+<li>UCI垃圾邮件数据库Spambase：（较老）来自著名的UCI机器学习库的经典垃圾邮件数据集。该数据集经过细致的审编，因此可以作为个性化垃圾邮件筛选学习的基线。</li>
+<li>广播新闻数据集：用于下一词预测的经典大型文本数据集。</li>
+<li>文本分类数据集： 来自Zhang等人，2015；八个内容丰富的文本分类数据集，可用于新文本分类基线的基准测试。样例大小为120K至3.6M，问题所涉及的类别从两个到14个不等。数据集内容来自DBPedia、亚马逊、Yelp、雅虎和AG。</li>
+<li>WikiText：取自高质量维基百科文章的大型语言模型语料库，由Salesforce MetaMind进行审编。</li>
+<li>SQuAD：斯坦福问答数据集——用途广泛的问题回答及阅读理解数据集，每项问题的答案都是一段文本。</li>
+<li>十亿词数据集：大型通用语言模型数据集，常用于训练Word2Vec等词的分布式表示。</li>
+<li>Common Crawl： 万兆字节级的网页爬取数据集——最常用于学习词向量。可通过亚马逊S3免费获取。数据集的内容从万维网爬取获得，因此也可以用作互联网的数据集。</li>
+<li>谷歌图书Ngram数据集：取自谷歌图书的连续词数据，是探索一个词何时开始被广泛使用的简易方法。</li>
+<li>Yelp公开数据集：Yelp商户、评论及用户数据的子集，用于自然语言处理（NLP）。</li>
+</ul>
+
+<h2 id="toc_2">参考资料</h2>
+
+<p><a href="https://blog.csdn.net/chaipp0607/article/details/71403797">https://blog.csdn.net/chaipp0607/article/details/71403797</a></p>
+
+<p><a href="https://deeplearning4j.org/cn/opendata">https://deeplearning4j.org/cn/opendata</a></p>
+
+<p><a href="https://zhuanlan.zhihu.com/p/35399323">https://zhuanlan.zhihu.com/p/35399323</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/2/28</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15828738932501.html">
+                
+                  <h1>opencv</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">2.标注工具 <a href="https://github.com/tzutalin/labelImg">https://github.com/tzutalin/labelImg</a></h2>
+
+<p><a href="https://www.kancloud.cn/aollo/aolloopencv/269602">https://www.kancloud.cn/aollo/aolloopencv/269602</a></p>
+
+<p>open-cv的基本参数<br/>
+以下是opencv-python可以获取视频的相关信息，可以通过从0开始的序号获取<br/>
+CV_CAP_PROP_POS_MSEC 视频文件的当前位置（以毫秒为单位）或视频捕获时间戳。<br/>
+CV_CAP_PROP_POS_FRAMES 接下来要解码/捕获的帧的基于0的索引。<br/>
+CV_CAP_PROP_POS_AVI_RATIO 视频文件的相对位置：0 - 电影的开始，1 - 电影的结尾。<br/>
+CV_CAP_PROP_FRAME_WIDTH 视频流中帧的宽度。<br/>
+CV_CAP_PROP_FRAME_HEIGHT 视频流中帧的高度。<br/>
+CV_CAP_PROP_FPS 帧速率。<br/>
+CV_CAP_PROP_FOURCC 编解码器的4字符代码。<br/>
+CV_CAP_PROP_FRAME_COUNT 视频文件中的帧数。<br/>
+CV_CAP_PROP_FORMAT 返回的Mat对象的格式 retrieve() 。<br/>
+CV_CAP_PROP_MODE 指示当前捕获模式的特定于后端的值。<br/>
+CV_CAP_PROP_BRIGHTNESS 图像的亮度（仅适用于相机）。<br/>
+CV_CAP_PROP_CONTRAST 图像对比度（仅适用于相机）。<br/>
+CV_CAP_PROP_SATURATION 图像的饱和度（仅适用于相机）。<br/>
+CV_CAP_PROP_HUE 图像的色调（仅适用于相机）。<br/>
+CV_CAP_PROP_GAIN 图像的增益（仅适用于相机）。<br/>
+CV_CAP_PROP_EXPOSURE 曝光（仅适用于相机）。<br/>
+CV_CAP_PROP_CONVERT_RGB 布尔标志，指示是否应将图像转换为RGB。<br/>
+CV_CAP_PROP_WHITE_BALANCE_U 白平衡设置的U值（注意：目前仅支持DC1394 v 2.x后端）<br/>
+CV_CAP_PROP_WHITE_BALANCE_V 白平衡设置的V值（注意：目前仅支持DC1394 v 2.x后端）<br/>
+CV_CAP_PROP_RECTIFICATION 立体摄像机的整流标志（注意：目前仅支持DC1394 v 2.x后端）<br/>
+CV_CAP_PROP_ISO_SPEED摄像机 的ISO速度（注意：目前仅支持DC1394 v 2.x后端）<br/>
+CV_CAP_PROP_BUFFERSIZE 存储在内部缓冲存储器中的帧数（注意：目前仅支持DC1394 v 2.x后端）</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/2/28</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='tools.html'>tools</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15828729258604.html">
+                
+                  <h1>视觉-人行为</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><a href="http://vision.stanford.edu/Datasets/40actions.html">http://vision.stanford.edu/Datasets/40actions.html</a><br/>
+B. Yao, X. Jiang, A. Khosla, A.L. Lin, L.J. Guibas, and L. Fei-Fei. Human Action Recognition by Learning Bases of Action Attributes and Parts. Internation Conference on Computer Vision (ICCV), Barcelona, Spain. November 6-13, 2011.</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/2/28</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='2%20Get%20Data.html'>2 Get Data</a></span>
           				   
                     
 
@@ -615,6 +626,8 @@ docker 常用参数 <a href="https://blog.csdn.net/Hello_World_QWP/article/detai
         
             <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
+            <a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html"><strong>11 平台架构</strong></a>
+        
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E5%85%B6%E4%BB%96.html"><strong>其他</strong></a>
@@ -634,31 +647,31 @@ docker 常用参数 <a href="https://blog.csdn.net/Hello_World_QWP/article/detai
 	      
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">0.综述</a>
+			        <a href="15917706614562.html">optical flow 光流</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637036455584.html">1 估计的置信度</a>
+			        <a href="15917693533998.html">process</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037681646.html">1 基础工具包安装pip</a>
+			        <a href="15917597006543.html">业务</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637025346412.html">1. conda 环境管理</a>
+			        <a href="15917572981552.html">综述_关键点检测</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037713554.html">1. 数据可视化概述</a>
+			        <a href="15916704949564.html">【工具】MMlab——mmaction</a>
 			      </li>
 		     
 		  

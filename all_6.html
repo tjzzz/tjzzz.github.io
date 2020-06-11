@@ -103,6 +103,8 @@
         
             <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
+            <li><a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html">11 平台架构</a></li>
+        
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E5%85%B6%E4%BB%96.html">其他</a></li>
@@ -128,361 +130,39 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637037680228.html">
+                <a class="clearlink" href="15838089244516.html">
                 
-                  <h1>FM 模型</h1>
+                  <h1>【案例】</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>背景</p>
-</blockquote>
+                        	<p>(1) 样本少容易过拟合</p>
 
-<p>一般的线性模型 \(y=w_0 + \sum w_i x_i\)， 当考虑了特征之间的相关性即交互效应(这里以二阶为例)后模型形式是：<br/>
-\[y=w_0 + \sum w_i x_i + \sum_1^{n-1}\sum_{i+1}^n w_{ij}x_ix_j\]</p>
-
-<p>这里n表示特征的个数</p>
-
-<blockquote>
-<p>模型如何求解呢？</p>
-</blockquote>
-
-<p>如果把\(x_ix_j\)看做一个新的变量，相当于整体上还是一个线性回归模型，似乎可以用正常的线性回归的办法进行求解。<br/>
-但是这里未知的要求解的参数有n(+1)/2个，很多时候特征中会有一些分类型的变量，当通过哑变量的方式引入模型中的时候，特征数目k会非常大，从而导致要求解的参数个数较大，并且数据特别稀疏。另一方面，分类特征就到时候，\(x_ix_j\)是非零的比例较小，从而导致\(w\)无法计算出来。</p>
-
-<blockquote>
-<p>引入其他辅助信息</p>
-</blockquote>
-
-<p>我们可以引入一个辅助向量 对于\(w_{ij}\)形成的对称矩阵W，可以进行分解\(W=V^TV\)</p>
-
-<p>将模型改成如下形式<br/>
-\[y=w_0 + \sum w_i x_i + \sum_1^{n-1}\sum_{i+1}^n &lt;v_i, v_j&gt;x_ix_j\]</p>
-
-<ul>
-<li>从形式上来看，我们知道\(w_ij\)的矩阵是对称的，其形式上和协差阵\(&lt;v_i, v_j&gt;\)很类似</li>
-</ul>
-
-<p>\(v_i\)相当于是第i维隐向量，假设其维度是k&lt;&lt;n, 这样模型的参数就由原来的n(n+1)/2 变为了</p>
-
-<h2 id="toc_0">参考资料</h2>
-
-<p>简书-石晓文 <a href="https://www.jianshu.com/p/152ae633fb00">https://www.jianshu.com/p/152ae633fb00</a><br/>
-美团技术博客 <a href="https://tech.meituan.com/deep_understanding_of_ffm_principles_and_practices.html">https://tech.meituan.com/deep_understanding_of_ffm_principles_and_practices.html</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037688620.html">
-                
-                  <h1>Face综述</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><a href="https://blog.csdn.net/chenriwei2/article/details/50631212">https://blog.csdn.net/chenriwei2/article/details/50631212</a></p>
-
-<p>这个有数据，已经训练好的模型<br/>
-<a href="https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/">https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/</a></p>
-
-<p>综述@@@@ 需要精读！！！<br/>
-<a href="https://blog.csdn.net/Mr_EvanChen/article/details/75501730">https://blog.csdn.net/Mr_EvanChen/article/details/75501730</a><br/>
-<a href="https://zhuanlan.zhihu.com/p/24816781">https://zhuanlan.zhihu.com/p/24816781</a></p>
-
-<p>知乎 狗头山人七 专栏<br/>
-<a href="https://zhuanlan.zhihu.com/p/25025596">https://zhuanlan.zhihu.com/p/25025596</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='face.html'>face</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15777601839480.html">
-                
-                  <h1>HMM</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><a href="https://www.cnblogs.com/pinard/p/6945257.html">https://www.cnblogs.com/pinard/p/6945257.html</a></p>
-
-<p>python实现 <a href="https://github.com/hmmlearn/hmmlearn">https://github.com/hmmlearn/hmmlearn</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/12/31</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037683461.html">
-                
-                  <h1>Jupyter notebook</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>类似于r的markdown</p>
-
-<p>GitHub 上也直接支持 Jupyter notebook 的渲染。借助此出色的功能，你可以轻松地共享工作。<a href="http://nbviewer.jupyter.org/">http://nbviewer.jupyter.org/</a> 也会提供 GitHub 代码库中的 notebook ，以及存储在其他地方的 notebook。</p>
-
-<p>名称 Jupyter 由 Julia、Python 和 R 组合而成，早期的两个非 Python 内核分别是 R 语言和 Julia 语言</p>
-
-<h2 id="toc_0">1.安装</h2>
-
-<ul>
-<li>如果安装anaconda 会自带</li>
-<li>通过conda环境安装 <code>conda install jupyter notebook</code>，或者<code>pip install jupyter notebook</code></li>
-</ul>
-
-<pre><code class="language-text"># 启动
-jupyter notebook
+<pre><code class="language-text"> base_model,
+      tf.keras.layers.GlobalAveragePooling2D(),
+      tf.keras.layers.Dropout(0.5),
+      tf.keras.layers.Dense(256, kernel_regularizer=tf.keras.regularizers.l2(0.001),
+                           activation=&#39;relu&#39;),
+      tf.keras.layers.Dense(2, activation = &#39;softmax&#39;)]
+    )
 </code></pre>
 
-<p>快捷键</p>
+<p>加入正则化和dropout<br/>
+进行图片增强产生更多图片</p>
 
-<p>在上方插入cell：a<br/>
-在下方插入cell：b<br/>
-剪切当前cell：x<br/>
-删除当前cell：dd<br/>
-撤销删除：u<br/>
-上下：方向键 or jk (同vim)<br/>
-扩展选中上下左右：shift+jk<br/>
-当前cell转入markdown状态：m<br/>
-当前cell转入代码状态：y</p>
+<p>fine-tune效果</p>
 
-<h2 id="toc_1">magic 关键字</h2>
+<p><img src="media/15838089244516/3BB989C7-F853-4391-BAE1-2CF5FE031D51.png" alt="3BB989C7-F853-4391-BAE1-2CF5FE031D51"/></p>
 
-<p>Magic 关键字是可以在单元格中运行的特殊命令，能让你控制notebook 本身或执行系统调用（例如更改目录）</p>
+<p>feature-效果<br/>
+<img src="media/15838089244516/7BE3E393-6503-4A17-AD04-34B8DDA9C6D3.png" alt="7BE3E393-6503-4A17-AD04-34B8DDA9C6D3"/></p>
 
-<p>Magic 命令的前面带有一个或两个百分号（% 或 %%），分别对应行 Magic 命令和单元格 Magic 命令。行 Magic 命令仅应用于编写 Magic 命令时所在的行，而单元格 Magic 命令应用于整个单元格。</p>
+<p>(2) 调整loss中的训练权重<br/>
+class_weight = {0:0.75, 1:0.25}<br/>
+<img src="media/15838089244516/15838091710767.jpg" alt=""/></p>
 
-<p>对于 Python 内核，可以使用 Magic 命令 %pdb 开启交互式调试器。出错时，你能检查当前命名空间中的变量。</p>
-
-<h2 id="toc_2">2.转换 notebook格式</h2>
-
-<p>Notebook 只是扩展名为 .ipynb 的大型 JSON 文件。</p>
-
-<p>转换格式的命令 <code>nbconvert</code></p>
-
-<pre><code class="language-text">jupyter nbconvert --to html notebook.ipynb   #转成html
-jupyter nbconvert --to markdown xxx.ipynb 
-</code></pre>
-
-<p>目前支持的转换格式(<a href="https://nbconvert.readthedocs.io/en/latest/usage.html">https://nbconvert.readthedocs.io/en/latest/usage.html</a>)<br/>
-HTML,<br/>
-LaTeX,<br/>
-PDF,<br/>
-Reveal.js HTML slideshow,<br/>
-Markdown,<br/>
-reStructuredText,<br/>
-executable script,<br/>
-notebook.</p>
-
-<p><strong>创建幻灯片</strong></p>
-
-<p>在 notebook 中创建幻灯片的过程像平常一样，但需要指定作为幻灯片的单元格和单元格的幻灯片类型。在菜单栏中，点击“View”（视图）&gt;“Cell Toolbar”（单元格工具栏）&gt;“Slideshow”（幻灯片），以便在每个单元格上弹出幻灯片单元格菜单。</p>
-
-<pre><code class="language-text">#转换并在浏览器中展示
-jupyter nbconvert notebook.ipynb --to slides --post serve
-</code></pre>
-
-<h2 id="toc_3">3.测试机上安装jupyter</h2>
-
-<p><a href="https://cloud.tencent.com/developer/article/1147487">https://cloud.tencent.com/developer/article/1147487</a></p>
-
-<ul>
-<li>安装jupyter</li>
-<li>生成密码 python -c &quot;import IPython;print IPython.lib.passwd()&quot;</li>
-<li>修改配置文件 </li>
-</ul>
-
-<p>/home/work/.jupyter/jupyter_notebook_config.py</p>
-
-<p>如果启动报错</p>
-
-<pre><code class="language-text">socket.gaierror: [Errno -2] Name or service not known
-</code></pre>
-
-<p>可以加上自己的ip</p>
-
-<pre><code class="language-text"> jupyter notebook --ip=xxxx
- jupyter lab --ip=xxx
-</code></pre>
-
-<h2 id="toc_4">4.其他工具</h2>
-
-<p><strong>jupyter-lab</strong><br/>
-jupyter-lab 是jupyter-notebook的升级版，界面更加炫酷，也支持更多功能，强烈建议使用lab方式</p>
-
-<p><strong>colab</strong><br/>
-google 基于jupyter开发的存在在google driver上的网页版<br/>
-<a href="https://colab.research.google.com/">https://colab.research.google.com/</a><br/>
-本身功能上差不太多，主要是有search和share功能，查看别人分享的代码</p>
-
-<h2 id="toc_5">5.常见问题</h2>
-
-<p>Q1: 若import了自己写的外部模块，如果这个外部模块有更新，再次执行import，jupyter是不会重新导入的<br/>
-<a href="https://blog.csdn.net/ybdesire/article/details/86709727">https://blog.csdn.net/ybdesire/article/details/86709727</a></p>
-
-<p>对于 Python2.x<br/>
-import some_module<br/>
-reload(some_module)</p>
-
-<p>对于 Python 3.2 and 3.3:<br/>
-import some_module<br/>
-import importlib<br/>
-importlib.reload(some_module)</p>
-
-<p>对于 Python3.4+<br/>
-import some_module<br/>
-import imp<br/>
-imp.reload(some_module)</p>
-
-<p>方法2：<br/>
-auto_load</p>
-
-<p><a href="https://codeday.me/bug/20181215/447675.html">https://codeday.me/bug/20181215/447675.html</a></p>
-
-<p>Q2. <code>jupyter lab</code> 启动提示</p>
-
-<p><img src="media/15637037680349/15665439689997.jpg" alt=""/></p>
-
-<p>应该是编码问题，暂时的解决方案<a href="https://github.com/jupyter/notebook/issues/2789#issuecomment-338380336">https://github.com/jupyter/notebook/issues/2789#issuecomment-338380336</a></p>
-
-<p><code>LANG=zn jupyter lab</code></p>
-
-<p>这个问题后来查了下说是python2的bug，安装python3就不会出现这个问题。</p>
-
-<p>Q3. 切换内核<br/>
-很多代码都是python2写的，用pip3安装jupyter之后，想切换写内核。<br/>
-<a href="https://www.cnblogs.com/Jeffiy/p/4861528.html">https://www.cnblogs.com/Jeffiy/p/4861528.html</a></p>
-
-<pre><code class="language-text">jupyter kernelspec list
-</code></pre>
-
-<p>Q4: jupyterlab 中的内容，可以通过右键点击复制下载链接得到一个url，通过该url可以直接在网页上展示该文件。注意该url后面有个 _xsrf=xxxx的标记。<br/>
-如果重启了jupyterlab，这个标记也需要更新</p>
-
-<h2 id="toc_6">6 好用的插件</h2>
-
-<p><a href="https://blog.csdn.net/yh0vlde8vg8ep9vge/article/details/85333338">https://blog.csdn.net/yh0vlde8vg8ep9vge/article/details/85333338</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15838236096534.html">
-                
-                  <h1>MMLab</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">1. MMLab + DeepFashion 服饰识别</h2>
-
-<p>项目地址: <a href="https://github.com/open-mmlab/mmfashion">https://github.com/open-mmlab/mmfashion</a></p>
-
-<p>香港中文大学多媒体实验室（Multimedia Lab）开展的MMFashion项目，是针对服饰领域提供的一个通用的toolbox(基于pytorch)</p>
-
-<p>主要功能有:</p>
-
-<ul>
-<li>属性归类</li>
-<li>相似服装检索</li>
-<li>服饰关键点检测</li>
-</ul>
-
-<p>使用：<br/>
-可以按照说明开始 <a href="https://github.com/open-mmlab/mmfashion/blob/master/docs/GETTING_STARTED.md">https://github.com/open-mmlab/mmfashion/blob/master/docs/GETTING_STARTED.md</a><br/>
-同时可以替换成自己的数据集 ,<br/>
-含有的基础model: <a href="https://github.com/open-mmlab/mmfashion/blob/master/docs/MODEL_ZOO.md">https://github.com/open-mmlab/mmfashion/blob/master/docs/MODEL_ZOO.md</a></p>
+<p>QQ: 训练集和验证集效果都还好，但是到真实预测的时候效果却很差？？？</p>
 
                         
                       </div>
@@ -494,7 +174,199 @@ auto_load</p>
                     <span class="date">2020/3/10</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='tools.html'>tools</a></span>
+          					    <span class="posted-in"><a href='%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB.html'>图像分类</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15838081033290.html">
+                
+                  <h1>类别不平衡</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/3/10</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB.html'>图像分类</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15837577303219.html">
+                
+                  <h1>【综述】</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>为了处理序列数据，rnn引入了隐藏状态hidden state的概念。如下图所示</p>
+
+<p><img src="media/15837577303219/15837580278747.jpg" alt="" style="width:705px;"/></p>
+
+<p>说明: x1,x2,...代表时间序列上不同时刻的向量，在x1时刻，当前的隐状态h0和当前的输入x1，进行叠加得到了新的隐状态h1.以此类推。</p>
+
+<p>而最终输出就是在隐状态h的基础上再进行一次计算。最终输出如下。这样就完成了序列输入(x1,x2,....xn),输出(y1, y2 ....yn)的过程</p>
+
+<p><img src="media/15837577303219/15837582220421.jpg" alt="" style="width:722px;"/></p>
+
+<p>实际中按照输入和输出的变量个数可以有如下的一些情形：</p>
+
+<ul>
+<li>N vs 1</li>
+<li></li>
+</ul>
+
+<h2 id="toc_0">参考</h2>
+
+<p><a href="https://zhuanlan.zhihu.com/p/28054589">https://zhuanlan.zhihu.com/p/28054589</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/3/9</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='rnn.html'>rnn</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15834841723937.html">
+                
+                  <h1>【可解释性问题】</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/3/6</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15834196813408.html">
+                
+                  <h1>【迁移学习】</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<table>
+<thead>
+<tr>
+<th>分类</th>
+<th>说明</th>
+<th>特点</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1.样本迁移</td>
+<td>在数据集（源领域）中找到与目标领域相似的数据，把这个数据放大多倍，与目标领域的数据进行匹配。</td>
+<td>需要对不同例子加权；需要用数据进行训练。</td>
+</tr>
+<tr>
+<td>2.特征迁移</td>
+<td>特征空间的迁移</td>
+<td></td>
+</tr>
+<tr>
+<td>3.模型迁移</td>
+<td>比如常用的fine-tune</td>
+<td></td>
+</tr>
+<tr>
+<td>4.关系迁移</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="toc_0">参考</h2>
+
+<p><a href="https://www.cnblogs.com/bonelee/p/8921311.html">https://www.cnblogs.com/bonelee/p/8921311.html</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/3/5</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
           				   
                     
 
@@ -583,6 +455,8 @@ auto_load</p>
         
             <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
+            <a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html"><strong>11 平台架构</strong></a>
+        
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E5%85%B6%E4%BB%96.html"><strong>其他</strong></a>
@@ -602,31 +476,31 @@ auto_load</p>
 	      
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">0.综述</a>
+			        <a href="15917706614562.html">optical flow 光流</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637036455584.html">1 估计的置信度</a>
+			        <a href="15917693533998.html">process</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037681646.html">1 基础工具包安装pip</a>
+			        <a href="15917597006543.html">业务</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637025346412.html">1. conda 环境管理</a>
+			        <a href="15917572981552.html">综述_关键点检测</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037713554.html">1. 数据可视化概述</a>
+			        <a href="15916704949564.html">【工具】MMlab——mmaction</a>
 			      </li>
 		     
 		  

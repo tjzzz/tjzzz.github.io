@@ -103,6 +103,8 @@
         
             <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
+            <li><a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html">11 平台架构</a></li>
+        
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E5%85%B6%E4%BB%96.html">其他</a></li>
@@ -128,9 +130,201 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15834841723937.html">
+                <a class="clearlink" href="15686368904229.html">
                 
-                  <h1>【可解释性问题】</h1>
+                  <h1>3. 轨迹聚类综述</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>轨迹聚类的方式总的来说有三大类：无监督的、有监督的、半监督的。轨迹聚类能够探知时空数据的潜在信息，并且能有很多的实际应用场景。比如：物体移动预测、交通监控、活动理解、异常检测、三维重建等。</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15686368904229.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2019/9/16</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html'>轨迹分析</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15686309605233.html">
+                
+                  <h1>matplotlib</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>matplotlib是python绘图的一个基础包，其用法和matlab语法有些相似。<br/>
+大量第三方包扩展并构建了Matplotlib功能，包括几个较高级别的绘图接口(seaborn、holoviews、ggplot 等)，以及两个投影和绘图工具包(basemap和cartopy)<br/>
+这里总结一些基本用法</p>
+
+<h2 id="toc_0">1.matplotlib.pylab</h2>
+
+<h2 id="toc_1">2.matplotlib.pyplot</h2>
+
+<p><img src="media/15686309605233/15686322692816.png" alt=""/></p>
+
+<pre><code class="language-text">import matplotlib.pyplot as plt
+plt.plot(x, y, 其他属性)
+</code></pre>
+
+<p>pyplot是matplotlib中最常用的模块，</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15686309605233.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2019/9/16</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html'>3 数据可视化</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15680210974066.html">
+                
+                  <h1>因子分析</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<pre><code class="language-text">from factor_analyzer import FactorAnalyzer
+f=FactorAnalyzer(n_factors = 10, rotation=&#39;varimax&#39;)
+f.fit(data)
+</code></pre>
+
+<p>FactorAnalyzer 主要参数</p>
+
+<ul>
+<li>n_factors: 设置因子的个数</li>
+<li>rotation： 表示旋转的个数，如果不设置的话默认不进行旋转。可旋转的旋转方法有：varimax， promax。。。</li>
+</ul>
+
+<p>输出结果属性包括：</p>
+
+<ul>
+<li>loadings_   因子载荷矩阵</li>
+<li>rotation_matrix   旋转矩阵</li>
+<li>structure：  The structure loading matrix.</li>
+<li>get_factor_variance()   计算因子的方差信息，包括方差、方差的比例，以及累计方差比重</li>
+</ul>
+
+<p>获取转换后的数据矩阵</p>
+
+<pre><code class="language-text">f.transform(data)
+</code></pre>
+
+<h2 id="toc_0">参考</h2>
+
+<p><a href="https://pypi.org/project/factor-analyzer/">https://pypi.org/project/factor-analyzer/</a><br/>
+<a href="https://blog.csdn.net/hfutxiaoguozhi/article/details/78840126">https://blog.csdn.net/hfutxiaoguozhi/article/details/78840126</a><br/>
+<a href="https://factor-analyzer.readthedocs.io/en/latest/factor_analyzer.html#module-factor_analyzer.factor_analyzer">https://factor-analyzer.readthedocs.io/en/latest/factor_analyzer.html#module-factor_analyzer.factor_analyzer</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/9/9</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15669633176007.html">
+                
+                  <h1>其他神器</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">yaml</h2>
+
+<p>yaml文件的的多行快速注释方法</p>
+
+<p><code>ctrl + /</code></p>
+
+<h2 id="toc_1">flask</h2>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/8/28</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15665545372148.html">
+                
+                  <h1>shell</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
@@ -143,300 +337,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/3/6</span>
+                    <span class="date">2019/8/23</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15846836766049.html">
-                
-                  <h1>【异常检测1】无监督-多元数据</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>☆☆☆<a href="https://github.com/yzhao062/anomaly-detection-resources">https://github.com/yzhao062/anomaly-detection-resources</a>  资料综述，包括相关工具与论文</p>
-
-<p>总述：<br/>
-从异常检测要检测的目的数据的不同，大致可以分为如下几类，后续会分别对这几类进行综述学习。</p>
-
-<ol>
-<li>多元特征数据，传统的n_sample x n_features形式</li>
-<li>高维数据</li>
-<li>时间序列，行为序列</li>
-<li>graph, network</li>
-</ol>
-
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15846836766049.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2020/3/20</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html'>kdd&异常检测</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15869363773517.html">
-                
-                  <h1>【异常检测2】时间序列</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<table>
-<thead>
-<tr>
-<th>paper</th>
-<th>year</th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>Outlier Detection for Temporal Data: A Survey</td>
-<td>2014</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Time-Series Anomaly Detection Service at Microsoft</td>
-<td>2019</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="toc_0">一 问题分类</h2>
-
-<p><img src="media/15869363773517/15869376232283.jpg" alt="" style="width:1054px;"/><br/>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15869363773517.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2020/4/15</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html'>kdd&异常检测</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15870068175699.html">
-                
-                  <h1>【异常检测3】Abnormal behavior detection （行为/视频）</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>行为序列的异常？ video中异常行为检测？</p>
-
-<p>sequence based</p>
-
-<ul>
-<li>相似性： 假设所有数据都是normal的，然后找到normal sequence， 最后计算与normal sequence的距离(比如LCS)</li>
-<li>window based。traing：所有sequence 分成多个windows，windows的score：frequence；classifier：随机生成数据作为anomaly标签。 testing：instance的各个windows的anomaly socre组合：取平均；取大于阈值的个数；LFC（计算anomaly window前n个window中anomaly 的个数）</li>
-<li>HMM：</li>
-</ul>
-
-<p><strong>参照论文：</strong><br/>
-<a href="https://blog.csdn.net/liuxiao214/article/details/78281160?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task">https://blog.csdn.net/liuxiao214/article/details/78281160?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task</a></p>
-
-<h2 id="toc_0">论文1【Soft + Hardwired Attention: An LSTM Framework for Human Trajectory</h2>
-
-<p>Prediction and Abnormal Event Detection】</p>
-
-<p>本文主要提出了一种基于LSTM的行为预测和异常检测方法</p>
-
-<p>related work：human behaviour prediction 文献回溯<br/>
-    - 轨迹聚类<br/>
-    - 预测人类行为，一个常用的方法是social force model，可以详见 <a href="https://wenku.baidu.com/view/c6359d0452ea551810a68733.html">https://wenku.baidu.com/view/c6359d0452ea551810a68733.html</a><br/>
-    - attention models</p>
-
-<p><img src="media/15846836766049/15851206602866.jpg" alt=""/></p>
-
-<h2 id="toc_1">论文2 Detecting-Spacecraf-Anomalies-Using-LSTMs-and-Nonparametric-Dynamic-Thresholding</h2>
-
-<p><a href="http://blog.rexking6.top/2019/03/03/%E3%80%8ADetecting-Spacecraf-Anomalies-Using-LSTMs-and-Nonparametric-Dynamic-Thresholding%E3%80%8B%E7%AC%94%E8%AE%B0/">http://blog.rexking6.top/2019/03/03/%E3%80%8ADetecting-Spacecraf-Anomalies-Using-LSTMs-and-Nonparametric-Dynamic-Thresholding%E3%80%8B%E7%AC%94%E8%AE%B0/</a></p>
-
-<p>有几点可以学习的地方：</p>
-
-<p>动态误差阈值：对于模型产生的预测误差，将其进行平滑处理(比如指数加权),然后针对平滑后的设置阈值。</p>
-
-<p><strong>阈值计算</strong>：<br/>
-<img src="media/15870068175699/15874697100613.jpg" alt=""/><br/>
-简单地说，就是找到这样一个阈值，如果去掉超过他的所有值后，平滑误差\(e_s\)的均值和标准差会下降最大的百分比。另外还考虑到了正则化惩罚，惩罚具有大量与长治\(|e_s|\)和序列\(|E_{seq}|\)以防止过度贪心的行为。</p>
-
-<p><strong>减少误报-假阳性</strong></p>
-
-<h2 id="toc_2">论文3 abnormal behavior detection in crowd scenes</h2>
-
-<p>光流法(optical flow)（简介<a href="https://zhuanlan.zhihu.com/p/44859953%EF%BC%89%EF%BC%8C%E4%B8%80%E8%88%AC%E7%94%A8HOF%E6%88%96%E8%80%85MHOF%EF%BC%88histogram">https://zhuanlan.zhihu.com/p/44859953），一般用HOF或者MHOF（histogram</a> of optical flow）作为速度、方向的统计信息特征</p>
-
-<h2 id="toc_3">工具</h2>
-
-<p><a href="https://github.com/khundman/telemanom">https://github.com/khundman/telemanom</a></p>
-
-<p>使用报错 <code>OMP: Error #15: Initializing libiomp5.dylib, but found libiomp5.dylib already initialized.</code><br/>
-解决方案:在执行的example.py脚本中加入 </p>
-
-<pre><code class="language-python">import os
-os.environ[&#39;KMP_DUPLICATE_LIB_OK&#39;]=&#39;True&#39;
-</code></pre>
-
-<p>一个简化版讲解 <a href="https://www.cdxy.me/?p=812">https://www.cdxy.me/?p=812</a></p>
-
-<p><code>telemanom.modeling</code>:   model 加载或者创建新的<br/>
-<code>telemanom.errors</code>: 对应论文中自动确定阈值部分</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/4/16</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html'>kdd&异常检测</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025348511.html">
-                
-                  <h1>【推荐系统】章1 基本介绍</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>标签（空格分隔）： 推荐系统</p>
-
-<hr/>
-
-<h1 id="toc_0">推荐系统评测</h1>
-
-<h2 id="toc_1">1.推荐系统实验方法</h2>
-
-<p>在进行推荐之前，先从数据获得方法入手。数据的获得方法主要有 </p>
-
-<ul>
-<li><p>离线实验<br/>
-这个应该是最常见的那种，即数据使用的是离线的数据，提取数据-&gt;训练集和测试集——&gt; 建立模型 ——&gt; 测试集上进行实验——&gt;效果评价</p></li>
-<li><p>用户调查<br/>
-可以获得一些推荐效果的主观指标</p></li>
-<li><p>在线实验<br/>
-即切分流量，进行AB test</p></li>
-</ul>
-
-<h2 id="toc_2">2.指标评测</h2>
-
-<p>不同的实验方法可能会对应着不同的衡量指标，简单的介绍如下：</p>
-
-<ul>
-<li>用户满意度<br/>
-这个指标相对来说是一个主观的指标，可以通过用户调查，或者是对用户客观行为进行分析（比如：点击率、停留时间等）</li>
-<li>预测准确率
-<ul>
-<li>评分预测<br/>
-评分预测类主要是让用户对商品进行打分，比如1-5级的打分。其主要的计算指标是均方根误差RMSE或者平均绝对误差MAE</li>
-<li>TopN推荐<br/>
-topN推荐，即给用户推荐一个其可能感兴趣的item列表，也是我们主要要讨论的。其主要的评价指标即PR（precision recall）</li>
-</ul></li>
-<li>覆盖率<br/>
-覆盖率主要是刻画了推荐系统对<strong>长尾物品</strong>的发掘能力。我们希望推荐系统不止推荐出一些热门的，这样只能覆盖很少的一部分items。
-<ul>
-<li>最简单的计算方法：推荐系统推荐出来的物品占所有物品的比重。但是没有考虑到分布情况</li>
-<li>统计推荐列表中不同物品的出现次数的分布<br/>
-信息熵 \(H=-\sum p_i\log p_i\)<br/>
-基尼系数 \(G=\frac{1}{n-1}\sum (2j-n-1)p(i_j)\) </li>
-</ul></li>
-<li>多样性<br/>
-即希望推荐给用户的东西类型是多样的，比如对于电影，用户可能喜欢看爱情类、科幻类，那么推荐系统在进行推荐的时候，只推荐爱情类的效果显然不如既有爱情类又有科幻类的效果好。</li>
-<li>新颖性</li>
-<li>惊喜度</li>
-<li>信任度</li>
-<li>。。。</li>
-</ul>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
           				   
                     
 
@@ -525,6 +429,8 @@ topN推荐，即给用户推荐一个其可能感兴趣的item列表，也是我
         
             <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
+            <a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html"><strong>11 平台架构</strong></a>
+        
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E5%85%B6%E4%BB%96.html"><strong>其他</strong></a>
@@ -544,31 +450,31 @@ topN推荐，即给用户推荐一个其可能感兴趣的item列表，也是我
 	      
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">0.综述</a>
+			        <a href="15917706614562.html">optical flow 光流</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637036455584.html">1 估计的置信度</a>
+			        <a href="15917693533998.html">process</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037681646.html">1 基础工具包安装pip</a>
+			        <a href="15917597006543.html">业务</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637025346412.html">1. conda 环境管理</a>
+			        <a href="15917572981552.html">综述_关键点检测</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037713554.html">1. 数据可视化概述</a>
+			        <a href="15916704949564.html">【工具】MMlab——mmaction</a>
 			      </li>
 		     
 		  

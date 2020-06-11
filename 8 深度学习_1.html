@@ -103,6 +103,8 @@
         
             <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
+            <li><a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html">11 平台架构</a></li>
+        
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E5%85%B6%E4%BB%96.html">其他</a></li>
@@ -128,264 +130,22 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637025345792.html">
+                <a class="clearlink" href="15637025345079.html">
                 
-                  <h1>第三章 概率与信息论</h1>
+                  <h1>第一章 引言</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>本章主要是介绍了一些概率论的基础以及常见的分布</p>
+                        	<p>别人的读后总结，可参考「Deep Learning」读书系列分享（一） | 分享总结</p>
 
-<h2 id="toc_0">1.常用函数的有用性质</h2>
+<p><a href="https://www.leiphone.com/news/201708/LEBNjZzvm0Q3Ipp0.html">https://www.leiphone.com/news/201708/LEBNjZzvm0Q3Ipp0.html</a></p>
 
-<ul>
-<li>sigmoid 函数</li>
-</ul>
+<h3 id="toc_0">需要明确的几个概念范围</h3>
 
-<p>\[\delta(x) = \frac{1}{1+exp(-x)}\]</p>
+<p><img src="media/15075611675547/15075613801366.jpg" alt=""/></p>
 
-<ul>
-<li>softplus函数<br/>
-\[log(1+exp(x))\]
-<img src="media/15080561019055/15080571562017.jpg" alt=""/></li>
-</ul>
-
-<p>是\(y=max(0,x)\)的平滑版本</p>
-
-<h2 id="toc_1">2.信息论</h2>
-
-<p>信息论是应用数学的一个分支，主要研究的是对一个信号包含信息的多少进行量化。<br/>
-<img src="media/15080561019055/15080594230903.jpg" alt=""/></p>
-
-<p>自信息：定义一个时间X=x的自信息<br/>
-\[I(x) = -log P(x)\]</p>
-
-<p>熵：<br/>
-\[-\sum P(x_i) logP(x_i)\]</p>
-
-<h3 id="toc_2">KL散度/相对熵</h3>
-
-<p>\[KL(P||Q) = -\sum P_i ln(\frac{P_i}{Q_i})=-\sum P_i(ln(P_i)- ln(Q_i))\]</p>
-
-<p>注意：</p>
-
-<ul>
-<li>KL距离其实并不是严格的距离，不满足对称性以及三角不等式。</li>
-</ul>
-
-<p>JS距离：<br/>
-\[JS(P1||P2) = \frac{1}{2}KL(P1||(P1+P2)/2)+ \frac{1}{2}KL(P2||(P1+P2)/2)\]</p>
-
-<h3 id="toc_3">交叉熵</h3>
-
-<p>相对熵的第一部分<br/>
-\[KL(P||Q) = -\sum P_i ln(Q_i)\]</p>
-
-<h2 id="toc_4">3.结构化概率模型——图模型(graphical model)</h2>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>8 深度学习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025345723.html">
-                
-                  <h1>第二章 线性代数</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>第二章主要是介绍了线性代数的一些基础知识</p>
-
-<p>这里补充几点吧</p>
-
-<h2 id="toc_0">特征分解</h2>
-
-<p>每个矩阵可以视为多个列向量组成的一个向量空间/或者是一个线性变化(一个矩阵乘以一个向量后相当于是对向量做了一个线性变换)。而矩阵的分解，相当于去提取这个向量空间最重要的特征。</p>
-
-<p>(1)首先是特征值和特征向量<br/>
-若<strong>方阵</strong>A满足 \(Av=\lambda v\),则\(v\)称为矩阵A的特征向量，\(\lambda\)称为对应的特征值。</p>
-
-<p><strong>特征分解</strong><br/>
-\[A=V \Lambda V^{-1}\]<br/>
-V是其特征向量构成的矩阵，\(\Lambda\)是特征值构成的对角矩阵</p>
-
-<p>性质：</p>
-
-<p>(1) 实对称矩阵A都可以分解为\(A=Q\Lambda Q^{-1}\)，Q为正交矩阵</p>
-
-<p>(2)用来计算矩阵的逆。若\(A=Q \Lambda Q^{-1}\)，则\(A^{-1}=Q \Lambda^{-1}Q^{-1}\)</p>
-
-<h2 id="toc_1">奇异值分解</h2>
-
-<p>特征分解对于提取矩阵的特征根是很好的方法，但是他只能针对<strong>方阵</strong>操作。当A不是方阵时候，就需要用到SVD<br/>
-\[A_{n*m}=U_{n*n}\Sigma_{n*m} V^{T}_{m*m}\]</p>
-
-<p>其中，U称为左奇异向量，V称为右奇异向量</p>
-
-<p>\(AA^T=UDV^TVDU^T=UD^2U^T\)<br/>
-\(A^TA=VDU^T UDV^T=VD^2V^T\)<br/>
-即：<br/>
-A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)的特征向量，A的奇异值是\(AA^T\)也是\(A^TA\)的特征之爱的平方根。</p>
-
-<blockquote>
-<p>对比：<br/>
-特征分解是有限制的，比如矩阵必须是方阵</p>
-</blockquote>
-
-<h3 id="toc_2">SVD与PCA的关系</h3>
-
-<ul>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 查一下之前多元的变换原理</li>
-</ul>
-
-<p>PCA的全部工作简单点说，就是对原始的空间中顺序地找一组相互正交的坐标轴，第一个轴是使得方差最大的，第二个轴是在与第一个轴正交的平面中使得方差最大的，第三个轴是在与第1、2个轴正交的平面中方差最大的，这样假设在N维空间中，我们可以找到N个这样的坐标轴，我们取前r个去近似这个空间，这样就从一个N维的空间压缩到r维的空间了，但是我们选择的r个坐标轴能够使得空间的压缩使得数据的损失最小。</p>
-
-<h3 id="toc_3">SVD与潜在语义检索LSI</h3>
-
-<h2 id="toc_4">参考资料</h2>
-
-<p><a href="http://www.cnblogs.com/LeftNotEasy/archive/2011/01/19/svd-and-applications.html">http://www.cnblogs.com/LeftNotEasy/archive/2011/01/19/svd-and-applications.html</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>8 深度学习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025346737.html">
-                
-                  <h1>第五章 机器学习</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>这部分主要是补充了机器学习的一席基础知识点，这里先略过。后期再进行相应的补充。具体包括</p>
-
-<ul>
-<li><p>容量/过拟合/欠拟合</p></li>
-<li><p>估计/偏差/方差</p></li>
-<li><p>最大似然估计</p></li>
-<li><p>贝叶斯统计</p></li>
-<li><p>监督学习算法</p></li>
-<li><p>无监督学习算法</p>
-<ul>
-<li>PCA</li>
-<li>聚类</li>
-</ul></li>
-<li><p>梯度下降</p></li>
-</ul>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>8 深度学习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037731128.html">
-                
-                  <h1>第八章 深度模型中的优化</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">8.1 优化与学习</h2>
-
-<p>本章主要关注这一类特定的优化问题:寻找神经网络上的一组参数 θ，它能显 著地降低代价函数 J(θ)，该代价函数通常包括整个训练集上的性能评估和额外的正 则化项。</p>
-
-<p>通常来说极其学习的算法目标大概可以写成，降低期望泛化误差。即<strong>风险</strong><br/>
-<img src="media/15209459008411/15209462294325.jpg" alt=""/></p>
-
-<p>其中p_data是真实的分布，实际中我们只能最小化<strong>经验风险</strong><br/>
-<img src="media/15209459008411/15209463229280.jpg" alt=""/></p>
-
-<h2 id="toc_1">8.2神经网络优化中的挑战</h2>
-
-<ul>
-<li>病态： hessain矩阵病态</li>
-<li>局部最小值：对于非凸函数可能存在多个局部最小值。</li>
-<li>。。。</li>
-</ul>
-
-<h2 id="toc_2">8.3基本算法</h2>
-
-<p>梯度下降机器变种一般是机器学习中应用较多的优化算法。</p>
-
-<h3 id="toc_3">(1)随机梯度下降SGD</h3>
-
-<p><img src="media/15209459008411/15221677256921.jpg" alt=""/></p>
-
-<h3 id="toc_4">（2）动量</h3>
-
-<p>动量是比SGD速度更快的一种方法，SGD相当于只是考虑梯度的方向，而动量是在此基础上加上速度。</p>
-
-<p><img src="media/15209459008411/15221680917826.jpg" alt=""/></p>
-
-<h2 id="toc_5">8.4 参数初始化</h2>
-
-<h2 id="toc_6">参考资料</h2>
+<p><img src="media/15075611675547/15075614908544.jpg" alt=""/></p>
 
                         
                       </div>
@@ -539,6 +299,286 @@ maxout将单元将z划分成k个组，每个组上的取值为其最大值。</p
                 </div>
               </div><!-- article -->
         
+			<div class="article">
+                <a class="clearlink" href="15637025345723.html">
+                
+                  <h1>第二章 线性代数</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>第二章主要是介绍了线性代数的一些基础知识</p>
+
+<p>这里补充几点吧</p>
+
+<h2 id="toc_0">特征分解</h2>
+
+<p>每个矩阵可以视为多个列向量组成的一个向量空间/或者是一个线性变化(一个矩阵乘以一个向量后相当于是对向量做了一个线性变换)。而矩阵的分解，相当于去提取这个向量空间最重要的特征。</p>
+
+<p>(1)首先是特征值和特征向量<br/>
+若<strong>方阵</strong>A满足 \(Av=\lambda v\),则\(v\)称为矩阵A的特征向量，\(\lambda\)称为对应的特征值。</p>
+
+<p><strong>特征分解</strong><br/>
+\[A=V \Lambda V^{-1}\]<br/>
+V是其特征向量构成的矩阵，\(\Lambda\)是特征值构成的对角矩阵</p>
+
+<p>性质：</p>
+
+<p>(1) 实对称矩阵A都可以分解为\(A=Q\Lambda Q^{-1}\)，Q为正交矩阵</p>
+
+<p>(2)用来计算矩阵的逆。若\(A=Q \Lambda Q^{-1}\)，则\(A^{-1}=Q \Lambda^{-1}Q^{-1}\)</p>
+
+<h2 id="toc_1">奇异值分解</h2>
+
+<p>特征分解对于提取矩阵的特征根是很好的方法，但是他只能针对<strong>方阵</strong>操作。当A不是方阵时候，就需要用到SVD<br/>
+\[A_{n*m}=U_{n*n}\Sigma_{n*m} V^{T}_{m*m}\]</p>
+
+<p>其中，U称为左奇异向量，V称为右奇异向量</p>
+
+<p>\(AA^T=UDV^TVDU^T=UD^2U^T\)<br/>
+\(A^TA=VDU^T UDV^T=VD^2V^T\)<br/>
+即：<br/>
+A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)的特征向量，A的奇异值是\(AA^T\)也是\(A^TA\)的特征之爱的平方根。</p>
+
+<blockquote>
+<p>对比：<br/>
+特征分解是有限制的，比如矩阵必须是方阵</p>
+</blockquote>
+
+<h3 id="toc_2">SVD与PCA的关系</h3>
+
+<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 查一下之前多元的变换原理</li>
+</ul>
+
+<p>PCA的全部工作简单点说，就是对原始的空间中顺序地找一组相互正交的坐标轴，第一个轴是使得方差最大的，第二个轴是在与第一个轴正交的平面中使得方差最大的，第三个轴是在与第1、2个轴正交的平面中方差最大的，这样假设在N维空间中，我们可以找到N个这样的坐标轴，我们取前r个去近似这个空间，这样就从一个N维的空间压缩到r维的空间了，但是我们选择的r个坐标轴能够使得空间的压缩使得数据的损失最小。</p>
+
+<h3 id="toc_3">SVD与潜在语义检索LSI</h3>
+
+<h2 id="toc_4">参考资料</h2>
+
+<p><a href="http://www.cnblogs.com/LeftNotEasy/archive/2011/01/19/svd-and-applications.html">http://www.cnblogs.com/LeftNotEasy/archive/2011/01/19/svd-and-applications.html</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>8 深度学习</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637025345792.html">
+                
+                  <h1>第三章 概率与信息论</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>本章主要是介绍了一些概率论的基础以及常见的分布</p>
+
+<h2 id="toc_0">1.常用函数的有用性质</h2>
+
+<ul>
+<li>sigmoid 函数</li>
+</ul>
+
+<p>\[\delta(x) = \frac{1}{1+exp(-x)}\]</p>
+
+<ul>
+<li>softplus函数<br/>
+\[log(1+exp(x))\]
+<img src="media/15080561019055/15080571562017.jpg" alt=""/></li>
+</ul>
+
+<p>是\(y=max(0,x)\)的平滑版本</p>
+
+<h2 id="toc_1">2.信息论</h2>
+
+<p>信息论是应用数学的一个分支，主要研究的是对一个信号包含信息的多少进行量化。<br/>
+<img src="media/15080561019055/15080594230903.jpg" alt=""/></p>
+
+<p>自信息：定义一个时间X=x的自信息<br/>
+\[I(x) = -log P(x)\]</p>
+
+<p>熵：<br/>
+\[-\sum P(x_i) logP(x_i)\]</p>
+
+<h3 id="toc_2">KL散度/相对熵</h3>
+
+<p>\[KL(P||Q) = -\sum P_i ln(\frac{P_i}{Q_i})=-\sum P_i(ln(P_i)- ln(Q_i))\]</p>
+
+<p>注意：</p>
+
+<ul>
+<li>KL距离其实并不是严格的距离，不满足对称性以及三角不等式。</li>
+</ul>
+
+<p>JS距离：<br/>
+\[JS(P1||P2) = \frac{1}{2}KL(P1||(P1+P2)/2)+ \frac{1}{2}KL(P2||(P1+P2)/2)\]</p>
+
+<h3 id="toc_3">交叉熵</h3>
+
+<p>相对熵的第一部分<br/>
+\[KL(P||Q) = -\sum P_i ln(Q_i)\]</p>
+
+<h2 id="toc_4">3.结构化概率模型——图模型(graphical model)</h2>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>8 深度学习</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637025346077.html">
+                
+                  <h1>第七章 正则化</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>机器学习不止要求在训练数据上有良好的表现，还希望有较好的泛化能力，即在测试数据上也能减少测试误差。这些策略被统称为<strong>正则化</strong></p>
+
+<p>常见的一些正则化方法：</p>
+
+<h2 id="toc_0">1.参数范数惩罚</h2>
+
+<p>即在原有的优化函数中，添加一个对参数的惩罚，来限制模型的学习能力<br/>
+<img src="media/15120469131645/15206725126887.jpg" alt=""/></p>
+
+<p>(1) L2参数正则化<br/>
+L2正则化/岭回归，又叫权重衰减； 可以参照岭回归<br/>
+<img src="media/15120469131645/15206732558707.jpg" alt=""/></p>
+
+<p>(X⊤X + αI)−1 这个新矩阵与原来的是一样的，不同的仅仅是在对 角加了 α。这个矩阵的对角项对应每个输入特征的方差。我们可以看到，L2正则化能 让学习算法 ‘‘感知’’ 到具有较高方差的输入 x，因此与输出目标的协方差较小(相对 增加方差)的特征的权重将会收缩。</p>
+
+<p>（2）L1正则化： 具有稀疏性，很多会衰减成0，所以有时候会用来做变量选择lasso</p>
+
+<h2 id="toc_1">2.作为约束的范数惩罚</h2>
+
+<p>从另一个角度来看这个问题，可以被看做是构造一个广义拉格朗日函数来最小化带约束的函数</p>
+
+<p><img src="media/15120469131645/15206742273357.jpg" alt=""/></p>
+
+<p><img src="media/15120469131645/15206742365336.jpg" alt=""/></p>
+
+<p>最小化约束 + 重投影的角度</p>
+
+<h2 id="toc_2">3.正则化和欠约束问题</h2>
+
+<p>正则化还有个好处可以保证X&#39;X+aI 是可逆的</p>
+
+<h2 id="toc_3">4.数据集增强</h2>
+
+<p>可以通过一些方法在不改变label的情况下自己构造一批数据集，比如图像识别时候对图像的旋转；有些时候也可以通过输入噪声的方式来进行数据集增强。</p>
+
+<h2 id="toc_4">5.噪声鲁棒性</h2>
+
+<ul>
+<li>向模型的输入或者是权重中加入噪音。</li>
+<li>向输出目标中加入噪音，即标注数据有一定的错误，不是百分百准确的时候。<strong>标签平滑</strong>方法是将0，1分类，变为e/(k-1)和1-e的k个输出的softmax函数。（e是标注的错误率）</li>
+</ul>
+
+<h2 id="toc_5">6.半监督学习</h2>
+
+<p>大概意思是说：P(x) 产生的未标记样本和P(x,y)中的标记样本都用 于估计 P(y|x)或者根据x预测y。</p>
+
+<h2 id="toc_6">7.多任务学习</h2>
+
+<p>就是通过合并几个任务中的样例（可以视为对参数施加的软约束），我感觉就是类似于group_lasso这样的，对参数加了一个别的约束，部分样本需要共享同一个参数</p>
+
+<h2 id="toc_7">8.提前终止</h2>
+
+<p><img src="media/15120469131645/15206764319925.jpg" alt=""/><br/>
+当训练的能力较强时候会发现，随着训练次数的增加，训练误差在逐步减小，但是测试误差会呈现一个U型状态。即先减小后增加。</p>
+
+<p>不是从模型的优化函数入手，相当于是一个实践的经验技巧。</p>
+
+<p>提前终止具有正则化的效果</p>
+
+<h2 id="toc_8">9.参数绑定和参数共享</h2>
+
+<h2 id="toc_9">10.稀疏表示</h2>
+
+<p>前文所述的权重衰减直接惩罚模型参数。另一种策略是惩罚神经网络中的激活 单元，稀疏化激活单元。这种策略间接地对模型参数施加了复杂惩罚。<br/>
+<img src="media/15120469131645/15207643423743.jpg" alt=""/></p>
+
+<h2 id="toc_10">11.Bagging 和其他集成方法</h2>
+
+<p>结合多个模型，进行模型平均</p>
+
+<h2 id="toc_11">12.dropout</h2>
+
+<p>@@@@</p>
+
+<h2 id="toc_12">13.对抗训练</h2>
+
+<h1 id="toc_13">14 切面距离、正切传播和流形正切分类器</h1>
+
+<p>略</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>8 深度学习</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
               
 
 
@@ -613,6 +653,8 @@ maxout将单元将z划分成k个组，每个组上的取值为其最大值。</p
         
             <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
+            <a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html"><strong>11 平台架构</strong></a>
+        
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E5%85%B6%E4%BB%96.html"><strong>其他</strong></a>
@@ -632,31 +674,31 @@ maxout将单元将z划分成k个组，每个组上的取值为其最大值。</p
 	      
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">0.综述</a>
+			        <a href="15917706614562.html">optical flow 光流</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637036455584.html">1 估计的置信度</a>
+			        <a href="15917693533998.html">process</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037681646.html">1 基础工具包安装pip</a>
+			        <a href="15917597006543.html">业务</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637025346412.html">1. conda 环境管理</a>
+			        <a href="15917572981552.html">综述_关键点检测</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037713554.html">1. 数据可视化概述</a>
+			        <a href="15916704949564.html">【工具】MMlab——mmaction</a>
 			      </li>
 		     
 		  

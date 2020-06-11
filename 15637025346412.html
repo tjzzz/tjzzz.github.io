@@ -103,6 +103,8 @@
         
             <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
+            <li><a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html">11 平台架构</a></li>
+        
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E5%85%B6%E4%BB%96.html">其他</a></li>
@@ -219,7 +221,21 @@ conda env export &gt; environment.yaml
 conda env create -f environment.yaml
 </code></pre>
 
-<h2 id="toc_3">conda install 与pip install的区别</h2>
+<h2 id="toc_3">更改下载源，加速下载速度</h2>
+
+<pre><code class="language-text">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --set show_channel_urls yes
+</code></pre>
+
+<p>或者是更改配置文件 ~/.condarc</p>
+
+<pre><code class="language-text">channels:
+- https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+- https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda/
+show_channel_urls: true
+</code></pre>
+
+<h2 id="toc_4">conda install 与pip install的区别</h2>
 
 <p>，pip list和conda list列表却不一致，conda数量 &gt; pip<br/>
 conda 安装包路径是 xxxxx\Anaconda3\pkgs<br/>
@@ -239,16 +255,16 @@ pip 安装包路径在虚拟环境下是 xxxx\Anaconda3\envs\a_conda_env\Lib\sit
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="15637037681646.html" 
-          title="Previous Post: 1 基础工具包安装pip">&laquo; 1 基础工具包安装pip</a>
+          <a href="15637025346338.html" 
+          title="Previous Post: 资源List">&laquo; 资源List</a>
       
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="15637037713554.html" 
-          title="Next Post: 1. 数据可视化概述">1. 数据可视化概述 &raquo;</a>
+          <a  href="15637025346737.html" 
+          title="Next Post: 第五章 机器学习">第五章 机器学习 &raquo;</a>
       
       </p>
         </div>
@@ -324,6 +340,8 @@ pip 安装包路径在虚拟环境下是 xxxx\Anaconda3\envs\a_conda_env\Lib\sit
         
             <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
+            <a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html"><strong>11 平台架构</strong></a>
+        
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E5%85%B6%E4%BB%96.html"><strong>其他</strong></a>
@@ -343,31 +361,31 @@ pip 安装包路径在虚拟环境下是 xxxx\Anaconda3\envs\a_conda_env\Lib\sit
 	      
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">0.综述</a>
+			        <a href="15917706614562.html">optical flow 光流</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637036455584.html">1 估计的置信度</a>
+			        <a href="15917693533998.html">process</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037681646.html">1 基础工具包安装pip</a>
+			        <a href="15917597006543.html">业务</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637025346412.html">1. conda 环境管理</a>
+			        <a href="15917572981552.html">综述_关键点检测</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037713554.html">1. 数据可视化概述</a>
+			        <a href="15916704949564.html">【工具】MMlab——mmaction</a>
 			      </li>
 		     
 		  

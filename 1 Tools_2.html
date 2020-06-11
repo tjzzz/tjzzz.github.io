@@ -103,6 +103,8 @@
         
             <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
+            <li><a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html">11 平台架构</a></li>
+        
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E5%85%B6%E4%BB%96.html">其他</a></li>
@@ -128,74 +130,78 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15665545372148.html">
+                <a class="clearlink" href="15637037681646.html">
                 
-                  <h1>shell</h1>
+                  <h1>1 基础工具包安装pip</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/8/23</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
-          				   
-                    
+                        	<p>在安装package之前，首先要安装的就是包管理器。</p>
 
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<h2 id="toc_0">1.pip</h2>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037680741.html">
-                
-                  <h1>sublime</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>sublime除了具有基本的文本编辑功能之外，还可以安装很多package来扩展其强大的功能。这里罗列出一些工作中经常能用到的</p>
+<p>安装pip <code>sudo easy_install pip</code></p>
 
-<p><strong>安装install package</strong></p>
+<p>通过pip安装python包  <code>pip install xxx</code></p>
 
-<p>点击菜单中的 “View”–“Show Console”，调出console面板，然后到<a href="https://packagecontrol.io/installation#st3">https://packagecontrol.io/installation#st3</a></p>
+<p><strong>常见问题</strong></p>
 
-<p>官网上的，复制出代码黏贴执行。执行完毕即可。</p>
+<pre><code class="language-text"># 当前版本
+pip --version
+# 版本升级(有些包安装需要依赖高级版本)
+pip install --upgrade pip
 
-<h2 id="toc_0">格式化json</h2>
+## 升级某些包
+pip install --upgrade SomePackage
 
-<p>打开 Sublime，command + shift + p -&gt; Install package<br/>
-搜索 Pretty JSON，安装</p>
+# 安装包时候报错`time out`
+pip --default-timeout=100 install xxx
 
-<p>之后mac上用： <code>command + ctrl + j</code> 即可直接格式化显示。</p>
+## 指定安装目录
+pip -t 目标目录 xxx
+</code></pre>
 
-<h2 id="toc_1">比较diff</h2>
+<p>更新pip给出一个最简单的办法就是通过pip uninstall pip卸载pip，再用easy_install pip安装pip,这样安装的就是最新版本的pip了。</p>
 
-<h2 id="toc_2">git</h2>
+<blockquote>
+<p>权限</p>
+</blockquote>
 
-<h2 id="toc_3">latex</h2>
+<p>在mac上安装包的时候，因为系统限制不让写到内容到系统目录里去。解决方法</p>
 
-<p>安装latex<br/>
-(1) 进入 <a href="http://www.tug.org/mactex/">http://www.tug.org/mactex/</a> 下载安装MacTeX.pkg<br/>
-(2) Sublime按下“Command+Shift+P”打开命令托盘Command pallet，这一步也可以通过Tools下拉菜单完成。<br/>
-在命令托盘里输入“Install Package”，按下Enter回车建。<br/>
-完成之后，输入“LaTeX Tools”，找到这一项并回车安装。<br/>
-退出并重启Sublime Text。</p>
+<ul>
+<li>重新安装一个自己版本的python，比如可以用ancoda安装</li>
+<li>pip安装的时候加入参数<code>pip install xxx --user</code>，安装到当前用户目录下。</li>
+</ul>
+
+<p>安装完成后还需要将该目录加到环境变量里才能使用</p>
+
+<pre><code class="language-text">export export PATH=/Users/$your_name/Library/Python/2.7/bin/:$PATH
+</code></pre>
+
+<blockquote>
+<p>更新某个包时候报错</p>
+</blockquote>
+
+<p><code>Cannot uninstall &#39;six&#39;. It is a distutils installed project and thus we cannot accurately determine which files belong to it which would lead to only a partial uninstall.</code></p>
+
+<p>解决办法：</p>
+
+<p><code>pip install six --upgrade --ignore-installed six</code></p>
+
+<p>当机器上有多个版本python，安装到指定的python版本中</p>
+
+<pre><code class="language-text">pip install -t /home/work/zhenzhen/python2.7/lib/python2.7/site-packages BeautifulSoup4
+</code></pre>
+
+<h2 id="toc_1">2.brew</h2>
+
+<p>/usr/bin/ruby -e &quot;$(curl -fsSL <a href="https://raw.githubusercontent.com/Homebrew/install/master/install)%E2%80%9D">https://raw.githubusercontent.com/Homebrew/install/master/install)”</a></p>
+
+<h2 id="toc_2">加速</h2>
+
+<p>pip install xxx -i <a href="https://pypi.tuna.tsinghua.edu.cn/simple/">https://pypi.tuna.tsinghua.edu.cn/simple/</a></p>
 
                         
                       </div>
@@ -223,18 +229,295 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15694711420974.html">
+                <a class="clearlink" href="15637037683461.html">
                 
-                  <h1>unbuntu</h1>
+                  <h1>Jupyter notebook</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>安装vim</p>
+                        	<p>类似于r的markdown</p>
 
-<pre><code class="language-text">apt update  ## 先更新下
-apt-get install vim-gtk
+<p>GitHub 上也直接支持 Jupyter notebook 的渲染。借助此出色的功能，你可以轻松地共享工作。<a href="http://nbviewer.jupyter.org/">http://nbviewer.jupyter.org/</a> 也会提供 GitHub 代码库中的 notebook ，以及存储在其他地方的 notebook。</p>
 
+<p>名称 Jupyter 由 Julia、Python 和 R 组合而成，早期的两个非 Python 内核分别是 R 语言和 Julia 语言</p>
+
+<h2 id="toc_0">1.安装</h2>
+
+<ul>
+<li>如果安装anaconda 会自带</li>
+<li>通过conda环境安装 <code>conda install jupyter notebook</code>，或者<code>pip install jupyter notebook</code></li>
+</ul>
+
+<pre><code class="language-text"># 启动
+jupyter notebook
+</code></pre>
+
+<p>快捷键</p>
+
+<p>在上方插入cell：a<br/>
+在下方插入cell：b<br/>
+剪切当前cell：x<br/>
+删除当前cell：dd<br/>
+撤销删除：u<br/>
+上下：方向键 or jk (同vim)<br/>
+扩展选中上下左右：shift+jk<br/>
+当前cell转入markdown状态：m<br/>
+当前cell转入代码状态：y</p>
+
+<h2 id="toc_1">magic 关键字</h2>
+
+<p>Magic 关键字是可以在单元格中运行的特殊命令，能让你控制notebook 本身或执行系统调用（例如更改目录）</p>
+
+<p>Magic 命令的前面带有一个或两个百分号（% 或 %%），分别对应行 Magic 命令和单元格 Magic 命令。行 Magic 命令仅应用于编写 Magic 命令时所在的行，而单元格 Magic 命令应用于整个单元格。</p>
+
+<p>对于 Python 内核，可以使用 Magic 命令 %pdb 开启交互式调试器。出错时，你能检查当前命名空间中的变量。</p>
+
+<h2 id="toc_2">2.转换 notebook格式</h2>
+
+<p>Notebook 只是扩展名为 .ipynb 的大型 JSON 文件。</p>
+
+<p>转换格式的命令 <code>nbconvert</code></p>
+
+<pre><code class="language-text">jupyter nbconvert --to html notebook.ipynb   #转成html
+jupyter nbconvert --to markdown xxx.ipynb 
+</code></pre>
+
+<p>目前支持的转换格式(<a href="https://nbconvert.readthedocs.io/en/latest/usage.html">https://nbconvert.readthedocs.io/en/latest/usage.html</a>)<br/>
+HTML,<br/>
+LaTeX,<br/>
+PDF,<br/>
+Reveal.js HTML slideshow,<br/>
+Markdown,<br/>
+reStructuredText,<br/>
+executable script,<br/>
+notebook.</p>
+
+<p><strong>创建幻灯片</strong></p>
+
+<p>在 notebook 中创建幻灯片的过程像平常一样，但需要指定作为幻灯片的单元格和单元格的幻灯片类型。在菜单栏中，点击“View”（视图）&gt;“Cell Toolbar”（单元格工具栏）&gt;“Slideshow”（幻灯片），以便在每个单元格上弹出幻灯片单元格菜单。</p>
+
+<pre><code class="language-text">#转换并在浏览器中展示
+jupyter nbconvert notebook.ipynb --to slides --post serve
+</code></pre>
+
+<h2 id="toc_3">3.测试机上安装jupyter</h2>
+
+<p><a href="https://cloud.tencent.com/developer/article/1147487">https://cloud.tencent.com/developer/article/1147487</a></p>
+
+<ul>
+<li>安装jupyter</li>
+<li>生成密码 python -c &quot;import IPython;print IPython.lib.passwd()&quot;</li>
+<li>修改配置文件 </li>
+</ul>
+
+<p>/home/work/.jupyter/jupyter_notebook_config.py</p>
+
+<p>如果启动报错</p>
+
+<pre><code class="language-text">socket.gaierror: [Errno -2] Name or service not known
+</code></pre>
+
+<p>可以加上自己的ip</p>
+
+<pre><code class="language-text"> jupyter notebook --ip=xxxx
+ jupyter lab --ip=xxx
+</code></pre>
+
+<h2 id="toc_4">4.其他工具</h2>
+
+<p><strong>jupyter-lab</strong><br/>
+jupyter-lab 是jupyter-notebook的升级版，界面更加炫酷，也支持更多功能，强烈建议使用lab方式</p>
+
+<p><strong>colab</strong><br/>
+google 基于jupyter开发的存在在google driver上的网页版<br/>
+<a href="https://colab.research.google.com/">https://colab.research.google.com/</a><br/>
+本身功能上差不太多，主要是有search和share功能，查看别人分享的代码</p>
+
+<p>一个简单的入门教程,在colab上你可以体验免费的GPU<br/>
+<a href="https://github.com/xitu/gold-miner/blob/master/TODO1/google-colab-free-gpu-tutorial.md">https://github.com/xitu/gold-miner/blob/master/TODO1/google-colab-free-gpu-tutorial.md</a></p>
+
+<p>Q: 将大文件发送的google drive</p>
+
+<pre><code class="language-python"># 需要发送哪个文件？
+file_name = &quot;REPO.tar&quot;
+
+from googleapiclient.http import MediaFileUpload
+from googleapiclient.discovery import build
+
+auth.authenticate_user()
+drive_service = build(&#39;drive&#39;, &#39;v3&#39;)
+
+def save_file_to_drive(name, path):
+  file_metadata = {&#39;name&#39;: name, &#39;mimeType&#39;: &#39;application/octet-stream&#39;}
+  media = MediaFileUpload(path, mimetype=&#39;application/octet-stream&#39;, resumable=True)
+  created = drive_service.files().create(body=file_metadata, media_body=media, fields=&#39;id&#39;).execute()
+  
+  return created
+
+save_file_to_drive(file_name, file_name)
+</code></pre>
+
+<h2 id="toc_5">5.常见问题</h2>
+
+<p>Q1: 若import了自己写的外部模块，如果这个外部模块有更新，再次执行import，jupyter是不会重新导入的<br/>
+<a href="https://blog.csdn.net/ybdesire/article/details/86709727">https://blog.csdn.net/ybdesire/article/details/86709727</a></p>
+
+<p>对于 Python2.x<br/>
+import some_module<br/>
+reload(some_module)</p>
+
+<p>对于 Python 3.2 and 3.3:<br/>
+import some_module<br/>
+import importlib<br/>
+importlib.reload(some_module)</p>
+
+<p>对于 Python3.4+<br/>
+import some_module<br/>
+import imp<br/>
+imp.reload(some_module)</p>
+
+<p>方法2：<br/>
+auto_load</p>
+
+<p><a href="https://codeday.me/bug/20181215/447675.html">https://codeday.me/bug/20181215/447675.html</a></p>
+
+<p>Q2. <code>jupyter lab</code> 启动提示</p>
+
+<p><img src="media/15637037680349/15665439689997.jpg" alt=""/></p>
+
+<p>应该是编码问题，暂时的解决方案<a href="https://github.com/jupyter/notebook/issues/2789#issuecomment-338380336">https://github.com/jupyter/notebook/issues/2789#issuecomment-338380336</a></p>
+
+<p><code>LANG=zn jupyter lab</code></p>
+
+<p>这个问题后来查了下说是python2的bug，安装python3就不会出现这个问题。</p>
+
+<p>Q3. 切换内核<br/>
+很多代码都是python2写的，用pip3安装jupyter之后，想切换写内核。<br/>
+<a href="https://www.cnblogs.com/Jeffiy/p/4861528.html">https://www.cnblogs.com/Jeffiy/p/4861528.html</a></p>
+
+<pre><code class="language-text">jupyter kernelspec list
+</code></pre>
+
+<p>Q4: jupyterlab 中的内容，可以通过右键点击复制下载链接得到一个url，通过该url可以直接在网页上展示该文件。注意该url后面有个 _xsrf=xxxx的标记。<br/>
+如果重启了jupyterlab，这个标记也需要更新</p>
+
+<p>Q5: 如果安装了不同的conda环境，想切换不同的环境运行</p>
+
+<pre><code class="language-text">conda install nb_conda_kernels
+</code></pre>
+
+<p>Q6:在自己的docker环境下想运行jupyter</p>
+
+<pre><code class="language-text"># 在docker环境中安装
+pip install jupyterlab
+# 配置
+jupyter notebook --generate-config
+</code></pre>
+
+<h2 id="toc_6">6 好用的插件</h2>
+
+<p><a href="https://blog.csdn.net/yh0vlde8vg8ep9vge/article/details/85333338">https://blog.csdn.net/yh0vlde8vg8ep9vge/article/details/85333338</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037678160.html">
+                
+                  <h1>git</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>git 是一个版本管理的工具，能够非常方便的对项目进行版本控制。</p>
+
+<h2 id="toc_0">1建立自己的代码库</h2>
+
+<p>假设你的用户名是zzz<br/>
+（1）生成公钥<br/>
+ssh-keygen -t rsa -f ~/.ssh/id_rsa.zzz<br/>
+cat ~/.ssh/id_rsa.zzz.pub 保存到icode或者是自己的github上<br/>
+（2）clone</p>
+
+<pre><code class="language-text">git clone  xxxxx代码库             # 将代码库克隆到本地
+## 如果机器是多个人使用的话用--local,如果是自己一个人的话可以设置成--global
+git config --local user.email zzz邮箱
+git config --local user.name zzz用户名
+git push origin master:refs/for/master
+</code></pre>
+
+<h2 id="toc_1">2 基本操作</h2>
+
+<p>当我们新增或者更新了一个文件后，如何上传到代码库</p>
+
+<pre><code class="language-text">git add xxx
+git commit -m &#39;注释&#39;
+git push origin HEAD:refs/for/master
+</code></pre>
+
+<p>从代码库将新代码下载到本地，更新本地库</p>
+
+<pre><code class="language-text">git pull
+</code></pre>
+
+<h2 id="toc_2">3.常用操作</h2>
+
+<p>(1) 还原文件到之前的某个版本。</p>
+
+<p>当发现新提交的版本有问题，想回退到之前的某个版本的之后，可以进行如下操作。<code>git long</code><br/>
+比如我想修改自己写的这个<code>utils.py</code> 代码</p>
+
+<pre><code class="language-text">git log utils.py
+## 可以看到一共提交了3次，假设喔想回退到9.25提交的那个版本
+git checkout 742bf4a53e473b2536b53cb3ad56072ae236a1c3 utils.py 
+git commit -m &quot;revert to previous version&quot;
+</code></pre>
+
+<p><img src="media/15637037678160/15699932802240.jpg" alt=""/></p>
+
+<p>我不知道”undo”是什么意思。您可以删除core.excludesfile设置，如下所示：<br/>
+git config --global --unset core.excludesfile<br/>
+当然你也可以简单地编辑配置文件：<br/>
+git config --global --edit<br/>
+…然后手动删除设置。</p>
+
+<p>git config --global --edit</p>
+
+<p>git log<br/>
+git reset --hard xxxxx</p>
+
+<p>查看本地与云端的diff</p>
+
+<p>git rm —cache  删除已经提交的内容</p>
+
+<h2 id="toc_3">4.常见问题</h2>
+
+<p>Q1: repo中含有子模块的</p>
+
+<pre><code class="language-text">git pull --recurse-submodules
 </code></pre>
 
                         
@@ -244,7 +527,7 @@ apt-get install vim-gtk
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/9/26</span>
+                    <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
@@ -263,18 +546,26 @@ apt-get install vim-gtk
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15669633176007.html">
+                <a class="clearlink" href="15637037679256.html">
                 
-                  <h1>其他神器</h1>
+                  <h1>Rmarkdown</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">yaml</h2>
+                        	<h2 id="toc_0">python支持</h2>
 
-<p>yaml文件的的多行快速注释方法</p>
+<p>Rmarkdown对python兼容 <a href="https://github.com/rstudio/reticulate">https://github.com/rstudio/reticulate</a></p>
 
-<p><code>ctrl + /</code></p>
+<h2 id="toc_1">图片</h2>
+
+<p>现在很多makdown编辑器是可以支持拖拽本地图片或者截屏就可以直接在markdown中生成图片的，非常方便，比如我现在在用的MWeb编辑器。</p>
+
+<p>但是如果同一篇内容需要在不同的平台上进行发布，那图片处理起来就比较麻烦。因为需要重新上传到不同平台。<br/>
+最方便的处理方式就是利用图床， 这里以七牛云存储为例。<br/>
+<img src="media/15378048283915/15383141468224.jpg" alt=""/></p>
+
+<p>step1： 首先在七牛官网上申请注册账号，并且添加<strong>对象存储</strong></p>
 
                         
                       </div>
@@ -283,7 +574,7 @@ apt-get install vim-gtk
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/8/28</span>
+                    <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
@@ -302,26 +593,108 @@ apt-get install vim-gtk
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15662808343723.html">
+                <a class="clearlink" href="15637025346412.html">
                 
-                  <h1>有用的网址&小工具</h1>
+                  <h1>1. conda 环境管理</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<ul>
-<li>论文下载，知网论文</li>
-</ul>
-
-<p><a href="https://www.cn-ki.net/">https://www.cn-ki.net/</a></p>
-
-<p>google学术   <a href="https://en.ehn3.com:92/">https://en.ehn3.com:92/</a></p>
+                        	<p>conda的主要作用有如下两个：</p>
 
 <ul>
-<li>微信公众号平台文章同步知乎、简书等平台</li>
+<li>包管理</li>
 </ul>
 
-<p><a href="https://www.wechatsync.com/#intro">https://www.wechatsync.com/#intro</a></p>
+<p>Anaconda 安装，conda包管理器与pip类似，不同之处是可用的包以数据科学包为主，而 pip 适合一般用途。它也可以安装非 Python 的包。它是支持任何软件的包管理器。</p>
+
+<ul>
+<li>虚拟环境管理器</li>
+</ul>
+
+<p>它类似于另外两个很流行的环境管理器，即 virtualenv 和 pyenv<br/>
+脚本和程序使用的默认 Python 是 Anaconda 附带的 Python。</p>
+
+<p>可以安装完整版： <a href="https://www.anaconda.com/distribution/#download-section">https://www.anaconda.com/distribution/#download-section</a><br/>
+也可以安装精简版miniconda： <a href="https://conda.io/miniconda.html">https://conda.io/miniconda.html</a></p>
+
+<h2 id="toc_0">包管理-常用命令</h2>
+
+<pre><code class="language-text">conda list  #查看安装的内容
+conda upgrade --all   #初次下载安装好后，建议更新所有包
+</code></pre>
+
+<p>安装包</p>
+
+<pre><code class="language-text">conda install xxx
+conda install numpy=1.10   #指定包的版本
+
+conda remove package
+conda upgrade --all
+</code></pre>
+
+<pre><code class="language-text">模糊查询相关包
+conda search search_term
+</code></pre>
+
+<h2 id="toc_1">环境管理</h2>
+
+<p>默认的环境名字叫base(我的电脑上是)</p>
+
+<p>通过<code>conda env list</code>可以列出你创建的所有环境</p>
+
+<pre><code class="language-text">#创建环境
+conda create -n env_name list of packages
+eg. conda create -n my_env numpy
+
+conda create -n py3 python=3
+conda create -n py2 python=2
+
+#进入环境
+source activate my_env
+#离开环境
+source deactivate
+
+# 删除环境
+conda env remove -n env_name
+</code></pre>
+
+<h2 id="toc_2">其他</h2>
+
+<p>共享环境：将自己的工作环境保存下来给别人共享</p>
+
+<pre><code class="language-text">#进入到你的环境中
+source activate base
+conda env export &gt; environment.yaml
+
+# 通过环境文件创建环境
+conda env create -f environment.yaml
+</code></pre>
+
+<h2 id="toc_3">更改下载源，加速下载速度</h2>
+
+<pre><code class="language-text">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --set show_channel_urls yes
+</code></pre>
+
+<p>或者是更改配置文件 ~/.condarc</p>
+
+<pre><code class="language-text">channels:
+- https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+- https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda/
+show_channel_urls: true
+</code></pre>
+
+<h2 id="toc_4">conda install 与pip install的区别</h2>
+
+<p>，pip list和conda list列表却不一致，conda数量 &gt; pip<br/>
+conda 安装包路径是 xxxxx\Anaconda3\pkgs<br/>
+pip 安装包路径在虚拟环境下是 xxxx\Anaconda3\envs\a_conda_env\Lib\site-packages<br/>
+所以当前环境下pip list只列举出当前包list<br/>
+此处需要留意如果使用conda install 多个环境时，对于同一个包只需要安装一次。有conda集中管理。<br/>
+但是如果使用pip因为每个环境安装使用的pip在不同的路径下，故会重复安装，而包会从缓存中取。</p>
+
+<p>(2) 另外从体验上看感觉conda速度快很多</p>
 
                         
                       </div>
@@ -330,7 +703,7 @@ apt-get install vim-gtk
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/8/20</span>
+                    <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
@@ -422,6 +795,8 @@ apt-get install vim-gtk
         
             <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
+            <a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html"><strong>11 平台架构</strong></a>
+        
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E5%85%B6%E4%BB%96.html"><strong>其他</strong></a>
@@ -441,31 +816,31 @@ apt-get install vim-gtk
 	      
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">0.综述</a>
+			        <a href="15917706614562.html">optical flow 光流</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637036455584.html">1 估计的置信度</a>
+			        <a href="15917693533998.html">process</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037681646.html">1 基础工具包安装pip</a>
+			        <a href="15917597006543.html">业务</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637025346412.html">1. conda 环境管理</a>
+			        <a href="15917572981552.html">综述_关键点检测</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037713554.html">1. 数据可视化概述</a>
+			        <a href="15916704949564.html">【工具】MMlab——mmaction</a>
 			      </li>
 		     
 		  

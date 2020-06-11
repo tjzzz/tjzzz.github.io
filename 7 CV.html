@@ -103,6 +103,8 @@
         
             <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
+            <li><a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html">11 平台架构</a></li>
+        
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E5%85%B6%E4%BB%96.html">其他</a></li>
@@ -128,76 +130,34 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637037688620.html">
+                <a class="clearlink" href="15917706614562.html">
                 
-                  <h1>Face综述</h1>
+                  <h1>optical flow 光流</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><a href="https://blog.csdn.net/chenriwei2/article/details/50631212">https://blog.csdn.net/chenriwei2/article/details/50631212</a></p>
+                        	<p><a href="https://zhuanlan.zhihu.com/p/44859953">概念</a><br/>
+光流的概念是Gibson在1950年首先提出来的。它是空间运动物体在观察成像平面上的像素运动的<strong>瞬时速度</strong>，是利用图像序列中像素在时间域上的变化以及相邻帧之间的相关性来找到上一帧跟当前帧之间存在的对应关系，从而计算出相邻帧之间物体的运动信息的一种方法。一般而言，光流是由于场景中前景目标本身的移动、相机的运动，或者两者的共同运动所产生的。<br/>
+简言之：就是有相对运动带来的空间物体在成像平面的瞬时速度。</p>
 
-<p>这个有数据，已经训练好的模型<br/>
-<a href="https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/">https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/</a></p>
+<p>对于一个图片序列，每张图像中每个像素的运动速度和运动方向找出来就是<strong>光流场</strong>。</p>
 
-<p>综述@@@@ 需要精读！！！<br/>
-<a href="https://blog.csdn.net/Mr_EvanChen/article/details/75501730">https://blog.csdn.net/Mr_EvanChen/article/details/75501730</a><br/>
-<a href="https://zhuanlan.zhihu.com/p/24816781">https://zhuanlan.zhihu.com/p/24816781</a></p>
+<p><strong>光流的测定方法</strong></p>
 
-<p>知乎 狗头山人七 专栏<br/>
-<a href="https://zhuanlan.zhihu.com/p/25025596">https://zhuanlan.zhihu.com/p/25025596</a></p>
+<p>基本原理就是找到时间间隔△t内，物体的移动坐标(x1, y1), (x2, y2). 假设位于(x,y,t)的体素的亮度是I(x,y,t), 则有:<br/>
+I(x,y,t) = I(x+△x, y+△y, t+△t)<br/>
+根据泰勒定理展开即有\(\partial I/\partial x△x +\partial I/\partial y△y + \partial I/\partial t△t = 0\)</p>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='face.html'>face</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15838236096534.html">
-                
-                  <h1>MMLab</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">1. MMLab + DeepFashion 服饰识别</h2>
-
-<p>项目地址: <a href="https://github.com/open-mmlab/mmfashion">https://github.com/open-mmlab/mmfashion</a></p>
-
-<p>香港中文大学多媒体实验室（Multimedia Lab）开展的MMFashion项目，是针对服饰领域提供的一个通用的toolbox(基于pytorch)</p>
-
-<p>主要功能有:</p>
+<p>具体实现方法: opencv的API中有几种不同的实现方案</p>
 
 <ul>
-<li>属性归类</li>
-<li>相似服装检索</li>
-<li>服饰关键点检测</li>
+<li>Lucas–Kanade method: calcOpticalFlowPyrLK</li>
+<li>The Gunnar-Farneback optical flow: calcOpticalFlowFarneback</li>
+<li>block matching method: CalcOpticalFlowBM</li>
 </ul>
 
-<p>使用：<br/>
-可以按照说明开始 <a href="https://github.com/open-mmlab/mmfashion/blob/master/docs/GETTING_STARTED.md">https://github.com/open-mmlab/mmfashion/blob/master/docs/GETTING_STARTED.md</a><br/>
-同时可以替换成自己的数据集 ,<br/>
-含有的基础model: <a href="https://github.com/open-mmlab/mmfashion/blob/master/docs/MODEL_ZOO.md">https://github.com/open-mmlab/mmfashion/blob/master/docs/MODEL_ZOO.md</a></p>
+<p><a href="https://github.com/yjxiong/dense_flow">https://github.com/yjxiong/dense_flow</a></p>
 
                         
                       </div>
@@ -206,10 +166,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/3/10</span>
+                    <span class="date">2020/6/10</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='tools.html'>tools</a></span>
+          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
           				   
                     
 
@@ -225,121 +185,14 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037708871.html">
+                <a class="clearlink" href="15917693533998.html">
                 
-                  <h1>TF1.0-slim  图像识别模型—— 1.利用已有的进行微调</h1>
+                  <h1>process</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><strong>模型库tensorflow-slim</strong></p>
-
-<p>slim 模型库是tensorflow1.0 中专门做图像分类的model库，官网说明:<br/>
-<a href="https://github.com/tensorflow/models/tree/master/research/slim">https://github.com/tensorflow/models/tree/master/research/slim</a></p>
-
-<p>该库中有些用法只适合tf1.0版本，tf2.0中已经没有了，所以安装的时候tf2.0在使用中会报错<br/>
-<code>conda install tensorflow=1.14</code></p>
-
-<p>微调(fine-tune)的基本原理</p>
-
-<h2 id="toc_0">1.准备数据</h2>
-
-<pre><code class="language-text">python download_and_convert_data.py \
-    --dataset_name=mnist \
-    --dataset_dir=/tmp/mnist
-</code></pre>
-
-<pre><code class="language-text"> python data_convert.py -t pic --train-shards 2 --validation-shards 2 --num-threads 2 --dataset-name guangdong
-</code></pre>
-
-<p>执行完后会在pic下生成tf格式的训练+测试数据，以及label.txt<br/>
-<img src="media/15388051366041/15388065002449.jpg" alt=""/></p>
-
-<h2 id="toc_1">2.使用tensorflow的slim微调模型</h2>
-
-<p>简单介绍下google的这个图像分类工具包tensorflow-slim</p>
-
-<pre><code class="language-text">├── README.md
-├── datasets                    # 定义训练时候使用的数据。如果是自己的数据，必须在此文件夹下定义
-├── deployment
-├── download_and_convert_data.py
-├── export_inference_graph.py
-├── export_inference_graph_test.py
-├── nets                        # 定义了一些常用的网络，比如vgg16，vgg19，resnet等
-├── preprocessing               # 在读入图像前，对图像做的一些预处理
-├── scripts
-│   ├── finetune_inception_v1_on_flowers.sh
-│   ├── finetune_inception_v3_on_flowers.sh
-│   ├── finetune_resnet_v1_50_on_flowers.sh
-│   ├── train_cifarnet_on_cifar10.sh
-│   └── train_lenet_on_mnist.sh
-├── setup.py
-├── slim_walkthrough.ipynb
-├── eval_image_classifier.py      # 验证模型入口
-└── train_image_classifier.py     # 训练模型入口
-</code></pre>
-
-<p>(1) 定义新的dataset文件</p>
-
-<p>仿照<code>datasets/flowers.py</code> 写一个自己的数据文件<code>guangdong.py</code> 并且在<code>dataset_factory.py</code>中进行注册</p>
-
-<p>(2)准备训练文件夹</p>
-
-<p>(3)train model</p>
-
-<pre><code class="language-text">python train_image_classifier.py \
-  --train_dir=guangdong/train_dir \
-  --dataset_name=guangdong \
-  --dataset_split_name=train \
-  --dataset_dir=guangdong/data \
-  --model_name=inception_v3 \
-  --checkpoint_path=guangdong/pretrained/inception_v3.ckpt \
-  --checkpoint_exclude_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
-  --trainable_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
-  --max_number_of_steps=100000 \
-  --batch_size=32 \
-  --learning_rate=0.001 \
-  --learning_rate_decay_type=fixed \
-  --save_interval_secs=300 \
-  --save_summaries_secs=2 \
-  --log_every_n_steps=10 \
-  --optimizer=rmsprop \
-  --weight_decay=0.00004
-
-</code></pre>
-
-<p>如果执行后报错<code>Cannot assign a device for operation &#39;InceptionV3/AuxLogits/Conv2d_2b_1x1/weights/RMSProp1&#39;: Could not satisfy explicit device specification &#39;/device:GPU:0&#39; because no supported kernel for GPU devices is available</code> 之类的话</p>
-
-<p>可以参看这个的解决办法<a href="https://blog.csdn.net/xd_wjc/article/details/80550862">https://blog.csdn.net/xd_wjc/article/details/80550862</a></p>
-
-<p>tensorboard 查看任务运行情况</p>
-
-<pre><code class="language-text">tensorboard --logdir guangdong/train_dir
-</code></pre>
-
-<p>训练完毕之后进行模型评估</p>
-
-<pre><code class="language-text">python eval_image_classifier.py \
-  --checkpoint_path=guangdong/train_dir \
-  --eval_dir=guangdong/eval_dir \
-  --dataset_name=guangdong \
-  --dataset_split_name=validation \
-  --dataset_dir=guangdong/data \
-  --model_name=inception_v3
-</code></pre>
-
-<h3 id="toc_2">案例</h3>
-
-<p><a href="https://github.com/ns2250225/python3_tf_slim_image_classify">https://github.com/ns2250225/python3_tf_slim_image_classify</a></p>
-
-<p><a href="https://blog.csdn.net/qq_42556555/article/details/90237131">https://blog.csdn.net/qq_42556555/article/details/90237131</a></p>
-
-<p><a href="https://www.jianshu.com/p/1cbf9aae15b6">https://www.jianshu.com/p/1cbf9aae15b6</a></p>
-
-<h2 id="toc_3">阿里云服务</h2>
-
-<p><a href="https://help.aliyun.com/document_detail/49571.html#OSS">https://help.aliyun.com/document_detail/49571.html#OSS</a></p>
-
+                        	
                         
                       </div>
                   </div>
@@ -347,10 +200,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2020/6/10</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB.html'>图像分类</a></span>
+          					    <span class="posted-in"><a href='%E5%A7%BF%E6%80%81%E8%AF%86%E5%88%AB.html'>姿态识别</a></span>
           				   
                     
 
@@ -366,34 +219,21 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15825969970925.html">
+                <a class="clearlink" href="15917597006543.html">
                 
-                  <h1>TF2.0</h1>
+                  <h1>业务</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><a href="https://tensorflow.google.cn/tutorials/images/classification">https://tensorflow.google.cn/tutorials/images/classification</a></p>
+                        	<p>为确定要识别哪些行为，可以根据特征，将最后一层的输出做聚类？？ 看下都有哪些行为？？</p>
 
-<pre><code class="language-text">一个简单的方法是创建一个新的 Model 来输出你所感兴趣的层：
+<p>行为分类：</p>
 
-from keras.models import Model
-
-model = ...  # 创建原始模型
-
-layer_name = &#39;my_layer&#39;
-intermediate_layer_model = Model(inputs=model.input,
-                                 outputs=model.get_layer(layer_name).output)
-intermediate_output = intermediate_layer_model.predict(data)
-或者，你也可以构建一个 Keras 函数，该函数将在给定输入的情况下返回某个层的输出，例如：
-
-from keras import backend as K
-
-get_3rd_layer_output = K.function([model.layers[0].input],
-                                  [model.layers[3].output])
-layer_output = get_3rd_layer_output([x])[0]
-
-</code></pre>
+<ul>
+<li>图像分类</li>
+<li>视频理解</li>
+</ul>
 
                         
                       </div>
@@ -402,10 +242,10 @@ layer_output = get_3rd_layer_output([x])[0]
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/2/25</span>
+                    <span class="date">2020/6/10</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='7%20CV.html'>7 CV</a></span>
+          					    <span class="posted-in"><a href='%E5%A7%BF%E6%80%81%E8%AF%86%E5%88%AB.html'>姿态识别</a></span>
           				   
                     
 
@@ -421,82 +261,39 @@ layer_output = get_3rd_layer_output([x])[0]
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037690385.html">
+                <a class="clearlink" href="15917572981552.html">
                 
-                  <h1>face_recgnization</h1>
+                  <h1>综述_关键点检测</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>github<br/>
-<a href="https://github.com/ageitgey/face_recognition">https://github.com/ageitgey/face_recognition</a></p>
+                        	<h2 id="toc_0">3.关键点检测</h2>
 
-<h2 id="toc_0">1. 安装</h2>
+<p>总结：<a href="https://zhuanlan.zhihu.com/p/102457223">https://zhuanlan.zhihu.com/p/102457223</a></p>
 
-<p>文档： <a href="https://zhuanlan.zhihu.com/p/28271869">https://zhuanlan.zhihu.com/p/28271869</a></p>
+<p>人体关键点检测按照是否包含3维深度信息可以分为2D和3D检测</p>
 
-<pre><code class="language-text">pip install face_recognition
-</code></pre>
+<p><img src="media/15895350398690/15904079979954.jpg" alt="" style="width:971px;"/></p>
 
-<p>直接安装会报错，安装face_recognition这个之前需要先安装编译dlib</p>
+<ul>
+<li><p>openpose<br/>
+用的是bottom-up的方式，先检测所有关键点，然后对关键点进行分组关联。以CPM（卷积pose Machine）为基础。</p></li>
+<li><p>CPM（top-down）<br/>
+详细介绍：<a href="https://zhuanlan.zhihu.com/p/102468356">https://zhuanlan.zhihu.com/p/102468356</a></p></li>
+</ul>
 
-<pre><code class="language-text">brew install boost
-brew install boost-python --with-python3
+<p>基于深度学习的检测方法可以简单的划分为skeleton-based 和 video-based<br/>
+<strong>(1)skeleton-based</strong><br/>
+需要先将基本骨架识别出来然后再做检测<br/>
+ST-NBNN: Spatio-Temporal Naive-Bayes Nearest-Neighbor (ST-NBNN) for Skeleton-Based Action Recognition 2017cvpr</p>
 
-# install dlib
-git clone https://github.com/davisking/dlib.git
-cd dlib
-mkdir build; cd build; cmake .. -DDLIB_USE_CUDA=0 -DUSE_AVX_INSTRUCTIONS=1; cmake --build 
+<p>☆☆图卷积方法 ST-GCN:Spatial Temporal Graph Convolutional Networks for Skeleton Based Action Recognition AAAI2018（开源）</p>
 
-cd ..
-python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
-</code></pre>
-
-<p>If there is no cmake on your mac, you can use  <code>brew install cmake</code>. After all these have been done, run</p>
-
-<pre><code class="language-text">pip install face_recognition
-</code></pre>
-
-<h2 id="toc_1">2.usage</h2>
-
-<p>face_recognition有两种使用方式，命令行方式和python包方式</p>
-
-<p>(1) 命令行方式</p>
-
-<p>(2) python 包<br/>
-<a href="https://face-recognition.readthedocs.io/en/latest/face_recognition.html#module-face_recognition.api">https://face-recognition.readthedocs.io/en/latest/face_recognition.html#module-face_recognition.api</a></p>
-
-<p></p>
-
-<h2 id="toc_2">参考资料</h2>
-
-<p><a href="https://zhuanlan.zhihu.com/p/28271869">https://zhuanlan.zhihu.com/p/28271869</a></p>
-
-<p><a href="https://medium.com/@ageitgey">https://medium.com/@ageitgey</a></p>
-
-<hr/>
-
-<p><a href="https://www.jianshu.com/p/281aa6a3823a">https://www.jianshu.com/p/281aa6a3823a</a></p>
-
-<p>一个案例<br/>
-<a href="https://www.jianshu.com/p/38ca6daf6b40">https://www.jianshu.com/p/38ca6daf6b40</a><br/>
-<a href="http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html">http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html</a></p>
-
-<p>tf案例<br/>
-<a href="https://blog.csdn.net/u010016927/article/details/75722416">https://blog.csdn.net/u010016927/article/details/75722416</a></p>
-
-<p>knn<br/>
-<a href="https://www.leiphone.com/news/201707/gIbNsPtWk460m5vj.html">https://www.leiphone.com/news/201707/gIbNsPtWk460m5vj.html</a></p>
-
-<p><a href="https://blog.csdn.net/Mbx8X9u/article/details/79124840">https://blog.csdn.net/Mbx8X9u/article/details/79124840</a></p>
-
-<p><a href="https://www.ctolib.com/topics-101544.html">https://www.ctolib.com/topics-101544.html</a></p>
-
-<p><a href="https://www.oschina.net/code/snippet_2558914_54339">https://www.oschina.net/code/snippet_2558914_54339</a></p>
-
-<h2 id="toc_3">new</h2>
-
-<p><a href="https://www.leiphone.com/news/201704/rYdpAvh4SvgVPpRQ.html">https://www.leiphone.com/news/201704/rYdpAvh4SvgVPpRQ.html</a></p>
+<p><strong>(2)video-based</strong><br/>
+常用的方法有3D卷积<br/>
+RNN/LSTM<br/>
+双流法: 一个分支计算空间特征，一个分支用光流计算运动特征，最后整合进行行为识别</p>
 
                         
                       </div>
@@ -505,10 +302,128 @@ python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2020/6/10</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='face.html'>face</a></span>
+          					    <span class="posted-in"><a href='%E5%A7%BF%E6%80%81%E8%AF%86%E5%88%AB.html'>姿态识别</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15916704949564.html">
+                
+                  <h1>【工具】MMlab——mmaction</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">mmaction</h3>
+
+<p>MMAction is capable of dealing with all of the tasks below.</p>
+
+<ul>
+<li>action recognition from trimmed videos</li>
+<li>temporal action detection (also known as action localization) in untrimmed videos</li>
+<li>spatial-temporal action detection in untrimmed videos.</li>
+</ul>
+
+<p><strong>modelzoo</strong><br/>
+mmaction中自带的model默认都是用Kinetics-400 这个数据训练的。<br/>
+<a href="https://github.com/open-mmlab/mmaction/blob/master/MODEL_ZOO.md">https://github.com/open-mmlab/mmaction/blob/master/MODEL_ZOO.md</a></p>
+
+<p><strong>数据格式</strong><br/>
+<a href="https://github.com/open-mmlab/mmaction/blob/master/DATASET.md">https://github.com/open-mmlab/mmaction/blob/master/DATASET.md</a><br/>
+mmaction支持两种数据格式: raw frames 和video. raw frame较快，占用空间多。video的占用空间少，相对慢一些(可以使用decord进行加速)</p>
+
+<p><strong>代码结构</strong></p>
+
+<pre><code class="language-text">|── data_tool   # 数据准备，包含不同数据集的预处理
+|── data
+|── tools      # train, test
+|── configs   # train 构造每个模型的配置文件
+|── test_configs   # test 构造每个模型的配置文件
+|── modelzoo/   # model
+</code></pre>
+
+<p>数据准备</p>
+
+<pre><code class="language-shell"># 1. 准备数据
+cd data_tools/ucf101/
+bash download_annotations.sh
+bash download_videos.sh   # 一共6G多，可以中间终端，只取部分
+# 提取frames，这里是调用的dense_flow工具
+bash extract_frames.sh   
+# Run the follow script to generate filelist in the format of rawframes and videos.
+bash generate_filelist.sh
+</code></pre>
+
+<pre><code class="language-shell"># 下载模型
+wget -c https://open-mmlab.s3.ap-northeast-2.amazonaws.com/mmaction/models/ucf101/tsn_2d_rgb_bninception_seg3_f1s1_b32_g8-98160339.pth -P ./modelzoo/
+
+bash tools/dist_test_recognizer.sh test_configs/TSN/ucf101/tsn_rgb_bninception.py modelzoo/tsn_2d_rgb_bninception_seg3_f1s1_b32_g8-98160339.pth 8
+</code></pre>
+
+<pre><code class="language-shell"># 模型训练
+./tools/dist_train_xxx.sh $config_file $GPU_Num
+# 模型评估
+python tools/test_${ARCH}.py ${CONFIG_FILE} ${CHECKPOINT_FILE} [--out ${RESULT_FILE}] 
+</code></pre>
+
+<p>test_recognizer:</p>
+
+<ul>
+<li>code里面最后默认输出到default.pkl中，每个二级目录都有一个长度101的向量(ucf101数据),向量的每个值就是在各个类别上的得分。最终取np.argmax()就可以认为是对应的类别了.</li>
+<li>具体每个类别编号的含义可以在<code>data/ucf101/annotations/clasInd.txt</code>看到</li>
+</ul>
+
+<pre><code class="language-python">import pickle
+outputs = pickle.load(open(&#39;xxx&#39;, &#39;rb&#39;), encoding=&#39;utf-8&#39;)
+</code></pre>
+
+<p>采坑：</p>
+
+<ul>
+<li>其中有很多CUDA, gpu的编译，设置，如果在自己电脑上的话，需要将相关的code注释掉</li>
+<li>安装的mmcv，在运行mmaction tools/test_recognizer.py的时候总报错，是python版本问题，不支持f语法</li>
+<li>docker hub上有人提供 mlouieunm/mmaction:latest。 实验了下环境还是有问题</li>
+</ul>
+
+<p>使用colab的GPU资源.<br/>
+下载数据啥的速度是真快。。。<br/>
+问题：<br/>
+Q1: RuntimeError: CUDA out of memory<br/>
+batch_size</p>
+
+<p>mmaction docker:</p>
+
+<p>（1）测试使用 <code>mlouieunm/mmaction:latest</code><br/>
+注意：这个docker环境中的mmaction并不是最新的，需要git pull下，才会更行到新版，支持其他的数据。。好像还是环境有问题，放弃<br/>
+（2）docker pull apulistech/mmaction:0.1</p>
+
+<p>NVIDIA-DOCKER   <a href="https://github.com/NVIDIA/nvidia-docker">https://github.com/NVIDIA/nvidia-docker</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/6/9</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%A7%BF%E6%80%81%E8%AF%86%E5%88%AB.html'>姿态识别</a></span>
           				   
                     
 
@@ -597,6 +512,8 @@ python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
         
             <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
+            <a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html"><strong>11 平台架构</strong></a>
+        
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E5%85%B6%E4%BB%96.html"><strong>其他</strong></a>
@@ -616,31 +533,31 @@ python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
 	      
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">0.综述</a>
+			        <a href="15917706614562.html">optical flow 光流</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637036455584.html">1 估计的置信度</a>
+			        <a href="15917693533998.html">process</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037681646.html">1 基础工具包安装pip</a>
+			        <a href="15917597006543.html">业务</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637025346412.html">1. conda 环境管理</a>
+			        <a href="15917572981552.html">综述_关键点检测</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037713554.html">1. 数据可视化概述</a>
+			        <a href="15916704949564.html">【工具】MMlab——mmaction</a>
 			      </li>
 		     
 		  

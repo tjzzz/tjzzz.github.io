@@ -103,6 +103,8 @@
         
             <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
+            <li><a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html">11 平台架构</a></li>
+        
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E5%85%B6%E4%BB%96.html">其他</a></li>
@@ -128,29 +130,51 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15686309605233.html">
+                <a class="clearlink" href="15794012608721.html">
                 
-                  <h1>matplotlib</h1>
+                  <h1>Attention Mechanism</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>matplotlib是python绘图的一个基础包，其用法和matlab语法有些相似。<br/>
-大量第三方包扩展并构建了Matplotlib功能，包括几个较高级别的绘图接口(seaborn、holoviews、ggplot 等)，以及两个投影和绘图工具包(basemap和cartopy)<br/>
-这里总结一些基本用法</p>
+                        	<p>attention是一种基于提升RNN的encoder + decoder效果的机制。 attention机制可以对输入X的每个部分赋予不同的权重，抽取出更加重要的信息和特征。</p>
 
-<h2 id="toc_0">1.matplotlib.pylab</h2>
+<p>(1)attention机制解决的主要问题</p>
 
-<h2 id="toc_1">2.matplotlib.pyplot</h2>
+<p>以rnn机器翻译为例</p>
 
-<p><img src="media/15686309605233/15686322692816.png" alt=""/></p>
+<ul>
+<li>不管多长的句子，都会最终被压缩到一个固定长度的隐向量，这样会有信息损失、</li>
+<li>序列场景下，每个item的权重都是一样的；类似的，图像场景下，每个像素的权重也是一样的。注意力机制其实和人识别东西有些类似，人会先看到物体的关键部分特征，然后整合成整体。</li>
+</ul>
 
-<pre><code class="language-text">import matplotlib.pyplot as plt
-plt.plot(x, y, 其他属性)
-</code></pre>
+<p>seq2seq结构</p>
 
-<p>pyplot是matplotlib中最常用的模块，</p>
+<h2 id="toc_0">常见的一些attention模型</h2>
 
+<p>按照涉及的序列个数分类：<br/>
+(1) self-attention</p>
+
+<p>序列=&gt; 类别，文本分类</p>
+
+<p>(2) distinctive attention</p>
+
+<p>序列 =&gt; 序列， 机器翻译</p>
+
+<p>(3) co-attention<br/>
+多于2个序列，比如给定一张图片和一个问题，需要生成响应的答案</p>
+
+<p>按encoder序列参与计算attention的位置分<br/>
+(1) soft attention<br/>
+(2) hard attention</p>
+
+<p>参考资料：</p>
+
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/73357761">https://zhuanlan.zhihu.com/p/73357761</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/31547842">https://zhuanlan.zhihu.com/p/31547842</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/43493999">https://zhuanlan.zhihu.com/p/43493999</a></li>
+</ul>
 
                         
                       </div>
@@ -158,11 +182,135 @@ plt.plot(x, y, 其他属性)
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15686309605233.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2019/9/16</span>
+                  
+                    <span class="date">2020/1/19</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html'>3 数据可视化</a></span>
+          					    <span class="posted-in"><a href='6%20NLP.html'>6 NLP</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15792628943260.html">
+                
+                  <h1>review 发展</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ul>
+<li><p>2018 Bert</p></li>
+<li><p>2017 年 Vaswani 的 Transformer</p></li>
+<li><p>2013 年 Mikolov 的 Word2vec</p></li>
+<li><p>2003 年 Bengio 的 NNLM;</p></li>
+</ul>
+
+<h2 id="toc_0">Transformer 《Attention Is All You Need》</h2>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/1/17</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='6%20NLP.html'>6 NLP</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15784847557033.html">
+                
+                  <h1>异常值</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/1/8</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15784024732012.html">
+                
+                  <h1>sequence cluster</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><a href="https://docs.microsoft.com/en-us/analysis-services/data-mining/microsoft-sequence-clustering-algorithm">https://docs.microsoft.com/en-us/analysis-services/data-mining/microsoft-sequence-clustering-algorithm</a></p>
+
+<p><a href="https://www.sciencedirect.com/topics/medicine-and-dentistry/sequence-clustering">https://www.sciencedirect.com/topics/medicine-and-dentistry/sequence-clustering</a></p>
+
+<h2 id="toc_0">1.process mining approaches</h2>
+
+<ul>
+<li>α-算法 xxxx</li>
+<li>推断类方法 FSM(finite state machine)： 马尔科夫model</li>
+<li>DAG</li>
+<li>HMM<br/></li>
+</ul>
+
+<p>QQ: 如何去解释每个类别的含义，抽象出其表征</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/1/7</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html'>轨迹分析</a></span>
           				   
                     
 
@@ -213,206 +361,6 @@ streamlit hello
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html'>3 数据可视化</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025345613.html">
-                
-                  <h1>query文本聚类</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ul>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 是不是cache问题tf-idf</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 添加下降维的步骤</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 稀疏矩阵</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 数据切分更小li&#39;du</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Mini Batch KMeans <a href="http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/">http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/</a></li>
-</ul>
-
-<p>实验全量的<br/>
-<a href="http://yq01-tianqi-spark-yarn00.yq01.baidu.com:8388/proxy/application_1511855101950_42074/">http://yq01-tianqi-spark-yarn00.yq01.baidu.com:8388/proxy/application_1511855101950_42074/</a></p>
-
-<hr/>
-
-<p>刚哥的代码：<a href="https://github.com/honestOrg/gxdgroup/blob/master/src/main/scala/cn/com/gxdgroup/dataplatform/avm/utils/AVMUtils.scala">https://github.com/honestOrg/gxdgroup/blob/master/src/main/scala/cn/com/gxdgroup/dataplatform/avm/utils/AVMUtils.scala</a></p>
-
-<h2 id="toc_0">全量</h2>
-
-<p>前期构造词频矩阵：</p>
-
-<h2 id="toc_1">1.生成原始的词频矩阵</h2>
-
-<ul>
-<li><a href="http://spark.apache.org/docs/latest/ml-features.html#countvectorizer">http://spark.apache.org/docs/latest/ml-features.html#countvectorizer</a></li>
-<li><code>examples/src/main/python/sql/basic.py</code></li>
-</ul>
-
-<p>输入数据：每行是切分好的term</p>
-
-<pre><code class="language-text">spark = SparkSession.builder.appName(&quot;CountVectorizerExample&quot;).getOrCreate()
-sc = spark.sparkContext
-# $example on$
-# Input data: Each row is a bag of words with a ID.
-
-lines = sc.textFile(&quot;/user/ubs/kce/zhenzhen/spark/test_data/corpus_title2&quot;)
-parts = lines.map(lambda l: l.split(&#39;#&#39;))   # convert all the term to a list
-termRDD = parts.map(lambda p: Row(tid=p[0], words=p[1].split(&#39; &#39;)))
-
-df = spark.createDataFrame(termRDD)
-# fit a CountVectorizerModel from the corpus.
-cv = CountVectorizer(inputCol=&quot;words&quot;, outputCol=&quot;features&quot;)
-#, vocabSize=3, minDF=2.0)
-
-model = cv.fit(df)
-
-result = model.transform(df)
-</code></pre>
-
-<h2 id="toc_2">2.tf-idf</h2>
-
-<ul>
-<li><a href="http://spark.apache.org/docs/latest/mllib-feature-extraction.html#tf-idf">http://spark.apache.org/docs/latest/mllib-feature-extraction.html#tf-idf</a></li>
-<li><a href="http://spark.apache.org/docs/latest/ml-features.html#feature-extractors">http://spark.apache.org/docs/latest/ml-features.html#feature-extractors</a>
-ml中的函数比mllib中的多<br/>
-examples/src/main/python/mllib/tf_idf_example.py</li>
-</ul>
-
-<pre><code class="language-text">~/zhenzhen/spark_study/spark/examples/src/main/python/mllib $  pyspark zzz_tf_idf_example.py
-</code></pre>
-
-<h2 id="toc_3">3.降维</h2>
-
-<h2 id="toc_4">4.直接聚类</h2>
-
-<pre><code class="language-text"> # pyspark这个默认是启动的集群任务，之前测试的本地数据会出错，脚本中需把输入目录改成集群路径
-  ~/zhenzhen/spark_study $  pyspark kmeans.py  &gt; log.test
-</code></pre>
-
-<h2 id="toc_5">六神合体</h2>
-
-<ul>
-<li>词频矩阵+tfidf</li>
-</ul>
-
-<p><a href="http://www.zengyilun.com/spark-similarity/">http://www.zengyilun.com/spark-similarity/</a></p>
-
-<p>上述所有步骤(tfidf，降维,聚类)合并在一起</p>
-
-<pre><code class="language-text"> # pyspark这个默认是启动的集群任务，之前测试的本地数据会出错，脚本中需把输入目录改成集群路径
-  ~/zhenzhen/spark_study $  pyspark tfidf_kmeans.py  &gt; log.test
-  这个测试ok，但是中心点都是0，应该是数据问题
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037678380.html">
-                
-                  <h1>rCharts</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><a href="http://rdatascience.io/rCharts/">http://rdatascience.io/rCharts/</a></p>
-
-<p>作者的github主页<br/>
-<a href="http://ramnathv.github.io/rCharts">http://ramnathv.github.io/rCharts</a></p>
-
-<pre><code class="language-r"># install 
-require(devtools)## 标题 ##
-install_github(&#39;rCharts&#39;, &#39;ramnathv&#39;)
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html'>3 数据可视化</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15792628943260.html">
-                
-                  <h1>review 发展</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<ul>
-<li><p>2018 Bert</p></li>
-<li><p>2017 年 Vaswani 的 Transformer</p></li>
-<li><p>2013 年 Mikolov 的 Word2vec</p></li>
-<li><p>2003 年 Bengio 的 NNLM;</p></li>
-</ul>
-
-<h2 id="toc_0">Transformer 《Attention Is All You Need》</h2>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/1/17</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='6%20NLP.html'>6 NLP</a></span>
           				   
                     
 
@@ -501,6 +449,8 @@ install_github(&#39;rCharts&#39;, &#39;ramnathv&#39;)
         
             <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
+            <a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html"><strong>11 平台架构</strong></a>
+        
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E5%85%B6%E4%BB%96.html"><strong>其他</strong></a>
@@ -520,31 +470,31 @@ install_github(&#39;rCharts&#39;, &#39;ramnathv&#39;)
 	      
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">0.综述</a>
+			        <a href="15917706614562.html">optical flow 光流</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637036455584.html">1 估计的置信度</a>
+			        <a href="15917693533998.html">process</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037681646.html">1 基础工具包安装pip</a>
+			        <a href="15917597006543.html">业务</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637025346412.html">1. conda 环境管理</a>
+			        <a href="15917572981552.html">综述_关键点检测</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037713554.html">1. 数据可视化概述</a>
+			        <a href="15916704949564.html">【工具】MMlab——mmaction</a>
 			      </li>
 		     
 		  

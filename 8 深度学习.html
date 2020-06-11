@@ -103,6 +103,8 @@
         
             <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
+            <li><a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html">11 平台架构</a></li>
+        
             <li><a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html">数据科学-清单</a></li>
         
             <li><a href="%E5%85%B6%E4%BB%96.html">其他</a></li>
@@ -127,6 +129,75 @@
 	<div class="large-8 medium-8 columns">
 		<div class="markdown-body home-categories">
 		
+			<div class="article">
+                <a class="clearlink" href="15637037731128.html">
+                
+                  <h1>第八章 深度模型中的优化</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">8.1 优化与学习</h2>
+
+<p>本章主要关注这一类特定的优化问题:寻找神经网络上的一组参数 θ，它能显 著地降低代价函数 J(θ)，该代价函数通常包括整个训练集上的性能评估和额外的正 则化项。</p>
+
+<p>通常来说极其学习的算法目标大概可以写成，降低期望泛化误差。即<strong>风险</strong><br/>
+<img src="media/15209459008411/15209462294325.jpg" alt=""/></p>
+
+<p>其中p_data是真实的分布，实际中我们只能最小化<strong>经验风险</strong><br/>
+<img src="media/15209459008411/15209463229280.jpg" alt=""/></p>
+
+<h2 id="toc_1">8.2神经网络优化中的挑战</h2>
+
+<ul>
+<li>病态： hessain矩阵病态</li>
+<li>局部最小值：对于非凸函数可能存在多个局部最小值。</li>
+<li>。。。</li>
+</ul>
+
+<h2 id="toc_2">8.3基本算法</h2>
+
+<p>梯度下降机器变种一般是机器学习中应用较多的优化算法。</p>
+
+<h3 id="toc_3">(1)随机梯度下降SGD</h3>
+
+<p><img src="media/15209459008411/15221677256921.jpg" alt=""/></p>
+
+<h3 id="toc_4">（2）动量</h3>
+
+<p>动量是比SGD速度更快的一种方法，SGD相当于只是考虑梯度的方向，而动量是在此基础上加上速度。</p>
+
+<p><img src="media/15209459008411/15221680917826.jpg" alt=""/></p>
+
+<h2 id="toc_5">8.4 参数初始化</h2>
+
+<h2 id="toc_6">参考资料</h2>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>8 深度学习</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
 			<div class="article">
                 <a class="clearlink" href="15637037677008.html">
                 
@@ -177,6 +248,157 @@
 <p><img src="media/15227606288131/15227718128055.jpg" alt=""/><br/>
 具体操作，先用lasso选择k个特征，然后用最小二乘学习特征的权重，K-LASSO<br/>
 <img src="media/15227606288131/15227724362604.jpg" alt=""/></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>8 深度学习</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037679634.html">
+                
+                  <h1>神经网络解释性问题</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><a href="https://ask.hellobi.com/blog/zlx19930503/10578">https://ask.hellobi.com/blog/zlx19930503/10578</a></p>
+
+<p>但是深度学习是一个黑箱。我第一次听说它时，就对其工作原理非常费解。几年过去了，我仍然在探索合理的答案。尝试解释现代神经网络很难，但是至关重要。如果我们打算依赖深度学习制造新的 AI、处理敏感的用户数据，或者开药，那么我们必须理解这些模型的工作原理。</p>
+
+<p>很幸运，学界人士也提出了很多对深度学习的理解。以下是几个近期论文示例：</p>
+
+<h2 id="toc_0">Grad-Cam（Selvaraju et. al. 2017）</h2>
+
+<p>使用最后卷积层的梯度生成热力图，突出显示输入图像中的重要像素用于分类。</p>
+
+<h2 id="toc_1">LIME（Ribeiro et. al. 2016）</h2>
+
+<p>使用稀疏线性模型（可轻松识别重要特征）逼近 DNN 的预测。</p>
+
+<p>论文地址：<a href="https://arxiv.org/abs/1602.04938">https://arxiv.org/abs/1602.04938</a></p>
+
+<p>一些中文解读：<a href="https://www.oreilly.com.cn/ideas/?p=563%EF%BC%9B">https://www.oreilly.com.cn/ideas/?p=563；</a><br/>
+<a href="http://geek.csdn.net/news/detail/66259">http://geek.csdn.net/news/detail/66259</a></p>
+
+<p>一个例子<br/>
+<a href="http://marcotcr.github.io/lime/tutorials/Lime%20-%20basic%20usage%2C%20two%20class%20case.html">http://marcotcr.github.io/lime/tutorials/Lime%20-%20basic%20usage%2C%20two%20class%20case.html</a></p>
+
+<p><a href="https://www.jiqizhixin.com/articles/2017-12-20-2">https://www.jiqizhixin.com/articles/2017-12-20-2</a></p>
+
+<h2 id="toc_2">特征可视化（Olah 2017）</h2>
+
+<p>对于带有随机噪声的图像，优化像素来激活训练的 DNN 中的特定神经元，进而可视化神经元学到的内容。</p>
+
+<h2 id="toc_3">Loss Landscape（Li et. al. 2017）</h2>
+
+<p>可视化 DNN 尝试最小化的非凸损失函数，查看架构／参数如何影响损失情况。</p>
+
+<h2 id="toc_4">关于xgboost</h2>
+
+<p>R: <a href="https://github.com/AppliedDataSciencePartners/xgboostExplainer">https://github.com/AppliedDataSciencePartners/xgboostExplainer</a><br/>
+python <a href="https://github.com/gameofdimension/xgboost_explainer">https://github.com/gameofdimension/xgboost_explainer</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>8 深度学习</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037679680.html">
+                
+                  <h1>第四章 数值计算</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">1.数值精度</h2>
+
+<p>这部分对于了解具体的算法并没影响，但是在进行底层库开发时候经常会遇到，可能会出现<strong>上溢</strong>或者<strong>下溢</strong></p>
+
+<p>（1）病态条件</p>
+
+<p>条件数：表示函数相对于输入的微小变化而变化的快慢程度。<br/>
+比如矩阵求逆运算的条件数=最大和最小特征值的模的比</p>
+
+<h2 id="toc_1">2.优化算法</h2>
+
+<ul>
+<li>梯度下降</li>
+<li>牛顿法</li>
+</ul>
+
+<p>一般把需要最优化的函数称为<strong>目标函数</strong></p>
+
+<p><strong>梯度下降</strong></p>
+
+<p>对于一个多维输入函数f，梯度\(\triangledown_x f(x)\),其在u方向上的<strong>方向导数</strong>，相当于f在u方向上的斜率<br/>
+\(f(x+\alpha u)\)关于\(\alpha\)的导数(在\(\alpha =0\)时取得)</p>
+
+<p>\[\frac{\partial}{\partial \alpha}f(x+\alpha u)=u^T\triangledown_x f(x)\]</p>
+
+<p>为了是f最小，希望找到f下降最快的方向，因此有<br/>
+\[min u^T\triangledown_x f(x)\]<br/>
+u取为单位向量，很明显是在u和f夹角180时候，也就是两个完全相反的时候，下降最快。<br/>
+梯度下降： \(x&#39;=x-\epsilon \triangledown_x f(x)\)</p>
+
+<p><strong>牛顿法</strong></p>
+
+<p>Hessian矩阵，二阶导数<br/>
+<img src="media/15080580137304/15082408605128.jpg" alt=""/></p>
+
+<h2 id="toc_2">3.有限制的约束</h2>
+
+<p>对于有限制的优化，有时候可以将约束条件转化到原始的优化函数中，这里主要介绍一下通用的方法：<strong>KKT方法</strong>(拉格朗日方法的推广，可以非等式约束)</p>
+
+<pre><code class="language-text">@@@
+http://blog.csdn.net/mr_kktian/article/details/53750424
+</code></pre>
+
+<h2 id="toc_3">参考资料</h2>
+
+<p>梯度下降法 扩展阅读： <a href="https://www.jiqizhixin.com/articles/2016-11-21-4">https://www.jiqizhixin.com/articles/2016-11-21-4</a><br/>
+<a href="http://www.cnblogs.com/maybe2030/p/4751804.html">http://www.cnblogs.com/maybe2030/p/4751804.html</a></p>
 
                         
                       </div>
@@ -296,232 +518,6 @@
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15637037679634.html">
-                
-                  <h1>神经网络解释性问题</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><a href="https://ask.hellobi.com/blog/zlx19930503/10578">https://ask.hellobi.com/blog/zlx19930503/10578</a></p>
-
-<p>但是深度学习是一个黑箱。我第一次听说它时，就对其工作原理非常费解。几年过去了，我仍然在探索合理的答案。尝试解释现代神经网络很难，但是至关重要。如果我们打算依赖深度学习制造新的 AI、处理敏感的用户数据，或者开药，那么我们必须理解这些模型的工作原理。</p>
-
-<p>很幸运，学界人士也提出了很多对深度学习的理解。以下是几个近期论文示例：</p>
-
-<h2 id="toc_0">Grad-Cam（Selvaraju et. al. 2017）</h2>
-
-<p>使用最后卷积层的梯度生成热力图，突出显示输入图像中的重要像素用于分类。</p>
-
-<h2 id="toc_1">LIME（Ribeiro et. al. 2016）</h2>
-
-<p>使用稀疏线性模型（可轻松识别重要特征）逼近 DNN 的预测。</p>
-
-<p>论文地址：<a href="https://arxiv.org/abs/1602.04938">https://arxiv.org/abs/1602.04938</a></p>
-
-<p>一些中文解读：<a href="https://www.oreilly.com.cn/ideas/?p=563%EF%BC%9B">https://www.oreilly.com.cn/ideas/?p=563；</a><br/>
-<a href="http://geek.csdn.net/news/detail/66259">http://geek.csdn.net/news/detail/66259</a></p>
-
-<p>一个例子<br/>
-<a href="http://marcotcr.github.io/lime/tutorials/Lime%20-%20basic%20usage%2C%20two%20class%20case.html">http://marcotcr.github.io/lime/tutorials/Lime%20-%20basic%20usage%2C%20two%20class%20case.html</a></p>
-
-<p><a href="https://www.jiqizhixin.com/articles/2017-12-20-2">https://www.jiqizhixin.com/articles/2017-12-20-2</a></p>
-
-<h2 id="toc_2">特征可视化（Olah 2017）</h2>
-
-<p>对于带有随机噪声的图像，优化像素来激活训练的 DNN 中的特定神经元，进而可视化神经元学到的内容。</p>
-
-<h2 id="toc_3">Loss Landscape（Li et. al. 2017）</h2>
-
-<p>可视化 DNN 尝试最小化的非凸损失函数，查看架构／参数如何影响损失情况。</p>
-
-<h2 id="toc_4">关于xgboost</h2>
-
-<p>R: <a href="https://github.com/AppliedDataSciencePartners/xgboostExplainer">https://github.com/AppliedDataSciencePartners/xgboostExplainer</a><br/>
-python <a href="https://github.com/gameofdimension/xgboost_explainer">https://github.com/gameofdimension/xgboost_explainer</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>8 深度学习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025345079.html">
-                
-                  <h1>第一章 引言</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>别人的读后总结，可参考「Deep Learning」读书系列分享（一） | 分享总结</p>
-
-<p><a href="https://www.leiphone.com/news/201708/LEBNjZzvm0Q3Ipp0.html">https://www.leiphone.com/news/201708/LEBNjZzvm0Q3Ipp0.html</a></p>
-
-<h3 id="toc_0">需要明确的几个概念范围</h3>
-
-<p><img src="media/15075611675547/15075613801366.jpg" alt=""/></p>
-
-<p><img src="media/15075611675547/15075614908544.jpg" alt=""/></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>8 深度学习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025346077.html">
-                
-                  <h1>第七章 正则化</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>机器学习不止要求在训练数据上有良好的表现，还希望有较好的泛化能力，即在测试数据上也能减少测试误差。这些策略被统称为<strong>正则化</strong></p>
-
-<p>常见的一些正则化方法：</p>
-
-<h2 id="toc_0">1.参数范数惩罚</h2>
-
-<p>即在原有的优化函数中，添加一个对参数的惩罚，来限制模型的学习能力<br/>
-<img src="media/15120469131645/15206725126887.jpg" alt=""/></p>
-
-<p>(1) L2参数正则化<br/>
-L2正则化/岭回归，又叫权重衰减； 可以参照岭回归<br/>
-<img src="media/15120469131645/15206732558707.jpg" alt=""/></p>
-
-<p>(X⊤X + αI)−1 这个新矩阵与原来的是一样的，不同的仅仅是在对 角加了 α。这个矩阵的对角项对应每个输入特征的方差。我们可以看到，L2正则化能 让学习算法 ‘‘感知’’ 到具有较高方差的输入 x，因此与输出目标的协方差较小(相对 增加方差)的特征的权重将会收缩。</p>
-
-<p>（2）L1正则化： 具有稀疏性，很多会衰减成0，所以有时候会用来做变量选择lasso</p>
-
-<h2 id="toc_1">2.作为约束的范数惩罚</h2>
-
-<p>从另一个角度来看这个问题，可以被看做是构造一个广义拉格朗日函数来最小化带约束的函数</p>
-
-<p><img src="media/15120469131645/15206742273357.jpg" alt=""/></p>
-
-<p><img src="media/15120469131645/15206742365336.jpg" alt=""/></p>
-
-<p>最小化约束 + 重投影的角度</p>
-
-<h2 id="toc_2">3.正则化和欠约束问题</h2>
-
-<p>正则化还有个好处可以保证X&#39;X+aI 是可逆的</p>
-
-<h2 id="toc_3">4.数据集增强</h2>
-
-<p>可以通过一些方法在不改变label的情况下自己构造一批数据集，比如图像识别时候对图像的旋转；有些时候也可以通过输入噪声的方式来进行数据集增强。</p>
-
-<h2 id="toc_4">5.噪声鲁棒性</h2>
-
-<ul>
-<li>向模型的输入或者是权重中加入噪音。</li>
-<li>向输出目标中加入噪音，即标注数据有一定的错误，不是百分百准确的时候。<strong>标签平滑</strong>方法是将0，1分类，变为e/(k-1)和1-e的k个输出的softmax函数。（e是标注的错误率）</li>
-</ul>
-
-<h2 id="toc_5">6.半监督学习</h2>
-
-<p>大概意思是说：P(x) 产生的未标记样本和P(x,y)中的标记样本都用 于估计 P(y|x)或者根据x预测y。</p>
-
-<h2 id="toc_6">7.多任务学习</h2>
-
-<p>就是通过合并几个任务中的样例（可以视为对参数施加的软约束），我感觉就是类似于group_lasso这样的，对参数加了一个别的约束，部分样本需要共享同一个参数</p>
-
-<h2 id="toc_7">8.提前终止</h2>
-
-<p><img src="media/15120469131645/15206764319925.jpg" alt=""/><br/>
-当训练的能力较强时候会发现，随着训练次数的增加，训练误差在逐步减小，但是测试误差会呈现一个U型状态。即先减小后增加。</p>
-
-<p>不是从模型的优化函数入手，相当于是一个实践的经验技巧。</p>
-
-<p>提前终止具有正则化的效果</p>
-
-<h2 id="toc_8">9.参数绑定和参数共享</h2>
-
-<h2 id="toc_9">10.稀疏表示</h2>
-
-<p>前文所述的权重衰减直接惩罚模型参数。另一种策略是惩罚神经网络中的激活 单元，稀疏化激活单元。这种策略间接地对模型参数施加了复杂惩罚。<br/>
-<img src="media/15120469131645/15207643423743.jpg" alt=""/></p>
-
-<h2 id="toc_10">11.Bagging 和其他集成方法</h2>
-
-<p>结合多个模型，进行模型平均</p>
-
-<h2 id="toc_11">12.dropout</h2>
-
-<p>@@@@</p>
-
-<h2 id="toc_12">13.对抗训练</h2>
-
-<h1 id="toc_13">14 切面距离、正切传播和流形正切分类器</h1>
-
-<p>略</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>8 深度学习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -596,6 +592,8 @@ L2正则化/岭回归，又叫权重衰减； 可以参照岭回归<br/>
         
             <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
+            <a href="11%20%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84.html"><strong>11 平台架构</strong></a>
+        
             <a href="%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html"><strong>数据科学-清单</strong></a>
         
             <a href="%E5%85%B6%E4%BB%96.html"><strong>其他</strong></a>
@@ -615,31 +613,31 @@ L2正则化/岭回归，又叫权重衰减； 可以参照岭回归<br/>
 	      
 		      
 			      <li class="post">
-			        <a href="15687050894061.html">0.综述</a>
+			        <a href="15917706614562.html">optical flow 光流</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637036455584.html">1 估计的置信度</a>
+			        <a href="15917693533998.html">process</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037681646.html">1 基础工具包安装pip</a>
+			        <a href="15917597006543.html">业务</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637025346412.html">1. conda 环境管理</a>
+			        <a href="15917572981552.html">综述_关键点检测</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15637037713554.html">1. 数据可视化概述</a>
+			        <a href="15916704949564.html">【工具】MMlab——mmaction</a>
 			      </li>
 		     
 		  
