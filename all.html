@@ -130,34 +130,14 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15917706614562.html">
+                <a class="clearlink" href="15919304631539.html">
                 
-                  <h1>optical flow 光流</h1>
+                  <h1>源码阅读工具</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><a href="https://zhuanlan.zhihu.com/p/44859953">概念</a><br/>
-光流的概念是Gibson在1950年首先提出来的。它是空间运动物体在观察成像平面上的像素运动的<strong>瞬时速度</strong>，是利用图像序列中像素在时间域上的变化以及相邻帧之间的相关性来找到上一帧跟当前帧之间存在的对应关系，从而计算出相邻帧之间物体的运动信息的一种方法。一般而言，光流是由于场景中前景目标本身的移动、相机的运动，或者两者的共同运动所产生的。<br/>
-简言之：就是有相对运动带来的空间物体在成像平面的瞬时速度。</p>
-
-<p>对于一个图片序列，每张图像中每个像素的运动速度和运动方向找出来就是<strong>光流场</strong>。</p>
-
-<p><strong>光流的测定方法</strong></p>
-
-<p>基本原理就是找到时间间隔△t内，物体的移动坐标(x1, y1), (x2, y2). 假设位于(x,y,t)的体素的亮度是I(x,y,t), 则有:<br/>
-I(x,y,t) = I(x+△x, y+△y, t+△t)<br/>
-根据泰勒定理展开即有\(\partial I/\partial x△x +\partial I/\partial y△y + \partial I/\partial t△t = 0\)</p>
-
-<p>具体实现方法: opencv的API中有几种不同的实现方案</p>
-
-<ul>
-<li>Lucas–Kanade method: calcOpticalFlowPyrLK</li>
-<li>The Gunnar-Farneback optical flow: calcOpticalFlowFarneback</li>
-<li>block matching method: CalcOpticalFlowBM</li>
-</ul>
-
-<p><a href="https://github.com/yjxiong/dense_flow">https://github.com/yjxiong/dense_flow</a></p>
+                        	<p><a href="https://github.com/CoatiSoftware/Sourcetrail">https://github.com/CoatiSoftware/Sourcetrail</a></p>
 
                         
                       </div>
@@ -166,7 +146,66 @@ I(x,y,t) = I(x+△x, y+△y, t+△t)<br/>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/6/10</span>
+                    <span class="date">2020/6/12</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15919291891898.html">
+                
+                  <h1>训练常见问题</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>Q1: <code>/opt/conda/envs/open-mmlab/lib/python3.7/site-packages/torch/utils/data/dataloader.py</code>. It is possible that dataloader&#39;s workers are out of shared memory. Please try to raise your shared memory limit.<br/>
+=&gt;<br/>
+在Dataloader中将num_worker设置为0。意味着每一轮迭代时，dataloader不再有自主加载数据到RAM这一步骤（因为没有worker了），而是在RAM中找batch，找不到时再加载相应的batch。<br/>
+在起Docker容器时，设置 --ipc=host 或 --shm-size 或者<br/>
+参考 <a href="https://zhuanlan.zhihu.com/p/143914966">https://zhuanlan.zhihu.com/p/143914966</a></p>
+
+<p>Q2: CUDA out of memory</p>
+
+<ul>
+<li>查看batch_size是否设置的较大</li>
+<li>查看GPU 运行情况 <code>nvidia-smi</code>
+<img src="media/15919291891898/15919488127847.jpg" alt=""/></li>
+</ul>
+
+<p>一般默认是在GPU:0上运行的，但是看这个状态，应该是有任务在运行，所以尝试更改运行的GPU编号。<br/>
+ 直接终端中设定：</p>
+
+<pre><code class="language-text"># 方式1
+CUDA_VISIBLE_DEVICES=1 python my_script.py
+# 方式2
+import os
+os.environ[&quot;CUDA_VISIBLE_DEVICES&quot;] = &quot;1&quot;
+</code></pre>
+
+<p>监控运行状态 <code>watch -n 1 nvidia-smi</code></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/6/12</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
@@ -185,9 +224,9 @@ I(x,y,t) = I(x+△x, y+△y, t+△t)<br/>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15917693533998.html">
+                <a class="clearlink" href="15918717478277.html">
                 
-                  <h1>process</h1>
+                  <h1>【工具】MMlab—mmskelton</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
@@ -200,7 +239,7 @@ I(x,y,t) = I(x+△x, y+△y, t+△t)<br/>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/6/10</span>
+                    <span class="date">2020/6/11</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%A7%BF%E6%80%81%E8%AF%86%E5%88%AB.html'>姿态识别</a></span>
@@ -219,21 +258,27 @@ I(x,y,t) = I(x+△x, y+△y, t+△t)<br/>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15917597006543.html">
+                <a class="clearlink" href="15918653333546.html">
                 
-                  <h1>业务</h1>
+                  <h1>图像检索：BoF、VLAD、FV三剑客</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>为确定要识别哪些行为，可以根据特征，将最后一层的输出做聚类？？ 看下都有哪些行为？？</p>
+                        	<h2 id="toc_0">BoF(bag of features)</h2>
 
-<p>行为分类：</p>
+<p>其实就是BOW(bag of words)在图像领域的应用。</p>
 
 <ul>
-<li>图像分类</li>
-<li>视频理解</li>
+<li>step1: 视觉单次提取，提取所有图片的图片特征</li>
+<li>step2：构建视觉词典。对图片特征进行聚类，假设聚成k个类，这k个类的类中心就相当于k个基本词汇</li>
+<li>step3: 图像表示。统计每张图在每个聚类总的特征个数，这样每张图就可以用一个分布直方图表示，或者是一个k维向量表示。</li>
+<li>step4: 图像检索.</li>
 </ul>
+
+<h2 id="toc_1">VALAD</h2>
+
+<p>与Bof有一些类似，只是最后图像表示的时候，不是用的特征个数。而是用的x与其类中心的累积残差。</p>
 
                         
                       </div>
@@ -242,10 +287,10 @@ I(x,y,t) = I(x+△x, y+△y, t+△t)<br/>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/6/10</span>
+                    <span class="date">2020/6/11</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%A7%BF%E6%80%81%E8%AF%86%E5%88%AB.html'>姿态识别</a></span>
+          					    <span class="posted-in"><a href='%E5%9B%BE%E5%83%8F%E6%A3%80%E7%B4%A2.html'>图像检索</a></span>
           				   
                     
 
@@ -261,39 +306,14 @@ I(x,y,t) = I(x+△x, y+△y, t+△t)<br/>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15917572981552.html">
+                <a class="clearlink" href="15918617122348.html">
                 
-                  <h1>综述_关键点检测</h1>
+                  <h1>batch normalization</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">3.关键点检测</h2>
-
-<p>总结：<a href="https://zhuanlan.zhihu.com/p/102457223">https://zhuanlan.zhihu.com/p/102457223</a></p>
-
-<p>人体关键点检测按照是否包含3维深度信息可以分为2D和3D检测</p>
-
-<p><img src="media/15895350398690/15904079979954.jpg" alt="" style="width:971px;"/></p>
-
-<ul>
-<li><p>openpose<br/>
-用的是bottom-up的方式，先检测所有关键点，然后对关键点进行分组关联。以CPM（卷积pose Machine）为基础。</p></li>
-<li><p>CPM（top-down）<br/>
-详细介绍：<a href="https://zhuanlan.zhihu.com/p/102468356">https://zhuanlan.zhihu.com/p/102468356</a></p></li>
-</ul>
-
-<p>基于深度学习的检测方法可以简单的划分为skeleton-based 和 video-based<br/>
-<strong>(1)skeleton-based</strong><br/>
-需要先将基本骨架识别出来然后再做检测<br/>
-ST-NBNN: Spatio-Temporal Naive-Bayes Nearest-Neighbor (ST-NBNN) for Skeleton-Based Action Recognition 2017cvpr</p>
-
-<p>☆☆图卷积方法 ST-GCN:Spatial Temporal Graph Convolutional Networks for Skeleton Based Action Recognition AAAI2018（开源）</p>
-
-<p><strong>(2)video-based</strong><br/>
-常用的方法有3D卷积<br/>
-RNN/LSTM<br/>
-双流法: 一个分支计算空间特征，一个分支用光流计算运动特征，最后整合进行行为识别</p>
+                        	<p>问题</p>
 
                         
                       </div>
@@ -302,128 +322,10 @@ RNN/LSTM<br/>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/6/10</span>
+                    <span class="date">2020/6/11</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%A7%BF%E6%80%81%E8%AF%86%E5%88%AB.html'>姿态识别</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15916704949564.html">
-                
-                  <h1>【工具】MMlab——mmaction</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h3 id="toc_0">mmaction</h3>
-
-<p>MMAction is capable of dealing with all of the tasks below.</p>
-
-<ul>
-<li>action recognition from trimmed videos</li>
-<li>temporal action detection (also known as action localization) in untrimmed videos</li>
-<li>spatial-temporal action detection in untrimmed videos.</li>
-</ul>
-
-<p><strong>modelzoo</strong><br/>
-mmaction中自带的model默认都是用Kinetics-400 这个数据训练的。<br/>
-<a href="https://github.com/open-mmlab/mmaction/blob/master/MODEL_ZOO.md">https://github.com/open-mmlab/mmaction/blob/master/MODEL_ZOO.md</a></p>
-
-<p><strong>数据格式</strong><br/>
-<a href="https://github.com/open-mmlab/mmaction/blob/master/DATASET.md">https://github.com/open-mmlab/mmaction/blob/master/DATASET.md</a><br/>
-mmaction支持两种数据格式: raw frames 和video. raw frame较快，占用空间多。video的占用空间少，相对慢一些(可以使用decord进行加速)</p>
-
-<p><strong>代码结构</strong></p>
-
-<pre><code class="language-text">|── data_tool   # 数据准备，包含不同数据集的预处理
-|── data
-|── tools      # train, test
-|── configs   # train 构造每个模型的配置文件
-|── test_configs   # test 构造每个模型的配置文件
-|── modelzoo/   # model
-</code></pre>
-
-<p>数据准备</p>
-
-<pre><code class="language-shell"># 1. 准备数据
-cd data_tools/ucf101/
-bash download_annotations.sh
-bash download_videos.sh   # 一共6G多，可以中间终端，只取部分
-# 提取frames，这里是调用的dense_flow工具
-bash extract_frames.sh   
-# Run the follow script to generate filelist in the format of rawframes and videos.
-bash generate_filelist.sh
-</code></pre>
-
-<pre><code class="language-shell"># 下载模型
-wget -c https://open-mmlab.s3.ap-northeast-2.amazonaws.com/mmaction/models/ucf101/tsn_2d_rgb_bninception_seg3_f1s1_b32_g8-98160339.pth -P ./modelzoo/
-
-bash tools/dist_test_recognizer.sh test_configs/TSN/ucf101/tsn_rgb_bninception.py modelzoo/tsn_2d_rgb_bninception_seg3_f1s1_b32_g8-98160339.pth 8
-</code></pre>
-
-<pre><code class="language-shell"># 模型训练
-./tools/dist_train_xxx.sh $config_file $GPU_Num
-# 模型评估
-python tools/test_${ARCH}.py ${CONFIG_FILE} ${CHECKPOINT_FILE} [--out ${RESULT_FILE}] 
-</code></pre>
-
-<p>test_recognizer:</p>
-
-<ul>
-<li>code里面最后默认输出到default.pkl中，每个二级目录都有一个长度101的向量(ucf101数据),向量的每个值就是在各个类别上的得分。最终取np.argmax()就可以认为是对应的类别了.</li>
-<li>具体每个类别编号的含义可以在<code>data/ucf101/annotations/clasInd.txt</code>看到</li>
-</ul>
-
-<pre><code class="language-python">import pickle
-outputs = pickle.load(open(&#39;xxx&#39;, &#39;rb&#39;), encoding=&#39;utf-8&#39;)
-</code></pre>
-
-<p>采坑：</p>
-
-<ul>
-<li>其中有很多CUDA, gpu的编译，设置，如果在自己电脑上的话，需要将相关的code注释掉</li>
-<li>安装的mmcv，在运行mmaction tools/test_recognizer.py的时候总报错，是python版本问题，不支持f语法</li>
-<li>docker hub上有人提供 mlouieunm/mmaction:latest。 实验了下环境还是有问题</li>
-</ul>
-
-<p>使用colab的GPU资源.<br/>
-下载数据啥的速度是真快。。。<br/>
-问题：<br/>
-Q1: RuntimeError: CUDA out of memory<br/>
-batch_size</p>
-
-<p>mmaction docker:</p>
-
-<p>（1）测试使用 <code>mlouieunm/mmaction:latest</code><br/>
-注意：这个docker环境中的mmaction并不是最新的，需要git pull下，才会更行到新版，支持其他的数据。。好像还是环境有问题，放弃<br/>
-（2）docker pull apulistech/mmaction:0.1</p>
-
-<p>NVIDIA-DOCKER   <a href="https://github.com/NVIDIA/nvidia-docker">https://github.com/NVIDIA/nvidia-docker</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/6/9</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%A7%BF%E6%80%81%E8%AF%86%E5%88%AB.html'>姿态识别</a></span>
+          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
           				   
                     
 
@@ -533,31 +435,31 @@ batch_size</p>
 	      
 		      
 			      <li class="post">
-			        <a href="15917706614562.html">optical flow 光流</a>
+			        <a href="15919304631539.html">源码阅读工具</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15917693533998.html">process</a>
+			        <a href="15919291891898.html">训练常见问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15917597006543.html">业务</a>
+			        <a href="15918717478277.html">【工具】MMlab—mmskelton</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15917572981552.html">综述_关键点检测</a>
+			        <a href="15918653333546.html">图像检索：BoF、VLAD、FV三剑客</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15916704949564.html">【工具】MMlab——mmaction</a>
+			        <a href="15918617122348.html">batch normalization</a>
 			      </li>
 		     
 		  

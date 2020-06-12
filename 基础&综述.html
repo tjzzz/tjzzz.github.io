@@ -130,6 +130,100 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15919291891898.html">
+                
+                  <h1>训练常见问题</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>Q1: <code>/opt/conda/envs/open-mmlab/lib/python3.7/site-packages/torch/utils/data/dataloader.py</code>. It is possible that dataloader&#39;s workers are out of shared memory. Please try to raise your shared memory limit.<br/>
+=&gt;<br/>
+在Dataloader中将num_worker设置为0。意味着每一轮迭代时，dataloader不再有自主加载数据到RAM这一步骤（因为没有worker了），而是在RAM中找batch，找不到时再加载相应的batch。<br/>
+在起Docker容器时，设置 --ipc=host 或 --shm-size 或者<br/>
+参考 <a href="https://zhuanlan.zhihu.com/p/143914966">https://zhuanlan.zhihu.com/p/143914966</a></p>
+
+<p>Q2: CUDA out of memory</p>
+
+<ul>
+<li>查看batch_size是否设置的较大</li>
+<li>查看GPU 运行情况 <code>nvidia-smi</code>
+<img src="media/15919291891898/15919488127847.jpg" alt=""/></li>
+</ul>
+
+<p>一般默认是在GPU:0上运行的，但是看这个状态，应该是有任务在运行，所以尝试更改运行的GPU编号。<br/>
+ 直接终端中设定：</p>
+
+<pre><code class="language-text"># 方式1
+CUDA_VISIBLE_DEVICES=1 python my_script.py
+# 方式2
+import os
+os.environ[&quot;CUDA_VISIBLE_DEVICES&quot;] = &quot;1&quot;
+</code></pre>
+
+<p>监控运行状态 <code>watch -n 1 nvidia-smi</code></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/6/12</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15918617122348.html">
+                
+                  <h1>batch normalization</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>问题</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/6/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15917706614562.html">
                 
                   <h1>optical flow 光流</h1>
@@ -352,150 +446,6 @@ nvcc --version     #Cuda compilation tools, release 9.1, V9.1.85
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15834196813408.html">
-                
-                  <h1>【迁移学习】</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<table>
-<thead>
-<tr>
-<th>分类</th>
-<th>说明</th>
-<th>特点</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>1.样本迁移</td>
-<td>在数据集（源领域）中找到与目标领域相似的数据，把这个数据放大多倍，与目标领域的数据进行匹配。</td>
-<td>需要对不同例子加权；需要用数据进行训练。</td>
-</tr>
-<tr>
-<td>2.特征迁移</td>
-<td>特征空间的迁移</td>
-<td></td>
-</tr>
-<tr>
-<td>3.模型迁移</td>
-<td>比如常用的fine-tune</td>
-<td></td>
-</tr>
-<tr>
-<td>4.关系迁移</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="toc_0">参考</h2>
-
-<p><a href="https://www.cnblogs.com/bonelee/p/8921311.html">https://www.cnblogs.com/bonelee/p/8921311.html</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/3/5</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15834004454503.html">
-                
-                  <h1>【数据增强】</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h3 id="toc_0">1.有监督的</h3>
-
-<p><strong>1.1 单样本的数据增强</strong><br/>
-单样本的数据增强主要是围绕一个样本图片，进行的”几何变换“、”颜色变换“等</p>
-
-<ul>
-<li>几何变换类： 旋转、翻转、剪裁、变形、缩放</li>
-<li>颜色变换类： 噪声、模糊、颜色变换、填充</li>
-</ul>
-
-<p>实用tool <code>https://github.com/aleju/imgaug</code></p>
-
-<p><strong>1.2 多样本数据增强</strong><br/>
-利用多个样本产生出新的样本</p>
-
-<ul>
-<li>SMOTE，人工合成新样本，解决类不平衡问题。映射到特征空间，在小样本的k近邻中构造新的样本点</li>
-<li>SamplePairing：主要用在医学图像上，从训练集中随机抽取两张图片，经过基础数据增强后将像素平均合并成一个新的样本。标签记为原样本标签中的一种。</li>
-<li>mixup: 使用线性插值，对于随机选取的两个数据，new = wXi + (1-w)Xj</li>
-</ul>
-
-<h3 id="toc_1">2.无监督的</h3>
-
-<p><strong>2.1 学习数据的分布，随机生成新图片</strong></p>
-
-<ul>
-<li>GAN</li>
-</ul>
-
-<p><strong>2.2 通过模型学习适合当前任务的数据增强方法</strong></p>
-
-<ul>
-<li>AutoAugment<br/>
-google 提出的自动选择最优数据增强方案的研究。其基本思路是:使用增强学习从数据本身寻找最佳的图像变换策略。具体来说就是用基础数据增强策略的组合。</li>
-<li>RandAugment: AutoAugment的进化版</li>
-</ul>
-
-<h2 id="toc_2">参考</h2>
-
-<p><a href="https://www.zhihu.com/question/319291048">https://www.zhihu.com/question/319291048</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/3/5</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -591,31 +541,31 @@ google 提出的自动选择最优数据增强方案的研究。其基本思路�
 	      
 		      
 			      <li class="post">
-			        <a href="15917706614562.html">optical flow 光流</a>
+			        <a href="15919304631539.html">源码阅读工具</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15917693533998.html">process</a>
+			        <a href="15919291891898.html">训练常见问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15917597006543.html">业务</a>
+			        <a href="15918717478277.html">【工具】MMlab—mmskelton</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15917572981552.html">综述_关键点检测</a>
+			        <a href="15918653333546.html">图像检索：BoF、VLAD、FV三剑客</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15916704949564.html">【工具】MMlab——mmaction</a>
+			        <a href="15918617122348.html">batch normalization</a>
 			      </li>
 		     
 		  

@@ -130,16 +130,258 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637037691936.html">
+                <a class="clearlink" href="15637037728199.html">
                 
-                  <h1>3.1 特征处理—— 特征选择</h1>
+                  <h1>4.3 支持向量机</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">参考</h2>
+                        	<p>支持向量机属于上一节中说的硬输出的方法，是从几何角度出发考虑的。</p>
 
-<p><a href="https://blog.csdn.net/kebu12345678/article/details/78437118">https://blog.csdn.net/kebu12345678/article/details/78437118</a></p>
+<p>在介绍SVM之前，先解释一下几个基本概念。<br/>
+<img src="media/15384698920685/15386228139164.jpg" alt="" style="width:400px;"/></p>
+
+<blockquote>
+<p>函数间隔与几何间隔</p>
+</blockquote>
+
+<p>一般的，一个点距离分离超平面的远近可以标识分类预测的确信程度。当超平面\(wx+b=0\)确定后，\(|wx+b|\)的大小能够相对的表示远近，而\(wx+b\)的符号与\(y\)类别是否一致则可以表示是否分类正确。 <br/>
+\[d_i = y_i(wx_i+b)\]  定义函数间隔\(d = \min d_i\)</p>
+
+<p>但是很明显的会发现这个间隔与\(w\)的量纲是有关系的，\(kw+kb\)与之前超平面是一样的，但是间隔却差了k倍。因此需要<strong>几何间隔</strong></p>
+
+<p>\[d_i = y_i(\frac{w}{||w||}x_i+\frac{b}{||w||}), d = \min d_i\]  </p>
+
+<blockquote>
+<p>间隔最大化</p>
+</blockquote>
+
+<p>有了前面关于间隔的定义，或者是关于分类距离的定义，就有了目标。SVM的目标就是: 求解能够将数据集正确划分并且几何间隔最大的分离超平面。</p>
+
+<p>注：对于线性可分的数据，超平面有无数个(等价于感知机)，但是间隔最大的只有一个。间隔最大其实是两个要求:</p>
+
+<ul>
+<li>能尽可能的将正负例区分开</li>
+<li>对于难分的点(距离平面较近的点)也有很好的置信把握，即泛化能力会好一些</li>
+</ul>
+
+<blockquote>
+<p>SVM对应的三种问题类型</p>
+</blockquote>
+
+<p>根据分类问题，可分为以下三种</p>
+
+<ul>
+<li>线性可分与硬间隔最大化</li>
+<li>线性支持向量机与软间隔最大化</li>
+<li>非线性支持向量机与核函数</li>
+</ul>
+
+<p>这些会在下面中进行详细介绍</p>
+
+<blockquote>
+<p>支持向量</p>
+</blockquote>
+
+<p>这个需要看完下面关于三部分的介绍之后，再来了解这个概念。</p>
+
+<ul>
+<li>在线性可分的情况下，样本中与超平面距离最近的样本点称为<strong>支持向量</strong>. 支持向量是满足\(y_i(wx_i+b)-1=0\)的点。</li>
+<li>分隔边界最终只是由支持向量的点决定的，其他距离比较远的点并没有影响。</li>
+</ul>
+
+<h2 id="toc_0">1.线性可分与硬间隔最大化</h2>
+
+<p>先讨论一种最简单的情况，当数据集本身可以线性可分时候(实际数据中可能并没有这么好的性质)，我们只要找到对应的超平面即可。从前面的集合图形上我们的目标：希望每个点到超平面的间隔的最小值达到最大，即\(max min d_i\)</p>
+
+<p>数学模型：\[max_{w,b} d(几何间隔)\]<br/>
+\[s.t \quad d_i = y_i(wx_i+b)&gt;= d, i=1,..n\]</p>
+
+<p>因为几何间隔\(d=d&#39;/||w||\)，所以原问题等价于<br/>
+\[max_{w,b} \frac{d&#39;}{||w||}\]<br/>
+\[s.t \quad d_i = y_i(wx_i+b)&gt;= d&#39;, i=1,..n\]</p>
+
+<p>注意到</p>
+
+<ul>
+<li>函数间隔的取值\(d&#39;\)并不影响最优解\(w,b\)的求解。(如果w,b是最优解，则\(kw,kb\)也是，函数距离就是\(d&#39;\)和\(kd&#39;\))。所以这里可以取\(d&#39;=1\)。</li>
+<li>\(1/||w||\)与\(\frac{1}{2}||w||^2\)是等价的</li>
+</ul>
+
+<p>因此最终优化的问题等价于如下的凸二次规划问题：<br/>
+\[min_{w,b} \frac{1}{2}||w||^2\]<br/>
+\[s.t \quad d_i = y_i(wx_i+b) -1 &gt;=0, i=1,..n\]</p>
+
+<p>解法：关于这个优化问题的解法，在后面会详细给出。可以证明这个解是存在且唯一的。</p>
+
+<p><strong>几何角度</strong></p>
+
+<ul>
+<li>过两个类的边界的点的平行线(\(wx-b=1, wx-b=-1\))，有点类似于楚河汉界</li>
+<li>将两条平行线进行旋转，保证同类划分不变。两者距离就会改变</li>
+<li>落在两个平行线上的异类点就是<strong>支持向量</strong></li>
+</ul>
+
+<p><img src="media/15384698920685/15387096705813.jpg" alt="线性可分示意图"/></p>
+
+<h2 id="toc_1">2.线性支持向量机与软间隔最大化</h2>
+
+<p>上一节说的是对线性可分数据的，如果数据本身不可分该怎么办呢，此时线性分割必然存在误分类的点？对于线性不可分我们不可能要求其严格满足上面说的不等式约束。这时我们只能退而求其次：</p>
+
+<p>思路：使得之前的几何间隔尽量大，同时使误分类的个数尽可能少</p>
+
+<p>数学表示：对于每个样本，类似运筹学中的方法我们可以引入一个松弛变量\(\xi_i\ge 0\),满足\(y_i(wx_i+b)\ge 1-\xi_i\) 之前是要求一定要大于等于1，现在因为并不完全可分，所以不一定要大于等于1。</p>
+
+<p><strong>数学模型：</strong></p>
+
+<p>\[min_{w,b} \frac{1}{2}||w||^2 + C\sum_1^n \xi_i\]<br/>
+\[s.t \quad y_i(wx_i+b)&gt;=1-\xi_i, i=1,..n\]<br/>
+\[\xi_i &gt;= 0\]</p>
+
+<p>这时候其实可以发现线性可分的相当于是这里的一种特殊情况，即\(\xi_i=0\)</p>
+
+<p><strong>求解：</strong><br/>
+该优化问题的拉格朗日函数是<br/>
+\[L(w,b,\xi,\alpha,u)=\frac{1}{2}||w||^2+C\sum\xi_i-\sum\alpha_i(y_i(wx_i+b)-1+\xi_i)-\sum u_i\xi_i\]<br/>
+因此原问题等价于 \[\max_{\alpha,u}\min_{w,b,\xi}L\]</p>
+
+<p>（1）首先求L对\(w,b,\xi\)的极小<br/>
+<img src="media/15384698920685/15387191773648.jpg" alt=""/></p>
+
+<p>可得\[\min_{w,b\xi}L=-\frac{1}{2}\sum_{i=1}^n\sum_{j=1}^n \alpha_i\alpha_jy_iy_j(x_i*x_j)+\sum_{i=1}^n\alpha_i\]</p>
+
+<p>(2) 再对\(\min L\)求最大，即有<br/>
+\[\max_{\alpha}-\frac{1}{2}\sum_{i=1}^n\sum_{j=1}^n \alpha_i\alpha_jy_iy_j(x_i*x_j)+\sum_{i=1}^n\alpha_i\]<br/>
+\[s.t.\quad \sum\alpha_iy_i=0\]<br/>
+\[C-\alpha_i-u_i&gt;=0;\alpha_i&gt;=0;u_i&gt;=0\]</p>
+
+<p>最后一个条件其实等价于\(0\le\alpha_i\le C\)</p>
+
+<p>对于线性可分问题其max函数是一样的，只是约束条件是\(0\le\alpha_i\)</p>
+
+<p>【定理】若\(\alpha^*=(\alpha_1^*,...\alpha_n)\)是上述优化问题的一个解，若存在一个分量\(0&lt;\alpha_j^*&lt;C\)，则原始问题的解可按如下形式求得 <br/>
+\[w^* = \sum\alpha_i^*y_ix_i\]<br/>
+\[b^*=y_j-\sum_{i=1}^n y_i\alpha_i^*(x_i*x_j)\]</p>
+
+<p>从中可以发现b的解并不唯一。</p>
+
+<p>最终的分离超平面是\[\sum\alpha_i^*y_i(x_i*x_j)+b^*=0\]<br/>
+分类的决策函数是\[f(x)=sign(\alpha_i^*y_i(x_i*x_j)+b^*)\]</p>
+
+<p><strong>几何解释</strong></p>
+
+<ul>
+<li>如果在分解边界上，则\(\xi_i=0\),距离是1</li>
+<li>如果是在两个分界边界中间，\(0&lt;\xi_i&lt;1\)</li>
+<li>越过分界边界，到了另外一边，\(\xi_i &gt;1\) 这个时候\(y_i(wx_i+b)\ge 1-\xi_i\)是小于0的，属于误分类，在优化的时候会考虑</li>
+</ul>
+
+<p><img src="media/15384698920685/15387133378663.jpg" alt=""/></p>
+
+<p><strong>合页损失函数</strong>：与原优化问题等价的一种损失函数形式<br/>
+\[\min_{w,b} \sum[1-y_i(wx_i+b)]_{+}+\lambda||w||^2\]</p>
+
+<h2 id="toc_2">3.非线性支持向量机与核函数</h2>
+
+<p>当数据的分布呈现的是一种非线性的时候，用之前的线性分割的方法肯定就会出现问题。比如数据是在一个椭圆内外分布，这个时候就需要先对原始数据做一个映射，\(x_1^2,x_2^2\)然后变成线性可分的。而这里主要用到了核技巧。</p>
+
+<p>【核函数】如果存在一个映射\(\phi(x):X-&gt; H\),使得对于所有\(x,z\in X\),函数\(K(x,z)\)满足<br/>
+\[K(x,z)=\phi(x)*\phi(z)\]<br/>
+则\(K(x,z)\)为核函数，\(\phi(x)\)为映射函数。</p>
+
+<p>核函数的想法是：在学习中值定义核函数，而不显示的定义映射函数，通常映射函数不太好找且不唯一。<br/>
+在支持向量机中的应用：<br/>
+如前所述，在支持向量机的对偶问题中，只涉及样本之间的内积运算。\[W(\alpha)=\max_{\alpha}-\frac{1}{2}\sum_{i=1}^n\sum_{j=1}^n \alpha_i\alpha_jy_iy_j(x_i*x_j)+\sum_{i=1}^n\alpha_i\]<br/>
+因此可以用核函数代替<br/>
+\[W(\alpha)=\max_{\alpha}-\frac{1}{2}\sum_{i=1}^n\sum_{j=1}^n \alpha_i\alpha_jy_iy_jK(x_i,x_j)+\sum_{i=1}^n\alpha_i\]</p>
+
+<p><strong>常用的核函数</strong></p>
+
+<ul>
+<li>多项式核函数 \(K(x,z)=(x*z+1)^p\)</li>
+<li>高斯核函数 \(K(x,z)=exp(\frac{-||x-z||^z}{2\sigma^2})\)</li>
+<li>字符串核函数</li>
+</ul>
+
+<h2 id="toc_3">优化算法SMO</h2>
+
+<p>前面介绍了SVM中的三类问题，最终都是通过一个凸二次规划进行求解。当样本量较大的时候，SMO是一种相对求解较快的方法。简言之，是采用了启发式算法，每次只更新两个\(\alpha_i,\alpha_j\)</p>
+
+<p><a href="https://www.cnblogs.com/nolonely/p/6541527.html">https://www.cnblogs.com/nolonely/p/6541527.html</a></p>
+
+<p>Sequential Minimal Optimization A Fast Algorithm for Training Support Vector Machines</p>
+
+<h2 id="toc_4">代码</h2>
+
+<p><code>sklearn.svc</code>模块 <a href="http://scikit-learn.org/stable/modules/svm.html#svm">http://scikit-learn.org/stable/modules/svm.html#svm</a></p>
+
+<p>主要包含</p>
+
+<ul>
+<li>SVC 标准的</li>
+</ul>
+
+<pre><code class="language-text">from sklearn import svm
+X = [[0, 0], [1, 1]]
+y = [0, 1]
+clf = svm.SVC()
+clf.fit(X, y)  
+</code></pre>
+
+<p>以iris数据为例</p>
+
+<pre><code class="language-python">### iris数据
+from sklearn import datasets, svm
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+iris = datasets.load_iris()
+X = iris.data[:, :2]
+y = iris.target
+
+
+# model
+C = 1.0
+model = svm.SVC(kernel=&#39;linear&#39;, C=C)
+model.fit(X, y)
+
+
+
+## 绘制可视化图
+x1 = X[:,0]
+x2 = X[:,1]
+h=0.1
+x_min, x_max = x1.min()-1, x1.max()+1
+y_min, y_max = x2.min()-1, x2.max()+1
+xx,yy = np.meshgrid(np.arange(x_min, x_max, h),
+                    np.arange(y_min, y_max, h))  #生成对应的坐标矩阵
+
+Z = model.predict(np.c_[xx.ravel(), yy.ravel()])    # 在新的坐标点上预测分类
+Z = Z.reshape(xx.shape)
+plt.contourf(xx, yy, Z, cmap=plt.cm.coolwarm, alpha=0.8)
+
+
+plt.scatter(x1, x2, c=y, cmap=plt.cm.coolwarm, s=20, edgecolors=&#39;k&#39;)
+
+plt.xlabel(&#39;Sepal length&#39;)
+plt.ylabel(&#39;Sepal width&#39;)
+</code></pre>
+
+<p><img src="media/15384698920685/15387991752806.jpg" alt=""/></p>
+
+<ul>
+<li>NuSVC 与SVC的优化目标函数略微不同</li>
+<li>LinearSVC： 只针对linear kernel</li>
+</ul>
+
+<p>在进行多分类的时候SVC中参数<code>decision_function_shape</code>可以选择是<code>ovo</code>还是<code>ovr</code><br/>
+LinearSVC是通过参数<code>multi_class</code>进行选择，</p>
+
+<h2 id="toc_5">小结</h2>
+
+<p><img src="media/15384698920685/15388009994951.jpg" alt=""/></p>
 
                         
                       </div>
@@ -167,87 +409,509 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037692016.html">
+                <a class="clearlink" href="15637037713554.html">
                 
-                  <h1>4.6 集成</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><a href="http://www.52caml.com/head_first_ml/ml-chapter6-boosting-family/">http://www.52caml.com/head_first_ml/ml-chapter6-boosting-family/</a></p>
-
-<p><img src="media/15275150216357/15275150424366.jpg" alt=""/></p>
-
-<p><a href="http://www.cnblogs.com/gasongjian/p/7648633.html">http://www.cnblogs.com/gasongjian/p/7648633.html</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037680228.html">
-                
-                  <h1>FM 模型</h1>
+                  <h1>1. 数据可视化概述</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
                         	<blockquote>
-<p>背景</p>
+<p>目标: 系统的梳理在进行数据分析的时候，如何进行数据可视化。具体操作的时候以python的seaborn包为主。</p>
 </blockquote>
 
-<p>一般的线性模型 \(y=w_0 + \sum w_i x_i\)， 当考虑了特征之间的相关性即交互效应(这里以二阶为例)后模型形式是：<br/>
-\[y=w_0 + \sum w_i x_i + \sum_1^{n-1}\sum_{i+1}^n w_{ij}x_ix_j\]</p>
+<p>在进行数据分析的时候，经常需要进行数据可视化。俗话说一图胜千言，如何将从数据中发现的结论以一种简单易懂、形象化的方式展现出来，是很考验数据分析人员的能力的。</p>
 
-<p>这里n表示特征的个数</p>
+<h2 id="toc_0">1 方法部分</h2>
 
-<blockquote>
-<p>模型如何求解呢？</p>
-</blockquote>
-
-<p>如果把\(x_ix_j\)看做一个新的变量，相当于整体上还是一个线性回归模型，似乎可以用正常的线性回归的办法进行求解。<br/>
-但是这里未知的要求解的参数有n(+1)/2个，很多时候特征中会有一些分类型的变量，当通过哑变量的方式引入模型中的时候，特征数目k会非常大，从而导致要求解的参数个数较大，并且数据特别稀疏。另一方面，分类特征就到时候，\(x_ix_j\)是非零的比例较小，从而导致\(w\)无法计算出来。</p>
-
-<blockquote>
-<p>引入其他辅助信息</p>
-</blockquote>
-
-<p>我们可以引入一个辅助向量 对于\(w_{ij}\)形成的对称矩阵W，可以进行分解\(W=V^TV\)</p>
-
-<p>将模型改成如下形式<br/>
-\[y=w_0 + \sum w_i x_i + \sum_1^{n-1}\sum_{i+1}^n &lt;v_i, v_j&gt;x_ix_j\]</p>
+<p>数据可视化，首先是要有数据，即我们的研究对象，而可视化的功能就是将数据中蕴含的关系或规律以图形的形式展示出来。 因此在进行数据可视化之前，一定要搞清楚的两件事：</p>
 
 <ul>
-<li>从形式上来看，我们知道\(w_ij\)的矩阵是对称的，其形式上和协差阵\(&lt;v_i, v_j&gt;\)很类似</li>
+<li>数据类型， 即我们要研究的实体是什么类型的</li>
+<li>数据要传递的信息以及要展示的关系</li>
 </ul>
 
-<p>\(v_i\)相当于是第i维隐向量，假设其维度是k&lt;&lt;n, 这样模型的参数就由原来的n(n+1)/2 变为了</p>
+<p>(1) 数据类型<br/>
+不同的数据类型适合的图形表现是不同的，随着现在数据分析应用的越来越广泛，数据类型随着其应用的场景不同也是越来越多。统计学传统意义上的数据类型主要是：</p>
 
-<h2 id="toc_0">参考资料</h2>
+<ul>
+<li>分类型变量：比如性别</li>
+<li>连续型变量：比如年龄</li>
+</ul>
 
-<p>简书-石晓文 <a href="https://www.jianshu.com/p/152ae633fb00">https://www.jianshu.com/p/152ae633fb00</a><br/>
-美团技术博客 <a href="https://tech.meituan.com/deep_understanding_of_ffm_principles_and_practices.html">https://tech.meituan.com/deep_understanding_of_ffm_principles_and_practices.html</a></p>
+<p>除了传统的这种之外，还有比如轨迹数据，视频数据等等</p>
+
+<p>(2) 数据之间的关系</p>
+
+<table>
+<thead>
+<tr>
+<th>关系</th>
+<th>示例图形</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>比较大小，包括不同个体或者分组之间</td>
+<td>常用的比如将面积、尺寸进行可视化。条形图、面积图</td>
+</tr>
+<tr>
+<td>数据的集中程度</td>
+<td>一般是热力图，比如地图上交通的拥挤程度</td>
+</tr>
+<tr>
+<td>地理信息</td>
+<td>地理位置数据</td>
+</tr>
+</tbody>
+</table>
+
+<p><a href="https://zhuanlan.zhihu.com/p/25632363">https://zhuanlan.zhihu.com/p/25632363</a></p>
+
+<h2 id="toc_1">2 工具部分</h2>
+
+<p>在实际操作中可能会涉及的使用工具有如下几种</p>
+
+<ul>
+<li>Excel<br/>
+excel作为微软office的办公软件，适合一些相对简单的数据分析，其本身包含的绘图功能基本上可以覆盖一些常用的需求。比如一些基本的绘图、数据分析功能。除此之外，excel还可以自己增加一些插件，比如功能强大的 power Map <a href="https://support.office.com/zh-cn/article/power-map-%E5%85%A5%E9%97%A8-88a28df6-8258-40aa-b5cc-577873fb0f4a">https://support.office.com/zh-cn/article/power-map-%E5%85%A5%E9%97%A8-88a28df6-8258-40aa-b5cc-577873fb0f4a</a></li>
+</ul>
+
+<p>适合展示一些需要进行地图可视化的数据，比如分省份的销售额，<br/>
+其还可以制作随时间变化的动态小视频，比如人的轨迹变化等等。</p>
+
+<ul>
+<li>可视化BI </li>
+</ul>
+
+<p>比如Tableau， power BI， FineBI等常见的一些可视化软件</p>
+
+<ul>
+<li>编程工具-python &amp; R</li>
+</ul>
+
+<p>R的ggplot应该是多数统计学家们使用的绘图工具，python中常用的基础绘图pacakge是<code>matplotlib</code>，以及在其基础上衍生出来的比较炫酷的 <code>seaborn</code>，其操作命令比较简单。有点类似R中的<code>ggplot</code>.</p>
+
+<p>python版本的echarts包：<a href="http://pyecharts.org/#/zh-cn/intro">http://pyecharts.org/#/zh-cn/intro</a></p>
+
+<ul>
+<li>工具平台</li>
+</ul>
+
+<p>蚂蚁金服  <a href="https://antv.alipay.com/zh-cn/vis/chart/color-map.html">https://antv.alipay.com/zh-cn/vis/chart/color-map.html</a><br/>
+百度的echarts</p>
+
+<h2 id="toc_2">参考资料</h2>
+
+<p><a href="https://blog.csdn.net/suzyu12345/article/details/69029106">https://blog.csdn.net/suzyu12345/article/details/69029106</a></p>
+
+<p>seaborn<br/>
+pyecharts  <a href="https://github.com/pyecharts/pyecharts">https://github.com/pyecharts/pyecharts</a></p>
+
+<h2 id="toc_3">2.echarts接口</h2>
+
+<p>pyecharts</p>
+
+<p><a href="http://pyecharts.org/#/zh-cn/charts?id=treemap%EF%BC%88%E7%9F%A9%E5%BD%A2%E6%A0%91%E5%9B%BE%EF%BC%89">http://pyecharts.org/#/zh-cn/charts?id=treemap%EF%BC%88%E7%9F%A9%E5%BD%A2%E6%A0%91%E5%9B%BE%EF%BC%89</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html'>3 数据可视化</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037708871.html">
+                
+                  <h1>TF1.0-slim  图像识别模型—— 1.利用已有的进行微调</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><strong>模型库tensorflow-slim</strong></p>
+
+<p>slim 模型库是tensorflow1.0 中专门做图像分类的model库，官网说明:<br/>
+<a href="https://github.com/tensorflow/models/tree/master/research/slim">https://github.com/tensorflow/models/tree/master/research/slim</a></p>
+
+<p>该库中有些用法只适合tf1.0版本，tf2.0中已经没有了，所以安装的时候tf2.0在使用中会报错<br/>
+<code>conda install tensorflow=1.14</code></p>
+
+<p>微调(fine-tune)的基本原理</p>
+
+<h2 id="toc_0">1.准备数据</h2>
+
+<pre><code class="language-text">python download_and_convert_data.py \
+    --dataset_name=mnist \
+    --dataset_dir=/tmp/mnist
+</code></pre>
+
+<pre><code class="language-text"> python data_convert.py -t pic --train-shards 2 --validation-shards 2 --num-threads 2 --dataset-name guangdong
+</code></pre>
+
+<p>执行完后会在pic下生成tf格式的训练+测试数据，以及label.txt<br/>
+<img src="media/15388051366041/15388065002449.jpg" alt=""/></p>
+
+<h2 id="toc_1">2.使用tensorflow的slim微调模型</h2>
+
+<p>简单介绍下google的这个图像分类工具包tensorflow-slim</p>
+
+<pre><code class="language-text">├── README.md
+├── datasets                    # 定义训练时候使用的数据。如果是自己的数据，必须在此文件夹下定义
+├── deployment
+├── download_and_convert_data.py
+├── export_inference_graph.py
+├── export_inference_graph_test.py
+├── nets                        # 定义了一些常用的网络，比如vgg16，vgg19，resnet等
+├── preprocessing               # 在读入图像前，对图像做的一些预处理
+├── scripts
+│   ├── finetune_inception_v1_on_flowers.sh
+│   ├── finetune_inception_v3_on_flowers.sh
+│   ├── finetune_resnet_v1_50_on_flowers.sh
+│   ├── train_cifarnet_on_cifar10.sh
+│   └── train_lenet_on_mnist.sh
+├── setup.py
+├── slim_walkthrough.ipynb
+├── eval_image_classifier.py      # 验证模型入口
+└── train_image_classifier.py     # 训练模型入口
+</code></pre>
+
+<p>(1) 定义新的dataset文件</p>
+
+<p>仿照<code>datasets/flowers.py</code> 写一个自己的数据文件<code>guangdong.py</code> 并且在<code>dataset_factory.py</code>中进行注册</p>
+
+<p>(2)准备训练文件夹</p>
+
+<p>(3)train model</p>
+
+<pre><code class="language-text">python train_image_classifier.py \
+  --train_dir=guangdong/train_dir \
+  --dataset_name=guangdong \
+  --dataset_split_name=train \
+  --dataset_dir=guangdong/data \
+  --model_name=inception_v3 \
+  --checkpoint_path=guangdong/pretrained/inception_v3.ckpt \
+  --checkpoint_exclude_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
+  --trainable_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
+  --max_number_of_steps=100000 \
+  --batch_size=32 \
+  --learning_rate=0.001 \
+  --learning_rate_decay_type=fixed \
+  --save_interval_secs=300 \
+  --save_summaries_secs=2 \
+  --log_every_n_steps=10 \
+  --optimizer=rmsprop \
+  --weight_decay=0.00004
+
+</code></pre>
+
+<p>如果执行后报错<code>Cannot assign a device for operation &#39;InceptionV3/AuxLogits/Conv2d_2b_1x1/weights/RMSProp1&#39;: Could not satisfy explicit device specification &#39;/device:GPU:0&#39; because no supported kernel for GPU devices is available</code> 之类的话</p>
+
+<p>可以参看这个的解决办法<a href="https://blog.csdn.net/xd_wjc/article/details/80550862">https://blog.csdn.net/xd_wjc/article/details/80550862</a></p>
+
+<p>tensorboard 查看任务运行情况</p>
+
+<pre><code class="language-text">tensorboard --logdir guangdong/train_dir
+</code></pre>
+
+<p>训练完毕之后进行模型评估</p>
+
+<pre><code class="language-text">python eval_image_classifier.py \
+  --checkpoint_path=guangdong/train_dir \
+  --eval_dir=guangdong/eval_dir \
+  --dataset_name=guangdong \
+  --dataset_split_name=validation \
+  --dataset_dir=guangdong/data \
+  --model_name=inception_v3
+</code></pre>
+
+<h3 id="toc_2">案例</h3>
+
+<p><a href="https://github.com/ns2250225/python3_tf_slim_image_classify">https://github.com/ns2250225/python3_tf_slim_image_classify</a></p>
+
+<p><a href="https://blog.csdn.net/qq_42556555/article/details/90237131">https://blog.csdn.net/qq_42556555/article/details/90237131</a></p>
+
+<p><a href="https://www.jianshu.com/p/1cbf9aae15b6">https://www.jianshu.com/p/1cbf9aae15b6</a></p>
+
+<h2 id="toc_3">阿里云服务</h2>
+
+<p><a href="https://help.aliyun.com/document_detail/49571.html#OSS">https://help.aliyun.com/document_detail/49571.html#OSS</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB.html'>图像分类</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037690385.html">
+                
+                  <h1>face_recgnization</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>github<br/>
+<a href="https://github.com/ageitgey/face_recognition">https://github.com/ageitgey/face_recognition</a></p>
+
+<h2 id="toc_0">1. 安装</h2>
+
+<p>文档： <a href="https://zhuanlan.zhihu.com/p/28271869">https://zhuanlan.zhihu.com/p/28271869</a></p>
+
+<pre><code class="language-text">pip install face_recognition
+</code></pre>
+
+<p>直接安装会报错，安装face_recognition这个之前需要先安装编译dlib</p>
+
+<pre><code class="language-text">brew install boost
+brew install boost-python --with-python3
+
+# install dlib
+git clone https://github.com/davisking/dlib.git
+cd dlib
+mkdir build; cd build; cmake .. -DDLIB_USE_CUDA=0 -DUSE_AVX_INSTRUCTIONS=1; cmake --build 
+
+cd ..
+python setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA
+</code></pre>
+
+<p>If there is no cmake on your mac, you can use  <code>brew install cmake</code>. After all these have been done, run</p>
+
+<pre><code class="language-text">pip install face_recognition
+</code></pre>
+
+<h2 id="toc_1">2.usage</h2>
+
+<p>face_recognition有两种使用方式，命令行方式和python包方式</p>
+
+<p>(1) 命令行方式</p>
+
+<p>(2) python 包<br/>
+<a href="https://face-recognition.readthedocs.io/en/latest/face_recognition.html#module-face_recognition.api">https://face-recognition.readthedocs.io/en/latest/face_recognition.html#module-face_recognition.api</a></p>
+
+<p></p>
+
+<h2 id="toc_2">参考资料</h2>
+
+<p><a href="https://zhuanlan.zhihu.com/p/28271869">https://zhuanlan.zhihu.com/p/28271869</a></p>
+
+<p><a href="https://medium.com/@ageitgey">https://medium.com/@ageitgey</a></p>
+
+<hr/>
+
+<p><a href="https://www.jianshu.com/p/281aa6a3823a">https://www.jianshu.com/p/281aa6a3823a</a></p>
+
+<p>一个案例<br/>
+<a href="https://www.jianshu.com/p/38ca6daf6b40">https://www.jianshu.com/p/38ca6daf6b40</a><br/>
+<a href="http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html">http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html</a></p>
+
+<p>tf案例<br/>
+<a href="https://blog.csdn.net/u010016927/article/details/75722416">https://blog.csdn.net/u010016927/article/details/75722416</a></p>
+
+<p>knn<br/>
+<a href="https://www.leiphone.com/news/201707/gIbNsPtWk460m5vj.html">https://www.leiphone.com/news/201707/gIbNsPtWk460m5vj.html</a></p>
+
+<p><a href="https://blog.csdn.net/Mbx8X9u/article/details/79124840">https://blog.csdn.net/Mbx8X9u/article/details/79124840</a></p>
+
+<p><a href="https://www.ctolib.com/topics-101544.html">https://www.ctolib.com/topics-101544.html</a></p>
+
+<p><a href="https://www.oschina.net/code/snippet_2558914_54339">https://www.oschina.net/code/snippet_2558914_54339</a></p>
+
+<h2 id="toc_3">new</h2>
+
+<p><a href="https://www.leiphone.com/news/201704/rYdpAvh4SvgVPpRQ.html">https://www.leiphone.com/news/201704/rYdpAvh4SvgVPpRQ.html</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='face.html'>face</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037691075.html">
+                
+                  <h1>4.1 回归模型</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>进入统计机器学习大门，最基础的从回归分析说起。</p>
+
+<h2 id="toc_0">1.回归分析</h2>
+
+<p>机器学习从最简单的回归分析说起，这次从最小二乘的几何意义角度去看回归分析。</p>
+
+<p>\[Y = X’B\]<br/>
+我们知道最终估计的满足 \((y-X\hat\beta)^TX=0\)。即最优估计是在空间上的正交投影</p>
+
+<p><img src="media/15350244372147/15350246581231.jpg" alt=""/><br/>
+统计中的一些基本概念：</p>
+
+<ul>
+<li>t 检验</li>
+<li>F 检验</li>
+<li>p value</li>
+<li>多重共线性</li>
+<li></li>
+</ul>
+
+<h2 id="toc_1">2.正则化处理</h2>
+
+<p>训练数据是有限的时候，总可以通过增加参数的方法提高模型复杂度，降低训练误差，但是其泛化能力不好。正则化即通过调整参数的取值，来平衡<strong>偏差</strong>和<strong>方差</strong>的关系。</p>
+
+<p>线性回归中，最直接的方法就行在loss function中添加正则化项。一般形式如下：</p>
+
+<p>\[E(w) = \sum [f(x_i, w) - y_i]^2 + \lambda g(||w||_p)\]</p>
+
+<ul>
+<li>当取一范数时，即为lasso；</li>
+<li>二范数：岭回归</li>
+<li>一范数和二范数组合：弹性网络。  \(a||w||^2_2 + (1-a)||w||_1\)</li>
+</ul>
+
+<p>一范数和二范数的几何意义区别如下(这里就不解释了)：</p>
+
+<ul>
+<li>lasso会将特征衰减到0</li>
+<li>岭回归大量特征系数都比较小</li>
+<li>弹性网络结合了两种方法的优点</li>
+</ul>
+
+<p><img src="media/15350244372147/15350256600383.jpg" alt=""/></p>
+
+<blockquote>
+<p>从概率不同学派的角度来看上面的问题。<br/>
+正则化的方式，是从频率学派角度来看；而贝叶斯学派视角来看，正则化其实就是引入了关于参数的先验信息。</p>
+</blockquote>
+
+<p>贝叶斯学派是假定参数服从某种分布，然后根据其分布利用积分的方法将其消除掉。这一过程叫<strong>边际化</strong>。边际化的过程其实恰好是正则化/泛化的过程。</p>
+
+<p>可以证明，岭回归是w满足正态分布，lasso是当w满足拉普拉斯分布时候通过最大后验概率得到的估计结果。</p>
+
+<blockquote>
+<p>code</p>
+</blockquote>
+
+<pre><code class="language-text">import numpy as np # 快速操作结构数组的工具
+import matplotlib.pyplot as plt  # 可视化绘制
+from sklearn.linear_model import Lasso,LassoCV,LassoLarsCV   # Lasso回归,LassoCV交叉验证实现alpha的选取，LassoLarsCV基于最小角回归交叉验证实现alpha的选取
+
+# ========Lasso回归========
+model = Lasso(alpha=0.01)  # 调节alpha可以实现对拟合的程度
+# model = LassoCV()  # LassoCV自动调节alpha可以实现选择最佳的alpha。
+# model = LassoLarsCV()  # LassoLarsCV自动调节alpha可以实现选择最佳的alpha
+model.fit(X, y)   # 线性回归建模
+print(&#39;系数矩阵:\n&#39;,model.coef_)
+print(&#39;线性回归模型:\n&#39;,model)
+# print(&#39;最佳的alpha：&#39;,model.alpha_)  # 只有在使用LassoCV、LassoLarsCV时才有效
+# 使用模型预测
+predicted = model.predict(X)
+
+</code></pre>
+
+<h2 id="toc_2">3.广义线性模型</h2>
+
+<p>广义线性模型可以看做一般线性模型的推广，既然说他是推广，说明有一些问题是传统的线性模型没法解决的。</p>
+
+<p>广义线性模型中y的密度函数形式是基于指数分布族的\[p(y;\theta)=b(y)exp[\theta&#39;T(y)+a(\theta)]\]<br/>
+其中\(T(y)\)是一个充分统计量，通常可以等于\(y\)。 常见的正态分布、指数分布、二项分布、泊松分布都属于指数分布族，都可以转为这种形式。</p>
+
+<p>介绍一个常用的广义线性模型：</p>
+
+<p>xxx</p>
+
+<h2 id="toc_3">4.基函数扩展：属性的非线性化</h2>
+
+<p>线性模型的表达能力有限，前面广义线性模型的思路是将因变量y做了一个非线性映射。而从另一个角度，可以将解释变量变为非线性的，即<br/>
+\[y=\beta_0+\beta_1x_1 + ...+\beta_nx_n\]<br/>
+可以扩展为<strong>基函数扩展模型</strong><br/>
+\[y=\beta_0+\beta_1f(x_1) + ...+\beta_nf(x_n)\]</p>
+
+<p>比如常见的多项式回归\[y=\beta_0+\beta_1 x + ...+\beta_n x^n\]</p>
+
+<p>多项式回归会存在一些问题：</p>
+
+<ul>
+<li>\(x\)和\(x^k\)之间是相关的，不太好解释清楚每个变量的贡献程度</li>
+<li>会出现过拟合的情况</li>
+</ul>
+
+<p><strong>多元自适应回归样条MARS</strong></p>
+
+<ul>
+<li>多项式整体是线性，局部非非线性</li>
+<li>MARS: 整体是非线性，局部是线性(分段函数)</li>
+</ul>
+
+<p>样条函数，需要满足一些最基本的一些条件</p>
+
+<ul>
+<li>在knot节点处满足函数的连续性</li>
+<li>一阶导数连续，二阶导数连续，则称为三次样条</li>
+</ul>
+
+<p>平滑样条</p>
+
+<p>\[E=\sum_{i=1}^n [y_i-g(x_i)]^2 +\lambda\int g&#39;&#39;(t)^2 \]</p>
+
+<p>code: <code>patsy</code></p>
 
                         
                       </div>
@@ -260,177 +924,6 @@
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037680349.html">
-                
-                  <h1>jupyterLab-安装其他内核支持</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>jupyterlab是jupyter notebook的一个升级版，界面更炫酷，而且同时支持R语言。</p>
-
-<p>现在Rstudio已经成为R社区使用最广泛的集成编辑器，其在配合Rstudio公司开发的软件包使用上有天然的优势，如knitr、bookdown、blogdown、sparklyr、tidyverse等，让我们在数据导入、清洗、可视化、分析过程中少踩了不少坑。</p>
-
-<p>然而，有时候我们也会发现，利用Rmarkdown进行探索性数据分析时，尤其是初学者，总是不断花费时间在文档编译上，而压缩了真正数据探索的时间。很多时候，我很羡慕python用户，因为他们拥有Ipython、jupyter notebook等工具，让我们一边分析数据，一边插入markdown文本，并且还能实时看到结果，这些特性R用户也可以实现吗？当然，这就是我今天推荐的jupyterlab 编辑器。</p>
-
-<p>安装jupyterLab</p>
-
-<p>首先我们要明白，jupyterLab是一个python包，所以要使用jupyterLab首先要配置python环境。对于普通用户，包括linux、win和Mac用户，建议直接下载anaconda发行版进行安装，这样免去了既要安装python又要安装其他包的麻烦，是最简洁的方法。</p>
-
-<p>对于平时很少使用python的人来说，可能无法忍受anaconda全家桶式的安装模式，想更轻便的安装使用，那也很容易。</p>
-
-<p>1.安装</p>
-
-<p>Mac 和 Linux用户系统自带了python，可以直接使用pip install jupyterlab安装jupyterLab包。</p>
-
-<p>win用户先在python官网下载安装python，然后使用pip install jupyterlab安装jupyterLab包。</p>
-
-<p>2.运行</p>
-
-<p>在终端输入jupyter lab即可以在默认浏览器中打开编辑器界面，若不能，请检查下python路径配置是否正确。</p>
-
-<p>“咦，怎么只能选择python，R去哪了”，各位看官莫急，这是因为R端缺少必要的包，还不能和jupyter进行通信，等把这些包安装好进行配置后就可以了。</p>
-
-<p>3.配置R</p>
-
-<p>要把先前打开的jupyterLab程序全部关闭后再进行以下操作</p>
-
-<pre><code class="language-text">#安装必要的依赖包
-install.packages(c(&#39;repr&#39;, &#39;IRdisplay&#39;,&#39;evaluate&#39;, &#39;crayon&#39;,&#39;pbdZMQ&#39;,&#39;devtools&#39;,&#39;uuid&#39;, &#39;digest&#39;))
-</code></pre>
-
-<pre><code class="language-text">#IRkernel包没有放在CRAN上，需要通过GitHub安装
-devtools::install_github(&#39;IRkernel/IRkernel&#39;)
-IRkernel::installspec() #确保jupyterLab能找到R解释器安装位置
-</code></pre>
-
-<p>4.再次在终端运行<code>jupyter lab</code>，选择R图标打开，你就可以在jupyterLab进行数据分析啦</p>
-
-<p>jupyterLab的主要特性绘图函数自动插入图片ggplot2绘图完美支持</p>
-
-<h2 id="toc_0">安装spark</h2>
-
-<p>以下主要是安装scala版本的notebook spark<br/>
-(1)安装sbt（simple build tools）<br/>
-下载sbt</p>
-
-<p>wget <a href="https://dl.bintray.com/sbt/native-packages/sbt/0.13.11/sbt-0.13.11.tgz">https://dl.bintray.com/sbt/native-packages/sbt/0.13.11/sbt-0.13.11.tgz</a></p>
-
-<p>下载完成后，配置相关PATH路径，命令<code>sbt sbt-version</code>验证。执行这个命令后，，就耐心等待吧，很久很久。。。。。。。因为要下载很多jar包。</p>
-
-<h3 id="toc_1">新方案</h3>
-
-<p><a href="https://toree.incubator.apache.org/docs/current/user/quick-start/">https://toree.incubator.apache.org/docs/current/user/quick-start/</a></p>
-
-<h2 id="toc_2">安装scala内核</h2>
-
-<p>安装说明<br/>
-<a href="https://almond.sh/docs/quick-start-install">https://almond.sh/docs/quick-start-install</a></p>
-
-<pre><code class="language-text">SCALA_VERSION=2.12.8 ALMOND_VERSION=0.9.1   #版本需要根据自己情况设置
-#
-curl -Lo coursier https://git.io/coursier-cli
-chmod +x coursier
-./coursier bootstrap \
-    -r jitpack \
-    -i user -I user:sh.almond:scala-kernel-api_$SCALA_VERSION:$ALMOND_VERSION \
-    sh.almond:scala-kernel_$SCALA_VERSION:$ALMOND_VERSION \
-    -o almond
-#
-./almond --install
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037680741.html">
-                
-                  <h1>IDE-sublime,vscode</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">1.sublime</h2>
-
-<p>sublime除了具有基本的文本编辑功能之外，还可以安装很多package来扩展其强大的功能。这里罗列出一些工作中经常能用到的</p>
-
-<p><strong>安装install package</strong></p>
-
-<p>点击菜单中的 “View”–“Show Console”，调出console面板，然后到<a href="https://packagecontrol.io/installation#st3">https://packagecontrol.io/installation#st3</a></p>
-
-<p>官网上的，复制出代码黏贴执行。执行完毕即可。</p>
-
-<h3 id="toc_1">格式化json</h3>
-
-<p>打开 Sublime，command + shift + p -&gt; Install package<br/>
-搜索 Pretty JSON，安装</p>
-
-<p>之后mac上用： <code>command + ctrl + j</code> 即可直接格式化显示。</p>
-
-<h3 id="toc_2">比较diff</h3>
-
-<h3 id="toc_3">git</h3>
-
-<h3 id="toc_4">latex</h3>
-
-<p>安装latex<br/>
-(1) 进入 <a href="http://www.tug.org/mactex/">http://www.tug.org/mactex/</a> 下载安装MacTeX.pkg<br/>
-(2) Sublime按下“Command+Shift+P”打开命令托盘Command pallet，这一步也可以通过Tools下拉菜单完成。<br/>
-在命令托盘里输入“Install Package”，按下Enter回车建。<br/>
-完成之后，输入“LaTeX Tools”，找到这一项并回车安装。<br/>
-退出并重启Sublime Text。</p>
-
-<h2 id="toc_5">2.vs code</h2>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
           				   
                     
 
@@ -540,31 +1033,31 @@ chmod +x coursier
 	      
 		      
 			      <li class="post">
-			        <a href="15917706614562.html">optical flow 光流</a>
+			        <a href="15919304631539.html">源码阅读工具</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15917693533998.html">process</a>
+			        <a href="15919291891898.html">训练常见问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15917597006543.html">业务</a>
+			        <a href="15918717478277.html">【工具】MMlab—mmskelton</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15917572981552.html">综述_关键点检测</a>
+			        <a href="15918653333546.html">图像检索：BoF、VLAD、FV三剑客</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15916704949564.html">【工具】MMlab——mmaction</a>
+			        <a href="15918617122348.html">batch normalization</a>
 			      </li>
 		     
 		  

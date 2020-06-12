@@ -130,50 +130,35 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15794012608721.html">
+                <a class="clearlink" href="15826898443382.html">
                 
-                  <h1>Attention Mechanism</h1>
+                  <h1>训练数据少-</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>attention是一种基于提升RNN的encoder + decoder效果的机制。 attention机制可以对输入X的每个部分赋予不同的权重，抽取出更加重要的信息和特征。</p>
+                        	<p>生成更多数据 <a href="https://juejin.im/post/5d887be951882509334fa199">https://juejin.im/post/5d887be951882509334fa199</a></p>
 
-<p>(1)attention机制解决的主要问题</p>
+<p>数据量少的方法 <a href="https://zhuanlan.zhihu.com/p/50547038">https://zhuanlan.zhihu.com/p/50547038</a></p>
 
-<p>以rnn机器翻译为例</p>
+<p>1.迁移学习</p>
 
-<ul>
-<li>不管多长的句子，都会最终被压缩到一个固定长度的隐向量，这样会有信息损失、</li>
-<li>序列场景下，每个item的权重都是一样的；类似的，图像场景下，每个像素的权重也是一样的。注意力机制其实和人识别东西有些类似，人会先看到物体的关键部分特征，然后整合成整体。</li>
-</ul>
+<p>（1）微调 <a href="https://zhuanlan.zhihu.com/p/35890660">https://zhuanlan.zhihu.com/p/35890660</a><br/>
+利用已经训练好的模型和参数作为初始参数，再训模型</p>
 
-<p>seq2seq结构</p>
+<p><img src="media/15826898443382/15826938622074.jpg" alt=""/></p>
 
-<h2 id="toc_0">常见的一些attention模型</h2>
+<p>（2）特征提取（Feature Extraction） +特征融合（feature fusion）+ xgboost<br/>
+模型结构不变，将最后输出部分的全连接特征取出</p>
 
-<p>按照涉及的序列个数分类：<br/>
-(1) self-attention</p>
+<p><a href="https://github.com/cameronfabbri/Compute-Features">https://github.com/cameronfabbri/Compute-Features</a></p>
 
-<p>序列=&gt; 类别，文本分类</p>
-
-<p>(2) distinctive attention</p>
-
-<p>序列 =&gt; 序列， 机器翻译</p>
-
-<p>(3) co-attention<br/>
-多于2个序列，比如给定一张图片和一个问题，需要生成响应的答案</p>
-
-<p>按encoder序列参与计算attention的位置分<br/>
-(1) soft attention<br/>
-(2) hard attention</p>
-
-<p>参考资料：</p>
+<p>过拟合<br/>
+<a href="http://www.mashangxue123.com/tensorflow/tf2-tutorials-keras-overfit_and_underfit.html">http://www.mashangxue123.com/tensorflow/tf2-tutorials-keras-overfit_and_underfit.html</a></p>
 
 <ul>
-<li><a href="https://zhuanlan.zhihu.com/p/73357761">https://zhuanlan.zhihu.com/p/73357761</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/31547842">https://zhuanlan.zhihu.com/p/31547842</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/43493999">https://zhuanlan.zhihu.com/p/43493999</a></li>
+<li>权重正则化L1,L2</li>
+<li>dropout</li>
 </ul>
 
                         
@@ -183,10 +168,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/1/19</span>
+                    <span class="date">2020/2/26</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='6%20NLP.html'>6 NLP</a></span>
+          					    <span class="posted-in"><a href='%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB.html'>图像分类</a></span>
           				   
                     
 
@@ -202,21 +187,34 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15792628943260.html">
+                <a class="clearlink" href="15825969970925.html">
                 
-                  <h1>review 发展</h1>
+                  <h1>TF2.0</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<ul>
-<li><p>2018 Bert</p></li>
-<li><p>2017 年 Vaswani 的 Transformer</p></li>
-<li><p>2013 年 Mikolov 的 Word2vec</p></li>
-<li><p>2003 年 Bengio 的 NNLM;</p></li>
-</ul>
+                        	<p><a href="https://tensorflow.google.cn/tutorials/images/classification">https://tensorflow.google.cn/tutorials/images/classification</a></p>
 
-<h2 id="toc_0">Transformer 《Attention Is All You Need》</h2>
+<pre><code class="language-text">一个简单的方法是创建一个新的 Model 来输出你所感兴趣的层：
+
+from keras.models import Model
+
+model = ...  # 创建原始模型
+
+layer_name = &#39;my_layer&#39;
+intermediate_layer_model = Model(inputs=model.input,
+                                 outputs=model.get_layer(layer_name).output)
+intermediate_output = intermediate_layer_model.predict(data)
+或者，你也可以构建一个 Keras 函数，该函数将在给定输入的情况下返回某个层的输出，例如：
+
+from keras import backend as K
+
+get_3rd_layer_output = K.function([model.layers[0].input],
+                                  [model.layers[3].output])
+layer_output = get_3rd_layer_output([x])[0]
+
+</code></pre>
 
                         
                       </div>
@@ -225,10 +223,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/1/17</span>
+                    <span class="date">2020/2/25</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='6%20NLP.html'>6 NLP</a></span>
+          					    <span class="posted-in"><a href='7%20CV.html'>7 CV</a></span>
           				   
                     
 
@@ -244,9 +242,216 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15784847557033.html">
+                <a class="clearlink" href="15825488509435.html">
                 
-                  <h1>异常值</h1>
+                  <h1>工具篇</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>工欲善其事必先利其器</p>
+</blockquote>
+
+<p>主流的深度学习框架有</p>
+
+<table>
+<thead>
+<tr>
+<th>tool</th>
+<th>公司</th>
+<th>特性</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>tensorflow</td>
+<td>google</td>
+<td></td>
+</tr>
+<tr>
+<td>pytorch</td>
+<td>facebook</td>
+<td></td>
+</tr>
+<tr>
+<td>keras</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>caffe</td>
+<td>伯克利</td>
+<td></td>
+</tr>
+<tr>
+<td>paddlepaddle</td>
+<td>百度</td>
+<td></td>
+</tr>
+<tr>
+<td>mxnet</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p>Keras 是基于tensorflow或者Theano(已不维护)封装的高阶接口，tensorflow2.0中现在已经包含Keras</p>
+
+<h2 id="toc_0">1. Tensorflow</h2>
+
+<p><strong>TF-Slim、TFLearn、Keras和TensorLayer</strong></p>
+
+<p>TF-Slim、TFLearn、Keras和TensorLayer都是尝试简化TensorFlow/Theano的工具，是对TensorFlow/Theano的高层封装，API实现更加的工程化</p>
+
+<p>tensorflow2.0 已经将这些合并整理了，官方推荐的是keras的api</p>
+
+<p><a href="https://tensorflow.google.cn/tutorials/images/transfer_learning">https://tensorflow.google.cn/tutorials/images/transfer_learning</a></p>
+
+<p><a href="https://github.com/balancap/SSD-Tensorflow">https://github.com/balancap/SSD-Tensorflow</a></p>
+
+<h2 id="toc_1">2. tensorhub</h2>
+
+<p>官方地址 <a href="https://hub.tensorflow.google.cn/">https://hub.tensorflow.google.cn/</a> 类似于dockerhub，汇集了各种分享的模型，可供下载使用。<br/>
+主要包括 tezt embeddings, image classification models and more</p>
+
+<p>安装</p>
+
+<pre><code class="language-text">pip install --upgrade tensorflow-hub
+</code></pre>
+
+<p>比如图像分类相关的 <a href="https://hub.tensorflow.google.cn/google/collections/image/1">https://hub.tensorflow.google.cn/google/collections/image/1</a><br/>
+google后来提取的 EfficientNet, 调整模型的深度，宽度等参数。<a href="https://hub.tensorflow.google.cn/google/collections/efficientnet/1">https://hub.tensorflow.google.cn/google/collections/efficientnet/1</a></p>
+
+<p>1.对新样本predict</p>
+
+<pre><code class="language-python">classifier_url =&quot;https://tfhub.dev/google/tf2-preview/mobilenet_v2/classification/2&quot; #@param {type:&quot;string&quot;}
+
+IMAGE_SHAPE = (224, 224)
+classifier = tf.keras.Sequential([
+    hub.KerasLayer(classifier_url, input_shape=IMAGE_SHAPE+(3,))
+])
+
+# 新样本
+grace_hopper = tf.keras.utils.get_file(&#39;image.jpg&#39;,&#39;https://storage.googleapis.com/download.tensorflow.org/example_images/grace_hopper.jpg&#39;)
+grace_hopper = Image.open(grace_hopper).resize(IMAGE_SHAPE)
+grace_hopper = np.array(grace_hopper)/255.0
+
+result = classifier.predict(grace_hopper[np.newaxis, ...])
+result.shape
+</code></pre>
+
+<p>2.simple迁移学习</p>
+
+<pre><code class="language-python">image_generator = tf.keras.preprocessing.image.ImageDataGenerator(rescale=1/255)
+image_data = image_generator.flow_from_directory(str(data_root), target_size=IMAGE_SHAPE)
+
+## 下载不包含top classification layer的model
+feature_extractor_url = &quot;https://tfhub.dev/google/tf2-preview/mobilenet_v2/feature_vector/2&quot; #@param {type:&quot;string&quot;}
+
+feature_extractor_layer = hub.KerasLayer(feature_extractor_url,
+                                        trainable= False,
+                                        input_shape=(224,224,3))
+                                         
+model = tf.keras.Sequential([
+  feature_extractor_layer,
+  layers.Dense(image_data.num_classes)
+])
+
+model.summary()
+# 剩下的和正常的模型训练过程一样
+</code></pre>
+
+<p>其command line 工具 <a href="https://github.com/tensorflow/hub/tree/master/tensorflow_hub/tools/make_image_classifier">https://github.com/tensorflow/hub/tree/master/tensorflow_hub/tools/make_image_classifier</a></p>
+
+<pre><code class="language-python">make_image_classifier \
+  --image_dir my_image_dir \
+  --tfhub_module https://tfhub.dev/google/tf2-preview/mobilenet_v2/feature_vector/4 \
+  --image_size 224 \
+  --saved_model_dir my_dir/new_model \
+  --labels_output_file class_labels.txt \
+  --tflite_output_file new_mobile_model.tflite
+</code></pre>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/2/24</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='tools.html'>tools</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15822015902121.html">
+                
+                  <h1>综述</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>首先看下cv方面的综述，对整个技术发展过程有个大致了解</p>
+
+<p><a href="https://github.com/weiaicunzai/awesome-image-classification">https://github.com/weiaicunzai/awesome-image-classification</a> (中文 <a href="https://mp.weixin.qq.com/s?__biz=MzIwOTc2MTUyMg==&amp;mid=2247487400&amp;idx=1&amp;sn=cb4dd3e95cd12c813bfcb7ae6e62d69c&amp;chksm=976faa35a01823230524bec5cb4ede73b880d42eaf2fe86b5878108df444d02ba1acd613df1b&amp;mpshare=1&amp;scene=1&amp;srcid=0221VLUJG5gsMr5QzU7VNtBZ&amp;sharer_sharetime=1582247950940&amp;sharer_shareid=39affd95034dc485004147e1f2365064%23rd">https://mp.weixin.qq.com/s?__biz=MzIwOTc2MTUyMg==&amp;mid=2247487400&amp;idx=1&amp;sn=cb4dd3e95cd12c813bfcb7ae6e62d69c&amp;chksm=976faa35a01823230524bec5cb4ede73b880d42eaf2fe86b5878108df444d02ba1acd613df1b&amp;mpshare=1&amp;scene=1&amp;srcid=0221VLUJG5gsMr5QzU7VNtBZ&amp;sharer_sharetime=1582247950940&amp;sharer_shareid=39affd95034dc485004147e1f2365064%23rd</a>)</p>
+
+<h2 id="toc_0">预处理</h2>
+
+<ul>
+<li>均值</li>
+<li>数据增强：缩放、旋转、随机RGB颜色、亮度变换等</li>
+</ul>
+
+<h2 id="toc_1">参考资料</h2>
+
+<p><a href="https://zhuanlan.zhihu.com/p/86090591">https://zhuanlan.zhihu.com/p/86090591</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/2/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB.html'>图像分类</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15815953769796.html">
+                
+                  <h1>贪心学院-nlp课程</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
@@ -259,108 +464,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/1/8</span>
+                    <span class="date">2020/2/13</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15784024732012.html">
-                
-                  <h1>sequence cluster</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><a href="https://docs.microsoft.com/en-us/analysis-services/data-mining/microsoft-sequence-clustering-algorithm">https://docs.microsoft.com/en-us/analysis-services/data-mining/microsoft-sequence-clustering-algorithm</a></p>
-
-<p><a href="https://www.sciencedirect.com/topics/medicine-and-dentistry/sequence-clustering">https://www.sciencedirect.com/topics/medicine-and-dentistry/sequence-clustering</a></p>
-
-<h2 id="toc_0">1.process mining approaches</h2>
-
-<ul>
-<li>α-算法 xxxx</li>
-<li>推断类方法 FSM(finite state machine)： 马尔科夫model</li>
-<li>DAG</li>
-<li>HMM<br/></li>
-</ul>
-
-<p>QQ: 如何去解释每个类别的含义，抽象出其表征</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/1/7</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html'>轨迹分析</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15780510840256.html">
-                
-                  <h1>python-制作app</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><a href="https://streamlit.io/">https://streamlit.io/</a></p>
-
-<p><a href="https://www.jiqizhixin.com/articles/2019-10-31-4">https://www.jiqizhixin.com/articles/2019-10-31-4</a></p>
-
-<h2 id="toc_0">1.初体验</h2>
-
-<p>环境安装</p>
-
-<pre><code class="language-text">pip install streamlit
-streamlit hello
-</code></pre>
-
-<p>当写完自己的app脚本后，运行方法 <code>streamlit run first_app.py</code><br/>
-同时也支持 <code>streamlit run https://raw.githubusercontent.com/streamlit/demo-uber-nyc-pickups/master/app.py</code></p>
-
-<p>一些基本语法</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/1/3</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html'>3 数据可视化</a></span>
+          					    <span class="posted-in"><a href='6%20NLP.html'>6 NLP</a></span>
           				   
                     
 
@@ -470,31 +577,31 @@ streamlit hello
 	      
 		      
 			      <li class="post">
-			        <a href="15917706614562.html">optical flow 光流</a>
+			        <a href="15919304631539.html">源码阅读工具</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15917693533998.html">process</a>
+			        <a href="15919291891898.html">训练常见问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15917597006543.html">业务</a>
+			        <a href="15918717478277.html">【工具】MMlab—mmskelton</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15917572981552.html">综述_关键点检测</a>
+			        <a href="15918653333546.html">图像检索：BoF、VLAD、FV三剑客</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15916704949564.html">【工具】MMlab——mmaction</a>
+			        <a href="15918617122348.html">batch normalization</a>
 			      </li>
 		     
 		  

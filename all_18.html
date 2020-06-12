@@ -130,113 +130,16 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637037681646.html">
+                <a class="clearlink" href="15637037691936.html">
                 
-                  <h1>1 基础工具包安装pip</h1>
+                  <h1>3.1 特征处理—— 特征选择</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>在安装package之前，首先要安装的就是包管理器。</p>
+                        	<h2 id="toc_0">参考</h2>
 
-<h2 id="toc_0">1.pip</h2>
-
-<p>安装pip <code>sudo easy_install pip</code></p>
-
-<p>通过pip安装python包  <code>pip install xxx</code></p>
-
-<p><strong>常见问题</strong></p>
-
-<pre><code class="language-text"># 当前版本
-pip --version
-# 版本升级(有些包安装需要依赖高级版本)
-pip install --upgrade pip
-
-## 升级某些包
-pip install --upgrade SomePackage
-
-# 安装包时候报错`time out`
-pip --default-timeout=100 install xxx
-
-## 指定安装目录
-pip -t 目标目录 xxx
-</code></pre>
-
-<p>更新pip给出一个最简单的办法就是通过pip uninstall pip卸载pip，再用easy_install pip安装pip,这样安装的就是最新版本的pip了。</p>
-
-<blockquote>
-<p>权限</p>
-</blockquote>
-
-<p>在mac上安装包的时候，因为系统限制不让写到内容到系统目录里去。解决方法</p>
-
-<ul>
-<li>重新安装一个自己版本的python，比如可以用ancoda安装</li>
-<li>pip安装的时候加入参数<code>pip install xxx --user</code>，安装到当前用户目录下。</li>
-</ul>
-
-<p>安装完成后还需要将该目录加到环境变量里才能使用</p>
-
-<pre><code class="language-text">export export PATH=/Users/$your_name/Library/Python/2.7/bin/:$PATH
-</code></pre>
-
-<blockquote>
-<p>更新某个包时候报错</p>
-</blockquote>
-
-<p><code>Cannot uninstall &#39;six&#39;. It is a distutils installed project and thus we cannot accurately determine which files belong to it which would lead to only a partial uninstall.</code></p>
-
-<p>解决办法：</p>
-
-<p><code>pip install six --upgrade --ignore-installed six</code></p>
-
-<p>当机器上有多个版本python，安装到指定的python版本中</p>
-
-<pre><code class="language-text">pip install -t /home/work/zhenzhen/python2.7/lib/python2.7/site-packages BeautifulSoup4
-</code></pre>
-
-<h2 id="toc_1">2.brew</h2>
-
-<p>/usr/bin/ruby -e &quot;$(curl -fsSL <a href="https://raw.githubusercontent.com/Homebrew/install/master/install)%E2%80%9D">https://raw.githubusercontent.com/Homebrew/install/master/install)”</a></p>
-
-<h2 id="toc_2">加速</h2>
-
-<p>pip install xxx -i <a href="https://pypi.tuna.tsinghua.edu.cn/simple/">https://pypi.tuna.tsinghua.edu.cn/simple/</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037682671.html">
-                
-                  <h1>聚类Tools篇</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><a href="http://glaros.dtc.umn.edu/gkhome/cluto/cluto/download">http://glaros.dtc.umn.edu/gkhome/cluto/cluto/download</a></p>
+<p><a href="https://blog.csdn.net/kebu12345678/article/details/78437118">https://blog.csdn.net/kebu12345678/article/details/78437118</a></p>
 
                         
                       </div>
@@ -264,48 +167,18 @@ pip -t 目标目录 xxx
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037683065.html">
+                <a class="clearlink" href="15637037692016.html">
                 
-                  <h1>Data product</h1>
+                  <h1>4.6 集成</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>We describe our methods in this chapter.</p>
+                        	<p><a href="http://www.52caml.com/head_first_ml/ml-chapter6-boosting-family/">http://www.52caml.com/head_first_ml/ml-chapter6-boosting-family/</a></p>
 
-<p>bookdown</p>
+<p><img src="media/15275150216357/15275150424366.jpg" alt=""/></p>
 
-<p>bookdown是基于markdown，knitr用来进行write book的一个package。<br/>
-其主要功能和markdown差不多，参考gitbook的方式，能基于Rmd或者md进行书写。</p>
-
-<p>加载一些html widgets</p>
-
-<p>首先安装相应的支持包</p>
-
-<pre><code class="language-text">install.packages(&quot;webshot&quot;)
-webshot::install_phantomjs()
-</code></pre>
-
-<h2 id="toc_0">输出格式</h2>
-
-<p>在<code>_output.yaml</code>中进行设置<br/>
-(1)html格式</p>
-
-<ul>
-<li>gtbook style</li>
-</ul>
-
-<p>*</p>
-
-<h2 id="toc_1">生成</h2>
-
-<p>实时预览</p>
-
-<p>serve_book(dir=&#39;.&#39;, output_dir=&quot;_book&quot;,preview=TRUE, in_session=TRUE)</p>
-
-<h1 id="toc_2">flexdashbaord</h1>
-
-<p><a href="http://rmarkdown.rstudio.com/flexdashboard/">http://rmarkdown.rstudio.com/flexdashboard/</a></p>
+<p><a href="http://www.cnblogs.com/gasongjian/p/7648633.html">http://www.cnblogs.com/gasongjian/p/7648633.html</a></p>
 
                         
                       </div>
@@ -317,7 +190,7 @@ webshot::install_phantomjs()
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html'>3 数据可视化</a></span>
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
           				   
                     
 
@@ -333,195 +206,154 @@ webshot::install_phantomjs()
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037683461.html">
+                <a class="clearlink" href="15637037680228.html">
                 
-                  <h1>Jupyter notebook</h1>
+                  <h1>FM 模型</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>类似于r的markdown</p>
+                        	<blockquote>
+<p>背景</p>
+</blockquote>
 
-<p>GitHub 上也直接支持 Jupyter notebook 的渲染。借助此出色的功能，你可以轻松地共享工作。<a href="http://nbviewer.jupyter.org/">http://nbviewer.jupyter.org/</a> 也会提供 GitHub 代码库中的 notebook ，以及存储在其他地方的 notebook。</p>
+<p>一般的线性模型 \(y=w_0 + \sum w_i x_i\)， 当考虑了特征之间的相关性即交互效应(这里以二阶为例)后模型形式是：<br/>
+\[y=w_0 + \sum w_i x_i + \sum_1^{n-1}\sum_{i+1}^n w_{ij}x_ix_j\]</p>
 
-<p>名称 Jupyter 由 Julia、Python 和 R 组合而成，早期的两个非 Python 内核分别是 R 语言和 Julia 语言</p>
+<p>这里n表示特征的个数</p>
 
-<h2 id="toc_0">1.安装</h2>
+<blockquote>
+<p>模型如何求解呢？</p>
+</blockquote>
 
-<ul>
-<li>如果安装anaconda 会自带</li>
-<li>通过conda环境安装 <code>conda install jupyter notebook</code>，或者<code>pip install jupyter notebook</code></li>
-</ul>
+<p>如果把\(x_ix_j\)看做一个新的变量，相当于整体上还是一个线性回归模型，似乎可以用正常的线性回归的办法进行求解。<br/>
+但是这里未知的要求解的参数有n(+1)/2个，很多时候特征中会有一些分类型的变量，当通过哑变量的方式引入模型中的时候，特征数目k会非常大，从而导致要求解的参数个数较大，并且数据特别稀疏。另一方面，分类特征就到时候，\(x_ix_j\)是非零的比例较小，从而导致\(w\)无法计算出来。</p>
 
-<pre><code class="language-text"># 启动
-jupyter notebook
-</code></pre>
+<blockquote>
+<p>引入其他辅助信息</p>
+</blockquote>
 
-<p>快捷键</p>
+<p>我们可以引入一个辅助向量 对于\(w_{ij}\)形成的对称矩阵W，可以进行分解\(W=V^TV\)</p>
 
-<p>在上方插入cell：a<br/>
-在下方插入cell：b<br/>
-剪切当前cell：x<br/>
-删除当前cell：dd<br/>
-撤销删除：u<br/>
-上下：方向键 or jk (同vim)<br/>
-扩展选中上下左右：shift+jk<br/>
-当前cell转入markdown状态：m<br/>
-当前cell转入代码状态：y</p>
-
-<h2 id="toc_1">magic 关键字</h2>
-
-<p>Magic 关键字是可以在单元格中运行的特殊命令，能让你控制notebook 本身或执行系统调用（例如更改目录）</p>
-
-<p>Magic 命令的前面带有一个或两个百分号（% 或 %%），分别对应行 Magic 命令和单元格 Magic 命令。行 Magic 命令仅应用于编写 Magic 命令时所在的行，而单元格 Magic 命令应用于整个单元格。</p>
-
-<p>对于 Python 内核，可以使用 Magic 命令 %pdb 开启交互式调试器。出错时，你能检查当前命名空间中的变量。</p>
-
-<h2 id="toc_2">2.转换 notebook格式</h2>
-
-<p>Notebook 只是扩展名为 .ipynb 的大型 JSON 文件。</p>
-
-<p>转换格式的命令 <code>nbconvert</code></p>
-
-<pre><code class="language-text">jupyter nbconvert --to html notebook.ipynb   #转成html
-jupyter nbconvert --to markdown xxx.ipynb 
-</code></pre>
-
-<p>目前支持的转换格式(<a href="https://nbconvert.readthedocs.io/en/latest/usage.html">https://nbconvert.readthedocs.io/en/latest/usage.html</a>)<br/>
-HTML,<br/>
-LaTeX,<br/>
-PDF,<br/>
-Reveal.js HTML slideshow,<br/>
-Markdown,<br/>
-reStructuredText,<br/>
-executable script,<br/>
-notebook.</p>
-
-<p><strong>创建幻灯片</strong></p>
-
-<p>在 notebook 中创建幻灯片的过程像平常一样，但需要指定作为幻灯片的单元格和单元格的幻灯片类型。在菜单栏中，点击“View”（视图）&gt;“Cell Toolbar”（单元格工具栏）&gt;“Slideshow”（幻灯片），以便在每个单元格上弹出幻灯片单元格菜单。</p>
-
-<pre><code class="language-text">#转换并在浏览器中展示
-jupyter nbconvert notebook.ipynb --to slides --post serve
-</code></pre>
-
-<h2 id="toc_3">3.测试机上安装jupyter</h2>
-
-<p><a href="https://cloud.tencent.com/developer/article/1147487">https://cloud.tencent.com/developer/article/1147487</a></p>
+<p>将模型改成如下形式<br/>
+\[y=w_0 + \sum w_i x_i + \sum_1^{n-1}\sum_{i+1}^n &lt;v_i, v_j&gt;x_ix_j\]</p>
 
 <ul>
-<li>安装jupyter</li>
-<li>生成密码 python -c &quot;import IPython;print IPython.lib.passwd()&quot;</li>
-<li>修改配置文件 </li>
+<li>从形式上来看，我们知道\(w_ij\)的矩阵是对称的，其形式上和协差阵\(&lt;v_i, v_j&gt;\)很类似</li>
 </ul>
 
-<p>/home/work/.jupyter/jupyter_notebook_config.py</p>
+<p>\(v_i\)相当于是第i维隐向量，假设其维度是k&lt;&lt;n, 这样模型的参数就由原来的n(n+1)/2 变为了</p>
 
-<p>如果启动报错</p>
+<h2 id="toc_0">参考资料</h2>
 
-<pre><code class="language-text">socket.gaierror: [Errno -2] Name or service not known
+<p>简书-石晓文 <a href="https://www.jianshu.com/p/152ae633fb00">https://www.jianshu.com/p/152ae633fb00</a><br/>
+美团技术博客 <a href="https://tech.meituan.com/deep_understanding_of_ffm_principles_and_practices.html">https://tech.meituan.com/deep_understanding_of_ffm_principles_and_practices.html</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037680349.html">
+                
+                  <h1>jupyterLab-安装其他内核支持</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>jupyterlab是jupyter notebook的一个升级版，界面更炫酷，而且同时支持R语言。</p>
+
+<p>现在Rstudio已经成为R社区使用最广泛的集成编辑器，其在配合Rstudio公司开发的软件包使用上有天然的优势，如knitr、bookdown、blogdown、sparklyr、tidyverse等，让我们在数据导入、清洗、可视化、分析过程中少踩了不少坑。</p>
+
+<p>然而，有时候我们也会发现，利用Rmarkdown进行探索性数据分析时，尤其是初学者，总是不断花费时间在文档编译上，而压缩了真正数据探索的时间。很多时候，我很羡慕python用户，因为他们拥有Ipython、jupyter notebook等工具，让我们一边分析数据，一边插入markdown文本，并且还能实时看到结果，这些特性R用户也可以实现吗？当然，这就是我今天推荐的jupyterlab 编辑器。</p>
+
+<p>安装jupyterLab</p>
+
+<p>首先我们要明白，jupyterLab是一个python包，所以要使用jupyterLab首先要配置python环境。对于普通用户，包括linux、win和Mac用户，建议直接下载anaconda发行版进行安装，这样免去了既要安装python又要安装其他包的麻烦，是最简洁的方法。</p>
+
+<p>对于平时很少使用python的人来说，可能无法忍受anaconda全家桶式的安装模式，想更轻便的安装使用，那也很容易。</p>
+
+<p>1.安装</p>
+
+<p>Mac 和 Linux用户系统自带了python，可以直接使用pip install jupyterlab安装jupyterLab包。</p>
+
+<p>win用户先在python官网下载安装python，然后使用pip install jupyterlab安装jupyterLab包。</p>
+
+<p>2.运行</p>
+
+<p>在终端输入jupyter lab即可以在默认浏览器中打开编辑器界面，若不能，请检查下python路径配置是否正确。</p>
+
+<p>“咦，怎么只能选择python，R去哪了”，各位看官莫急，这是因为R端缺少必要的包，还不能和jupyter进行通信，等把这些包安装好进行配置后就可以了。</p>
+
+<p>3.配置R</p>
+
+<p>要把先前打开的jupyterLab程序全部关闭后再进行以下操作</p>
+
+<pre><code class="language-text">#安装必要的依赖包
+install.packages(c(&#39;repr&#39;, &#39;IRdisplay&#39;,&#39;evaluate&#39;, &#39;crayon&#39;,&#39;pbdZMQ&#39;,&#39;devtools&#39;,&#39;uuid&#39;, &#39;digest&#39;))
 </code></pre>
 
-<p>可以加上自己的ip</p>
-
-<pre><code class="language-text"> jupyter notebook --ip=xxxx
- jupyter lab --ip=xxx
+<pre><code class="language-text">#IRkernel包没有放在CRAN上，需要通过GitHub安装
+devtools::install_github(&#39;IRkernel/IRkernel&#39;)
+IRkernel::installspec() #确保jupyterLab能找到R解释器安装位置
 </code></pre>
 
-<h2 id="toc_4">4.其他工具</h2>
+<p>4.再次在终端运行<code>jupyter lab</code>，选择R图标打开，你就可以在jupyterLab进行数据分析啦</p>
 
-<p><strong>jupyter-lab</strong><br/>
-jupyter-lab 是jupyter-notebook的升级版，界面更加炫酷，也支持更多功能，强烈建议使用lab方式</p>
+<p>jupyterLab的主要特性绘图函数自动插入图片ggplot2绘图完美支持</p>
 
-<p><strong>colab</strong><br/>
-google 基于jupyter开发的存在在google driver上的网页版<br/>
-<a href="https://colab.research.google.com/">https://colab.research.google.com/</a><br/>
-本身功能上差不太多，主要是有search和share功能，查看别人分享的代码</p>
+<h2 id="toc_0">安装spark</h2>
 
-<p>一个简单的入门教程,在colab上你可以体验免费的GPU<br/>
-<a href="https://github.com/xitu/gold-miner/blob/master/TODO1/google-colab-free-gpu-tutorial.md">https://github.com/xitu/gold-miner/blob/master/TODO1/google-colab-free-gpu-tutorial.md</a></p>
+<p>以下主要是安装scala版本的notebook spark<br/>
+(1)安装sbt（simple build tools）<br/>
+下载sbt</p>
 
-<p>Q: 将大文件发送的google drive</p>
+<p>wget <a href="https://dl.bintray.com/sbt/native-packages/sbt/0.13.11/sbt-0.13.11.tgz">https://dl.bintray.com/sbt/native-packages/sbt/0.13.11/sbt-0.13.11.tgz</a></p>
 
-<pre><code class="language-python"># 需要发送哪个文件？
-file_name = &quot;REPO.tar&quot;
+<p>下载完成后，配置相关PATH路径，命令<code>sbt sbt-version</code>验证。执行这个命令后，，就耐心等待吧，很久很久。。。。。。。因为要下载很多jar包。</p>
 
-from googleapiclient.http import MediaFileUpload
-from googleapiclient.discovery import build
+<h3 id="toc_1">新方案</h3>
 
-auth.authenticate_user()
-drive_service = build(&#39;drive&#39;, &#39;v3&#39;)
+<p><a href="https://toree.incubator.apache.org/docs/current/user/quick-start/">https://toree.incubator.apache.org/docs/current/user/quick-start/</a></p>
 
-def save_file_to_drive(name, path):
-  file_metadata = {&#39;name&#39;: name, &#39;mimeType&#39;: &#39;application/octet-stream&#39;}
-  media = MediaFileUpload(path, mimetype=&#39;application/octet-stream&#39;, resumable=True)
-  created = drive_service.files().create(body=file_metadata, media_body=media, fields=&#39;id&#39;).execute()
-  
-  return created
+<h2 id="toc_2">安装scala内核</h2>
 
-save_file_to_drive(file_name, file_name)
+<p>安装说明<br/>
+<a href="https://almond.sh/docs/quick-start-install">https://almond.sh/docs/quick-start-install</a></p>
+
+<pre><code class="language-text">SCALA_VERSION=2.12.8 ALMOND_VERSION=0.9.1   #版本需要根据自己情况设置
+#
+curl -Lo coursier https://git.io/coursier-cli
+chmod +x coursier
+./coursier bootstrap \
+    -r jitpack \
+    -i user -I user:sh.almond:scala-kernel-api_$SCALA_VERSION:$ALMOND_VERSION \
+    sh.almond:scala-kernel_$SCALA_VERSION:$ALMOND_VERSION \
+    -o almond
+#
+./almond --install
 </code></pre>
-
-<h2 id="toc_5">5.常见问题</h2>
-
-<p>Q1: 若import了自己写的外部模块，如果这个外部模块有更新，再次执行import，jupyter是不会重新导入的<br/>
-<a href="https://blog.csdn.net/ybdesire/article/details/86709727">https://blog.csdn.net/ybdesire/article/details/86709727</a></p>
-
-<p>对于 Python2.x<br/>
-import some_module<br/>
-reload(some_module)</p>
-
-<p>对于 Python 3.2 and 3.3:<br/>
-import some_module<br/>
-import importlib<br/>
-importlib.reload(some_module)</p>
-
-<p>对于 Python3.4+<br/>
-import some_module<br/>
-import imp<br/>
-imp.reload(some_module)</p>
-
-<p>方法2：<br/>
-auto_load</p>
-
-<p><a href="https://codeday.me/bug/20181215/447675.html">https://codeday.me/bug/20181215/447675.html</a></p>
-
-<p>Q2. <code>jupyter lab</code> 启动提示</p>
-
-<p><img src="media/15637037680349/15665439689997.jpg" alt=""/></p>
-
-<p>应该是编码问题，暂时的解决方案<a href="https://github.com/jupyter/notebook/issues/2789#issuecomment-338380336">https://github.com/jupyter/notebook/issues/2789#issuecomment-338380336</a></p>
-
-<p><code>LANG=zn jupyter lab</code></p>
-
-<p>这个问题后来查了下说是python2的bug，安装python3就不会出现这个问题。</p>
-
-<p>Q3. 切换内核<br/>
-很多代码都是python2写的，用pip3安装jupyter之后，想切换写内核。<br/>
-<a href="https://www.cnblogs.com/Jeffiy/p/4861528.html">https://www.cnblogs.com/Jeffiy/p/4861528.html</a></p>
-
-<pre><code class="language-text">jupyter kernelspec list
-</code></pre>
-
-<p>Q4: jupyterlab 中的内容，可以通过右键点击复制下载链接得到一个url，通过该url可以直接在网页上展示该文件。注意该url后面有个 _xsrf=xxxx的标记。<br/>
-如果重启了jupyterlab，这个标记也需要更新</p>
-
-<p>Q5: 如果安装了不同的conda环境，想切换不同的环境运行</p>
-
-<pre><code class="language-text">conda install nb_conda_kernels
-</code></pre>
-
-<p>Q6:在自己的docker环境下想运行jupyter</p>
-
-<pre><code class="language-text"># 在docker环境中安装
-pip install jupyterlab
-# 配置
-jupyter notebook --generate-config
-</code></pre>
-
-<h2 id="toc_6">6 好用的插件</h2>
-
-<p><a href="https://blog.csdn.net/yh0vlde8vg8ep9vge/article/details/85333338">https://blog.csdn.net/yh0vlde8vg8ep9vge/article/details/85333338</a></p>
 
                         
                       </div>
@@ -549,144 +381,44 @@ jupyter notebook --generate-config
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037683688.html">
+                <a class="clearlink" href="15637037680741.html">
                 
-                  <h1>4.7 聚类2——-效果评价</h1>
+                  <h1>IDE-sublime,vscode</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>从整体上来看，根据真实标签是否已知，聚类效果评估可以分为两大类：</p>
+                        	<h2 id="toc_0">1.sublime</h2>
 
-<ul>
-<li>外部标准：即基于人工的判断，需要有个标注集合</li>
-<li>内部标准：基于类内和类间聚类的目标函数的判断</li>
-</ul>
+<p>sublime除了具有基本的文本编辑功能之外，还可以安装很多package来扩展其强大的功能。这里罗列出一些工作中经常能用到的</p>
 
-<h2 id="toc_0">内部标准clustering-performance-evaluation</h2>
+<p><strong>安装install package</strong></p>
 
-<p>官方文档 <a href="https://scikit-learn.org/stable/modules/clustering.html#clustering-performance-evaluation">https://scikit-learn.org/stable/modules/clustering.html#clustering-performance-evaluation</a></p>
+<p>点击菜单中的 “View”–“Show Console”，调出console面板，然后到<a href="https://packagecontrol.io/installation#st3">https://packagecontrol.io/installation#st3</a></p>
 
-<ul>
-<li>轮廓系数</li>
-</ul>
+<p>官网上的，复制出代码黏贴执行。执行完毕即可。</p>
 
-<p>轮廓系数的计算方法: \(\frac{b-a}{max(a,b)}\)<br/>
-对每个样本来说：a=与他同类别样本的平均距离, b=与他距离最近的不同类别中样本的平均距离。</p>
+<h3 id="toc_1">格式化json</h3>
 
-<p>属性： 范围[-1,1]， 越大越好</p>
+<p>打开 Sublime，command + shift + p -&gt; Install package<br/>
+搜索 Pretty JSON，安装</p>
 
-<pre><code class="language-python">import numpy as np
-from sklearn.cluster import KMeans
-kmeans_model = KMeans(n_clusters=3, random_state=1).fit(X)
-labels = kmeans_model.labels_
-metrics.silhouette_score(X, labels, metric=&#39;euclidean&#39;)            
-</code></pre>
+<p>之后mac上用： <code>command + ctrl + j</code> 即可直接格式化显示。</p>
 
-<ul>
-<li>CH准则(计算速度要比轮廓系数快)</li>
-</ul>
+<h3 id="toc_2">比较diff</h3>
 
-<p>\[s(k) = \frac{tr(Bk)/(k-1)}{tr(W_k)/(n-k)}\]<br/>
-其中Bk是类别间的协方差矩阵，Wk是类别内部的协方差矩阵。最后是希望类别间越大，类内越小越好。<br/>
-即CH值越大越好</p>
+<h3 id="toc_3">git</h3>
 
-<pre><code class="language-python">metrics.calinski_harabaz_score(X, labels) 
-</code></pre>
+<h3 id="toc_4">latex</h3>
 
-<p>在选择最优的k时候，因为每个k都要再计算一次，当样本量比较大的时候比较费时间，这个时候可以选用<code>MiniBatchKMeans</code></p>
+<p>安装latex<br/>
+(1) 进入 <a href="http://www.tug.org/mactex/">http://www.tug.org/mactex/</a> 下载安装MacTeX.pkg<br/>
+(2) Sublime按下“Command+Shift+P”打开命令托盘Command pallet，这一步也可以通过Tools下拉菜单完成。<br/>
+在命令托盘里输入“Install Package”，按下Enter回车建。<br/>
+完成之后，输入“LaTeX Tools”，找到这一项并回车安装。<br/>
+退出并重启Sublime Text。</p>
 
-<pre><code class="language-python">ch_list = []
-lunkuo_list = []
-for i in num_list:
-    # model = KMeans(n_clusters = i,random_state=123).fit(df)
-    model = MiniBatchKMeans(n_clusters = i,random_state=123).fit(df)
-    ch = calinski_harabasz_score(df, model.labels_)     # CH 准则
-    ch_list.append(ch)
-
-    lunkuo = silhouette_score(df, model.labels_)        # 轮廓系数
-    lunkuo_list.append(lunkuo)    
-print(ch_list,lunkuo_list ) 
-</code></pre>
-
-<h2 id="toc_1">已知类别标注</h2>
-
-<p>假设：<br/>
-机器判断的类别集合是：\(C=\{C_1,C_2,...C_m\}\)<br/>
-人工判断的类别集合是：\(P=\{P_1,P_2,...P_s\}\)</p>
-
-<h3 id="toc_2">1.1混淆矩阵</h3>
-
-<p>基于数据样本点的角度：<br/>
-对于任意两个数据pair，\((x_i,x_j)\)按照其在C和P中是否属于同一个簇，可以构造出混淆矩阵</p>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>P_1</th>
-<th>p_0</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>C_1</td>
-<td>a</td>
-<td>b</td>
-</tr>
-<tr>
-<td>C_0</td>
-<td>c</td>
-<td>d</td>
-</tr>
-</tbody>
-</table>
-
-<p><img src="media/15078603543147/15078631739679.jpg" alt=""/></p>
-
-<h3 id="toc_3">1.2簇的准确率/召回率</h3>
-
-<p>基于簇pair的，考虑对任意一个人工与机器的.\(P_j,C_i\)。对于每一个人工标注的\(P_j\),在机器标注中应该都会对应一个&quot;最相关的&quot;。可以遍历C中所有的cluster，分别计算准确率，召回率，F_score。<br/>
-<img src="media/15078603543147/15078720767171.jpg" alt=""/></p>
-
-<p>然后对于所有簇的F值做加权平均<br/>
-\[ClassF=\sum w_j F(p_j), w_i=n_j/n\]</p>
-
-<p>classF指标，相当于是以人工标注的簇为基准，将聚类的簇尽量逼近这个标注的结果。</p>
-
-<h2 id="toc_4">1.3</h2>
-
-<p>1.2中的方法相当于要求的比较严格，即以人工标注的集合簇为准。</p>
-
-<p>实际中其实只要保证我们聚的每一个类\(C_i\)是有意义的就可以，即以C为主</p>
-
-<p>类似的定义 \(F(C_i)=\max_{1\lt j \lt s}F(P_j, C_i)\)<br/>
-\[F=\sum w_i F(C_i), w_i=|C_i|/n\]</p>
-
-<ul>
-<li>问题： 这个指标可能变化不是非常明显</li>
-</ul>
-
-<h2 id="toc_5">1.4基于数据对象的准召F</h2>
-
-<p><img src="media/15078603543147/15078731022919.jpg" alt=""/></p>
-
-<h2 id="toc_6">思考</h2>
-
-<ol>
-<li>基于人工标注的方法中，认为人工标注的是准确的或者说结果是唯一的。实际上一堆sample可以有不同的分类方法，而且每种方法可能都是对的。
-<code>
-e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大学
-</code>
-如何进行标注，或者标注结果是非固定时候怎么衡量聚类效果的好坏？？</li>
-</ol>
-
-<h2 id="toc_7">参考资料</h2>
-
-<p><a href="http://blog.csdn.net/itplus/article/details/10322361">http://blog.csdn.net/itplus/article/details/10322361</a></p>
-
-<p><a href="https://blog.csdn.net/qq_27825451/article/details/94436488">https://blog.csdn.net/qq_27825451/article/details/94436488</a></p>
+<h2 id="toc_5">2.vs code</h2>
 
                         
                       </div>
@@ -698,7 +430,7 @@ e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
           				   
                     
 
@@ -808,31 +540,31 @@ e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大
 	      
 		      
 			      <li class="post">
-			        <a href="15917706614562.html">optical flow 光流</a>
+			        <a href="15919304631539.html">源码阅读工具</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15917693533998.html">process</a>
+			        <a href="15919291891898.html">训练常见问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15917597006543.html">业务</a>
+			        <a href="15918717478277.html">【工具】MMlab—mmskelton</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15917572981552.html">综述_关键点检测</a>
+			        <a href="15918653333546.html">图像检索：BoF、VLAD、FV三剑客</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15916704949564.html">【工具】MMlab——mmaction</a>
+			        <a href="15918617122348.html">batch normalization</a>
 			      </li>
 		     
 		  

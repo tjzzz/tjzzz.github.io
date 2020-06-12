@@ -130,6 +130,151 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15665281146000.html">
+                
+                  <h1>docker</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>docker是一个容器，可以让开发者打包他们的应用以及依赖的环境到一个容器中，然后可以移植到别的机器上。容器是使用的沙箱机制，相互之间不会有任何接口。</p>
+
+<p>docker 官网： <a href="http://www.docker.com">http://www.docker.com</a><br/>
+容器:  对象<br/>
+镜像images: 类，是用于创建docker容器的模版<br/>
+docker仓库<a href="https://hub.docker.com%EF%BC%8C">https://hub.docker.com，</a> 是用来提供各种镜像的仓库。</p>
+
+<p><strong>基本使用</strong></p>
+
+<pre><code class="language-text"># 运行方式 1： 类似于运行pyhton脚本 python xxx.py  参数
+docker run ubuntu:18.10 /bin/echo &quot;Hello world&quot;
+</code></pre>
+
+<ul>
+<li>ubuntu:18.10是指定要运行的镜像，docker会先从本机上检查是否存在，如果不存在会从docker hub下载公共镜像。</li>
+<li> /bin/echo &quot;Hello world&quot;， 在启动容器里执行命令</li>
+</ul>
+
+<pre><code class="language-text"># 运行方式2： 交互式运行
+docker run -i -t ubuntu:18.10 /bin/bash
+</code></pre>
+
+<ul>
+<li>-t 在新容器中指定一个终端</li>
+<li>-i 允许你对容器内的标准输入 (STDIN) 进行交互。</li>
+</ul>
+
+<p>后台以进程方式运行docker</p>
+
+<pre><code class="language-text">docker run -d ubuntu:18.10 /bin/sh -c &quot;while true; do echo hello world; sleep 1; done&quot;
+</code></pre>
+
+<p>这个时候发现会出现一串字符，这个就是dicker的id。</p>
+
+<ul>
+<li>-d 让容器在后台运行</li>
+</ul>
+
+<pre><code class="language-text">docker ps   # 查看当前有哪些容器在运行
+exit    #退出容器或者`ctrl +D`
+docker logs 容器id    #查看容器内的标准输出
+docker stop  容器id    # 停止正在运行的docker
+</code></pre>
+
+<p><strong>docker 镜像</strong></p>
+
+<pre><code class="language-text">docker pull   REPOSITORY:TAG    # 下载镜像
+docker search httpd                      # 查找镜像
+
+# 更新镜像，当自己在镜像内做了一些更新后，可以提交
+# commit -m &#39;更新信息&#39; -a 作者 容器id 新版本的镜像名
+docker commit -m=&quot;zzz update&quot; -a=&quot;zzz&quot; 容器的id zzz/ubuntu:v2
+</code></pre>
+
+<p>从零创建一个镜像<br/>
+从零创建镜像的命令是 <code>docker build</code>, 其依赖于一个配置文件Dockerfile，这个文件包含了一组命令来告诉docker如何创建镜像。</p>
+
+<p><code>docker build -t 镜像名 配置文件地址</code></p>
+
+<p>配置文件的一个例子：</p>
+
+<pre><code class="language-text"># 每一个指令的前缀必须是大写
+# FROM 表示使用哪个镜像源
+# RUN 表示告诉docker在镜像内执行命令
+FROM ubuntu:16.04
+RUN apt-get update
+RUN apt-get install -y unzip cmake g++ make ffmpeg libx264-dev wget
+WORKDIR /opt/
+</code></pre>
+
+<p><strong>删除</strong></p>
+
+<pre><code class="language-text">docker rm 容器
+docker rmi 镜像名
+</code></pre>
+
+<p>清理空间</p>
+
+<p>docker system df</p>
+
+<p>docker system prune -a</p>
+
+<p><strong>mac安装</strong><br/>
+直接从官网下载安装即可 <a href="https://download.docker.com/mac/stable/Docker.dmg%E3%80%82">https://download.docker.com/mac/stable/Docker.dmg。</a><br/>
+由于国内网速问题，安装完docker后，后续拉取镜像可能会十分缓慢，可以配置加速器来解决，如下图所示。</p>
+
+<p>阿里云的加速器：<a href="https://help.aliyun.com/document_detail/60750.html">https://help.aliyun.com/document_detail/60750.html</a><br/>
+网易加速器：<a href="http://hub-mirror.c.163.com">http://hub-mirror.c.163.com</a><br/>
+官方中国加速器：<a href="https://registry.docker-cn.com">https://registry.docker-cn.com</a><br/>
+ustc的镜像：<a href="https://docker.mirrors.ustc.edu.cn">https://docker.mirrors.ustc.edu.cn</a><br/>
+daocloud：<a href="https://www.daocloud.io/mirror#accelerator-doc%EF%BC%88%E6%B3%A8%E5%86%8C%E5%90%8E%E4%BD%BF%E7%94%A8%EF%BC%89">https://www.daocloud.io/mirror#accelerator-doc（注册后使用）</a></p>
+
+<p><img src="media/15665281146000/15665304699914.jpg" alt=""/></p>
+
+<h2 id="toc_0">参考资料</h2>
+
+<p><a href="https://www.runoob.com/docker/macos-docker-install.html">https://www.runoob.com/docker/macos-docker-install.html</a><br/>
+docker 常用参数 <a href="https://blog.csdn.net/Hello_World_QWP/article/details/84554031">https://blog.csdn.net/Hello_World_QWP/article/details/84554031</a></p>
+
+<h2 id="toc_1">安装记录</h2>
+
+<p>sudo docker build . -t registry.aibee.cn/zzzheng/logstat:0.1</p>
+
+<p>docker commit 修改镜像 <a href="https://blog.csdn.net/jiankunking/article/details/62056392">https://blog.csdn.net/jiankunking/article/details/62056392</a></p>
+
+<h2 id="toc_2">制作镜像</h2>
+
+<p>docker build<br/>
+<a href="https://juejin.im/post/5bd95412f265da395a1dd17c">https://juejin.im/post/5bd95412f265da395a1dd17c</a></p>
+
+<p>Dockerfile</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/8/23</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15665275932673.html">
                 
                   <h1>3.vim 配置</h1>
@@ -416,71 +561,6 @@ chmod +x coursier
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15637037680741.html">
-                
-                  <h1>IDE-sublime,vscode</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">1.sublime</h2>
-
-<p>sublime除了具有基本的文本编辑功能之外，还可以安装很多package来扩展其强大的功能。这里罗列出一些工作中经常能用到的</p>
-
-<p><strong>安装install package</strong></p>
-
-<p>点击菜单中的 “View”–“Show Console”，调出console面板，然后到<a href="https://packagecontrol.io/installation#st3">https://packagecontrol.io/installation#st3</a></p>
-
-<p>官网上的，复制出代码黏贴执行。执行完毕即可。</p>
-
-<h3 id="toc_1">格式化json</h3>
-
-<p>打开 Sublime，command + shift + p -&gt; Install package<br/>
-搜索 Pretty JSON，安装</p>
-
-<p>之后mac上用： <code>command + ctrl + j</code> 即可直接格式化显示。</p>
-
-<h3 id="toc_2">比较diff</h3>
-
-<h3 id="toc_3">git</h3>
-
-<h3 id="toc_4">latex</h3>
-
-<p>安装latex<br/>
-(1) 进入 <a href="http://www.tug.org/mactex/">http://www.tug.org/mactex/</a> 下载安装MacTeX.pkg<br/>
-(2) Sublime按下“Command+Shift+P”打开命令托盘Command pallet，这一步也可以通过Tools下拉菜单完成。<br/>
-在命令托盘里输入“Install Package”，按下Enter回车建。<br/>
-完成之后，输入“LaTeX Tools”，找到这一项并回车安装。<br/>
-退出并重启Sublime Text。</p>
-
-<h2 id="toc_5">2.vs code</h2>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -576,31 +656,31 @@ chmod +x coursier
 	      
 		      
 			      <li class="post">
-			        <a href="15917706614562.html">optical flow 光流</a>
+			        <a href="15919304631539.html">源码阅读工具</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15917693533998.html">process</a>
+			        <a href="15919291891898.html">训练常见问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15917597006543.html">业务</a>
+			        <a href="15918717478277.html">【工具】MMlab—mmskelton</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15917572981552.html">综述_关键点检测</a>
+			        <a href="15918653333546.html">图像检索：BoF、VLAD、FV三剑客</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15916704949564.html">【工具】MMlab——mmaction</a>
+			        <a href="15918617122348.html">batch normalization</a>
 			      </li>
 		     
 		  

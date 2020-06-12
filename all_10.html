@@ -130,131 +130,51 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15777601839480.html">
+                <a class="clearlink" href="15794012608721.html">
                 
-                  <h1>HMM</h1>
+                  <h1>Attention Mechanism</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><a href="https://www.cnblogs.com/pinard/p/6945257.html">https://www.cnblogs.com/pinard/p/6945257.html</a></p>
+                        	<p>attention是一种基于提升RNN的encoder + decoder效果的机制。 attention机制可以对输入X的每个部分赋予不同的权重，抽取出更加重要的信息和特征。</p>
 
-<p>python实现 <a href="https://github.com/hmmlearn/hmmlearn">https://github.com/hmmlearn/hmmlearn</a></p>
+<p>(1)attention机制解决的主要问题</p>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/12/31</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15777038940485.html">
-                
-                  <h1>4.轨迹学习and activity understanding</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><img src="media/15777038940485/15777039239123.jpg" alt=""/></p>
-
-<p>Trajectory Learning for Activity Understanding: Unsupervised, Multilevel, and Long-Term<br/>
-Adaptive Approach<br/>
-Brendan Tran Morris, Member, IEEE, and Mohan Manubhai Trived</p>
-
-<p>其整个的分析框架主要包含以下三个部分：</p>
-
-<p><img src="media/15777038940485/15777065365378.jpg" alt=""/></p>
-
-<p>\[Trajectory = (Tr_1, Tr_2, ....Tr_n)\]</p>
-
-<h2 id="toc_0">4.1 node level modeling</h2>
-
-<p>poi<br/>
-一般POI点包括：轨迹的开始和结束，轨迹逗留的地点，用户自己定义的一些点。</p>
+<p>以rnn机器翻译为例</p>
 
 <ul>
-<li>轨迹的开始和结尾一般是entry/exit的地点，通过数据中的tr1和trn即可得到样本点</li>
-<li>逗留点，需要用算法识别出来，一般采用\(\epsilon\)半径内最少逗留\(T\)时间来识别</li>
-<li>其他重要点(原作者只列了前2项，不依赖先验可以直接挖掘出来)，可以自己人为定义</li>
+<li>不管多长的句子，都会最终被压缩到一个固定长度的隐向量，这样会有信息损失、</li>
+<li>序列场景下，每个item的权重都是一样的；类似的，图像场景下，每个像素的权重也是一样的。注意力机制其实和人识别东西有些类似，人会先看到物体的关键部分特征，然后整合成整体。</li>
 </ul>
 
-<p>根据数据点，建立2维高斯混合模型(假设每个POI点的分布都服从正态分布)。<br/>
-\[Z=\sum w_i N(u_i,\Sigma_I)\]</p>
+<p>seq2seq结构</p>
 
-<p>因为真实有多少POI点是未知的，需要估计。可以认为\(d_i=\frac{w_i}{\pi\sqrt|\Sigma_i|}\)为第i个点的重要程度，可以将重要程度较小的舍弃。</p>
+<h2 id="toc_0">常见的一些attention模型</h2>
 
-<h2 id="toc_1">4.2 spatial level learning</h2>
+<p>按照涉及的序列个数分类：<br/>
+(1) self-attention</p>
 
-<p>为了发现node与node之间的轨迹，需要进行聚类，而聚类首先需要解决衡量不同长度轨迹相似性问题。这里以LCSS为例(作者说是根据一些文献表现相对最好的，但实际上应该是在一定条件下)</p>
+<p>序列=&gt; 类别，文本分类</p>
 
-<p>\[D_{LCSS}(T_i, T_j) = 1 - \frac{LCSS(T_i, T_j)}{min(T_i, T_j)}\]</p>
+<p>(2) distinctive attention</p>
 
-<p><strong>谱聚类</strong><br/>
-根据距离矩阵可以得到相似性矩阵S进行聚类<br/>
-<img src="media/15777038940485/15777106902507.jpg" alt=""/></p>
+<p>序列 =&gt; 序列， 机器翻译</p>
 
-<p>作者在最后没有使用k-means而是使用的C-means，主要是为了能输出最后的一个隶属度。</p>
+<p>(3) co-attention<br/>
+多于2个序列，比如给定一张图片和一个问题，需要生成响应的答案</p>
 
-<pre><code class="language-python"># 图聚类
-# https://sklearn.apachecn.org/docs/0.21.3/22.html#spectral-clustering
-from sklearn.cluster import SpectralClustering
-sc = SpectralClustering(3, affinity=&#39;precomputed&#39;, n_init=100, assign_labels=&#39;discretize&#39;)
-sc.fit_predict(adjacency_matrix)
-</code></pre>
+<p>按encoder序列参与计算attention的位置分<br/>
+(1) soft attention<br/>
+(2) hard attention</p>
 
-<p><strong>创建轨迹</strong><br/>
-聚类完之后，对于每一类需要提取其center来表征这个类所代表的轨迹。但是轨迹的长度有可能是不同的，</p>
-
-<p>轨迹合并<br/>
-谱聚类一开始的时候会选择一个大一些的聚类数目k，然后再将相似类别进行合并，收缩到真实的类别数。<br/>
-这里是使用的DTW距离，计算两个类之间的dtw距离，如果小于一定的阈值就认为这两类相似然后进行合并。</p>
-
-<h2 id="toc_2">4.3 Dynamic-temportal level learning</h2>
-
-<p>聚类只能提供空间的轨迹形态，没办法反应出人们的行为层面信息。作者这里针对每一个聚好的类，使用的HMM模型，学习出其pattern。 这部分学习中，使用的是原始的轨迹信息\(F_i={f_t}\), \(f_t = [x_t, y_t, u_t, v_t]\)</p>
-
-<p>详细的过程在作者的另一篇论文中写的比较详细。每一个HMM模型可以记做是\(\lambda = (A, B, \pi)\).</p>
-
-<p>内在的HMM state \(\{q_j\}_{j=1}^Q\)假定符合高斯混合模型</p>
-
-<h2 id="toc_3">4.4 activity 分析</h2>
-
-<p>有了前面的path 模型之后，可以对activity进行分析。</p>
-
-<p>(1) 轨迹整体分析</p>
+<p>参考资料：</p>
 
 <ul>
-<li>轨迹分类</li>
-<li>异常轨迹检测<br/>
-(2) online分析<br/>
-轨迹预测</li>
+<li><a href="https://zhuanlan.zhihu.com/p/73357761">https://zhuanlan.zhihu.com/p/73357761</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/31547842">https://zhuanlan.zhihu.com/p/31547842</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/43493999">https://zhuanlan.zhihu.com/p/43493999</a></li>
 </ul>
-
-<h2 id="toc_4">备注</h2>
-
-<p>关于各种方法的比较 <br/>
-Comparison of similarity measures for trajectory clustering in outdoor surveillance scenes</p>
-
-<p>Learning trajectory patterns by clus- tering:experimental studies and comparative evaluation</p>
 
                         
                       </div>
@@ -263,10 +183,10 @@ Comparison of similarity measures for trajectory clustering in outdoor surveilla
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/12/30</span>
+                    <span class="date">2020/1/19</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html'>轨迹分析</a></span>
+          					    <span class="posted-in"><a href='6%20NLP.html'>6 NLP</a></span>
           				   
                     
 
@@ -282,16 +202,21 @@ Comparison of similarity measures for trajectory clustering in outdoor surveilla
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15774239088566.html">
+                <a class="clearlink" href="15792628943260.html">
                 
-                  <h1>facebook DensePose</h1>
+                  <h1>review 发展</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><a href="https://zhuanlan.zhihu.com/p/38241179">https://zhuanlan.zhihu.com/p/38241179</a></p>
+                        	<ul>
+<li><p>2018 Bert</p></li>
+<li><p>2017 年 Vaswani 的 Transformer</p></li>
+<li><p>2013 年 Mikolov 的 Word2vec</p></li>
+<li><p>2003 年 Bengio 的 NNLM;</p></li>
+</ul>
 
-<p>github: <a href="https://github.com/facebookresearch/DensePose">https://github.com/facebookresearch/DensePose</a></p>
+<h2 id="toc_0">Transformer 《Attention Is All You Need》</h2>
 
                         
                       </div>
@@ -300,10 +225,10 @@ Comparison of similarity measures for trajectory clustering in outdoor surveilla
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/12/27</span>
+                    <span class="date">2020/1/17</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%85%B6%E4%BB%96.html'>其他</a></span>
+          					    <span class="posted-in"><a href='6%20NLP.html'>6 NLP</a></span>
           				   
                     
 
@@ -319,9 +244,9 @@ Comparison of similarity measures for trajectory clustering in outdoor surveilla
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15724045216216.html">
+                <a class="clearlink" href="15784847557033.html">
                 
-                  <h1>seaborn</h1>
+                  <h1>异常值</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
@@ -334,10 +259,10 @@ Comparison of similarity measures for trajectory clustering in outdoor surveilla
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/10/30</span>
+                    <span class="date">2020/1/8</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html'>3 数据可视化</a></span>
+          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
           				   
                     
 
@@ -353,132 +278,27 @@ Comparison of similarity measures for trajectory clustering in outdoor surveilla
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15697555457833.html">
+                <a class="clearlink" href="15784024732012.html">
                 
-                  <h1>应用案例</h1>
+                  <h1>sequence cluster</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">Learning and Classification of Trajectories in Dynamic Scenes: A General Framework for Live Video Analysis</h2>
+                        	<p><a href="https://docs.microsoft.com/en-us/analysis-services/data-mining/microsoft-sequence-clustering-algorithm">https://docs.microsoft.com/en-us/analysis-services/data-mining/microsoft-sequence-clustering-algorithm</a></p>
 
-<p>作者的通用方法：topological scene 描述<br/>
-用Graph的方法，nodes表示POI，edges表示活动的path，将这个称作POI/AP方法<br/>
-(1)POI<br/>
-有两类POI，一类是进/出时候（这种可以通过轨迹数据的开始和结束点确定），一类是逗留的点(这种可以通过算法识别出来)<br/>
-这些区域可以通过混合高斯模型进行估计\(\sum w_iN(u_i,\Sigma_i)\)</p>
+<p><a href="https://www.sciencedirect.com/topics/medicine-and-dentistry/sequence-clustering">https://www.sciencedirect.com/topics/medicine-and-dentistry/sequence-clustering</a></p>
 
-<p>(2)route clustering</p>
+<h2 id="toc_0">1.process mining approaches</h2>
 
 <ul>
-<li>fuzzy C means</li>
-<li>聚完后有些类别可能会比较详细，还需要再进行一步route mergeing操作. 如果两个类之间的dtw距离均足够小，就认为是一类</li>
+<li>α-算法 xxxx</li>
+<li>推断类方法 FSM(finite state machine)： 马尔科夫model</li>
+<li>DAG</li>
+<li>HMM<br/></li>
 </ul>
 
-<p>(3) path modeling</p>
-
-<p>HMM model</p>
-
-<p>===&gt; zzz<br/>
-应用的时候一个是实时预测，可以用概率图，实时给出其到每个路径的概率。</p>
-
-<h2 id="toc_1">1. indoor trajectory mining</h2>
-
-<p>1 preprocessing</p>
-
-<ul>
-<li>跳楼层问题，1-3</li>
-<li>空间异常点</li>
-<li>排除不感兴趣的点，电梯，。</li>
-<li>数据压缩，相同坐标的点</li>
-</ul>
-
-<p>2 转化为semantic trajectory<br/>
-即将坐标转为店铺id</p>
-
-<p><strong>trajectory segmentation</strong></p>
-
-<p>轨迹切分按照方法来讲，大致分为三类:</p>
-
-<ul>
-<li>无监督的： 比如通过聚类的方法 TRACLUS,SMOT, CN-SM0T,</li>
-<li>有监督的L=: </li>
-<li>半监督的</li>
-<li><p>切分效果的评估：<br/>
-(1) 基于无监督的聚类方法的评估</p></li>
-<li><p>average purity and average coverage.</p></li>
-</ul>
-
-<h2 id="toc_2">论文举例</h2>
-
-<p>(0) interpolation based change detection</p>
-
-<p>OWS(Octal Window Segmentation)切分方法，作者的出发点：当一个运动的物体其运动状态发生改变时候，因为有惯性，他会超出之前的预期。通过定义的误差函数找到这些“拐点”从而将轨迹进行切分。</p>
-
-<h2 id="toc_3">Poi</h2>
-
-<p><strong>semantic scene model</strong></p>
-
-<p>POI点</p>
-
-<ul>
-<li>轨迹的开始/结束</li>
-<li>逗留</li>
-<li>其他自己定义的
-<strong>learning path</strong></li>
-</ul>
-
-<p>对聚出来的每一个类学出来一个path<br/>
-HMM 【16】【22】【55】</p>
-
-<p><strong>分析应用</strong></p>
-
-<ul>
-<li>分流分析： 流量统计、闲逛人群 【21】</li>
-<li><p>速度分析</p></li>
-<li><p>后续的path分类<br/>
-<img src="media/15697555457833/15776934845470.jpg" alt=""/></p></li>
-<li><p>异常点检测<br/>
-<img src="media/15697555457833/15776934972246.jpg" alt=""/></p></li>
-<li><p>实时预测</p></li>
-<li><p>交通冲突</p></li>
-</ul>
-
-<h2 id="toc_4">Trajectory Clustering: A Partition-and-Group Framework</h2>
-
-<p>作者出发点不是从全局出发，因为全局上不相似可能在片段是是相似的，尤其是在当只对某些片段感兴趣的时候。作者采用了先partition再group的方法。这种方法的优势:能发现common sub-trajectory。其核心思想如下.github上的一个实现： <a href="https://github.com/MillerWu2014/trajectory-cluster">https://github.com/MillerWu2014/trajectory-cluster</a><br/>
-partition-and-group framework<br/>
-<img src="media/15686368904229/15735658553309.jpg" alt=""/></p>
-
-<p>主要步骤如下</p>
-
-<p>(1) 轨迹的距离度量<br/>
-两条轨迹的距离会从三个方面进行度量：</p>
-
-<ul>
-<li>垂直距离</li>
-<li>平行距离</li>
-<li>角度距离
-<img src="media/15686368904229/15736362612288.jpg" alt=""/></li>
-</ul>
-
-<p>最终的距离是以上三种的加权<br/>
-<img src="media/15686368904229/15736424496498.jpg" alt=""/></p>
-
-<p>(2) 轨迹切分<br/>
-轨迹切分，即用尽量少的点，能尽量代表原来轨迹的信息(减少与原始轨迹的误差)。这里主要是通过MDL(最小描述长度)算法。 L(H)+L(D|H), partition后的轨迹长度 + 原始轨迹与partition后的轨迹的距离。</p>
-
-<pre><code class="language-text">MDL(麦当劳)原理:是研究通信编码的时候提出的，对于给定的一组数据D，为了要对其进行保存，一般都会采用某种模型H对其进行编码压缩。同时为了能够正确恢复这些数据，将模型也保存起来。所以需要保存的数据长度=保存模型的数据长度 + 这些数据压缩后的长度. L(H) + L(D|H)
-</code></pre>
-
-<p>(3)cluster<br/>
-对于每一个segment，相当于是一个数据点，然后采用基于密度的聚类。</p>
-
-<p>(4) representative trajectory of a cluster<br/>
-对于聚好类的一堆曲线，需要找到其有representative的曲线来表示这一类的特点。<br/>
-<img src="media/15686368904229/15737121895384.jpg" alt=""/></p>
-
-<p>(2)</p>
+<p>QQ: 如何去解释每个类别的含义，抽象出其表征</p>
 
                         
                       </div>
@@ -487,10 +307,60 @@ partition-and-group framework<br/>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/9/29</span>
+                    <span class="date">2020/1/7</span>
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html'>轨迹分析</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15780510840256.html">
+                
+                  <h1>python-制作app</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><a href="https://streamlit.io/">https://streamlit.io/</a></p>
+
+<p><a href="https://www.jiqizhixin.com/articles/2019-10-31-4">https://www.jiqizhixin.com/articles/2019-10-31-4</a></p>
+
+<h2 id="toc_0">1.初体验</h2>
+
+<p>环境安装</p>
+
+<pre><code class="language-text">pip install streamlit
+streamlit hello
+</code></pre>
+
+<p>当写完自己的app脚本后，运行方法 <code>streamlit run first_app.py</code><br/>
+同时也支持 <code>streamlit run https://raw.githubusercontent.com/streamlit/demo-uber-nyc-pickups/master/app.py</code></p>
+
+<p>一些基本语法</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/1/3</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html'>3 数据可视化</a></span>
           				   
                     
 
@@ -600,31 +470,31 @@ partition-and-group framework<br/>
 	      
 		      
 			      <li class="post">
-			        <a href="15917706614562.html">optical flow 光流</a>
+			        <a href="15919304631539.html">源码阅读工具</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15917693533998.html">process</a>
+			        <a href="15919291891898.html">训练常见问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15917597006543.html">业务</a>
+			        <a href="15918717478277.html">【工具】MMlab—mmskelton</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15917572981552.html">综述_关键点检测</a>
+			        <a href="15918653333546.html">图像检索：BoF、VLAD、FV三剑客</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15916704949564.html">【工具】MMlab——mmaction</a>
+			        <a href="15918617122348.html">batch normalization</a>
 			      </li>
 		     
 		  

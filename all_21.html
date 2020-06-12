@@ -130,60 +130,80 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637037679680.html">
+                <a class="clearlink" href="15637037678160.html">
                 
-                  <h1>第四章 数值计算</h1>
+                  <h1>git</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">1.数值精度</h2>
+                        	<p>git 是一个版本管理的工具，能够非常方便的对项目进行版本控制。</p>
 
-<p>这部分对于了解具体的算法并没影响，但是在进行底层库开发时候经常会遇到，可能会出现<strong>上溢</strong>或者<strong>下溢</strong></p>
+<h2 id="toc_0">1建立自己的代码库</h2>
 
-<p>（1）病态条件</p>
+<p>假设你的用户名是zzz<br/>
+（1）生成公钥<br/>
+ssh-keygen -t rsa -f ~/.ssh/id_rsa.zzz<br/>
+cat ~/.ssh/id_rsa.zzz.pub 保存到icode或者是自己的github上<br/>
+（2）clone</p>
 
-<p>条件数：表示函数相对于输入的微小变化而变化的快慢程度。<br/>
-比如矩阵求逆运算的条件数=最大和最小特征值的模的比</p>
-
-<h2 id="toc_1">2.优化算法</h2>
-
-<ul>
-<li>梯度下降</li>
-<li>牛顿法</li>
-</ul>
-
-<p>一般把需要最优化的函数称为<strong>目标函数</strong></p>
-
-<p><strong>梯度下降</strong></p>
-
-<p>对于一个多维输入函数f，梯度\(\triangledown_x f(x)\),其在u方向上的<strong>方向导数</strong>，相当于f在u方向上的斜率<br/>
-\(f(x+\alpha u)\)关于\(\alpha\)的导数(在\(\alpha =0\)时取得)</p>
-
-<p>\[\frac{\partial}{\partial \alpha}f(x+\alpha u)=u^T\triangledown_x f(x)\]</p>
-
-<p>为了是f最小，希望找到f下降最快的方向，因此有<br/>
-\[min u^T\triangledown_x f(x)\]<br/>
-u取为单位向量，很明显是在u和f夹角180时候，也就是两个完全相反的时候，下降最快。<br/>
-梯度下降： \(x&#39;=x-\epsilon \triangledown_x f(x)\)</p>
-
-<p><strong>牛顿法</strong></p>
-
-<p>Hessian矩阵，二阶导数<br/>
-<img src="media/15080580137304/15082408605128.jpg" alt=""/></p>
-
-<h2 id="toc_2">3.有限制的约束</h2>
-
-<p>对于有限制的优化，有时候可以将约束条件转化到原始的优化函数中，这里主要介绍一下通用的方法：<strong>KKT方法</strong>(拉格朗日方法的推广，可以非等式约束)</p>
-
-<pre><code class="language-text">@@@
-http://blog.csdn.net/mr_kktian/article/details/53750424
+<pre><code class="language-text">git clone  xxxxx代码库             # 将代码库克隆到本地
+## 如果机器是多个人使用的话用--local,如果是自己一个人的话可以设置成--global
+git config --local user.email zzz邮箱
+git config --local user.name zzz用户名
+git push origin master:refs/for/master
 </code></pre>
 
-<h2 id="toc_3">参考资料</h2>
+<h2 id="toc_1">2 基本操作</h2>
 
-<p>梯度下降法 扩展阅读： <a href="https://www.jiqizhixin.com/articles/2016-11-21-4">https://www.jiqizhixin.com/articles/2016-11-21-4</a><br/>
-<a href="http://www.cnblogs.com/maybe2030/p/4751804.html">http://www.cnblogs.com/maybe2030/p/4751804.html</a></p>
+<p>当我们新增或者更新了一个文件后，如何上传到代码库</p>
+
+<pre><code class="language-text">git add xxx
+git commit -m &#39;注释&#39;
+git push origin HEAD:refs/for/master
+</code></pre>
+
+<p>从代码库将新代码下载到本地，更新本地库</p>
+
+<pre><code class="language-text">git pull
+</code></pre>
+
+<h2 id="toc_2">3.常用操作</h2>
+
+<p>(1) 还原文件到之前的某个版本。</p>
+
+<p>当发现新提交的版本有问题，想回退到之前的某个版本的之后，可以进行如下操作。<code>git long</code><br/>
+比如我想修改自己写的这个<code>utils.py</code> 代码</p>
+
+<pre><code class="language-text">git log utils.py
+## 可以看到一共提交了3次，假设喔想回退到9.25提交的那个版本
+git checkout 742bf4a53e473b2536b53cb3ad56072ae236a1c3 utils.py 
+git commit -m &quot;revert to previous version&quot;
+</code></pre>
+
+<p><img src="media/15637037678160/15699932802240.jpg" alt=""/></p>
+
+<p>我不知道”undo”是什么意思。您可以删除core.excludesfile设置，如下所示：<br/>
+git config --global --unset core.excludesfile<br/>
+当然你也可以简单地编辑配置文件：<br/>
+git config --global --edit<br/>
+…然后手动删除设置。</p>
+
+<p>git config --global --edit</p>
+
+<p>git log<br/>
+git reset --hard xxxxx</p>
+
+<p>查看本地与云端的diff</p>
+
+<p>git rm —cache  删除已经提交的内容</p>
+
+<h2 id="toc_3">4.常见问题</h2>
+
+<p>Q1: repo中含有子模块的</p>
+
+<pre><code class="language-text">git pull --recurse-submodules
+</code></pre>
 
                         
                       </div>
@@ -195,7 +215,7 @@ http://blog.csdn.net/mr_kktian/article/details/53750424
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>8 深度学习</a></span>
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
           				   
                     
 
@@ -211,48 +231,14 @@ http://blog.csdn.net/mr_kktian/article/details/53750424
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037679781.html">
+                <a class="clearlink" href="15637037678245.html">
                 
-                  <h1>t-sne</h1>
+                  <h1>4.5 树模型</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<pre><code class="language-text">from sklearn.manifold import TSNE
-from sklearn.datasets import load_iris
-from sklearn.decomposition import PCA
-import matplotlib.pyplot as plt
-import pandas as pd
-import numpy as np
- 
- 
- 
-data=pd.read_csv(&#39;test.data&#39;, sep=&#39;,&#39;,header=None)
-dd= data[range(200)]
-
-X_tsne = TSNE().fit_transform(dd)
-X_pca = PCA().fit_transform(dd)
-
-out = DataFrame(np.hstack((X_tsne, X_pca)))
-
-out2=data[200])
-
-out.to_csv(&#39;save_data.csv&#39;)
-
-
-plt.figure(figsize=(10, 5))
-plt.subplot(121)
-plt.scatter(X_tsne[:, 0], X_tsne[:, 1],c=data[200])
-plt.subplot(122)
-#plt.scatter(X_pca[:, 0], X_pca[:, 1], c=iris.target)
-plt.scatter(X_pca[:, 0], X_pca[:, 1], c=data[200])
-</code></pre>
-
-<p>R</p>
-
-<pre><code class="language-text">
-</code></pre>
-
+                        	
                         
                       </div>
                   </div>
@@ -279,15 +265,22 @@ plt.scatter(X_pca[:, 0], X_pca[:, 1], c=data[200])
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637036605080.html">
+                <a class="clearlink" href="15637037678380.html">
                 
-                  <h1>3 样本量的确定</h1>
+                  <h1>rCharts</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>抽样中样本量的确定是一个非常重要的问题，在不考虑抽样成本的前提下，样本量越多估计的越准，然而实际情况中我们需要平衡抽样成本与估计结果的置信度——以尽可能低的样本得到尽可能高的置信结果。</p>
+                        	<p><a href="http://rdatascience.io/rCharts/">http://rdatascience.io/rCharts/</a></p>
 
+<p>作者的github主页<br/>
+<a href="http://ramnathv.github.io/rCharts">http://ramnathv.github.io/rCharts</a></p>
+
+<pre><code class="language-r"># install 
+require(devtools)## 标题 ##
+install_github(&#39;rCharts&#39;, &#39;ramnathv&#39;)
+</code></pre>
 
                         
                       </div>
@@ -295,11 +288,11 @@ plt.scatter(X_pca[:, 0], X_pca[:, 1], c=data[200])
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15637036605080.html">Read more</a>&nbsp;&nbsp; 
+                  
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
+          					    <span class="posted-in"><a href='3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html'>3 数据可视化</a></span>
           				   
                     
 
@@ -315,16 +308,26 @@ plt.scatter(X_pca[:, 0], X_pca[:, 1], c=data[200])
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637036455584.html">
+                <a class="clearlink" href="15637037679256.html">
                 
-                  <h1>1 估计的置信度</h1>
+                  <h1>Rmarkdown</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>在大多数的研究中，我们无法获取研究对象的总体数据，或者能获取但是成本非常大。实际情况中，我们往往是通过抽样的方法，在总体中进行随机抽样。根据获取的这部分样本数据去推动总体的一些属性。比如通过抽样人群的平均身高去估计所有人群的平均身高，通过抽样人群中的男女比例，去估计我国当前的男女比例状况。<br/>
-抽样样本量是直接影响到最终的估计准确度，所以这一章节，先来介绍下如何判断一种估计方法准确与否。</p>
+                        	<h2 id="toc_0">python支持</h2>
 
+<p>Rmarkdown对python兼容 <a href="https://github.com/rstudio/reticulate">https://github.com/rstudio/reticulate</a></p>
+
+<h2 id="toc_1">图片</h2>
+
+<p>现在很多makdown编辑器是可以支持拖拽本地图片或者截屏就可以直接在markdown中生成图片的，非常方便，比如我现在在用的MWeb编辑器。</p>
+
+<p>但是如果同一篇内容需要在不同的平台上进行发布，那图片处理起来就比较麻烦。因为需要重新上传到不同平台。<br/>
+最方便的处理方式就是利用图床， 这里以七牛云存储为例。<br/>
+<img src="media/15378048283915/15383141468224.jpg" alt=""/></p>
+
+<p>step1： 首先在七牛官网上申请注册账号，并且添加<strong>对象存储</strong></p>
 
                         
                       </div>
@@ -332,11 +335,11 @@ plt.scatter(X_pca[:, 0], X_pca[:, 1], c=data[200])
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15637036455584.html">Read more</a>&nbsp;&nbsp; 
+                  
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
           				   
                     
 
@@ -352,72 +355,49 @@ plt.scatter(X_pca[:, 0], X_pca[:, 1], c=data[200])
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637025344767.html">
+                <a class="clearlink" href="15637037679634.html">
                 
-                  <h1>【NG-DL】course2_week1 优化网络参数</h1>
+                  <h1>神经网络解释性问题</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">1.基本概念</h2>
+                        	<p><a href="https://ask.hellobi.com/blog/zlx19930503/10578">https://ask.hellobi.com/blog/zlx19930503/10578</a></p>
 
-<p>很多优化参数：<br/>
-网络层数，隐层数，学习率，激活函数。。。</p>
+<p>但是深度学习是一个黑箱。我第一次听说它时，就对其工作原理非常费解。几年过去了，我仍然在探索合理的答案。尝试解释现代神经网络很难，但是至关重要。如果我们打算依赖深度学习制造新的 AI、处理敏感的用户数据，或者开药，那么我们必须理解这些模型的工作原理。</p>
 
-<ul>
-<li><p>训练集/验证集/测试集</p></li>
-<li><p>偏差， 训练集误差</p></li>
-<li><p>方差</p></li>
-</ul>
+<p>很幸运，学界人士也提出了很多对深度学习的理解。以下是几个近期论文示例：</p>
 
-<p>若有高bias： 尝试新的网络，更大网络</p>
+<h2 id="toc_0">Grad-Cam（Selvaraju et. al. 2017）</h2>
 
-<p>高方差： 获取更多数据，或者正则化，更合适的网络机构</p>
+<p>使用最后卷积层的梯度生成热力图，突出显示输入图像中的重要像素用于分类。</p>
 
-<p>bias和varaince的平衡<br/>
-一般来说更大的网络能减小偏差，更多的数据能减小方差。</p>
+<h2 id="toc_1">LIME（Ribeiro et. al. 2016）</h2>
 
-<h2 id="toc_1">2.正则化-L2</h2>
+<p>使用稀疏线性模型（可轻松识别重要特征）逼近 DNN 的预测。</p>
 
-<p>以逻辑回归为例</p>
+<p>论文地址：<a href="https://arxiv.org/abs/1602.04938">https://arxiv.org/abs/1602.04938</a></p>
 
-<p>\(J(w,b)=\frac{1}{m}\sum L(\hat y_i, y_i)+\frac{\lambda}{2m}|w|^2_2\)L2惩罚，避免过拟合，导致高方差</p>
+<p>一些中文解读：<a href="https://www.oreilly.com.cn/ideas/?p=563%EF%BC%9B">https://www.oreilly.com.cn/ideas/?p=563；</a><br/>
+<a href="http://geek.csdn.net/news/detail/66259">http://geek.csdn.net/news/detail/66259</a></p>
 
-<p>类似的神经网络在优化函数上加上</p>
+<p>一个例子<br/>
+<a href="http://marcotcr.github.io/lime/tutorials/Lime%20-%20basic%20usage%2C%20two%20class%20case.html">http://marcotcr.github.io/lime/tutorials/Lime%20-%20basic%20usage%2C%20two%20class%20case.html</a></p>
 
-<p>\(J(w^{[1]},b^{[1]},...w^{[l]},b^{[l]})=\frac{1}{m}\sum L(\hat y_i, y_i)+\frac{\lambda}{2m}\sum||w^{[l]}||^2_2\)</p>
+<p><a href="https://www.jiqizhixin.com/articles/2017-12-20-2">https://www.jiqizhixin.com/articles/2017-12-20-2</a></p>
 
-<p>其中\(|w^{[l]}|^2\)F范数</p>
+<h2 id="toc_2">特征可视化（Olah 2017）</h2>
 
-<ul>
-<li>Ng.当\(\lambda\)较大时候,w会较小，sigmoid接近线性，降低方差。
-<img src="media/15055593941505/15103891828021.jpg" alt=""/></li>
-</ul>
+<p>对于带有随机噪声的图像，优化像素来激活训练的 DNN 中的特定神经元，进而可视化神经元学到的内容。</p>
 
-<h3 id="toc_2">正则化-dropout(随机失活)</h3>
+<h2 id="toc_3">Loss Landscape（Li et. al. 2017）</h2>
 
-<p>每次对网络中的节点设置一个随机消失的概率p，即每个节点可能在也可能不在网络中，不在的时候即相当于该节点的数值置为0.</p>
+<p>可视化 DNN 尝试最小化的非凸损失函数，查看架构／参数如何影响损失情况。</p>
 
-<p>dropout与l2类似都会shrink权重。</p>
+<h2 id="toc_4">关于xgboost</h2>
 
-<h3 id="toc_3">early stoping</h3>
-
-<h2 id="toc_4">3.优化</h2>
-
-<h3 id="toc_5">归一化</h3>
-
-<p>归一化输入=&gt; 均值0，方差1</p>
-
-<ul>
-<li>零均值化</li>
-<li>归一化方差</li>
-</ul>
-
-<p><img src="media/15055593941505/15103915636569.jpg" alt=""/></p>
-
-<h3 id="toc_6">梯度消失与梯度爆炸</h3>
-
-<p>当梯度增长很大或者很微弱时，会导致优化出问题或者很慢。</p>
+<p>R: <a href="https://github.com/AppliedDataSciencePartners/xgboostExplainer">https://github.com/AppliedDataSciencePartners/xgboostExplainer</a><br/>
+python <a href="https://github.com/gameofdimension/xgboost_explainer">https://github.com/gameofdimension/xgboost_explainer</a></p>
 
                         
                       </div>
@@ -539,31 +519,31 @@ plt.scatter(X_pca[:, 0], X_pca[:, 1], c=data[200])
 	      
 		      
 			      <li class="post">
-			        <a href="15917706614562.html">optical flow 光流</a>
+			        <a href="15919304631539.html">源码阅读工具</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15917693533998.html">process</a>
+			        <a href="15919291891898.html">训练常见问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15917597006543.html">业务</a>
+			        <a href="15918717478277.html">【工具】MMlab—mmskelton</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15917572981552.html">综述_关键点检测</a>
+			        <a href="15918653333546.html">图像检索：BoF、VLAD、FV三剑客</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15916704949564.html">【工具】MMlab——mmaction</a>
+			        <a href="15918617122348.html">batch normalization</a>
 			      </li>
 		     
 		  

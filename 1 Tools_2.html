@@ -130,6 +130,71 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
+                <a class="clearlink" href="15637037680741.html">
+                
+                  <h1>IDE-sublime,vscode</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">1.sublime</h2>
+
+<p>sublime除了具有基本的文本编辑功能之外，还可以安装很多package来扩展其强大的功能。这里罗列出一些工作中经常能用到的</p>
+
+<p><strong>安装install package</strong></p>
+
+<p>点击菜单中的 “View”–“Show Console”，调出console面板，然后到<a href="https://packagecontrol.io/installation#st3">https://packagecontrol.io/installation#st3</a></p>
+
+<p>官网上的，复制出代码黏贴执行。执行完毕即可。</p>
+
+<h3 id="toc_1">格式化json</h3>
+
+<p>打开 Sublime，command + shift + p -&gt; Install package<br/>
+搜索 Pretty JSON，安装</p>
+
+<p>之后mac上用： <code>command + ctrl + j</code> 即可直接格式化显示。</p>
+
+<h3 id="toc_2">比较diff</h3>
+
+<h3 id="toc_3">git</h3>
+
+<h3 id="toc_4">latex</h3>
+
+<p>安装latex<br/>
+(1) 进入 <a href="http://www.tug.org/mactex/">http://www.tug.org/mactex/</a> 下载安装MacTeX.pkg<br/>
+(2) Sublime按下“Command+Shift+P”打开命令托盘Command pallet，这一步也可以通过Tools下拉菜单完成。<br/>
+在命令托盘里输入“Install Package”，按下Enter回车建。<br/>
+完成之后，输入“LaTeX Tools”，找到这一项并回车安装。<br/>
+退出并重启Sublime Text。</p>
+
+<h2 id="toc_5">2.vs code</h2>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
                 <a class="clearlink" href="15637037681646.html">
                 
                   <h1>1 基础工具包安装pip</h1>
@@ -592,135 +657,6 @@ git reset --hard xxxxx</p>
                 </div>
               </div><!-- article -->
         
-			<div class="article">
-                <a class="clearlink" href="15637025346412.html">
-                
-                  <h1>1. conda 环境管理</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>conda的主要作用有如下两个：</p>
-
-<ul>
-<li>包管理</li>
-</ul>
-
-<p>Anaconda 安装，conda包管理器与pip类似，不同之处是可用的包以数据科学包为主，而 pip 适合一般用途。它也可以安装非 Python 的包。它是支持任何软件的包管理器。</p>
-
-<ul>
-<li>虚拟环境管理器</li>
-</ul>
-
-<p>它类似于另外两个很流行的环境管理器，即 virtualenv 和 pyenv<br/>
-脚本和程序使用的默认 Python 是 Anaconda 附带的 Python。</p>
-
-<p>可以安装完整版： <a href="https://www.anaconda.com/distribution/#download-section">https://www.anaconda.com/distribution/#download-section</a><br/>
-也可以安装精简版miniconda： <a href="https://conda.io/miniconda.html">https://conda.io/miniconda.html</a></p>
-
-<h2 id="toc_0">包管理-常用命令</h2>
-
-<pre><code class="language-text">conda list  #查看安装的内容
-conda upgrade --all   #初次下载安装好后，建议更新所有包
-</code></pre>
-
-<p>安装包</p>
-
-<pre><code class="language-text">conda install xxx
-conda install numpy=1.10   #指定包的版本
-
-conda remove package
-conda upgrade --all
-</code></pre>
-
-<pre><code class="language-text">模糊查询相关包
-conda search search_term
-</code></pre>
-
-<h2 id="toc_1">环境管理</h2>
-
-<p>默认的环境名字叫base(我的电脑上是)</p>
-
-<p>通过<code>conda env list</code>可以列出你创建的所有环境</p>
-
-<pre><code class="language-text">#创建环境
-conda create -n env_name list of packages
-eg. conda create -n my_env numpy
-
-conda create -n py3 python=3
-conda create -n py2 python=2
-
-#进入环境
-source activate my_env
-#离开环境
-source deactivate
-
-# 删除环境
-conda env remove -n env_name
-</code></pre>
-
-<h2 id="toc_2">其他</h2>
-
-<p>共享环境：将自己的工作环境保存下来给别人共享</p>
-
-<pre><code class="language-text">#进入到你的环境中
-source activate base
-conda env export &gt; environment.yaml
-
-# 通过环境文件创建环境
-conda env create -f environment.yaml
-</code></pre>
-
-<h2 id="toc_3">更改下载源，加速下载速度</h2>
-
-<pre><code class="language-text">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
-conda config --set show_channel_urls yes
-</code></pre>
-
-<p>或者是更改配置文件 ~/.condarc</p>
-
-<pre><code class="language-text">channels:
-- https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
-- https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda/
-show_channel_urls: true
-</code></pre>
-
-<h2 id="toc_4">conda install 与pip install的区别</h2>
-
-<p>，pip list和conda list列表却不一致，conda数量 &gt; pip<br/>
-conda 安装包路径是 xxxxx\Anaconda3\pkgs<br/>
-pip 安装包路径在虚拟环境下是 xxxx\Anaconda3\envs\a_conda_env\Lib\site-packages<br/>
-所以当前环境下pip list只列举出当前包list<br/>
-此处需要留意如果使用conda install 多个环境时，对于同一个包只需要安装一次。有conda集中管理。<br/>
-但是如果使用pip因为每个环境安装使用的pip在不同的路径下，故会重复安装，而包会从缓存中取。</p>
-
-<p>(2) 另外从体验上看感觉conda速度快很多</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
               
 
 
@@ -732,7 +668,7 @@ pip 安装包路径在虚拟环境下是 xxxx\Anaconda3\envs\a_conda_env\Lib\sit
 			  </div>
 			  <div class="large-6 columns">
 			<p class="text-right" style="padding-top:25px;">
-			
+			 <a href="1 Tools_3.html">&raquo; Next Page</a> 
 			</p>
 			  </div>
 			</div>
@@ -816,31 +752,31 @@ pip 安装包路径在虚拟环境下是 xxxx\Anaconda3\envs\a_conda_env\Lib\sit
 	      
 		      
 			      <li class="post">
-			        <a href="15917706614562.html">optical flow 光流</a>
+			        <a href="15919304631539.html">源码阅读工具</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15917693533998.html">process</a>
+			        <a href="15919291891898.html">训练常见问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15917597006543.html">业务</a>
+			        <a href="15918717478277.html">【工具】MMlab—mmskelton</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15917572981552.html">综述_关键点检测</a>
+			        <a href="15918653333546.html">图像检索：BoF、VLAD、FV三剑客</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15916704949564.html">【工具】MMlab——mmaction</a>
+			        <a href="15918617122348.html">batch normalization</a>
 			      </li>
 		     
 		  

@@ -130,48 +130,43 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637037731128.html">
+                <a class="clearlink" href="15645026184752.html">
                 
-                  <h1>第八章 深度模型中的优化</h1>
+                  <h1>调查问卷的信度、效度</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">8.1 优化与学习</h2>
+                        	<h2 id="toc_0">信度</h2>
 
-<p>本章主要关注这一类特定的优化问题:寻找神经网络上的一组参数 θ，它能显 著地降低代价函数 J(θ)，该代价函数通常包括整个训练集上的性能评估和额外的正 则化项。</p>
+<p>信度表示的是数据是否可信，是否具有一致性，他是一种稳定性的度量，并不能保证结果是准确的。</p>
 
-<p>通常来说极其学习的算法目标大概可以写成，降低期望泛化误差。即<strong>风险</strong><br/>
-<img src="media/15209459008411/15209462294325.jpg" alt=""/></p>
-
-<p>其中p_data是真实的分布，实际中我们只能最小化<strong>经验风险</strong><br/>
-<img src="media/15209459008411/15209463229280.jpg" alt=""/></p>
-
-<h2 id="toc_1">8.2神经网络优化中的挑战</h2>
+<p><strong>信度的评价方法</strong></p>
 
 <ul>
-<li>病态： hessain矩阵病态</li>
-<li>局部最小值：对于非凸函数可能存在多个局部最小值。</li>
-<li>。。。</li>
+<li>重测信度：即相同的标准下，间隔一定时间段后再测试一次，看下前后两次结果的相关度</li>
+<li>复本信度：让同一个测试者一次填写两份平行问卷，平行问卷是指题目的表述不同其他方面一样。这种方法有个明显的缺点就是不太好执行。</li>
+<li>折半系数：将问卷的题目分为奇数题和偶数题两部分，计算这两部分的相关系数，以此来衡量问卷的信度。</li>
+<li>\(\alpha\)系数：他等于所有可能组合的折半系数的均值</li>
 </ul>
 
-<h2 id="toc_2">8.3基本算法</h2>
+<p>\[\alpha = \frac{K}{K-1}(1 - \frac{\sum S_i^2}{S_x^2})\]<br/>
+其中k表示总的题目数，\(s_i\)表示是第i题的方差，\(s_x\)是总的方差。当信度比较高的时候\(\alpha\)值也会比较大，当信度较低的时候方差比应该近似为1，导致整个\(\alpha\) 都比较小</p>
 
-<p>梯度下降机器变种一般是机器学习中应用较多的优化算法。</p>
+<h2 id="toc_1">效度</h2>
 
-<h3 id="toc_3">(1)随机梯度下降SGD</h3>
+<p>效度是表示数据是否有效，即其是否反映了问卷者真实的问题，效度用来衡量结果是否是准确的，但是不一定能保证稳定性。</p>
 
-<p><img src="media/15209459008411/15221677256921.jpg" alt=""/></p>
+<p><strong>效度的评价方法</strong></p>
 
-<h3 id="toc_4">（2）动量</h3>
+<ul>
+<li>表面效度：通过专家评价的办法</li>
+<li>内容效度</li>
+</ul>
 
-<p>动量是比SGD速度更快的一种方法，SGD相当于只是考虑梯度的方向，而动量是在此基础上加上速度。</p>
+<p><a href="https://wenku.baidu.com/view/a18a33b47e21af45b207a8ac.html?re=view">https://wenku.baidu.com/view/a18a33b47e21af45b207a8ac.html?re=view</a></p>
 
-<p><img src="media/15209459008411/15221680917826.jpg" alt=""/></p>
-
-<h2 id="toc_5">8.4 参数初始化</h2>
-
-<h2 id="toc_6">参考资料</h2>
+<p><a href="https://wenku.baidu.com/view/cf19e18ca0116c175f0e48c1.html">https://wenku.baidu.com/view/cf19e18ca0116c175f0e48c1.html</a></p>
 
                         
                       </div>
@@ -180,10 +175,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2019/7/31</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>8 深度学习</a></span>
+          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
           				   
                     
 
@@ -199,96 +194,14 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037731266.html">
+                <a class="clearlink" href="15637065259056.html">
                 
-                  <h1>4.4 k近邻 —— 非参模型</h1>
+                  <h1>about me</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>基于实例的学习，其学习的不是明确的泛化模型，而是样本之间的关系。</p>
-
-<p>k近邻方法：先找到与未知样本最接近的k个实例，再根据少数服从多数的准则，给未知样本打上标签。</p>
-
-<ul>
-<li>超参数k</li>
-<li>距离度量</li>
-<li>高维灾难</li>
-</ul>
-
-<p>k近邻方法和传统的参数方法不同，参数模型在求得参数后，任务就完成了。新来了一个样本后直接拿训练好的参数进行预测即可；而k近邻不同，它需要将数据存储下来，每来了一个新样本后，要计算离他最近的k个实例。</p>
-
-<p>sklearn中<code>sklearn.neighbors</code>模块</p>
-
-<p>应用</p>
-
-<ul>
-<li>无监督的<code>NearestNeighbors</code></li>
-</ul>
-
-<p>具体计算的时候可以选择不同的计算方法，&#39;algorithm&#39; =[&#39;auto&#39;, &#39;ball_tree&#39;, </p>
-
-<ul>
-<li>有监督的</li>
-</ul>
-
-<p>KNeighborsClassifier: 可以指定参数k<br/>
-RadiusNeighborsClassifier: 可以指定查询的固定半径r</p>
-
-<pre><code class="language-python">## 官网的示例demo
-import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib.colors import ListedColormap
-from sklearn import neighbors, datasets
-
-n_neighbors = 15
-
-# import some data to play with
-iris = datasets.load_iris()
-
-# we only take the first two features. We could avoid this ugly
-# slicing by using a two-dim dataset
-X = iris.data[:, :2]
-y = iris.target
-
-h = .02  # step size in the mesh
-
-# Create color maps
-cmap_light = ListedColormap([&#39;#FFAAAA&#39;, &#39;#AAFFAA&#39;, &#39;#AAAAFF&#39;])
-cmap_bold = ListedColormap([&#39;#FF0000&#39;, &#39;#00FF00&#39;, &#39;#0000FF&#39;])
-
-for weights in [&#39;uniform&#39;, &#39;distance&#39;]:
-    # we create an instance of Neighbours Classifier and fit the data.
-    clf = neighbors.KNeighborsClassifier(n_neighbors, weights=weights)
-    clf.fit(X, y)
-
-    # Plot the decision boundary. For that, we will assign a color to each
-    # point in the mesh [x_min, x_max]x[y_min, y_max].
-    x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
-    y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
-    xx, yy = np.meshgrid(np.arange(x_min, x_max, h),
-                         np.arange(y_min, y_max, h))
-    Z = clf.predict(np.c_[xx.ravel(), yy.ravel()])
-
-    # Put the result into a color plot
-    Z = Z.reshape(xx.shape)
-    plt.figure()
-    plt.pcolormesh(xx, yy, Z, cmap=cmap_light)
-
-    # Plot also the training points
-    plt.scatter(X[:, 0], X[:, 1], c=y, cmap=cmap_bold,
-                edgecolor=&#39;k&#39;, s=20)
-    plt.xlim(xx.min(), xx.max())
-    plt.ylim(yy.min(), yy.max())
-    plt.title(&quot;3-Class classification (k = %i, weights = &#39;%s&#39;)&quot;
-              % (n_neighbors, weights))
-
-plt.show()
-</code></pre>
-
-<p>最近邻回归<br/>
-KNeighborsRegressor<br/>
-RadiusNeighborsRegressor</p>
+                        	<p>about me  </p>
 
                         
                       </div>
@@ -298,9 +211,7 @@ RadiusNeighborsRegressor</p>
                   <div class="more-left left">
                   
                     <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+                    
           				   
                     
 
@@ -316,148 +227,175 @@ RadiusNeighborsRegressor</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037731313.html">
+                <a class="clearlink" href="15637037730522.html">
                 
-                  <h1>3.2 特征处理——降维</h1>
+                  <h1>关于长点击阈值划分方法</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>关于降维的讨论主要是来源于“维度灾难”, 这个是数学家理查德-贝尔曼提出的。</p>
+                        	<p>用户停留时长一直是衡量用户在落地页满意度的一个重要度量指标。在具体业务设计的时候，可以去看时长分布的中位数、平均时长等统计级指标，亦有类似于衡量时长好坏的长点击率，长点击占比等指标。</p>
+
+<p>首先来说下长点击，简单来说长点击即停留时长比较长的一个点击时间。</p>
+
+<h3 id="toc_0">1. 长点击，满意点击，人工打分</h3>
+
+<p>我们说停留时间“比较长”，其实是一个相对概念，不同的资源类型可能划分的标准会不同。但是他们的出发点是一样的: 我们认为在特定资源类型下落地页时长越长，用户越倾向于满意。所以长点击本质上是用来刻画满意点击的。</p>
+
+<p><strong>(1) 无监督的划分</strong><br/>
+即我们不知道groundtruth，这个时候可以根据本身时长的分布，按照经验值比如60%，70%作为其长点击的分界点。这种划分方式 xxxx</p>
+
+<p><strong>(2) 有监督的</strong><br/>
+通过人工评估（比如qu相关性，qu的页面质量等维度），可以对qu结果进行人工打分，一般是0-4档。0，1代表不太好，2代表一般，3-4代表比较好。可以根据业务需求比如3-4认为是满意点击，2认为是一般点击，0-1认为是不满意点击。<br/>
+以此人工标注来决定如何选择长点击划分阈值。</p>
+
+<h3 id="toc_1">2. 如何划分长点击</h3>
+
+<p>长点击阈值划分的目标，即寻找如下决策函数的参数x</p>
+
+<p>\[<br/>
+F(t) = \left\{<br/>
+             \begin{array}{lr}<br/>
+            1，长点击 t \ge x &amp;  \\<br/>
+            0，非长点击 t&lt; x\\  <br/>
+             \end{array}<br/>
+\right.<br/>
+\]</p>
+
+<p>从统计分布的角度看，即使是时长比较长的结果，人工打分也可能很低，时长很短的结果人工打分也可能是满意的。所以不管寻找到的最优参数\(x\)是多少，它都有可能会误分。而我们的目的是让这种因为误分而犯错的可能性尽可能的小。<br/>
+<img src="media/15542962343188/15543644977641.jpg" alt=""/></p>
+
+<p>从以上的分布图来说更直观一些，我们的误判损失即是图中阴影部分，很容易证明，移动阈值划分x时候，损失最小的是当两个分布曲线相交的点的时候。这指导我们可以按照如下的方法进行长点击划分：</p>
+
+<p>执行步骤<br/>
+<strong>Step0： 摸底时长分布</strong></p>
+
+<p>首先需要了解清楚数据本身的时长分布，根据时长的分布情况，大概划分不同的区间段。比如0-5，5-10，10-15，15-20，20-25，25-30，30-35，35-40， 40-50，50-60，60-100，&gt;100这样进行划分。<br/>
+同于频次分布较高的部分可以划分的细致一些，频次分布较低的部分可以划分的宽度较宽一些。</p>
+
+<p><strong>Step1： 抽样送评qu数据</strong></p>
+
+<p>确定送评样本，因为人工评估是需要成本的，我们不可能得到整体的good或者bad的分布曲线，我们所有的只是抽取的送评样本的标注数据。这就要求我们送评的数据对于总体一定要有好的代表性：</p>
+
+<ul>
+<li>抽样分布应该和总体分布尽量一致</li>
+<li>抽样量不能太小，否则样本估计总体的误差会比较大</li>
+</ul>
 
 <blockquote>
-<p>当所有参数是已知的时候，维度的增加可以让分类问题的错误率渐近为0.<br/>
-当未知参数只能根据有限样本来估计时，维度的增加使错误率先降低后增加，最终收敛到0.5</p>
+<p>如何确定最优送评样本量？（这个回来再写）<br/>
+统计学的研究方法是要找到我们所关注变量的统计分布，我们最终是希望通过抽取得到的good和not_good的时长分布与整体差不多。</p>
 </blockquote>
 
-<p>维数灾难的本质原因在于<code>数据样本的有限性</code>。而在数据有限的条件下，去解决维度问题，自然的方法就是去降维。降维的方法有很多</p>
-
-<h2 id="toc_0">1. 常用的线性降维方法：</h2>
+<p>数据抽取：</p>
 
 <ul>
-<li>PCA 主成分分析</li>
-<li>IDA</li>
-<li>LDA</li>
-</ul>
-
-<h2 id="toc_1">2.非线性的方法——流形</h2>
-
-<p><strong>流形</strong><br/>
-是指嵌入在高维空间中的低维子空间，它的维度是低维数据变化的自由度。（比如地球仪的球面，虽然它是在一个三维空间中，但其实是一个二维的地图卷曲而成，\(x^2+y^2+z^2=1\)，维度是2）</p>
-
-<p><strong>流形学习</strong><br/>
-就是通过挖掘数据的内在结构实现向故由维度的转化，找到对应的低维嵌入流形。其大部分是非线性的、非参的。所以相比线性方法有更强的表达能力，但是同时对噪声更加敏感。</p>
-
-<p><strong>流形学习方法</strong></p>
-
-<p>流形学习，首先需要确定低维流形的结构，然后是高维到低维的映射关系。实际中因为都未知，所以需要做一些假设。</p>
-
-<blockquote>
+<li>考虑到数据抽取是基于qu粒度，一个qu其实会有多次用户点击行为，也就会有多个时长，可能波动较大。所以一般是取count(qu)&gt;5的，并且时长取的是其中位数</li>
+<li><p>预送评，一般先进行少量的预送评，比如送评1000个样本。返回会用来检验数据质量和划分的精细度</p>
 <ul>
-<li>多维缩放MDS (multi dimensional scaling)</li>
+<li>check自己送评的数据中是否有一些异常数据。比如sf的url路径不完成</li>
+<li>check人工打分的质量程度</li>
+<li>初步看下good和not_good的分布情况，大概确定长点的分布区间，从而看下送评的样本的时间段间隔精度是否需要调整</li>
+</ul></li>
+<li><p>正式送评</p></li>
 </ul>
-</blockquote>
 
-<p>原则:让高维空间上样本之间的距离在低维空间中尽量保持一致以距离重建的误差最小为优化目标。</p>
+<p><strong>Step2： 返回分析</strong></p>
 
-<p>具体来说：</p>
-
-<p>(1) 对于原始的数据\(X_{np}\),首先可以计算出任何两个样本之间的距离，从而构造出一个距离矩阵\(D\)，MDS算法的目的就是根据距离矩阵，寻找向量\(Z_1,Z_2...Z_k\),使得\(||Z_i-Z_j||≈\sigma_{ij}\)</p>
-
-<p>假设\(Z\)是经过中心化处理过的，即\(\sum z_i = 0\) , 则有</p>
-
-<p>\[XX^T = D≈ZZ^T\]</p>
-
-<p>看到这个形式，应该就能明白怎么取解了。对D做特征分解\(D=VAV^T\)， V是对应的特征向量，我们选择前k个特征值比较大的作为最终的降维维度即可。</p>
-
-<p><code>问题：高维空间的距离与低维空间距离保持一致这个假设是否合理？</code></p>
-
-<p>以地球仪的球面为例，三维空间中两个点的距离和平面中两个点的距离显然是不一样的。三维空间中如果用欧式距离去度量那么北京与纽约的距离是连接两点的直线，而在平面上他是一条曲线。</p>
-
-<pre><code class="language-text"># MDS
-mds = manifold.MDS(n_components, max_iter=100, n_init=1)
-Y = mds.fit_transform(X)
-</code></pre>
-
-<p>下面再说一些以几何性质作为同构基础的降维方法</p>
-
-<blockquote>
-<ul>
-<li>等度量映射Isomap</li>
-</ul>
-</blockquote>
-
-<p>等度量映射，以数据所在的低维流形与欧式空间子集的等距性为基础。描述距离的是<strong>测地距离</strong>，即流形上两点的真实距离。测地距离的近似计算方法：近邻点之间的欧式距离近似为近邻点之间的测地距离。</p>
-
-<p>通过对每一个近邻点建立连接，就可以让所有数据点共同构成一张带权重的近邻连接图。这样在这张图上任意两个点的测地距离就相当于是两点之间的最短路径。可以用图论中的Dijkstra算法求解。</p>
-
-<p>当计算出距离后，剩下的处理方法和MDS一致。所以总的来说包括三步：<br/>
-(1) 最近邻搜索<br/>
-(2) 最短路径搜索<br/>
-(3) 部分特征值分解</p>
-
-<pre><code class="language-text">model = manifold.Isomap(n_neighbors, n_components)
-Y = model.fit_transform(X)
-</code></pre>
-
-<blockquote>
-<ul>
-<li>局部线性嵌入LLE(local linear embedding)</li>
-</ul>
-</blockquote>
-
-<p>想法：待求解的低维流形在局部上是线性的，每个点可以表示成近邻点的线性组合。而局部线性嵌入就是在求解流形的过程中保持每个领域中的线性系数不变的基础上重构原数据点。</p>
-
-<p>详细的推导过程<a href="https://blog.csdn.net/yukgwy60648/article/details/54578141">https://blog.csdn.net/yukgwy60648/article/details/54578141</a></p>
-
-<pre><code class="language-text"># 其中method可选 [&#39;standard&#39;, &#39;ltsa&#39;, &#39;hessian&#39;, &#39;modified&#39;]
-model = manifold.LocallyLinearEmbedding(n_neighbors, n_components, eigen_solver=&#39;auto&#39;, method=method)
-Y = model.fit_transform(X)
-</code></pre>
-
-<p>从概率角度</p>
-
-<blockquote>
-<ul>
-<li>随机近邻嵌入 SNE</li>
-</ul>
-</blockquote>
-
-<p>随机近邻嵌入的特点：保持数据降维前后的概率分布不变,他将高维空间中的距离首先映射到了一个服从正态分布的条件概率上。这个概率描述了不同数据点之间的相似性。</p>
-
-<p>\[p_{j|i}=\frac{exp(-||x_j-x_i||^2/2\sigma^2_i)}{\sum_{k\ne i}exp(-||x_k-x_i||^2/2\sigma^2_i)}\]</p>
-
-<p>映射到低维空间后，按照同样方式计算条件概率，希望连个概率分布尽量一致。这里是KL散度最小化<br/>
-\[KL(P||Q) = -\sum P_i ln(\frac{P_i}{Q_i})=-\sum P_i(ln(P_i)- ln(Q_i))\]</p>
-
-<p><code>问题</code>：<br/>
-KL距离是不对称的，会导致相聚较远的点出现较大的散度差。为了是KL距离最小化，数据就会被压缩到极小的范围，产生拥挤问题。</p>
-
-<p><code>改进</code></p>
+<p>根据good和not_good的频数分布，找到曲线的交点，即满足good(x) = not_good(x)的点，即可认为是长点击的分界点。短点击的划分类似，可以认为0-1的是短点击，或者更严格的0分的是短点击。 绘制bad和not_bad的频数分布，找到曲线交点。即满足bood(x) = not_bood(x)的点</p>
 
 <ul>
-<li>将KL散度改为对称形式 \(p_{ij}=p_{ji}=(p_{i|j}+p_{j|i})/2\)</li>
-<li>令低维空间中的条件概率服从t分布，t分布有长尾效应，从而使高维中分布较远的点降维后也能区分开</li>
+<li>实际操作：实际数据的分布图可能不如示意图那么明显，甚至有多个交点的情况。这时候可以计算图中b+c的面积，绘制(x,g(x))的曲线图，找到g(x)=0.5的点即可。 如果有多个可能是因为样本量不足够，或者本身指标数据不可信(前提假定是要研究的指标与人工打分是存在单调关系的)</li>
 </ul>
 
-<pre><code class="language-text">tsne = manifold.TSNE(n_components=n_components, init=&#39;pca&#39;, random_state=0)
-Y = tsne.fit_transform(X)
-</code></pre>
-
-<p><img src="media/15382821564829/15383222417494.jpg" alt=""/></p>
-
-<h2 id="toc_2">小结</h2>
+<h3 id="toc_2">3 应用-关于sigmoid函数的理解</h3>
 
 <ul>
-<li><p>本章主要知识结构<br/>
-<img src="https://upload-images.jianshu.io/upload_images/127231-bf906252693ca552.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"/></p></li>
-<li><p>sklearn中关于流形学习内容都在<code>sklearn.manifold</code>模块。<br/>
-官网示例 <a href="http://sklearn.apachecn.org/cn/0.19.0/auto_examples/manifold/plot_compare_methods.html#sphx-glr-auto-examples-manifold-plot-compare-methods-py">http://sklearn.apachecn.org/cn/0.19.0/auto_examples/manifold/plot_compare_methods.html#sphx-glr-auto-examples-manifold-plot-compare-methods-py</a></p></li>
-<li><p>参考文档<br/>
-<a href="https://blog.csdn.net/yukgwy60648/article/details/54578141">https://blog.csdn.net/yukgwy60648/article/details/54578141</a><br/>
-sklearn—文档 <a href="http://scikit-learn.org/stable/modules/manifold.html">http://scikit-learn.org/stable/modules/manifold.html</a><br/>
-<a href="http://sklearn.apachecn.org/cn/0.19.0/modules/manifold.html">http://sklearn.apachecn.org/cn/0.19.0/modules/manifold.html</a></p></li>
+<li><p>AB实验<br/>
+对于AB实验来说，有了长短点击时间阈值之后，可以直接计算长点击和短点击，更新指标评估即可。</p></li>
+<li><p>interleaving实验<br/>
+对于interleaving来说，实际中是将dt经过一个映射(一般是sigmoid函数)将其转化为一个0-1的打分。</p></li>
 </ul>
+
+<p>这里我们从另外一个角度来看这件事。LR或者说sigmoid函数能将一个负无穷到正无穷的数映射到0-1的一个概率值。是否是长点其实也是一个概率，当然这里时长t是取的(0, 正无穷)</p>
+
+<p>假设<br/>
+\[g(x) = \frac{good(x)}{good(x) + not\_good(x)}\]<br/>
+其中 \(good(x)= \#good(t=x)\), \(not\_good(x)=\#not\_good(t= x)\)。 <br/>
+所以\(g(x)\)其实表示的是在\(t=x\)时候是长点击的概率。为了书写方便，</p>
+
+<p>\[g(x) = \frac{1}{1+ not\_good(x)/good(x)}= \frac{1}{1+ e^{ln\frac{p}{1-p}}}\]</p>
+
+<p>这里\(p(x)\)是表示当时间等于x时是长点击的概率。</p>
+
+<p>从这个角度说，之前的sigmoid映射函数中\(\frac{1}{1+ e^{-a(x-b)}}\) 系数项即是log odds ratio。</p>
+
+<p>因此只需对送评数据中\(ln\frac{p}{1-p}\)的分布数据去拟合一条曲线 \(\hat f(t)\)即可，最终的sigmoid映射函数就是</p>
+
+<p>\[g(t) = \frac{1}{1+ e^{\hat f(t)}}\]</p>
+
+<p>并且其中\(\hat f(t)=0\)的点恰巧就是长点击的分界点。</p>
+
+<p>注意：实际送评的时候因为样本量的限制，不可能每一个分界点(在这里是每个停留时间dt)都会去送评，</p>
+
+<h3 id="toc_3">4.其他:从模型准召的角度</h3>
+
+<p>其实从分类评估角度来看，</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>not_good</th>
+<th>Good</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>F=0</td>
+<td>a</td>
+<td>b</td>
+</tr>
+<tr>
+<td>F=1</td>
+<td>c</td>
+<td>d</td>
+</tr>
+</tbody>
+</table>
+
+<p>上面说的损失即阴影部分的面积=b+c, 所以其实从分类模型评估的角度，就是不一致率最小的时候的最优解,即<br/>
+\[min b+c\]</p>
+
+<ul>
+<li>准确&amp;召回</li>
+</ul>
+
+<p>分类模型中其实用的更多的是准确和召回指标，\(accurate=\frac{d}{c+d}\),\(recall = \frac{d}{b+d}\)<br/>
+\[Max F\_score = 1-\frac{b+c}{b+c+2d}\]</p>
+
+<p>这个标准下，和之前还是略微有些不同的</p>
+
+<h3 id="toc_4">5.如何泛化</h3>
+
+<p>泛化问题主要是指：</p>
+
+<ul>
+<li>业务层面</li>
+</ul>
+
+<p>搜索，视频，以后其他的大小业务都可能面临这种问题。对于新的业务类型，人工送评应该是避免不了了。</p>
+
+<ul>
+<li>时间层面变更</li>
+</ul>
+
+<p>随着线上效果变更，当前调研的结果可能已经不再试用后续的结果。需要不断进行更新，比如视频铺量后，整体的时长分布和之前的可能变化很大。或者是需要拆解不同的维度类别</p>
+
+<p>方案1：再次人工送评一遍，<br/>
+方案2：进行时长分布映射<br/>
+这种方案有个问题，相当于是按照top百分比进行划分的，认为top百分比所代表的满意度保持一致。可能整体时长都变长了，映射完后阈值也变长了，相对的满意度并没变。</p>
 
                         
                       </div>
@@ -469,7 +407,7 @@ sklearn—文档 <a href="http://scikit-learn.org/stable/modules/manifold.html">
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
           				   
                     
 
@@ -485,14 +423,45 @@ sklearn—文档 <a href="http://scikit-learn.org/stable/modules/manifold.html">
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037731727.html">
+                <a class="clearlink" href="15637037730576.html">
                 
-                  <h1>聚类方法-spark的bisecting和streaming</h1>
+                  <h1>统计阈值</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><a href="http://blog.csdn.net/franket268/article/details/23604671">http://blog.csdn.net/franket268/article/details/23604671</a></p>
+                        	<h2 id="toc_0">1.dab类指标</h2>
+
+<p>newpo, po, rank, rr, f1 最终计算方式都是 \[dab_{xx} = 0.5\frac{\sum awin -\sum bwin}{\sum awin + \sum bwin + \sum tie}\]</p>
+
+<p>其中awin，bwin，tie可以按照不同的逻辑或方法进行计算。</p>
+
+<p>\[p_1 = \frac{\sum awin}{\sum awin + \sum bwin + \sum tie}\]</p>
+
+<p>\[p_2 = \frac{\sum bwin}{\sum awin + \sum bwin + \sum tie}\]</p>
+
+<p>基于有点有diff的流量：<br/>
+每次pv下，awin，bwin，tie必然出现且只出现其一。因此p1可以看做策略好的概率， p2可以看做基线好的概率。 概率本身是服从两点分布的，每次pv取0或1，样本量较大的时候(一般interleaving实验的样本量足够大了)，可以近似成正态分布，即有</p>
+
+<p>\[p_1 - N(P_1,P_1(1-P_1)/n1 )\]<br/>
+\[p_2 - N(P_2,P_2(1-P_2)/n1 )\]</p>
+
+<p>所以两者的差也是近似正态分布，有(注意P1与P2并不是相互独立的)</p>
+
+<p>\[p_1 - p_2 ~ N(P_1 - P_2, \frac{(P_1+P_2-(P_1-P_2)^2)}{n})\]</p>
+
+<p>所以dab的置信区间就是</p>
+
+<p>\[[\frac{p_1 -p_2}{2}- z_{\alpha}\sqrt \frac{p_1+p_2-(p_1-p_2)^2}{4n}, \frac{p_1 -p_2}{2}+ z_{\alpha}\sqrt \frac{p_1+p_2-(p_1-p_2)^2}{4n}]\]</p>
+
+<h3 id="toc_1">根据空转确定阈值</h3>
+
+<p>空转时候理论上两边是没diff的，但是因为随机波动，产出的指标数据肯定不可能完全等于0，大概率上也是服从一个正态分布。根据小概率原理，在5%和95%的置信点上可以认为是异常值，就策略和基线不是持平而是有显著diff。<br/>
+对应的阈值就是</p>
+
+<p>\[z_{\alpha}\sqrt \frac{p_1+p_2-(p_1-p_2)^2}{4n}= z_{\alpha}\sqrt \frac{p}{2n}\]</p>
+
+<p>所以这个阈值是与本身的p值的大小有关，与样本量也有关。</p>
 
                         
                       </div>
@@ -504,7 +473,7 @@ sklearn—文档 <a href="http://scikit-learn.org/stable/modules/manifold.html">
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
           				   
                     
 
@@ -520,85 +489,42 @@ sklearn—文档 <a href="http://scikit-learn.org/stable/modules/manifold.html">
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037720747.html">
+                <a class="clearlink" href="15637037730631.html">
                 
-                  <h1>FM</h1>
+                  <h1>比赛学习</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>学习地址 <a href="https://github.com/babakx/fm_tensorflow">https://github.com/babakx/fm_tensorflow</a></p>
-
-<h2 id="toc_0">1. 环境包安装</h2>
-
-<p>安装tensorflow</p>
-
-<h2 id="toc_1">2.试运行</h2>
-
-<p>这个是用tf实现的FM<br/>
-<a href="https://www.jianshu.com/p/152ae633fb00">https://www.jianshu.com/p/152ae633fb00</a></p>
+                        	<h2 id="toc_0">天池</h2>
 
 <ul>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked /> 试运行成功</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 了解原理</li>
+<li>o2o优惠券</li>
 </ul>
 
-<p>小数据集版本（进入tf的仍然是dense矩阵，只适合小数据）<br/>
- <a href="https://github.com/babakx/fm_tensorflow">https://github.com/babakx/fm_tensorflow</a></p>
+<p><a href="https://tianchi.aliyun.com/getStart/information.htm?raceId=231593">https://tianchi.aliyun.com/getStart/information.htm?raceId=231593</a></p>
 
-<p>大数据量版本</p>
-
-<h2 id="toc_2">3.原理</h2>
-
-<h2 id="toc_3">PYTHON版本的包实现方式</h2>
+<p><a href="https://github.com/wepe/O2O-Coupon-Usage-Forecast/tree/master/code">https://github.com/wepe/O2O-Coupon-Usage-Forecast/tree/master/code</a></p>
 
 <ul>
-<li>LibFM</li>
-<li>libFFM</li>
-<li>xLearn</li>
-<li>tffm</li>
+<li>fashion_tag</li>
 </ul>
 
-<p>目前在python中的支持FM相关的包主要有</p>
+<p><a href="https://github.com/DavexPro/fashion-tag">https://github.com/DavexPro/fashion-tag</a></p>
 
-<p>__</p>
+<p><a href="https://github.com/tworuler/tensorcv">https://github.com/tworuler/tensorcv</a></p>
 
-<h3 id="toc_4">1.libFM</h3>
+<h2 id="toc_1">kaggle</h2>
 
-<p>官网 <a href="http://www.libfm.org/">http://www.libfm.org/</a><br/>
-github <a href="https://github.com/srendle/libfm">https://github.com/srendle/libfm</a></p>
+<p>kaggle-ctr预估<br/>
+<a href="https://www.kaggle.com/c/avazu-ctr-prediction/discussion/12608">https://www.kaggle.com/c/avazu-ctr-prediction/discussion/12608</a><br/>
+<a href="https://github.com/guestwalk/kaggle-avazu">https://github.com/guestwalk/kaggle-avazu</a></p>
 
-<p>从官网下载安装包</p>
+<p>FM学习<a href="https://www.jianshu.com/p/152ae633fb00">https://www.jianshu.com/p/152ae633fb00</a></p>
 
-<h3 id="toc_5">tffm</h3>
+<h2 id="toc_2">kesci</h2>
 
-<p><a href="https://github.com/geffy/tffm">https://github.com/geffy/tffm</a></p>
-
-<p>tffm是FM方法的tensorflow版本，他支持：</p>
-
-<ul>
-<li>dense or sparse输出</li>
-<li>order &gt;= 2</li>
-</ul>
-
-<pre><code class="language-text"># 安装 
-pip install tffm
-</code></pre>
-
-<p>按照github上的example</p>
-
-<p>log</p>
-
-<p>todo:</p>
-
-<ul>
-<li>调整参数k， int_std, red</li>
-<li>统一 content_len的量纲</li>
-<li>文章添加关键字</li>
-<li>tffm，添加field</li>
-</ul>
-
-<hr/>
+<p><a href="https://www.kesci.com/home/competition">https://www.kesci.com/home/competition</a></p>
 
                         
                       </div>
@@ -610,7 +536,7 @@ pip install tffm
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          					    <span class="posted-in"><a href='9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html'>9 比赛学习</a></span>
           				   
                     
 
@@ -720,31 +646,31 @@ pip install tffm
 	      
 		      
 			      <li class="post">
-			        <a href="15917706614562.html">optical flow 光流</a>
+			        <a href="15919304631539.html">源码阅读工具</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15917693533998.html">process</a>
+			        <a href="15919291891898.html">训练常见问题</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15917597006543.html">业务</a>
+			        <a href="15918717478277.html">【工具】MMlab—mmskelton</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15917572981552.html">综述_关键点检测</a>
+			        <a href="15918653333546.html">图像检索：BoF、VLAD、FV三剑客</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15916704949564.html">【工具】MMlab——mmaction</a>
+			        <a href="15918617122348.html">batch normalization</a>
 			      </li>
 		     
 		  
