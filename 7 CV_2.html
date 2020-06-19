@@ -130,52 +130,6 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15910646289765.html">
-                
-                  <h1>ActivityNet</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>ActivityNet是一个类似ImageyNet的关于行为识别的比赛</p>
-
-<p><a href="https://github.com/activitynet/ActivityNet">https://github.com/activitynet/ActivityNet</a>  其官网提供了一些</p>
-
-<p>其他方法<br/>
-<a href="https://github.com/facebookresearch/SlowFast/blob/master/INSTALL.md">https://github.com/facebookresearch/SlowFast/blob/master/INSTALL.md</a></p>
-
-<p><a href="https://github.com/search?q=activity-recognition">https://github.com/search?q=activity-recognition</a></p>
-
-<pre><code class="language-text">#环境
-conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/6/2</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%A7%BF%E6%80%81%E8%AF%86%E5%88%AB.html'>姿态识别</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
                 <a class="clearlink" href="15906325298474.html">
                 
                   <h1>【工具】MMlab—mmdetection</h1>
@@ -379,6 +333,8 @@ nvidia-smi
 <li>kaggle</li>
 </ul>
 
+<p>cuda 版本升级 <a href="https://blog.csdn.net/wanzhen4330/article/details/81704474">https://blog.csdn.net/wanzhen4330/article/details/81704474</a></p>
+
 <h2 id="toc_4">pytorch安装版本问题</h2>
 
 <p>以pytorch为例，在安装环境的时候经常因为torch, cuda, torchvision等版本问题，导致无法成功运行。</p>
@@ -387,8 +343,10 @@ nvidia-smi
 
 <pre><code class="language-shell"># 1.查看机器的nvcc版本
 nvcc --version     #Cuda compilation tools, release 9.1, V9.1.85
-# 2.安装对应的cuda
-
+# 2.到官网查找安装对应版本 https://pytorch.org/
+比如
+pip install torch==1.5.0+cu101 torchvision==0.6.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html
+conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
 </code></pre>
 
 <p>lspci | grep -i nvidia</p>
@@ -488,6 +446,14 @@ nvcc --version     #Cuda compilation tools, release 9.1, V9.1.85
 <li>体育运动</li>
 </ul>
 
+<p>Kinetics</p>
+
+<ul>
+<li>单人行为，例如绘画，喝酒，大笑，抽拳;</li>
+<li>人人行为，例如拥抱，亲吻，握手；</li>
+<li>人物行为，例如打开礼物，修剪草坪，洗碗。</li>
+</ul>
+
 <p><strong>ava-action：</strong><br/>
 包含了80个原子动作(比如走路，握手。。) 数据包含三部分:</p>
 
@@ -502,6 +468,8 @@ nvcc --version     #Cuda compilation tools, release 9.1, V9.1.85
 
 <p>数据格式 ava_train_v2.2.csv<br/>
 video_id, middle_frame_timestamp, person_box, action_id, person_id</p>
+
+<p>stand, sit, watch some body, listen to sb....</p>
 
 <p>toread<br/>
 <a href="https://www.jianshu.com/p/a4cc71126796">https://www.jianshu.com/p/a4cc71126796</a></p>
@@ -640,6 +608,10 @@ cd build/
 make -j`nproc`
 </code></pre>
 
+<h3 id="toc_5">(3) gluon</h3>
+
+<p><a href="https://gluon-cv.mxnet.io/model_zoo/action_recognition.html">https://gluon-cv.mxnet.io/model_zoo/action_recognition.html</a></p>
+
                         
                       </div>
                   </div>
@@ -742,10 +714,11 @@ make -j`nproc`
 
 <h2 id="toc_0">video中行为识别方法</h2>
 
-<p>参考：<br/>
+<p>参考资料:<br/>
 <a href="https://zhuanlan.zhihu.com/p/79521655">https://zhuanlan.zhihu.com/p/79521655</a><br/>
-<a href="https://zhuanlan.zhihu.com/p/103566134">https://zhuanlan.zhihu.com/p/103566134</a>  通用行为识别<br/>
-<a href="https://blog.csdn.net/DaGongJiGuoMaLu09/article/details/94628591">https://blog.csdn.net/DaGongJiGuoMaLu09/article/details/94628591</a></p>
+行为识别分类: <a href="https://zhuanlan.zhihu.com/p/103566134">https://zhuanlan.zhihu.com/p/103566134</a><br/>
+综述: <a href="https://blog.csdn.net/DaGongJiGuoMaLu09/article/details/94628591">https://blog.csdn.net/DaGongJiGuoMaLu09/article/details/94628591</a><br/>
+有人整理的翻译版本:<a href="https://mna12478.github.io/action_9/">https://mna12478.github.io/action_9/</a></p>
 
 
                         
@@ -759,6 +732,41 @@ make -j`nproc`
                     <span>posted in&nbsp;</span> 
           				  
           					    <span class="posted-in"><a href='%E5%A7%BF%E6%80%81%E8%AF%86%E5%88%AB.html'>姿态识别</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15875367707284.html">
+                
+                  <h1>序列预测</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><a href="https://www.tensorflow.org/tutorials/text/text_classification_rnn?hl=zh-cn">https://www.tensorflow.org/tutorials/text/text_classification_rnn?hl=zh-cn</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/4/22</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='rnn.html'>rnn</a></span>
           				   
                     
 
@@ -868,6 +876,12 @@ make -j`nproc`
 	      
 		      
 			      <li class="post">
+			        <a href="15921526421890.html">python</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15919304631539.html">源码阅读工具</a>
 			      </li>
 		     
@@ -887,12 +901,6 @@ make -j`nproc`
 		      
 			      <li class="post">
 			        <a href="15918653333546.html">图像检索：BoF、VLAD、FV三剑客</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15918617122348.html">batch normalization</a>
 			      </li>
 		     
 		  

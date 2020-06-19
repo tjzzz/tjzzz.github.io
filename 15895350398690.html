@@ -219,15 +219,13 @@
 
 <h2 id="toc_0">video中行为识别方法</h2>
 
-<p>参考：<br/>
+<p>参考资料:<br/>
 <a href="https://zhuanlan.zhihu.com/p/79521655">https://zhuanlan.zhihu.com/p/79521655</a><br/>
-<a href="https://zhuanlan.zhihu.com/p/103566134">https://zhuanlan.zhihu.com/p/103566134</a>  通用行为识别<br/>
-<a href="https://blog.csdn.net/DaGongJiGuoMaLu09/article/details/94628591">https://blog.csdn.net/DaGongJiGuoMaLu09/article/details/94628591</a></p>
+行为识别分类: <a href="https://zhuanlan.zhihu.com/p/103566134">https://zhuanlan.zhihu.com/p/103566134</a><br/>
+综述: <a href="https://blog.csdn.net/DaGongJiGuoMaLu09/article/details/94628591">https://blog.csdn.net/DaGongJiGuoMaLu09/article/details/94628591</a><br/>
+有人整理的翻译版本:<a href="https://mna12478.github.io/action_9/">https://mna12478.github.io/action_9/</a></p>
 
 <span id="more"></span><!-- more -->
-
-<p>参考资料: <a href="https://blog.csdn.net/DaGongJiGuoMaLu09/article/details/94628591">https://blog.csdn.net/DaGongJiGuoMaLu09/article/details/94628591</a><br/>
-有人整理的翻译版本:<a href="https://mna12478.github.io/action_9/">https://mna12478.github.io/action_9/</a></p>
 
 <h2 id="toc_1">1. 传统的有监督的特征提取方法</h2>
 
@@ -322,12 +320,16 @@ Spatial Net可以用一些预训练的模型，temporal net的输入得是视频
 
 <h2 id="toc_7">3.深度学习方法</h2>
 
-<blockquote>
-<p>ZZZ: CNN在图像识别中表现的很好，将CNN借鉴过来，相比于图像识别，主要难点以及工作集中在时间维度如何融合，在哪层融合等方面上。</p>
-</blockquote>
+<p>zzz:</p>
 
-<p>汇总:<br/>
-<img src="media/15895350398690/activity%20recognition%20.png" alt="activity recognition "/></p>
+<ul>
+<li>CNN在图像识别中表现的很好，将CNN借鉴过来，相比于图像识别，主要难点以及工作集中在时间维度如何融合，在哪层融合等方面上。</li>
+<li>按照是否先检测人体关键点，可以简单的分为skeleton based(检测人体关键点)和video based(rgb + 光流)</li>
+</ul>
+
+<p>汇总<br/>
+IDT =&gt; Twostream convNets =&gt; C3D =&gt; TSN(Temporal Segment Networks) =&gt; i3d, Non-local =&gt; slowfast<br/>
+<img src="media/15895350398690/15921515770275.jpg" alt="activity recognition"/></p>
 
 <h3 id="toc_8">(1) LRCN</h3>
 
@@ -480,6 +482,8 @@ c)数据增强<br/>
 <img src="media/15895350398690/15918703868299.jpg" alt=""/><br/>
 github: <a href="https://github.com/facebookresearch/SlowFast">https://github.com/facebookresearch/SlowFast</a></p>
 
+<p><img src="media/15895350398690/15922904290885.jpg" alt="" style="width:460px;"/></p>
+
 <p>近期的一些其他方法<br/>
 Non-local Neural Networks 2018</p>
 
@@ -489,10 +493,12 @@ Non-local Neural Networks 2018</p>
 
 <h3 id="toc_16">st-gcn</h3>
 
-<p>《Spatial Temporal Graph Convolutional Networks for Skeleton-Based Action Recognition》2018</p>
+<p>时空-图卷积 ST-GCN，基于skeleton based的。skeleton based的行为识别需要先将基本骨架识别出来然后再做检测<br/>
+ST-NBNN: Spatio-Temporal Naive-Bayes Nearest-Neighbor (ST-NBNN) for Skeleton-Based Action Recognition 2017cvpr</p>
 
-<p>时空-图卷积 ST-GCN<br/>
-<img src="media/15895350398690/15919653350424.jpg" alt=""/></p>
+<p>☆☆图卷积方法 ST-GCN:Spatial Temporal Graph Convolutional Networks for Skeleton Based Action Recognition AAAI2018（开源）</p>
+
+<p><img src="media/15895350398690/15919653350424.jpg" alt=""/></p>
 
 <p>mmskeleton</p>
 
@@ -506,7 +512,10 @@ Learning hierarchical invariant spatio-temporal features for action recognition 
 
 <h2 id="toc_18">toread</h2>
 
-<p><a href="https://www.jianshu.com/p/39fe654ed410">https://www.jianshu.com/p/39fe654ed410</a></p>
+<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> <a href="https://zhuanlan.zhihu.com/p/87224151">https://zhuanlan.zhihu.com/p/87224151</a>
+<a href="https://www.jianshu.com/p/39fe654ed410">https://www.jianshu.com/p/39fe654ed410</a></li>
+</ul>
 
 <p><a href="https://zhuanlan.zhihu.com/p/51550622">https://zhuanlan.zhihu.com/p/51550622</a> 2017年Activity Recognition Challenge</p>
 
@@ -640,6 +649,12 @@ Learning hierarchical invariant spatio-temporal features for action recognition 
 	      
 		      
 			      <li class="post">
+			        <a href="15921526421890.html">python</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15919304631539.html">源码阅读工具</a>
 			      </li>
 		     
@@ -659,12 +674,6 @@ Learning hierarchical invariant spatio-temporal features for action recognition 
 		      
 			      <li class="post">
 			        <a href="15918653333546.html">图像检索：BoF、VLAD、FV三剑客</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15918617122348.html">batch normalization</a>
 			      </li>
 		     
 		  

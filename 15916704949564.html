@@ -184,8 +184,12 @@ mmaction支持两种数据格式: raw frames 和video. raw frame较快，占用�
 cd data_tools/ucf101/
 bash download_annotations.sh
 bash download_videos.sh   # 一共6G多，可以中间终端，只取部分
-# 提取frames，这里是调用的dense_flow工具
-bash extract_frames.sh   
+
+# 提取frames
+# 1.rgb的处理是用的mmcv.VideoReader(), 将视频转换为帧序列，所以量会比较大，可以改下间隔
+# 2.光流信息调用的dense_flow工具，需要在third_parties中提前安装好
+bash extract_frames.sh   ## bash extract_grb_frames.sh
+
 # Run the follow script to generate filelist in the format of rawframes and videos.
 bash generate_filelist.sh
 </code></pre>
@@ -212,8 +216,6 @@ python tools/test_${ARCH}.py ${CONFIG_FILE} ${CHECKPOINT_FILE} [--out ${RESULT_F
 <pre><code class="language-python">import pickle
 outputs = pickle.load(open(&#39;xxx&#39;, &#39;rb&#39;), encoding=&#39;utf-8&#39;)
 </code></pre>
-
-<p>build_dataloader</p>
 
 <p>采坑：</p>
 
@@ -247,7 +249,7 @@ batch_size</p>
         <p class="text-left" style="padding:15px 0px;">
       
           <a href="15917572981552.html" 
-          title="Previous Post: 综述_关键点检测">&laquo; 综述_关键点检测</a>
+          title="Previous Post: 综述_pose_estimation">&laquo; 综述_pose_estimation</a>
       
         </p>
         </div>
@@ -352,6 +354,12 @@ batch_size</p>
 	      
 		      
 			      <li class="post">
+			        <a href="15921526421890.html">python</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15919304631539.html">源码阅读工具</a>
 			      </li>
 		     
@@ -371,12 +379,6 @@ batch_size</p>
 		      
 			      <li class="post">
 			        <a href="15918653333546.html">图像检索：BoF、VLAD、FV三剑客</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15918617122348.html">batch normalization</a>
 			      </li>
 		     
 		  

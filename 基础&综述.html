@@ -373,6 +373,8 @@ nvidia-smi
 <li>kaggle</li>
 </ul>
 
+<p>cuda 版本升级 <a href="https://blog.csdn.net/wanzhen4330/article/details/81704474">https://blog.csdn.net/wanzhen4330/article/details/81704474</a></p>
+
 <h2 id="toc_4">pytorch安装版本问题</h2>
 
 <p>以pytorch为例，在安装环境的时候经常因为torch, cuda, torchvision等版本问题，导致无法成功运行。</p>
@@ -381,8 +383,10 @@ nvidia-smi
 
 <pre><code class="language-shell"># 1.查看机器的nvcc版本
 nvcc --version     #Cuda compilation tools, release 9.1, V9.1.85
-# 2.安装对应的cuda
-
+# 2.到官网查找安装对应版本 https://pytorch.org/
+比如
+pip install torch==1.5.0+cu101 torchvision==0.6.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html
+conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
 </code></pre>
 
 <p>lspci | grep -i nvidia</p>
@@ -541,6 +545,12 @@ nvcc --version     #Cuda compilation tools, release 9.1, V9.1.85
 	      
 		      
 			      <li class="post">
+			        <a href="15921526421890.html">python</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
 			        <a href="15919304631539.html">源码阅读工具</a>
 			      </li>
 		     
@@ -560,12 +570,6 @@ nvcc --version     #Cuda compilation tools, release 9.1, V9.1.85
 		      
 			      <li class="post">
 			        <a href="15918653333546.html">图像检索：BoF、VLAD、FV三剑客</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15918617122348.html">batch normalization</a>
 			      </li>
 		     
 		  
