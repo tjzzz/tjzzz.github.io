@@ -81,25 +81,27 @@
     <li><label>Categories</label></li>
 
         
-            <li><a href="kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html">kdd&异常检测</a></li>
+            <li><a href="kdd&AbnormalDetection.html">kdd&AbnormalDetection</a></li>
         
-            <li><a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html">轨迹分析</a></li>
+            <li><a href="trace%20analysis.html">trace analysis</a></li>
         
             <li><a href="1%20Tools.html">1 Tools</a></li>
         
-            <li><a href="2%20Get%20Data.html">2 Get Data</a></li>
+            <li><a href="2%20GetData.html">2 GetData</a></li>
         
-            <li><a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html">3 数据可视化</a></li>
+            <li><a href="3%20DataVisulization.html">3 DataVisulization</a></li>
         
-            <li><a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html">4 统计方法</a></li>
+            <li><a href="4%20Statistics.html">4 Statistics</a></li>
         
-            <li><a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html">5 机器学习</a></li>
+            <li><a href="5%20MachineLearning.html">5 MachineLearning</a></li>
+        
+            <li><a href="5.1%20RecommendSystem.html">5.1 RecommendSystem</a></li>
         
             <li><a href="6%20NLP.html">6 NLP</a></li>
         
             <li><a href="7%20CV.html">7 CV</a></li>
         
-            <li><a href="8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">8 深度学习</a></li>
+            <li><a href="8%20DeepLearning.html">8 DeepLearning</a></li>
         
             <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
@@ -130,80 +132,264 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637037678160.html">
+                <a class="clearlink" href="15637037683065.html">
                 
-                  <h1>git</h1>
+                  <h1>Data product</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>git 是一个版本管理的工具，能够非常方便的对项目进行版本控制。</p>
+                        	<p>We describe our methods in this chapter.</p>
 
-<h2 id="toc_0">1建立自己的代码库</h2>
+<p>bookdown</p>
 
-<p>假设你的用户名是zzz<br/>
-（1）生成公钥<br/>
-ssh-keygen -t rsa -f ~/.ssh/id_rsa.zzz<br/>
-cat ~/.ssh/id_rsa.zzz.pub 保存到icode或者是自己的github上<br/>
-（2）clone</p>
+<p>bookdown是基于markdown，knitr用来进行write book的一个package。<br/>
+其主要功能和markdown差不多，参考gitbook的方式，能基于Rmd或者md进行书写。</p>
 
-<pre><code class="language-text">git clone  xxxxx代码库             # 将代码库克隆到本地
-## 如果机器是多个人使用的话用--local,如果是自己一个人的话可以设置成--global
-git config --local user.email zzz邮箱
-git config --local user.name zzz用户名
-git push origin master:refs/for/master
+<p>加载一些html widgets</p>
+
+<p>首先安装相应的支持包</p>
+
+<pre><code class="language-text">install.packages(&quot;webshot&quot;)
+webshot::install_phantomjs()
 </code></pre>
 
-<h2 id="toc_1">2 基本操作</h2>
+<h2 id="toc_0">输出格式</h2>
 
-<p>当我们新增或者更新了一个文件后，如何上传到代码库</p>
+<p>在<code>_output.yaml</code>中进行设置<br/>
+(1)html格式</p>
 
-<pre><code class="language-text">git add xxx
-git commit -m &#39;注释&#39;
-git push origin HEAD:refs/for/master
+<ul>
+<li>gtbook style</li>
+</ul>
+
+<p>*</p>
+
+<h2 id="toc_1">生成</h2>
+
+<p>实时预览</p>
+
+<p>serve_book(dir=&#39;.&#39;, output_dir=&quot;_book&quot;,preview=TRUE, in_session=TRUE)</p>
+
+<h1 id="toc_2">flexdashbaord</h1>
+
+<p><a href="http://rmarkdown.rstudio.com/flexdashboard/">http://rmarkdown.rstudio.com/flexdashboard/</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='3%20DataVisulization.html'>3 DataVisulization</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037683461.html">
+                
+                  <h1>Jupyter notebook</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>类似于r的markdown</p>
+
+<p>GitHub 上也直接支持 Jupyter notebook 的渲染。借助此出色的功能，你可以轻松地共享工作。<a href="http://nbviewer.jupyter.org/">http://nbviewer.jupyter.org/</a> 也会提供 GitHub 代码库中的 notebook ，以及存储在其他地方的 notebook。</p>
+
+<p>名称 Jupyter 由 Julia、Python 和 R 组合而成，早期的两个非 Python 内核分别是 R 语言和 Julia 语言</p>
+
+<h2 id="toc_0">1.安装</h2>
+
+<ul>
+<li>如果安装anaconda 会自带</li>
+<li>通过conda环境安装 <code>conda install jupyter notebook</code>，或者<code>pip install jupyter notebook</code></li>
+</ul>
+
+<pre><code class="language-text"># 启动
+jupyter notebook
 </code></pre>
 
-<p>从代码库将新代码下载到本地，更新本地库</p>
+<p>快捷键</p>
 
-<pre><code class="language-text">git pull
+<p>在上方插入cell：a<br/>
+在下方插入cell：b<br/>
+剪切当前cell：x<br/>
+删除当前cell：dd<br/>
+撤销删除：u<br/>
+上下：方向键 or jk (同vim)<br/>
+扩展选中上下左右：shift+jk<br/>
+当前cell转入markdown状态：m<br/>
+当前cell转入代码状态：y</p>
+
+<h2 id="toc_1">magic 关键字</h2>
+
+<p>Magic 关键字是可以在单元格中运行的特殊命令，能让你控制notebook 本身或执行系统调用（例如更改目录）</p>
+
+<p>Magic 命令的前面带有一个或两个百分号（% 或 %%），分别对应行 Magic 命令和单元格 Magic 命令。行 Magic 命令仅应用于编写 Magic 命令时所在的行，而单元格 Magic 命令应用于整个单元格。</p>
+
+<p>对于 Python 内核，可以使用 Magic 命令 %pdb 开启交互式调试器。出错时，你能检查当前命名空间中的变量。</p>
+
+<h2 id="toc_2">2.转换 notebook格式</h2>
+
+<p>Notebook 只是扩展名为 .ipynb 的大型 JSON 文件。</p>
+
+<p>转换格式的命令 <code>nbconvert</code></p>
+
+<pre><code class="language-text">jupyter nbconvert --to html notebook.ipynb   #转成html
+jupyter nbconvert --to markdown xxx.ipynb 
 </code></pre>
 
-<h2 id="toc_2">3.常用操作</h2>
+<p>目前支持的转换格式(<a href="https://nbconvert.readthedocs.io/en/latest/usage.html">https://nbconvert.readthedocs.io/en/latest/usage.html</a>)<br/>
+HTML,<br/>
+LaTeX,<br/>
+PDF,<br/>
+Reveal.js HTML slideshow,<br/>
+Markdown,<br/>
+reStructuredText,<br/>
+executable script,<br/>
+notebook.</p>
 
-<p>(1) 还原文件到之前的某个版本。</p>
+<p><strong>创建幻灯片</strong></p>
 
-<p>当发现新提交的版本有问题，想回退到之前的某个版本的之后，可以进行如下操作。<code>git long</code><br/>
-比如我想修改自己写的这个<code>utils.py</code> 代码</p>
+<p>在 notebook 中创建幻灯片的过程像平常一样，但需要指定作为幻灯片的单元格和单元格的幻灯片类型。在菜单栏中，点击“View”（视图）&gt;“Cell Toolbar”（单元格工具栏）&gt;“Slideshow”（幻灯片），以便在每个单元格上弹出幻灯片单元格菜单。</p>
 
-<pre><code class="language-text">git log utils.py
-## 可以看到一共提交了3次，假设喔想回退到9.25提交的那个版本
-git checkout 742bf4a53e473b2536b53cb3ad56072ae236a1c3 utils.py 
-git commit -m &quot;revert to previous version&quot;
+<pre><code class="language-text">#转换并在浏览器中展示
+jupyter nbconvert notebook.ipynb --to slides --post serve
 </code></pre>
 
-<p><img src="media/15637037678160/15699932802240.jpg" alt=""/></p>
+<h2 id="toc_3">3.测试机上安装jupyter</h2>
 
-<p>我不知道”undo”是什么意思。您可以删除core.excludesfile设置，如下所示：<br/>
-git config --global --unset core.excludesfile<br/>
-当然你也可以简单地编辑配置文件：<br/>
-git config --global --edit<br/>
-…然后手动删除设置。</p>
+<p><a href="https://cloud.tencent.com/developer/article/1147487">https://cloud.tencent.com/developer/article/1147487</a></p>
 
-<p>git config --global --edit</p>
+<ul>
+<li>安装jupyter</li>
+<li>生成密码 python -c &quot;import IPython;print IPython.lib.passwd()&quot;</li>
+<li>修改配置文件 </li>
+</ul>
 
-<p>git log<br/>
-git reset --hard xxxxx</p>
+<p>/home/work/.jupyter/jupyter_notebook_config.py</p>
 
-<p>查看本地与云端的diff</p>
+<p>如果启动报错</p>
 
-<p>git rm —cache  删除已经提交的内容</p>
-
-<h2 id="toc_3">4.常见问题</h2>
-
-<p>Q1: repo中含有子模块的</p>
-
-<pre><code class="language-text">git pull --recurse-submodules
+<pre><code class="language-text">socket.gaierror: [Errno -2] Name or service not known
 </code></pre>
+
+<p>可以加上自己的ip</p>
+
+<pre><code class="language-text"> jupyter notebook --ip=xxxx
+ jupyter lab --ip=xxx
+</code></pre>
+
+<h2 id="toc_4">4.其他工具</h2>
+
+<p><strong>jupyter-lab</strong><br/>
+jupyter-lab 是jupyter-notebook的升级版，界面更加炫酷，也支持更多功能，强烈建议使用lab方式</p>
+
+<p><strong>colab</strong><br/>
+google 基于jupyter开发的存在在google driver上的网页版<br/>
+<a href="https://colab.research.google.com/">https://colab.research.google.com/</a><br/>
+本身功能上差不太多，主要是有search和share功能，查看别人分享的代码</p>
+
+<p>一个简单的入门教程,在colab上你可以体验免费的GPU<br/>
+<a href="https://github.com/xitu/gold-miner/blob/master/TODO1/google-colab-free-gpu-tutorial.md">https://github.com/xitu/gold-miner/blob/master/TODO1/google-colab-free-gpu-tutorial.md</a></p>
+
+<p>Q: 将大文件发送的google drive</p>
+
+<pre><code class="language-python"># 需要发送哪个文件？
+file_name = &quot;REPO.tar&quot;
+
+from googleapiclient.http import MediaFileUpload
+from googleapiclient.discovery import build
+
+auth.authenticate_user()
+drive_service = build(&#39;drive&#39;, &#39;v3&#39;)
+
+def save_file_to_drive(name, path):
+  file_metadata = {&#39;name&#39;: name, &#39;mimeType&#39;: &#39;application/octet-stream&#39;}
+  media = MediaFileUpload(path, mimetype=&#39;application/octet-stream&#39;, resumable=True)
+  created = drive_service.files().create(body=file_metadata, media_body=media, fields=&#39;id&#39;).execute()
+  
+  return created
+
+save_file_to_drive(file_name, file_name)
+</code></pre>
+
+<h2 id="toc_5">5.常见问题</h2>
+
+<p>Q1: 若import了自己写的外部模块，如果这个外部模块有更新，再次执行import，jupyter是不会重新导入的<br/>
+<a href="https://blog.csdn.net/ybdesire/article/details/86709727">https://blog.csdn.net/ybdesire/article/details/86709727</a></p>
+
+<p>对于 Python2.x<br/>
+import some_module<br/>
+reload(some_module)</p>
+
+<p>对于 Python 3.2 and 3.3:<br/>
+import some_module<br/>
+import importlib<br/>
+importlib.reload(some_module)</p>
+
+<p>对于 Python3.4+<br/>
+import some_module<br/>
+import imp<br/>
+imp.reload(some_module)</p>
+
+<p>方法2：<br/>
+auto_load</p>
+
+<p><a href="https://codeday.me/bug/20181215/447675.html">https://codeday.me/bug/20181215/447675.html</a></p>
+
+<p>Q2. <code>jupyter lab</code> 启动提示</p>
+
+<p><img src="media/15637037680349/15665439689997.jpg" alt=""/></p>
+
+<p>应该是编码问题，暂时的解决方案<a href="https://github.com/jupyter/notebook/issues/2789#issuecomment-338380336">https://github.com/jupyter/notebook/issues/2789#issuecomment-338380336</a></p>
+
+<p><code>LANG=zn jupyter lab</code></p>
+
+<p>这个问题后来查了下说是python2的bug，安装python3就不会出现这个问题。</p>
+
+<p>Q3. 切换内核<br/>
+很多代码都是python2写的，用pip3安装jupyter之后，想切换写内核。<br/>
+<a href="https://www.cnblogs.com/Jeffiy/p/4861528.html">https://www.cnblogs.com/Jeffiy/p/4861528.html</a></p>
+
+<pre><code class="language-text">jupyter kernelspec list
+</code></pre>
+
+<p>Q4: jupyterlab 中的内容，可以通过右键点击复制下载链接得到一个url，通过该url可以直接在网页上展示该文件。注意该url后面有个 _xsrf=xxxx的标记。<br/>
+如果重启了jupyterlab，这个标记也需要更新</p>
+
+<p>Q5: 如果安装了不同的conda环境，想切换不同的环境运行</p>
+
+<pre><code class="language-text">conda install nb_conda_kernels
+</code></pre>
+
+<p>Q6:在自己的docker环境下想运行jupyter</p>
+
+<pre><code class="language-text"># 在docker环境中安装
+pip install jupyterlab
+# 配置
+jupyter notebook --generate-config
+</code></pre>
+
+<h2 id="toc_6">6 好用的插件</h2>
+
+<p><a href="https://blog.csdn.net/yh0vlde8vg8ep9vge/article/details/85333338">https://blog.csdn.net/yh0vlde8vg8ep9vge/article/details/85333338</a></p>
 
                         
                       </div>
@@ -231,57 +417,145 @@ git reset --hard xxxxx</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037678245.html">
+                <a class="clearlink" href="15637037683688.html">
                 
-                  <h1>4.5 树模型</h1>
+                  <h1>4.7 聚类2——-效果评价</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
-          				   
-                    
+                        	<p>从整体上来看，根据真实标签是否已知，聚类效果评估可以分为两大类：</p>
 
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<ul>
+<li>外部标准：即基于人工的判断，需要有个标注集合</li>
+<li>内部标准：基于类内和类间聚类的目标函数的判断</li>
+</ul>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637037678380.html">
-                
-                  <h1>rCharts</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><a href="http://rdatascience.io/rCharts/">http://rdatascience.io/rCharts/</a></p>
+<h2 id="toc_0">内部标准clustering-performance-evaluation</h2>
 
-<p>作者的github主页<br/>
-<a href="http://ramnathv.github.io/rCharts">http://ramnathv.github.io/rCharts</a></p>
+<p>官方文档 <a href="https://scikit-learn.org/stable/modules/clustering.html#clustering-performance-evaluation">https://scikit-learn.org/stable/modules/clustering.html#clustering-performance-evaluation</a></p>
 
-<pre><code class="language-r"># install 
-require(devtools)## 标题 ##
-install_github(&#39;rCharts&#39;, &#39;ramnathv&#39;)
+<ul>
+<li>轮廓系数</li>
+</ul>
+
+<p>轮廓系数的计算方法: \(\frac{b-a}{max(a,b)}\)<br/>
+对每个样本来说：a=与他同类别样本的平均距离, b=与他距离最近的不同类别中样本的平均距离。</p>
+
+<p>属性： 范围[-1,1]， 越大越好</p>
+
+<pre><code class="language-python">import numpy as np
+from sklearn.cluster import KMeans
+kmeans_model = KMeans(n_clusters=3, random_state=1).fit(X)
+labels = kmeans_model.labels_
+metrics.silhouette_score(X, labels, metric=&#39;euclidean&#39;)            
 </code></pre>
 
+<ul>
+<li>CH准则(计算速度要比轮廓系数快)</li>
+</ul>
+
+<p>\[s(k) = \frac{tr(Bk)/(k-1)}{tr(W_k)/(n-k)}\]<br/>
+其中Bk是类别间的协方差矩阵，Wk是类别内部的协方差矩阵。最后是希望类别间越大，类内越小越好。<br/>
+即CH值越大越好</p>
+
+<pre><code class="language-python">metrics.calinski_harabaz_score(X, labels) 
+</code></pre>
+
+<p>在选择最优的k时候，因为每个k都要再计算一次，当样本量比较大的时候比较费时间，这个时候可以选用<code>MiniBatchKMeans</code></p>
+
+<pre><code class="language-python">ch_list = []
+lunkuo_list = []
+for i in num_list:
+    # model = KMeans(n_clusters = i,random_state=123).fit(df)
+    model = MiniBatchKMeans(n_clusters = i,random_state=123).fit(df)
+    ch = calinski_harabasz_score(df, model.labels_)     # CH 准则
+    ch_list.append(ch)
+
+    lunkuo = silhouette_score(df, model.labels_)        # 轮廓系数
+    lunkuo_list.append(lunkuo)    
+print(ch_list,lunkuo_list ) 
+</code></pre>
+
+<h2 id="toc_1">已知类别标注</h2>
+
+<p>假设：<br/>
+机器判断的类别集合是：\(C=\{C_1,C_2,...C_m\}\)<br/>
+人工判断的类别集合是：\(P=\{P_1,P_2,...P_s\}\)</p>
+
+<h3 id="toc_2">1.1混淆矩阵</h3>
+
+<p>基于数据样本点的角度：<br/>
+对于任意两个数据pair，\((x_i,x_j)\)按照其在C和P中是否属于同一个簇，可以构造出混淆矩阵</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>P_1</th>
+<th>p_0</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>C_1</td>
+<td>a</td>
+<td>b</td>
+</tr>
+<tr>
+<td>C_0</td>
+<td>c</td>
+<td>d</td>
+</tr>
+</tbody>
+</table>
+
+<p><img src="media/15078603543147/15078631739679.jpg" alt=""/></p>
+
+<h3 id="toc_3">1.2簇的准确率/召回率</h3>
+
+<p>基于簇pair的，考虑对任意一个人工与机器的.\(P_j,C_i\)。对于每一个人工标注的\(P_j\),在机器标注中应该都会对应一个&quot;最相关的&quot;。可以遍历C中所有的cluster，分别计算准确率，召回率，F_score。<br/>
+<img src="media/15078603543147/15078720767171.jpg" alt=""/></p>
+
+<p>然后对于所有簇的F值做加权平均<br/>
+\[ClassF=\sum w_j F(p_j), w_i=n_j/n\]</p>
+
+<p>classF指标，相当于是以人工标注的簇为基准，将聚类的簇尽量逼近这个标注的结果。</p>
+
+<h2 id="toc_4">1.3</h2>
+
+<p>1.2中的方法相当于要求的比较严格，即以人工标注的集合簇为准。</p>
+
+<p>实际中其实只要保证我们聚的每一个类\(C_i\)是有意义的就可以，即以C为主</p>
+
+<p>类似的定义 \(F(C_i)=\max_{1\lt j \lt s}F(P_j, C_i)\)<br/>
+\[F=\sum w_i F(C_i), w_i=|C_i|/n\]</p>
+
+<ul>
+<li>问题： 这个指标可能变化不是非常明显</li>
+</ul>
+
+<h2 id="toc_5">1.4基于数据对象的准召F</h2>
+
+<p><img src="media/15078603543147/15078731022919.jpg" alt=""/></p>
+
+<h2 id="toc_6">思考</h2>
+
+<ol>
+<li>基于人工标注的方法中，认为人工标注的是准确的或者说结果是唯一的。实际上一堆sample可以有不同的分类方法，而且每种方法可能都是对的。
+<code>
+e.g 苹果维修， 冰箱维修，苹果价格，冰箱价格，中国人民大学
+</code>
+如何进行标注，或者标注结果是非固定时候怎么衡量聚类效果的好坏？？</li>
+</ol>
+
+<h2 id="toc_7">参考资料</h2>
+
+<p><a href="http://blog.csdn.net/itplus/article/details/10322361">http://blog.csdn.net/itplus/article/details/10322361</a></p>
+
+<p><a href="https://blog.csdn.net/qq_27825451/article/details/94436488">https://blog.csdn.net/qq_27825451/article/details/94436488</a></p>
+
                         
                       </div>
                   </div>
@@ -292,7 +566,7 @@ install_github(&#39;rCharts&#39;, &#39;ramnathv&#39;)
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html'>3 数据可视化</a></span>
+          					    <span class="posted-in"><a href='5%20MachineLearning.html'>5 MachineLearning</a></span>
           				   
                     
 
@@ -308,26 +582,24 @@ install_github(&#39;rCharts&#39;, &#39;ramnathv&#39;)
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037679256.html">
+                <a class="clearlink" href="15637037686386.html">
                 
-                  <h1>Rmarkdown</h1>
+                  <h1>4.9 深度学习综述</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">python支持</h2>
+                        	<p>这里只是简单介绍，后续会在深度学习章节中进行详细说明</p>
 
-<p>Rmarkdown对python兼容 <a href="https://github.com/rstudio/reticulate">https://github.com/rstudio/reticulate</a></p>
+<p><strong>通用逼近定理</strong></p>
 
-<h2 id="toc_1">图片</h2>
+<p><img src="media/15394437873112/15394453932519.jpg" alt=""/></p>
 
-<p>现在很多makdown编辑器是可以支持拖拽本地图片或者截屏就可以直接在markdown中生成图片的，非常方便，比如我现在在用的MWeb编辑器。</p>
+<h2 id="toc_0">参考资料</h2>
 
-<p>但是如果同一篇内容需要在不同的平台上进行发布，那图片处理起来就比较麻烦。因为需要重新上传到不同平台。<br/>
-最方便的处理方式就是利用图床， 这里以七牛云存储为例。<br/>
-<img src="media/15378048283915/15383141468224.jpg" alt=""/></p>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2650739143&amp;idx=1&amp;sn=f51551128021e7747205f87971f4762e&amp;chksm=871ad5b9b06d5caf0a5b4601863adc213eb42573bbdc2773e54ff1c585b3954a8644df024015&amp;mpshare=1&amp;scene=1&amp;srcid=0313P1tfCgE3zTBXJuNIHaBl%23rd">https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2650739143&amp;idx=1&amp;sn=f51551128021e7747205f87971f4762e&amp;chksm=871ad5b9b06d5caf0a5b4601863adc213eb42573bbdc2773e54ff1c585b3954a8644df024015&amp;mpshare=1&amp;scene=1&amp;srcid=0313P1tfCgE3zTBXJuNIHaBl%23rd</a></p>
 
-<p>step1： 首先在七牛官网上申请注册账号，并且添加<strong>对象存储</strong></p>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2650739820&amp;idx=1&amp;sn=260173be8cecc3a10d7b455922c10e0c&amp;chksm=871ad012b06d5904e65e96d0cfa236d0b6c7ce5683dd8d29514e4cbe420dc5b1ccd2786eea2c&amp;mpshare=1&amp;scene=1&amp;srcid=0324xGIxttOochJWNMPaDibb%23rd">https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&amp;mid=2650739820&amp;idx=1&amp;sn=260173be8cecc3a10d7b455922c10e0c&amp;chksm=871ad012b06d5904e65e96d0cfa236d0b6c7ce5683dd8d29514e4cbe420dc5b1ccd2786eea2c&amp;mpshare=1&amp;scene=1&amp;srcid=0324xGIxttOochJWNMPaDibb%23rd</a></p>
 
                         
                       </div>
@@ -339,7 +611,7 @@ install_github(&#39;rCharts&#39;, &#39;ramnathv&#39;)
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
+          					    <span class="posted-in"><a href='5%20MachineLearning.html'>5 MachineLearning</a></span>
           				   
                     
 
@@ -355,49 +627,24 @@ install_github(&#39;rCharts&#39;, &#39;ramnathv&#39;)
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037679634.html">
+                <a class="clearlink" href="15637037688620.html">
                 
-                  <h1>神经网络解释性问题</h1>
+                  <h1>Face综述</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><a href="https://ask.hellobi.com/blog/zlx19930503/10578">https://ask.hellobi.com/blog/zlx19930503/10578</a></p>
+                        	<p><a href="https://blog.csdn.net/chenriwei2/article/details/50631212">https://blog.csdn.net/chenriwei2/article/details/50631212</a></p>
 
-<p>但是深度学习是一个黑箱。我第一次听说它时，就对其工作原理非常费解。几年过去了，我仍然在探索合理的答案。尝试解释现代神经网络很难，但是至关重要。如果我们打算依赖深度学习制造新的 AI、处理敏感的用户数据，或者开药，那么我们必须理解这些模型的工作原理。</p>
+<p>这个有数据，已经训练好的模型<br/>
+<a href="https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/">https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/</a></p>
 
-<p>很幸运，学界人士也提出了很多对深度学习的理解。以下是几个近期论文示例：</p>
+<p>综述@@@@ 需要精读！！！<br/>
+<a href="https://blog.csdn.net/Mr_EvanChen/article/details/75501730">https://blog.csdn.net/Mr_EvanChen/article/details/75501730</a><br/>
+<a href="https://zhuanlan.zhihu.com/p/24816781">https://zhuanlan.zhihu.com/p/24816781</a></p>
 
-<h2 id="toc_0">Grad-Cam（Selvaraju et. al. 2017）</h2>
-
-<p>使用最后卷积层的梯度生成热力图，突出显示输入图像中的重要像素用于分类。</p>
-
-<h2 id="toc_1">LIME（Ribeiro et. al. 2016）</h2>
-
-<p>使用稀疏线性模型（可轻松识别重要特征）逼近 DNN 的预测。</p>
-
-<p>论文地址：<a href="https://arxiv.org/abs/1602.04938">https://arxiv.org/abs/1602.04938</a></p>
-
-<p>一些中文解读：<a href="https://www.oreilly.com.cn/ideas/?p=563%EF%BC%9B">https://www.oreilly.com.cn/ideas/?p=563；</a><br/>
-<a href="http://geek.csdn.net/news/detail/66259">http://geek.csdn.net/news/detail/66259</a></p>
-
-<p>一个例子<br/>
-<a href="http://marcotcr.github.io/lime/tutorials/Lime%20-%20basic%20usage%2C%20two%20class%20case.html">http://marcotcr.github.io/lime/tutorials/Lime%20-%20basic%20usage%2C%20two%20class%20case.html</a></p>
-
-<p><a href="https://www.jiqizhixin.com/articles/2017-12-20-2">https://www.jiqizhixin.com/articles/2017-12-20-2</a></p>
-
-<h2 id="toc_2">特征可视化（Olah 2017）</h2>
-
-<p>对于带有随机噪声的图像，优化像素来激活训练的 DNN 中的特定神经元，进而可视化神经元学到的内容。</p>
-
-<h2 id="toc_3">Loss Landscape（Li et. al. 2017）</h2>
-
-<p>可视化 DNN 尝试最小化的非凸损失函数，查看架构／参数如何影响损失情况。</p>
-
-<h2 id="toc_4">关于xgboost</h2>
-
-<p>R: <a href="https://github.com/AppliedDataSciencePartners/xgboostExplainer">https://github.com/AppliedDataSciencePartners/xgboostExplainer</a><br/>
-python <a href="https://github.com/gameofdimension/xgboost_explainer">https://github.com/gameofdimension/xgboost_explainer</a></p>
+<p>知乎 狗头山人七 专栏<br/>
+<a href="https://zhuanlan.zhihu.com/p/25025596">https://zhuanlan.zhihu.com/p/25025596</a></p>
 
                         
                       </div>
@@ -409,7 +656,7 @@ python <a href="https://github.com/gameofdimension/xgboost_explainer">https://gi
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>8 深度学习</a></span>
+          					    <span class="posted-in"><a href='face.html'>face</a></span>
           				   
                     
 
@@ -476,25 +723,27 @@ python <a href="https://github.com/gameofdimension/xgboost_explainer">https://gi
 
       	<p class="cat-list">
         
-            <a href="kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html"><strong>kdd&异常检测</strong></a>
+            <a href="kdd&AbnormalDetection.html"><strong>kdd&AbnormalDetection</strong></a>
         
-            <a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html"><strong>轨迹分析</strong></a>
+            <a href="trace%20analysis.html"><strong>trace analysis</strong></a>
         
             <a href="1%20Tools.html"><strong>1 Tools</strong></a>
         
-            <a href="2%20Get%20Data.html"><strong>2 Get Data</strong></a>
+            <a href="2%20GetData.html"><strong>2 GetData</strong></a>
         
-            <a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html"><strong>3 数据可视化</strong></a>
+            <a href="3%20DataVisulization.html"><strong>3 DataVisulization</strong></a>
         
-            <a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 统计方法</strong></a>
+            <a href="4%20Statistics.html"><strong>4 Statistics</strong></a>
         
-            <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习</strong></a>
+            <a href="5%20MachineLearning.html"><strong>5 MachineLearning</strong></a>
+        
+            <a href="5.1%20RecommendSystem.html"><strong>5.1 RecommendSystem</strong></a>
         
             <a href="6%20NLP.html"><strong>6 NLP</strong></a>
         
             <a href="7%20CV.html"><strong>7 CV</strong></a>
         
-            <a href="8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>8 深度学习</strong></a>
+            <a href="8%20DeepLearning.html"><strong>8 DeepLearning</strong></a>
         
             <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
@@ -519,31 +768,31 @@ python <a href="https://github.com/gameofdimension/xgboost_explainer">https://gi
 	      
 		      
 			      <li class="post">
-			        <a href="15921526421890.html">python</a>
+			        <a href="15942889318992.html">综述</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15919304631539.html">源码阅读工具</a>
+			        <a href="15942842749545.html">原理篇——模型融合</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15919291891898.html">训练常见问题</a>
+			        <a href="15942831902643.html">原理篇——矩阵分解</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15918717478277.html">【工具】MMlab—mmskelton</a>
+			        <a href="15940468654753.html">maven</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15918653333546.html">图像检索：BoF、VLAD、FV三剑客</a>
+			        <a href="15940355196534.html">spring boot</a>
 			      </li>
 		     
 		  

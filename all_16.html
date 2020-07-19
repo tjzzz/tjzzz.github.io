@@ -81,25 +81,27 @@
     <li><label>Categories</label></li>
 
         
-            <li><a href="kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html">kdd&异常检测</a></li>
+            <li><a href="kdd&AbnormalDetection.html">kdd&AbnormalDetection</a></li>
         
-            <li><a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html">轨迹分析</a></li>
+            <li><a href="trace%20analysis.html">trace analysis</a></li>
         
             <li><a href="1%20Tools.html">1 Tools</a></li>
         
-            <li><a href="2%20Get%20Data.html">2 Get Data</a></li>
+            <li><a href="2%20GetData.html">2 GetData</a></li>
         
-            <li><a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html">3 数据可视化</a></li>
+            <li><a href="3%20DataVisulization.html">3 DataVisulization</a></li>
         
-            <li><a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html">4 统计方法</a></li>
+            <li><a href="4%20Statistics.html">4 Statistics</a></li>
         
-            <li><a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html">5 机器学习</a></li>
+            <li><a href="5%20MachineLearning.html">5 MachineLearning</a></li>
+        
+            <li><a href="5.1%20RecommendSystem.html">5.1 RecommendSystem</a></li>
         
             <li><a href="6%20NLP.html">6 NLP</a></li>
         
             <li><a href="7%20CV.html">7 CV</a></li>
         
-            <li><a href="8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">8 深度学习</a></li>
+            <li><a href="8%20DeepLearning.html">8 DeepLearning</a></li>
         
             <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
@@ -130,48 +132,36 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637037731128.html">
+                <a class="clearlink" href="15664761738125.html">
                 
-                  <h1>第八章 深度模型中的优化</h1>
+                  <h1>2. iterm终端配置-oh my zsh</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">8.1 优化与学习</h2>
+                        	<h2 id="toc_0">安装</h2>
 
-<p>本章主要关注这一类特定的优化问题:寻找神经网络上的一组参数 θ，它能显 著地降低代价函数 J(θ)，该代价函数通常包括整个训练集上的性能评估和额外的正 则化项。</p>
+<p>oh my zsh 是一款强大的虚拟终端，兼容bash，提供了各种主题配置、插件。<br/>
+官网：<a href="https://ohmyz.sh/">https://ohmyz.sh/</a></p>
 
-<p>通常来说极其学习的算法目标大概可以写成，降低期望泛化误差。即<strong>风险</strong><br/>
-<img src="media/15209459008411/15209462294325.jpg" alt=""/></p>
+<pre><code class="language-text"># 安装
+git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+#备份旧.zshrc配置
+cp ~/.zshrc ~/.zshrc.orig
+cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+#修改默认shell
+chsh -s /bin/zsh
+</code></pre>
 
-<p>其中p_data是真实的分布，实际中我们只能最小化<strong>经验风险</strong><br/>
-<img src="media/15209459008411/15209463229280.jpg" alt=""/></p>
+<p>卸载 <code>uninstall_oh_my_zsh</code></p>
 
-<h2 id="toc_1">8.2神经网络优化中的挑战</h2>
+<p>注意：如果安装oh my zsh后conda命令无法使用，这个时候需要修改一下.zshrc文件，添加一句<br/>
+<code>export PATH=/home/username/anaconda/bin:$PATH</code></p>
 
-<ul>
-<li>病态： hessain矩阵病态</li>
-<li>局部最小值：对于非凸函数可能存在多个局部最小值。</li>
-<li>。。。</li>
-</ul>
+<h2 id="toc_1">主题</h2>
 
-<h2 id="toc_2">8.3基本算法</h2>
-
-<p>梯度下降机器变种一般是机器学习中应用较多的优化算法。</p>
-
-<h3 id="toc_3">(1)随机梯度下降SGD</h3>
-
-<p><img src="media/15209459008411/15221677256921.jpg" alt=""/></p>
-
-<h3 id="toc_4">（2）动量</h3>
-
-<p>动量是比SGD速度更快的一种方法，SGD相当于只是考虑梯度的方向，而动量是在此基础上加上速度。</p>
-
-<p><img src="media/15209459008411/15221680917826.jpg" alt=""/></p>
-
-<h2 id="toc_5">8.4 参数初始化</h2>
-
-<h2 id="toc_6">参考资料</h2>
+<p><a href="https://github.com/robbyrussell/oh-my-zsh/wiki/Themes">https://github.com/robbyrussell/oh-my-zsh/wiki/Themes</a><br/>
+oh my zsh 有各种丰富的主题可供选择，可以在其github上找到对应的主题样式。其对应的配置文件在<code>vim ~/.zshrc</code>中，只需修改其中的<code>ZSH_THEME=&quot;robbyrussell&quot;</code> 即可。</p>
 
                         
                       </div>
@@ -180,10 +170,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2019/8/22</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>8 深度学习</a></span>
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
           				   
                     
 
@@ -199,96 +189,26 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037731266.html">
+                <a class="clearlink" href="15662808343723.html">
                 
-                  <h1>4.4 k近邻 —— 非参模型</h1>
+                  <h1>有用的网址&小工具</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>基于实例的学习，其学习的不是明确的泛化模型，而是样本之间的关系。</p>
-
-<p>k近邻方法：先找到与未知样本最接近的k个实例，再根据少数服从多数的准则，给未知样本打上标签。</p>
-
-<ul>
-<li>超参数k</li>
-<li>距离度量</li>
-<li>高维灾难</li>
+                        	<ul>
+<li>论文下载，知网论文</li>
 </ul>
 
-<p>k近邻方法和传统的参数方法不同，参数模型在求得参数后，任务就完成了。新来了一个样本后直接拿训练好的参数进行预测即可；而k近邻不同，它需要将数据存储下来，每来了一个新样本后，要计算离他最近的k个实例。</p>
+<p><a href="https://www.cn-ki.net/">https://www.cn-ki.net/</a></p>
 
-<p>sklearn中<code>sklearn.neighbors</code>模块</p>
-
-<p>应用</p>
+<p>google学术   <a href="https://en.ehn3.com:92/">https://en.ehn3.com:92/</a></p>
 
 <ul>
-<li>无监督的<code>NearestNeighbors</code></li>
+<li>微信公众号平台文章同步知乎、简书等平台</li>
 </ul>
 
-<p>具体计算的时候可以选择不同的计算方法，&#39;algorithm&#39; =[&#39;auto&#39;, &#39;ball_tree&#39;, </p>
-
-<ul>
-<li>有监督的</li>
-</ul>
-
-<p>KNeighborsClassifier: 可以指定参数k<br/>
-RadiusNeighborsClassifier: 可以指定查询的固定半径r</p>
-
-<pre><code class="language-python">## 官网的示例demo
-import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib.colors import ListedColormap
-from sklearn import neighbors, datasets
-
-n_neighbors = 15
-
-# import some data to play with
-iris = datasets.load_iris()
-
-# we only take the first two features. We could avoid this ugly
-# slicing by using a two-dim dataset
-X = iris.data[:, :2]
-y = iris.target
-
-h = .02  # step size in the mesh
-
-# Create color maps
-cmap_light = ListedColormap([&#39;#FFAAAA&#39;, &#39;#AAFFAA&#39;, &#39;#AAAAFF&#39;])
-cmap_bold = ListedColormap([&#39;#FF0000&#39;, &#39;#00FF00&#39;, &#39;#0000FF&#39;])
-
-for weights in [&#39;uniform&#39;, &#39;distance&#39;]:
-    # we create an instance of Neighbours Classifier and fit the data.
-    clf = neighbors.KNeighborsClassifier(n_neighbors, weights=weights)
-    clf.fit(X, y)
-
-    # Plot the decision boundary. For that, we will assign a color to each
-    # point in the mesh [x_min, x_max]x[y_min, y_max].
-    x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
-    y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
-    xx, yy = np.meshgrid(np.arange(x_min, x_max, h),
-                         np.arange(y_min, y_max, h))
-    Z = clf.predict(np.c_[xx.ravel(), yy.ravel()])
-
-    # Put the result into a color plot
-    Z = Z.reshape(xx.shape)
-    plt.figure()
-    plt.pcolormesh(xx, yy, Z, cmap=cmap_light)
-
-    # Plot also the training points
-    plt.scatter(X[:, 0], X[:, 1], c=y, cmap=cmap_bold,
-                edgecolor=&#39;k&#39;, s=20)
-    plt.xlim(xx.min(), xx.max())
-    plt.ylim(yy.min(), yy.max())
-    plt.title(&quot;3-Class classification (k = %i, weights = &#39;%s&#39;)&quot;
-              % (n_neighbors, weights))
-
-plt.show()
-</code></pre>
-
-<p>最近邻回归<br/>
-KNeighborsRegressor<br/>
-RadiusNeighborsRegressor</p>
+<p><a href="https://www.wechatsync.com/#intro">https://www.wechatsync.com/#intro</a></p>
 
                         
                       </div>
@@ -297,10 +217,10 @@ RadiusNeighborsRegressor</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2019/8/20</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
           				   
                     
 
@@ -316,149 +236,14 @@ RadiusNeighborsRegressor</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037731313.html">
+                <a class="clearlink" href="15662005967642.html">
                 
-                  <h1>3.2 特征处理——降维</h1>
+                  <h1>正交实验设计</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>关于降维的讨论主要是来源于“维度灾难”, 这个是数学家理查德-贝尔曼提出的。</p>
-
-<blockquote>
-<p>当所有参数是已知的时候，维度的增加可以让分类问题的错误率渐近为0.<br/>
-当未知参数只能根据有限样本来估计时，维度的增加使错误率先降低后增加，最终收敛到0.5</p>
-</blockquote>
-
-<p>维数灾难的本质原因在于<code>数据样本的有限性</code>。而在数据有限的条件下，去解决维度问题，自然的方法就是去降维。降维的方法有很多</p>
-
-<h2 id="toc_0">1. 常用的线性降维方法：</h2>
-
-<ul>
-<li>PCA 主成分分析</li>
-<li>IDA</li>
-<li>LDA</li>
-</ul>
-
-<h2 id="toc_1">2.非线性的方法——流形</h2>
-
-<p><strong>流形</strong><br/>
-是指嵌入在高维空间中的低维子空间，它的维度是低维数据变化的自由度。（比如地球仪的球面，虽然它是在一个三维空间中，但其实是一个二维的地图卷曲而成，\(x^2+y^2+z^2=1\)，维度是2）</p>
-
-<p><strong>流形学习</strong><br/>
-就是通过挖掘数据的内在结构实现向故由维度的转化，找到对应的低维嵌入流形。其大部分是非线性的、非参的。所以相比线性方法有更强的表达能力，但是同时对噪声更加敏感。</p>
-
-<p><strong>流形学习方法</strong></p>
-
-<p>流形学习，首先需要确定低维流形的结构，然后是高维到低维的映射关系。实际中因为都未知，所以需要做一些假设。</p>
-
-<blockquote>
-<ul>
-<li>多维缩放MDS (multi dimensional scaling)</li>
-</ul>
-</blockquote>
-
-<p>原则:让高维空间上样本之间的距离在低维空间中尽量保持一致以距离重建的误差最小为优化目标。</p>
-
-<p>具体来说：</p>
-
-<p>(1) 对于原始的数据\(X_{np}\),首先可以计算出任何两个样本之间的距离，从而构造出一个距离矩阵\(D\)，MDS算法的目的就是根据距离矩阵，寻找向量\(Z_1,Z_2...Z_k\),使得\(||Z_i-Z_j||≈\sigma_{ij}\)</p>
-
-<p>假设\(Z\)是经过中心化处理过的，即\(\sum z_i = 0\) , 则有</p>
-
-<p>\[XX^T = D≈ZZ^T\]</p>
-
-<p>看到这个形式，应该就能明白怎么取解了。对D做特征分解\(D=VAV^T\)， V是对应的特征向量，我们选择前k个特征值比较大的作为最终的降维维度即可。</p>
-
-<p><code>问题：高维空间的距离与低维空间距离保持一致这个假设是否合理？</code></p>
-
-<p>以地球仪的球面为例，三维空间中两个点的距离和平面中两个点的距离显然是不一样的。三维空间中如果用欧式距离去度量那么北京与纽约的距离是连接两点的直线，而在平面上他是一条曲线。</p>
-
-<pre><code class="language-text"># MDS
-mds = manifold.MDS(n_components, max_iter=100, n_init=1)
-Y = mds.fit_transform(X)
-</code></pre>
-
-<p>下面再说一些以几何性质作为同构基础的降维方法</p>
-
-<blockquote>
-<ul>
-<li>等度量映射Isomap</li>
-</ul>
-</blockquote>
-
-<p>等度量映射，以数据所在的低维流形与欧式空间子集的等距性为基础。描述距离的是<strong>测地距离</strong>，即流形上两点的真实距离。测地距离的近似计算方法：近邻点之间的欧式距离近似为近邻点之间的测地距离。</p>
-
-<p>通过对每一个近邻点建立连接，就可以让所有数据点共同构成一张带权重的近邻连接图。这样在这张图上任意两个点的测地距离就相当于是两点之间的最短路径。可以用图论中的Dijkstra算法求解。</p>
-
-<p>当计算出距离后，剩下的处理方法和MDS一致。所以总的来说包括三步：<br/>
-(1) 最近邻搜索<br/>
-(2) 最短路径搜索<br/>
-(3) 部分特征值分解</p>
-
-<pre><code class="language-text">model = manifold.Isomap(n_neighbors, n_components)
-Y = model.fit_transform(X)
-</code></pre>
-
-<blockquote>
-<ul>
-<li>局部线性嵌入LLE(local linear embedding)</li>
-</ul>
-</blockquote>
-
-<p>想法：待求解的低维流形在局部上是线性的，每个点可以表示成近邻点的线性组合。而局部线性嵌入就是在求解流形的过程中保持每个领域中的线性系数不变的基础上重构原数据点。</p>
-
-<p>详细的推导过程<a href="https://blog.csdn.net/yukgwy60648/article/details/54578141">https://blog.csdn.net/yukgwy60648/article/details/54578141</a></p>
-
-<pre><code class="language-text"># 其中method可选 [&#39;standard&#39;, &#39;ltsa&#39;, &#39;hessian&#39;, &#39;modified&#39;]
-model = manifold.LocallyLinearEmbedding(n_neighbors, n_components, eigen_solver=&#39;auto&#39;, method=method)
-Y = model.fit_transform(X)
-</code></pre>
-
-<p>从概率角度</p>
-
-<blockquote>
-<ul>
-<li>随机近邻嵌入 SNE</li>
-</ul>
-</blockquote>
-
-<p>随机近邻嵌入的特点：保持数据降维前后的概率分布不变,他将高维空间中的距离首先映射到了一个服从正态分布的条件概率上。这个概率描述了不同数据点之间的相似性。</p>
-
-<p>\[p_{j|i}=\frac{exp(-||x_j-x_i||^2/2\sigma^2_i)}{\sum_{k\ne i}exp(-||x_k-x_i||^2/2\sigma^2_i)}\]</p>
-
-<p>映射到低维空间后，按照同样方式计算条件概率，希望连个概率分布尽量一致。这里是KL散度最小化<br/>
-\[KL(P||Q) = -\sum P_i ln(\frac{P_i}{Q_i})=-\sum P_i(ln(P_i)- ln(Q_i))\]</p>
-
-<p><code>问题</code>：<br/>
-KL距离是不对称的，会导致相聚较远的点出现较大的散度差。为了是KL距离最小化，数据就会被压缩到极小的范围，产生拥挤问题。</p>
-
-<p><code>改进</code></p>
-
-<ul>
-<li>将KL散度改为对称形式 \(p_{ij}=p_{ji}=(p_{i|j}+p_{j|i})/2\)</li>
-<li>令低维空间中的条件概率服从t分布，t分布有长尾效应，从而使高维中分布较远的点降维后也能区分开</li>
-</ul>
-
-<pre><code class="language-text">tsne = manifold.TSNE(n_components=n_components, init=&#39;pca&#39;, random_state=0)
-Y = tsne.fit_transform(X)
-</code></pre>
-
-<p><img src="media/15382821564829/15383222417494.jpg" alt=""/></p>
-
-<h2 id="toc_2">小结</h2>
-
-<ul>
-<li><p>本章主要知识结构<br/>
-<img src="https://upload-images.jianshu.io/upload_images/127231-bf906252693ca552.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"/></p></li>
-<li><p>sklearn中关于流形学习内容都在<code>sklearn.manifold</code>模块。<br/>
-官网示例 <a href="http://sklearn.apachecn.org/cn/0.19.0/auto_examples/manifold/plot_compare_methods.html#sphx-glr-auto-examples-manifold-plot-compare-methods-py">http://sklearn.apachecn.org/cn/0.19.0/auto_examples/manifold/plot_compare_methods.html#sphx-glr-auto-examples-manifold-plot-compare-methods-py</a></p></li>
-<li><p>参考文档<br/>
-<a href="https://blog.csdn.net/yukgwy60648/article/details/54578141">https://blog.csdn.net/yukgwy60648/article/details/54578141</a><br/>
-sklearn—文档 <a href="http://scikit-learn.org/stable/modules/manifold.html">http://scikit-learn.org/stable/modules/manifold.html</a><br/>
-<a href="http://sklearn.apachecn.org/cn/0.19.0/modules/manifold.html">http://sklearn.apachecn.org/cn/0.19.0/modules/manifold.html</a></p></li>
-</ul>
-
+                        	
                         
                       </div>
                   </div>
@@ -466,10 +251,10 @@ sklearn—文档 <a href="http://scikit-learn.org/stable/modules/manifold.html">
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2019/8/19</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          					    <span class="posted-in"><a href='4%20Statistics.html'>4 Statistics</a></span>
           				   
                     
 
@@ -485,14 +270,43 @@ sklearn—文档 <a href="http://scikit-learn.org/stable/modules/manifold.html">
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037731727.html">
+                <a class="clearlink" href="15645026184752.html">
                 
-                  <h1>聚类方法-spark的bisecting和streaming</h1>
+                  <h1>调查问卷的信度、效度</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><a href="http://blog.csdn.net/franket268/article/details/23604671">http://blog.csdn.net/franket268/article/details/23604671</a></p>
+                        	<h2 id="toc_0">信度</h2>
+
+<p>信度表示的是数据是否可信，是否具有一致性，他是一种稳定性的度量，并不能保证结果是准确的。</p>
+
+<p><strong>信度的评价方法</strong></p>
+
+<ul>
+<li>重测信度：即相同的标准下，间隔一定时间段后再测试一次，看下前后两次结果的相关度</li>
+<li>复本信度：让同一个测试者一次填写两份平行问卷，平行问卷是指题目的表述不同其他方面一样。这种方法有个明显的缺点就是不太好执行。</li>
+<li>折半系数：将问卷的题目分为奇数题和偶数题两部分，计算这两部分的相关系数，以此来衡量问卷的信度。</li>
+<li>\(\alpha\)系数：他等于所有可能组合的折半系数的均值</li>
+</ul>
+
+<p>\[\alpha = \frac{K}{K-1}(1 - \frac{\sum S_i^2}{S_x^2})\]<br/>
+其中k表示总的题目数，\(s_i\)表示是第i题的方差，\(s_x\)是总的方差。当信度比较高的时候\(\alpha\)值也会比较大，当信度较低的时候方差比应该近似为1，导致整个\(\alpha\) 都比较小</p>
+
+<h2 id="toc_1">效度</h2>
+
+<p>效度是表示数据是否有效，即其是否反映了问卷者真实的问题，效度用来衡量结果是否是准确的，但是不一定能保证稳定性。</p>
+
+<p><strong>效度的评价方法</strong></p>
+
+<ul>
+<li>表面效度：通过专家评价的办法</li>
+<li>内容效度</li>
+</ul>
+
+<p><a href="https://wenku.baidu.com/view/a18a33b47e21af45b207a8ac.html?re=view">https://wenku.baidu.com/view/a18a33b47e21af45b207a8ac.html?re=view</a></p>
+
+<p><a href="https://wenku.baidu.com/view/cf19e18ca0116c175f0e48c1.html">https://wenku.baidu.com/view/cf19e18ca0116c175f0e48c1.html</a></p>
 
                         
                       </div>
@@ -501,10 +315,10 @@ sklearn—文档 <a href="http://scikit-learn.org/stable/modules/manifold.html">
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2019/7/21</span>
+                    <span class="date">2019/7/31</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          					    <span class="posted-in"><a href='4%20Statistics.html'>4 Statistics</a></span>
           				   
                     
 
@@ -520,85 +334,14 @@ sklearn—文档 <a href="http://scikit-learn.org/stable/modules/manifold.html">
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037720747.html">
+                <a class="clearlink" href="15637065259056.html">
                 
-                  <h1>FM</h1>
+                  <h1>about me</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>学习地址 <a href="https://github.com/babakx/fm_tensorflow">https://github.com/babakx/fm_tensorflow</a></p>
-
-<h2 id="toc_0">1. 环境包安装</h2>
-
-<p>安装tensorflow</p>
-
-<h2 id="toc_1">2.试运行</h2>
-
-<p>这个是用tf实现的FM<br/>
-<a href="https://www.jianshu.com/p/152ae633fb00">https://www.jianshu.com/p/152ae633fb00</a></p>
-
-<ul>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked /> 试运行成功</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 了解原理</li>
-</ul>
-
-<p>小数据集版本（进入tf的仍然是dense矩阵，只适合小数据）<br/>
- <a href="https://github.com/babakx/fm_tensorflow">https://github.com/babakx/fm_tensorflow</a></p>
-
-<p>大数据量版本</p>
-
-<h2 id="toc_2">3.原理</h2>
-
-<h2 id="toc_3">PYTHON版本的包实现方式</h2>
-
-<ul>
-<li>LibFM</li>
-<li>libFFM</li>
-<li>xLearn</li>
-<li>tffm</li>
-</ul>
-
-<p>目前在python中的支持FM相关的包主要有</p>
-
-<p>__</p>
-
-<h3 id="toc_4">1.libFM</h3>
-
-<p>官网 <a href="http://www.libfm.org/">http://www.libfm.org/</a><br/>
-github <a href="https://github.com/srendle/libfm">https://github.com/srendle/libfm</a></p>
-
-<p>从官网下载安装包</p>
-
-<h3 id="toc_5">tffm</h3>
-
-<p><a href="https://github.com/geffy/tffm">https://github.com/geffy/tffm</a></p>
-
-<p>tffm是FM方法的tensorflow版本，他支持：</p>
-
-<ul>
-<li>dense or sparse输出</li>
-<li>order &gt;= 2</li>
-</ul>
-
-<pre><code class="language-text"># 安装 
-pip install tffm
-</code></pre>
-
-<p>按照github上的example</p>
-
-<p>log</p>
-
-<p>todo:</p>
-
-<ul>
-<li>调整参数k， int_std, red</li>
-<li>统一 content_len的量纲</li>
-<li>文章添加关键字</li>
-<li>tffm，添加field</li>
-</ul>
-
-<hr/>
+                        	<p>about me  </p>
 
                         
                       </div>
@@ -608,9 +351,7 @@ pip install tffm
                   <div class="more-left left">
                   
                     <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+                    
           				   
                     
 
@@ -677,25 +418,27 @@ pip install tffm
 
       	<p class="cat-list">
         
-            <a href="kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html"><strong>kdd&异常检测</strong></a>
+            <a href="kdd&AbnormalDetection.html"><strong>kdd&AbnormalDetection</strong></a>
         
-            <a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html"><strong>轨迹分析</strong></a>
+            <a href="trace%20analysis.html"><strong>trace analysis</strong></a>
         
             <a href="1%20Tools.html"><strong>1 Tools</strong></a>
         
-            <a href="2%20Get%20Data.html"><strong>2 Get Data</strong></a>
+            <a href="2%20GetData.html"><strong>2 GetData</strong></a>
         
-            <a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html"><strong>3 数据可视化</strong></a>
+            <a href="3%20DataVisulization.html"><strong>3 DataVisulization</strong></a>
         
-            <a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 统计方法</strong></a>
+            <a href="4%20Statistics.html"><strong>4 Statistics</strong></a>
         
-            <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习</strong></a>
+            <a href="5%20MachineLearning.html"><strong>5 MachineLearning</strong></a>
+        
+            <a href="5.1%20RecommendSystem.html"><strong>5.1 RecommendSystem</strong></a>
         
             <a href="6%20NLP.html"><strong>6 NLP</strong></a>
         
             <a href="7%20CV.html"><strong>7 CV</strong></a>
         
-            <a href="8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>8 深度学习</strong></a>
+            <a href="8%20DeepLearning.html"><strong>8 DeepLearning</strong></a>
         
             <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
@@ -720,31 +463,31 @@ pip install tffm
 	      
 		      
 			      <li class="post">
-			        <a href="15921526421890.html">python</a>
+			        <a href="15942889318992.html">综述</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15919304631539.html">源码阅读工具</a>
+			        <a href="15942842749545.html">原理篇——模型融合</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15919291891898.html">训练常见问题</a>
+			        <a href="15942831902643.html">原理篇——矩阵分解</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15918717478277.html">【工具】MMlab—mmskelton</a>
+			        <a href="15940468654753.html">maven</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15918653333546.html">图像检索：BoF、VLAD、FV三剑客</a>
+			        <a href="15940355196534.html">spring boot</a>
 			      </li>
 		     
 		  

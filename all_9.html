@@ -81,25 +81,27 @@
     <li><label>Categories</label></li>
 
         
-            <li><a href="kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html">kdd&异常检测</a></li>
+            <li><a href="kdd&AbnormalDetection.html">kdd&AbnormalDetection</a></li>
         
-            <li><a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html">轨迹分析</a></li>
+            <li><a href="trace%20analysis.html">trace analysis</a></li>
         
             <li><a href="1%20Tools.html">1 Tools</a></li>
         
-            <li><a href="2%20Get%20Data.html">2 Get Data</a></li>
+            <li><a href="2%20GetData.html">2 GetData</a></li>
         
-            <li><a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html">3 数据可视化</a></li>
+            <li><a href="3%20DataVisulization.html">3 DataVisulization</a></li>
         
-            <li><a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html">4 统计方法</a></li>
+            <li><a href="4%20Statistics.html">4 Statistics</a></li>
         
-            <li><a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html">5 机器学习</a></li>
+            <li><a href="5%20MachineLearning.html">5 MachineLearning</a></li>
+        
+            <li><a href="5.1%20RecommendSystem.html">5.1 RecommendSystem</a></li>
         
             <li><a href="6%20NLP.html">6 NLP</a></li>
         
             <li><a href="7%20CV.html">7 CV</a></li>
         
-            <li><a href="8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">8 深度学习</a></li>
+            <li><a href="8%20DeepLearning.html">8 DeepLearning</a></li>
         
             <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
@@ -130,37 +132,34 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15826898443382.html">
+                <a class="clearlink" href="15837577303219.html">
                 
-                  <h1>训练数据少-</h1>
+                  <h1>【综述】</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>生成更多数据 <a href="https://juejin.im/post/5d887be951882509334fa199">https://juejin.im/post/5d887be951882509334fa199</a></p>
+                        	<p>为了处理序列数据，rnn引入了隐藏状态hidden state的概念。如下图所示</p>
 
-<p>数据量少的方法 <a href="https://zhuanlan.zhihu.com/p/50547038">https://zhuanlan.zhihu.com/p/50547038</a></p>
+<p><img src="media/15837577303219/15837580278747.jpg" alt="" style="width:705px;"/></p>
 
-<p>1.迁移学习</p>
+<p>说明: x1,x2,...代表时间序列上不同时刻的向量，在x1时刻，当前的隐状态h0和当前的输入x1，进行叠加得到了新的隐状态h1.以此类推。</p>
 
-<p>（1）微调 <a href="https://zhuanlan.zhihu.com/p/35890660">https://zhuanlan.zhihu.com/p/35890660</a><br/>
-利用已经训练好的模型和参数作为初始参数，再训模型</p>
+<p>而最终输出就是在隐状态h的基础上再进行一次计算。最终输出如下。这样就完成了序列输入(x1,x2,....xn),输出(y1, y2 ....yn)的过程</p>
 
-<p><img src="media/15826898443382/15826938622074.jpg" alt=""/></p>
+<p><img src="media/15837577303219/15837582220421.jpg" alt="" style="width:722px;"/></p>
 
-<p>（2）特征提取（Feature Extraction） +特征融合（feature fusion）+ xgboost<br/>
-模型结构不变，将最后输出部分的全连接特征取出</p>
-
-<p><a href="https://github.com/cameronfabbri/Compute-Features">https://github.com/cameronfabbri/Compute-Features</a></p>
-
-<p>过拟合<br/>
-<a href="http://www.mashangxue123.com/tensorflow/tf2-tutorials-keras-overfit_and_underfit.html">http://www.mashangxue123.com/tensorflow/tf2-tutorials-keras-overfit_and_underfit.html</a></p>
+<p>实际中按照输入和输出的变量个数可以有如下的一些情形：</p>
 
 <ul>
-<li>权重正则化L1,L2</li>
-<li>dropout</li>
+<li>N vs 1</li>
+<li></li>
 </ul>
 
+<h2 id="toc_0">参考</h2>
+
+<p><a href="https://zhuanlan.zhihu.com/p/28054589">https://zhuanlan.zhihu.com/p/28054589</a></p>
+
                         
                       </div>
                   </div>
@@ -168,10 +167,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/2/26</span>
+                    <span class="date">2020/3/9</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB.html'>图像分类</a></span>
+          					    <span class="posted-in"><a href='rnn.html'>rnn</a></span>
           				   
                     
 
@@ -187,271 +186,9 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15825969970925.html">
+                <a class="clearlink" href="15834841723937.html">
                 
-                  <h1>TF2.0</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p><a href="https://tensorflow.google.cn/tutorials/images/classification">https://tensorflow.google.cn/tutorials/images/classification</a></p>
-
-<pre><code class="language-text">一个简单的方法是创建一个新的 Model 来输出你所感兴趣的层：
-
-from keras.models import Model
-
-model = ...  # 创建原始模型
-
-layer_name = &#39;my_layer&#39;
-intermediate_layer_model = Model(inputs=model.input,
-                                 outputs=model.get_layer(layer_name).output)
-intermediate_output = intermediate_layer_model.predict(data)
-或者，你也可以构建一个 Keras 函数，该函数将在给定输入的情况下返回某个层的输出，例如：
-
-from keras import backend as K
-
-get_3rd_layer_output = K.function([model.layers[0].input],
-                                  [model.layers[3].output])
-layer_output = get_3rd_layer_output([x])[0]
-
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/2/25</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='7%20CV.html'>7 CV</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15825488509435.html">
-                
-                  <h1>工具篇</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<blockquote>
-<p>工欲善其事必先利其器</p>
-</blockquote>
-
-<p>主流的深度学习框架有</p>
-
-<table>
-<thead>
-<tr>
-<th>tool</th>
-<th>公司</th>
-<th>特性</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>tensorflow</td>
-<td>google</td>
-<td></td>
-</tr>
-<tr>
-<td>pytorch</td>
-<td>facebook</td>
-<td></td>
-</tr>
-<tr>
-<td>keras</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>caffe</td>
-<td>伯克利</td>
-<td></td>
-</tr>
-<tr>
-<td>paddlepaddle</td>
-<td>百度</td>
-<td></td>
-</tr>
-<tr>
-<td>mxnet</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-<p>Keras 是基于tensorflow或者Theano(已不维护)封装的高阶接口，tensorflow2.0中现在已经包含Keras</p>
-
-<h2 id="toc_0">1. Tensorflow</h2>
-
-<p><strong>TF-Slim、TFLearn、Keras和TensorLayer</strong></p>
-
-<p>TF-Slim、TFLearn、Keras和TensorLayer都是尝试简化TensorFlow/Theano的工具，是对TensorFlow/Theano的高层封装，API实现更加的工程化</p>
-
-<p>tensorflow2.0 已经将这些合并整理了，官方推荐的是keras的api</p>
-
-<p><a href="https://tensorflow.google.cn/tutorials/images/transfer_learning">https://tensorflow.google.cn/tutorials/images/transfer_learning</a></p>
-
-<p><a href="https://github.com/balancap/SSD-Tensorflow">https://github.com/balancap/SSD-Tensorflow</a></p>
-
-<h2 id="toc_1">2. tensorhub</h2>
-
-<p>官方地址 <a href="https://hub.tensorflow.google.cn/">https://hub.tensorflow.google.cn/</a> 类似于dockerhub，汇集了各种分享的模型，可供下载使用。<br/>
-主要包括 tezt embeddings, image classification models and more</p>
-
-<p>安装</p>
-
-<pre><code class="language-text">pip install --upgrade tensorflow-hub
-</code></pre>
-
-<p>比如图像分类相关的 <a href="https://hub.tensorflow.google.cn/google/collections/image/1">https://hub.tensorflow.google.cn/google/collections/image/1</a><br/>
-google后来提取的 EfficientNet, 调整模型的深度，宽度等参数。<a href="https://hub.tensorflow.google.cn/google/collections/efficientnet/1">https://hub.tensorflow.google.cn/google/collections/efficientnet/1</a></p>
-
-<p>1.对新样本predict</p>
-
-<pre><code class="language-python">classifier_url =&quot;https://tfhub.dev/google/tf2-preview/mobilenet_v2/classification/2&quot; #@param {type:&quot;string&quot;}
-
-IMAGE_SHAPE = (224, 224)
-classifier = tf.keras.Sequential([
-    hub.KerasLayer(classifier_url, input_shape=IMAGE_SHAPE+(3,))
-])
-
-# 新样本
-grace_hopper = tf.keras.utils.get_file(&#39;image.jpg&#39;,&#39;https://storage.googleapis.com/download.tensorflow.org/example_images/grace_hopper.jpg&#39;)
-grace_hopper = Image.open(grace_hopper).resize(IMAGE_SHAPE)
-grace_hopper = np.array(grace_hopper)/255.0
-
-result = classifier.predict(grace_hopper[np.newaxis, ...])
-result.shape
-</code></pre>
-
-<p>2.simple迁移学习</p>
-
-<pre><code class="language-python">image_generator = tf.keras.preprocessing.image.ImageDataGenerator(rescale=1/255)
-image_data = image_generator.flow_from_directory(str(data_root), target_size=IMAGE_SHAPE)
-
-## 下载不包含top classification layer的model
-feature_extractor_url = &quot;https://tfhub.dev/google/tf2-preview/mobilenet_v2/feature_vector/2&quot; #@param {type:&quot;string&quot;}
-
-feature_extractor_layer = hub.KerasLayer(feature_extractor_url,
-                                        trainable= False,
-                                        input_shape=(224,224,3))
-                                         
-model = tf.keras.Sequential([
-  feature_extractor_layer,
-  layers.Dense(image_data.num_classes)
-])
-
-model.summary()
-# 剩下的和正常的模型训练过程一样
-</code></pre>
-
-<p>其command line 工具 <a href="https://github.com/tensorflow/hub/tree/master/tensorflow_hub/tools/make_image_classifier">https://github.com/tensorflow/hub/tree/master/tensorflow_hub/tools/make_image_classifier</a></p>
-
-<pre><code class="language-python">make_image_classifier \
-  --image_dir my_image_dir \
-  --tfhub_module https://tfhub.dev/google/tf2-preview/mobilenet_v2/feature_vector/4 \
-  --image_size 224 \
-  --saved_model_dir my_dir/new_model \
-  --labels_output_file class_labels.txt \
-  --tflite_output_file new_mobile_model.tflite
-</code></pre>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/2/24</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='tools.html'>tools</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15822015902121.html">
-                
-                  <h1>综述</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>首先看下cv方面的综述，对整个技术发展过程有个大致了解</p>
-
-<p><a href="https://github.com/weiaicunzai/awesome-image-classification">https://github.com/weiaicunzai/awesome-image-classification</a> (中文 <a href="https://mp.weixin.qq.com/s?__biz=MzIwOTc2MTUyMg==&amp;mid=2247487400&amp;idx=1&amp;sn=cb4dd3e95cd12c813bfcb7ae6e62d69c&amp;chksm=976faa35a01823230524bec5cb4ede73b880d42eaf2fe86b5878108df444d02ba1acd613df1b&amp;mpshare=1&amp;scene=1&amp;srcid=0221VLUJG5gsMr5QzU7VNtBZ&amp;sharer_sharetime=1582247950940&amp;sharer_shareid=39affd95034dc485004147e1f2365064%23rd">https://mp.weixin.qq.com/s?__biz=MzIwOTc2MTUyMg==&amp;mid=2247487400&amp;idx=1&amp;sn=cb4dd3e95cd12c813bfcb7ae6e62d69c&amp;chksm=976faa35a01823230524bec5cb4ede73b880d42eaf2fe86b5878108df444d02ba1acd613df1b&amp;mpshare=1&amp;scene=1&amp;srcid=0221VLUJG5gsMr5QzU7VNtBZ&amp;sharer_sharetime=1582247950940&amp;sharer_shareid=39affd95034dc485004147e1f2365064%23rd</a>)</p>
-
-<h2 id="toc_0">预处理</h2>
-
-<ul>
-<li>均值</li>
-<li>数据增强：缩放、旋转、随机RGB颜色、亮度变换等</li>
-</ul>
-
-<h2 id="toc_1">参考资料</h2>
-
-<p><a href="https://zhuanlan.zhihu.com/p/86090591">https://zhuanlan.zhihu.com/p/86090591</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/2/20</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB.html'>图像分类</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15815953769796.html">
-                
-                  <h1>贪心学院-nlp课程</h1>
+                  <h1>【可解释性问题】</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
@@ -464,10 +201,221 @@ model.summary()
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/2/13</span>
+                    <span class="date">2020/3/6</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='6%20NLP.html'>6 NLP</a></span>
+          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15834196813408.html">
+                
+                  <h1>【迁移学习】</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<table>
+<thead>
+<tr>
+<th>分类</th>
+<th>说明</th>
+<th>特点</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1.样本迁移</td>
+<td>在数据集（源领域）中找到与目标领域相似的数据，把这个数据放大多倍，与目标领域的数据进行匹配。</td>
+<td>需要对不同例子加权；需要用数据进行训练。</td>
+</tr>
+<tr>
+<td>2.特征迁移</td>
+<td>特征空间的迁移</td>
+<td></td>
+</tr>
+<tr>
+<td>3.模型迁移</td>
+<td>比如常用的fine-tune</td>
+<td></td>
+</tr>
+<tr>
+<td>4.关系迁移</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="toc_0">参考</h2>
+
+<p><a href="https://www.cnblogs.com/bonelee/p/8921311.html">https://www.cnblogs.com/bonelee/p/8921311.html</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/3/5</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15834004454503.html">
+                
+                  <h1>【数据增强】</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">1.有监督的</h3>
+
+<p><strong>1.1 单样本的数据增强</strong><br/>
+单样本的数据增强主要是围绕一个样本图片，进行的”几何变换“、”颜色变换“等</p>
+
+<ul>
+<li>几何变换类： 旋转、翻转、剪裁、变形、缩放</li>
+<li>颜色变换类： 噪声、模糊、颜色变换、填充</li>
+</ul>
+
+<p>实用tool <code>https://github.com/aleju/imgaug</code></p>
+
+<p><strong>1.2 多样本数据增强</strong><br/>
+利用多个样本产生出新的样本</p>
+
+<ul>
+<li>SMOTE，人工合成新样本，解决类不平衡问题。映射到特征空间，在小样本的k近邻中构造新的样本点</li>
+<li>SamplePairing：主要用在医学图像上，从训练集中随机抽取两张图片，经过基础数据增强后将像素平均合并成一个新的样本。标签记为原样本标签中的一种。</li>
+<li>mixup: 使用线性插值，对于随机选取的两个数据，new = wXi + (1-w)Xj</li>
+</ul>
+
+<h3 id="toc_1">2.无监督的</h3>
+
+<p><strong>2.1 学习数据的分布，随机生成新图片</strong></p>
+
+<ul>
+<li>GAN</li>
+</ul>
+
+<p><strong>2.2 通过模型学习适合当前任务的数据增强方法</strong></p>
+
+<ul>
+<li>AutoAugment<br/>
+google 提出的自动选择最优数据增强方案的研究。其基本思路是:使用增强学习从数据本身寻找最佳的图像变换策略。具体来说就是用基础数据增强策略的组合。</li>
+<li>RandAugment: AutoAugment的进化版</li>
+</ul>
+
+<h2 id="toc_2">参考</h2>
+
+<p><a href="https://www.zhihu.com/question/319291048">https://www.zhihu.com/question/319291048</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/3/5</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15833060322285.html">
+                
+                  <h1>【目标检测】</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><img src="media/15833060322285/15833061979386.jpg" alt=""/></p>
+
+<p><img src="media/15833060322285/15833089551223.jpg" alt=""/></p>
+
+<p><strong>two stage</strong></p>
+
+<h2 id="toc_0">1.R-CNN</h2>
+
+<p>Region-CNN,基本思路如下:</p>
+
+<ul>
+<li>候选提取框： <code>selective search</code> 启发式搜寻可能存在物体的区域</li>
+<li>对每个提取框提取特征</li>
+<li>图像分类， 用SVM</li>
+<li>非极大值抑制</li>
+</ul>
+
+<p><strong>one-stage</strong></p>
+
+<ul>
+<li>yolo</li>
+<li> SSD</li>
+</ul>
+
+<h2 id="toc_1">参考</h2>
+
+<p><a href="https://zhuanlan.zhihu.com/p/40047760">https://zhuanlan.zhihu.com/p/40047760</a></p>
+
+<p>yolo <a href="https://www.cnblogs.com/fydeblog/p/10447875.html">https://www.cnblogs.com/fydeblog/p/10447875.html</a></p>
+
+<p>机器之心  <a href="https://www.jiqizhixin.com/articles/092301">https://www.jiqizhixin.com/articles/092301</a></p>
+
+<p>github综述 <a href="https://github.com/hoya012/deep_learning_object_detection">https://github.com/hoya012/deep_learning_object_detection</a></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/3/4</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B.html'>目标检测</a></span>
           				   
                     
 
@@ -534,25 +482,27 @@ model.summary()
 
       	<p class="cat-list">
         
-            <a href="kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html"><strong>kdd&异常检测</strong></a>
+            <a href="kdd&AbnormalDetection.html"><strong>kdd&AbnormalDetection</strong></a>
         
-            <a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html"><strong>轨迹分析</strong></a>
+            <a href="trace%20analysis.html"><strong>trace analysis</strong></a>
         
             <a href="1%20Tools.html"><strong>1 Tools</strong></a>
         
-            <a href="2%20Get%20Data.html"><strong>2 Get Data</strong></a>
+            <a href="2%20GetData.html"><strong>2 GetData</strong></a>
         
-            <a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html"><strong>3 数据可视化</strong></a>
+            <a href="3%20DataVisulization.html"><strong>3 DataVisulization</strong></a>
         
-            <a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 统计方法</strong></a>
+            <a href="4%20Statistics.html"><strong>4 Statistics</strong></a>
         
-            <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习</strong></a>
+            <a href="5%20MachineLearning.html"><strong>5 MachineLearning</strong></a>
+        
+            <a href="5.1%20RecommendSystem.html"><strong>5.1 RecommendSystem</strong></a>
         
             <a href="6%20NLP.html"><strong>6 NLP</strong></a>
         
             <a href="7%20CV.html"><strong>7 CV</strong></a>
         
-            <a href="8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>8 深度学习</strong></a>
+            <a href="8%20DeepLearning.html"><strong>8 DeepLearning</strong></a>
         
             <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
@@ -577,31 +527,31 @@ model.summary()
 	      
 		      
 			      <li class="post">
-			        <a href="15921526421890.html">python</a>
+			        <a href="15942889318992.html">综述</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15919304631539.html">源码阅读工具</a>
+			        <a href="15942842749545.html">原理篇——模型融合</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15919291891898.html">训练常见问题</a>
+			        <a href="15942831902643.html">原理篇——矩阵分解</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15918717478277.html">【工具】MMlab—mmskelton</a>
+			        <a href="15940468654753.html">maven</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15918653333546.html">图像检索：BoF、VLAD、FV三剑客</a>
+			        <a href="15940355196534.html">spring boot</a>
 			      </li>
 		     
 		  

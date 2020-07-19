@@ -81,25 +81,27 @@
     <li><label>Categories</label></li>
 
         
-            <li><a href="kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html">kdd&异常检测</a></li>
+            <li><a href="kdd&AbnormalDetection.html">kdd&AbnormalDetection</a></li>
         
-            <li><a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html">轨迹分析</a></li>
+            <li><a href="trace%20analysis.html">trace analysis</a></li>
         
             <li><a href="1%20Tools.html">1 Tools</a></li>
         
-            <li><a href="2%20Get%20Data.html">2 Get Data</a></li>
+            <li><a href="2%20GetData.html">2 GetData</a></li>
         
-            <li><a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html">3 数据可视化</a></li>
+            <li><a href="3%20DataVisulization.html">3 DataVisulization</a></li>
         
-            <li><a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html">4 统计方法</a></li>
+            <li><a href="4%20Statistics.html">4 Statistics</a></li>
         
-            <li><a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html">5 机器学习</a></li>
+            <li><a href="5%20MachineLearning.html">5 MachineLearning</a></li>
+        
+            <li><a href="5.1%20RecommendSystem.html">5.1 RecommendSystem</a></li>
         
             <li><a href="6%20NLP.html">6 NLP</a></li>
         
             <li><a href="7%20CV.html">7 CV</a></li>
         
-            <li><a href="8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">8 深度学习</a></li>
+            <li><a href="8%20DeepLearning.html">8 DeepLearning</a></li>
         
             <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
@@ -130,14 +132,25 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15918617122348.html">
+                <a class="clearlink" href="15937745040951.html">
                 
-                  <h1>batch normalization</h1>
+                  <h1>工程篇——常见架构</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>问题</p>
+                        	<p>feed流<br/>
+<img src="media/15937745040951/15937745443567.jpg" alt=""/><br/>
+<strong>数据模型</strong></p>
+
+<ul>
+<li>用户user</li>
+<li>内容Activity
+<ul>
+<li>时间，actor，verb动作，object，target， title, summary</li>
+</ul></li>
+<li>关系/连接</li>
+</ul>
 
                         
                       </div>
@@ -146,10 +159,10 @@
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/6/11</span>
+                    <span class="date">2020/7/3</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
+          					    <span class="posted-in"><a href='5.1%20RecommendSystem.html'>5.1 RecommendSystem</a></span>
           				   
                     
 
@@ -165,34 +178,45 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15917706614562.html">
+                <a class="clearlink" href="15930016541577.html">
                 
-                  <h1>optical flow 光流</h1>
+                  <h1>原理篇——近邻推荐</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><a href="https://zhuanlan.zhihu.com/p/44859953">概念</a><br/>
-光流的概念是Gibson在1950年首先提出来的。它是空间运动物体在观察成像平面上的像素运动的<strong>瞬时速度</strong>，是利用图像序列中像素在时间域上的变化以及相邻帧之间的相关性来找到上一帧跟当前帧之间存在的对应关系，从而计算出相邻帧之间物体的运动信息的一种方法。一般而言，光流是由于场景中前景目标本身的移动、相机的运动，或者两者的共同运动所产生的。<br/>
-简言之：就是有相对运动带来的空间物体在成像平面的瞬时速度。</p>
+                        	<p>协同过滤，基于user-item的数据矩阵</p>
 
-<p>对于一个图片序列，每张图像中每个像素的运动速度和运动方向找出来就是<strong>光流场</strong>。</p>
+<p>即基于这个人消费过的，推荐相似的物品，或者是推荐相似人的消费物品</p>
 
-<p><strong>光流的测定方法</strong></p>
-
-<p>基本原理就是找到时间间隔△t内，物体的移动坐标(x1, y1), (x2, y2). 假设位于(x,y,t)的体素的亮度是I(x,y,t), 则有:<br/>
-I(x,y,t) = I(x+△x, y+△y, t+△t)<br/>
-根据泰勒定理展开即有\(\partial I/\partial x△x +\partial I/\partial y△y + \partial I/\partial t△t = 0\)</p>
-
-<p>具体实现方法: opencv的API中有几种不同的实现方案</p>
+<h2 id="toc_0">1.user based</h2>
 
 <ul>
-<li>Lucas–Kanade method: calcOpticalFlowPyrLK</li>
-<li>The Gunnar-Farneback optical flow: calcOpticalFlowFarneback</li>
-<li>block matching method: CalcOpticalFlowBM</li>
+<li><p>step1: 建立用户向量<br/>
+因为用户-物品的矩阵是稀疏的，因此需要采取稀疏的数据存储方式。比如CSR, COO格式，scipy.sparse中的lil_matrix等</p></li>
+<li><p>step2: 计算用户两两之间的相似度,筛选每个用户的相似用户<br/>
+实战中可能会碰到两个问题:<br/>
+1) 向量维度太高，计算较慢。=&gt;可以对向量进行采样计算， 另外是采用向量化计算，避免循环。<br/>
+2) 数据量n太多，两两pair较大。</p>
+<ul>
+<li>可以将任务拆解成MR任务</li>
+<li>使用一些单机版的专门的工具，比如KGraph(<a href="https://github.com/aaalgo/kgraph">https://github.com/aaalgo/kgraph</a>), GraphCHI</li>
+</ul></li>
+<li><p>step3: 为每一个用户推荐结果</p></li>
 </ul>
 
-<p><a href="https://github.com/yjxiong/dense_flow">https://github.com/yjxiong/dense_flow</a></p>
+<p>一些改进:</p>
+
+<ol>
+<li>对于基于用户的协同过滤有一些常见的改进办法，改进主要集中在用户对物品的喜欢程度上：惩罚对热门物品的喜欢程度，这是因为，热门的东西很难反应出用户的真实兴趣，更可能是被煽动，或者无聊随便点击的情形，这是群体行为常见特点；</li>
+<li>增加喜欢程度的时间衰减，一般使用一个指数函数，指数就是一个负数，值和喜欢行为发生时间间隔正相关即可，这很好理解，小时候喜欢的东西不代表我现在的口味，人都是会变的，这是人性。</li>
+</ol>
+
+<h2 id="toc_1">2.item based</h2>
+
+<p>过程类似。<br/>
+注意：如果采用cos相似度的话，可能会面临相似度的置信问题。比如(0,1,0,0)与(0,1,0,0) 对比(0,10,0,0)与(0,10,0,0)。<br/>
+slop one算法： 对评分矩阵不是计算余弦相似度，而是计算距离</p>
 
                         
                       </div>
@@ -201,10 +225,10 @@ I(x,y,t) = I(x+△x, y+△y, t+△t)<br/>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/6/10</span>
+                    <span class="date">2020/6/24</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
+          					    <span class="posted-in"><a href='5.1%20RecommendSystem.html'>5.1 RecommendSystem</a></span>
           				   
                     
 
@@ -220,21 +244,14 @@ I(x,y,t) = I(x+△x, y+△y, t+△t)<br/>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15917597006543.html">
+                <a class="clearlink" href="15928295415436.html">
                 
-                  <h1>业务</h1>
+                  <h1>人脸表情识别 FER</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>为确定要识别哪些行为，可以根据特征，将最后一层的输出做聚类？？ 看下都有哪些行为？？</p>
-
-<p>行为分类：</p>
-
-<ul>
-<li>图像分类</li>
-<li>视频理解</li>
-</ul>
+                        	<p><a href="https://zhuanlan.zhihu.com/p/40572244">https://zhuanlan.zhihu.com/p/40572244</a></p>
 
                         
                       </div>
@@ -243,10 +260,10 @@ I(x,y,t) = I(x+△x, y+△y, t+△t)<br/>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/6/10</span>
+                    <span class="date">2020/6/22</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%A7%BF%E6%80%81%E8%AF%86%E5%88%AB.html'>姿态识别</a></span>
+          					    <span class="posted-in"><a href='face.html'>face</a></span>
           				   
                     
 
@@ -262,120 +279,14 @@ I(x,y,t) = I(x+△x, y+△y, t+△t)<br/>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15917572981552.html">
+                <a class="clearlink" href="15921526421890.html">
                 
-                  <h1>综述_pose_estimation</h1>
+                  <h1>python</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>参考资料:</p>
-
-<ul>
-<li><a href="https://zhuanlan.zhihu.com/p/69042249">https://zhuanlan.zhihu.com/p/69042249</a></li>
-<li><a href="https://mp.weixin.qq.com/s?__biz=MzU5MzQyMzk5OQ==&amp;mid=2247484885&amp;idx=1&amp;sn=09aaafd71959a9c0db703993f8386bd5&amp;chksm=fe11fec5c96677d3580e5f9ee7c9c4c5f4c31257442625afa5ae59e2f2954940e3c3a50acc33&amp;mpshare=1&amp;scene=1&amp;srcid=#rd">https://mp.weixin.qq.com/s?__biz=MzU5MzQyMzk5OQ==&amp;mid=2247484885&amp;idx=1&amp;sn=09aaafd71959a9c0db703993f8386bd5&amp;chksm=fe11fec5c96677d3580e5f9ee7c9c4c5f4c31257442625afa5ae59e2f2954940e3c3a50acc33&amp;mpshare=1&amp;scene=1&amp;srcid=#rd</a></li>
-</ul>
-
-<h2 id="toc_0">1. 相关数据集</h2>
-
-<table>
-<thead>
-<tr>
-<th>数据</th>
-<th>基本情况</th>
-<th>链接</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>MPII</td>
-<td>2.5W images， 410 activities</td>
-<td><a href="http://human-pose.mpi-inf.mpg.de/#results">http://human-pose.mpi-inf.mpg.de/#results</a></td>
-</tr>
-</tbody>
-</table>
-
-<ul>
-<li>LSP(Leeds Sports Pose)<br/>
-是一个体育姿势数据集，其被分为竞技、羽毛球、棒球、体操、跑酷、足球、排球和网球几类，共包含约 2000 个姿势注释，图像均来自于 Flickr 的运动人员。</li>
-</ul>
-
-<p>-MPII</p>
-
-<p>-MSCOCO<br/>
-多人</p>
-
-<h2 id="toc_1">2.关键点检测</h2>
-
-<p>从检测方法上看，pose estimation主要分两大类: 1) 自顶向下(先检测出人再检测关键点) 2）自下向上(先检测出关键点，然后匹配出人)</p>
-
-<p>从检测的范围来分的话，主要包括:2d, 2d+和3d</p>
-
-<p><img src="media/15917572981552/15924802423818.jpg" alt=""/></p>
-
-<p><strong>自顶向下</strong></p>
-
-<h3 id="toc_2">1.RMPE-alphapose</h3>
-
-<p>Regional Multi-Person Pose Estimation. 先检测人的bounding box就会出现框不准，以及框冗余的问题。而这篇论文的目的就是解决这个:<br/>
-We aim to detect accurate human poses even when given inaccurate bounding boxes<br/>
-<img src="media/15917572981552/15924808637043.jpg" alt="" style="width:863px;"/></p>
-
-<p>开源工具: <a href="https://github.com/MVIG-SJTU/AlphaPose">https://github.com/MVIG-SJTU/AlphaPose</a></p>
-
-<ul>
-<li>CPN（Cascaded Pyramid Network）</li>
-<li>RMPE</li>
-<li>G-RMI</li>
-</ul>
-
-<p>** 自底向上**</p>
-
-<h3 id="toc_3">2.</h3>
-
-<p>论文 Realtime Multi-Person 2D Pose Estimation using Part Affinity Fields</p>
-
-<ul>
-<li><p>Part Affinity Fields - openpose</p></li>
-<li><p>openpose<br/>
-以CPM（卷积pose Machine）为基础。</p></li>
-</ul>
-
-<p>CPM</p>
-
-<h3 id="toc_4">3. 2D+检测</h3>
-
-<p>DensePose</p>
-
-<h3 id="toc_5">3D检测</h3>
-
-<h2 id="toc_6">步态识别</h2>
-
-<p>步态识别的数据一般是黑白轮廓图<br/>
-<img src="media/15917572981552/15924844542390.jpg" alt="" style="width:403px;"/></p>
-
-<p>常见的方法有:<br/>
-（1）将步态看做图像: GEI、CGI、VTM、ViDP<br/>
-（2）将步态看做连续的时序: LSTM, 3D-CNN</p>
-
-<p>总结：<a href="https://zhuanlan.zhihu.com/p/102457223">https://zhuanlan.zhihu.com/p/102457223</a></p>
-
-<p>人体关键点检测按照是否包含3维深度信息可以分为2D和3D检测</p>
-
-<p><img src="media/15895350398690/15904079979954.jpg" alt="" style="width:971px;"/></p>
-
-<ul>
-<li><p>openpose<br/>
-以CPM（卷积pose Machine）为基础。</p></li>
-<li><p>CPM（top-down）<br/>
-详细介绍：<a href="https://zhuanlan.zhihu.com/p/102468356">https://zhuanlan.zhihu.com/p/102468356</a></p></li>
-<li><p>denspose</p></li>
-</ul>
-
-<p><a href="https://zhuanlan.zhihu.com/p/38241179">https://zhuanlan.zhihu.com/p/38241179</a></p>
-
-<p>github: <a href="https://github.com/facebookresearch/DensePose">https://github.com/facebookresearch/DensePose</a></p>
+                        	<p>安装python3.6 <a href="https://blog.csdn.net/dta0502/article/details/83445727">https://blog.csdn.net/dta0502/article/details/83445727</a></p>
 
                         
                       </div>
@@ -384,10 +295,10 @@ We aim to detect accurate human poses even when given inaccurate bounding boxes<
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/6/10</span>
+                    <span class="date">2020/6/15</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%A7%BF%E6%80%81%E8%AF%86%E5%88%AB.html'>姿态识别</a></span>
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
           				   
                     
 
@@ -403,101 +314,14 @@ We aim to detect accurate human poses even when given inaccurate bounding boxes<
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15916704949564.html">
+                <a class="clearlink" href="15919304631539.html">
                 
-                  <h1>【工具】MMlab——mmaction</h1>
+                  <h1>源码阅读工具</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h3 id="toc_0">mmaction</h3>
-
-<p>MMAction is capable of dealing with all of the tasks below.</p>
-
-<ul>
-<li>action recognition from trimmed videos</li>
-<li>temporal action detection (also known as action localization) in untrimmed videos</li>
-<li>spatial-temporal action detection in untrimmed videos.</li>
-</ul>
-
-<p><strong>modelzoo</strong><br/>
-mmaction中自带的model默认都是用Kinetics-400 这个数据训练的。<br/>
-<a href="https://github.com/open-mmlab/mmaction/blob/master/MODEL_ZOO.md">https://github.com/open-mmlab/mmaction/blob/master/MODEL_ZOO.md</a></p>
-
-<p><strong>数据格式</strong><br/>
-<a href="https://github.com/open-mmlab/mmaction/blob/master/DATASET.md">https://github.com/open-mmlab/mmaction/blob/master/DATASET.md</a><br/>
-mmaction支持两种数据格式: raw frames 和video. raw frame较快，占用空间多。video的占用空间少，相对慢一些(可以使用decord进行加速)</p>
-
-<p><strong>代码结构</strong></p>
-
-<pre><code class="language-text">|── data_tool   # 数据准备，包含不同数据集的预处理
-|── data
-|── tools      # train, test
-|── configs   # train 构造每个模型的配置文件
-|── test_configs   # test 构造每个模型的配置文件
-|── modelzoo/   # model
-</code></pre>
-
-<p>数据准备</p>
-
-<pre><code class="language-shell"># 1. 准备数据
-cd data_tools/ucf101/
-bash download_annotations.sh
-bash download_videos.sh   # 一共6G多，可以中间终端，只取部分
-
-# 提取frames
-# 1.rgb的处理是用的mmcv.VideoReader(), 将视频转换为帧序列，所以量会比较大，可以改下间隔
-# 2.光流信息调用的dense_flow工具，需要在third_parties中提前安装好
-bash extract_frames.sh   ## bash extract_grb_frames.sh
-
-# Run the follow script to generate filelist in the format of rawframes and videos.
-bash generate_filelist.sh
-</code></pre>
-
-<pre><code class="language-shell"># 下载模型
-wget -c https://open-mmlab.s3.ap-northeast-2.amazonaws.com/mmaction/models/ucf101/tsn_2d_rgb_bninception_seg3_f1s1_b32_g8-98160339.pth -P ./modelzoo/
-
-bash tools/dist_test_recognizer.sh test_configs/TSN/ucf101/tsn_rgb_bninception.py modelzoo/tsn_2d_rgb_bninception_seg3_f1s1_b32_g8-98160339.pth 8
-</code></pre>
-
-<pre><code class="language-shell"># 模型训练
-./tools/dist_train_xxx.sh $config_file $GPU_Num
-# 模型评估
-python tools/test_${ARCH}.py ${CONFIG_FILE} ${CHECKPOINT_FILE} [--out ${RESULT_FILE}] 
-</code></pre>
-
-<p>test_recognizer:</p>
-
-<ul>
-<li>code里面最后默认输出到default.pkl中，每个二级目录都有一个长度101的向量(ucf101数据),向量的每个值就是在各个类别上的得分。最终取np.argmax()就可以认为是对应的类别了.</li>
-<li>具体每个类别编号的含义可以在<code>data/ucf101/annotations/clasInd.txt</code>看到</li>
-</ul>
-
-<pre><code class="language-python">import pickle
-outputs = pickle.load(open(&#39;xxx&#39;, &#39;rb&#39;), encoding=&#39;utf-8&#39;)
-</code></pre>
-
-<p>采坑：</p>
-
-<ul>
-<li>其中有很多CUDA, gpu的编译，设置，如果在自己电脑上的话，需要将相关的code注释掉</li>
-<li>安装的mmcv，在运行mmaction tools/test_recognizer.py的时候总报错，是python版本问题，不支持f语法</li>
-<li>docker hub上有人提供 mlouieunm/mmaction:latest。 实验了下环境还是有问题</li>
-</ul>
-
-<p>使用colab的GPU资源.<br/>
-下载数据啥的速度是真快。。。<br/>
-问题：<br/>
-Q1: RuntimeError: CUDA out of memory<br/>
-batch_size</p>
-
-<p>mmaction docker:</p>
-
-<p>（1）测试使用 <code>mlouieunm/mmaction:latest</code><br/>
-注意：这个docker环境中的mmaction并不是最新的，需要git pull下，才会更行到新版，支持其他的数据。。好像还是环境有问题，放弃<br/>
-（2）docker pull apulistech/mmaction:0.1</p>
-
-<p>NVIDIA-DOCKER   <a href="https://github.com/NVIDIA/nvidia-docker">https://github.com/NVIDIA/nvidia-docker</a></p>
+                        	<p><a href="https://github.com/CoatiSoftware/Sourcetrail">https://github.com/CoatiSoftware/Sourcetrail</a></p>
 
                         
                       </div>
@@ -506,10 +330,10 @@ batch_size</p>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/6/9</span>
+                    <span class="date">2020/6/12</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%A7%BF%E6%80%81%E8%AF%86%E5%88%AB.html'>姿态识别</a></span>
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
           				   
                     
 
@@ -576,25 +400,27 @@ batch_size</p>
 
       	<p class="cat-list">
         
-            <a href="kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html"><strong>kdd&异常检测</strong></a>
+            <a href="kdd&AbnormalDetection.html"><strong>kdd&AbnormalDetection</strong></a>
         
-            <a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html"><strong>轨迹分析</strong></a>
+            <a href="trace%20analysis.html"><strong>trace analysis</strong></a>
         
             <a href="1%20Tools.html"><strong>1 Tools</strong></a>
         
-            <a href="2%20Get%20Data.html"><strong>2 Get Data</strong></a>
+            <a href="2%20GetData.html"><strong>2 GetData</strong></a>
         
-            <a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html"><strong>3 数据可视化</strong></a>
+            <a href="3%20DataVisulization.html"><strong>3 DataVisulization</strong></a>
         
-            <a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 统计方法</strong></a>
+            <a href="4%20Statistics.html"><strong>4 Statistics</strong></a>
         
-            <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习</strong></a>
+            <a href="5%20MachineLearning.html"><strong>5 MachineLearning</strong></a>
+        
+            <a href="5.1%20RecommendSystem.html"><strong>5.1 RecommendSystem</strong></a>
         
             <a href="6%20NLP.html"><strong>6 NLP</strong></a>
         
             <a href="7%20CV.html"><strong>7 CV</strong></a>
         
-            <a href="8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>8 深度学习</strong></a>
+            <a href="8%20DeepLearning.html"><strong>8 DeepLearning</strong></a>
         
             <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
@@ -619,31 +445,31 @@ batch_size</p>
 	      
 		      
 			      <li class="post">
-			        <a href="15921526421890.html">python</a>
+			        <a href="15942889318992.html">综述</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15919304631539.html">源码阅读工具</a>
+			        <a href="15942842749545.html">原理篇——模型融合</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15919291891898.html">训练常见问题</a>
+			        <a href="15942831902643.html">原理篇——矩阵分解</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15918717478277.html">【工具】MMlab—mmskelton</a>
+			        <a href="15940468654753.html">maven</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15918653333546.html">图像检索：BoF、VLAD、FV三剑客</a>
+			        <a href="15940355196534.html">spring boot</a>
 			      </li>
 		     
 		  

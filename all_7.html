@@ -81,25 +81,27 @@
     <li><label>Categories</label></li>
 
         
-            <li><a href="kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html">kdd&异常检测</a></li>
+            <li><a href="kdd&AbnormalDetection.html">kdd&AbnormalDetection</a></li>
         
-            <li><a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html">轨迹分析</a></li>
+            <li><a href="trace%20analysis.html">trace analysis</a></li>
         
             <li><a href="1%20Tools.html">1 Tools</a></li>
         
-            <li><a href="2%20Get%20Data.html">2 Get Data</a></li>
+            <li><a href="2%20GetData.html">2 GetData</a></li>
         
-            <li><a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html">3 数据可视化</a></li>
+            <li><a href="3%20DataVisulization.html">3 DataVisulization</a></li>
         
-            <li><a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html">4 统计方法</a></li>
+            <li><a href="4%20Statistics.html">4 Statistics</a></li>
         
-            <li><a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html">5 机器学习</a></li>
+            <li><a href="5%20MachineLearning.html">5 MachineLearning</a></li>
+        
+            <li><a href="5.1%20RecommendSystem.html">5.1 RecommendSystem</a></li>
         
             <li><a href="6%20NLP.html">6 NLP</a></li>
         
             <li><a href="7%20CV.html">7 CV</a></li>
         
-            <li><a href="8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">8 深度学习</a></li>
+            <li><a href="8%20DeepLearning.html">8 DeepLearning</a></li>
         
             <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
@@ -130,128 +132,22 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15838089244516.html">
+                <a class="clearlink" href="15870064824475.html">
                 
-                  <h1>【案例】</h1>
+                  <h1>【方法梳理】关于综述</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>(1) 样本少容易过拟合</p>
-
-<pre><code class="language-text"> base_model,
-      tf.keras.layers.GlobalAveragePooling2D(),
-      tf.keras.layers.Dropout(0.5),
-      tf.keras.layers.Dense(256, kernel_regularizer=tf.keras.regularizers.l2(0.001),
-                           activation=&#39;relu&#39;),
-      tf.keras.layers.Dense(2, activation = &#39;softmax&#39;)]
-    )
-</code></pre>
-
-<p>加入正则化和dropout<br/>
-进行图片增强产生更多图片</p>
-
-<p>fine-tune效果</p>
-
-<p><img src="media/15838089244516/3BB989C7-F853-4391-BAE1-2CF5FE031D51.png" alt="3BB989C7-F853-4391-BAE1-2CF5FE031D51"/></p>
-
-<p>feature-效果<br/>
-<img src="media/15838089244516/7BE3E393-6503-4A17-AD04-34B8DDA9C6D3.png" alt="7BE3E393-6503-4A17-AD04-34B8DDA9C6D3"/></p>
-
-<p>(2) 调整loss中的训练权重<br/>
-class_weight = {0:0.75, 1:0.25}<br/>
-<img src="media/15838089244516/15838091710767.jpg" alt=""/></p>
-
-<p>QQ: 训练集和验证集效果都还好，但是到真实预测的时候效果却很差？？？</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/3/10</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB.html'>图像分类</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15838081033290.html">
-                
-                  <h1>类别不平衡</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/3/10</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB.html'>图像分类</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15837577303219.html">
-                
-                  <h1>【综述】</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>为了处理序列数据，rnn引入了隐藏状态hidden state的概念。如下图所示</p>
-
-<p><img src="media/15837577303219/15837580278747.jpg" alt="" style="width:705px;"/></p>
-
-<p>说明: x1,x2,...代表时间序列上不同时刻的向量，在x1时刻，当前的隐状态h0和当前的输入x1，进行叠加得到了新的隐状态h1.以此类推。</p>
-
-<p>而最终输出就是在隐状态h的基础上再进行一次计算。最终输出如下。这样就完成了序列输入(x1,x2,....xn),输出(y1, y2 ....yn)的过程</p>
-
-<p><img src="media/15837577303219/15837582220421.jpg" alt="" style="width:722px;"/></p>
-
-<p>实际中按照输入和输出的变量个数可以有如下的一些情形：</p>
+                        	<p>做综述需要包括以下几个部分:</p>
 
 <ul>
-<li>N vs 1</li>
-<li></li>
+<li>理论（算法 + 数据集）</li>
+<li>实践</li>
+<li>企业应用</li>
+<li>how to use for us</li>
 </ul>
 
-<h2 id="toc_0">参考</h2>
-
-<p><a href="https://zhuanlan.zhihu.com/p/28054589">https://zhuanlan.zhihu.com/p/28054589</a></p>
-
                         
                       </div>
                   </div>
@@ -259,10 +155,10 @@ class_weight = {0:0.75, 1:0.25}<br/>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/3/9</span>
+                    <span class="date">2020/4/16</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='rnn.html'>rnn</a></span>
+          					    <span class="posted-in"><a href='%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-%E6%B8%85%E5%8D%95.html'>数据科学-清单</a></span>
           				   
                     
 
@@ -278,43 +174,9 @@ class_weight = {0:0.75, 1:0.25}<br/>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15834841723937.html">
+                <a class="clearlink" href="15869363773517.html">
                 
-                  <h1>【可解释性问题】</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/3/6</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15834196813408.html">
-                
-                  <h1>【迁移学习】</h1>
+                  <h1>【异常检测2】时间序列</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
@@ -322,39 +184,306 @@ class_weight = {0:0.75, 1:0.25}<br/>
                         	<table>
 <thead>
 <tr>
-<th>分类</th>
-<th>说明</th>
-<th>特点</th>
+<th>paper</th>
+<th>year</th>
+<th></th>
+<th></th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td>1.样本迁移</td>
-<td>在数据集（源领域）中找到与目标领域相似的数据，把这个数据放大多倍，与目标领域的数据进行匹配。</td>
-<td>需要对不同例子加权；需要用数据进行训练。</td>
-</tr>
-<tr>
-<td>2.特征迁移</td>
-<td>特征空间的迁移</td>
+<td>Outlier Detection for Temporal Data: A Survey</td>
+<td>2014</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
-<td>3.模型迁移</td>
-<td>比如常用的fine-tune</td>
+<td>Time-Series Anomaly Detection Service at Microsoft</td>
+<td>2019</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
-<td>4.关系迁移</td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 </tr>
 </tbody>
 </table>
 
-<h2 id="toc_0">参考</h2>
+<h2 id="toc_0">一 问题分类</h2>
 
-<p><a href="https://www.cnblogs.com/bonelee/p/8921311.html">https://www.cnblogs.com/bonelee/p/8921311.html</a></p>
+<p><img src="media/15869363773517/15869376232283.jpg" alt="" style="width:1054px;"/><br/>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15869363773517.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2020/4/15</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='kdd&AbnormalDetection.html'>kdd&AbnormalDetection</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15869348134936.html">
+                
+                  <h1>tool-时间序列-工具使用</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>时间序列工具 <br/>
+<a href="https://github.com/chickenbestlover/RNN-Time-series-Anomaly-Detection">https://github.com/chickenbestlover/RNN-Time-series-Anomaly-Detection</a><br/>
+<a href="https://github.com/rob-med/awesome-TS-anomaly-detection">https://github.com/rob-med/awesome-TS-anomaly-detection</a></p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15869348134936.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2020/4/15</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='kdd&AbnormalDetection.html'>kdd&AbnormalDetection</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15867780125381.html">
+                
+                  <h1>tool-多元数据-Pyod</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>Pyod是一款专门做异常检测的python工具箱</p>
+
+<p>github:   <a href="https://github.com/yzhao062/pyod">https://github.com/yzhao062/pyod</a><br/>
+文档说明: <a href="https://pyod.readthedocs.io/en/latest/index.html">https://pyod.readthedocs.io/en/latest/index.html</a></p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15867780125381.html">Read more</a>&nbsp;&nbsp; 
+                    <span class="date">2020/4/13</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='kdd&AbnormalDetection.html'>kdd&AbnormalDetection</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15867647063491.html">
+                
+                  <h1>知识发现</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>关于DM的process model一般有如下几种：</p>
+
+<p>1.CRISP-DM 跨行业数据挖掘标准流程，将一个KDD工程分为6个不同的阶段。这种方式只定义了要做什么没有说how to do</p>
+
+<ul>
+<li>商业理解：确定商业的目标，发现影响结果的重要因素。</li>
+<li>数据理解</li>
+<li>数据准备</li>
+<li>建模</li>
+<li>评估</li>
+<li>部署</li>
+</ul>
+
+<h2 id="toc_0">一. Association Rules</h2>
+
+<p>传统的，根据支持度和置信度，挖掘出频繁项集。但是很显然的会面临很多问题。<br/>
+1) 低频次的并不代表不重要，他们可能能产生出重要的negative association rules (NARs)。 低频购买换个角度就是高频不购买<br/>
+2) 个人感觉频繁项集不一定是有价值信息的</p>
+
+<h3 id="toc_1">1 经典AR</h3>
+
+<p>先说下基本定义，</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>B</th>
+<th>not B</th>
+<th>合计</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>A</td>
+<td>a</td>
+<td>b</td>
+<td>a+b</td>
+</tr>
+<tr>
+<td>not A</td>
+<td>C</td>
+<td>d</td>
+<td>c+d</td>
+</tr>
+<tr>
+<td>合计</td>
+<td>a+c</td>
+<td>b+d</td>
+<td>a+b+c+d</td>
+</tr>
+</tbody>
+</table>
+
+<p>支持度sup(A=&gt;B) = P(A&amp;B) = a/n<br/>
+置信度 conf(A=&gt;B) = P(B|A) = a/(a+b)<br/>
+提升度 lift(A=&gt;B)= p(A&amp;B)/P(A)/P(B)       # 是否独立 &gt; 1表明正相关， &lt;1 表示负相关。 可以看做相关系数</p>
+
+<p>一般是设置最低的支持度和置信度，一旦满足这两个就认为是一条rule.</p>
+
+<p>用这种方式得到的结果很可能是不可信的，或者说不全面的，比如如下的一个具体例子。可知sup(A=&gt;B)= 0.45, conf(A=&gt;B)=0.9. 看似较高，但是没法得出 买了A就买B的结论，因为不买A=&gt;买B也是一样，或者说买B本身就很高，与是否买A无关。</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>B</th>
+<th>not B</th>
+<th>合计</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>A</td>
+<td>450</td>
+<td>50</td>
+<td>a+b</td>
+</tr>
+<tr>
+<td>not A</td>
+<td>450</td>
+<td>50</td>
+<td>c+d</td>
+</tr>
+<tr>
+<td>合计</td>
+<td>a+c</td>
+<td>b+d</td>
+<td>a+b+c+d</td>
+</tr>
+</tbody>
+</table>
+
+<p>相关系数 \(corr_ = \frac{sup(A交B) - sup(A)sup(B)}{\sqrt{supA(1-supA)supB(1-supB)}} \)<br/>
+通过卡方检验，可以推倒出卡方检验的统计量与corr是一致的。<br/>
+常用的算法 Apriori， FP-Growth</p>
+
+<h3 id="toc_2">2 NAR</h3>
+
+<p>比如A=&gt; not B<br/>
+参考【4】中作者方案包括2步：1)首先找到frequent和infrequent的itemset   2)判断是positive还是negative association</p>
+
+<p>具体的<br/>
+(1) infrequent: 通过IDF加权，过滤掉出现次数非常少的，或者是在不同人之间分布比较均匀的term<br/>
+<img src="media/15867647063491/15868573761250.jpg" alt="" style="width:960px;"/></p>
+
+<p>(2) 有了这些候选的itemset后，根据定义计算positive或者negative的rule<br/>
+<img src="media/15867647063491/15868574713672.jpg" alt="" style="width:586px;"/></p>
+
+<p>注意：<br/>
+ A =&gt; B 不一定能推出 not B =&gt; not A</p>
+
+<h3 id="toc_3">3 infrequent itemset</h3>
+
+<p>high utility infrequent itemsets. 频次不高，但是有更高的价值。UPRI算法(utility pattern rare itemset algorithm)<br/>
+简单的说，传统的AR是 \(I_1,...I_m =&gt; I_{m+1}(sup, conf)\)，而基于utility的是\(I_1,...I_m =&gt; Obj(sup, conf, u)\)。 传统的AR其实相当于将频次作为效用的度量。实际中不同的商品所带来的效用是不同，比如当关注cost，profit时候，对零售商来说，高售价的商品就比低售价的商品重要。</p>
+
+<p>区别于传统的基于itemset的ICOA (itemset-correlation-oriented association)，基于目标效用的OOA (objective-oriented utility-based association)mining</p>
+
+<p>related work:</p>
+
+<ul>
+<li>由min_sup, min_conf的方式改为 topK的方式</li>
+<li>Sese and Morishita 度量usefulness的方式：利用规则相关系数的显著性</li>
+<li>Han 通过min_l()的方式挖掘topK的closed patterns<br/>
+参考【5】中挖</li>
+</ul>
+
+<h2 id="toc_4">2. case</h2>
+
+<p>参考【4】中处理 <br/>
+(1)IDF加权,考虑到term不同权重</p>
+
+<h2 id="toc_5">3.工具</h2>
+
+<p>(1) positive association rules—— apriori<br/>
+python的sklearn中貌似没有直接的apriori工具,在<code>pypi</code>上找到这个<code>efficient-apriori</code> <a href="https://pypi.org/search/?q=apriori%E3%80%82">https://pypi.org/search/?q=apriori。</a> 或者在github上搜索 <a href="https://github.com/topics/association-rules?l=python">https://github.com/topics/association-rules?l=python</a></p>
+
+<p>(2) negative association rules ------</p>
+
+<p>可以用一种比较tricky的方法，即对于我们所关心的item，在数据集中添加 not_item项即可。比如基于R的实现 <a href="https://subscription.packtpub.com/book/big_data_and_business_intelligence/9781788621878/1/ch01lvl1sec14/negative-association-rules">https://subscription.packtpub.com/book/big_data_and_business_intelligence/9781788621878/1/ch01lvl1sec14/negative-association-rules</a></p>
+
+<h2 id="toc_6">4.统计显著性</h2>
+
+<p><a href="https://github.com/BorgwardtLab/significant-subgraph-mining">https://github.com/BorgwardtLab/significant-subgraph-mining</a></p>
+
+<p>参考资料</p>
+
+<ol>
+<li>A survey of data mining and knowledge discovery process models and methodologies</li>
+<li>A review and analysis on knowledge discovery and data mining techniques(回溯了各种关联规则相关的)</li>
+<li><a href="https://www.ixueshu.com/document/2a80aefb26b9e3e9318947a18e7f9386.html">https://www.ixueshu.com/document/2a80aefb26b9e3e9318947a18e7f9386.html</a></li>
+<li>Negative and Positive Association Rules Mining from Text Using Frequent and Infrequent Itemsets</li>
+<li>mining high utility itemsets</li>
+</ol>
 
                         
                       </div>
@@ -363,10 +492,10 @@ class_weight = {0:0.75, 1:0.25}<br/>
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/3/5</span>
+                    <span class="date">2020/4/13</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='%E5%9F%BA%E7%A1%80&%E7%BB%BC%E8%BF%B0.html'>基础&综述</a></span>
+          					    <span class="posted-in"><a href='kdd&AbnormalDetection.html'>kdd&AbnormalDetection</a></span>
           				   
                     
 
@@ -433,25 +562,27 @@ class_weight = {0:0.75, 1:0.25}<br/>
 
       	<p class="cat-list">
         
-            <a href="kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html"><strong>kdd&异常检测</strong></a>
+            <a href="kdd&AbnormalDetection.html"><strong>kdd&AbnormalDetection</strong></a>
         
-            <a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html"><strong>轨迹分析</strong></a>
+            <a href="trace%20analysis.html"><strong>trace analysis</strong></a>
         
             <a href="1%20Tools.html"><strong>1 Tools</strong></a>
         
-            <a href="2%20Get%20Data.html"><strong>2 Get Data</strong></a>
+            <a href="2%20GetData.html"><strong>2 GetData</strong></a>
         
-            <a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html"><strong>3 数据可视化</strong></a>
+            <a href="3%20DataVisulization.html"><strong>3 DataVisulization</strong></a>
         
-            <a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 统计方法</strong></a>
+            <a href="4%20Statistics.html"><strong>4 Statistics</strong></a>
         
-            <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习</strong></a>
+            <a href="5%20MachineLearning.html"><strong>5 MachineLearning</strong></a>
+        
+            <a href="5.1%20RecommendSystem.html"><strong>5.1 RecommendSystem</strong></a>
         
             <a href="6%20NLP.html"><strong>6 NLP</strong></a>
         
             <a href="7%20CV.html"><strong>7 CV</strong></a>
         
-            <a href="8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>8 深度学习</strong></a>
+            <a href="8%20DeepLearning.html"><strong>8 DeepLearning</strong></a>
         
             <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
@@ -476,31 +607,31 @@ class_weight = {0:0.75, 1:0.25}<br/>
 	      
 		      
 			      <li class="post">
-			        <a href="15921526421890.html">python</a>
+			        <a href="15942889318992.html">综述</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15919304631539.html">源码阅读工具</a>
+			        <a href="15942842749545.html">原理篇——模型融合</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15919291891898.html">训练常见问题</a>
+			        <a href="15942831902643.html">原理篇——矩阵分解</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15918717478277.html">【工具】MMlab—mmskelton</a>
+			        <a href="15940468654753.html">maven</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15918653333546.html">图像检索：BoF、VLAD、FV三剑客</a>
+			        <a href="15940355196534.html">spring boot</a>
 			      </li>
 		     
 		  

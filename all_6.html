@@ -81,25 +81,27 @@
     <li><label>Categories</label></li>
 
         
-            <li><a href="kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html">kdd&异常检测</a></li>
+            <li><a href="kdd&AbnormalDetection.html">kdd&AbnormalDetection</a></li>
         
-            <li><a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html">轨迹分析</a></li>
+            <li><a href="trace%20analysis.html">trace analysis</a></li>
         
             <li><a href="1%20Tools.html">1 Tools</a></li>
         
-            <li><a href="2%20Get%20Data.html">2 Get Data</a></li>
+            <li><a href="2%20GetData.html">2 GetData</a></li>
         
-            <li><a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html">3 数据可视化</a></li>
+            <li><a href="3%20DataVisulization.html">3 DataVisulization</a></li>
         
-            <li><a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html">4 统计方法</a></li>
+            <li><a href="4%20Statistics.html">4 Statistics</a></li>
         
-            <li><a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html">5 机器学习</a></li>
+            <li><a href="5%20MachineLearning.html">5 MachineLearning</a></li>
+        
+            <li><a href="5.1%20RecommendSystem.html">5.1 RecommendSystem</a></li>
         
             <li><a href="6%20NLP.html">6 NLP</a></li>
         
             <li><a href="7%20CV.html">7 CV</a></li>
         
-            <li><a href="8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">8 深度学习</a></li>
+            <li><a href="8%20DeepLearning.html">8 DeepLearning</a></li>
         
             <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
@@ -130,18 +132,14 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15867780125381.html">
+                <a class="clearlink" href="15874595359009.html">
                 
-                  <h1>tool-多元数据-Pyod</h1>
+                  <h1>自动化技术</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>Pyod是一款专门做异常检测的python工具箱</p>
-
-<p>github:   <a href="https://github.com/yzhao062/pyod">https://github.com/yzhao062/pyod</a><br/>
-文档说明: <a href="https://pyod.readthedocs.io/en/latest/index.html">https://pyod.readthedocs.io/en/latest/index.html</a></p>
-
+                        	<p>图文生成视频 <a href="https://ai.baidu.com/creation/main/createlab">https://ai.baidu.com/creation/main/createlab</a></p>
 
                         
                       </div>
@@ -149,11 +147,11 @@
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15867780125381.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2020/4/13</span>
+                  
+                    <span class="date">2020/4/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html'>kdd&异常检测</a></span>
+          					    <span class="posted-in"><a href='%E5%85%B6%E4%BB%96.html'>其他</a></span>
           				   
                     
 
@@ -169,170 +167,156 @@
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15867647063491.html">
+                <a class="clearlink" href="15871158755203.html">
                 
-                  <h1>知识发现</h1>
+                  <h1>小波变换</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>关于DM的process model一般有如下几种：</p>
+                        	<p>(1) 傅里叶变换</p>
 
-<p>1.CRISP-DM 跨行业数据挖掘标准流程，将一个KDD工程分为6个不同的阶段。这种方式只定义了要做什么没有说how to do</p>
+<p>对于<strong>非平稳</strong>过程，傅里叶变换存在局限性。傅里叶变换处理非平稳信号有天生缺陷。它只能获取一段信号总体上包含哪些频率的成分，但是对各成分出现的时刻并无所知。因此时域相差很大的两个信号，可能频谱图一样。</p>
 
-<ul>
-<li>商业理解：确定商业的目标，发现影响结果的重要因素。</li>
-<li>数据理解</li>
-<li>数据准备</li>
-<li>建模</li>
-<li>评估</li>
-<li>部署</li>
-</ul>
+<p>(2)短时傅里叶变换<br/>
+解决上述问题，一个简单方法是增加window，把整个时域过程分解成无数个等长的小过程 </p>
 
-<h2 id="toc_0">一. Association Rules</h2>
+<p>（3）小波变换<br/>
+小波做的改变就在于，将无限长的三角函数基换成了有限长的会衰减的小波基。<br/>
+<img src="media/15871158755203/15871162916435.jpg" alt="" style="width:708px;"/></p>
 
-<p>传统的，根据支持度和置信度，挖掘出频繁项集。但是很显然的会面临很多问题。<br/>
-1) 低频次的并不代表不重要，他们可能能产生出重要的negative association rules (NARs)。 低频购买换个角度就是高频不购买<br/>
-2) 个人感觉频繁项集不一定是有价值信息的</p>
+<h2 id="toc_0">参考资料</h2>
 
-<h3 id="toc_1">1 经典AR</h3>
+<p><a href="https://zhuanlan.zhihu.com/p/22450818">https://zhuanlan.zhihu.com/p/22450818</a></p>
 
-<p>先说下基本定义，</p>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/4/17</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='%E5%85%B6%E4%BB%96.html'>其他</a></span>
+          				   
+                    
 
-<table>
-<thead>
-<tr>
-<th></th>
-<th>B</th>
-<th>not B</th>
-<th>合计</th>
-</tr>
-</thead>
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
-<tbody>
-<tr>
-<td>A</td>
-<td>a</td>
-<td>b</td>
-<td>a+b</td>
-</tr>
-<tr>
-<td>not A</td>
-<td>C</td>
-<td>d</td>
-<td>c+d</td>
-</tr>
-<tr>
-<td>合计</td>
-<td>a+c</td>
-<td>b+d</td>
-<td>a+b+c+d</td>
-</tr>
-</tbody>
-</table>
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15870927475839.html">
+                
+                  <h1>时间序列</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">1.季节性检验</h2>
 
-<p>支持度sup(A=&gt;B) = P(A&amp;B) = a/n<br/>
-置信度 conf(A=&gt;B) = P(B|A) = a/(a+b)<br/>
-提升度 lift(A=&gt;B)= p(A&amp;B)/P(A)/P(B)       # 是否独立 &gt; 1表明正相关， &lt;1 表示负相关。 可以看做相关系数</p>
+<p>(1) 观察时序图<br/>
+(2)自(偏)相关函数检验 Box-Jenkins</p>
 
-<p>一般是设置最低的支持度和置信度，一旦满足这两个就认为是一条rule.</p>
+<p>曲线趋势分解 </p>
 
-<p>用这种方式得到的结果很可能是不可信的，或者说不全面的，比如如下的一个具体例子。可知sup(A=&gt;B)= 0.45, conf(A=&gt;B)=0.9. 看似较高，但是没法得出 买了A就买B的结论，因为不买A=&gt;买B也是一样，或者说买B本身就很高，与是否买A无关。</p>
+<pre><code class="language-python">from statsmodels.tsa.seasonal import seasonal_decompose
+decomposition = seasonal_decompose(timeseries, freq=xx, )  #timeseries时间序列数据
+trend = decomposition.trend
+seasonal = decomposition.seasonal
+residual = decomposition.resid
+</code></pre>
 
-<table>
-<thead>
-<tr>
-<th></th>
-<th>B</th>
-<th>not B</th>
-<th>合计</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>A</td>
-<td>450</td>
-<td>50</td>
-<td>a+b</td>
-</tr>
-<tr>
-<td>not A</td>
-<td>450</td>
-<td>50</td>
-<td>c+d</td>
-</tr>
-<tr>
-<td>合计</td>
-<td>a+c</td>
-<td>b+d</td>
-<td>a+b+c+d</td>
-</tr>
-</tbody>
-</table>
-
-<p>相关系数 \(corr_ = \frac{sup(A交B) - sup(A)sup(B)}{\sqrt{supA(1-supA)supB(1-supB)}} \)<br/>
-通过卡方检验，可以推倒出卡方检验的统计量与corr是一致的。<br/>
-常用的算法 Apriori， FP-Growth</p>
-
-<h3 id="toc_2">2 NAR</h3>
-
-<p>比如A=&gt; not B<br/>
-参考【4】中作者方案包括2步：1)首先找到frequent和infrequent的itemset   2)判断是positive还是negative association</p>
-
-<p>具体的<br/>
-(1) infrequent: 通过IDF加权，过滤掉出现次数非常少的，或者是在不同人之间分布比较均匀的term<br/>
-<img src="media/15867647063491/15868573761250.jpg" alt="" style="width:960px;"/></p>
-
-<p>(2) 有了这些候选的itemset后，根据定义计算positive或者negative的rule<br/>
-<img src="media/15867647063491/15868574713672.jpg" alt="" style="width:586px;"/></p>
-
-<p>注意：<br/>
- A =&gt; B 不一定能推出 not B =&gt; not A</p>
-
-<h3 id="toc_3">3 infrequent itemset</h3>
-
-<p>high utility infrequent itemsets. 频次不高，但是有更高的价值。UPRI算法(utility pattern rare itemset algorithm)<br/>
-简单的说，传统的AR是 \(I_1,...I_m =&gt; I_{m+1}(sup, conf)\)，而基于utility的是\(I_1,...I_m =&gt; Obj(sup, conf, u)\)。 传统的AR其实相当于将频次作为效用的度量。实际中不同的商品所带来的效用是不同，比如当关注cost，profit时候，对零售商来说，高售价的商品就比低售价的商品重要。</p>
-
-<p>区别于传统的基于itemset的ICOA (itemset-correlation-oriented association)，基于目标效用的OOA (objective-oriented utility-based association)mining</p>
-
-<p>related work:</p>
+<p>decompoise的数据分解模型主要有两种：加法(默认的)和乘法，</p>
 
 <ul>
-<li>由min_sup, min_conf的方式改为 topK的方式</li>
-<li>Sese and Morishita 度量usefulness的方式：利用规则相关系数的显著性</li>
-<li>Han 通过min_l()的方式挖掘topK的closed patterns<br/>
-参考【5】中挖</li>
+<li>trend分解中其实是用的移动平均，提取的数据的趋势；所以提取的趋势不一定是线性的</li>
 </ul>
 
-<h2 id="toc_4">2. case</h2>
+<p>具体计算逻辑说明： <a href="https://www.jianshu.com/p/e2cc90e1c32d">https://www.jianshu.com/p/e2cc90e1c32d</a></p>
 
-<p>参考【4】中处理 <br/>
-(1)IDF加权,考虑到term不同权重</p>
+<p>如何check是否有周期性：可以利用时序的自相关图</p>
 
-<h2 id="toc_5">3.工具</h2>
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2020/4/17</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='4%20Statistics.html'>4 Statistics</a></span>
+          				   
+                    
 
-<p>(1) positive association rules—— apriori<br/>
-python的sklearn中貌似没有直接的apriori工具,在<code>pypi</code>上找到这个<code>efficient-apriori</code> <a href="https://pypi.org/search/?q=apriori%E3%80%82">https://pypi.org/search/?q=apriori。</a> 或者在github上搜索 <a href="https://github.com/topics/association-rules?l=python">https://github.com/topics/association-rules?l=python</a></p>
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
 
-<p>(2) negative association rules ------</p>
-
-<p>可以用一种比较tricky的方法，即对于我们所关心的item，在数据集中添加 not_item项即可。比如基于R的实现 <a href="https://subscription.packtpub.com/book/big_data_and_business_intelligence/9781788621878/1/ch01lvl1sec14/negative-association-rules">https://subscription.packtpub.com/book/big_data_and_business_intelligence/9781788621878/1/ch01lvl1sec14/negative-association-rules</a></p>
-
-<h2 id="toc_6">4.统计显著性</h2>
-
-<p><a href="https://github.com/BorgwardtLab/significant-subgraph-mining">https://github.com/BorgwardtLab/significant-subgraph-mining</a></p>
-
-<p>参考资料</p>
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15870155876982.html">
+                
+                  <h1>博客</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>如何打造自己喜欢的博客</p>
 
 <ol>
-<li>A survey of data mining and knowledge discovery process models and methodologies</li>
-<li>A review and analysis on knowledge discovery and data mining techniques(回溯了各种关联规则相关的)</li>
-<li><a href="https://www.ixueshu.com/document/2a80aefb26b9e3e9318947a18e7f9386.html">https://www.ixueshu.com/document/2a80aefb26b9e3e9318947a18e7f9386.html</a></li>
-<li>Negative and Positive Association Rules Mining from Text Using Frequent and Infrequent Itemsets</li>
-<li>mining high utility itemsets</li>
+<li>以md方式书写，比较方便统一所有书写博客方式</li>
+<li>能push到github.io 作为自己的博客一直积累。而不用担心以后像网易博客似的停了</li>
+<li>Mweb用的比较好，最终是生成html。push到的github.io</li>
 </ol>
+
+<p>所以找个以md方式生成html格式的ppt即可。</p>
+
+<p>方式1：<br/>
+之前在学习coursera的课程时候，用R制作的ppt比较炫酷，可以在线预览，试了下可以生成单独的html文件。但是常见的是Rpres文件,需要转化</p>
+
+<p>方法2:<br/>
+md书写=&gt; 转换html<br/>
+<a href="https://sspai.com/post/52589">https://sspai.com/post/52589</a><br/>
+<a href="https://www.jianshu.com/p/e063303317cb">https://www.jianshu.com/p/e063303317cb</a></p>
+
+<h1 id="toc_0">github 相关</h1>
+
+<p>github展示 ppt<br/>
+<a href="https://github.com/ksky521/nodeppt">https://github.com/ksky521/nodeppt</a></p>
+
+<p>在线的 <a href="https://slides.com/">https://slides.com/</a></p>
+
+<h2 id="toc_1">githubPages 博客</h2>
+
+<p>官网 <a href="https://pages.github.com/">https://pages.github.com/</a></p>
+
+<p><a href="https://github.com/timelessg/timelessg.github.io">https://github.com/timelessg/timelessg.github.io</a></p>
+
+<p>教程 <a href="https://zhuanlan.zhihu.com/p/35668237">https://zhuanlan.zhihu.com/p/35668237</a></p>
+
+<p>参考博客 <a href="https://tsinghua-gongjing.github.io/posts/EpiNano.html">https://tsinghua-gongjing.github.io/posts/EpiNano.html</a></p>
+
+<p><a href="http://jekyllthemes.org/themes/documentation-theme-jekyll/">http://jekyllthemes.org/themes/documentation-theme-jekyll/</a></p>
+
+<p><a href="https://biopython-cn.readthedocs.io/zh_CN/latest/index.html">https://biopython-cn.readthedocs.io/zh_CN/latest/index.html</a></p>
 
                         
                       </div>
@@ -341,10 +325,10 @@ python的sklearn中貌似没有直接的apriori工具,在<code>pypi</code>上找
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/4/13</span>
+                    <span class="date">2020/4/16</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html'>kdd&异常检测</a></span>
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
           				   
                     
 
@@ -360,114 +344,74 @@ python的sklearn中貌似没有直接的apriori工具,在<code>pypi</code>上找
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15846836766049.html">
+                <a class="clearlink" href="15870068175699.html">
                 
-                  <h1>【异常检测1】无监督-多元数据</h1>
+                  <h1>【异常检测3】Abnormal behavior detection （行为/视频）</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>☆☆☆<a href="https://github.com/yzhao062/anomaly-detection-resources">https://github.com/yzhao062/anomaly-detection-resources</a>  资料综述，包括相关工具与论文</p>
+                        	<p>行为序列的异常？ video中异常行为检测？</p>
 
-<p>总述：<br/>
-从异常检测要检测的目的数据的不同，大致可以分为如下几类，后续会分别对这几类进行综述学习。</p>
-
-<ol>
-<li>多元特征数据，传统的n_sample x n_features形式</li>
-<li>高维数据</li>
-<li>时间序列，行为序列</li>
-<li>graph, network</li>
-</ol>
-
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15846836766049.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2020/3/20</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html'>kdd&异常检测</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15839963017817.html">
-                
-                  <h1>样本不均衡</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>smote</p>
-
-<p><a href="https://github.com/scikit-learn-contrib/imbalanced-learn">https://github.com/scikit-learn-contrib/imbalanced-learn</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2020/3/12</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15838236096534.html">
-                
-                  <h1>MMLab</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">1. MMLab + DeepFashion 服饰识别</h2>
-
-<p>项目地址: <a href="https://github.com/open-mmlab/mmfashion">https://github.com/open-mmlab/mmfashion</a></p>
-
-<p>香港中文大学多媒体实验室（Multimedia Lab）开展的MMFashion项目，是针对服饰领域提供的一个通用的toolbox(基于pytorch)</p>
-
-<p>主要功能有:</p>
+<p>sequence based</p>
 
 <ul>
-<li>属性归类</li>
-<li>相似服装检索</li>
-<li>服饰关键点检测</li>
+<li>相似性： 假设所有数据都是normal的，然后找到normal sequence， 最后计算与normal sequence的距离(比如LCS)</li>
+<li>window based。traing：所有sequence 分成多个windows，windows的score：frequence；classifier：随机生成数据作为anomaly标签。 testing：instance的各个windows的anomaly socre组合：取平均；取大于阈值的个数；LFC（计算anomaly window前n个window中anomaly 的个数）</li>
+<li>HMM：</li>
 </ul>
 
-<p>使用：<br/>
-可以按照说明开始 <a href="https://github.com/open-mmlab/mmfashion/blob/master/docs/GETTING_STARTED.md">https://github.com/open-mmlab/mmfashion/blob/master/docs/GETTING_STARTED.md</a><br/>
-同时可以替换成自己的数据集 ,<br/>
-含有的基础model: <a href="https://github.com/open-mmlab/mmfashion/blob/master/docs/MODEL_ZOO.md">https://github.com/open-mmlab/mmfashion/blob/master/docs/MODEL_ZOO.md</a></p>
+<p><strong>参照论文：</strong><br/>
+<a href="https://blog.csdn.net/liuxiao214/article/details/78281160?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task">https://blog.csdn.net/liuxiao214/article/details/78281160?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task</a></p>
+
+<h2 id="toc_0">论文1【Soft + Hardwired Attention: An LSTM Framework for Human Trajectory</h2>
+
+<p>Prediction and Abnormal Event Detection】</p>
+
+<p>本文主要提出了一种基于LSTM的行为预测和异常检测方法</p>
+
+<p>related work：human behaviour prediction 文献回溯<br/>
+    - 轨迹聚类<br/>
+    - 预测人类行为，一个常用的方法是social force model，可以详见 <a href="https://wenku.baidu.com/view/c6359d0452ea551810a68733.html">https://wenku.baidu.com/view/c6359d0452ea551810a68733.html</a><br/>
+    - attention models</p>
+
+<p><img src="media/15846836766049/15851206602866.jpg" alt=""/></p>
+
+<h2 id="toc_1">论文2 Detecting-Spacecraf-Anomalies-Using-LSTMs-and-Nonparametric-Dynamic-Thresholding</h2>
+
+<p><a href="http://blog.rexking6.top/2019/03/03/%E3%80%8ADetecting-Spacecraf-Anomalies-Using-LSTMs-and-Nonparametric-Dynamic-Thresholding%E3%80%8B%E7%AC%94%E8%AE%B0/">http://blog.rexking6.top/2019/03/03/%E3%80%8ADetecting-Spacecraf-Anomalies-Using-LSTMs-and-Nonparametric-Dynamic-Thresholding%E3%80%8B%E7%AC%94%E8%AE%B0/</a></p>
+
+<p>有几点可以学习的地方：</p>
+
+<p>动态误差阈值：对于模型产生的预测误差，将其进行平滑处理(比如指数加权),然后针对平滑后的设置阈值。</p>
+
+<p><strong>阈值计算</strong>：<br/>
+<img src="media/15870068175699/15874697100613.jpg" alt=""/><br/>
+简单地说，就是找到这样一个阈值，如果去掉超过他的所有值后，平滑误差\(e_s\)的均值和标准差会下降最大的百分比。另外还考虑到了正则化惩罚，惩罚具有大量与长治\(|e_s|\)和序列\(|E_{seq}|\)以防止过度贪心的行为。</p>
+
+<p><strong>减少误报-假阳性</strong></p>
+
+<h2 id="toc_2">论文3 abnormal behavior detection in crowd scenes</h2>
+
+<p>光流法(optical flow)（简介<a href="https://zhuanlan.zhihu.com/p/44859953%EF%BC%89%EF%BC%8C%E4%B8%80%E8%88%AC%E7%94%A8HOF%E6%88%96%E8%80%85MHOF%EF%BC%88histogram">https://zhuanlan.zhihu.com/p/44859953），一般用HOF或者MHOF（histogram</a> of optical flow）作为速度、方向的统计信息特征</p>
+
+<h2 id="toc_3">论文4 序列特征解释Sequence Feature Explanations</h2>
+
+<h2 id="toc_4">工具</h2>
+
+<p><a href="https://github.com/khundman/telemanom">https://github.com/khundman/telemanom</a></p>
+
+<p>使用报错 <code>OMP: Error #15: Initializing libiomp5.dylib, but found libiomp5.dylib already initialized.</code><br/>
+解决方案:在执行的example.py脚本中加入 </p>
+
+<pre><code class="language-python">import os
+os.environ[&#39;KMP_DUPLICATE_LIB_OK&#39;]=&#39;True&#39;
+</code></pre>
+
+<p>一个简化版讲解 <a href="https://www.cdxy.me/?p=812">https://www.cdxy.me/?p=812</a></p>
+
+<p><code>telemanom.modeling</code>:   model 加载或者创建新的<br/>
+<code>telemanom.errors</code>: 对应论文中自动确定阈值部分</p>
 
                         
                       </div>
@@ -476,10 +420,10 @@ python的sklearn中貌似没有直接的apriori工具,在<code>pypi</code>上找
                 <div class="read-more clearfix">
                   <div class="more-left left">
                   
-                    <span class="date">2020/3/10</span>
+                    <span class="date">2020/4/16</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='tools.html'>tools</a></span>
+          					    <span class="posted-in"><a href='kdd&AbnormalDetection.html'>kdd&AbnormalDetection</a></span>
           				   
                     
 
@@ -546,25 +490,27 @@ python的sklearn中貌似没有直接的apriori工具,在<code>pypi</code>上找
 
       	<p class="cat-list">
         
-            <a href="kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html"><strong>kdd&异常检测</strong></a>
+            <a href="kdd&AbnormalDetection.html"><strong>kdd&AbnormalDetection</strong></a>
         
-            <a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html"><strong>轨迹分析</strong></a>
+            <a href="trace%20analysis.html"><strong>trace analysis</strong></a>
         
             <a href="1%20Tools.html"><strong>1 Tools</strong></a>
         
-            <a href="2%20Get%20Data.html"><strong>2 Get Data</strong></a>
+            <a href="2%20GetData.html"><strong>2 GetData</strong></a>
         
-            <a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html"><strong>3 数据可视化</strong></a>
+            <a href="3%20DataVisulization.html"><strong>3 DataVisulization</strong></a>
         
-            <a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 统计方法</strong></a>
+            <a href="4%20Statistics.html"><strong>4 Statistics</strong></a>
         
-            <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习</strong></a>
+            <a href="5%20MachineLearning.html"><strong>5 MachineLearning</strong></a>
+        
+            <a href="5.1%20RecommendSystem.html"><strong>5.1 RecommendSystem</strong></a>
         
             <a href="6%20NLP.html"><strong>6 NLP</strong></a>
         
             <a href="7%20CV.html"><strong>7 CV</strong></a>
         
-            <a href="8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>8 深度学习</strong></a>
+            <a href="8%20DeepLearning.html"><strong>8 DeepLearning</strong></a>
         
             <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
@@ -589,31 +535,31 @@ python的sklearn中貌似没有直接的apriori工具,在<code>pypi</code>上找
 	      
 		      
 			      <li class="post">
-			        <a href="15921526421890.html">python</a>
+			        <a href="15942889318992.html">综述</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15919304631539.html">源码阅读工具</a>
+			        <a href="15942842749545.html">原理篇——模型融合</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15919291891898.html">训练常见问题</a>
+			        <a href="15942831902643.html">原理篇——矩阵分解</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15918717478277.html">【工具】MMlab—mmskelton</a>
+			        <a href="15940468654753.html">maven</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15918653333546.html">图像检索：BoF、VLAD、FV三剑客</a>
+			        <a href="15940355196534.html">spring boot</a>
 			      </li>
 		     
 		  

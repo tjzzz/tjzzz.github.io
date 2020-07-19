@@ -81,25 +81,27 @@
     <li><label>Categories</label></li>
 
         
-            <li><a href="kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html">kdd&异常检测</a></li>
+            <li><a href="kdd&AbnormalDetection.html">kdd&AbnormalDetection</a></li>
         
-            <li><a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html">轨迹分析</a></li>
+            <li><a href="trace%20analysis.html">trace analysis</a></li>
         
             <li><a href="1%20Tools.html">1 Tools</a></li>
         
-            <li><a href="2%20Get%20Data.html">2 Get Data</a></li>
+            <li><a href="2%20GetData.html">2 GetData</a></li>
         
-            <li><a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html">3 数据可视化</a></li>
+            <li><a href="3%20DataVisulization.html">3 DataVisulization</a></li>
         
-            <li><a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html">4 统计方法</a></li>
+            <li><a href="4%20Statistics.html">4 Statistics</a></li>
         
-            <li><a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html">5 机器学习</a></li>
+            <li><a href="5%20MachineLearning.html">5 MachineLearning</a></li>
+        
+            <li><a href="5.1%20RecommendSystem.html">5.1 RecommendSystem</a></li>
         
             <li><a href="6%20NLP.html">6 NLP</a></li>
         
             <li><a href="7%20CV.html">7 CV</a></li>
         
-            <li><a href="8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">8 深度学习</a></li>
+            <li><a href="8%20DeepLearning.html">8 DeepLearning</a></li>
         
             <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
@@ -151,67 +153,6 @@ CUDA 9.2+ (If you build PyTorch from source, CUDA 9.0 is also compatible)<br/>
 GCC 5+<br/>
 mmcv</p>
 
-<p>安装步骤：</p>
-
-<pre><code class="language-text"># 进入自己的conda环境
-conda install pytorch torchvision -c pytorch   # 注意版本
-git clone https://github.com/open-mmlab/mmdetection.git
-cd mmdetection
-#
-pip install -r requirements/build.txt
-pip install &quot;git+https://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI&quot;
-pip install -v -e .  # or &quot;python setup.py develop&quot;
-</code></pre>
-
-<p>注意：git commit id将在步骤d中写入版本号，例如0.6.0 + 2e7045c。该版本还将保存在经过训练的模型中。建议您每次从github提取一些更新时都运行步骤d。如果修改了C ++ / CUDA代码，则此步骤为强制性的。<br/>
-按照上述说明，mmdetection将安装在dev模式下，对代码进行的任何本地修改都将生效，而无需重新安装它（除非您提交了一些提交并希望更新版本号）。<br/>
-如果要使用opencv-python-headless而不是opencv-python，可以在安装MMCV之前先安装它。</p>
-
-<p>方法二:docker</p>
-
-<pre><code class="language-text">git clone https://github.com/open-mmlab/mmdetection.git
-cd mmdetection
-sudo docker build -t mmdetection docker/
-</code></pre>
-
-<p>注意:如果没有gpu，需要将Dockerfile中的 Force_cuda改为0</p>
-
-<p><strong>2.测试demo</strong></p>
-
-<pre><code class="language-text">- demo/inference_demo.ipynb
-</code></pre>
-
-<pre><code class="language-python">from mmdet.apis import init_detector, inference_detector, show_result_pyplot
-config_file = &#39;configs/faster_rcnn/faster_rcnn_r50_fpn_1x_coco.py&#39;
-checkpoint_file = &#39;checkpoints/faster_rcnn_r50_fpn_1x_coco_20200130-047c8118.pth&#39;
-## checkpoint_file = &#39;https://open-mmlab.s3.ap-northeast-2.amazonaws.com/mmdetection/v2.0/faster_rcnn/faster_rcnn_r50_fpn_1x_coco/faster_rcnn_r50_fpn_1x_coco_20200130-047c8118.pth&#39;
-# 这里要注意config_file 和checkpoint_file的匹配
-# test a single image
-img = &#39;demo/demo.jpg&#39;
-model = init_detector(config_file, checkpoint_file, device=&#39;cpu&#39;)
-result = inference_detector(model, img)
-show_result_pyplot(model, img, result)
-</code></pre>
-
-<p>解释：</p>
-
-<ol>
-<li>基本上主要分为这三步吧，init_detector， inference_detector， show_result_pyplot 可以再细看下show_result_pyplot中model的属性，怎么把结果和位置提取出来<code>mmdet/models/detectors/base.py</code></li>
-<li>如果本机的环境不好用的话，可以在colab上测试，<a href="https://colab.research.google.com/github/open-mmlab/mmdetection/blob/master/demo/mmdet_inference_colab.ipynb#scrollTo=CSDS0SJBWa2l">https://colab.research.google.com/github/open-mmlab/mmdetection/blob/master/demo/mmdet_inference_colab.ipynb#scrollTo=CSDS0SJBWa2l</a></li>
-<li>多数时候运行不成功，应该都是环境或者版本不匹配问题</li>
-</ol>
-
-<p><strong>3.应用</strong><br/>
-code详解<br/>
-(1) demo里用的是coco的分类<br/>
-mmdet.models.detectors # 是基础的各种检测方法<br/>
-mmdet.models.detectors.base.show_result中可以看到三步骤中二的返回结果是怎么解析的</p>
-
-<p>result格式: list[array([xmin, ymax, xmax, ymin, 置信度])]</p>
-
-<p>mmdet.core.evaluation.class_names 中包含不同数据集定义的get_classes具体的类别</p>
-
-<p>(2)替换自己的数据分类</p>
 
                         
                       </div>
@@ -219,7 +160,7 @@ mmdet.models.detectors.base.show_result中可以看到三步骤中二的返回�
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                  
+                   <a href="15906325298474.html">Read more</a>&nbsp;&nbsp; 
                     <span class="date">2020/5/28</span>
                     <span>posted in&nbsp;</span> 
           				  
@@ -660,25 +601,27 @@ make -j`nproc`
 
       	<p class="cat-list">
         
-            <a href="kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html"><strong>kdd&异常检测</strong></a>
+            <a href="kdd&AbnormalDetection.html"><strong>kdd&AbnormalDetection</strong></a>
         
-            <a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html"><strong>轨迹分析</strong></a>
+            <a href="trace%20analysis.html"><strong>trace analysis</strong></a>
         
             <a href="1%20Tools.html"><strong>1 Tools</strong></a>
         
-            <a href="2%20Get%20Data.html"><strong>2 Get Data</strong></a>
+            <a href="2%20GetData.html"><strong>2 GetData</strong></a>
         
-            <a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html"><strong>3 数据可视化</strong></a>
+            <a href="3%20DataVisulization.html"><strong>3 DataVisulization</strong></a>
         
-            <a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 统计方法</strong></a>
+            <a href="4%20Statistics.html"><strong>4 Statistics</strong></a>
         
-            <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习</strong></a>
+            <a href="5%20MachineLearning.html"><strong>5 MachineLearning</strong></a>
+        
+            <a href="5.1%20RecommendSystem.html"><strong>5.1 RecommendSystem</strong></a>
         
             <a href="6%20NLP.html"><strong>6 NLP</strong></a>
         
             <a href="7%20CV.html"><strong>7 CV</strong></a>
         
-            <a href="8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>8 深度学习</strong></a>
+            <a href="8%20DeepLearning.html"><strong>8 DeepLearning</strong></a>
         
             <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
@@ -703,31 +646,31 @@ make -j`nproc`
 	      
 		      
 			      <li class="post">
-			        <a href="15921526421890.html">python</a>
+			        <a href="15942889318992.html">综述</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15919304631539.html">源码阅读工具</a>
+			        <a href="15942842749545.html">原理篇——模型融合</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15919291891898.html">训练常见问题</a>
+			        <a href="15942831902643.html">原理篇——矩阵分解</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15918717478277.html">【工具】MMlab—mmskelton</a>
+			        <a href="15940468654753.html">maven</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15918653333546.html">图像检索：BoF、VLAD、FV三剑客</a>
+			        <a href="15940355196534.html">spring boot</a>
 			      </li>
 		     
 		  

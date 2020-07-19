@@ -81,25 +81,27 @@
     <li><label>Categories</label></li>
 
         
-            <li><a href="kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html">kdd&异常检测</a></li>
+            <li><a href="kdd&AbnormalDetection.html">kdd&AbnormalDetection</a></li>
         
-            <li><a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html">轨迹分析</a></li>
+            <li><a href="trace%20analysis.html">trace analysis</a></li>
         
             <li><a href="1%20Tools.html">1 Tools</a></li>
         
-            <li><a href="2%20Get%20Data.html">2 Get Data</a></li>
+            <li><a href="2%20GetData.html">2 GetData</a></li>
         
-            <li><a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html">3 数据可视化</a></li>
+            <li><a href="3%20DataVisulization.html">3 DataVisulization</a></li>
         
-            <li><a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html">4 统计方法</a></li>
+            <li><a href="4%20Statistics.html">4 Statistics</a></li>
         
-            <li><a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html">5 机器学习</a></li>
+            <li><a href="5%20MachineLearning.html">5 MachineLearning</a></li>
+        
+            <li><a href="5.1%20RecommendSystem.html">5.1 RecommendSystem</a></li>
         
             <li><a href="6%20NLP.html">6 NLP</a></li>
         
             <li><a href="7%20CV.html">7 CV</a></li>
         
-            <li><a href="8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">8 深度学习</a></li>
+            <li><a href="8%20DeepLearning.html">8 DeepLearning</a></li>
         
             <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
@@ -130,60 +132,55 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637037679680.html">
+                <a class="clearlink" href="15637037677008.html">
                 
-                  <h1>第四章 数值计算</h1>
+                  <h1>3.【解释性】LIME</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<h2 id="toc_0">1.数值精度</h2>
+                        	<p>机器学习得到的模型有时候是一个black box不具有解释性，作者提出了一个问题，我们究竟是相信一个predict result，还是相信一个model。</p>
 
-<p>这部分对于了解具体的算法并没影响，但是在进行底层库开发时候经常会遇到，可能会出现<strong>上溢</strong>或者<strong>下溢</strong></p>
+<p>本文作者主要是利用局部近似的方法，来对any classifier进行解释<br/>
+一个大概的示意图<br/>
+<img src="media/15227606288131/15227612016423.jpg" alt=""/></p>
 
-<p>（1）病态条件</p>
-
-<p>条件数：表示函数相对于输入的微小变化而变化的快慢程度。<br/>
-比如矩阵求逆运算的条件数=最大和最小特征值的模的比</p>
-
-<h2 id="toc_1">2.优化算法</h2>
+<h2 id="toc_0">2.可解释性</h2>
 
 <ul>
-<li>梯度下降</li>
-<li>牛顿法</li>
+<li>可解释：首先必须是可解释的易懂的，在特征很多的时候，线性模型、梯度向量、可加模型等都不太适合。</li>
+<li>local faithfull：局部忠诚</li>
+<li>与模型无关的，可解释any classifier</li>
 </ul>
 
-<p>一般把需要最优化的函数称为<strong>目标函数</strong></p>
+<h2 id="toc_1">3 Local Interpretable Model-agnostic Explanations</h2>
 
-<p><strong>梯度下降</strong></p>
+<p>LIME，首先区分两个东西</p>
 
-<p>对于一个多维输入函数f，梯度\(\triangledown_x f(x)\),其在u方向上的<strong>方向导数</strong>，相当于f在u方向上的斜率<br/>
-\(f(x+\alpha u)\)关于\(\alpha\)的导数(在\(\alpha =0\)时取得)</p>
+<ul>
+<li>features</li>
+<li>interpretable data representations</li>
+</ul>
 
-<p>\[\frac{\partial}{\partial \alpha}f(x+\alpha u)=u^T\triangledown_x f(x)\]</p>
+<p>比如文本文类时具体的features是一个vector，而可解释的representation可能是是否出现某个关键词</p>
 
-<p>为了是f最小，希望找到f下降最快的方向，因此有<br/>
-\[min u^T\triangledown_x f(x)\]<br/>
-u取为单位向量，很明显是在u和f夹角180时候，也就是两个完全相反的时候，下降最快。<br/>
-梯度下降： \(x&#39;=x-\epsilon \triangledown_x f(x)\)</p>
+<p>基本原理示意图：<br/>
+<img src="media/15227606288131/15227631412258.jpg" alt=""/></p>
 
-<p><strong>牛顿法</strong></p>
+<p>说明：</p>
 
-<p>Hessian矩阵，二阶导数<br/>
-<img src="media/15080580137304/15082408605128.jpg" alt=""/></p>
+<p>抽象的数学描述<br/>
+<img src="media/15227606288131/15227633252420.jpg" alt=""/></p>
 
-<h2 id="toc_2">3.有限制的约束</h2>
+<p>作者在后面主要是讲了候选集是稀疏线性模型的方法</p>
 
-<p>对于有限制的优化，有时候可以将约束条件转化到原始的优化函数中，这里主要介绍一下通用的方法：<strong>KKT方法</strong>(拉格朗日方法的推广，可以非等式约束)</p>
+<h3 id="toc_2">稀疏线性解释</h3>
 
-<pre><code class="language-text">@@@
-http://blog.csdn.net/mr_kktian/article/details/53750424
-</code></pre>
+<p>即G为线性模型，一致性的度量\(\pi_x=exp(-D(x,z)^2/\sigma^2)\), 在x局部用一个线性函数去近似</p>
 
-<h2 id="toc_3">参考资料</h2>
-
-<p>梯度下降法 扩展阅读： <a href="https://www.jiqizhixin.com/articles/2016-11-21-4">https://www.jiqizhixin.com/articles/2016-11-21-4</a><br/>
-<a href="http://www.cnblogs.com/maybe2030/p/4751804.html">http://www.cnblogs.com/maybe2030/p/4751804.html</a></p>
+<p><img src="media/15227606288131/15227718128055.jpg" alt=""/><br/>
+具体操作，先用lasso选择k个特征，然后用最小二乘学习特征的权重，K-LASSO<br/>
+<img src="media/15227606288131/15227724362604.jpg" alt=""/></p>
 
                         
                       </div>
@@ -195,7 +192,7 @@ http://blog.csdn.net/mr_kktian/article/details/53750424
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>8 深度学习</a></span>
+          					    <span class="posted-in"><a href='8%20DeepLearning.html'>8 DeepLearning</a></span>
           				   
                     
 
@@ -211,46 +208,337 @@ http://blog.csdn.net/mr_kktian/article/details/53750424
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637037679781.html">
+                <a class="clearlink" href="15637037677178.html">
                 
-                  <h1>t-sne</h1>
+                  <h1>一、基础篇</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<pre><code class="language-text">from sklearn.manifold import TSNE
-from sklearn.datasets import load_iris
-from sklearn.decomposition import PCA
-import matplotlib.pyplot as plt
-import pandas as pd
-import numpy as np
- 
- 
- 
-data=pd.read_csv(&#39;test.data&#39;, sep=&#39;,&#39;,header=None)
-dd= data[range(200)]
+                        	<h1 id="toc_0">1.计算学习理论——是否可学习</h1>
 
-X_tsne = TSNE().fit_transform(dd)
-X_pca = PCA().fit_transform(dd)
+<p>一直在说机器学习，主要是在说怎么去学。在怎么学之前，首先需要了解下能不能学，学习的机制是什么</p>
 
-out = DataFrame(np.hstack((X_tsne, X_pca)))
+<h2 id="toc_1">PAC（概率近似正确）</h2>
 
-out2=data[200])
+<p><a href="https://blog.csdn.net/wangjianguobj/article/details/57413819">https://blog.csdn.net/wangjianguobj/article/details/57413819</a></p>
 
-out.to_csv(&#39;save_data.csv&#39;)
+<h2 id="toc_2">VC维度</h2>
 
+<p>这个介绍的挺详细<br/>
+<a href="http://www.flickering.cn/machine_learning/2015/04/vc%E7%BB%B4%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89/?from=singlemessage">http://www.flickering.cn/machine_learning/2015/04/vc%E7%BB%B4%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89/?from=singlemessage</a></p>
 
-plt.figure(figsize=(10, 5))
-plt.subplot(121)
-plt.scatter(X_tsne[:, 0], X_tsne[:, 1],c=data[200])
-plt.subplot(122)
-#plt.scatter(X_pca[:, 0], X_pca[:, 1], c=iris.target)
-plt.scatter(X_pca[:, 0], X_pca[:, 1], c=data[200])
+<h2 id="toc_3">参考</h2>
+
+<p>台大-机器学习基石</p>
+
+<h1 id="toc_4">6.模型设计准则</h1>
+
+<ol>
+<li>模型拟合</li>
+</ol>
+
+<p>(1) 无免费午餐定理 NFL</p>
+
+<p>就是任何一个算法，针对所有问题，在平均意义上效果是一样的。</p>
+
+<p>=&gt; 所以要具体问题具体分析，针对不同问题，选择适合该问题的方法</p>
+
+<p>(2)奥卡姆剃刀原则</p>
+
+<p>即在预测效果差不多的情况下，模型越简单余越好</p>
+
+<p>误差 = bias + varaince + noise</p>
+
+<ul>
+<li>过拟合</li>
+<li>欠拟合</li>
+</ul>
+
+<h1 id="toc_5">7.模型验证</h1>
+
+<p>1.估计泛化误差</p>
+
+<p>训练集，验证集</p>
+
+<p>2.对数据的重采样</p>
+
+<ul>
+<li>留出法</li>
+<li>k折交叉验证</li>
+<li>自助法(有放回)</li>
+</ul>
+
+<h1 id="toc_6">8.模型的评估指标</h1>
+
+<h1 id="toc_7">9.实验设计</h1>
+
+<p>设计实验是要要成的任务是对整个机器学习过程的优化。实验中因子的设计可能会包含很多，比如：算法的类别、算法的参数、数据集等。</p>
+
+<p>当因子较多的时候，如何确定单一因子的影响就需要一些技巧<br/>
+<strong>控制变量法</strong></p>
+
+<p>它暗含着一个较强的假设，就是不同因子之间相互独立，互不影响。然而这个并不总是成立的。</p>
+
+<p><strong>因子设计</strong><br/>
+他关注的是不同因子之间系统化的变化对学习效果的影响，他的一个特例就是<strong>全因子实验</strong>，也叫<strong>完全交叉设计</strong>。</p>
+
+<p>在具体操作的时候，当分析的因子的离散取值较多时候，可以通过粗调+微调的方法。</p>
+
+<p>在对因子进行精调时候，可以使用<strong>响应面方法</strong>（zzz:根据百科资料解释,就是做了一个二次函数的拟合）</p>
+
+<h2 id="toc_8">正交抽样设计</h2>
+
+<p>@@@补充下：</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20MachineLearning.html'>5 MachineLearning</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037677393.html">
+                
+                  <h1>4.2 回归与分类</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>统计模型一开始是从回归分析开始的，但是实际问题中更加普遍的是分类问题。那么很自然的一个问题是，如果利用回归分析的方法的话，如何去做分类问题呢？换句话说回归和分类之间的联系在哪里呢？</p>
+</blockquote>
+
+<p>一个很自然的想法是，根据回归分析y的结果，按照一定规则将其映射到不同的区间段，从而形成一个分类模型。即连续变量 =&gt; 分类变量</p>
+
+<h3 id="toc_0">1. 硬输出——判别分析</h3>
+
+<p>直接根据阈值划分分类结果， 而这个映射函数即为<strong>判别函数</strong>。比较典型的就是判别分析了。常用的判别分析的方法：</p>
+
+<blockquote>
+<p>距离判别法</p>
+</blockquote>
+
+<p>即按照样本距离各个总体距离的远近来判断所属的归类。比如基于欧式距离或马氏距离，欧式距离没有考虑到本身特征量纲的差异，所以用的不多。这里以马氏距离，两个类别为例。</p>
+
+<p>例子：已知一个样本X可能来自两个总体\(G_1\)和\(G_2\)其中的一个，其中 \(G_1: \mu_1,V_1, G_2:\mu_2, V_2\), 现在给定X，判断其属于哪一类。<br/>
+注意：对总体分布没有要求</p>
+
+<p>解析：判别函数\(W(X)=D^2(X,G_2)-D^2(X,G_1)=(X-\mu_2)V_2^{-1}(X-\mu_2)-(X-\mu_1)V_1^{-1}(X-\mu_1)\).</p>
+
+<p>在实际中因为总体均值和方差是位置的，需要用样本进行估计。当\(V_1=V_2=V\)时候，二次判别式可以变成线性的，有\(W(X) = (X-\bar\mu)V^{-1}(\mu_1-\mu_2)\)， 其中\(\bar\mu = (\mu_1+\mu_2)/2\)</p>
+
+<p>误判概率：判别分析肯定也有出错的时候，下面来讨论下误判概率问题。</p>
+
+<p><img src="media/15383213879430/15384587841040.jpg" alt=""/></p>
+
+<p>从上图中可以比较清楚的看到，出错的概率即为图中阴影部分的面积。</p>
+
+<p>假设X属于1，下面计算其被判断成2的概率即P(2|1)=P(W(X)&lt;0). </p>
+
+<p>令\(\lambda=(\mu_1-\mu_2)&#39;V^{-1}(\mu_1-\mu_2)\). 因为\(W(X) = (X-\bar\mu)V^{-1}(\mu_1-\mu_2)\)， 所以可以计算出<br/>
+\(E(W(X))=(\mu_1-\bar\mu)V^{-1}(\mu_1-\mu_2)=\lambda/2\)<br/>
+\(D(X)=(\mu_1-\mu_2)&#39;V^{-1}(\mu_1-\mu_2)=\lambda\)<br/>
+在X服从正态分布的假定下，有\(W(X)~N(\lambda/2, \lambda)\)，从而可以计算出\(P(2|1)\)与\(P(1|2)\)</p>
+
+<blockquote>
+<p>贝叶斯判别法</p>
+</blockquote>
+
+<p>前面说的距离判别法因为形式简单，计算简便应用比较广。但是没有考虑到各个总体出现的可能性/概率大小，以及误判之后造成的不同损失大小。而贝叶斯判别法就是考虑这两点的一种判别方法。</p>
+
+<p>这里只对其建模过程做个简述。<br/>
+建模：假设m个类别，每个的先验概率和密度函数是 \(q_i, f_i(x)\), 而将原本属于类别i的判给类别j时候造成的损失，记为\(C(j|i)=\)， 而误判的概率可以写成\(p(j|i,R)=\int_{R_j}f_i(x)dx\)。 因此划分规则R最终带来的损失是<br/>
+\[g(R)=\sum^m_1 q_i r(i,R)=\sum_1^m q_i\sum_{j=1}^m C(j|i)p(j|i,R)\]</p>
+
+<blockquote>
+<p>Fisher判别法</p>
+</blockquote>
+
+<p>fisher 判别法出发点和前面两个略有不同，是从投影/降维角度(将多元转为一元)来进行的。以两类为例：假定训练数据分为两个类别C1和C2,每个类别的均值分别是\(u_1\)和\(u_2\),如前所述经过\(y=W^TX+b\)投影后，最终的目标是希望类内的距离尽量小，类间的距离尽量大</p>
+
+<p>类内距离：\(s_k=\sum_{x_i\in C_k}(w^Tx_i-w^Tu_k)^2   k=1,2\)<br/>
+类间聚类：\((w^Tu_1 - w^Tu_2)^2\)</p>
+
+<p>因此最终是最大化这个目标函数\(J(W)=\frac{(w^Tu_1 - w^Tu_2)^2}{s_1^2+s_2^2}\)，为了保证\(W\)的唯一性，不妨设\(W&#39;S_WW=1\)</p>
+
+<p>\[MAX J(W)=\frac{W^TS_BW}{W^TS_WW}\]<br/>
+\[st. W&#39;S_WW=1 \]</p>
+
+<p>这里简单推导一下求解过程，令<br/>
+\[L(W;\lambda)=W&#39;S_BW-\lambda(W&#39;S_WW -1) \]<br/>
+\[\frac{\partial J}{\partial w}=2S_BW-2\lambda S_ww=0\]<br/>
+\[\frac{\partial J}{\partial \lambda}=W&#39;S_WW - 1=0\]<br/>
+=&gt; \(W&#39;S_BW=\lambda\)，所以只需最大化\(\lambda\)<br/>
+\(S_BW=\lambda S_ww\)  ==&gt; \(S_W^{-1}S_BW=\lambda W\)<br/>
+因此取\(S_W^{-1}S_B\)的最大特征值即为\(\lambda\)，对应的特征向量即为\(W\)</p>
+
+<p>当然除了判别分析之外，还有SVM等方法，这个后续会具体介绍</p>
+
+<h3 id="toc_1">2.软输出</h3>
+
+<p>利用似然度区分回归结果，根据回归值和似然性的关系输出样本属于某个类别的<strong>概率</strong>。即通过一个激活函数，架起了回归和分类问题的通道。<br/>
+\[y(x) = g^{-1}(w^Tx+b)\]</p>
+
+<p>逻辑回归就是一个典型的例子。传统的回归模型的假定已经不成立，因为预测变量y是服从二项分布，逻辑回归估计的是样本属于某个类别的后验概率。即</p>
+
+<p>\[p(c_1|x)=\frac{p(x|c_1)p(c_1)}{p(x|c_1)p(c_1) + p(x|c_2)p(c_2)}\]</p>
+
+<p>从这个角度看，对上式稍加变形就有</p>
+
+<p>\[p(c_1|x)=\frac{1}{1+exp(-z)}=\pi(z)\]<br/>
+其中\(z=ln \frac{p(x|c_1)p(c_1)}{p(x|c_2)p(c_2)}=w^Tx + b\)</p>
+
+<p>参数估计用MLE方法：最终分类结果只有两个，所以是服从二项分布<br/>
+\[p(w,b|x) = \prod \pi(x_i)^{y_i}[1-\pi(x_i)]^{1-y_i}\]</p>
+
+<p>对数似然函数<br/>
+\[J(w)=\sum_1^n y_i ln(\pi(z_i)) + (1-y_i)ln(1-\pi(z_i))\]</p>
+
+<p>最大化这个目标函数，可以用梯度下降的方法。注意到sigmoid函数有一个比较好的性质\(\pi&#39;(z)=\pi(z)(1-\pi(z))\)</p>
+
+<p>推导：</p>
+
+<p>\[\frac{\partial J(W)}{\partial w_j}=\sum (y_i\frac{1}{pi(z_i)}-(1-y_i)\frac{1}{1-\pi(z_i)})\pi(z_i)(1-\pi(z_i))x_j\]<br/>
+\[=\sum [y_i(1-\pi(z_i)) - (1-y_i)\pi(z_i)]x_j\]</p>
+
+<p>\[=\sum(y_i -\pi(z_i))x_j\]</p>
+
+<p>因此在利用梯度下降方法更新权重时候，只需要按照\(w_j:=w_j +\eta\sum(y_i -\pi(z_i))x_j\)即可</p>
+
+<p>梯度下降的python版本实现 <a href="https://github.com/tjzzz/data_science/blob/master/statistical%20learning/logistic_regression.py">github</a></p>
+
+<p><strong>sklearn实现</strong>： 逻辑回归是在<code>sklearn.linear_model</code></p>
+
+<pre><code class="language-text">from sklearn.linear_model import LogisticRegression
+model = LogisticRegression(multi_class=&#39;multinomial&#39;, solver=&#39;sag&#39;)
+model.fit(X_train,y_train)
+y_pred = model.predict(X_test)
 </code></pre>
 
-<p>R</p>
+<blockquote>
+<p>OR值(odds ratio), 本来是在医学实验中的词，值实验组中暴露人数与非暴露人数的比值，与对照组中暴露人数与非暴露人数的比值的比值，所以也叫<strong>比值比</strong><br/>
+逻辑回归的更新公式与一般的线性回归的极为相似。\(\sum(y_i-x_iw)x_j\)</p>
+</blockquote>
 
-<pre><code class="language-text">
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='5%20MachineLearning.html'>5 MachineLearning</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15637037678160.html">
+                
+                  <h1>git</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>git 是一个版本管理的工具，能够非常方便的对项目进行版本控制。</p>
+
+<h2 id="toc_0">1建立自己的代码库</h2>
+
+<p>假设你的用户名是zzz<br/>
+（1）生成公钥<br/>
+ssh-keygen -t rsa -f ~/.ssh/id_rsa.zzz<br/>
+cat ~/.ssh/id_rsa.zzz.pub 保存到icode或者是自己的github上<br/>
+（2）clone</p>
+
+<pre><code class="language-text">git clone  xxxxx代码库             # 将代码库克隆到本地
+## 如果机器是多个人使用的话用--local,如果是自己一个人的话可以设置成--global
+git config --local user.email zzz邮箱
+git config --local user.name zzz用户名
+git push origin master:refs/for/master
+</code></pre>
+
+<h2 id="toc_1">2 基本操作</h2>
+
+<p>当我们新增或者更新了一个文件后，如何上传到代码库</p>
+
+<pre><code class="language-text">git add xxx
+git commit -m &#39;注释&#39;
+git push origin HEAD:refs/for/master
+</code></pre>
+
+<p>从代码库将新代码下载到本地，更新本地库</p>
+
+<pre><code class="language-text">git pull
+</code></pre>
+
+<h2 id="toc_2">3.常用操作</h2>
+
+<p>(1) 还原文件到之前的某个版本。</p>
+
+<p>当发现新提交的版本有问题，想回退到之前的某个版本的之后，可以进行如下操作。<code>git long</code><br/>
+比如我想修改自己写的这个<code>utils.py</code> 代码</p>
+
+<pre><code class="language-text">git log utils.py
+## 可以看到一共提交了3次，假设喔想回退到9.25提交的那个版本
+git checkout 742bf4a53e473b2536b53cb3ad56072ae236a1c3 utils.py 
+git commit -m &quot;revert to previous version&quot;
+</code></pre>
+
+<p><img src="media/15637037678160/15699932802240.jpg" alt=""/></p>
+
+<p>我不知道”undo”是什么意思。您可以删除core.excludesfile设置，如下所示：<br/>
+git config --global --unset core.excludesfile<br/>
+当然你也可以简单地编辑配置文件：<br/>
+git config --global --edit<br/>
+…然后手动删除设置。</p>
+
+<p>git config --global --edit</p>
+
+<p>git log<br/>
+git reset --hard xxxxx</p>
+
+<p>查看本地与云端的diff</p>
+
+<p>git rm —cache  删除已经提交的内容</p>
+
+<h2 id="toc_3">4.常见问题</h2>
+
+<p>Q1: repo中含有子模块的</p>
+
+<pre><code class="language-text">git pull --recurse-submodules
 </code></pre>
 
                         
@@ -263,7 +551,7 @@ plt.scatter(X_pca[:, 0], X_pca[:, 1], c=data[200])
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          					    <span class="posted-in"><a href='1%20Tools.html'>1 Tools</a></span>
           				   
                     
 
@@ -279,146 +567,14 @@ plt.scatter(X_pca[:, 0], X_pca[:, 1], c=data[200])
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637036605080.html">
+                <a class="clearlink" href="15637037678245.html">
                 
-                  <h1>3 样本量的确定</h1>
+                  <h1>4.5 树模型</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>抽样中样本量的确定是一个非常重要的问题，在不考虑抽样成本的前提下，样本量越多估计的越准，然而实际情况中我们需要平衡抽样成本与估计结果的置信度——以尽可能低的样本得到尽可能高的置信结果。</p>
-
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15637036605080.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637036455584.html">
-                
-                  <h1>1 估计的置信度</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>在大多数的研究中，我们无法获取研究对象的总体数据，或者能获取但是成本非常大。实际情况中，我们往往是通过抽样的方法，在总体中进行随机抽样。根据获取的这部分样本数据去推动总体的一些属性。比如通过抽样人群的平均身高去估计所有人群的平均身高，通过抽样人群中的男女比例，去估计我国当前的男女比例状况。<br/>
-抽样样本量是直接影响到最终的估计准确度，所以这一章节，先来介绍下如何判断一种估计方法准确与否。</p>
-
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                   <a href="15637036455584.html">Read more</a>&nbsp;&nbsp; 
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637025344767.html">
-                
-                  <h1>【NG-DL】course2_week1 优化网络参数</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">1.基本概念</h2>
-
-<p>很多优化参数：<br/>
-网络层数，隐层数，学习率，激活函数。。。</p>
-
-<ul>
-<li><p>训练集/验证集/测试集</p></li>
-<li><p>偏差， 训练集误差</p></li>
-<li><p>方差</p></li>
-</ul>
-
-<p>若有高bias： 尝试新的网络，更大网络</p>
-
-<p>高方差： 获取更多数据，或者正则化，更合适的网络机构</p>
-
-<p>bias和varaince的平衡<br/>
-一般来说更大的网络能减小偏差，更多的数据能减小方差。</p>
-
-<h2 id="toc_1">2.正则化-L2</h2>
-
-<p>以逻辑回归为例</p>
-
-<p>\(J(w,b)=\frac{1}{m}\sum L(\hat y_i, y_i)+\frac{\lambda}{2m}|w|^2_2\)L2惩罚，避免过拟合，导致高方差</p>
-
-<p>类似的神经网络在优化函数上加上</p>
-
-<p>\(J(w^{[1]},b^{[1]},...w^{[l]},b^{[l]})=\frac{1}{m}\sum L(\hat y_i, y_i)+\frac{\lambda}{2m}\sum||w^{[l]}||^2_2\)</p>
-
-<p>其中\(|w^{[l]}|^2\)F范数</p>
-
-<ul>
-<li>Ng.当\(\lambda\)较大时候,w会较小，sigmoid接近线性，降低方差。
-<img src="media/15055593941505/15103891828021.jpg" alt=""/></li>
-</ul>
-
-<h3 id="toc_2">正则化-dropout(随机失活)</h3>
-
-<p>每次对网络中的节点设置一个随机消失的概率p，即每个节点可能在也可能不在网络中，不在的时候即相当于该节点的数值置为0.</p>
-
-<p>dropout与l2类似都会shrink权重。</p>
-
-<h3 id="toc_3">early stoping</h3>
-
-<h2 id="toc_4">3.优化</h2>
-
-<h3 id="toc_5">归一化</h3>
-
-<p>归一化输入=&gt; 均值0，方差1</p>
-
-<ul>
-<li>零均值化</li>
-<li>归一化方差</li>
-</ul>
-
-<p><img src="media/15055593941505/15103915636569.jpg" alt=""/></p>
-
-<h3 id="toc_6">梯度消失与梯度爆炸</h3>
-
-<p>当梯度增长很大或者很微弱时，会导致优化出问题或者很慢。</p>
-
+                        	
                         
                       </div>
                   </div>
@@ -429,7 +585,7 @@ plt.scatter(X_pca[:, 0], X_pca[:, 1], c=data[200])
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>8 深度学习</a></span>
+          					    <span class="posted-in"><a href='5%20MachineLearning.html'>5 MachineLearning</a></span>
           				   
                     
 
@@ -496,25 +652,27 @@ plt.scatter(X_pca[:, 0], X_pca[:, 1], c=data[200])
 
       	<p class="cat-list">
         
-            <a href="kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html"><strong>kdd&异常检测</strong></a>
+            <a href="kdd&AbnormalDetection.html"><strong>kdd&AbnormalDetection</strong></a>
         
-            <a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html"><strong>轨迹分析</strong></a>
+            <a href="trace%20analysis.html"><strong>trace analysis</strong></a>
         
             <a href="1%20Tools.html"><strong>1 Tools</strong></a>
         
-            <a href="2%20Get%20Data.html"><strong>2 Get Data</strong></a>
+            <a href="2%20GetData.html"><strong>2 GetData</strong></a>
         
-            <a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html"><strong>3 数据可视化</strong></a>
+            <a href="3%20DataVisulization.html"><strong>3 DataVisulization</strong></a>
         
-            <a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 统计方法</strong></a>
+            <a href="4%20Statistics.html"><strong>4 Statistics</strong></a>
         
-            <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习</strong></a>
+            <a href="5%20MachineLearning.html"><strong>5 MachineLearning</strong></a>
+        
+            <a href="5.1%20RecommendSystem.html"><strong>5.1 RecommendSystem</strong></a>
         
             <a href="6%20NLP.html"><strong>6 NLP</strong></a>
         
             <a href="7%20CV.html"><strong>7 CV</strong></a>
         
-            <a href="8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>8 深度学习</strong></a>
+            <a href="8%20DeepLearning.html"><strong>8 DeepLearning</strong></a>
         
             <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
@@ -539,31 +697,31 @@ plt.scatter(X_pca[:, 0], X_pca[:, 1], c=data[200])
 	      
 		      
 			      <li class="post">
-			        <a href="15921526421890.html">python</a>
+			        <a href="15942889318992.html">综述</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15919304631539.html">源码阅读工具</a>
+			        <a href="15942842749545.html">原理篇——模型融合</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15919291891898.html">训练常见问题</a>
+			        <a href="15942831902643.html">原理篇——矩阵分解</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15918717478277.html">【工具】MMlab—mmskelton</a>
+			        <a href="15940468654753.html">maven</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15918653333546.html">图像检索：BoF、VLAD、FV三剑客</a>
+			        <a href="15940355196534.html">spring boot</a>
 			      </li>
 		     
 		  

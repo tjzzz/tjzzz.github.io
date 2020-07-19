@@ -81,25 +81,27 @@
     <li><label>Categories</label></li>
 
         
-            <li><a href="kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html">kdd&异常检测</a></li>
+            <li><a href="kdd&AbnormalDetection.html">kdd&AbnormalDetection</a></li>
         
-            <li><a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html">轨迹分析</a></li>
+            <li><a href="trace%20analysis.html">trace analysis</a></li>
         
             <li><a href="1%20Tools.html">1 Tools</a></li>
         
-            <li><a href="2%20Get%20Data.html">2 Get Data</a></li>
+            <li><a href="2%20GetData.html">2 GetData</a></li>
         
-            <li><a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html">3 数据可视化</a></li>
+            <li><a href="3%20DataVisulization.html">3 DataVisulization</a></li>
         
-            <li><a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html">4 统计方法</a></li>
+            <li><a href="4%20Statistics.html">4 Statistics</a></li>
         
-            <li><a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html">5 机器学习</a></li>
+            <li><a href="5%20MachineLearning.html">5 MachineLearning</a></li>
+        
+            <li><a href="5.1%20RecommendSystem.html">5.1 RecommendSystem</a></li>
         
             <li><a href="6%20NLP.html">6 NLP</a></li>
         
             <li><a href="7%20CV.html">7 CV</a></li>
         
-            <li><a href="8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html">8 深度学习</a></li>
+            <li><a href="8%20DeepLearning.html">8 DeepLearning</a></li>
         
             <li><a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html">9 比赛学习</a></li>
         
@@ -130,64 +132,15 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15637025345723.html">
+                <a class="clearlink" href="15637036605080.html">
                 
-                  <h1>第二章 线性代数</h1>
+                  <h1>3 样本量的确定</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>第二章主要是介绍了线性代数的一些基础知识</p>
+                        	<p>抽样中样本量的确定是一个非常重要的问题，在不考虑抽样成本的前提下，样本量越多估计的越准，然而实际情况中我们需要平衡抽样成本与估计结果的置信度——以尽可能低的样本得到尽可能高的置信结果。</p>
 
-<p>这里补充几点吧</p>
-
-<h2 id="toc_0">特征分解</h2>
-
-<p>每个矩阵可以视为多个列向量组成的一个向量空间/或者是一个线性变化(一个矩阵乘以一个向量后相当于是对向量做了一个线性变换)。而矩阵的分解，相当于去提取这个向量空间最重要的特征。</p>
-
-<p>(1)首先是特征值和特征向量<br/>
-若<strong>方阵</strong>A满足 \(Av=\lambda v\),则\(v\)称为矩阵A的特征向量，\(\lambda\)称为对应的特征值。</p>
-
-<p><strong>特征分解</strong><br/>
-\[A=V \Lambda V^{-1}\]<br/>
-V是其特征向量构成的矩阵，\(\Lambda\)是特征值构成的对角矩阵</p>
-
-<p>性质：</p>
-
-<p>(1) 实对称矩阵A都可以分解为\(A=Q\Lambda Q^{-1}\)，Q为正交矩阵</p>
-
-<p>(2)用来计算矩阵的逆。若\(A=Q \Lambda Q^{-1}\)，则\(A^{-1}=Q \Lambda^{-1}Q^{-1}\)</p>
-
-<h2 id="toc_1">奇异值分解</h2>
-
-<p>特征分解对于提取矩阵的特征根是很好的方法，但是他只能针对<strong>方阵</strong>操作。当A不是方阵时候，就需要用到SVD<br/>
-\[A_{n*m}=U_{n*n}\Sigma_{n*m} V^{T}_{m*m}\]</p>
-
-<p>其中，U称为左奇异向量，V称为右奇异向量</p>
-
-<p>\(AA^T=UDV^TVDU^T=UD^2U^T\)<br/>
-\(A^TA=VDU^T UDV^T=VD^2V^T\)<br/>
-即：<br/>
-A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)的特征向量，A的奇异值是\(AA^T\)也是\(A^TA\)的特征之爱的平方根。</p>
-
-<blockquote>
-<p>对比：<br/>
-特征分解是有限制的，比如矩阵必须是方阵</p>
-</blockquote>
-
-<h3 id="toc_2">SVD与PCA的关系</h3>
-
-<ul>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 查一下之前多元的变换原理</li>
-</ul>
-
-<p>PCA的全部工作简单点说，就是对原始的空间中顺序地找一组相互正交的坐标轴，第一个轴是使得方差最大的，第二个轴是在与第一个轴正交的平面中使得方差最大的，第三个轴是在与第1、2个轴正交的平面中方差最大的，这样假设在N维空间中，我们可以找到N个这样的坐标轴，我们取前r个去近似这个空间，这样就从一个N维的空间压缩到r维的空间了，但是我们选择的r个坐标轴能够使得空间的压缩使得数据的损失最小。</p>
-
-<h3 id="toc_3">SVD与潜在语义检索LSI</h3>
-
-<h2 id="toc_4">参考资料</h2>
-
-<p><a href="http://www.cnblogs.com/LeftNotEasy/archive/2011/01/19/svd-and-applications.html">http://www.cnblogs.com/LeftNotEasy/archive/2011/01/19/svd-and-applications.html</a></p>
 
                         
                       </div>
@@ -195,11 +148,11 @@ A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)�
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                  
+                   <a href="15637036605080.html">Read more</a>&nbsp;&nbsp; 
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>8 深度学习</a></span>
+          					    <span class="posted-in"><a href='4%20Statistics.html'>4 Statistics</a></span>
           				   
                     
 
@@ -215,61 +168,16 @@ A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)�
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637025345792.html">
+                <a class="clearlink" href="15637036455584.html">
                 
-                  <h1>第三章 概率与信息论</h1>
+                  <h1>1 估计的置信度</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>本章主要是介绍了一些概率论的基础以及常见的分布</p>
+                        	<p>在大多数的研究中，我们无法获取研究对象的总体数据，或者能获取但是成本非常大。实际情况中，我们往往是通过抽样的方法，在总体中进行随机抽样。根据获取的这部分样本数据去推动总体的一些属性。比如通过抽样人群的平均身高去估计所有人群的平均身高，通过抽样人群中的男女比例，去估计我国当前的男女比例状况。<br/>
+抽样样本量是直接影响到最终的估计准确度，所以这一章节，先来介绍下如何判断一种估计方法准确与否。</p>
 
-<h2 id="toc_0">1.常用函数的有用性质</h2>
-
-<ul>
-<li>sigmoid 函数</li>
-</ul>
-
-<p>\[\delta(x) = \frac{1}{1+exp(-x)}\]</p>
-
-<ul>
-<li>softplus函数<br/>
-\[log(1+exp(x))\]
-<img src="media/15080561019055/15080571562017.jpg" alt=""/></li>
-</ul>
-
-<p>是\(y=max(0,x)\)的平滑版本</p>
-
-<h2 id="toc_1">2.信息论</h2>
-
-<p>信息论是应用数学的一个分支，主要研究的是对一个信号包含信息的多少进行量化。<br/>
-<img src="media/15080561019055/15080594230903.jpg" alt=""/></p>
-
-<p>自信息：定义一个时间X=x的自信息<br/>
-\[I(x) = -log P(x)\]</p>
-
-<p>熵：<br/>
-\[-\sum P(x_i) logP(x_i)\]</p>
-
-<h3 id="toc_2">KL散度/相对熵</h3>
-
-<p>\[KL(P||Q) = -\sum P_i ln(\frac{P_i}{Q_i})=-\sum P_i(ln(P_i)- ln(Q_i))\]</p>
-
-<p>注意：</p>
-
-<ul>
-<li>KL距离其实并不是严格的距离，不满足对称性以及三角不等式。</li>
-</ul>
-
-<p>JS距离：<br/>
-\[JS(P1||P2) = \frac{1}{2}KL(P1||(P1+P2)/2)+ \frac{1}{2}KL(P2||(P1+P2)/2)\]</p>
-
-<h3 id="toc_3">交叉熵</h3>
-
-<p>相对熵的第一部分<br/>
-\[KL(P||Q) = -\sum P_i ln(Q_i)\]</p>
-
-<h2 id="toc_4">3.结构化概率模型——图模型(graphical model)</h2>
 
                         
                       </div>
@@ -277,11 +185,11 @@ A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)�
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                  
+                   <a href="15637036455584.html">Read more</a>&nbsp;&nbsp; 
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>8 深度学习</a></span>
+          					    <span class="posted-in"><a href='4%20Statistics.html'>4 Statistics</a></span>
           				   
                     
 
@@ -297,79 +205,72 @@ A的左奇异向量是\(AA^T\)的特征向量，A的右奇异向量是\(A^TA\)�
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637025346040.html">
+                <a class="clearlink" href="15637025344767.html">
                 
-                  <h1>二、起步篇——数据预处理[方法论]</h1>
+                  <h1>【NG-DL】course2_week1 优化网络参数</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p><img src="../media/15334844213158/15335717779664.jpg" alt=""/></p>
+                        	<h2 id="toc_0">1.基本概念</h2>
 
-<h2 id="toc_0">1.数据偏度</h2>
-
-<p>数据的处理，从数据特征本身的统计维度看，有尺度、偏度、</p>
-
-<p>1.数据尺度</p>
+<p>很多优化参数：<br/>
+网络层数，隐层数，学习率，激活函数。。。</p>
 
 <ul>
-<li>标准化 =&gt; 均值0，方差1</li>
-<li>归一化 =&gt; [0,1]</li>
+<li><p>训练集/验证集/测试集</p></li>
+<li><p>偏差， 训练集误差</p></li>
+<li><p>方差</p></li>
 </ul>
 
-<p>2.数据偏度<br/>
-可以通过偏度来度量，数据中如果存在较大的偏度，可能是因为有异常点的存在。</p>
+<p>若有高bias： 尝试新的网络，更大网络</p>
 
-<p>有偏数据处理，一般可以取log，或者开根号让他能近似正态</p>
+<p>高方差： 获取更多数据，或者正则化，更合适的网络机构</p>
 
-<h2 id="toc_1">2.异常点</h2>
+<p>bias和varaince的平衡<br/>
+一般来说更大的网络能减小偏差，更多的数据能减小方差。</p>
 
-<p>首先什么是异常点<br/>
-异常点<br/>
-（1） 首先确认是不是错误导致，比如计算错误。取值错误<br/>
-（2）确认异常点的生成机制</p>
+<h2 id="toc_1">2.正则化-L2</h2>
 
-<p>（1）异常点检测</p>
+<p>以逻辑回归为例</p>
 
-<p>@@@<br/>
-sklearn中常用的包</p>
+<p>\(J(w,b)=\frac{1}{m}\sum L(\hat y_i, y_i)+\frac{\lambda}{2m}|w|^2_2\)L2惩罚，避免过拟合，导致高方差</p>
 
-<p>（2）异常点处理</p>
+<p>类似的神经网络在优化函数上加上</p>
+
+<p>\(J(w^{[1]},b^{[1]},...w^{[l]},b^{[l]})=\frac{1}{m}\sum L(\hat y_i, y_i)+\frac{\lambda}{2m}\sum||w^{[l]}||^2_2\)</p>
+
+<p>其中\(|w^{[l]}|^2\)F范数</p>
 
 <ul>
-<li>如果是少量可以直接删除</li>
-<li>当数据量较少，删除后造成可用信息较少时候，可以使用“空间标识”的数值处理方法</li>
+<li>Ng.当\(\lambda\)较大时候,w会较小，sigmoid接近线性，降低方差。
+<img src="media/15055593941505/15103891828021.jpg" alt=""/></li>
 </ul>
 
-<h2 id="toc_2">3.缺失值</h2>
+<h3 id="toc_2">正则化-dropout(随机失活)</h3>
 
-<p>缺失机制：随机缺失，还是非随机缺失</p>
+<p>每次对网络中的节点设置一个随机消失的概率p，即每个节点可能在也可能不在网络中，不在的时候即相当于该节点的数值置为0.</p>
 
-<p>补充原则：</p>
+<p>dropout与l2类似都会shrink权重。</p>
+
+<h3 id="toc_3">early stoping</h3>
+
+<h2 id="toc_4">3.优化</h2>
+
+<h3 id="toc_5">归一化</h3>
+
+<p>归一化输入=&gt; 均值0，方差1</p>
 
 <ul>
-<li>如果缺失占比太大，删除</li>
+<li>零均值化</li>
+<li>归一化方差</li>
 </ul>
 
-<p>补充方法：</p>
+<p><img src="media/15055593941505/15103915636569.jpg" alt=""/></p>
 
-<ul>
-<li>统计方法：均值</li>
-<li>机器学习方法：回归、K近邻</li>
-</ul>
+<h3 id="toc_6">梯度消失与梯度爆炸</h3>
 
-<h2 id="toc_3">4.特征冗余</h2>
-
-<p>一般是说特征自相关性太高，即“共线性”。另外是指一些没有区分度的变量，比如一是特征取值的总数与样本数目的比例在 10% 以下，二是出现频率最高的特征取值的出现频率应该在出现频率次高的特征的20倍以上。</p>
-
-<p>检测办法：<br/>
-解决办法：PCA</p>
-
-<h2 id="toc_4">参考文章</h2>
-
-<p>离群点</p>
-
-<p><a href="https://blog.chih.me/Outlier-mining-review.html">https://blog.chih.me/Outlier-mining-review.html</a></p>
+<p>当梯度增长很大或者很微弱时，会导致优化出问题或者很慢。</p>
 
                         
                       </div>
@@ -381,7 +282,7 @@ sklearn中常用的包</p>
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html'>5 机器学习</a></span>
+          					    <span class="posted-in"><a href='8%20DeepLearning.html'>8 DeepLearning</a></span>
           				   
                     
 
@@ -397,92 +298,34 @@ sklearn中常用的包</p>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637025346077.html">
+                <a class="clearlink" href="15637025344831.html">
                 
-                  <h1>第七章 正则化</h1>
+                  <h1>聚类方法Mini Batch KMeans</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>机器学习不止要求在训练数据上有良好的表现，还希望有较好的泛化能力，即在测试数据上也能减少测试误差。这些策略被统称为<strong>正则化</strong></p>
+                        	<p>kmeans在数据量大的时候聚类时间会很久。Mini Batch KMeans使用了一个种叫做Mini Batch（分批处理）的方法对数据点之间的距离进行计算。Mini Batch的好处是计算过程中不必使用所有的数据样本，而是从不同类别的样本中抽取一部分样本来代表各自类型进行计算。由于计算样本量少，所以会相应的减少运行时间，但另一方面抽样也必然会带来准确度的下降</p>
 
-<p>常见的一些正则化方法：</p>
+<h2 id="toc_0">迭代步骤：</h2>
 
-<h2 id="toc_0">1.参数范数惩罚</h2>
+<p>1：从数据集中随机抽取一些数据形成小批量，把他们分配给最近的质心<br/>
+2：更新质心<br/>
+与K均值算法相比，数据的更新是在每一个小的样本集上。对于每一个小批量，通过计算平均值得到更新质心，并把小批量里的数据分配给该质心，随着迭代次数的增加，这些质心的变化是逐渐减小的，直到质心稳定或者达到指定的迭代次数，停止计算</p>
 
-<p>即在原有的优化函数中，添加一个对参数的惩罚，来限制模型的学习能力<br/>
-<img src="media/15120469131645/15206725126887.jpg" alt=""/></p>
+<h2 id="toc_1">训练方法</h2>
 
-<p>(1) L2参数正则化<br/>
-L2正则化/岭回归，又叫权重衰减； 可以参照岭回归<br/>
-<img src="media/15120469131645/15206732558707.jpg" alt=""/></p>
+<p>和一般的Kmeans一样</p>
 
-<p>(X⊤X + αI)−1 这个新矩阵与原来的是一样的，不同的仅仅是在对 角加了 α。这个矩阵的对角项对应每个输入特征的方差。我们可以看到，L2正则化能 让学习算法 ‘‘感知’’ 到具有较高方差的输入 x，因此与输出目标的协方差较小(相对 增加方差)的特征的权重将会收缩。</p>
+<pre><code class="language-text">from sklearn.cluster import MiniBatchKMeans
 
-<p>（2）L1正则化： 具有稀疏性，很多会衰减成0，所以有时候会用来做变量选择lasso</p>
+clf = MiniBatchKMeans(n_clusters = 3)
+clf.fit(X)
+pre_clu = clf.labels_
+</code></pre>
 
-<h2 id="toc_1">2.作为约束的范数惩罚</h2>
-
-<p>从另一个角度来看这个问题，可以被看做是构造一个广义拉格朗日函数来最小化带约束的函数</p>
-
-<p><img src="media/15120469131645/15206742273357.jpg" alt=""/></p>
-
-<p><img src="media/15120469131645/15206742365336.jpg" alt=""/></p>
-
-<p>最小化约束 + 重投影的角度</p>
-
-<h2 id="toc_2">3.正则化和欠约束问题</h2>
-
-<p>正则化还有个好处可以保证X&#39;X+aI 是可逆的</p>
-
-<h2 id="toc_3">4.数据集增强</h2>
-
-<p>可以通过一些方法在不改变label的情况下自己构造一批数据集，比如图像识别时候对图像的旋转；有些时候也可以通过输入噪声的方式来进行数据集增强。</p>
-
-<h2 id="toc_4">5.噪声鲁棒性</h2>
-
-<ul>
-<li>向模型的输入或者是权重中加入噪音。</li>
-<li>向输出目标中加入噪音，即标注数据有一定的错误，不是百分百准确的时候。<strong>标签平滑</strong>方法是将0，1分类，变为e/(k-1)和1-e的k个输出的softmax函数。（e是标注的错误率）</li>
-</ul>
-
-<h2 id="toc_5">6.半监督学习</h2>
-
-<p>大概意思是说：P(x) 产生的未标记样本和P(x,y)中的标记样本都用 于估计 P(y|x)或者根据x预测y。</p>
-
-<h2 id="toc_6">7.多任务学习</h2>
-
-<p>就是通过合并几个任务中的样例（可以视为对参数施加的软约束），我感觉就是类似于group_lasso这样的，对参数加了一个别的约束，部分样本需要共享同一个参数</p>
-
-<h2 id="toc_7">8.提前终止</h2>
-
-<p><img src="media/15120469131645/15206764319925.jpg" alt=""/><br/>
-当训练的能力较强时候会发现，随着训练次数的增加，训练误差在逐步减小，但是测试误差会呈现一个U型状态。即先减小后增加。</p>
-
-<p>不是从模型的优化函数入手，相当于是一个实践的经验技巧。</p>
-
-<p>提前终止具有正则化的效果</p>
-
-<h2 id="toc_8">9.参数绑定和参数共享</h2>
-
-<h2 id="toc_9">10.稀疏表示</h2>
-
-<p>前文所述的权重衰减直接惩罚模型参数。另一种策略是惩罚神经网络中的激活 单元，稀疏化激活单元。这种策略间接地对模型参数施加了复杂惩罚。<br/>
-<img src="media/15120469131645/15207643423743.jpg" alt=""/></p>
-
-<h2 id="toc_10">11.Bagging 和其他集成方法</h2>
-
-<p>结合多个模型，进行模型平均</p>
-
-<h2 id="toc_11">12.dropout</h2>
-
-<p>@@@@</p>
-
-<h2 id="toc_12">13.对抗训练</h2>
-
-<h1 id="toc_13">14 切面距离、正切传播和流形正切分类器</h1>
-
-<p>略</p>
+<p>【参考资料】<br/>
+<a href="http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/">http://www.dataivy.cn/blog/%E9%80%82%E5%90%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95mini-batch-k-means/</a></p>
 
                         
                       </div>
@@ -494,7 +337,7 @@ L2正则化/岭回归，又叫权重衰减； 可以参照岭回归<br/>
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html'>8 深度学习</a></span>
+          					    <span class="posted-in"><a href='5%20MachineLearning.html'>5 MachineLearning</a></span>
           				   
                     
 
@@ -510,15 +353,14 @@ L2正则化/岭回归，又叫权重衰减； 可以参照岭回归<br/>
               </div><!-- article -->
         
 			<div class="article">
-                <a class="clearlink" href="15637025346225.html">
+                <a class="clearlink" href="15637025344879.html">
                 
-                  <h1>2 不同设计之间有统计学差异吗</h1>
+                  <h1>xgboost</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>本章主要介绍对均值、比例的假设检验，来判断两组不同设计之间是否有显著差别。</p>
-
+                        	<p><a href="http://xgboost.readthedocs.io/en/latest/python/python_intro.html">http://xgboost.readthedocs.io/en/latest/python/python_intro.html</a></p>
 
                         
                       </div>
@@ -526,11 +368,11 @@ L2正则化/岭回归，又叫权重衰减； 可以参照岭回归<br/>
                 </a>
                 <div class="read-more clearfix">
                   <div class="more-left left">
-                   <a href="15637025346225.html">Read more</a>&nbsp;&nbsp; 
+                  
                     <span class="date">2019/7/21</span>
                     <span>posted in&nbsp;</span> 
           				  
-          					    <span class="posted-in"><a href='4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html'>4 统计方法</a></span>
+          					    <span class="posted-in"><a href='5%20MachineLearning.html'>5 MachineLearning</a></span>
           				   
                     
 
@@ -597,25 +439,27 @@ L2正则化/岭回归，又叫权重衰减； 可以参照岭回归<br/>
 
       	<p class="cat-list">
         
-            <a href="kdd&%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B.html"><strong>kdd&异常检测</strong></a>
+            <a href="kdd&AbnormalDetection.html"><strong>kdd&AbnormalDetection</strong></a>
         
-            <a href="%E8%BD%A8%E8%BF%B9%E5%88%86%E6%9E%90.html"><strong>轨迹分析</strong></a>
+            <a href="trace%20analysis.html"><strong>trace analysis</strong></a>
         
             <a href="1%20Tools.html"><strong>1 Tools</strong></a>
         
-            <a href="2%20Get%20Data.html"><strong>2 Get Data</strong></a>
+            <a href="2%20GetData.html"><strong>2 GetData</strong></a>
         
-            <a href="3%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96.html"><strong>3 数据可视化</strong></a>
+            <a href="3%20DataVisulization.html"><strong>3 DataVisulization</strong></a>
         
-            <a href="4%20%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95.html"><strong>4 统计方法</strong></a>
+            <a href="4%20Statistics.html"><strong>4 Statistics</strong></a>
         
-            <a href="5%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html"><strong>5 机器学习</strong></a>
+            <a href="5%20MachineLearning.html"><strong>5 MachineLearning</strong></a>
+        
+            <a href="5.1%20RecommendSystem.html"><strong>5.1 RecommendSystem</strong></a>
         
             <a href="6%20NLP.html"><strong>6 NLP</strong></a>
         
             <a href="7%20CV.html"><strong>7 CV</strong></a>
         
-            <a href="8%20%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0.html"><strong>8 深度学习</strong></a>
+            <a href="8%20DeepLearning.html"><strong>8 DeepLearning</strong></a>
         
             <a href="9%20%E6%AF%94%E8%B5%9B%E5%AD%A6%E4%B9%A0.html"><strong>9 比赛学习</strong></a>
         
@@ -640,31 +484,31 @@ L2正则化/岭回归，又叫权重衰减； 可以参照岭回归<br/>
 	      
 		      
 			      <li class="post">
-			        <a href="15921526421890.html">python</a>
+			        <a href="15942889318992.html">综述</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15919304631539.html">源码阅读工具</a>
+			        <a href="15942842749545.html">原理篇——模型融合</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15919291891898.html">训练常见问题</a>
+			        <a href="15942831902643.html">原理篇——矩阵分解</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15918717478277.html">【工具】MMlab—mmskelton</a>
+			        <a href="15940468654753.html">maven</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="15918653333546.html">图像检索：BoF、VLAD、FV三剑客</a>
+			        <a href="15940355196534.html">spring boot</a>
 			      </li>
 		     
 		  
