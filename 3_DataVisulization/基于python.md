@@ -26,6 +26,14 @@ video_bytes = video_file.read()
 st.video(video_bytes)
 ```
 
+
+采坑:
+点击button或者筛选后，这个页面都更新了
+https://discuss.streamlit.io/t/the-button-inside-a-button-seems-to-reset-the-whole-app-why/1051/3
+
+
+
+
 ## 2.dash
 使用教程: https://dash.plotly.com/installation
 Python Dash Gallery: https://dash-gallery.plotly.host/Portal/

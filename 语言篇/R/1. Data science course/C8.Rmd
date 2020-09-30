@@ -1,0 +1,636 @@
+---
+output: word_document
+---
+
+## Course 8 practical machine learning
+
+# week1 学习笔记
+相关资源
+
+- The elements of statistical learning
+- https://www.coursera.org/course/ml 机器学习
+* [List of machine learning resources on Quora](http://www.quora.com/Machine-Learning/What-are-some-good-resources-for-learning-about-machine-learning-Why)
+* [List of machine learning resources from Science](http://www.sciencemag.org/site/feature/data/compsci/machine_learning.xhtml)
+* [Advanced notes from MIT open courseware](http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-867-machine-learning-fall-2006/lecture-notes/)
+* [Advanced notes from CMU](http://www.stat.cmu.edu/~cshalizi/350/)
+* [Kaggle - machine learning competitions](http://www.kaggle.com/)
+
+## 1. the components of a predictor
+- question
+- input data: 注意garbage in => garbage out,more data is better than better models
+- features
+- algorithm：准确，简单，解释性，快速，可大规模
+- parameters
+- evaluation
+e.g.垃圾邮件分类
+```{r,results='hide'}
+library(kernlab)
+data(spam)
+head(spam) 
+```
+比如查看'your'这个词在两类下的分布,并且假设选择0.5的分界线
+```{r}
+plot(density(spam$your[spam$type=="nonspam"]),
+     col="blue",xlab="frequncy of 'your'")
+lines(density(spam$your[spam$type=="spam"]),
+      col="red")
+abline(v=0.5)
+```
+
+按照以上的一个简单的分类方法进行分类，效果如下
+```{r}
+prediction=ifelse(spam$your>0.5,"spam","nonspam")
+table(spam$type,prediction)
+
+```
+
+## 2.一些概念吧
+### sample error
+- in sample error：training set
+- out of sample error:test set泛化误差。这个才是真正有用的！
+
+一般来说：in sample error< out of sample error,会有过拟合的问题。
+
+### study design
+- 训练集+测试集+验证集(可无)
+- 交叉验证CV
+
+### types of errors
+TP,FP,TN,FN这些概念在C6 统计推断那门课中有一个图的展示  
+[http://en.wikipedia.org/wiki/Sensitivity_and_specificity](http://en.wikipedia.org/wiki/Sensitivity_and_specificity)
+
+课件中的例子讲的挺清楚的。
+
+一些evaluation标准：
+
+- MSE,RMSE，对异常值敏感
+- median absolute deviation：比较robust
+- sensitivity
+- specificity
+- accuracy
+- concordance：分类数据，比如可以用  
+http://en.wikipedia.org/wiki/Cohen%27s_kappa  
+$k=\frac{P(a)-P(e)}{1-P(e)}$
+
+### ROC曲线
+[wiki解释](http://zh.wikipedia.org/wiki/ROC%E6%9B%B2%E7%BA%BF)
+
+在二分类预测中结果是0,1.但是实际模型算出来的一般是一个连续的数，比如[0,1]上的一个数。  
+每选择一个cut off point就会有不同的sensitivity和specificity。将这些点在图上表示出来就构成了ROC Curve
+
+- x轴：FP=1-specificity
+- y轴：sensitivity，TP
+
+用来平衡sensitivity和specificity，希望两者都大
+
+ROC曲线围成的面积记为AUC,一般来说，面积越大越好
+
+### 交叉验证
+* k重交叉验证
+* leve one out
+
+### the data set
+predict x use data that are related to x.
+
+
+# week2 学习笔记
+## 1.caret package
+统一的框架，资源:  
+1. caret包自身说明文档  
+2. http://www.edii.uclm.es/~useR-2013/Tutorials/kuhn/user_caret_2up.pdf
+
+
+
+## 2.data slicing
+比如createDataPartition，createFolds
+
+```{r,eval=FALSE}
+library(caret)
+library(kernlab)
+data(spam)
+#将数据按照比例进行训练集和测试集分割
+intrain<-createDataPartition(y=spam$type,p=0.75,list=F)
+training<-spam[intrain,]
+testing<-spam[-intrain,]
+dim(training)
+```
+
+```{r,eval=FALSE}
+#k-fold
+folds<-createFolds(y=spam$type,k=10,list=T,returnTrain=TRUE)
+str(folds)
+```
+```
+folds<-createResample(y=spam$type,times=10,list=T)
+sapply(folds,length)
+```
+
+
+## 3.training options
+仍然以spam为例，假设训练集是75%
+```{r,eval=FALSE}
+library(caret)
+library(kernlab)
+data(spam)
+set.seed(2)
+intrain<-createDataPartition(y=spam$type,p=0.75,list=F)
+training<-spam[intrain,]
+testing<-spam[-intrain,]
+#进行模型训练
+modelfit<-train(type~.,data=training,method="glm")
+```
+
+## 4.plotting predictors
+以ISLR包中的wage数据为例
+```{r}
+# 导入数据
+library(ISLR)
+library(ggplot2)
+library(caret)
+data(Wage)
+str(Wage)
+```
+分配训练集和测试集
+```{r}
+intrain<-createDataPartition(y=Wage$wage,p=0.7,list=F)
+training<-Wage[intrain,]
+testing<-Wage[-intrain,]
+dim(training)
+dim(testing)
+```
+绘图，caret包中有个featurePlot函数
+```{r}
+featurePlot(x=training[,c("age","education","jobclass")],
+            y=training$wage,
+            plot="pairs")
+qplot(age,wage,data=training)
+```
+
+## 5.preprocessing
+preProcess(x, method=)
+
+比如数据标准化  
+preProcess(x, method=c("center", "scale"))
+
+也可以直接在train函数中进行数据处理  
+train(type~.,data=training,preProcess=c("center","scale"),method="glm")
+
+box-cox变换    
+preobj<-preProcess(x, method="BoxCox")  
+predict(preobj,x)
+
+缺失值插补  
+method="knnImpute","medianImpute"
+
+## 6.解释变量X
+dummyVars() 创建哑变量  
+nearZeroVar() 去掉只有很小变异的变量
+```
+library(splines)
+
+bsbasis<-bs(training$age,df=3)  #创建3次多项式
+lm<-lm(wage~bsbasis,data=training)
+plot(training$age,training$wage)
+points(training$age,predict(lm,newdata=training),
+      col="red",pch=19)
+```
+## 7.PCA
+prcomp()
+
+```{r,eval=FALSE}
+label=c(1,0,1,0,1)
+x=1:5
+y=rnorm(5)
+#注意color其实是从1开始的，所以直接下面的方式是没有颜色区分的
+plot(x,y,col=label)
+#可以采用的方式是
+plot(x,y,col=label+1)
+plot(x,y,col=as.factor(label))
+```
+
+也可以再preProcess(method="pca")中处理
+或者
+```{r,eval=FALSE}
+modelfit<-train(training$type~.,method="glm",
+                preProcess="pca",data=training)
+confusionMatrix(testing$type,predict(modelfit,testing))
+
+```
+
+## 8.regression
+
+
+# Quizz 2
+```
+library(AppliedPredictiveModeling)
+data(concrete)
+library(caret)
+set.seed(975)
+inTrain = createDataPartition(mixtures$CompressiveStrength, p = 3/4)[[1]]
+training = mixtures[ inTrain,]
+testing = mixtures[-inTrain,]
+
+str(concrete)
+attach(concrete)
+plot(training$CompressiveStrength,col=training$FlyAsh+2)
+```
+
+## Q3
+```
+library(AppliedPredictiveModeling)
+data(concrete)
+library(caret)
+set.seed(975)
+inTrain = createDataPartition(mixtures$CompressiveStrength, p = 3/4)[[1]]
+training = mixtures[ inTrain,]
+testing = mixtures[-inTrain,]
+
+hist(mixtures$Superplasticizer)
+```
+## Q4
+```
+library(caret)
+library(AppliedPredictiveModeling)
+set.seed(3433)
+data(AlzheimerDisease)
+adData = data.frame(diagnosis,predictors)
+inTrain = createDataPartition(adData$diagnosis, p = 3/4)[[1]]
+training = adData[ inTrain,]
+testing = adData[-inTrain,]
+
+str(training)
+preProcess() 
+index=grep("^IL.*",names(training))
+xx=training[,index]
+
+preProcess(xx,method="pca",thresh=0.8)
+```
+## Q5
+```
+library(caret)
+library(AppliedPredictiveModeling)
+set.seed(3433)
+data(AlzheimerDisease)
+adData = data.frame(diagnosis,predictors)
+inTrain = createDataPartition(adData$diagnosis, p = 3/4)[[1]]
+training = adData[ inTrain,]
+testing = adData[-inTrain,]
+
+index=grep("^IL.*",names(training))
+xx=as.data.frame(training[,index])
+xx_test=as.data.frame(testing[,index])
+
+m1<-train(xx,training$diagnosis,method="glm")
+pp=predict(m1,xx_test)
+sum(pp==testing$diagnosis)/length(pp)
+
+
+
+prePro<-preProcess(xx,method="pca",thresh=0.8)
+trainPC=predict(prePro,xx)
+testPC=predict(prePro,xx_test)
+modelfit<-train(trainPC,training$diagnosis,method="glm")
+
+confusionMatrix(testing$diagnosis,predict(modelfit,testPC))
+```
+
+
+# week3 学习笔记
+
+## 1.决策树
+除了之前的rpart,party等专门的包之外，caret中也有统一模式的：
+```{r}
+library(caret)
+data(iris)
+#训练集和测试集
+intrain<-createDataPartition(y=iris$Species,p=0.7,list=FALSE)
+training<-iris[intrain,]
+testing<-iris[-intrain,]
+modelfit<-train(Species~.,method="rpart",data=training)
+#展示
+print(modelfit$finalModel)
+plot(modelfit$finalModel,uniform=T)
+text(modelfit$finalModel,use.n=T,all=T,cex=0.8)
+#预测
+pre_out<-predict(modelfit,newdata=testing)
+table(pre_out,testing$Species)  # confusionMatrix
+```
+train函数主要是用来做分类和回归的，主要的参数有
+```
+train(x,y,method=,preProcess,...)
+
+- 其中method方法有很多，可以通过`names(getModelInfo())`函数进行显示，并且可以使用自定义函数
+- 最后得到的object所含有的属性主要有：
+finalModel
+```
+通过上面的plot画出来的决策树很难看，有个美化版的
+```{r}
+library(rattle)
+fancyRpartPlot(modelfit$finalModel)
+#这个界面还不错
+```
+### rattle
+Rattle是一个用于数据挖掘的R的图形交互界面（GUI），可用于快捷的处理常见的数据挖掘问题.安装很容易:
+
+```{r,eval=FALSE}
+install.packages("rattle")
+library(rattle)
+#会出现提示
+ratle()
+#接着安装其他所需的东西
+```
+
+## 2.bagging
+bootstrap aggregating  
+- resample cases and recaculate predictions
+- average or majority vote
+
+### 基本想法说明
+```{r}
+#1)示例数据
+library(ElemStatLearn)
+data(ozone)
+ozone=ozone[order(ozone$ozone),]
+head(ozone)
+#2）bagged loess
+ll=matrix(NA,nrow=10,ncol=155)
+for(i in 1:10){
+    ss<-sample(1:dim(ozone)[1],replace=T)
+    ozone0=ozone[ss,];ozone0=ozone0[order(ozone0$ozone),]
+    loess0<-loess(temperature~ozone,data=ozone0,span=0.2)
+    ll[i,]<-predict(loess0,newdata=data.frame(ozone=1:155))
+    }
+#3)绘图展示
+plot(ozone$ozone,ozone$temperature,pch=19,cex=0.5)
+for(i in 1:10){
+    lines(1:155,ll[i,],col="grey",lwd=2)
+}
+lines(1:155,apply(ll,2,mean),col="red",lwd=2)
+
+
+```
+caret包中的train函数中的method也有一些是使用bagging方法的，比如：bagEarth，treebag,bagFDA. 或者可以直接使用caret中的bag函数
+
+## 3.random forest
+- 1.Bootstrap 抽样
+- 2.At each split, bootstrap variables
+- 3.Grow multiple trees and vote
+
+```{r}
+#示例
+library(caret)
+data(iris)
+intrain<-createDataPartition(y=iris$Species,p=0.7,list=FALSE)
+training<-iris[intrain,]
+testing<-iris[-intrain,]
+
+#method=rf
+#prox=TRUE是为了??
+modelfit<-train(Species~.,method="rf",data=training,prox=T)
+modelfit
+
+#get a single tree
+getTree(modelfit$finalModel,k=2)
+```
+
+```{r}
+# class centers
+irisP <- classCenter(training[,c(3,4)], training$Species, 
+                     modelfit$finalModel$prox)
+irisP <- as.data.frame(irisP)
+irisP$Species <- rownames(irisP)
+p <- qplot(Petal.Width, Petal.Length, col=Species,data=training)
+p + geom_point(aes(x=Petal.Width,y=Petal.Length,col=Species),size=5,shape=4,data=irisP)
+```
+
+
+也可以直接使用randomForest包中的randomForest函数
+
+
+## 4.boosting
+基本想法：
+
+1. Take lots of (possibly) weak predictors
+2. Weight them and add them up
+3. Get a stronger predictor
+逐步更新分类器
+
+```{r}
+library(ISLR)
+data(Wage)
+library(caret)
+Wage <- subset(Wage,select=-c(logwage))
+inTrain <- createDataPartition(y=Wage$wage,
+                              p=0.7, list=FALSE)
+training <- Wage[inTrain,]; testing <- Wage[-inTrain,]
+#model
+
+modFit <- train(wage ~ ., method="gbm",data=training,verbose=FALSE)
+print(modFit)
+```
+
+## 5.model based prediction
+假设数据服从某种概率分布，使用贝叶斯定理去识别最优分类器
+
+例如：判别分析
+naive bayes：假设独立
+
+示例
+```
+train(Species~.,data=training,method="lda")  #线性判别分析
+method="nb"     #naive bayes
+```
+
+
+# week4 学习笔记
+## 1.regularized regression
+岭回归、lasso
+caret包中method=
+
+## 2.combining predictors
+combine predictors的方法：
+
+- 1.bagging,boosting,rf
+- 2.combine different classifiers
+    - model stacking
+    - model ensembling
+    
+## 3.forecasting
+时间序列
+quantmod
+install.packages("quantmod")
+
+## 4.无监督的预测
+先聚类
+得到类别label
+
+clue包中的cl_predict函数
+
+
+# quize 3
+library(AppliedPredictiveModeling)
+data(segmentationOriginal)
+library(caret)
+
+set.seed(125)
+training<-segmentationOriginal[segmentationOriginal$Case=="Train",]
+testing<-segmentationOriginal[segmentationOriginal$Case=="Test",]
+modelfit<-train(Class~.,method="rpart",data=training)
+
+print(modelfit$finalModel)
+
+library(rattle)
+fancyRpartPlot(modelfit$finalModel)
+
+## 3
+library(pgmm)
+data(olive)
+olive = olive[,-1]
+
+library(tree)
+fit<-tree(Area~.,data=olive)
+fit
+newdata = as.data.frame(t(colMeans(olive)))
+predict(fit,newdata)
+
+##4
+library(ElemStatLearn)
+data(SAheart)
+set.seed(8484)
+train = sample(1:dim(SAheart)[1],size=dim(SAheart)[1]/2,replace=F)
+trainSA = SAheart[train,]
+testSA = SAheart[-train,]
+
+set.seed(13234)
+fit<-train(chd~age+alcohol+obesity+tobacco+typea+ldl,
+      data=trainSA,method="glm",family="binomial") 
+
+missClass = function(values,prediction){sum(((prediction > 0.5)*1) != values)/length(values)}
+
+pre=predict(fit,newdata=testSA)
+
+missClass(testSA$chd,pre)
+
+missClass(trainSA$chd,predict(fit,newdata=trainSA))
+
+##5
+library(caret)
+library(ElemStatLearn)
+data(vowel.train)
+data(vowel.test) 
+
+vowel.train$y=as.factor(vowel.train$y)
+vowel.test$y=as.factor(vowel.test$y)
+
+set.seed(33833)
+fit<-train(y~.,data=vowel.train,method="rf")
+
+
+varImp(fit)
+
+# quize 4
+##1
+library(ElemStatLearn)
+data(vowel.train)
+data(vowel.test) 
+vowel.train$y=as.factor(vowel.train$y)
+vowel.test$y=as.factor(vowel.test$y)
+
+set.seed(33833)
+fit1<-train(y~.,data=vowel.train,method="rf")
+fit2<-train(y~.,data=vowel.train,method="gbm",verbose=FALSE)
+
+pre1<-predict(fit1,newdata=vowel.test)
+pre2<-predict(fit2,newdata=vowel.test)
+
+sum(pre1==vowel.test$y)/length(vowel.test$y)
+sum(pre2==vowel.test$y)/length(vowel.test$y)
+
+##2
+library(caret)
+library(gbm)
+set.seed(3433)
+library(AppliedPredictiveModeling)
+data(AlzheimerDisease)
+
+adData = data.frame(diagnosis,predictors)
+inTrain = createDataPartition(adData$diagnosis, p = 3/4)[[1]]
+training = adData[ inTrain,]
+testing = adData[-inTrain,]
+
+set.seed(62433)
+fit1<-train(diagnosis ~.,data=training,method="rf")
+fit2<-train(diagnosis ~.,data=training,method="gbm",verbose=FALSE)
+fit3<-train(diagnosis ~.,data=training,method="lda")
+
+pre1<-predict(fit1,newdata=testing)
+pre2<-predict(fit2,newdata=testing)
+pre3<-predict(fit3,newdata=testing)
+
+## combine the predictors
+predDF<-data.frame(pre1,pre2,pre3,y=testing$diagnosis)
+combfit<-train(y~.,method="rf",data=predDF)
+compred<-predict(combfit,predDF)
+
+sum(pre1==testing$diagnosis)/length(testing$diagnosis)
+sum(pre2==testing$diagnosis)/length(testing$diagnosis)
+sum(pre3==testing$diagnosis)/length(testing$diagnosis)
+sum(compred==testing$diagnosis)/length(testing$diagnosis)
+
+####结果不大对啊！！！
+
+
+##3
+set.seed(3523)
+library(AppliedPredictiveModeling)
+data(concrete)
+inTrain = createDataPartition(concrete$CompressiveStrength, p = 3/4)[[1]]
+training = concrete[ inTrain,]
+testing = concrete[-inTrain,]
+
+set.seed(233)
+fit1<-train(CompressiveStrength~.,data=training,method="lasso")
+
+?plot.enet  ##
+plot(fit1$finalModel,xvar="penalty",use.col=T)
+
+##4
+setwd("F:/05Course/Data science/8practical machine learning")
+
+library(lubridate)  # For year() function below
+dat = read.csv("gaData.csv")
+training = dat[year(dat$date) < 2012,]
+testing = dat[(year(dat$date)) > 2011,]
+tstrain = ts(training$visitsTumblr)
+
+library(forecast)
+?bats
+
+fit<-bats(tstrain)
+tstest=ts(testing$visitsTumblr)
+up=forecast(fit,235)$upper[,2]
+low=forecast(fit,235)$lower[,2]
+
+sum(tstest<=up & tstest>=low)/235
+
+##5
+set.seed(3523)
+library(AppliedPredictiveModeling)
+data(concrete)
+inTrain = createDataPartition(concrete$CompressiveStrength, p = 3/4)[[1]]
+training = concrete[ inTrain,]
+testing = concrete[-inTrain,]
+
+set.seed(325)
+install.packages("e1071")
+library("e1071")
+fit<-svm(CompressiveStrength~.,data=training)
+pre<-predict(fit,testing)
+
+a=sum((testing$CompressiveStrength-pre)^2)/length(pre)
+sqrt(a)
+
+
+
+
+

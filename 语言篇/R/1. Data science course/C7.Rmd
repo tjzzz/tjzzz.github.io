@@ -1,0 +1,213 @@
+---
+output:
+  pdf_document:
+    latex_engine: xelatex
+  html_document: default
+---
+
+# Regression Model
+# C7 Week1 学习笔记
+
+这一章的笔记没有按照讲课的知识点来，只是记录了个人没太遇到过的东西。  
+关于回归分析如果听了课还是不太明白，就找些基本的书来看看就行。
+
+install.packages("UsingR")
+```{r}
+library(UsingR)
+data(galton)
+str(galton)
+```
+
+Get1：设置散点图中圆圈的大小，用cex参数
+```{r}
+y<-galton$child-mean(galton$child)
+x<-galton$parent-mean(galton$parent)
+freqdata<-as.data.frame(table(x,y))
+names(freqdata)<-c("child","parent","freq")
+plot(
+    as.numeric(as.vector(freqdata$parent)),
+    as.numeric(as.vector(freqdata$child)),
+    pch=21,col="black",bg="lightblue",
+    cex=0.1*freqdata$freq,   #this command sets the size of the point
+    xlab="parent",ylab="child"
+    )
+
+```
+
+## 最小二乘估计
+R语言中做回归的是`lm`函数
+
+## 残差residuals
+模型拟合完之后的残差可以看出模型的好坏：  
+- lm()
+- predict,summary,resid,coef
+
+
+
+# week2 学习笔记
+
+
+# week3 笔记
+
+### dummay variable
+R中对于这样的变量，比如季节，可以直接丢到模型中去做回归，他会自动的将其转化为哑变量。
+
+哑变量的水平顺序是可以调整的  
+relevel()
+
+
+# week4 笔记
+## GLM
+
+广义线性模型包含了以下主要部份：
+- 1. 來自指數族的分佈函數f
+- 2. 线性预测算子$\eta = X\beta$
+- 3. 链接函数g使得$E(y)=\mu=g^{-1}(X\beta)$
+
+比如logistic model
+
+## 1.binary data
+### logit回归中的几个概念
+- 概率：结果为1的概率p
+- odds: $\frac{p}{1-p}$
+- log odds: $\log(\frac{p}{1-p})$
+由此建立起模型：
+$$\log(\frac{p_i}{1-p_i})=b_0+b_1x_i$$
+模型中系数的解释意义。
+
+### 示例
+```
+##数据下载不了
+setwd("F:/05Course/Data science/7.Regreesion Model")
+download.file("https://dl.dropboxusercontent.com/u/7710864/data/ravensData.rda",destfile="ravensData.rda")
+load("ravensData.rda")
+head(ravensData)
+```
+logit回归
+```
+logRegRavens<-glm(ravenWinNum~ravenScore,data=ravensData,family="binomial")
+summary(logRegRavens)
+```
+更多资料：
+http://data.princeton.edu/R/glms.html
+
+## 2.count variable——possion regression
+
+## fit functions
+splines
+## Simulated example
+```{r, fig.height=4, fig.width=4}
+n <- 500
+x <- seq(0, 4 * pi, length = n)
+y <- sin(x) + rnorm(n, sd = .3)
+knots <- seq(0, 8 * pi, length = 20)
+splineTerms <- sapply(knots, function(knot) (x > knot) * (x - knot))
+xMat <- cbind(1, x, splineTerms)
+yhat <- predict(lm(y ~ xMat - 1))
+plot(x, y, frame = FALSE, pch = 21, bg = "lightblue", cex = 2)
+lines(x, yhat, col = "red", lwd = 2)
+```
+
+
+
+
+
+
+# week 2 homework
+```{r,echo=FALSE,results='hide'}
+x <- c(0.61, 0.93, 0.83, 0.35, 0.54, 0.16, 0.91, 0.62, 0.62)
+y <- c(0.67, 0.84, 0.6, 0.18, 0.85, 0.47, 1.1, 0.65, 0.36)
+summary(lm(y~x))
+
+
+data(mtcars)
+str(mtcars)
+attach(mtcars)
+fit<-lm(mpg~wt)
+newdata=data.frame(wt=mean(wt))
+predict(fit,newdata,interval="confidence",level=0.95)
+
+
+?mtcars
+predict(fit,data.frame(wt=3),interval="prediction",level=0.95)
+
+#
+fit=lm(mpg~wt)
+confint(fit,level=0.95)*2
+
+#
+fit=lm(mpg~wt)
+
+sum((mpg-fit$fitted.values)^2)/sum((mpg-mean(mpg))^2)
+```
+# week3 quize
+```{r,echo=FALSE,results='hide'}
+data(mtcars)
+lm(mpg~as.factor(cyl)+wt,data=mtcars)
+lm(mpg~as.factor(cyl),data=mtcars)
+
+
+##Q3
+dd=mtcars
+dd$cyl=as.factor(dd$cyl)
+lm(mpg~cyl+wt,data=dd)
+f2<-lm(mpg~cyl+wt+cyl:wt,data=dd)
+summary(f2)
+
+lm(mpg ~ I(wt * 0.5) + factor(cyl), data = mtcars)
+##
+x <- c(0.586, 0.166, -0.042, -0.614, 11.72)
+y <- c(0.549, -0.026, -0.127, -0.751, 1.344)
+fit=lm(y~x)
+hatvalues(fit)
+dfbetas(fit)
+```
+
+# week4 quize
+library(MASS)
+?shuttle
+str(shuttle)
+shuttle$use=as.numeric(shuttle$use)
+shuttle$use[shuttle$use==2]=0
+relevel(shuttle$wind,ref="tail")
+
+fit=
+glm(use~wind,data=shuttle,family="binomial")
+summary(fit)$coefficients[2,1]
+exp(summary(fit)$coefficients[2,1])
+
+##2
+rm(list=ls())
+library(MASS)
+str(shuttle)
+shuttle$use=as.numeric(shuttle$use)
+shuttle$use[shuttle$use==2]=0
+fit=glm(use~wind+magn,data=shuttle,family="binomial")
+
+1/exp(fit$coefficients[2])
+
+##4
+data(InsectSprays)
+str(InsectSprays)
+glm(count~spray,family="poisson",data=InsectSprays)
+1/exp(0.05588)
+
+##6
+x <- -5:5
+y <- c(5.12, 3.93, 2.67, 1.87, 0.52, 0.08, 0.93, 2.05, 2.54, 3.87, 4.97)
+
+knots <-0
+splineTerms <- sapply(knots, function(knot) (x > knot) * (x - knot))
+xMat <- cbind(1, x, splineTerms)
+lm(y ~ xMat - 1)
+
+
+# swirl
+library(swirl)
+
+install_from_swirl("Regression Models")
+
+
+
+
+

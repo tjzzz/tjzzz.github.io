@@ -1,3 +1,6 @@
+目录
+
+[TOC]
 # Jupyter notebook
 
 类似于r的markdown
@@ -27,8 +30,6 @@ jupyter notebook
 扩展选中上下左右：shift+jk
 当前cell转入markdown状态：m
 当前cell转入代码状态：y
-
-
 
 
 
@@ -96,7 +97,7 @@ socket.gaierror: [Errno -2] Name or service not known
 
 
 
-## 4.其他工具
+## 4.高阶工具jupyterlab，colab
 
 **jupyter-lab**
 jupyter-lab 是jupyter-notebook的升级版，界面更加炫酷，也支持更多功能，强烈建议使用lab方式
@@ -129,10 +130,6 @@ def save_file_to_drive(name, path):
 
 save_file_to_drive(file_name, file_name)
 ```
-
-
-
-
 
 
 
@@ -203,6 +200,10 @@ jupyter notebook --generate-config
 ## 6 好用的插件
 
 https://blog.csdn.net/yh0vlde8vg8ep9vge/article/details/85333338
+
+eryra: pipline https://zhuanlan.zhihu.com/p/256400000?utm_source=com.yinxiang&utm_medium=social&utm_oi=42148019830784
+可以在jupyterlab中定义工作流 https://github.com/elyra-ai/examples/tree/master/pipelines/hello_world
+
 
 
 ## 7 jupyterlab 安装其他内核

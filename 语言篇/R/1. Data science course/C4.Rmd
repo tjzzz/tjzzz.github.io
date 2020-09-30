@@ -1,0 +1,213 @@
+---
+title: "C4_W2_note"
+author: "zzz"
+date: "Friday, July 18, 2014"
+output: word_document
+---
+
+
+
+# Week2
+
+##2.ggplot2——qplot
+**ggplot2有本书叫做《ggplot2：数据分析与图形艺术》**，中文版上传到群共享了
+
+   grammar of graphics:  
+统计图形可以看做是由数据data 到几何对象属性(颜色、形状、大小)的映射。
+
+* Graph是由aesthetics(size,shape,color)和geoms(points,lines)组成
+* 一个基本的函数 qplot （相当于base系统中的plot）
+    *数据格式必须是data.frame的格式
+
+
+**qplot()用法**  
+qplot即quick plot
+###2.1. 散点图  
+导入ggplot2自带的一个数据mpg，并且按照drv变量用不同颜色显示
+```{r}
+library(ggplot2)
+#str(mpg)
+qplot(displ,hwy,data=mpg,col=drv)
+```
+
+###2.2. geom对象——二维图  
+通过改变几何对象(geom),qplot可以变换出其他的图形。
+
+- geom="point" 绘制散点图，在给定x,y时候是默认设置
+- geom="smooth" 将拟合一条平滑曲线，并展示置信区间
+- geom="boxplot" 箱线图
+- geom="path",geom="line"  绘制数据之间的连线
+
+例如point表示散点，smooth表示平滑曲线
+```{r}
+qplot(displ,hwy,data=mpg,geom=c("point","smooth"))
+```
+
+###2.3. geom对象——一维图  
+- 对于连续变量  
+    - geom="histogram"这是默认
+    - geom="density" 绘制密度曲线
+```{r}
+qplot(displ,data=mpg,fill=drv)
+```
+
+- 离散变量 geom="bar"  条形图
+
+###2.4. facets  
+facets和lattice中的pannal类似，将数据分为了若干的子集。主要是根据分类变量绘制多个图qplot()中默认的分面方法是将图形拆成若干个窗格，通过row_var~col_var的形式指定。但是当变量的个数超过两个的时候图形可能会较大，不适合展示。如果只想指定一列或一行，可以使`.`作为占位符。  
+比如`row_var~.` 会创建一个单列多行的图形
+```{r}
+qplot(displ,hwy,data=mpg,facets=.~drv)
+
+```
+
+##2.5. 实例  
+添加回归直线
+```{r}
+library(ggplot2)
+qplot(displ,hwy,data=mpg,geom=c("point","smooth"),col=drv,method="lm")
+```
+
+##3.ggplot()函数
+ggplot2的图形的基本元素：
+- data frame
+- 映射（Mapping）：数据如何映射到颜色、大小形状等几何属性
+- 几何对象（Geometric）：点图，线图...
+- 统计变换（Statistics）
+- 坐标系统（Coordinate）
+- 图层（Layer）
+- 分面（Facet） 
+
+qplot()快速绘图，自己设置了很多默认的属性。如果需要自己创建图形的话，就需要使用ggplot()函数，ggplot()是图层+图层的形式。
+比如：  
+首先需要定义使用的数据，使用`aes`参数即可，summary()可以查看基本的mapping信息
+```{r}
+p<-ggplot(mpg,aes(displ,hwy))
+summary(p)
+```
+注意：此时是没有图形输出的，因为还没指定图形样式。比如使用散点图显示，用`+`添加图层即可.  
+添加图层的标准方式是
+
+    +layer(geom,geom_par,stat,stat_par,....)
+    e.g.  +layer(geom="point")
+此外还有一种比较简洁的方式，即
+
+    geom_XXX(geom_par)
+```{r}
+ggplot(mpg,aes(displ,hwy))+
+geom_point()+
+geom_smooth(method="lm")
+```
+
+
+##3.2添加facets图层  
+```{r}
+ggplot(mpg,aes(displ,hwy))+geom_point()+facet_grid(.~drv)+geom_smooth(method="lm")
+```
+
+##3.3 修改其他  
+修改labs，theme，坐标范围等等
+
+
+
+# week 3 学习笔记
+这章的课程主要是讲聚类，高维数据可视化
+
+## 聚类  
+物以类聚，人以群分  
+
+### 层次聚类
+涉及的问题：
+- 计算类之间的距离/相似性
+    - 连续型变量： 欧式距离，马氏距离，。。。
+    - 连续型变量：相关系数
+    - binary： manhattan距离   
+- 类之间合并的方法
+
+```{r}
+set.seed(1234)
+
+x<-rnorm(12,mean=rep(1:3,each=4),sd=0.2)
+y<-rnorm(12,mean=rep(c(1,2,1),each=4),sd=0.2)
+plot(x,y,col="blue",pch=19,cex=1)
+text(x+0.05,y+0.05,labels=as.character(1:12))
+
+dataFrame<-data.frame(x=x,y=y)
+distxy<-dist(dataFrame)
+#注意：hclust函数的输入参数是dist矩阵
+
+out<-hclust(distxy)
+plot(out)
+
+```
+一个美观的层次聚类函数：
+    
+    myplclust <- function(hclust, lab = hclust$labels, lab.col = rep(1, length(hclust$labels)), 
+    hang = 0.1, ...) {
+    ## modifiction of plclust for plotting hclust objects *in colour*!  Copyright
+    ## Eva KF Chan 2009 Arguments: hclust: hclust object lab: a character vector
+    ## of labels of the leaves of the tree lab.col: colour for the labels;
+    ## NA=default device foreground colour hang: as in hclust & plclust Side
+    ## effect: A display of hierarchical cluster with coloured leaf labels.
+    y <- rep(hclust$height, 2)
+    x <- as.numeric(hclust$merge)
+    y <- y[which(x < 0)]
+    x <- x[which(x < 0)]
+    x <- abs(x)
+    y <- y[order(x)]
+    x <- x[order(x)]
+    plot(hclust, labels = FALSE, hang = hang, ...)
+    text(x = x, y = y[hclust$order] - (max(hclust$height) * hang), labels = lab[hclust$order], 
+        col = lab.col[hclust$order], srt = 90, adj = c(1, 0.5), xpd = NA, ...)
+}
+
+heatmap()热力图函数
+```{r}
+dataMatrix<-as.matrix(dataFrame)[sample(1:12),]
+heatmap(dataMatrix)
+```
+
+
+
+### K均值聚类
+
+
+## 2.降维
+
+### PCA主成分分析
+### SVD 分解
+$$X=UDV^T$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

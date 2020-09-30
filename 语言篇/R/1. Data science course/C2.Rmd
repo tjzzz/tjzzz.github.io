@@ -1,0 +1,228 @@
+---
+output: word_document
+---
+# Week 2学习笔记
+## 1. coding standards
+- use text editor
+- indent your code
+- limit the width of your code.
+- limit the length of your functions.
+
+##2. Scoping rules
+当R在将一个值赋值给一个符号的时候，它会在一系列的environment中去找，比如在当前的workspace中编写了一个lm()的函数。具体的顺序如下：
+- globalenvironment：workspace
+- search list中的包的namespaces，即去各种包中去找有没有符合的名字
+
+其中serch list可以通过 `search`函数找到
+```{r}
+search()
+```
+- search list上的顺序是会变的，global environment始终在第一个，如果你新library()了一个package，他会被放在第二个顺序，base包始终是最后的位置。
+- R会区分函数名和非函数名，所以两者名字一样是可以的
+
+R使用lexical scoping
+
+- free variables的值在函数定义的environment中去寻找  
+  free variable示例如下：函数中的z
+
+        f<-function(x,y){
+         x+y+z
+        }
+- environment：symbol——value对的集合
+- A function+an environment=a function closure
+- free variiable搜寻路线：  
+  函数定义的环境==>parent environment ==>top-level environment(workspace或者package namespace)  ==> empty environment ==> 报错
+- fuction closure可以通过`ls(environment(fun))`的形式查看
+
+lexical scoping与dynamic scoping  
+例子：
+
+    y<-10
+    f<-function(x) {
+        y<-2
+        y^2+g(x)
+    }
+    g<-function(x) {
+        x*y
+    }
+
+lexical/static scoping:在g()中y是free variable，所以在函数定义的环境即global environment中寻找，所以y=10  
+dynamic scoping：y的值在该函数被调用的环境(calling environment)中去寻找。所以y=2
+
+
+##3.vectorized operation
+##4.Dates and Time in R
+dates是用Date类表示的，time是用POSIXct或者POSIXlt类表示的。最终的储存方式都是按照距离1970-01-01的日期存储的数字。
+```{r}
+x<-as.Date("1970-01-01")
+x
+unclass(x)
+```
+常用的函数  
+- as.Date()
+- as.POSIXct,as.POSIXlt
+- strptime()  将字符串时间转化为时间格式
+- weekdays(),months(),quarters()
+
+```{r}
+months(Sys.time())
+```
+
+# week 3 学习笔记
+loop functions
+- lapply: list，fun是针对list中的每一个element
+- sapply:简化lapply的结果
+- apply：apply a function over margins of an array(行/列维度) 
+- tapply：对一个向量的自己
+- mapply:lapply的多元版本  
+
+## 1. lapply  
+用法：lapply(x,fun,..)  
+返回：a list  
+e.g.1 
+```{r}
+x<-list(a=1:4,b=rnorm(10))
+lapply(x,mean)
+```
+e.g.2 如果函数需要传递参数，可以这么写:  
+```{r}
+x<-1:3
+lapply(x,runif,min=0,max=10) #设置runif的参数
+```
+e.g.3自定义函数  
+对于lapply中的函数可以编写自己的函数
+
+## 2. sapply  
+lapply的简化版:可能简化成vector,matrix,list
+
+## 3. apply
+- 多用在计算矩阵或array的行、列、维度上
+- 输入简单，运算并不快
+
+用法：apply(x,margin,fun,...)  
+margin是标志维度的数字向量。此函数可以求矩阵的行和、列和。均值等等。有一些计算会有一些快捷的方式，比如：  
+- rowSums，rowMeans
+- colSums，colMeans
+
+e.g.  
+```{r}
+a<-array(rnorm(2*2*10),c(2,2,10))
+apply(a,c(1,2),mean)
+rowMeans(a,dims=2)
+```
+说明：For row##, the sum or mean is over dimensions dims+1, ...; for col## it is over dimensions 1:dims
+
+## 4.tapply
+apply a function over subsets of a vector.  
+用法:tapply(x,INDEX,fun,...,simply=TRUE)
+- x是向量
+- INDEX是factor或者是factor的list
+
+e.g
+```{r}
+x<-c(rnorm(10),runif(10),rnorm(10,1))
+#gl函数产生指定数量和水平的factor数据
+f<-gl(3,10,labels=c("Group1","Group2","Group3"))
+f
+tapply(x,f,mean)
+```
+## 5.split
+split divides the data in the vector x into the groups defined by f. The replacement forms replace values corresponding to such a division. unsplit reverses the effect of split.  
+用法: split(x, f, drop = FALSE, ...)  
+e.g.1一个factor
+```{r}
+x<-c(rnorm(10),runif(10),rnorm(10,1))
+f<-gl(3,10,labels=c("Group1","Group2","Group3"))
+split(x,f)
+#
+lapply(split(x,f),mean)
+```
+e.g2多个factor
+```{r}
+x<-rnorm(10)
+f1<-gl(2,5)
+f2<-gl(5,2)
+interaction(f1,f2)
+
+```
+
+    注：interaction()函数将factor进行交互，返回的也是factor。默认以.分隔
+    或者直接通过list的方式：
+    split(x,list(f1,f2),drop=T)  
+    drop会将没有的factor去掉
+
+
+## 6.mapply
+lapply或者sapply的多元版本。比如有两个list，对每一个list使用不同的函数进行操作。  
+用法：mapply(FUN,...,args)
+e.g.1  
+
+    list(rep(1:4),rep(2,3),rep(3,2),rep(4,1))等价于  
+    mapply(rep,1:4,4:1)
+
+## 7.Debugging
+- traceback： 最近的一次错误，函数的调用层次
+- debug
+- brower
+- trace
+- recover
+  
+
+# week 4 学习笔记  
+R中常用的函数
+
+## 1.str
+展示对象的结构  
+summary, str
+
+## 2.Simulation
+### 产生随机数
+- rnorm() 正态分布随机数
+- d：密度函数
+- r：随机数
+- p:累积分布
+- q:分位数
+
+set.seed() 设置随机种子，可以重复产生相同的随机数
+
+### 抽样函数
+sample(,,replace=)
+
+## 3.profile
+一些有用函数  
+1. system.time()  
+返回一个proc_time的类型
+- user time
+- elapsed time
+system.time({一段比较长的表达式})
+
+2. Rprof()  
+Rprof() 计算每段函数的时间  
+summaryRprof()
+
+
+## 4.optimization
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

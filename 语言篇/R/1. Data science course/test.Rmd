@@ -1,0 +1,37 @@
+---
+output: word_document
+---
+# week4 学习笔记
+## 1.regularized regression
+岭回归、lasso
+caret包中method=
+
+## 2.combining predictors
+combine predictors的方法：
+
+- 1.bagging,boosting,rf
+- 2.combine different classifiers
+    - model stacking
+    - model ensembling
+    
+## 3.forecasting
+时间序列
+quantmod
+install.packages("quantmod")
+
+## 4.无监督的预测
+先聚类
+得到类别label
+
+clue包中的cl_predict函数
+
+
+
+
+
+
+
+
+
+
+
