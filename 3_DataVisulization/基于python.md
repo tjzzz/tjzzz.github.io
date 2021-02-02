@@ -10,6 +10,8 @@ https://www.jiqizhixin.com/articles/2019-10-31-4
 awesome-examples:  https://github.com/MarcSkovMadsen/awesome-streamlit
 
 * 安装
+
+
 ```
 pip install streamlit
 streamlit hello
@@ -28,10 +30,12 @@ st.video(video_bytes)
 
 
 采坑:
-点击button或者筛选后，这个页面都更新了
+点击button或者筛选后，整个页面都更新了
 https://discuss.streamlit.io/t/the-button-inside-a-button-seems-to-reset-the-whole-app-why/1051/3
 
 
+一个案例 
+https://zhuanlan.zhihu.com/p/216832236
 
 
 ## 2.dash

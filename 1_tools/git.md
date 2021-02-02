@@ -63,20 +63,25 @@ git log
 git reset --hard xxxxx
 
 
-
-
 查看本地与云端的diff
 
 git rm —cache  删除已经提交的内容
 
 
-
-
-## 4.常见问题
-
-Q1: repo中含有子模块的
+（2）repo中含有子模块的
 ```
 git pull --recurse-submodules
 ```
 
+(3) git分支
+新建分支
+```
+git checkout -b v1
+```
+删除分支
+Git-命令行-删除本地和远程分支
+切换到要操作的项目文件夹命令行: $ cd <ProjectPath>
+查看项目的分支们(包括本地和远程) ...
+删除本地分支命令行: $ git branch -d <BranchName>
+删除远程分支命令行: $ git push origin --delete <BranchName>
 

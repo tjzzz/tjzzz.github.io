@@ -1,5 +1,5 @@
 # spring boot
-Spring Boot不是一门新技术，所以不用紧张。从本质上来说，Spring Boot就是Spring,它做了那些没有它你也会去做的Spring Bean配置。它使用“习惯优于配置”（项目中存在大量的配置，此外还内置了一个习惯。
+Spring Boot不是一门新技术，所以不用紧张。从本质上来说，Spring Boot就是Spring,它做了那些没有它你也会去做的Spring Bean配置。它使用“习惯优于配置”（项目中存在大量的配置，此外还内置了一个习惯)。
 Spring将很多魔法带入了Spring应用程序的开发之中，其中最重要的是以下四个核心。
 
 - 自动配置：针对很多Spring应用程序常见的应用功能，Spring Boot能自动提供相关配置
@@ -106,22 +106,43 @@ https://github.com/YunaiV/SpringBoot-Labs
 
 
 
+## 4.学习
+
+官网: https://spring.io/projects/spring-boot
+
+（1）example1: hello world
+开始案例:https://start.spring.io/
+
+启动方式M1:
+```
+# 在项目目录下
+./mvnw spring-boot:run
+```
+
+（2）例子2： https://github.com/xkcoding/spring-boot-demo
+
+(3)recbee
 
 
-
-
-
-
-**项目启动**
-
-M1:
-
-
-
-
-
-recbee
 ```
 aop   # 对于我们开发中最常见的可能就是日志记录，事务处理，异常处理等等。
 controller # https://www.jianshu.com/p/ea512f634fd6
 ```
+
+模块层次:
+
+@注解: https://zhuanlan.zhihu.com/p/135987318
+
+读取配置信息
+使用 @Value("${property}") 读取比较简单的配置信息
+@ConfigurationProperties读取配置信息并与 bean 绑定
+JPA相关
+@Entity声明一个类对应一个数据库实体。
+@Table 设置表名
+@Id ：声明一个字段为主键。
+@Column 声明字段
+
+导入配置文件
+@PropertySource注解
+@ImportResource导入xml配置文件
+@Import 导入额外的配置信息

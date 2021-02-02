@@ -179,3 +179,8 @@ os.path.isfile('d:/assist/getTeacherList.py')
 file_list = os.listdir('/home/work/zhenzhen/time_factor/')
 ```
 
+
+
+## tab自动联想history命令
+
+在.bashrc中添加bind '"\e[A": history-search-backward'

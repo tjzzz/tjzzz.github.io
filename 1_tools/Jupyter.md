@@ -196,6 +196,12 @@ pip install jupyterlab
 jupyter notebook --generate-config
 ```
 
+Q7: jupyter中保存时候报错:`'_xsrf’ argument missing from POST`
+解决方法
+在同一内核上打开另一个笔记本
+或者转到/ tree aka Jupyter主页，然后刷新浏览器。
+
+
 
 ## 6 好用的插件
 
@@ -205,6 +211,9 @@ eryra: pipline https://zhuanlan.zhihu.com/p/256400000?utm_source=com.yinxiang&ut
 可以在jupyterlab中定义工作流 https://github.com/elyra-ai/examples/tree/master/pipelines/hello_world
 
 
+**从外部调用不同ipynb搭建pipline**
+
+https://www.datacouncil.ai/hubfs/DataEngConf/Data%20Council/Slides%20SF%2019/Notebooks%20as%20Functions%20with%20papermill.pdf
 
 ## 7 jupyterlab 安装其他内核
 

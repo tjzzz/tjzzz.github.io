@@ -22,10 +22,21 @@ http://ramnathv.github.io/rCharts
 #Install 
 require(devtools)## 标题 ##
 install_github('rCharts', 'ramnathv')
+library(recharts)
+
+
 ```
 
 
+# recharts
 
+
+网上使用的多是`library(devtools),install_github("madlogos/recharts")` 其github上已经弃用，现在用的是
+https://echarts4r.john-coene.com/
+https://github.com/JohnCoene/echarts4r
+
+其更新比较快，目前是2020-10-16版本
+教程 https://echarts4r.john-coene.com/articles/get_started.html
 
 
 

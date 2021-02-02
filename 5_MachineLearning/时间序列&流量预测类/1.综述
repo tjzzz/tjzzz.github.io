@@ -1,0 +1,68 @@
+
+
+https://github.com/topics/traffic-prediction
+
+
+https://zhuanlan.zhihu.com/p/67832773
+
+
+
+常见的预测方式大致分为如下几种:
+
+一、时间序列类
+- 简单方法: 直接平均法，滑动平均法，加权平均法，指数平滑法，多倍数指数平滑法，线性回归
+- 传统时间序列预测: ARIMA，https://cloud.tencent.com/developer/article/1646121
+- Prophet(facebook的时间序列工具库)
+
+二、监督学习
+将时间序列问题转为回归问题，比如xgboost等
+
+
+三、深度学习
+比如:
+- LSTM
+- LSTNet： 适用于自相关图表现出有明显周期的时间序列，否则与传统方法相当。LSTNet-Pytorch、LSTNet-Keras、LSTNet-Gluon(Mxnet)。
+- TPA-LSTM： 改进了attention机制，侧重选择关键变量，而非选择时间步；实验效果说是对周期不明显的时间序列也能有不错效果。TPA-LSTM-Tensorflow
+
+
+
+工具：
+
+tslearn：开源的时间序列机器学习python工具包
+tsfresh：开源的时间序列特征提取python工具包
+https://tsfresh.readthedocs.io/en/latest/text/quick_start.html
+
+
+pyts：开源的时间序列分类Python工具包。提供预处理工具及若干种时间序列分类算法
+
+
+
+## Prophet
+
+相关介绍: https://zhuanlan.zhihu.com/p/52330017
+论文: 《forecasting at scale》https://peerj.com/preprints/3190.pdf
+facebook的prophet是进行时间序列相关建模的工具箱，并且提供了python和R的接口。除此之外时间序列的异常检测也可以使用该工具。
+
+原理简单说明:
+通常对于时间序列，常见的处理方式就是进行序列分解，将一条时间序列分解为季节趋势、周期趋势、剩余项目。形式可以是加法或者乘法的形式。
+$$y_t = S_t + T_t + R_t$$
+在prophet中考虑了季节、趋势、节假日因素。即$y_t = g(t) + T_t + h_t + R_t$. 具体来说:
+
+**1.趋势项$g(t)$**
+prophet算法中，关于趋势项的预测有两种方式
+(1) 基于逻辑回归
+一般的sigmoid形式是$y=C/(1+e^{-k(x-m)})$,然而在实际场景中， 参数不会是常数的，而是随着时间变化的。所以在Prophet里面，作者将三个参数全部换成了随时间变化的函数$y=C(t)/(1+e^{-k(t)(x-m(t))})$
+
+(2) 基于分段线性函数(默认的)
+https://github.com/facebook/prophet/blob/master/python/fbprophet/forecaster.py
+
+变点的选择 changepoint
+
+**2.季节项**
+傅里叶级数
+
+关于prophet初始化时候的参数，可以参照`forecaster.py`
+
+
+
+

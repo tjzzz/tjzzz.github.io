@@ -208,6 +208,23 @@ Q1: RuntimeWarning: More than 20 figures have been opened. Figures created throu
 
 
 
+## 中文乱码
+https://www.jianshu.com/p/dea646dab85c
+
+下载中文字体 simhei.ttf。
+搜索 matplotlib 的字体安装位置：locate -b '\mpl-data'。由于我创建了虚拟环境，得到的路径为：
+/home/yilonghao/ml/venv/lib/python3.5/site-packages/matplotlib/mpl-data
+切换到目标路径下（注意命令末尾的/fonts/ttf）：
+cd /home/yilonghao/ml/venv/lib/python3.5/site-packages/matplotlib/mpl-data/fonts/ttf
+将下载的字体拷贝到该路径下。
+删除当前用户的 matplotlib 缓存。
+cd ~/.cache/matplotlib
+rm -rf *.*
+
+作者：衣介书生
+链接：https://www.jianshu.com/p/dea646dab85c
+来源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
 
 ## 参考
@@ -217,7 +234,29 @@ https://www.matplotlib.org.cn/home.html
 
 
 
+# seaborn
 
+时序类，转变下格式
+```
+import numpy as np
+import pandas as pd;
+import matplotlib.pyplot as plt
+# 构建 时间序列数据 从2000-1-31开始，以月份为间隔，构建100条记录
+index = pd.date_range("1 1 2000", periods=100,freq="m", name="date")
+data = np.random.randn(100, 4).cumsum(axis=0)
+
+# 构建5列数据，列名分别为data a b c d
+wide_df = pd.DataFrame(data, index, ["a", "b", "c", "d"])
+"""
+案例7：绘制时间序列数据
+"""
+sns.lineplot(data=wide_df)
+plt.show()
+```
+
+
+背景设置 https://blog.csdn.net/dongzixian/article/details/102480875
+https://zhuanlan.zhihu.com/p/27435863
 
 
 
