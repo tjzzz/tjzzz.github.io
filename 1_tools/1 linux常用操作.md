@@ -20,7 +20,7 @@ apt-get install xxx
 
 ## 清除 deleted但是进程还在占用的任务
 
-lsof |grep delete | grep -v grep | awk '{print $2}' | xargs kill -9
+lsof |grep deleted | grep -v grep | awk '{print $2}' | xargs kill -9
 
 ## 删除文件恢复
 
@@ -91,11 +91,36 @@ sort b.txt a.txt a.txt | uniq -u
 
 
 
-* send email
+## 发送邮件
+linux环境下发送邮件有很多的方式，这里介绍其中一种
+(1) mail
+
+安装 https://cloud.tencent.com/developer/article/1608855
+```
+# 安装sendmail
+ sudo apt-get install sendmail  
+ sudo apt-get install sendmail-cf  
+ ## 安装mail
+apt-get install mailutils
+apt-get install sharutils  # 使用附件功能
+```
+
+
 
 发送带附件的邮件
 echo "this is content" | mutt -s "this is subject" zhengzhenzhen@baidu.com -a readme.md
 （需要先安装mutt）
+
+1.使用mail发送单个附件
+
+uuencode file_path file | mail -s "file" 123@***.com
+
+2.使用mail发送多个附件
+uuencode /root/zyx.cap zyx.cap >attach1.txt
+uuencode /root/sendmail.pl sendmail.pl >attach2.txt
+cat msg.txt attach1.txt attach2.txt>combined.txt
+mail -s "cesho" 123@***l.com <combined.txt
+
 
 
 

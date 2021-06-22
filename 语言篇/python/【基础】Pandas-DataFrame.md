@@ -1,18 +1,7 @@
 # 【基础】Pandas-DataFrame
 
-## 循环遍历每行
 
-```python
-## method1: 这个效率快一些
-for index, row in df.iterrows():
-    print(row["c1"], row["c2"])
-## method2
-for i in range(len(df)):
-    print(df.iloc[i]['c1'])
-```
-
-
-
+# 1. 基础语法
 
 ## 数据读入和输出
 
@@ -22,6 +11,14 @@ df.to_csv(file_name)
 df.to_csv(file_name2,encoding="utf_8_sig")   # 输出中文乱码时候可以指定encoding
 ```
 
+## dataframe输出中文乱码
+df.to_csv(file_name2,encoding="utf_8_sig")
+
+
+
+## 随机抽样 
+`df.sample(n=xx, replace=False)`
+
 ## 筛选行列
 
 筛选指定的行列应该是dataframe经常用的语法了。
@@ -30,8 +27,6 @@ dataframe本质上行index 和列column的索引 + 数据
 ### 筛选列
 
 行名或者列名有两种方式获取： 标签， 位置
-
-
 
 **df.loc[[index],[colunm]] 通过标签选择数据**
 
@@ -83,6 +78,24 @@ df.rename(columns={'a':'A'})  #只修改列名a为A
 
 
 
+
+## list转dataframe
+
+```
+from pandas.core.frame import DataFrame
+a=[[1,2,3,4],[5,6,7,8]]#包含两个不同的子列表[1,2,3,4]和[5,6,7,8]
+data=DataFrame(a)#这时候是以行为标准写入的
+```
+
+## 修改列名
+
+```
+# 1、修改列名a，b为A、B。
+df.columns = ['A','B']
+
+# 2、只修改列名a为A
+df.rename(columns={'a':'A'})
+```
 
 
 ## 数据变换相关
@@ -195,4 +208,40 @@ zz = final_act_data[['pid', 'floor', 'act_list_info']].groupby('pid').agg({ 'flo
 
 pandas cheat sheet
 ![](media/15637025346110/15680282932357.jpg)
+
+
+
+# 2. 效率类
+
+## 循环遍历每行
+
+```python
+## method1: 这个效率快一些
+for index, row in df.iterrows():
+    print(row["c1"], row["c2"])
+## method2
+for i in range(len(df)):
+    print(df.iloc[i]['c1'])
+```
+
+## pd.query 和pd.eval
+
+### pandas 
+pandas.eval(), pd.query()实现高性能运算， 他们底层都是调用的Numexpr库
+```
+result = pd.eval("(df.A + df.B) / (df.C -1)")
+## 新增列
+df.eval('D = (A+B) / c', inplace=True)
+
+## 使用局部变量
+column_mean = df.mean(1)
+result = df.eval('A + @column_mean')
+```
+数据筛选 pd.query()
+```python
+result1 = df[(df.A < 0.5) & (df.B < 0.5)]
+result2 = df.query('A < 0.5 and B < 0.5')
+```
+
+
 

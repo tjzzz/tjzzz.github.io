@@ -28,3 +28,7 @@ https://bacterous.github.io/2018/09/13/LightGBM%E4%BD%BF%E7%94%A8/
 2.在模型的fit方法中传入参数categorical_feature, 指明哪些列是类别特征.
 3.类别特征的值必须是从0开始的连续整数, 比如0,1,2,..., 不能是负数.
 
+
+官方文档：
+https://lightgbm.readthedocs.io/en/latest/Parameters.html#categorical_feature
+

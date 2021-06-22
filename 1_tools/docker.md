@@ -124,3 +124,48 @@ https://juejin.im/post/5bd95412f265da395a1dd17c
 
 
 Dockerfile
+
+## docker中git问题
+有时候需要在docker中使用git clone或者pull相关的最新code。而git有两种连接方式ssh 和http 认证。
+http://www.bubuko.com/infodetail-3630497.html
+
+(1) 　通过ssh key进行认证处理
+ssh需要用 ssh-keygen 生成公钥和私钥，并将公钥添加到git中。
+```
+#生成key 
+ssh-keygen
+Enter file in which to save the key (/root/.ssh/id_rsa): 输入保存的文件路径和名称
+#找到生成的key  默认是 /用户名/.ssh/id_rsa
+cat id_rsa.pub
+#将公钥文件内容添加到git服务器中
+#将私钥 id_rsa 放在docker中
+#在dockfile中加入ssh-add  使用指定私钥
+ssh-add ~/.ssh/id_rsa
+#git clone 使用 ssh下载
+git clone git@github.com:BigWrite/test.git
+```
+　　
+
+方案二：
+http需要输入密码 `git config --global credential.helper store` 可以只输入第一次，后续不需要再次输入。
+
+　　将打包好的镜像二次加工成新的镜像。
+```
+#1.运行镜像并进去运行容器
+docker run -it 镜像名称:latest /bin/bash
+#2.进入运行中的容器，容器名称用docker ps -a   查看所有容器||docker ps -s 查看运行中的容器
+docker exec  -it 容器名称 /bin/sh
+#配置git信息
+git config --global user.name "docker_webgit"
+git config --global user.email "bigwrite@163.com"
+git config --global credential.helper store
+git config --global push.default "current"
+#执行 git clone  输入用户名和密码
+git clone XXX.git
+#退出当前容器
+exit
+#用配置好的容器，再次打包 容器id可以用 docker ps -a查看
+docker commit 容器ID 新镜像名称
+#查看打包好的镜像 然后push到服务集群就ok了
+docker images
+```

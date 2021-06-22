@@ -5,7 +5,28 @@ python excel操作的可用的包比较多，常用的有pandas,openpyxl, xlsxwr
 
 
 
-## 1.插入图片
+## 1.xlsxwriter
+
+注意： xlsxwriter 只能创建新的sheet，无法修改已经存在的
+### write类
+- worksheet.writte(row, col, *args) 针对单独一个单元格的写入
+- 针对特定格式的写入： write_strings(), write_number(), write_datetime(),....
+- worksheet.write_formula(), write_array_formula() 写入计算逻辑
+- worksheet.write_row(row, col, data[, cell_format]),worksheet.write_column()
+- insert_tetxtbox, insert_image(), insert_button,
+- worksheet.conditional_format() 设置条件格式 
+
+### format类
+https://xlsxwriter.readthedocs.io/format.html#format
+
+### 修改已经存在的
+
+
+## 2. openpyxl
+https://openpyxl.readthedocs.io/en/stable/
+
+
+
 
 
 

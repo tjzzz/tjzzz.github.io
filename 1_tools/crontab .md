@@ -1,5 +1,20 @@
 # crontab 
 
+查看crontab的log日志
+
+https://www.cnblogs.com/doseoer/p/5663187.html
+
+
+
+
+
+
+# python-cron设置相关
+
+https://zhuanlan.zhihu.com/p/92152648
+
+
+# 
 
 将脚本设置例行，加上`source ~/.bashrc`,发现并没有引入环境。原因
 

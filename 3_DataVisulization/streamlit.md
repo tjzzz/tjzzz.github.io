@@ -38,6 +38,42 @@ https://discuss.streamlit.io/t/the-button-inside-a-button-seems-to-reset-the-who
 https://zhuanlan.zhihu.com/p/216832236
 
 
+其他高级布局
+https://blog.streamlit.io/introducing-submit-button-and-forms/
+
+
+streamlit更新记录
+https://share.streamlit.io/streamlit/release-demos/0.81/0.81/streamlit_app.py?page=forms_demo
+不同颜色 https://github.com/tvst/st-annotated-text
+
+
+通过markdown方式设置颜色:
+ st.markdown('<font color=red size=6 face=“黑体”>字体颜色</font>', unsafe_allow_html=True)
+
+
+相关配置
+
+streamlit config show
+
+### 发布
+- streamlit for teams
+- github 公开版
+- https://blog.csdn.net/m0_47467356/article/details/108708113
+
+
+官方论坛上的部署方案
+https://discuss.streamlit.io/t/streamlit-deployment-guide-wiki/5099
+
+案例：
+阿里云上部署 https://zhuanlan.zhihu.com/p/245294921
+https://github.com/gwrun/tutorials/tree/main/streamlit/docker-compose
+hosted on Heroku: https://github.com/Taxuspt/heroku_streamlit_nginx 
+
+
+nativefier: 能将网页打包成成应用。
+https://github.com/nativefier/nativefier
+
+
 ## 2.dash
 使用教程: https://dash.plotly.com/installation
 Python Dash Gallery: https://dash-gallery.plotly.host/Portal/

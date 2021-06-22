@@ -5,7 +5,7 @@
 ## 2.标注工具 https://github.com/tzutalin/labelImg
 
 
- 
+
 https://www.kancloud.cn/aollo/aolloopencv/269602
 
 open-cv的基本参数
@@ -32,3 +32,10 @@ CV_CAP_PROP_WHITE_BALANCE_V 白平衡设置的V值（注意：目前仅支持DC1
 CV_CAP_PROP_RECTIFICATION 立体摄像机的整流标志（注意：目前仅支持DC1394 v 2.x后端）
 CV_CAP_PROP_ISO_SPEED摄像机 的ISO速度（注意：目前仅支持DC1394 v 2.x后端）
 CV_CAP_PROP_BUFFERSIZE 存储在内部缓冲存储器中的帧数（注意：目前仅支持DC1394 v 2.x后端）
+
+
+
+
+
+
+

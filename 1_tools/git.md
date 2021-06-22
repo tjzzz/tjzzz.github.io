@@ -85,3 +85,14 @@ Git-命令行-删除本地和远程分支
 删除本地分支命令行: $ git branch -d <BranchName>
 删除远程分支命令行: $ git push origin --delete <BranchName>
 
+
+
+## 对比不同分支的diff
+
+```
+Git diff branch1 branch2 --stat   //显示出所有有差异的文件列表
+
+Git diff branch1 branch2 文件名(带路径)   //显示指定文件的详细差异
+
+Git diff branch1 branch2                   //显示出所有有差异的文件的详细差异
+```

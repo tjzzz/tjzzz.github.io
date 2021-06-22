@@ -24,8 +24,8 @@ dplyr包主要是对数据进行处理(过滤，切分，聚合，join等操作\
 tbl_df将数据框转变为tbl对象, 主要是可以将一个sql对象转变为dplyr可以处理的tbl.`dplyr`可以处理data frame格式，但是如果你的数据比较大，建议还是讲其转变为`tbl_df`格式
 
  例子
- 
-```
+
+```R
 library('dplyr')
 class(iris)
 tbl<-tbl_df(iris)
