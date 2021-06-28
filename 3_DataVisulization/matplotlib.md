@@ -9,10 +9,10 @@ matplotlib是python绘图的一个基础包，其用法和matlab语法有些相�
 
 ## 2.matplotlib.pyplot
 
-![](media/15686309605233/15686322692816.png)
+![](/media/15686309605233/15686322692816.png)
 
 
-```
+```python
 import matplotlib.pyplot as plt
 plt.plot(x, y, 其他属性)
 ```
@@ -37,7 +37,7 @@ pyplot是matplotlib中最常用的模块，
 
 **subplot 绘制子图**
 
-```
+```python
 plt.figure()
 plt.subplot(2, 3, 1)   #n行m列的子图
 plt.plot(x1, y1)
@@ -46,7 +46,7 @@ plt.subplot(2, 3, 2)   #n行m列的子图
 plt.plot(x2, y2)
 ```
 
-```
+```python
 data = np.random.randn(2, 100)
 fig, axs = plt.subplots(2, 2, figsize=(5, 5))
 axs[0, 0].hist(data[0])
@@ -61,7 +61,7 @@ plt.show()
 
 需要先安装`pillow`包
 
-```
+```python
 im = plt.imread('cat.jpg')  #将图像读取为数组
 ax.imshow(im)                  # imshow将数组显示为图像
 ```
@@ -76,7 +76,7 @@ mplot3d
 
 正常情况下，matplot是自动变更绘制的颜色的
 
-```
+```python
 import matplotlib.pyplot as plt
 import numpy as np
 x = np.linspace(0, 1, 10)
@@ -88,7 +88,7 @@ plt.show()
 如果需要自己指定颜色，可以通过设置color=xxx来设置。
 如果数据中有标签分组，希望分组设置相同的颜色，但是组数比较多，不太好事先指定好颜色，则可以通过如下的方法
 
-```
+```python
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -106,7 +106,7 @@ plt.show()
 
 **绘制次坐标轴图**
 
-```
+```python
 fig = plt.figure()
 ax1 = fig.add_subplot(111)
 ax1.plot(x, y1)
@@ -150,7 +150,7 @@ https://matplotlib.org/gallery/animation/simple_anim.html
 
 模仿写的一个小例子  https://www.smslit.top/2018/11/12/matplotlib-animation/
 
-```
+```python
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import animation
@@ -185,6 +185,7 @@ y = range(5, 15)
 
 plot_trace_animation(x, y)
 ```
+
 保存
 
 anim.save('out.mp4')   # 需要先安装ffmpeg
@@ -237,7 +238,8 @@ https://www.matplotlib.org.cn/home.html
 # seaborn
 
 时序类，转变下格式
-```
+
+```python
 import numpy as np
 import pandas as pd;
 import matplotlib.pyplot as plt

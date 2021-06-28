@@ -18,7 +18,7 @@ http://rdatascience.io/rCharts/
 作者的github主页
 http://ramnathv.github.io/rCharts
 ##
-```{r}
+```r
 #Install 
 require(devtools)## 标题 ##
 install_github('rCharts', 'ramnathv')
@@ -51,7 +51,7 @@ bookdown是基于markdown，knitr用来进行write book的一个package。
 
 首先安装相应的支持包
 
-```
+```R
 install.packages("webshot")
 webshot::install_phantomjs()
 ```
@@ -82,7 +82,7 @@ serve_book(dir='.', output_dir="_book",preview=TRUE, in_session=TRUE)
 # shiny
 
 
-```
+```r
 # Define the location '/specialApp'
 location /specialApp {
   app_dir /srv/shiny-server/myApp;
@@ -104,6 +104,7 @@ wget -c http://download3.rstudio.org/centos-5.9/x86_64/shiny-server-1.2.3.368-x
  2.http://docs.rstudio.com/shiny-server/
  
  
+
  配置路径：
   /opt/shiny-server/config/default.config
 

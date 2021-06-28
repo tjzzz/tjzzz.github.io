@@ -21,7 +21,7 @@ python download_and_convert_data.py \
  python data_convert.py -t pic --train-shards 2 --validation-shards 2 --num-threads 2 --dataset-name guangdong
 ```
 执行完后会在pic下生成tf格式的训练+测试数据，以及label.txt
-![](media/15388051366041/15388065002449.jpg)
+![](/media/15388051366041/15388065002449.jpg)
 
 ## 2.使用tensorflow的slim微调模型
 
@@ -59,7 +59,7 @@ python download_and_convert_data.py \
 (3)train model
 
 
-```
+```python
 python train_image_classifier.py \
   --train_dir=guangdong/train_dir \
   --dataset_name=guangdong \

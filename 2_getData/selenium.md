@@ -12,7 +12,7 @@ pip install selenium
 
 一个hello word的简单示例，下面会对代码做具体解释。
 
-```
+```python
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
@@ -31,14 +31,14 @@ driver.close()
 
 个人使用
 如果不知道路径在哪，可以通过检查的方式，copy出来元素的路径
-![-w1129](media/15637037730857/15733742110561.jpg)
+![-w1129](/media/15637037730857/15733742110561.jpg)
 
 
 
 
 抓取代码
 
-```
+```python
 year = sys.argv[1]
 page_num = 10   # 随便初始化一个翻页次数
 	

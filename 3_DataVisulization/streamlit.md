@@ -48,7 +48,10 @@ https://share.streamlit.io/streamlit/release-demos/0.81/0.81/streamlit_app.py?pa
 
 
 通过markdown方式设置颜色:
- st.markdown('<font color=red size=6 face=“黑体”>字体颜色</font>', unsafe_allow_html=True)
+
+```python
+st.markdown('<font color=red size=6 face=“黑体”>字体颜色</font>', unsafe_allow_html=True)
+```
 
 
 相关配置
